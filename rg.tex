@@ -1,0 +1,546 @@
+\chapter{Renormalisation group method}
+
+\commentbw{Outline:
+\begin{itemize}
+\item
+extend map to new norms: independent of $K_0$, do $n \ge 1$ ($n = 0$ similar)
+
+\item
+extend bulk flow to general $K_0$
+(done for $n = 0$, but extension to $n \ge 1$ should be straightforward)
+
+\item
+do observable flow
+\end{itemize}}
+
+\commentbw{We are presently considering $n \ge 1$ throughout
+Sections~\ref{sec:prog}--\ref{sec:rgcoord}}
+
+% Discuss RG method with improved norms and non-trivial $K_0$
+
+\section{Progressive integration}
+% Based on both
+\label{sec:prog}
+
+We evaluate the Gaussian integral $\Ex_C Z_0$ progressively, via
+the covariance decomposition
+\begin{equation}
+\label{e:NCj}
+C = C_1 + \cdots + C_{N-1} + C_{N,N}
+\end{equation}
+constructed in \cite{Baue13a} (see also \cite{BGM04}). For simplicity, we write $C_N = C_{N,N}$.
+For an integrable function $F$ of the spin field $\varphi$, we let
+$\Ex_{w}\theta F$ be the convolution of $F$ with the Gaussian measure of covariance $w$, i.e.,
+$(\Ex_w\theta F)(\varphi) = \Ex_wF(\varphi + \zeta)$ where the expectation integrates the
+variable $\zeta$.
+It is a property of Gaussian integration (see \cite{BS-rg-norm}) that
+\begin{equation}
+    (\Ex_C \theta F)(\varphi)
+    =
+    (\Ex_{C_N}\theta \circ \Ex_{C_{N-1}}\theta \circ \ldots \circ \Ex_{C_1}\theta F)
+    (\varphi).
+\end{equation}
+Let \begin{equation}
+Z_N = \Ex_C \theta Z_0
+=
+\Ex_{C_N}\theta \circ \Ex_{C_{N-1}}\theta \circ \ldots \circ \Ex_{C_1}\theta Z_0.
+\end{equation}
+In particular,
+\begin{equation}
+\Ex_C Z_0 = Z_N(0).
+\end{equation}
+This allows us to evaluate the integral $\Ex_C Z_0$ by studying the
+dynamical system $Z_j \mapsto Z_{j+1}$ defined by
+\begin{equation}
+Z_{j+1} = \Ex_{C_{j+1}} \theta Z_j, \quad j < N.
+\end{equation}
+
+\commentbw{The space $\Ncal$ for $n = 0$ is introduced in Section~\ref{sec:forms}}
+
+For its analysis, we require
+a suitable space $\Ncal$ of functions of the spin
+and observable fields, on which the dynamical system acts.  The space $\Ncal$ is
+discussed in detail in \cite[Section~\ref{phi4-sec:phi4observables_representation}]{ST-phi4}.
+The part of $\Ncal$ which does not involve the observable fields $\sigmaa,\sigmab$ is
+given by
+\begin{equation}
+\label{e:Ncaldef}
+    \Ncal^\varnothing = \Ncal^\varnothing(\Lambda) = C^{p_\Ncal}((\R^n)^\Lambda,\R).
+\end{equation}
+The finite smoothness parameter $p_\Ncal$ is discussed in \REF %Section~\ref{sec:newnorm}
+below,
+where it is explained that $p_\Ncal$ must be chosen in a way that depends on the
+parameter $p$ in Theorem~\ref{thm:mr}.
+The part of $\Ncal$ involving the observable fields contains some subtleties that
+need not concern us here; see \cite[Section~\ref{phi4-sec:phi4observables_representation}]{ST-phi4}
+for details.
+
+\section{Local field polynomials}
+% Based on clp
+
+The dynamical system is analysed via a perturbative part which is tracked accurately
+to second order in $g$, together with a third-order non-perturbative part whose study
+forms the main part of our effort.  For the perturbative part, we first introduce
+an appropriate space of local field polynomials.
+
+For $y \in \Lambda$, we supplement \refeq{tauphi} by defining
+% \begin{align}
+% &\tau_y = |\varphi_y|^2 \\
+% &\tau_{\Delta,y} = \\
+% &\tau_{\nabla\nabla,y} = \frac{1}{4} \sum_e \nabla^e \varphi_y \cdot \nabla^e \varphi_y.
+% \end{align}
+\begin{equation}
+\label{e:tauphi2}
+\quad \tau_{\nabla\nabla,y}
+= \frac{1}{4} \sum_{e\in\Z^d:|e| = 1} \nabla^e \varphi_y \cdot \nabla^e \varphi_y.
+\end{equation}
+With $x \in \Lambda$ fixed, and
+given $g,\nu,z,y,u,\lambda_0,\lambda_x,q_0,q_x \in \R$, we extend
+% \refeq{Vtil0def}--\refeq{V0def}
+\refeq{V0def}
+by defining the polynomial
+\begin{align}
+% U_y = \frac{1}{4} g |\varphi_y|^4 + \frac{1}{2} \nu |\varphi_y|^2 + \frac{1}{2} z \varphi_y \cdot (-\Delta \varphi)_y + \frac{1}{2} y \tau_{\nabla\nabla,y} + u,
+    V_y &= g \tau_y^2 + \nu \tau_y + z \tau_{\Delta,y} + y \tau_{\nabla\nabla,y} + u
+    \nnb
+    & \quad
+    - \1_{y=\pp}\lambda_{\pp}(\varphi_{\pp} \cdot {\sf h})\sigma_\pp
+    - \1_{y=\qq}\lambda_{\qq}(\varphi_{\qq} \cdot {\sf h})\sigma_\qq
+     \nnb
+    & \quad
+    - \textstyle{\frac 12} (\1_{y=\pp} q_\pp + \1_{y=\qq}q_\qq )\sigma_\pp\sigma_\qq .
+\lbeq{Vy}
+\end{align}
+Then we define $\Vcal$ to be the space of functions $V=V_y$ of the form \refeq{Vy}.
+Given $X \subset \Lambda$, we also define
+\begin{equation}
+\label{e:Vcalesig}
+    \Vcal(X) = \{V(X) = \textstyle{\sum_{y\in X}} V_y : V \in \Vcal \}.
+\end{equation}
+
+We also make use of the subspaces $\Vcal^{(1)} \subseteq \Vcal$ consisting of polynomials with $y = 0$, as well as the subspace
+$\Vcal^{(0)} \subseteq \Vcal^{(1)}$ of polynomials with
+$u = y =   q_\pp=q_\qq = 0$.
+For $V \in \Vcal$, we define maps $V \mapsto V^{(1)} \in \Vcal^{(1)}$
+and $V \mapsto V^{(0)} \in \Vcal^{(0)}$. Both maps replace
+$z\tau_{\Delta}+y\tau_{\nabla\nabla}$ by
+$(z+y)\tau_{\Delta}$, and the latter
+additionally sets
+$u = q_\pp = q_\qq = 0$.
+
+
+\section{Renormalisation group coordinates}
+% Based on clp
+\label{sec:rgcoord}
+
+\commentbw{Extend to infinite-volume and define $\Kcal_j$ (see saw-sa)}
+
+For $j=0,\ldots, N$,
+we partition $\Lambda$ into $L^{N-j}$ disjoint scale-$j$ blocks of side length $L^j$.
+A scale-$j$ \emph{polymer} is a union of scale-$j$ blocks.
+The set of all scale-$j$ blocks is denoted $\Bcal_j$, and
+the set of all scale-$j$ polymers is denoted $\Pcal_j$.
+For $X \in \Pcal_j$, we write $\Bcal_j(X)$ for the set of scale-$j$ blocks in $X$.
+For $F, G : \Pcal_j \to \Ncal$, we define the \emph{circle product} $F \circ G : \Pcal_j \to \Ncal$ by
+\begin{equation}
+(F \circ G)(X) = \sum_{Y\in\Pcal_j(X)} F(X \setminus Y) G(Y).
+\end{equation}
+
+The evolution of $Z_j$ can be tracked in the \emph{renormalisation group coordinates}
+$\zeta_j \in \R$,
+$I_j, K_j : \Pcal_j \to \Ncal$, defined such that
+\begin{equation}
+\label{e:IcircKnew}
+    Z_j = e^{\zeta_j}(I_j\circ K_j)(\Lambda),
+    \qquad
+    \zeta_j= - u_j|\Lambda|
+    + \textstyle{\frac 12} (q_{\pp,j} + q_{\qq,j}) \sigma_\pp\sigma_\qq
+    .
+\end{equation}
+The coordinate $I_j$ tracks the evolution of the
+\emph{relevant} and \emph{marginal} directions.  It
+is determined by a local polynomial
+$U\in \Vcal^{(0)}$,
+and takes the form
+\begin{equation}
+I_j(X) = \prod_{B \in \Bcal_j(X)} e^{-U(B)} (1 + W_j(B, U)), \quad X \in \Pcal_j,
+\end{equation}
+with $W_j$ an explicit quadratic term in $U$ (defined in \cite[\eqref{pt-e:WLTF}]{BBS-rg-pt}).
+The evolution of $(\zeta, U)$ to second order is called the \emph{perturbative flow} and is
+given by the explicit map $\Vpt : \Vcal \to \Vcal$ defined in
+\cite[\eqref{pt-e:Vptdef}]{BBS-rg-pt}.
+In particular, it is shown in \cite[Proposition~\ref{phi4-prop:pt}]{ST-phi4}
+that the perturbative flow of $q$ is given by
+\begin{align}
+\label{e:qpt}
+q_\pt = q + \lambda_0 \lambda_x C_{j+1;0x},
+\end{align}
+and that the perturbative flow of $\lambda_0$ and $\lambda_x$ becomes the identity map
+once $j$ exceeds the coalescence scale $j_x$.
+
+\commentbw{Do not set $K_0 = \1_\varnothing$ below}
+
+At scale $j = 0$, we are given $U_0$ as defined in % \eqref{e:V0def}
+\REF and we set $\zeta_0 = 0$.
+In particular,
+the initial values of $u,q_0,q_x$ are zero, and the initial values of $\lambda_0,\lambda_x$
+are $1$.
+By definition, $W_0 = 0$, and we have $I_0(X) = e^{-U_0(X)}$.
+We define $\1_\varnothing : \Pcal_0 \to \Ncal$ by
+\begin{equation}
+\1_\varnothing(X) =
+\begin{cases}
+1 & X = \varnothing \\
+0 & \text{otherwise},
+\end{cases}
+\end{equation}
+and set $K_0 = \1_\varnothing$.
+With these choices, $Z_0$ of \REF % \refeq{Z0def}
+takes the form \eqref{e:IcircKnew}, and we seek $(\zeta_j, U_j, K_j)$ such that
+this continues to hold as the scale advances.
+
+Equivalently, given $(U_j, K_j)$, we define $(\delta\zeta_{j+1}, U_{j+1}, K_{j+1})$ so that
+\begin{equation} \label{e:IcircKdu}
+  \Ex_{j+1}\theta(I_j \circ K_j)(\Lambda)
+  =
+  e^{-\delta \zeta_{j+1}}(I_{j+1} \circ K_{j+1})(\Lambda),
+\end{equation}
+where $\delta\zeta_{j+1} = \zeta_{j+1} - \zeta_j$.
+Moreover, we need $K_j$ to contract as the scale advances, under an appropriate norm.
+The construction of (scale-dependent) maps $V_+$ and $K_+$ such that
+\eqref{e:IcircKdu} holds with
+\begin{equation}
+    (\delta\zeta_{j+1}, U_{j+1}, K_{j+1}) = (V_+(U_j, K_j), K_+(U_j, K_j))
+\end{equation}
+is the main accomplishment of \cite{BS-rg-step} and is summarised in Section~\REF % \ref{sec:step}
+below, in a form adapted to our current setting.
+
+\section{Renormalisation group map}
+% Based mainly on clp
+\label{sec:step}
+
+We define a scale-dependent norm
+\begin{equation}
+\label{e:Vnormdef}
+\begin{aligned}
+\|V\|_{\Vcal} &=
+\max\Big\{
+|g|, L^{2j}|\nu|, |z|, |y|,  L^{4j}|u|,
+\ell_j\ell_{\sigma,j}(|\lambda_\pp|\vee|\lambda_\qq|),\;
+%\\
+%& \qquad\qquad\qquad
+ \ell_{\sigma,j}^{2} (|q_\pp|\vee|q_\qq|)
+\Big\}
+\end{aligned}
+\end{equation}
+on $V \in \Vcal$, which depends on parameters $\ell_j$ and $\ell_{\sigma,j}$.
+An innovation in % this paper is that we define these parameters by
+\cite{BSTW-clp} is that these parameters are defined by
+\begin{align}
+\label{e:elldef-zz}
+\ell_j &= \ell_0 L^{-j - s (j - j_m)_+}, \quad
+\ell_{\sigma,j}
+=
+\ell_{j \wedge j_{x}}^{-1} 2^{(j - j_{x})_+} \ggen_j,
+\end{align}
+where the mass scale $j_m$ is defined in \eqref{e:jmdef},
+the coalescence scale
+$j_x$ is defined in \eqref{e:Phi-def-jc},
+and $s$ is the parameter appearing in Proposition~\ref{prop:R}.
+\commentbw{Elaborate on $\ggen_j$ and introduce $\chicCov$ and $\chicCovgen$ (see saw-sa)}
+The sequence $\ggen = \ggen(m^2,g_0)$ is defined in
+\cite[\eqref{log-e:ggendef}]{BBS-saw4-log};
+it is bounded above and below by constant multiples of
+the sequence $\gbar$ defined in
+\eqref{e:gbar},
+by
+\cite[Lemma~\ref{log-lem:gbarmcomp}]{BBS-saw4-log}.
+We discuss the origin of the definition \refeq{elldef-zz} in detail
+in Section~\ref{sec:Rpf1}.
+
+The following theorem is a restatement of \cite[Theorem~\ref{phi4-thm:step-mr-fv}]{ST-phi4}
+with three changes. The first, minor, change is the
+specialisation to the case $p = 1$ and $h = {\sf h}$
+(in the notation of \cite{ST-phi4}). The second change is the
+main accomplishment of \cite{BSTW-clp}, % this paper
+namely that the norms in the estimates
+\eqref{e:RKplus} below use the new norm parameters \eqref{e:elldef-zz}.
+\commentbw{Maybe remove the third change. Need to introduce $\Igen$ and $\Iint$.}
+The third change is that we have omitted some technical details
+concerning the parameter $m^2$ to simplify this brief summary;
+these details are as in \cite[Theorem~\ref{phi4-thm:step-mr-fv}]{ST-phi4}.
+In particular, $m^2$ must be chosen small in Theorem~\ref{thm:step-mr-fv}.
+
+In \cite{BS-rg-step}, maps $V_+,K_+$ are defined which map a pair $(U,K)$ at scale $j$
+to $(V_+(U,K),K_+(U,K))$ at scale $j+1$, and which preserve the circle product
+$I\circ K$ under expectation as in \refeq{IcircKdu}.
+A norm has already been defined on the space $\Vcal$ in \refeq{Vnormdef}.
+\commentbw{Change the following}
+We also require a norm on a space $\Kcal$ containing the non-perturbative
+coordinate $K$ (see \cite[Definition~\ref{phi4-def:Kspace}]{ST-phi4}),
+which is the $\Wcal_j$ norm of \cite[\eqref{step-e:9Kcalnorm}]{BS-rg-step}.
+We denote the ball of radius $r$ in
+the normed space $\Wcal_j$ by $B_{\Wcal_j}(r)$.
+Given $C_\DV>0$ and $\alpha>0$, we define the domains
+\begin{align}
+\label{e:DVdef}
+    \DV_j &= \{U\in \Vcal^{(0)} :
+    g> C_{\DV}^{-1} \ggen_j  , \;  \|U\|_{\Vcal} < C_{\DV} \ggen_j \},
+\\
+\domRG_j &= \DV_j \times B_{\Wcal_j}(\alpha \chigen_j \ggen_j^3),
+\end{align}
+where $\ggen_j$ was discussed above,
+and $\chigen_j$ is a sequence that, roughly, is equal to 1 below the mass scale and decays
+exponentially above the mass scale (discussed above \cite[\eqref{step-e:domRGgen}]{BS-rg-step}).
+Then, at scale $j$, the maps $V_+,K_+$ act on the domain $\domRG_j$
+and map into $\Vcal_{j+1}^{(1)},\Kcal_{j+1}$, respectively.
+The deviation of the map $V_+$ from the perturbative map $\Vpt$ (mentioned above \refeq{qpt})
+is denoted by $R_+$, and is defined by
+\begin{equation}
+\label{e:Rplusdef}
+    R_+(V,K) = V_+(V,K) -\Vpt^{(1)}(V).
+\end{equation}
+The following theorem is applied with $\alpha =4M$ as a convenient choice.
+\commentbw{This statement about $\alpha = 4M$ is a bit confusing}
+
+\begin{theorem}
+\label{thm:step-mr-fv}
+Let $d = 4$ and let $n \ge 0$. Fix $s > 0$.
+Let $C_\DV$ and $L$ be sufficiently large.
+There exist $M>0$ and $\delta >0$ such that
+for $\ggen \in (0,\delta)$, % and $\mgen^2 \in \Iint_+$,
+and with the domain
+$\domRG$ defined using any $\DVa> M$, the maps
+\begin{equation}
+\label{e:RKplusmaps}
+R_+:\domRG %\times \Igen_+(\mgen^2)
+\to \Vcal^{(1)},
+\quad
+K_+:\domRG %\times \Igen_+(\mgen^2)
+\to \Wcal_{+}%(\sgen_+)
+\end{equation}
+define $(U,K)\mapsto (V_+,K_+)$ obeying \eqref{e:IcircKdu},
+and satisfy the estimates
+\begin{equation}
+\label{e:RKplus}
+\|R_+\|_{\Vcal}
+\le
+M\chigen_+\ggen_+^{3}
+, \qquad
+\|K_+\|_{\Wcal_+}
+\le
+M\chigen_+ \ggen_+^{3}
+.
+\end{equation}
+\end{theorem}
+
+The proof of Theorem~\ref{thm:step-mr-fv} is identical to the proof of
+\cite[Theorem~\ref{phi4-thm:step-mr-fv}]{ST-phi4}, via a version of
+\cite[Theorems~\ref{step-thm:mr-R}--\ref{step-thm:mr}]{BS-rg-step} that
+uses the norm parameters \eqref{e:elldef-zz} with $s > 0$.
+The proof of the latter results with these new norm parameters amounts to
+checking that the proof of the $s = 0$ case contained in \cite{BS-rg-IE,BS-rg-step}
+continues to hold with $s > 0$. A verification of this fact is carried
+out in Section~\ref{sec:Rpf2} below.
+
+Theorem~\ref{thm:step-mr-fv} expresses a contractive property of the map $K_+$,
+as it takes $K$ in a ball whose radius involves $\alpha=4M$ at scale $j$ to
+an image which lies in a ball whose radius involves the smaller number $M$ at scale
+$j+1$.  The fact that $K_+$ is a contraction is used
+in \cite[Proposition~\ref{log-prop:KjNbd}]{BBS-saw4-log} (for $n=0$) and
+\cite[Theorem~\ref{phi4-log-thm:flow-flow}]{BBS-phi4-log}
+(for $n \ge 1$) to prove that, for $m^2$ and
+$g_0$ sufficiently small, there exist \emph{critical} initial conditions
+$\nu_0 = \nu_0^c(m^2, g_0)$ and $z_0 = z_0^c(m^2, g_0)$ such that,
+for the case of no observables ($\sigma_0=\sigma_x=0$), iteration of
+the maps $(V_+,K_+)$ defines a
+sequence $(V_j^{(0)}, K_j)$ which lies
+in the domain $\domRG_j$ and obeys the estimates \refeq{RKplus}
+\emph{for all} $j = 1, \ldots, N$.
+This construction of critical initial conditions uses the $s=0$ version
+of \refeq{elldef-zz}.
+
+The case with observable fields included is handled in \cite{ST-phi4}.
+Because we have increased $\ell_{\sigma,j}$ beyond the mass scale, the
+estimates on $q_0,q_x$ given by the bound on $R_+$ in \refeq{RKplus} are
+significantly improved compared to their versions with $s=0$ in \cite{ST-phi4}.
+As is discussed in detail in  \cite[Section~\ref{phi4-sec:pfmr1}]{ST-phi4},
+$V_j^{(0)}$ remains in the domain $\domRG_j$ for all $j$
+(also concerning $\lambda_{0,j}, \lambda_{x,j}$).
+Moreover,
+$\lambda_{0,j}, \lambda_{x,j},q_{0,j},q_{x,j}$, are independent of the volume parameter $N$ and
+so can be extended to infinite sequences, and the following limits exist:
+\begin{equation}
+q_{u,\infty} = \lim_{j\to\infty} q_{u,j}, \quad u = 0, x.
+\end{equation}
+
+\section{Bulk flow}
+% Based mainly on saw-sa
+\label{sec:flow}
+
+The following theorem is an extension of \cite[Proposition~\ref{log-prop:flow-flow}]{BBS-saw4-log}
+to non-trivial $K_0$. Such an extension is possible,
+with only minor modifications to the proof of the $K_0 = \1_\varnothing$ case,
+due to the generality allowed by the main result of \cite{BBS-rg-flow}.
+
+\commentbw{Could split into infinite- and finite-volume flow theorems}
+
+The theorem provides, for any $N \ge 1$ and for initial error coordinate $K_0$
+in a specified domain, a choice of initial condition $(\nu_0^c,z_0^c)$
+for which there exists
+a finite-volume renormalisation group flow $(V_j, K_j) \in \domRG_j$ for $0 \le j \le N$.
+In order to ensure a degree of consistency amongst the sequences $(V_j, K_j)$, which depend on
+the volume $\Lambda_N$, a notion of consistency must be imposed upon the collection of initial
+error coordinates $K_{0,\Lambda} \in \Kcal_0(\Lambda)$ for varying $\Lambda$.
+Specifically, the family $K_{0,\Lambda}$ is required to satisfy the property $(\Zd)$ of
+\cite[Definition~\ref{step-defn:KZd}]{BS-rg-step}. As discussed in
+\cite[Definition~\ref{step-defn:KZd}]{BS-rg-step},
+any such family induces an infinite-volume error
+coordinate $K_{0,\Zd} \in \Kcal_0(\Zd)$ in a natural way.
+
+\begin{theorem}
+\label{thm:flow-flow}
+Let $d = 4$.
+There exists a constant $a_* > 0$ and continuous function $\nu_0^c, z_0^c$
+of $(m^2, g_0, K_0)$, defined for $(m^2, g_0) \in [0, \delta]^2$
+(for some $\delta > 0$ sufficiently small) and for any $K_0 \in \Wcal_0(m^2, g_0, \Zd)$
+with $\|K_0\|_{\Wcal_0(m^2, g_0, \Zd)} \leq a_* g_0^3$, such that
+the following holds for $g_0 > 0$:
+if $K_{0,\Lambda} \in \Kcal_0(\Lambda)$ is a family of finite-volume error
+coordinates satisfying property $(\Zd)$ and that induces the infinite-volume
+coordinate $K_0$, and if
+\begin{equation}
+\label{e:flow-flow-ic}
+V_0 = V_0^c(m^2, g_0, K_0) = (g_0, \nu_0^c(m^2,g_0,K_0), z_0^c(m^2,g_0,K_0)),
+\end{equation}
+then for any $N \in \N$ and $m^2 \in [\delta L^{-2 (N - 1)}, \delta]$,
+there exists a sequence $(V_j, K_j) \in \domRG_j(m^2, g_0, \Lambda)$
+such that
+\begin{equation}
+  \label{e:VjKjDj}
+  (V_{j+1},K_{j+1}) = (V_{j+1}(V_j, K_j), K_{j+1}(V_j, K_j)) \text{ for all } j < N
+\end{equation}
+and \eqref{e:ZjIjKj} is satisfied.
+Moreover, $\nu_0^c,z_0^c$ are continuously differentiable in
+$g_0 \in (0, \delta)$ and $K_0 \in B_{\Wcal_0(m^2, g_0, \Lambda)}(a_* g_0^3)$, and
+\begin{align}
+&\nu_0^c(m^2,0,0) = z_0^c(m^2,0,0) = 0,
+\quad
+\ddp{\nu_0^c}{g_0} = O(1),
+\quad
+\label{e:z0est}
+\ddp{z_0^c}{g_0} = O(1),
+\end{align}
+where the estimates above hold uniformly in $m^2 \in [0, \delta]$.
+\end{theorem}
+
+\begin{proof}
+The proof results from small modifications to the proofs of
+\cite[Proposition~\ref{log-prop:flow-flow}]{BBS-saw4-log} and then to
+\cite[Proposition~\ref{log-prop:KjNbd}]{BBS-saw4-log},
+where (in both cases) we relax the requirement that $K_0 = \1_\varnothing$,
+which was chosen in \cite{BBS-saw4-log} due to the fact that
+$K_0 = \1_\varnothing$ when $\gamma=0$.
+The more general condition that $K_0 \in B_{\Wcal_0(m^2, g_0, \Lambda)}(a_* g_0^3)$
+comes from the hypothesis of \cite[Theorem~\ref{flow-thm:flow}]{BBS-rg-flow}
+when $(m^2, g_0) = (\mgen^2, \ggen_0)$.
+By \cite[Remark~\ref{flow-rk:Nrad}]{BBS-rg-flow}, no major changes to the proof
+result from this choice of $K_0$.
+The following paragraph outlines
+in more detail the modifications to the proof of
+\cite[Proposition~\ref{log-prop:flow-flow}]{BBS-saw4-log}.
+
+By \cite[Theorem~\ref{flow-thm:flow}]{BBS-rg-flow} and
+\cite[Corollary~\ref{flow-cor:masscont}]{BBS-rg-flow},
+for any $(\mgen^2, \ggen_0) \in (0, \delta)^2$ and
+$\tilde K_0 \in B_{\Wcal_0(\mgen^2, \ggen_0, \Zd)}(a_* \ggen_0^3)$,
+there is a neighbourhood
+${\sf N}(\ggen_0, \tilde K_0)$ of $(\ggen_0, \tilde K_0)$
+such that for all
+$(m^2, g_0, K_0) \in \Igen(\mgen^2) \times {\sf N}(\ggen_0, \tilde K_0)$,
+there is an infinite-volume renormalisation group flow
+\begin{equation}
+(\Vch_j, K_j) = \xch^d_j(\mgen^2, \ggen_0, \tilde K_0; m^2, g_0, K_0)
+\end{equation}
+in \emph{transformed variables} $(\Vch_j, K_j)$.
+The transformed variables are defined in
+\cite[Section~\ref{log-sec:trans}]{BBS-saw4-log} and a flow
+in the original variables can be recovered from the transformed flow.
+The global solution is defined by
+$\xch^c_j(m^2, g_0, K_0) = \xch^d_j(m^2, g_0, K_0; m^2, g_0, K_0)$
+(or $\xch^c \equiv 0$ if $g_0 = 0$).
+By \cite[Remark~\ref{flow-rk:Nrad}]{BBS-rg-flow},
+the proof of regularity of $\xch^c$ can proceed as in \cite{BBS-saw4-log}.
+The functions $(\nu_0^c, z_0^c)$ are given by the $(\nu_0, z_0)$ components
+of $\xch^c_0 = (\Vch_0, K_0) = (V_0, K_0)$.
+\end{proof}
+
+
+\begin{rk}
+The proof of \cite[Proposition~\ref{log-prop:flow-flow}]{BBS-saw4-log},
+hence of Theorem~\ref{thm:flow-flow},
+makes important use of the parameter $\ggen_0$ in order to prove regularity
+of the renormalisation group flow in $g_0$. However, once the flow has been
+constructed, we can and do set $\ggen_0 = g_0$.
+\end{rk}
+
+\commentbw{May need to move some of the following}
+
+Suppose now that we are given some sufficiently small $\hat g_0 > 0$ and
+a family $K_{0,\Lambda} \in \Wcal_0(m^2, \hat g_0, \Lambda)$
+that satisfies property $\Zd$
+and the bounds $\|K_{0,\Lambda}\|_{\Wcal_0(m^2, \hat g_0, \Lambda)} \le a_* \hat g_0^3$.
+Then in any fixed volume $\Lambda = \Lambda_N$, we can define $Z_0 = (I_0 \circ K_0)(\Lambda)$
+(generalising \eqref{e:Z0def}) and $Z_N = \Ex_C\theta Z_0$ (as in \eqref{e:ZNdef}).
+We let $\hat\chi_N(m^2, \hat g_0, K_0, \nu_0, z_0)$ be defined as in \eqref{e:chibarm}
+from this $Z_N$ (generalising \eqref{e:chibarm}) and define $\hat\chi = \lim_{N\to\infty} \hat\chi_N$.
+Then an analogue of \cite[Theorem~\ref{log-thm:suscept-diff}]{BBS-saw4-log}
+(which corresponds to the case $K_0 = \1_\varnothing$)
+follows from Theorem~\ref{thm:flow-flow}.
+That is, if $(\nu_0^c, z_0^c) = (\nu_0^c(m^2, \hat g_0, K_0), z_0^c(m^2, \hat g_0, K_0))$, then
+\begin{align}
+\label{e:chi-m}
+\hat\chi \left( m^2,\hat g_0,K_0, \nu_0^c,  z_0^c \right)
+  &=
+\frac{1}{m^2}, \\
+\label{e:chiprime-m}
+\ddp{\hat\chi}{\nu_0} \left(m^2,\hat g_0, K_0,\nu_0^c,  z_0^c \right)
+  &\sim
+- \frac{1}{m^4} \frac{c(\hat g_0^*, K_0)}{(\hat g_0^*\bubble_{m^2})^{1/4}}
+  \quad \text{as $(m^2,\hat g_0) \to (0,\hat g_0^*)$},
+\end{align}
+where $c$ is a continuous function
+and the \emph{bubble diagram} $\bubble_{m^2}$ is
+is asymptotic to $(2\pi^2)^{-1} \log m^{-2}$, as $m^2 \downarrow 0$, when $d = 4$.
+For instance, \eqref{e:chi-m} follows from \eqref{e:chibarm},
+\eqref{e:ZVKN}, the bound on $K_N$ in
+Theorem~\ref{thm:flow-flow},
+and the bound on $W_N$ in \cite[\eqref{IE-e:W-logwish}]{BS-rg-IE}.
+See \cite[Section~\ref{log-sec:suscept-diff-pf}]{BBS-saw4-log}
+for details and for the proof of \eqref{e:chiprime-m}.
+
+We wish to obtain a version of \eqref{e:chi-m}--\eqref{e:chiprime-m}
+with the initial conditions of Section~\ref{sec:IK}, i.e.\ with
+$(\hat g_0, K_0) = (g_0, K^+_0)$ (if $\gamma_0 > 0$) or $(\hat g_0, K_0) = (g_0 + 4d\gamma_0, K^-_0)$
+(if $\gamma_0 < 0$).
+It is straightforward to verify that $K^\pm_0 \in \Kcal_0$.
+For instance, the fact that $K^\pm_0$ is supersymmetric
+(which is required of all elements of $\Kcal_0$) follows
+from the fact that $K^\pm_{0,x}$ is a function of $\tau_x$
+(see \cite[Section~\ref{pt-sec:bulksym}]{BBS-rg-pt} for more on this topic).
+It also follows from the definition that the family $K^\pm_{0,\Lambda}$
+satisfies property $(\Zd)$.
+
+Moreover,
+by Proposition~\ref{prop:KWcal}, if
+$|\gamma_0|$ is sufficiently small (depending on $g_0$; we now take $\ggen_0=g_0$)
+then $K_0 = K^\pm_0$ satisfies the bound required by Theorem~\ref{thm:flow-flow}.
+However, we cannot apply the theorem immediately with this choice
+of $K_0$,
+due to the fact that $K^\pm_0$ is coupled to $(\nu_0, z_0)$.
+We resolve this issue in the next section.
+
+
+\section{Observable flow}
+
+\commentbw{Say something about observable flow with non-zero $K_0$}

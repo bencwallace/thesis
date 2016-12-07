@@ -1,0 +1,433 @@
+% March 27, 2003  GS    
+% June 14, 2000  GS    rk environment added under \DefineTheorems
+% August 05, 1999  TH
+
+% File def99b.tex, a version of Latex Macros: for T.Hara. 
+% This should work with LaTeX2e, and "amsmath,amssymb,amsfonts,amsthm" packages. 
+% Just do something like
+%     \documentclass[11pt]{article}
+%     \usepackage{amsmath,amssymb,amsfonts,amsthm}
+%
+% Ver.  3.0:   TH, 1998.03.27, Seattle, % def98a.tex
+% Ver.  3.0.1: TH, 1998.03.30, Seattle, 
+% Ver.  3.0.2: TH, 1998.04.18, Tokyo,   
+% Ver.  3.0.5: TH, 1998.06.07, Tokyo, (changed /cal to /mathcal)
+% Ver.  4.0:   TH, 1999.01.05, Tokyo, % def99a.tex
+% Ver.  4.1:   TH, 1999.01.30, Tokyo, % def99b.tex
+% Ver.  4.2:   TH, 1999.08.05, Tokyo, % def99c.tex
+
+%%%%% Partial History 
+% Version 2.0: TH, 1994.10.27, Tokyo.
+% This version, 96a, is supposed to be compatible with LaTeX2e. 
+%       1996. 11.30, TH. 
+% Ver.	1.0: TH, 1997.05.02, Tokyo. % def96d.tex
+% 	1.1: TH, 1997.05.07, Tokyo.
+% 	1.2: TH, 1997.06.21, Tokyo. % Works also with pLatex2e (Japanese)!
+% Ver.  2.1: TH, 1997.11.03, Tokyo, % def97a.tex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% THEOREM, EQN etc. commands
+
+%% In the following, select the desired numbering system for 
+%% Eqn, and Thm,etc.--- whether we need subsection in the numbering.
+%%%% Macro Counting Scheme Definitions ---------------------------------
+\def\UseSection{%%
+        \numberwithin{equation}{section}
+	\theoremstyle{plain}% default theorem style 
+        \newtheorem{theorem}    {Theorem}[section]
+        \DefineTheorems % Use this to define other environments to be 
+        		% numbered as ``theorem.''
+}
+\def\UseSubSection{%%
+        \numberwithin{equation}{subsection}
+	\theoremstyle{plain}% default theorem style 
+        \newtheorem{theorem}    {Theorem}[subsection]
+        \DefineTheorems % Use this to define other environments to be 
+        		% numbered as ``theorem.''
+}
+%%%% End of Counting Scheme Defs---------------------------------------
+\def\DefineTheorems{%%
+	\newtheorem{qtheorem}   [theorem] {Q-Theorem}
+	\newtheorem{lemma}      [theorem] {Lemma}
+	\newtheorem{qlemma}     [theorem] {Q-Lemma}
+	\newtheorem{prop}       [theorem] {Proposition}
+	\newtheorem{qprop}      [theorem] {Q-Proposition}
+	\newtheorem{cor}        [theorem] {Corollary}
+	\newtheorem{ass}        [theorem] {Assumption}
+	\newtheorem{claim}      [theorem] {Claim}
+	\newtheorem{conj}       [theorem] {Conjecture}
+	%
+	\theoremstyle{definition}% ``defn'' theorem style 
+	\newtheorem{defn}       [theorem] {Definition}
+	\newtheorem{ques}       [theorem] {Question}
+	\newtheorem{example}       [theorem] {Example}
+	\newtheorem{rk} 	[theorem] {Remark}
+	%
+	\theoremstyle{definition}% ``remark'' theorem style 
+	\newtheorem*{rem}	{Remark}
+	\newtheorem*{note}	{Note}
+}
+
+\newcommand{\bt}   {\begin{theorem}}
+\newcommand{\et}   {\end  {theorem}}
+\newcommand{\bl}   {\begin{lemma}}
+\newcommand{\el}   {\end  {lemma}}
+\newcommand{\bp}   {\begin{prop}}
+\newcommand{\ep}   {\end  {prop}}
+\newcommand{\bc}   {\begin{cor}}
+\newcommand{\ec}   {\end  {cor}}
+\newcommand{\bd}   {\begin{defn}}
+\newcommand{\ed}   {\end  {defn}}
+
+\newcommand{\ba}   {\begin{array}}
+\newcommand{\ea}   {\end  {array}}
+\newcommand{\be}   {\begin{enumerate}}
+\newcommand{\ee}   {\end  {enumerate}}
+\newcommand{\bi}   {\begin{itemize}}
+\newcommand{\ei}   {\end  {itemize}}
+
+
+
+%\newcommand{\eq}       {\begin{equation}}%	This does not work with amsmath.
+%\newcommand{\en}       {\end{equation}}% 	This does not work with amsmath.
+\def\eq#1\en{\begin{equation}#1\end{equation}}  
+	% This follows ``technical note'' of AMS-LaTeX.  
+%\newcommand{\eqsplit}   {\begin{equation}\begin{split}} 
+%\newcommand{\ensplit}   {\end{split}\end{equation}} 
+\def\eqsplit#1\ensplit{
+	\begin{equation}\begin{split}#1\end{split}\end{equation}
+	}
+\def\eqalign#1\enalign{
+	\begin{align}#1\end{align}
+	}
+\def\eqmul#1\enmul{
+	\begin{multline}#1\end{multline}
+	}
+\newcommand{\eqarrstar} {\begin{eqnarray*}} 
+\newcommand{\enarrstar} {\end{eqnarray*}} 
+\newcommand{\eqarray}   {\begin{eqnarray}} 
+\newcommand{\enarray}   {\end{eqnarray}} 
+\newcommand{\nnb}	{\nonumber \\} 
+\newcommand{\diseq}[1]	{$\displaystyle #1$}%
+
+
+\newcommand{\lbeq}[1]  {\label{e:#1}}
+\newcommand{\refeq}[1] {\eqref{e:#1}}    % AMS-LaTeX trick!
+%\newcommand{\refeq}[1] {(\ref{eq:#1})}
+\newcommand{\lbfg}[1]  {\label{fg: #1}}
+\newcommand{\reffg}[1] {\ref{fg: #1}}
+\newcommand{\lbtb}[1]  {\label{tb: #1}}
+\newcommand{\reftb}[1] {\ref{tb: #1}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%	Nice labeling scheme (1999.1.30):
+%	The following defines a command \labelcounter, which enables us to 
+%	refer to an arbitray counter in any(?) environment. 
+%  	First argument is ``counter name''.
+%  	Second argument is ``label''. 
+%  	An example of using it is shown below: 
+%  		\newcounter{countC}  
+%  			% Defined the counter ``countC''
+% 		\setcounter{countC}{0}	
+% 			% Initialized the clunter ``countC'' to zero. 
+% 		\newcommand{\lbC}[1]{C_{\labelcounter{countC}{C:#1}}} 
+% 			%  Now defining the constants C with subscript 
+% 			%  (number) labeled by the counter ``countC''. 
+% 		\newcommand{\refC}[1]{C_{\ref{C:#1}}}
+% 			%  Defining how to refer to the above Constants C_{*}. 
+% 
+%	
+\makeatletter
+\newcommand{\labelcounter}[2]{{%
+	\stepcounter{#1}%	First, increase the ``countC'' by one.
+	\protected@write\@auxout{}%
+	{\string\newlabel{#2}{{\csname the#1\endcsname}{\thepage}}}%
+		% Then write out the contents of ``countC'' together with 
+		% the page number to aux file.  This is what ``label'' 
+		% usually does. 
+	{\ref{#2}}%	Finally, make sure to refer to this label, 
+		%	when defined. 
+	}}
+\makeatother
+%	
+%	
+%	
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  ``Remark, Proof, QED'' etc. 
+%\newcommand{\proof} {\noindent {\bf Proof}. \hspace{2mm}}
+%\newcommand{\qed}   {\hfill $\Box$}
+%\newcommand{\qed}   {\nopagebreak 
+%	\begin{flushright} \rule{3mm}{3mm} \end{flushright}}
+\newcommand{\REFERENCE}{{\bf REFERENCE !}}
+\newcommand{\remark}{\medskip\noindent {\bf Remark}. \hspace{2mm}}
+\newcommand{\Remark}{\noindent {\bf Remark}. \hspace{2mm}}
+\newcommand{\ssss}  { \scriptstyle } 
+\newcommand{\sss}   { \scriptscriptstyle } 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Bold fonts %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Implementation of Blackboard fonts by Gord (COMMENT OUT IF UNAVAILABLE)
+%\newfam\Bbbfam
+%\font\tenBbb=msbm10
+%\font\sevenBbb=msbm7
+%\font\fiveBbb=msbm5
+%\font\twelveBbb=msbm10 scaled\magstep2
+%\textfont\Bbbfam=\tenBbb
+%\scriptfont\Bbbfam=\sevenBbb
+%\scriptscriptfont\Bbbfam=\fiveBbb
+%\def\Bbb{\fam\Bbbfam \tenBbb}
+% Blackboard fonts inplimentation end %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\newcommand{\zd} {{\Bbb Z}^d}
+
+\newcommand{\Abold} {{\mathbb A}}  
+\newcommand{\Bbold} {{\mathbb B}}  
+\newcommand{\Cbold} {{\mathbb C}}  
+\newcommand{\Dbold} {{\mathbb D}}  
+\newcommand{\Ebold} {{\mathbb E}}
+\newcommand{\Fbold} {{\mathbb F}}
+\newcommand{\Gbold} {{\mathbb G}}
+\newcommand{\Hbold} {{\mathbb H}}
+\newcommand{\Ibold} {{\mathbb I}}
+\newcommand{\Jbold} {{\mathbb J}}
+\newcommand{\Kbold} {{\mathbb K}}
+\newcommand{\Lbold} {{\mathbb L}}
+\newcommand{\Mbold} {{\mathbb M}}
+\newcommand{\Nbold} {{\mathbb N}}
+\newcommand{\Obold} {{\mathbb O}}
+\newcommand{\Pbold} {{\mathbb P}}
+\newcommand{\Qbold} {{\mathbb Q}}
+\newcommand{\Rbold} {{\mathbb R}}
+\newcommand{\Sbold} {{\mathbb S}}
+\newcommand{\Tbold} {{\mathbb T}}
+\newcommand{\Ubold} {{\mathbb U}}
+\newcommand{\Vbold} {{\mathbb V}}
+\newcommand{\Wbold} {{\mathbb W}}
+\newcommand{\Xbold} {{\mathbb X}}
+\newcommand{\Ybold} {{\mathbb Y}}
+\newcommand{\Zbold} {{\mathbb Z}}
+
+% Vector fonts %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\Avec} {{\bf A}}  
+\newcommand{\Bvec} {{\bf B}}  
+\newcommand{\Cvec} {{\bf C}}  
+\newcommand{\Dvec} {{\bf D}}  
+\newcommand{\Evec} {{\bf E}}
+\newcommand{\Fvec} {{\bf F}}
+\newcommand{\Gvec} {{\bf G}}
+\newcommand{\Hvec} {{\bf H}}
+\newcommand{\Ivec} {{\bf I}}
+\newcommand{\Jvec} {{\bf J}}
+\newcommand{\Kvec} {{\bf K}}
+\newcommand{\Lvec} {{\bf L}}
+\newcommand{\Mvec} {{\bf M}}
+\newcommand{\Nvec} {{\bf N}}
+\newcommand{\Ovec} {{\bf O}}
+\newcommand{\Pvec} {{\bf P}}
+\newcommand{\Qvec} {{\bf Q}}
+\newcommand{\Rvec} {{\bf R}}
+\newcommand{\Svec} {{\bf S}}
+\newcommand{\Tvec} {{\bf T}}
+\newcommand{\Uvec} {{\bf U}}
+\newcommand{\Vvec} {{\bf V}}
+\newcommand{\Wvec} {{\bf W}}
+\newcommand{\Xvec} {{\bf X}}
+\newcommand{\Yvec} {{\bf Y}}
+\newcommand{\Zvec} {{\bf Z}}
+\newcommand{\avec}  {\boldsymbol{a}}
+\newcommand{\bvec}  {\boldsymbol{b}}
+\newcommand{\cvec}  {\boldsymbol{c}}
+\newcommand{\dvec}  {\boldsymbol{d}}
+\newcommand{\evec}  {\boldsymbol{e}}
+\newcommand{\fvec}  {\boldsymbol{f}}
+\newcommand{\gvec}  {\boldsymbol{g}}
+\newcommand{\hvec}  {\boldsymbol{h}}
+\newcommand{\ivec}  {\boldsymbol{i}}
+\newcommand{\jvec}  {\boldsymbol{j}}
+\newcommand{\kvec}  {\boldsymbol{k}}
+\newcommand{\lvec}  {\boldsymbol{l}}
+\newcommand{\mvec}  {\boldsymbol{m}}
+\newcommand{\nvec}  {\boldsymbol{n}}
+\newcommand{\ovec}  {\boldsymbol{o}}
+\newcommand{\pvec}  {\boldsymbol{p}}
+\newcommand{\qvec}  {\boldsymbol{q}}
+\newcommand{\rvec}  {\boldsymbol{r}}
+\newcommand{\svec}  {\boldsymbol{s}}
+\newcommand{\tvec}  {\boldsymbol{t}}
+\newcommand{\uvec}  {\boldsymbol{u}}
+\newcommand{\vvec}  {\boldsymbol{v}}
+\newcommand{\wvec}  {\boldsymbol{w}}
+\newcommand{\xvec}  {\boldsymbol{x}}
+\newcommand{\yvec}  {\boldsymbol{y}}
+\newcommand{\zvec}  {\boldsymbol{z}}
+\newcommand{\zerovec} {\boldsymbol{0}}
+\newcommand{\onevec}  {\boldsymbol{1}}
+
+% Caligraph fonts %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\Acal}   {\mathcal{A}} 
+\newcommand{\Bcal}   {\mathcal{B}} 
+\newcommand{\Ccal}   {\mathcal{C}} 
+\newcommand{\Dcal}   {\mathcal{D}} 
+\newcommand{\Ecal}   {\mathcal{E}} 
+\newcommand{\Fcal}   {\mathcal{F}} 
+\newcommand{\Gcal}   {\mathcal{G}} 
+\newcommand{\Hcal}   {\mathcal{H}} 
+\newcommand{\Ical}   {\mathcal{I}} 
+\newcommand{\Jcal}   {\mathcal{J}} 
+\newcommand{\Kcal}   {\mathcal{K}} 
+\newcommand{\Lcal}   {\mathcal{L}} 
+\newcommand{\Mcal}   {\mathcal{M}} 
+\newcommand{\Ncal}   {\mathcal{N}} 
+\newcommand{\Ocal}   {\mathcal{O}} 
+\newcommand{\Pcal}   {\mathcal{P}}
+\newcommand{\Qcal}   {\mathcal{Q}}
+\newcommand{\Rcal}   {\mathcal{R}}
+\newcommand{\Scal}   {\mathcal{S}} 
+\newcommand{\Tcal}   {\mathcal{T}} 
+\newcommand{\Ucal}   {\mathcal{U}} 
+\newcommand{\Vcal}   {\mathcal{V}} 
+\newcommand{\Wcal}   {\mathcal{W}} 
+\newcommand{\Xcal}   {\mathcal{X}}
+\newcommand{\Ycal}   {\mathcal{Y}} 
+\newcommand{\Zcal}   {\mathcal{Z}} 
+
+% Hatted fonts, Upper case %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\Ahat} {{\hat{A} }}
+\newcommand{\Bhat} {{\hat{B} }}
+\newcommand{\Chat} {{\hat{C} }}  
+\newcommand{\Dhat} {{\hat{D} }}  
+\newcommand{\Ehat} {{\hat{E} }}  
+\newcommand{\Fhat} {{\hat{F} }}  
+\newcommand{\Ghat} {{\hat{G} }}  
+\newcommand{\Hhat} {{\hat{H} }}  
+\newcommand{\Ihat} {{\hat{I} }}  
+\newcommand{\Jhat} {{\hat{J} }}
+\newcommand{\Khat} {{\hat{K} }}  
+\newcommand{\Lhat} {{\hat{L} }}  
+\newcommand{\Mhat} {{\hat{M} }}  
+\newcommand{\Nhat} {{\hat{N} }}  
+\newcommand{\Ohat} {{\hat{O} }}  
+\newcommand{\Phat} {{\hat{P} }}  
+\newcommand{\Qhat} {{\hat{Q} }} 
+\newcommand{\Rhat} {{\hat{R} }} 
+\newcommand{\Shat} {{\hat{S} }}  
+\newcommand{\That} {{\hat{T} }}  
+\newcommand{\Uhat} {{\hat{U} }}
+\newcommand{\Vhat} {{\hat{V} }}  
+\newcommand{\What} {{\hat{W} }}
+\newcommand{\Xhat} {{\hat{X} }}  
+\newcommand{\Yhat} {{\hat{Y} }}  
+\newcommand{\Zhat} {{\hat{Z} }}  
+
+% Hatted fonts, Lower case %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\ahat}  {{ \hat{a}  }}
+\newcommand{\bhat}  {{ \hat{b}  }}
+\newcommand{\chat}  {{ \hat{c}  }}
+\newcommand{\dhat}  {{ \hat{d}  }}
+\newcommand{\ehat}  {{ \hat{e}  }}
+\newcommand{\fhat}  {{ \hat{f}  }}
+\newcommand{\ghat}  {{ \hat{g}  }}
+\newcommand{\hhat}  {{ \hat{h}  }}
+\newcommand{\ihat}  {{ \hat{i}  }}
+\newcommand{\jhat}  {{ \hat{j}  }}
+\newcommand{\khat}  {{ \hat{k}  }}
+\newcommand{\lhat}  {{ \hat{l}  }}
+\newcommand{\mhat}  {{ \hat{m}  }}
+\newcommand{\nhat}  {{ \hat{n}  }}
+\newcommand{\ohat}  {{ \hat{o}  }}
+\newcommand{\phat}  {{ \hat{p}  }}
+\newcommand{\qhat}  {{ \hat{q}  }}
+\newcommand{\rhat}  {{ \hat{r}  }}
+\newcommand{\shat}  {{ \hat{s}  }}
+\newcommand{\that}  {{ \hat{t}  }}
+\newcommand{\uhat}  {{ \hat{u}  }}
+\newcommand{\vhat}  {{ \hat{v}  }}
+\newcommand{\what}  {{ \hat{w}  }}
+\newcommand{\xhat}  {{ \hat{x}  }}
+\newcommand{\yhat}  {{ \hat{y}  }}
+\newcommand{\zhat}  {{ \hat{z}  }}
+
+% Hatted fonts, Greek Letters %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\tauhat}{{ \hat{\tau}  }}
+\newcommand{\Pihat} {\mbox{${\hat{\Pi}}$}}  
+
+% Bar fonts %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\nbar}	{\bar{n}}
+\newcommand{\ubar}	{\bar{u}}
+% Overlined fonts %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\Gbar}  { \overline{\overline{G} }  } 
+
+% Lattice, Space
+\newcommand{\Rd}    {{ {\Rbold}^d}}
+\newcommand{\Zd}    {{ {\Zbold}^d }}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Mathematical symbols (can be used in other papers also) : 
+
+%\ltapprox and \gtapprox produce > and < signs with twiddle underneath
+\newcommand{\spose}[1] {{\hbox to 0pt{#1\hss}} }
+\newcommand{\ltapprox} {\mathrel{\spose{\lower 3pt\hbox{$\mathchar"218$}}
+ \raise 2.0pt\hbox{$\mathchar"13C$}}}
+\newcommand{\gtapprox} {\mathrel{\spose{\lower 3pt\hbox{$\mathchar"218$}}
+ \raise 2.0pt\hbox{$\mathchar"13E$}}}
+
+\newcommand{\smfrac}[2]{\textstyle{#1\over #2}}
+
+\newcommand {\asympp}{\mbox{${\approx}$}} 
+\newcommand{\abs}[1]    {  {  \left | #1 \right |  } } 
+\newcommand{\set}[1]    {  {  \left \{ #1 \right \}  } } 
+\newcommand{\crit}	{{\textnormal{crit}}}
+
+
+\newcommand{\combination}[2]{ { \left ( 
+	\begin{array}{c}    {#1} \\ {#2} 
+	\end{array} 
+	\right  )   }} 
+\newcommand{\cupd} {\stackrel{\cdot}{\cup}} 
+\newcommand{\ddk}  {\frac{d^d k}{(2\pi)^d}}
+\newcommand{\dist} {{  \rm dist }}
+\newcommand{\kx}   {{  k \cdot x }}
+\newcommand{\ika}  {{ i k \cdot a }}
+\newcommand{\ikx}  {{ i k \cdot x }}
+\newcommand{\iky}  {{ i k \cdot y }}
+\newcommand{\Ind}  { {\rm I} } 
+\newcommand{\intsub}{\int_{[-\pi,\pi]^d}}
+%\newcommand{\nexists} {{ \not\exists }}
+\newcommand{\nin}  {{ \not\in }}
+\newcommand{\nni}  {{ \not\ni }} 
+\newcommand{\Prob} {{\rm Prob}}
+\newcommand{\prodtwo}[2]{
+	\prod_{ \mbox{ \scriptsize 
+		$\begin{array}{c} 
+		{#1} \\ 
+		{#2}  
+		\end{array} $ } 
+		} 
+	} 
+%\newcommand {\Real}   {{  {\rm Re} }} 
+\newcommand{\Imaginary}{{ {\rm Im} }}
+% \newcommand{\sumtwo}[2]{\displaystyle \sum_{ \mbox{ \scriptsize 
+% 	$\begin{array}{c}
+%                         {#1} \\ {#2}
+%                         \end{array} $ } 
+% 	}
+% }
+\newcommand{\toinf} {\rightarrow \infty}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Derivatives 
+\newcommand{\pder}[2] { \frac{\partial #1}{\partial #2} } 
+\newcommand{\der}[2] { \frac{d #1}{d #2} } 
+\newcommand{\derder}[2]	{\frac{d^2 #1}{d {#2}^2 }} 
+\newcommand{\pderder}[2]	{\frac{\partial^2 #1}{\partial {#2}^2 }} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%For Quantum Mechanics
+\newcommand{\ket}[1] 	{\left | #1 \right \rangle} 
+\newcommand{\bra}[1] 	{\left \langle #1 \right |} 
+\newcommand{\commutator}[2]	{\left [ #1, #2 \right  ]_{-} } 
+\newcommand{\expec}[1]	{\left \langle #1 \right \rangle} 
+

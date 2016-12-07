@@ -1,0 +1,406 @@
+% Parts are the largest structural units, but are optional.
+%\part{Thesis}
+
+% Chapters are the next main unit.
+\chapter{Introduction}
+
+\section{To do}
+
+\begin{itemize}
+\item
+Use $\Vcal$, etc. for polynomials, $\Ucal$ for unit vectors
+
+\item
+Make $U_{\gcc,\gamma}$ notation consistent with $U_{\gcc,\nu,N}$.
+I have done this by getting rid of the latter (it is hardly used
+explicitly in clp)
+
+\item
+Change $\beta, g$ to $\backslash gcc$
+
+\item
+Change $L$ to $\backslash lt$
+
+\item
+Make $G_x(g, \nu; n)$ consistent with $G_{\gcc,\gamma,\nu}(a, b)$.
+Maybe use $G_x(g, \gamma, \nu)$ and $G_x(g, \nu; n)$
+
+\item
+Make it so that $U$ has observables but no constant and $V$ is $U$
+plus the constant. Thus, we must change $V$ in saw-sa to $U$ (the $V$
+in saw-sa has no observables, but these can be added in without harm).
+We must also change $U^\pm$ in saw-sa to something else
+
+\item
+Change $\chi$ and $\tilde\chi$ to $\backslash chicCov$ and $\backslash chicCovgen$
+\end{itemize}
+
+\section{Definitions}
+
+\commentbw{Temporary section to collect definitions.}
+
+Before defining the models, we establish some notation.
+Let $L > 1$ be an integer (which we will need to fix large).
+Consider the sequence $\Lambda=\Lambda_N = \Z^d/(L^N\Z^d)$ of
+discrete $d$-dimensional tori of side lengths $L^N$,
+with $N \to \infty$ corresponding to the infinite volume limit $\Lambda_N \uparrow \Z^d$.
+We only consider $d=4$, but we sometimes write $d$ instead of $4$
+to emphasise the role of dimension.
+Let $\Ucal$ denote the collection of unit vectors in $\Zd$. % added
+% For any of the $2d$ unit vectors $e \in \Z^d$,
+For any $e \in \Ucal$, % added
+we define the discrete gradient of a function $f:\Lambda_N \to \R$
+by $\nabla^e f_x = f_{x + e} - f_x$, and
+the discrete Laplacian by
+\begin{equation}
+\label{e:DeltaLambda}
+\Delta = -\frac{1}{2}\sum_{e\in\Z^d:|e| = 1}\nabla^{-e} \nabla^{e}.
+\end{equation}
+The gradient and Laplacian operators act component-wise on vector-valued functions.
+We also use the
+% discrete Laplacian $\Delta_{\Zd}$ on $\Zd$, and the
+continuous Laplacian $\Delta_{\Rd}$ on $\Rd$.
+
+\subsubsection{The \texorpdfstring{\phifour}{phi4} model}
+
+\commentbw{Might actually be easier to study a perturbation of
+the $|\varphi|^4$ model analogous to the WSAW-SA. However, do
+we know the limits exist? Do we need to know this, or does the
+method take care of it?}
+
+Given $n \ge 1$,
+a \emph{spin field} is a function $\varphi : \Lambda_N \to \R^n$.
+We write this function as $x \mapsto \varphi_x =(\varphi_x^1,\ldots,\varphi_x^n)$.
+
+On $\R^n$, we use the Euclidean inner product $v \cdot w = \sum_{i=1}^n v^i w^i$,
+the Euclidean norm $|v|^2 = v\cdot v$,
+and write $|v|^4 = (v\cdot v)^2$.
+Given $g>0$, $\nu \in \R$, we define
+% a function $U_{g,\nu,N}$ of the field by
+% \begin{equation} \label{e:Vdef1}
+%   U_{g,\nu,N}(\varphi)
+%   = \sum_{x\in\Lambda}
+%   \Big(\tfrac{1}{4} g |\varphi_x|^4 + \half \nu |\varphi_x|^2
+%   + \half \varphi_x\cdot (-\Delta \varphi)_x  \Big)
+%   .
+% \end{equation}
+the $|\varphi|^4$ measure on $(\R^n)^{\Lambda_N}$ by
+\begin{equation}
+\frac{d\varphi}{Z_{g,\nu,N}} \exp\left(-\sum_{x\in\Lambda_N}
+  \Big(\tfrac{1}{4} g |\varphi_x|^4 + \half \nu |\varphi_x|^2
+    + \half \varphi_x\cdot (-\Delta \varphi)_x 
+  \Big)\right),
+\end{equation}
+where $d\varphi$ is the product Lebesgue measure on $(\R^n)^{\Lambda_N}$
+and $Z_{g,\nu,N}$ is a normalisation constant (the \emph{partition function})
+chosen so that $\langle 1 \rangle_{g,\nu,N} = 1$. We denote the expectation
+of a random variable $F:(\R^n)^{\Lambda_N} \to \R$ with respect to this measure
+by $\langle F \rangle_{g,\nu,N}$.
+% \begin{equation}
+%   \label{e:phi4-expectation-def}
+%   \langle F \rangle_{g,\nu,N}
+%   = \frac{1}{Z_{g,\nu,N}} \int F(\varphi) e^{-U_{g,\nu,N}(\varphi)} d\varphi,
+% \end{equation}
+% where $d\varphi$ is the Lebesgue measure on $(\R^n)^{\Lambda}$.
+
+Given a lattice point $x$,
+we define the finite and infinite volume \emph{two-point functions}
+(whenever the infinite volume limit exists):
+\begin{equation}\label{e:two-point-function-phi4}
+G_{x, N}(g,\nu; n) =
+\frac{1}{n} \pair{\varphi_0 \cdot \varphi_x}_{g,\nu, N},
+\quad
+G_x(g,\nu; n) = \lim_{N \to \infty} G_{x, N}(g,\nu; n).
+\end{equation}
+In the above limit, we identify a point $x \in \Zd$ with $x \in \Lambda_N$
+for large $N$, by embedding the vertices of $\Lambda_N$ as an approximately
+centred cube in $\Z^d$ (say as $[-\frac12 L^N+1,\frac12 L^N]^d \cap \Z^d$ if $L^N$ is even
+and as $[-\frac12 (L^N-1), \frac12 (L^N-1)]^d \cap \Z^d$ if $L^N$ is odd).
+\commentbw{This embedding is repeated elsewhere}
+
+\commentbw{Define susceptibility and correlation length}
+
+\subsubsection{The weakly self-avoiding walk with self-attraction}
+
+For $d>0$, let $X$ denote the continuous-time simple random walk on $\Zd$.
+That is, $X$ is the stochastic process
+with right-continuous sample paths that takes its steps at the times
+of the events of a rate-$2d$ Poisson process.  A step is independent both
+of the Poisson process and of all other steps, and is taken uniformly
+at random to one of the $2d$ nearest neighbours of the current
+position.
+The field of \emph{local times} $\lt_T = (\lt_T^x)_{x\in \Z^d}$
+of  $X$, up to time $T \ge 0$,
+is defined by
+\begin{equation}
+\label{e:LTx-def}
+  \lt_T^x = \int_0^T \1_{X_t = x} \; dt
+  .
+\end{equation}
+The \emph{self-intersection local time} and \emph{self-contact local time}
+of $X$ up to time $T$ are the random variables defined, respectively, by
+\begin{align}
+\label{e:ITdef}
+  I_T &=
+  \sum_{x \in \Z^d} (\lt_T^x)^2
+  = \int_0^T ds \int_0^T dt \; \1_{X_{s}=X_{t}}
+  ,\\
+\lbeq{CTdef}
+  C_T
+  &=
+  \sum_{x \in \Z^d}\sum_{e\in\Ucal} \lt_T^x\lt_T^{x+e}
+  = \int_0^T ds \int_0^T dt \; \1_{X_{s} \sim X_{t}}
+  ,
+\end{align}
+where
+% $\Ucal$ is the set of unit vectors in $\Zd$ and
+$y\sim x$ indicates that $x$ and $y$ are nearest neighbours.
+
+Given $\gcc > 0$ and $\gamma \in \R$,
+we define
+\begin{equation}
+\label{e:Udef-neg}
+U_{\gcc,\gamma}(f)
+=
+\gcc \sum_{x\in\Zd} f_x^2
+- \frac{\gamma}{2d}
+\sum_{x\in\Zd} \sum_{e\in\Ucal} f_x f_{x+e}
+\end{equation}
+for $f:\Zd\to \R$ with $f_x = 0$
+for all but finitely many $x$.
+% For $\gcc > 0, \gamma \in \R$,
+The potential that associates an energy to $X$ in terms of its
+field of local times is given by
+\begin{equation}
+  \label{e:V}
+  U_{\gcc,\gamma,T}
+  =
+  U_{\gcc,\gamma}(\lt_T)
+  =
+  \gcc I_T
+  - \frac{\gamma}{2d}
+  C_T
+  .
+\end{equation}
+The energy $U_{\gcc,\gamma,T}$ increases with the self-intersection local time,
+corresponding to weak self-avoidance.  For $\gamma >0$, the energy decreases
+when the self-contact local time increases, corresponding to a contact self-attraction.
+For $\gamma<0$, the contact term is repulsive.  We are primarily interested in
+the case of positive $\gamma$, but our results hold also for small negative $\gamma$.
+
+Figure~\ref{fig:polymer-contact} shows a sample path $X$
+and indicates one self-intersection and four self-contacts.
+Although $I_T$ also receives contributions from the
+time the walk spends at each vertex, and $C_T$ receives a contribution from each step,
+these contributions have the same distribution for all walks taking the same number
+of steps.  The depicted intersections and contacts are the meaningful ones.
+
+\begin{figure}[ht]
+ \centering\input{polymer-contact.pspdftex}
+ \caption{Polymer with one self-intersection and four self-contacts shown.}
+ \label{fig:polymer-contact}
+\end{figure}
+
+Let $a,b \in \Zd$, and
+let $E_a$ denote the expectation for the
+process $X$ started at $X(0)=a$.
+We define
+\begin{equation}
+\label{e:c}
+    c_T = E_a\left(e^{-U_{\gcc,\gamma,T}}\right),
+    \quad
+    c_T(a,b) = E_a\left(e^{-U_{\gcc,\gamma,T}}\1_{X_T = b}\right).
+\end{equation}
+By translation-invariance, $c_T$ does not depend on $a$.
+For $\nu \in \R$, the \emph{two-point function} is defined by
+\begin{align}
+\lbeq{Gsa}
+    G_x(\gcc,\gamma,\nu) &=
+    \int_0^\infty c_T(0, x) e^{-\nu T} \; dT,
+\end{align}
+and the \emph{susceptibility} is defined by
+\begin{equation}
+\label{e:suscept-def}
+    \chi(\gcc, \gamma, \nu)
+    = \int_0^\infty c_T e^{-\nu T} \; dT
+    = \sum_{x\in\Zd} G_x(\gcc,\gamma,\nu)
+    .
+\end{equation}
+For $p>0$, we define the \emph{correlation length of order $p$} by
+\begin{equation}
+\lbeq{xip-def}
+    \xi_p(\gcc,\gamma,\nu) = \left(\frac{1}{\chi(\gcc, \gamma, \nu)}
+    \sum_{x\in\Zd} |x|^p G_{\gcc,\gamma,\nu}(0, x)
+    \right)^{1/p}.
+\end{equation}
+In \eqref{e:Gsa}--\eqref{e:xip-def},
+self-intersections are suppressed by the factor
+$\exp[-\gcc I_T]$, whereas nearest-neighbour
+contacts are encouraged by the factor
+$\exp[\frac{\gamma}{2d}C_T]$ when $\gamma > 0$.
+
+
+\section{The critical point}
+
+\commentbw{Add a discussion for the $|\varphi|^4$ model}
+
+The right-hand sides of \eqref{e:Gsa}--\eqref{e:suscept-def} % \eqref{e:xip-def}
+are positive or $+\infty$,
+and % $G_{\gcc,\gamma,\nu}(a,b)$ and $ \chi(\gcc, \gamma, \nu)$ are
+monotone decreasing in $\nu$ by definition.
+We define the \emph{critical point}
+\begin{equation}
+\label{e:nuc-def}
+\nu_c(\gcc, \gamma) = \inf \{ \nu \in \R : \chi(\gcc, \gamma, \nu) < \infty \} .
+\end{equation}
+For $\gamma=0$, an elementary argument
+shows that $\nu_c(\gcc,0) > -\infty$ for all dimensions, and furthermore
+that $\nu_c(\gcc, 0) \in [ -2  \gcc(-\Delta_{\Zd}^{-1})_{0,0}, 0]$ for dimensions $d>2$;
+see \cite[Lemma~\ref{log-lem:csub}]{BBS-saw4-log}.
+Here, $\Delta_{\Zd}$ is the Laplacian on $\Zd$, i.e., the $\Zd \times \Zd$
+matrix with entries
+\begin{equation}
+\label{e:Deltaxy}
+(\Delta_{\Zd})_{x, y} = \1_{x\sim y} - 2 d \1_{x=y}.
+\end{equation}
+% An equivalent definition is as follows:
+% given a unit vector $e \in \Zd$, the discrete gradient is
+% defined by $\nabla^e f_x = f_{x+e}-f_x$, and the Laplacian is $\Delta_{\Zd}
+% f_{x} = \sum_{e \in \Ucal} \nabla^e f_x =
+% -\frac{1}{2}\sum_{e \in \Ucal}\nabla^{-e} \nabla^{e} f_x$.
+
+To estimate the critical point when $\gamma \neq 0$,
+we also define
+\begin{align} \label{e:nabladef}
+    |\nabla f_x|^2 &= \sum_{e\in\Ucal}
+    |\nabla^e f_x|^2,
+    \quad
+    |\nabla f|^2 = \sum_{x\in\Zd} |\nabla f_x|^2.
+\end{align}
+From the definition, we see that
+\begin{equation}
+\label{e:sbp}
+\sum_{x\in\Zd}   f_x \Delta_{\Zd} f_x
+=
+-\frac{1}{2} |\nabla f|^2.
+\end{equation}
+It follows that
+\begin{equation}
+\sum_{x\in\Zd} \sum_{e\in\Ucal} f_x f_{x+e}
+=
+2 d \sum_{x\in\Zd} f_x^2
++ \sum_{x\in\Zd} f_x \Delta_{\Zd} f_x
+=
+2 d \sum_{x\in\Zd} f_x^2
+- \frac{1}{2} \sum_{x\in\Zd} |\nabla f_x|^2
+\end{equation}
+and so we get the useful representation:
+\begin{equation}
+\label{e:Udef-pos}
+U_{\gcc,\gamma}(f)
+= (\gcc - \gamma) \sum_{x\in\Zd} f_x^2
++ \frac{\gamma}{4d} \sum_{x\in\Zd} \sum_{e\in\Ucal} |\nabla^e f_x|^2.
+\end{equation}
+In particular,
+\begin{equation}
+  \label{e:V2}
+  U_{\gcc,\gamma,T} =
+  (\gcc - \gamma) I_T
+  + \frac{\gamma}{4d}
+  |\nabla \lt_T|^2
+  .
+\end{equation}
+A version of \refeq{V2} can be found in \cite{HK01a}.
+
+\begin{lemma}
+\label{lem:nuc}
+Let $d >0$.
+Let $\gcc>0$ and $|\gamma| < \gcc$.
+If $\gamma \ge 0$ then $\nu_c(\gcc, \gamma) \in [\nu_c(\gcc, 0),\nu_c(\gcc-\gamma, 0)]$.
+If $\gamma < 0$ then $\nu_c(\gcc,\gamma) \in [\nu_c(\gcc-\gamma,0),\nu_c(\gcc,0)]$.
+\end{lemma}
+
+\begin{proof}
+Suppose first that $\gamma \in [0,\gcc)$.
+It follows from \refeq{V} and \refeq{V2} that
+\begin{equation}
+    U_{\gcc-\gamma,0,T} \le U_{\gcc,\gamma,T} \le  U_{\gcc,0,T},
+\end{equation}
+which implies the desired estimates for $\nu_c(\gcc,\gamma)$.
+
+On the other hand,
+if $\gamma \in (-\gcc, 0)$ then the inequalities are reversed and now
+\begin{equation}
+    U_{\gcc,0,T} \le U_{\gcc,\gamma,T} \le  U_{\gcc-\gamma,0,T},
+\end{equation}
+which again implies the desired result.
+\end{proof}
+
+
+\section{Main results}
+
+\begin{theorem}\label{thm:mr}
+Let $d=4$, $n \geq 0$ and $p>0$.
+For $L$ sufficiently large (depending on $\clo,n$), and for
+$g >0$ sufficiently small (depending on $\clo,n$),
+as $\varepsilon \downarrow 0$,
+\begin{equation}
+\lbeq{xipasy}
+\xi_\clo(g, \nu_c  + \varepsilon;n)
+\sim {\sf c}_p \tilde A_{g,n}^{\frac12}  \varepsilon^{-\frac{1}{2}} (\log \varepsilon^{-1})^{\frac{1}{2}\frac{n+2}{n+8}}
+.
+\end{equation}
+\end{theorem}
+
+\begin{theorem} \label{thm:suscept}
+  Let $d = 4$.
+  % For any $\gamma_* > 0$ there exists $\gcc_* > 0$ such that when
+  % $0<\gcc < \gcc_*$ %$0 < \gcc - \gamma < g_*$
+  % and $0 \le |\gamma| < \gamma_* \gcc^3$,
+  There exists $\gcc_* > 0$
+  and a positive function $\gamma_* : (0, \gcc_*) \to \R$
+  such that whenever $0 < \gcc < \gcc_*$ and $|\gamma| < \gamma_*(\gcc)$,
+  % amplitudes $A,B,C>0$ (depending on $\gcc,\gamma$)
+  there are constants $A_{\gcc,\gamma}$ and $B_{\gcc,\gamma}$ such that the following hold:
+
+  \smallskip\noindent
+  (i)
+  % There is a constant $A_\gcc = (2\pi)^{-2} (1 + O(\gcc))$ such that
+%  decays exponentially for all $\nu > \nu_c$
+%  \chgs{{\bf we should prove this to be sure we did not use monotonicity that is
+%  now lost}} and
+  The critical two-point function decays as
+  \begin{equation}
+    G_{\gcc,\gamma,\nu_c}(0, x)
+        =
+    A_{\gcc,\gamma} |x|^{-2} \left(1 + O\left(\frac{1}{\log |x|}\right)\right)
+        \quad
+    \text{as $|x|\to\infty$},
+  \end{equation}
+  with $A_{\gcc,\gamma} = \frac{1}{4 \pi^2} (1 + O(\gcc))$ as $\gcc \downarrow 0$.
+
+  \smallskip\noindent
+  (ii)
+  % There is a constant $B_\gcc = ({\sf b} \gcc)^{1/4} (1 + O(\gcc))$ such that,
+  % as $\varepsilon = \nu - \nu_c \downarrow 0$,
+  The susceptibility diverges as
+  \begin{equation} \label{e:chieps-asympt}
+    \chi(\gcc, \gamma, \nu_c + \varepsilon)
+    \sim B_{\gcc,\gamma} \varepsilon^{-1} (\log \varepsilon^{-1})^{1/4},
+    \quad \varepsilon\downarrow 0,
+  \end{equation}
+  with $B_{\gcc,\gamma} = (\frac{\gcc}{4 \pi^2})^{1/4} (1 + O(\gcc))$ as $\gcc \downarrow 0$.
+
+  \smallskip\noindent
+  (iii) For any $p >0$,
+  % there is a constant $C = ???$ such that,
+  if $\gcc_*$ is chosen small depending on $p$, then
+  % as $\varepsilon = \nu - \nu_c \downarrow 0$, the
+  the correlation length of order $p$ diverges as
+  \begin{equation} \label{e:xieps-asympt}
+    \xi_p(\gcc, \gamma, \nu_c + \varepsilon)
+     \sim B_{\gcc,\gamma} {\sf c}_p \varepsilon^{-1/2} (\log \varepsilon^{-1})^{1/8},
+     \quad \varepsilon\downarrow 0.
+     % (1 + O(\gcc)),
+  \end{equation}
+\end{theorem}

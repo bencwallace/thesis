@@ -1,0 +1,585 @@
+% include general packages
+\usepackage{amsfonts}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{appendix}
+\usepackage{bbm} % used in \newcommand{\1}{\mathbbm{1}}
+\usepackage{amsbsy}
+\usepackage{enumerate}
+\usepackage{cite}
+\usepackage{enumerate}
+
+% use hyperref by default (can be overridden by inserting
+% \let\macrosH\undefined in macros_local.tex)
+\def\macrosH{}
+
+\InputIfFileExists{./macros_local.tex}{}{}
+
+% page setup
+\ifdefined\macrosPa
+  \usepackage[textwidth=465pt,textheight=650pt,centering]{geometry} % 11pt
+\else\ifdefined\macrosPb
+  \usepackage[textwidth=500pt,textheight=650pt,centering]{geometry} % 12pt
+\fi\fi
+
+% needed for Springer templates: restore bold math fonts
+\ifdefined\macrosS
+  \makeatletter
+  %% make boldmath and boldsymbol an alias for \pmb{}
+  \def\boldmath{\pmb}
+  \def\boldsymbol{\pmb}
+  \makeatother
+
+  \usepackage{mathptmx}
+  % standard mathcal fonts
+  \DeclareMathAlphabet{\mathcal}{OMS}{cmsy}{m}{n}
+\fi
+
+% do not include graphics for Birkhaeuser
+\ifdefined\macrosBirk
+\else
+\usepackage[dvips]{graphicx}
+\fi
+
+
+
+% use def99c macros
+\ifdefined\macrosSB
+\input ../def99c %for LaTeX2e, enables \eq  and \en (!!)
+\else
+\input def99c %for LaTeX2e, enables \eq  and \en (!!)
+\fi
+
+\UseSection   %Necessary to define Numbering scheme for Theorem, etc.
+\setcounter{secnumdepth}{3} %Set the depth of sectioning.
+\setcounter{tocdepth}{3}    %Set the depth of table of contents.
+
+% define colors
+\usepackage[usenames]{color}
+\newcommand{\red}{\color{red}}
+\newcommand{\blue}{\color{blue}}
+\newcommand{\magenta}{\color{magenta}}
+\newcommand{\green}{\color{green}}
+\newcommand{\cyan}{\color{cyan}}
+\definecolor{bw}{RGB}{240, 120, 0}
+\definecolor{at}{rgb}{0.0, 0.5, 0.0} % green, darker than the standard green.
+\newcommand{\colour}[1]{{\blue #1}}
+
+% define chXX and commentXX
+\newcommand{\chrb}[1]{{\magenta #1}}
+\newcommand{\chdb}[1]{{\red #1}}
+\newcommand{\chblue}[1]{{\blue #1}}
+\newcommand{\chgs}[1]{{\blue #1}}
+\newcommand{\chgat}[1]{{\color{at} #1}}
+\newcommand{\chbw}[1]{{\color{bw} #1}}
+\newcommand{\comment}[1] { \begin{quote}
+                                { \bf Comment: #1 }
+                           \end{quote} }
+\newcommand{\commentgs}[1] { \begin{quote}
+                                { \bf Comment from GS: #1 }
+                           \end{quote} }
+\newcommand{\commentdb}[1] { \begin{quote}
+                                { \bf Comment from DB: #1 }
+                           \end{quote} }
+\newcommand{\commentrb}[1] { \begin{quote}
+                                { \bf Comment from RB: #1 }
+                           \end{quote} }
+\newcommand{\commentat}[1] { \begin{quote}
+                                { \bf Comment from AT: #1 }
+                           \end{quote} }
+\newcommand{\commentbw}[1] { \begin{quote}
+                                { \bf Comment from BW: #1 }
+                           \end{quote} }
+
+
+% custom abbreviations
+
+\newcommand{\wo}{\colon \!\!}
+\newcommand{\lwo}{\colon \!\!}
+\newcommand{\rwo}{\! \colon \!\!}
+\newcommand{\shift}{\!\!\!\!}
+\newcommand{\veee}[1]{|\!|\!|#1|\!|\!|}
+
+\newcommand{\wick}[1]{\lwo#1\rwo}
+\newcommand{\Tay}{{\rm Tay}}
+\newcommand{\LTold}{\widetilde{\rm loc}  }
+\newcommand{\LTbar}{{\rm loc}}
+\newcommand{\LTsym}{{\rm loc}}
+\newcommand{\LT}{{\rm Loc}  }
+\newcommand{\Rel}{{\rm Proj}}
+\newcommand{\Irr}{(1-{\rm Proj})}
+
+\newcommand{\DV}{\Dcal}
+\newcommand{\DVa}{\alpha}
+\newcommand{\Dnull}{\Dcal_\varnothing}
+\newcommand{\rhogen}{\tilde{\rho}}
+\newcommand{\rD}{r}
+\newcommand{\crho}{c_L}
+\renewcommand{\to} {\rightarrow}
+\renewcommand{\qed}{\hfill\rule{2mm}{2mm}\bigskip}
+
+
+\newcommand{\sumtwo}[2]{\sum_{ \mbox{ \scriptsize
+    $\begin{array}{c}
+                        {#1} \\ {#2}
+                        \end{array} $ }
+    }
+}
+
+
+
+\newcommand{\R}{\Rbold}
+\newcommand{\Z}{\Zbold}
+\newcommand{\X}{\mathbb X}
+\newcommand{\x}{\mathbb x}
+\newcommand{\N}{\Nbold}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\volume}{\mathbb{V}}
+\newcommand{\Lambdabold}{\boldsymbol{\Lambda}}
+\newcommand{\Sigmabold}{\boldsymbol{\Sigma}}
+\newcommand{\1}{\mathbbm{1}}
+\newcommand{\Cbf}{\boldsymbol{C}}
+\newcommand{\cbf}{\boldsymbol{c}}
+\newcommand{\Sbf}{\boldsymbol{S}}
+\newcommand{\Abf}{\boldsymbol{A}}
+\newcommand{\wbf}{\boldsymbol{w}}
+
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+\newcommand{\supp}{\mathrm{supp}}
+
+\newcommand{\cL}{{\cal L}}
+\newcommand{\cP}{{\cal P}}
+
+\newcommand{\nn}{\nonumber}
+
+\newcommand{\smallsup}[1] {{\scriptscriptstyle{({#1}})}}
+
+
+\newcommand{\FDel}{\lambda}
+
+
+\newcommand{\alphab}{\bar\alpha}
+\newcommand{\varphib}{\bar\varphi}
+\newcommand{\phibar}{\bar\varphi}
+\newcommand{\psib}{\bar\psi}
+\newcommand{\ci}{\underline{i}}
+
+\newcommand{\elll}{\chdb{l}}
+
+\newcommand{\jm}{j_\Omega}
+\newcommand{\jmass}{j_{\rm mass}}
+
+\newcommand{\w}{{\sf w}}
+\newcommand{\Mext}{M_\mathrm{ext}}
+
+
+
+\newcommand{\card}[1]{\text{Card #1}}
+\renewcommand{\d}{\,d}
+\newcommand{\e}{\mathbf{e}}
+\newcommand{\Xst}{x_{\ast}}
+\newcommand{\Yst}{y_{\ast}}
+
+\newcommand{\Yb}{\bar{Y}}
+\newcommand{\cC}{\mathcal{C}}
+\newcommand{\cF}{\mathcal{F}}
+
+\newcommand{\zetab}{\bar{\zeta}}
+\newcommand{\etab}{\bar{\eta}}
+\newcommand{\Ex}{\mathbb{E}}
+
+\newcommand{\Econst}{\alpha_{\Ebold}}
+\newcommand{\Econstg}{\alpha_{G}}
+\newcommand{\EGconst}{\alpha}
+\newcommand{\Fconst}{f}
+\newcommand{\IstabC}{\alpha_{I}}
+\newcommand{\ItilstabC}{\alpha_{I}}
+
+\newcommand{\cCov}{{\sf C}}
+\newcommand{\chicCov}{{\chi}}
+\newcommand{\ellconst}{\mathfrak{c}}
+
+
+\newcommand{\NGrass}{N_{{\rm Grass}}}
+
+\newcommand{\Qcalnabla}{\Qcal}
+
+\newcommand{\lt}{\ell}
+
+\newcommand{\bubble}{{\sf B}}
+
+\newcommand{\Gtilp}{\gamma}
+
+
+
+% SOME NEW COMMANDS.
+
+
+\newcommand{\side}[1]{\mathrm{side}(#1)}
+\newcommand{\degree}[1]{\mathrm{deg(#1)}}
+\newcommand{\pair}[1]{\langle #1 \rangle}
+\newcommand{\Phizero}{\Phi^{*0}}
+\newcommand{\Phipol}{\Pi}
+\newcommand{\Phipoltil}{\widetilde{\Pi}}
+\newcommand{\diam}[1]{\textrm{diam}(#1)}
+
+\newcommand{\units}{\Ucal}
+\newcommand{\monomials}{\Mcal}
+
+\newcommand{\cgam}{\gamma}
+\newcommand{\ckap}{c_0}
+\newcommand{\cQ}{c_Q}
+
+
+\newcommand{\Gkappa}{\kappa}
+\newcommand{\pT}{p_T}
+
+\newcommand{\concat}{\circ}
+
+
+\newcommand{\inversefiddle}{3}
+\newcommand{\fiddle}{\frac{1}{\inversefiddle}}
+
+
+\newcommand{\obs}{\mathrm{obs}}
+\newcommand{\homog}{\mathrm{hom}}
+\newcommand{\Ihom}{I_{\homog ,j+1}}
+\newcommand{\Itildehom}{\tilde{I}_{\homog ,j+1}}
+\newcommand{\deltaIhom}{\delta I_{\homog ,j}}
+\newcommand{\Khom}{K_{\homog ,j}}
+\newcommand{\khom}{k_{\homog}}
+\newcommand{\Jhom}{J_{\homog ,j+1}}
+\newcommand{\Jobs}{J_{\obs ,j+1}}
+\newcommand{\Itilde}{\tilde{I}}
+\newcommand{\pertconst}{c_{j+1}}
+
+\newcommand{\Phitimes}{\Phi^{\times}}
+\newcommand{\Phiprimetimes}{{\Phi'}^{\times}}
+\newcommand{\Ttimes}{T}
+
+\newcommand{\decay}{r}
+\newcommand{\hldg}{h_{\rm lead}}
+\newcommand{\cldg}{c_{\rm lead}}
+\newcommand{\hpt}{h_{\rm pt}}
+\newcommand{\htil}{{\tilde h}^{(0)}}
+\newcommand{\hpttil}{{\tilde h}_{\rm pt}}
+\newcommand{\pt}{{\rm pt}}
+\newcommand{\Ipt}{I_{\rm pt}}
+\newcommand{\Ipttil}{\tilde{I}_{\rm pt}}
+\newcommand{\Upt}{U_{\rm pt}}
+\newcommand{\Vpt}{V_{\rm pt}}
+\newcommand{\gpt}{g_{\mathrm{pt}}}
+\newcommand{\nupt}{\nu_{\mathrm{pt}}}
+\newcommand{\mupt}{\mu_{\mathrm{pt}}}
+\newcommand{\zpt}{z_{\mathrm{pt}}}
+\newcommand{\ypt}{y_{\mathrm{pt}}}
+\newcommand{\lambdapt}{\lambda_{\mathrm{pt}}}
+\newcommand{\lambdaapt}{\lambda^{\pp}_{\mathrm{pt}}}
+\newcommand{\lambdabpt}{\lambda^{\qq}_{\mathrm{pt}}}
+\newcommand{\lambdaa}{\lambda^{\pp}}
+\newcommand{\lambdab}{\lambda^{\qq}}
+\newcommand{\qapt}{q^{\pp}_{\mathrm{pt}}}
+\newcommand{\qbpt}{q^{\qq}_{\mathrm{pt}}}
+\newcommand{\qa}{q^{\pp}}
+\newcommand{\qb}{q^{\qq}}
+\newcommand{\qpt}{q_{\mathrm{pt}}}
+\newcommand{\rpt}{r^{\mathrm{pt}}}
+
+\newcommand{\Vbulk}{U}
+
+\newcommand{\xch}{\check{x}}
+\newcommand{\Kch}{\check{K}}
+\newcommand{\Vch}{\check{V}}
+\newcommand{\Rch}{\check{R}}
+\newcommand{\gch}{\check{g}}
+\newcommand{\zch}{\check{z}}
+\newcommand{\much}{\check{\mu}}
+\newcommand{\nuch}{\check{\nu}}
+\newcommand{\lambdach}{\check{\lambda}}
+\newcommand{\rch}{\check{r}}
+\newcommand{\vch}{\check{v}}
+\newcommand{\uch}{\check{u}}
+\newcommand{\alphach}{\check{\alpha}}
+\newcommand{\Vptch}{\check{V}_\pt}
+
+\newcommand{\dq}{\delta q}
+
+\newtheorem{convention}       [theorem] {Convention}
+
+\newcommand{\ccc}[1]{O (#1)}
+
+\newcommand{\wt}{w}
+\newcommand{\wta}{w_\alpha}
+
+\newcommand{\two}{\ItilstabC}
+\newcommand{\ball}{B}
+\newcommand{\h}{\mathfrak{h}}
+\ifdefined\macrosSB \else
+  \newcommand{\D}{\mathrm{D}}
+  \newcommand{\I}{\mathfrak{I}}
+\fi
+\newcommand{\Ifopt}{\mathfrak{I}_{\rm fopt}}
+\newcommand{\Isopt}{\mathfrak{I}_{\rm sopt}}
+\newcommand{\quadr}{Q_{2}}
+\newcommand{\Q}{Q}
+\newcommand{\q}{q}
+\newcommand{\F}{F}
+\newcommand{\Id}{\mathrm{Id}}
+\newcommand{\ev}{\mathrm{ev}}
+\newcommand{\rn}{\nabla_0}
+\newcommand{\fun}{\Fcal}
+\newcommand{\deriv}{\left[\frac{d}{d\alpha} \right]_{0}}
+\newcommand{\remainder}{R}
+\newcommand{\pert}{\mathrm{pt}}
+\newcommand{\norm}[1]{\left\|#1\right\|_{T_{\phi}}}
+\newcommand{\z}{z}
+\newcommand{\redDroman}{\chdb{D}}
+\newcommand{\redDcal}{\Dcal}
+
+\newcommand{\Cdecomp}{C_{\mathrm{decomp}}}
+
+\newcommand{\Lmain}{\Lcal_{\rm lin}}
+
+\newcommand{\Lcallr}{\stackrel{\leftrightarrow}{\Lcal}}
+
+\newcommand{\cpl}{\xi}
+\newcommand{\cplbar}{\bar{\cpl}}
+\newcommand{\cplhat}{\hat{\cpl}}
+\newcommand{\gbar}{\bar{g}}
+\renewcommand{\ghat}{\hat{g}}
+\newcommand{\ggen}{\tilde{g}}
+\newcommand{\sgen}{\tilde{s}}
+\newcommand{\chigen}{\tilde{\chi}}
+\newcommand{\mgen}{\tilde{m}}
+\newcommand{\Iint}{\mathbb{I}}
+\newcommand{\Igen}{\tilde{\mathbb{I}}}
+\newcommand{\Sgen}{S}
+\newcommand{\zbar}{\bar{z}}
+\newcommand{\mubar}{\bar{\mu}}
+\newcommand{\muhat}{\hat{\mu}}
+\newcommand{\stab}{\mathrm{stab}}
+\newcommand{\unstab}{\mathrm{unstable}}
+\newcommand{\pline}{\underline{p}}
+\newcommand{\qline}{\underline{q}}
+
+\newcommand{\Zbar}{\bar{Z}}
+\newcommand{\chibar}{\bar{\chi}}
+
+
+\newcommand{\domRG}{\mathbb{D}}
+\newcommand{\domRGch}{\check{\mathbb{D}}}
+\newcommand{\domr}{R}
+
+\newcommand{\Lip}{\mathrm{Lip}}
+
+\newcommand{\betamax}{\beta_{\rm max}}
+
+
+\newcommand{\pp}{a}
+\newcommand{\qq}{b}
+\newcommand{\sigmaa}{\sigma}
+\newcommand{\sigmab}{\bar{\sigma}}
+\newcommand{\s}{\mathfrak s}
+
+\newcommand{\half}{\textstyle{\frac 12}}
+
+\newcommand{\f}{f}
+\newcommand{\poly}{P}
+\newcommand{\ghB}{\eta_{B}}
+
+\newcommand{\extpow}{\mbox{$\bigwedge$}}
+\newcommand{\pr}{\Pi}
+\newcommand{\ddp}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\dd}[2]{\frac{d #1}{d #2}}
+
+\newcommand{\LL}{\tilde{L}}
+\newcommand{\smp}{\epsilon}
+
+\newcommand{\epP}{\epsilon_{P}}
+\newcommand{\epW}{\epsilon_{W}}
+\newcommand{\epWdot}{\epsilon_{\dot{W}}}
+\newcommand{\epWnull}{\epsilon_{W_\varnothing}}
+\newcommand{\epV}{\epsilon_{V}}
+\newcommand{\epU}{\epsilon_{U}}
+\newcommand{\epVnull}{\epsilon_{V_\varnothing}}
+\newcommand{\epVbar}{\epsilon_{g\tau^{2}}}
+\newcommand{\epVdot}{\epsilon_{\dot{V}}}
+\newcommand{\epVpt}{\epsilon_{V_{\rm pt}}}
+\newcommand{\epdV}{\bar{\epsilon}}
+\newcommand{\epdVdot}{\epsilon_{\delta \dot{V}}}
+\newcommand{\epEV}{\epsilon_{\Ex V}}
+\newcommand{\epdVbar}{\bar{\epsilon}_{\delta V}}
+\newcommand{\epEVbar}{\bar{\epsilon}_{\Ex V}}
+\newcommand{\epK}{\epsilon_{K}}
+\newcommand{\epdI}{\epsilon_{\delta I}}
+\newcommand{\epI}{\epsilon_{I}}
+\newcommand{\epdP}{\epsilon_{\delta P}}
+\newcommand{\eplamdot}{\epsilon_{\dot{\lambda}}}
+
+\newcommand{\gh}{\epV}
+\newcommand{\ghbar}{\bar{\epsilon}_V}
+
+
+\newcommand{\nobs}[1]{|#1|_{\text{obs}}}
+
+\newcommand{\spec}{\mathrm{spec}}
+
+
+\newcommand{\phib}{\bar\phi}
+
+
+
+\newcommand{\zldg}{z_{\rm lead}}
+\newcommand{\zh}{z_{h}}
+\newcommand{\zK}{z_{K}}
+\newcommand{\zDelta}{z_{\Delta}}
+
+
+\newcommand{\McalnowM}{M}
+\newcommand{\IcalnowN}{h_{\rm rem}}
+\newcommand{\hred}{h_{\rm red}}
+\newcommand{\hrem}{h_{\rm rem}}
+\newcommand{\species}{\mathbf{s}}
+\newcommand{\sgn}{\mathrm{sgn}}
+
+\newcommand{\cc}{\mathbf{cc}}
+\newcommand{\ob}{\mathbf{ob}}
+\newcommand{\fn}{\mathbf{fn}}
+
+\newcommand{\V}{\tilde{V}}
+\newcommand{\Vspace}{\Vcal_{\mathrm{sym}}}
+\newcommand{\Vdomain}{\Dcal_0}
+\newcommand{\Vin}   {V}
+\newcommand{\Vout}  {V_{\mathrm{out}}}
+\newcommand{\Kin}   {K_{\mathrm{in}}}
+\newcommand{\Uin}   {U_{\mathrm{in}}}
+\newcommand{\Kout}  {K_{\mathrm{out}}}
+\newcommand{\Kspace}{\Kcal}
+\newcommand{\CKspace}{\Ccal\Kspace}
+\newcommand{\BKspace}{\Bcal\Kspace}
+\newcommand{\Ispace}{\text{$I$-space}}
+\newcommand{\Iin}   {I_{\mathrm{in}}}
+\newcommand{\Iout}  {I_{\mathrm{out}}}
+\newcommand{\kprime}{k'}
+\newcommand{\Vtilde}{\tilde{V}}
+\newcommand{\Ktilde}{\tilde{K}}
+\newcommand{\Kstar} {K^{*}}
+\newcommand{\Jprime}{j}
+\newcommand{\amain} {a}
+\newcommand{\ain}   {a_{\mathrm{in}}}
+\newcommand{\aout}  {a_{\mathrm{out}}}
+\newcommand{\aahat} {\hat{a}}
+\newcommand{\abig}  {\tilde{a}}
+\newcommand{\astar} {a^*}
+\newcommand{\epsin} {\epsilon_{\mathrm{in}}}
+\newcommand{\rball} {r}
+
+\newcommand{\qwt}{\mathfrak{q}}
+\newcommand{\tail}{\mathfrak{t}}
+\newcommand{\covc}{\mathfrak{c}}
+\newcommand{\rgam}{\mathfrak{r}}
+
+\newcommand{\RG}{\text{RG}}
+
+\newcommand{\REF}{{\bf REF}\ }
+\newcommand{\subnw}{\subset_{\text{nw}}}
+
+% Some macros by AT
+
+\newcommand{\prob}[1]{P\left\{ #1 \right\}}
+
+\newcommand{\wm}{W}
+%\DeclareMathOperator{\wm}{W}
+\DeclareMathOperator{\wsaw}{wsaw}
+\DeclareMathOperator{\srw}{srw}
+\DeclareMathOperator{\Loc}{Loc} %\LT
+
+\newcommand{\nl}{p}
+
+\newcommand{\phifour}{$|\varphi|^4$}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% do not delete: these are useful to make characters stand out during
+%% proof-reading
+
+%% how to hilight \Phipol
+% \let\temp\Phipol
+% \renewcommand{\Phipol}{\chdb{\temp}}
+
+%% how to make the character $G$ red
+
+% \mathchardef \tx \mathcode `G% storing current definition of G in \tx
+% \ifnum \mathcode `\G = "8000% checking if we have already changed definition
+% \else
+% \begingroup
+% \catcode `\G=13
+% \global \mathchardef G \mathcode `\G
+% \endgroup
+% \mathcode `\G = "8000% 8000 declares G active in mathmode
+% \fi
+
+% \begingroup
+% \catcode `\G=13
+% \global \def G{\chdb{\tx}}%or make it any other command
+% \endgroup
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% hyperref setup -- needs to come at the end since section names
+% can involve macros defined above
+
+% use hyperref
+\ifdefined\macrosH
+  \usepackage{xr-hyper}
+  \usepackage{hyperref}
+  \hypersetup{hypertexnames=false}
+  \hypersetup{colorlinks,citecolor=blue,linkcolor=blue}  % Comment out for printing!
+
+  \externaldocument[norm-]{rg-norm}[rg-norm.pdf]
+  \externaldocument[loc-]{rg-loc}[rg-loc.pdf]
+  \externaldocument[pt-]{rg-pt}[rg-pt.pdf]
+  \externaldocument[IE-]{rg-IE}[rg-IE.pdf]
+  \externaldocument[step-]{rg-step}[rg-step.pdf]
+  \externaldocument[saw4-]{saw4}[saw4.pdf]
+  \externaldocument[log-]{saw4-log}[saw4-log.pdf]
+  \externaldocument[phi4-log-]{phi4-log}[phi4-log.pdf]
+  \externaldocument[flow-]{rg-flow}[rg-flow.pdf]
+  \externaldocument[phi4-]{phi4}[phi4.pdf]
+  \externaldocument[clp-]{clp}[clp.pdf]
+  \externaldocument[sa-]{saw-sa}[saw-sa.pdf]
+  % \externaldocument[strict5-]{saw-strict5}
+% use hyperref with references to arxiv
+\else\ifdefined\macrosHarxiv
+  \usepackage{xr-hyper}
+  \usepackage{hyperref}
+  \hypersetup{hypertexnames=false}
+
+  \externaldocument[norm-]{rg-norm}[http://arxiv.org/pdf/1403.7244v2.pdf]
+  \externaldocument[loc-]{rg-loc}[http://arxiv.org/pdf/1403.7253v2.pdf]
+  \externaldocument[pt-]{rg-pt}[http://arxiv.org/pdf/1403.7252v2.pdf]
+  \externaldocument[IE-]{rg-IE}[http://arxiv.org/pdf/1403.7255v2.pdf]
+  \externaldocument[step-]{rg-step}[http://arxiv.org/pdf/1403.7256v2.pdf]
+  \externaldocument[flow-]{rg-flow}[http://arxiv.org/pdf/1211.2477.pdf]
+  \externaldocument[saw4-]{saw4}[http://arxiv.org/pdf/1403.7268v2.pdf]
+  \externaldocument[log-]{saw4-log}[http://arxiv.org/pdf/1403.7422v2.pdf]
+  \externaldocument[phi4-log-]{phi4-log}[http://arxiv.org/pdf/1403.7424.pdf]
+  \externaldocument[phi4-]{phi4}[http://arxiv.org/pdf/1412.2668.pdf]
+% no hyperref
+\else
+  \newcommand{\texorpdfstring}[2]{#1}
+  \usepackage{xr}
+  \externaldocument[norm-]{rg-norm}
+  \externaldocument[loc-]{rg-loc}
+  \externaldocument[pt-]{rg-pt}
+  \externaldocument[IE-]{rg-IE}
+  \externaldocument[step-]{rg-step}
+  \externaldocument[flow-]{rg-flow}
+  \externaldocument[saw4-]{saw4}
+  \externaldocument[log-]{saw4-log}
+  \externaldocument[phi4-log-]{phi4-log}
+  \externaldocument[phi4-]{phi4}
+  \externaldocument[clp-]{clp}
+  % \externaldocument[sa-]{saw-sa}
+  % \externaldocument[strict5-]{saw-strict5}
+\fi\fi
