@@ -311,14 +311,50 @@ $-Q_{xy} / Q_{xx} = J_{xy} / D_{xx}$.
 We call $X$ the \emph{continuous-time random walk} with generator $Q$.
 
 If $P$ is any stochastic matrix, then $P$ is the transition matrix for a Markov chain
-$(\tilde X_n)_{n\in\Z_+}$, called the \emph{random walk} with transition matrix $P$.
-In particular, we can let $P_{xy} = -Q_{xy} / Q_{xx}$ if $x \ne y$ and $P_{xx} = 0$.
+$(\tilde X_n)_{n\in\Z_+}$, called the \emph{discrete-time random walk} with transition matrix $P$.
+In particular, the random walk $\hat X_n$ with transition matrix given by
+$P_{xy} = -Q_{xy} / Q_{xx}$ if $x \ne y$ and $P_{xx} = 0$ is called the \emph{skeleton
+walk} associated with the process $X_t$.
 
-In both cases, the \emph{simple random walk} is the random walk with $Q = -\Delta$.
+In both cases, the \emph{simple random walk} is the random walk with $Q = -\Delta$,
+where
+\begin{equation}
+\Delta_{xy} = \1_{x \sim y} - 2 d \1_{x=y}.
+\end{equation}
 \todo{Define killed SRW (or more general substochastic processes).}
 
 For $v \in \vertices$, let $E_v$ denote the expectation
 with respect to either the process $X$ or $\tilde X$ conditioned so that $X_0 = v$.
+
+\begin{example}[The Green function]
+Let $P$ be a $\vertices \times \vertices$ stochastic matrix and suppose that the Neumann series
+\begin{equation}
+\sum_{n=0}^\infty P^n
+\end{equation}
+converges in the operator norm
+\begin{equation}
+\|P\| = \sup_{f \in \R^V} \frac{|P f|}{|f|},
+\end{equation}
+where $|f| = \sum_{x\in V} f_x^2$. Then $1 - P$ is invertible with inverse
+\begin{equation}
+(1 - P)^{-1} = \sum_{n=0}^\infty P^n.
+\end{equation}
+By writing $P^n_{xy} = E_x \1_{X_n=y}$, we see that the $xy$ entry of the
+above matrix is the expected number of visits to $y$ made by a random walk
+started at $x$. Thus, $1 - P$ is invertible if and only if the random walk
+with transition matrix $P$ is transient. \todo{(Does this really follow?)}
+
+Let $z = 2 d / (2 d + m^2)$, and $P = \frac{1}{2 d} J$,
+where $-\Delta = D - J$ with $J$ the off-diagonal part of $-\Delta$. Then
+\begin{equation}
+-\Delta + m^2 = \frac{2 d}{z} (1 - z P).
+\end{equation}
+This is invertible whenever $m^2 > 0$ since $|z| < 1$ in this case.
+
+When $m^2 = 0$ ($z = 1$), we see that the massless Green function $(-\Delta)^{-1}$
+exists if and only if the simple random walk is transient (in particular, it exists on
+$\Zd$ if and only if $d > 2$).
+\end{example}
 
 \subsubsection{Self-avoiding walk}
 
@@ -386,10 +422,19 @@ Let $S \subset \R^n$. A \emph{spin system} on $\graph$ with spin in $S$ is given
 by a probability measure $\mu$ on $\Omega = S^V$. Such a measure is often given by the
 Gibbs measure
 \begin{equation}
-\frac{1}{Z} e^{-H(\omega)} d\varphi,
+\frac{1}{Z} e^{-H(\varphi)} d\varphi,
 \end{equation}
 where $d\varphi = \prod_{x\in\vertices} d\varphi_x$ is the Lebesgue measure on
-$\Omega$.
+$\Omega$. A spin system of the above form is said to be \emph{ferromagnetic} when
+the Gibbs measure can be written as
+\begin{equation}
+\frac{1}{Z} e^{-\tilde H(\varphi)} \prod_{x\in\Lambda} \mu(d\varphi_x)
+\end{equation}
+for some measure $\mu$ on $S$, with
+\begin{equation}
+\tilde H(\varphi) = -\sum_{x, y \in \vertices} J_{xy} \varphi_x \cdot \varphi_y
+\end{equation}
+and $J_{xy} \ge 0$ for all $x, y$.
 
 Given a configuration $\varphi \in \Omega$
 of spins, we will denote the $i$-th component of $\varphi_x \in S$ by $\varphi^i_x$.
@@ -414,15 +459,16 @@ and the \emph{susceptibility}
 
 \subsubsection{Gaussian fields}
 
-Suppose that $M$ is a positive-definite symmetric matrix.
+Suppose that $C$ is a positive-definite symmetric matrix with inverse $A = C^{-1}$.
 Then the Gibbs measure induced by the Hamiltonian
 \begin{equation}
-H(\varphi) = \frac{1}{2} \varphi \cdot M \varphi
+H(\varphi) = \frac{1}{2} \varphi \cdot A \varphi
 \end{equation}
-is a Gaussian measure, known as the discrete Gaussian field with covariance $C = M^{-1}$.
+is a Gaussian measure, known as the discrete Gaussian field with covariance $C$.
+
 In particular, when $C = (-\Delta + m^2)^{-1}$ with $m^2 \ge 0$, we get the \emph{discrete Gaussian
-free field} (DGFF). The DGFF is said to be \emph{massive} with \emph{mass} $m^2$ when $m^2 > 0$,
-and is said to be \emph{massless} when $m^2 = 0$.
+free field} (DGFF), which is an example of a ferromagnetic spin system. The DGFF is said to be
+\emph{massive} with \emph{mass} $m^2$ when $m^2 > 0$, and is said to be \emph{massless} when $m^2 = 0$.
 
 
 \subsubsection{The $|\varphi|^4$ spin model}
@@ -438,25 +484,37 @@ H(\varphi)
     +
   \frac{1}{2} \nu |\varphi_x|^2
     +
-  \frac{1}{2} \varphi_x \cdot (M \varphi)_x
+  \frac{1}{2} \varphi_x \cdot (C \varphi)_x
 \right).
 \end{equation}
-Due to the presence of the quartic term, $M$ can be any symmetric
+Due to the presence of the quartic term, $C$ can be any symmetric
 matrix\footnote{Positive-definiteness is required for the Gaussian measure to be
-integrable. There is no loss of generality in assuming symmetry of $M$.}
-An important special case corresponds to the choice $M = -\Delta$.
-
-\todo{Discuss ferromagnetism}
+integrable. There is no loss of generality in assuming symmetry of $C$.}.
+An important special case corresponds to the choice $C = -\Delta$, for which
+the $|\varphi|^4$ model is ferromagnetic.
 
 
 \subsubsection{The $O(n)$ spin model}
 
-\todo{This is for $M = -\Delta$. Do general $M$ by extracting the diagonal part.}
+Consider the $|\varphi|^4$ model with interaction matrix $C$ and suppose that $C$ has
+constant diagonal part with $C_{xx} \equiv c$. Let $J = C - c$ denote the off-diagonal
+part of $C$. Then the $|\varphi|^4$ Hamiltonian can be written as
+\begin{equation}
+\sum_{x\in\vertices}
+\left(
+  \frac{1}{4} g |\varphi_x|^4
+    +
+  \frac{1}{2} (\nu + c) |\varphi_x|^2
+\right)
+  +
+\frac{1}{2} \varphi \cdot J \varphi
+\end{equation}
 
-If we take the limit $g\to\infty$ with $\nu = -g / 2$, the $|\varphi|^4$ spin model converges
+If we take the limit $g\to\infty$ with $\nu = -(c + g / 2)$, the
+$|\varphi|^4$ spin model converges
 weakly to the $O(n)$ spin model, given by the Hamiltonian
 \begin{equation}
-H(\varphi) = -\frac{1}{2} \varphi \cdot A \varphi
+H(\varphi) = \frac{1}{2} \varphi \cdot J \varphi
 \end{equation}
 on the state space $S = S^{n-1} \subset \R^n$ the $(n-1)$-sphere.
 The case $n = 1$ is the well-known \emph{Ising model}. When $n = 2$, we get the \emph{XY model}
@@ -502,10 +560,30 @@ to a measure $\mu$, then $\mu$ is a Gibbs measure. In this case, we can study th
 by studying \emph{observables}, which are bounded continuous functions $f : \Omega \to \R$. It suffices
 to study the limiting properties of $\mu_N(f)$.
 
+\begin{example}[Periodic boundary conditions]
+Let $\graph = \Zd$ and suppose we are given a translation-invariant potential $\Phi$.
+That is, $\Phi_A = \Phi_{A + i}$ for any $i \in \Zd$.
+Suppose, moreover, that $\Phi$ is of finite range, i.e.\ $\Phi_A = 0$ whenever
+$|A| > R$ for some $R$. Let $\Lambda_N \subset \Zd$ be a sequence of finite boxes
+with $|\Lambda_N| > R$ for each $N$.
+
+Given a configuration $\varphi \in \Omega$, let $\varphi^N \in \Omega$
+be the periodic extension of the restriction of $\varphi$ to $\Lambda_N$.
+We define a potential $\Phi^N$ by
+\begin{equation}
+\Phi^N_A(\varphi) = \phi_A(\varphi^N) \1_{A \subset \Lambda_N}.
+\end{equation}
+The Gibbs measure on $\Lambda_N$ with \emph{periodic boundary conditions} is defined by
+\begin{equation}
+\mu_N(d\varphi) = \frac{1}{Z_N} \exp\left(-H^{\Phi^N}(\varphi)\right) d\varphi,
+\end{equation}
+where $H^{\Phi^N}$ is the Hamiltonian on $\Lambda_N$ associated to the potential $\Phi_N$.
+It is shown in \cite[Example 4.20]{Georgii11} that, if $\mu_N$ converges weakly to a
+measure $\mu$, then $\mu \in \Gibbs(\Phi)$.
+\end{example}
+
 \todo{Two-point function and
-susceptibility. Discuss first-order and continuous phase transitions.
-Specialize to $\Zd$. Specialize to infinite-volume limits along tori (mainly
-to avoid pathological sequences of finite-volume approximations).}
+susceptibility. Discuss first-order and continuous phase transitions.}
 
 
 \section{Critical behaviour}
@@ -538,6 +616,31 @@ A related quantity is the \emph{correlation length of order $p$}, defined by
 
 
 \subsection{The DGFF}
+
+The two-point function is just the massive Green function $(-\Delta + m^2)^{-1}$
+which, on $\Zd$, has the well-known Ornstein-Uhlenbeck decay \todo{(show this;
+use random walks?)}. Write $-\Delta = D - J$ with $-J$ the off-diagonal part of
+$-\Delta$. Let $P = \frac{1}{2 d} J$ and let $z = 2 d / (2 d + m^2)$. Then
+\begin{equation}
+(-\Delta + m^2)^{-1}
+  =
+\frac{z}{2 d} (1 - z P)^{-1}
+  =
+\frac{z}{2 d} \sum_{n=0}^\infty z^n P^n
+\end{equation}
+and it follows that
+\begin{equation}
+\chi
+  =
+\sum_{x\in\vertices} (-\Delta + m^2)^{-1}_{0x}
+  =
+\sum_{x\in\vertices} \sum_{n=0}^\infty z^n P^n_{0x}
+  =
+\sum_{n=0}^\infty z^n
+  =
+(1 - z)^{-1}.
+\end{equation}
+Thus, there is a critical point at $m^2 = 0$ ($z = 1$).
 
 \todo{See candidacy report or preliminary version of it.}
 
