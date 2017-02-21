@@ -34,9 +34,12 @@ We must also change $U^\pm$ in saw-sa to something else
 Change $\chi$ and $\tilde\chi$ to $\backslash chicCov$ and $\backslash chicCovgen$
 \end{itemize}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Statistical mechanics}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{The microcanonical ensemble}
 
@@ -86,6 +89,7 @@ consider the case when $S_E$ is finite. In this case, we define the
 \emph{microcanonical distribution} on $S_E = H^{-1}(E)$ to be the usual uniform
 measure on the (finite) set $S_E$.
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{The canonical ensemble}
 
@@ -161,7 +165,7 @@ Hamiltonian $H : \Omega \to \R$ for which $e^{-H}$ is integrable with respect to
 we define the \emph{canonical distribution} or \emph{Gibbs measure} at inverse temperature $\beta > 0$
 on $\Omega$ to be the probability measure of the form
 \begin{equation}
-\frac{1}{Z_\beta} e^{-\beta H(\omega)} d\omega.
+\frac{1}{Z_\beta} e^{-\beta H} d\lambda.
 \end{equation}
 The normalizing constant $Z_\beta$ is known as the \emph{canonical partition function}.
 
@@ -184,6 +188,7 @@ measure whose Hamiltonian is a sum of ``local'' interactions.
 a pair $(H, \mu)$, where $H$ is a Hamiltonian and $\mu$ is a probability measure is minimized
 when $\mu$ is the Gibbs measure associated to $H$.}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Grand canonical ensemble}
 
@@ -223,6 +228,7 @@ Let $\graph = (\vertices, \edges)$ be a graph.
 % E.g.\ $A = -\Delta + m^2$ has positive diagonal entries. Recall that
 % $\Delta_{xy} = \1_{x \sim y} - 2 d \1_{x=y}$.}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Models of walks}
 
@@ -249,7 +255,7 @@ $\mu_T = \mu_{\lfloor T \rfloor}$ for all $T$ (both are measures on
 $\Wcal_{\lfloor T \rfloor}$ in this case). Thus, it suffices to study consider only
 the measures $\mu_n$ ($n \in \Z_+$) in this case.
 
-Given such a model $d\mu_T$, we define
+Given a model $d\mu_T$, we define
 \begin{equation}
 c_T = \int_{\Wcal_T} d\mu_T.
 \end{equation}
@@ -258,9 +264,10 @@ there is a natural measure $\mu$ on $\Wcal$ defined by
 \begin{equation}
 \int f \; d\mu
   =
-\int_0^\infty dT \; e^{-\nu T} \int_{\Wcal_T} d\mu_T f.
+\int_0^\infty dT \; e^{-\nu T} \int_{\Wcal_T} d\mu_T f
 \end{equation}
-The corresponding normalizing constant is given by
+for any continuous function $f$ with compact support.
+The corresponding normalizing constant is denoted
 \begin{equation}
 \chi(\nu) = \int_0^\infty dT \; e^{-\nu T} c_T
 \end{equation}
@@ -276,7 +283,6 @@ with
 \end{equation}
 where $z = e^{-\nu}$.
 
-\todo{Since we are not translation-invariant yet, should replace $x$ by $(a, b)$.}
 Let $\Wcal_T(x) \subset \Wcal_T$ denote the collection of walks $\omega \in \Wcal_T$
 with $\omega(T) = x$. The conditional measure $\mu^{(x)}_T = \mu_T(\cdot \mid \Wcal_T(x))$
 is given by
@@ -291,7 +297,11 @@ Let $\Wcal(x) = \bigcup_{T \ge 0} \Wcal_T(x)$. Then
 \begin{equation}
 \mu^{(x)}(d\omega) = \frac{\mu(d\omega) \1_{\Wcal(x)}(d\omega)}{G_x},
 \end{equation}
-where
+where the \emph{two-point function}\footnote{Since $\graph$ is not assumed to be
+transitive, we are being overly restrictive at this point by not considering analogues
+of these quantities for
+walks between any two points $a, b \in \vertices$. However, we will ultimately
+only be interested in the case of the transitive graph $\Zd$.}
 \begin{equation}
 G_x = \mu(\Wcal(x)) = \int_0^\infty dT \; e^{-\nu T} c_T(x).
 \end{equation}
@@ -301,7 +311,8 @@ G_x = \frac{1 - e^{-\nu}}{\nu} \sum_{n=0}^\infty c_n(x) z^n.
 \end{align}
 
 Many models of walks are determined by letting $\mu_T$ be the canonical Gibbs measure
-associated to a Hamiltonian $H_T : \Wcal_T \to \R$ and a base measure $d\lambda$. That is,
+associated to a Hamiltonian $H_T : \Wcal_T \to \R$ and a base measure $d\lambda_T$ on $\Wcal_T$.
+That is,
 \begin{equation}
 d\mu_T(\omega) = \frac{1}{Z_T} e^{-H_T(\omega)} d\lambda_T(\omega).
 \end{equation}
@@ -319,25 +330,28 @@ Let $J$ be a $\vertices \times \vertices$
 matrix with $J_{xx} = 0$ and $J_{xy} \ge 0$ for all $x, y \in \vertices$ and suppose
 that $J$ has summable rows: $\sum_{y\in\vertices} J_{xy} < \infty$. Let $D$ be
 the diagonal matrix with entries $D_{xx} = \sum_{y\in\vertices} J_{xy}$
-and let $Q = D - J$.
+and let $\generator = D - J$.
 
-Then $Q$ is the generator of a $V$-valued Markov process $(X_t)_{t \ge 0}$:
-the holding time of $X$ at $x$ is exponentially distributed with rate $-Q_{xx}$
+Then $\generator$ is the generator of a $V$-valued Markov process $(X_t)_{t \ge 0}$:
+the holding time of $X$ at $x$ is exponentially distributed with rate $-D_{xx}$
 and the transition probability from $x$ to $y \ne x$ is
-$-Q_{xy} / Q_{xx} = J_{xy} / D_{xx}$.
-We call $X$ the \emph{continuous-time random walk} with generator $Q$.
+$\hat P_{xy} = J_{xy} / D_{xx}$.
+We call $X$ the \emph{continuous-time random walk} with generator $\generator$.
 
 If $P$ is any stochastic matrix, then $P$ is the transition matrix for a Markov chain
 $(\hat X_n)_{n\in\Z_+}$, called the \emph{discrete-time random walk} with transition matrix $P$.
-In particular, the random walk $\hat X_n$ with transition matrix given by
-$P_{xy} = -Q_{xy} / Q_{xx}$ if $x \ne y$ and $P_{xx} = 0$ is called the \emph{skeleton
-walk} associated with the process $X_t$.
+In particular, the random walk $\hat X_n$ with transition matrix given by $\hat P$ above
+is called the \emph{skeleton walk} associated with $X_t$.
 
-In both cases, the \emph{simple random walk} is the random walk with $Q = -\Delta$,
-where
+For $x, y \in \vertices$, write $x \sim y$ if $\{ x, y \} \in \edges$ and let
+$d_x = \#\{y \in \vertices : y \sim x \}$ denote the \emph{degree} of $x$. We define the
+\emph{graph Laplacian} $\Delta$ on $\graph$ by
 \begin{equation}
-\Delta_{xy} = \1_{x \sim y} - 2 d \1_{x=y}.
+\Delta_{xy} = \1_{x \sim y} - d_x \1_{x=y}.
 \end{equation}
+The continuous-time \emph{simple random walk} (SRW) is the random walk with $\generator = -\Delta$.
+The discrete-time SRW is the corresponding skeleton walk, which has transition matrix
+$P_{xy} = \1_{x=y} / d_x$.
 \todo{Define killed SRW (or more general substochastic processes).}
 
 For $v \in \vertices$, let $E_v$ denote the expectation
@@ -361,10 +375,13 @@ above matrix is the expected number of visits to $y$ made by a random walk
 started at $x$. Thus, $1 - P$ is invertible if and only if the random walk
 with transition matrix $P$ is transient. \todo{(Does this really follow?)}
 
-Let $z = 2 d / (2 d + m^2)$, and $P = \frac{1}{2 d} J$,
-where $-\Delta = D - J$ with $J$ the off-diagonal part of $-\Delta$. Then
+In particular, consider the graph Laplacian on a graph of degree $d_0$
+(so $d_x = d_0$ for all $x$)
+and let $z = d_0 / (d_0 + m^2)$.
+% and $P = \frac{1}{d_0} J$, where $-\Delta = D - J$ with $J$ the off-diagonal part of $-\Delta$.
+Then
 \begin{equation}
--\Delta + m^2 = \frac{2 d}{z} (1 - z P).
+-\Delta + m^2 = \frac{d_0}{z} (1 - z P).
 \end{equation}
 This is invertible whenever $m^2 > 0$ since $|z| < 1$ in this case.
 
@@ -373,12 +390,17 @@ exists if and only if the simple random walk is transient (in particular, it exi
 $\Zd$ if and only if $d > 2$).
 \end{example}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \subsubsection{Self-avoiding walk}
 
-The \emph{self-avoiding walk} is given by the microcanonical ensemble on the
-collection of self-intersecting paths starting at $0$ of length $n$.
+A \emph{self-avoiding walk} of length $n$ on $\graph$ is a discrete walk $\omega\in\Wcal_n$
+that has no self intersections, i.e.\ $\omega_x = \omega_y$ if and only if $x = y$.
+We equip the collection of all self-avoiding walks of length $n$ with the uniform measure.
 
-\subsubsection{Variants of the self-avoiding walk}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsubsection{Weakly self-avoiding walk with self-attraction}
 
 The \emph{local time} of $\omega \in \Wcal_T$ at $x \in \Zd$ is defined by
 \begin{equation}
@@ -430,6 +452,7 @@ In the case $\gamma = 0$, the discrete-time version of this model is known as
 the \emph{Domb-Joyce model}. In continuous-time, it is the \emph{continuous-time
 weakly self-avoiding walk}, which we will abbreviate as WSAW.
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Spin systems}
 
@@ -633,6 +656,7 @@ A related quantity is the \emph{correlation length of order $p$}, defined by
 \xi_p(\mu) = \left(\frac{\sum_{x\in\Zd} |x|^p G_x(\mu)}{\chi(\mu)}\right)^{1/p}
 \end{equation}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{The DGFF}
 
@@ -663,15 +687,19 @@ Thus, there is a critical point at $m^2 = 0$ ($z = 1$).
 
 \todo{See candidacy report or preliminary version of it.}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Universality}
 
 Critical behaviour should, roughly speaking, only depend on ``tail properties''
 (global geometry, range of interaction, and symmetries).
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Relations between models}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{The SRW and DGFF}
 
@@ -680,13 +708,15 @@ Critical behaviour should, roughly speaking, only depend on ``tail properties''
 For the discrete-time simple random walk, the canonical partition function $c_n$,
 which is the number of such walks, is just $(2 d)^n$.
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{The Kac-Siegert representation}
 
 \todo{See notes on this}
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \pagebreak
 
