@@ -40,66 +40,80 @@ Change $\chi$ and $\tilde\chi$ to $\backslash chicCov$ and $\backslash chicCovge
 
 \subsection{Hamiltonian mechanics}
 
-Let $\Omega = U^n \times \R^{3n}$, where $U \subset \R^3$. Let us denote an element of
-$\Omega$ as $(q, p)$, where $q \in U^n$ and $p \in \R^{3n}$. Then $\Omega$ is the state
+Let $\Omega = U^n \times \R^{3n}$, where $U \subset \R^3$, and denote a generic element of
+$\Omega$ by $(q, p)$, where $q \in U^n$ and $p \in \R^{3n}$. Then $\Omega$ is the state
 space of a system of $n$ point particles $i = 1, \ldots, n$ with positions $q_i \in U$
-and momenta $p_i \in \R^3$. The dynamics of such a system is determined by a function
-$H : \Omega \to \R$, known as the \emph{Hamiltonian}, for which $H(q, p)$ is the total
-energy of the configuration $(q, p)$. That is, the particles evolve according to
-\emph{Hamilton's equations}
+and momenta $p_i \in \R^3$. Given a $C^1$ function $H : \Omega \to \R$, known as the
+\emph{Hamiltonian},
+the dynamics of such a system is determined by \emph{Hamilton's equations}
 \begin{align}
 \dd{q}{t} &= \nabla_q H(q(t), p(t)) \\
 \dd{p}{t} &= -\nabla_p H(q(t), p(t)).
 \end{align}
 
-
-\subsection{The microcanonical ensemble}
-
-In general, especially when $n$ is large, such a system is likely to be complicated
-to understand in a detailed way.
-
-The basic idea of statistical mechanics is to leverage this complexity by assuming
-(or in some cases proving) that, as $t\to\infty$, the system will settle into a
-state of equilibrium in which all possible states are equiprobable.
-
-Now an immediate consequence of Hamilton's equations and the chain rule is that
+The value $H(q, p)$ represents the total energy of the configuration $(q, p)$.
+An immediate consequence of Hamilton's equations and the chain rule is the principle
+of conservation of energy:
 \begin{equation}
 \dd{H}{t}(q(t), p(t)) = 0.
 \end{equation}
-This is just a restatement of the principle of conservation of energy. Thus, a
-Hamiltonian system with initial configuration $(q(0), p(0))$ with energy
-$E = H(q(0), p(0))$ will remain on the constant energy shell
-\begin{equation}
-S_E = \{ (q, p) : H(q, p) = E \}.
-\end{equation}
-If the $S_E$ is compact, then it can be equipped with the uniform measure.
+Thus, a Hamiltonian system with initial configuration $(q(0), p(0))$ and energy
+$E = H(q(0), p(0))$ will evolve on the constant energy shell $S_E = H^{-1}(E)$.
 
-The uniform measure on $S_E$ is known as the \emph{microcanonical ensemble}.
+We will assume that $H$ has compact level sets so that the solutions to Hamilton's
+equations can be extended globally in time.
+
+
+\subsection{The microcanonical ensemble}
+
+In general, especially when $n$ is large, a Hamiltonian system is likely to be too
+complicated to understand in a precise way.
+The basic idea of statistical mechanics is to leverage this complexity by assuming
+(or in some cases proving) that, as $t\to\infty$, such a system will settle into a
+state of equilibrium in which all possible states are equiprobable.
+
+It can be shown that the measure defined by
+\begin{equation}
+\mu'_E(A) = \lim_{\delta\downarrow 0} \int_{H^{-1}([E, E + \delta])} \1_A(x) \; dx
+\end{equation}
+exists, is supported on $S_E$, and is invariant under the Hamiltonian dynamics
+\cite{Adams06}. By our assumption that $S_E$ is compact, $\mu'_E(S_E) < \infty$
+and we can define the \emph{microcanonical ensemble} $\mu_E$ by
+\begin{equation}
+\mu_E(A) = \mu'_E(A) / \mu'_E(S_E).
+\end{equation}
 
 
 \subsection{The canonical ensemble}
 
-In practice, most systems are not isolated and may therefore exchange energy with
-their environment. Everyday experience, however, suggests that despite this energetic
-exchange, a physical system will typically achieve a constant temperature state when
-left undisturbed for a sufficiently long time.
+The microcanonical ensemble may present obstacles to analysis due to the fact that
+it is typically singular with respect to the Lebesgue measure on $\Omega$.
+Moreover, in practice, most systems of interest are not truly isolated and may exchange
+energy with
+their environment. Everyday experience, however, suggests that
+a physical system that is left undisturbed for a sufficiently long time will achieve
+\emph{thermal equilibrium}, in which the system's
+temperature is constant and equal to that of its surroundings.
 
-This situation can be modeled by considering a system, called system $A$, in contact
-with a ``heat bath'', system $B$,
-which is so large that its temperature may be assumed to be constant.
-It is then reasonable to assume that the total system (the union of systems $A$ and $B$)
-is isolated and follows a microcanonical distribution on a constant energy shell.
-The distribution of states of system $A$ is then the marginal distribution.
+This situation can be modeled as follows: call the system of interest system $A$ and
+its surroundings system $B$. We assume that $B$ behaves as a \emph{thermal reservoir},
+meaning that it is so large that its temperature may be assumed to be effectively
+constant, even if system $A$ is at a different temperature.
+It is then reasonable to assume that the total system $A \times B$
+is isolated and therefore described by a microcanonical distribution on a constant energy shell.
 
-To be more precise, let $\Omega_1$ and $\Omega_2$ be the state spaces of systems $A$ and
-$B$, respectively, and let $H_i : \Omega_i \to \R$ be their respectively Hamiltonians,
-where $i = 1, 2$. Then the total system $A \cup B$ has state space $\Omega_1 \times \Omega_2$
-and Hamiltonian $H : \Omega \to \R$ given by $H(\omega_1, \omega_2) = H_1(\omega_1) + H_2(\omega_2)$
-for $\omega_i \in \Omega_i$. The microcanonical ensemble with energy $E$ is the uniform
-measure $\mu_E$ on $S_E = H^{-1}(E)$.
+The marginal distribution of $A$ can then be computed by the following rough argument.
+Let $\Omega_1$ and $\Omega_2$ be the state spaces of systems $A$ and
+$B$, respectively, and let $H_i : \Omega_i \to \R$ be their respective Hamiltonians,
+where $i = 1, 2$. Then the total system $A \times B$ has state space $\Omega_1 \times \Omega_2$
+and Hamiltonian $H : \Omega \to \R$ given by\footnote{We are assuming the energy due to interactions
+between $A$ and $B$ is negligible.}
+$H(\omega_1, \omega_2) = H_1(\omega_1) + H_2(\omega_2)$
+for $\omega_i \in \Omega_i$. Suppose that $S_E$ is compact so that the microcanonical ensemble $\mu_E$
+on $S_E$ is well-defined.
 
-For any $E_2$, let $S^2_{E_2} = H_2^{-1}(E_2)$. Then the marginal distribution $\mu^1_E$
-is given by the density
+For any $E_2 \in \R$, let $S^2_{E_2} = H_2^{-1}(E_2)$. Then the marginal distribution $\mu^1_E$
+of $\mu$ on $\Omega_1$ is given by the density
 \begin{equation}
 f^1_E(\omega_1)
   =
@@ -123,7 +137,7 @@ h^2_E - \dd{h^2_E}{E} H_1(\omega_1) + O(H_1(\omega_1)^2).
 \end{equation}
 Thus,
 \begin{equation}
-e^{-h^22_{E-H_1(\omega_1)}}
+e^{-h^2_{E-H_1(\omega_1)}}
   \approx
 C e^{-\beta H_1(\omega_1)},
 \end{equation}
@@ -302,7 +316,7 @@ Let $J$ be a $\vertices \times \vertices$
 matrix with $J_{xx} = 0$ and $J_{xy} \ge 0$ for all $x, y \in \vertices$ and suppose
 that $J$ has summable rows: $\sum_{y\in\vertices} J_{xy} < \infty$. Let $D$ be
 the diagonal matrix with entries $D_{xx} = \sum_{y\in\vertices} J_{xy}$
-and let $Q = J - D$.
+and let $Q = D - J$.
 
 Then $Q$ is the generator of a $V$-valued Markov process $(X_t)_{t \ge 0}$:
 the holding time of $X$ at $x$ is exponentially distributed with rate $-Q_{xx}$
@@ -311,7 +325,7 @@ $-Q_{xy} / Q_{xx} = J_{xy} / D_{xx}$.
 We call $X$ the \emph{continuous-time random walk} with generator $Q$.
 
 If $P$ is any stochastic matrix, then $P$ is the transition matrix for a Markov chain
-$(\tilde X_n)_{n\in\Z_+}$, called the \emph{discrete-time random walk} with transition matrix $P$.
+$(\hat X_n)_{n\in\Z_+}$, called the \emph{discrete-time random walk} with transition matrix $P$.
 In particular, the random walk $\hat X_n$ with transition matrix given by
 $P_{xy} = -Q_{xy} / Q_{xx}$ if $x \ne y$ and $P_{xx} = 0$ is called the \emph{skeleton
 walk} associated with the process $X_t$.
@@ -324,7 +338,7 @@ where
 \todo{Define killed SRW (or more general substochastic processes).}
 
 For $v \in \vertices$, let $E_v$ denote the expectation
-with respect to either the process $X$ or $\tilde X$ conditioned so that $X_0 = v$.
+with respect to either the process $X$ or $\hat X$ conditioned so that $X_0 = v$.
 
 \begin{example}[The Green function]
 Let $P$ be a $\vertices \times \vertices$ stochastic matrix and suppose that the Neumann series
@@ -522,6 +536,8 @@ and when $n = 3$, the \emph{classical Heisenberg model}.
 
 
 \subsubsection{Infinite-volume Gibbs measures}
+
+\todo{Does DLR work for general spins? See Friedli-Velenik and Georgii}
 
 The examples above do not generalize directly to the case of infinite graph due to the fact
 that the Hamiltonian is no longer absolutely summable. This obstacle was overcome in the work
