@@ -191,53 +191,77 @@ $\vertices\times\vertices$ matrix.
 
 \subsection{Models of walks}
 
-Let $\Wcal_T$ denote the set of
-right-continuous paths $[0, T] \to \vertices$.
+In the following, $\interval_T$ will denote one of the following choices (for all $T \ge 0$):
+\begin{equation}
+\interval_T
+  =
+\begin{cases}
+\{ 0, \ldots, \lfloor T \rfloor \} \\
+[0, T]
+\end{cases}.
+\end{equation}
+These two choices will be referred to, respectively, as the \emph{discrete-} and
+\emph{continuous-time} cases.
+Fix a designated vertex $0 \in \vertices$ in $\graph$ and
+let $\Wcal_T$ denote the set of
+right-continuous paths $\omega : \interval_T \to \vertices$ with $\omega(0) = 0$.
 We will refer to elements of $\Wcal := \bigcup_{T \geq 0} \Wcal_T$ as \emph{walks}.
 A model of walks is determined by a choice of finite measure $d\mu_T$ on
 $\Wcal_T$ for each $T$.
 
-Suppose we are given such a model $d\mu_T$. The associated
-canonical partition function associated with $d\mu_T$ is given by
+In the discrete-time case, we will assume that
+$\mu_T = \mu_{\lfloor T \rfloor}$ for all $T$ (both are measures on
+$\Wcal_{\lfloor T \rfloor}$ in this case). Thus, it suffices to study consider only
+the measures $\mu_n$ ($n \in \Z_+$) in this case.
+
+Given such a model $d\mu_T$, we define
 \begin{equation}
-c_T = \mu_T(1).
+c_T = \int_{\Wcal_T} d\mu_T.
 \end{equation}
-There is also a natural measure on $\Wcal$ defined as follows:
-given a parameter $\nu \in \R$ (called the \emph{killing rate} or \emph{fugacity}),
+Given a parameter $\nu \in \R$ (called the \emph{killing rate} or \emph{fugacity}),
+there is a natural measure $\mu$ on $\Wcal$ defined by
 \begin{equation}
-\mu(f)
+\int f \; d\mu
   =
-\frac{1}{\chi(\nu)} \int_0^\infty dT \; e^{-\nu T} \int_{\Wcal_T} d\mu_T(\omega) f(\omega),
+\int_0^\infty dT \; e^{-\nu T} \int_{\Wcal_T} d\mu_T f.
 \end{equation}
-where the grand canonical partition function
+The corresponding normalizing constant is given by
 \begin{equation}
 \chi(\nu) = \int_0^\infty dT \; e^{-\nu T} c_T
 \end{equation}
-is known as the \emph{susceptibility}.
-
-Suppose we restrict our attention to walks $\omega \in \Omega_T$ with $\omega_T = x$.
-We define the \emph{two-point function} by
+and is known as the \emph{susceptibility}. In the discrete-time case, this becomes
 \begin{equation}
-G_x(\mu) = \int dT \; e^{-\nu T} c_T(x),
+\mu(f)
+  =
+\frac{1 - e^{-\nu}}{\nu} \sum_{n=0}^\infty z^n \int_{\Wcal_n} d\mu_n(\omega) \; f(\omega).
+\end{equation}
+with
+\begin{equation}
+\chi(\nu) = \frac{1 - e^{-\nu}}{\nu} \sum_{n=0}^\infty c_n z^n,
+\end{equation}
+where $z = e^{-\nu}$.
+
+Let $\Wcal_T(x) \subset \Wcal_T$ denote the collection of walks $\omega \in \Wcal_T$
+with $\omega(T) = x$. The conditional measure $\mu^{(x)}_T = \mu_T(\cdot \mid \Wcal_T(x))$
+is given by
+\begin{equation}
+\mu^{(x)}_T(d\omega) = \frac{\mu_T(d\omega) \1_{\Wcal_T(x)}(d\omega)}{c_T(x)},
 \end{equation}
 where
 \begin{equation}
-c_T(x) = \mu_T(\1_{X_T=x}).
+c_T(x) = \mu_T(\Wcal_T(x)).
 \end{equation}
-
-The sequence $\tau_n$ of jump times is defined inductively by setting $\tau_0 = 0$ and
+Let $\Wcal(x) = \bigcup_{T \ge 0} \Wcal_T(x)$. Then
 \begin{equation}
-\tau_{n+1} = \inf(t > \tau_n : X_t \ne X_{\tau_n}).
+\mu^{(x)}(d\omega) = \frac{\mu(d\omega) \1_{\Wcal(x)}(d\omega)}{G_x},
 \end{equation}
-Suppose that the sequence $\mu_T$ is chosen so that $\tau_n = n$ for all $n$. Then $\mu_T$
-is supported on a finite set that can be identified with $\mu_{\lfloor T \rfloor}$.
-If we assume further (using this identification) that $\mu_T(\omega) = \mu_{\lfloor T \rfloor}(\omega)$
-for all $\omega \in \Wcal_T \simeq \Wcal_{\lfloor T \rfloor}$, then $\mu_T$ is said to model
-\emph{discrete-time} walks.
-In this case, it suffices to study the sequence $\mu_n$ for $n \in \Z_+$ (from which the
-$\mu_T$ can be recovered). Moreover, we can write
+where
+\begin{equation}
+G_x = \mu(\Wcal(x)) = \int_0^\infty dT \; e^{-\nu T} c_T(x).
+\end{equation}
+In discrete time, we have
 \begin{align}
-\chi(\nu)   &= \frac{1 - e^{-\nu}}{\nu} \sum_{n=0}^\infty c_n z^n, \quad z = e^{-\nu}.
+G_x = \frac{1 - e^{-\nu}}{\nu} \sum_{n=0}^\infty c_n(x) z^n.
 \end{align}
 
 Many models of walks take the form
