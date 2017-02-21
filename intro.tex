@@ -5,7 +5,6 @@
 \chapter{Introduction}
 
 \section{To do}
-
 \begin{itemize}
 \item
 Use $\Vcal$, etc. for polynomials, $\Ucal$ for unit vectors
@@ -35,9 +34,477 @@ We must also change $U^\pm$ in saw-sa to something else
 Change $\chi$ and $\tilde\chi$ to $\backslash chicCov$ and $\backslash chicCovgen$
 \end{itemize}
 
-\section{Definitions}
 
-\commentbw{Temporary section to collect definitions.}
+\section{Gibbs measure}
+
+
+\subsection{Hamiltonian mechanics}
+
+Let $\Omega = U^n \times \R^{3n}$, where $U \subset \R^3$. Let us denote an element of
+$\Omega$ as $(q, p)$, where $q \in U^n$ and $p \in \R^{3n}$. Then $\Omega$ is the state
+space of a system of $n$ point particles $i = 1, \ldots, n$ with positions $q_i \in U$
+and momenta $p_i \in \R^3$. The dynamics of such a system is determined by a function
+$H : \Omega \to \R$, known as the \emph{Hamiltonian}, for which $H(q, p)$ is the total
+energy of the configuration $(q, p)$. That is, the particles evolve according to
+\emph{Hamilton's equations}
+\begin{align}
+\dd{q}{t} &= \nabla_q H(q(t), p(t)) \\
+\dd{p}{t} &= -\nabla_p H(q(t), p(t)).
+\end{align}
+
+
+\subsection{The microcanonical ensemble}
+
+In general, especially when $n$ is large, such a system is likely to be complicated
+to understand in a detailed way.
+
+The basic idea of statistical mechanics is to leverage this complexity by assuming
+(or in some cases proving) that, as $t\to\infty$, the system will settle into a
+state of equilibrium in which all possible states are equiprobable.
+
+Now an immediate consequence of Hamilton's equations and the chain rule is that
+\begin{equation}
+\dd{H}{t}(q(t), p(t)) = 0.
+\end{equation}
+This is just a restatement of the principle of conservation of energy. Thus, a
+Hamiltonian system with initial configuration $(q(0), p(0))$ with energy
+$E = H(q(0), p(0))$ will remain on the constant energy shell
+\begin{equation}
+S_E = \{ (q, p) : H(q, p) = E \}.
+\end{equation}
+If the $S_E$ is compact, then it can be equipped with the uniform measure.
+
+The uniform measure on $S_E$ is known as the \emph{microcanonical ensemble}.
+
+
+\subsection{The canonical ensemble}
+
+In practice, most systems are not isolated and may therefore exchange energy with
+their environment. Everyday experience, however, suggests that despite this energetic
+exchange, a physical system will typically achieve a constant temperature state when
+left undisturbed for a sufficiently long time.
+
+This situation can be modeled by considering a system, called system $A$, in contact
+with a ``heat bath'', system $B$,
+which is so large that its temperature may be assumed to be constant.
+It is then reasonable to assume that the total system (the union of systems $A$ and $B$)
+is isolated and follows a microcanonical distribution on a constant energy shell.
+The distribution of states of system $A$ is then the marginal distribution.
+
+To be more precise, let $\Omega_1$ and $\Omega_2$ be the state spaces of systems $A$ and
+$B$, respectively, and let $H_i : \Omega_i \to \R$ be their respectively Hamiltonians,
+where $i = 1, 2$. Then the total system $A \cup B$ has state space $\Omega_1 \times \Omega_2$
+and Hamiltonian $H : \Omega \to \R$ given by $H(\omega_1, \omega_2) = H_1(\omega_1) + H_2(\omega_2)$
+for $\omega_i \in \Omega_i$. The microcanonical ensemble with energy $E$ is the uniform
+measure $\mu_E$ on $S_E = H^{-1}(E)$.
+
+For any $E_2$, let $S^2_{E_2} = H_2^{-1}(E_2)$. Then the marginal distribution $\mu^1_E$
+is given by the density
+\begin{equation}
+f^1_E(\omega_1)
+  =
+\int \frac{\1_{(\omega_1, \omega_2) \in S_E}}{|S_E|} d\omega_2
+  =
+\frac{|S^2_{E-H_1(\omega_1)}|}{|S_E|}
+  =
+\frac{e^{h^2_{E-H_1(\omega_1)}}}{|S_E|},
+\end{equation}
+where $|S|$ is the Lebesgue measure of a set $S$ and
+\begin{equation}
+h^2_{E_2} = \log |S^2_{E_2}|
+\end{equation}
+is the entropy of the microcanonical ensemble on $S^2_{E_2}$.
+
+If $E_2 \mapsto h^2_{E_2}$ is $C^1$, then we have the first-order expansion
+\begin{equation}
+h^2_{E - H_1(\omega_1)}
+  =
+h^2_E - \dd{h^2_E}{E} H_1(\omega_1) + O(H_1(\omega_1)^2).
+\end{equation}
+Thus,
+\begin{equation}
+e^{-h^22_{E-H_1(\omega_1)}}
+  \approx
+C e^{-\beta H_1(\omega_1)},
+\end{equation}
+where $\beta = \dd{h^2_E}{E}$ and $C$ is a constant independent of $\omega_1$.
+The assumption that system $B$ is a ``heat bath'' then amounts to saying that
+$E - H_1(\omega_1)$ is such a negligible perturbation of $E$ that the first-order
+approximation above accurately represents the marginal density of $\mu^1_E$.
+
+The probability measure
+\begin{equation}
+\frac{1}{Z_\beta} e^{-\beta H_1(\omega_1)} d\omega_1
+\end{equation}
+is known as the \emph{canonical ensemble} on $\Omega_1$ at \emph{inverse temperature} $\beta > 0$.
+The normalizing constant $Z_\beta$ is known as the \emph{(canonical) partition function}.
+
+
+\subsection{Gibbs measures}
+
+Given any state space $\Omega$ (not necessarily of point particles) and Hamiltonian
+$H : \Omega \to \R$, we define the \emph{Gibbs measure} at inverse temperature $\beta > 0$
+on $\Omega$ to be the probability measure of the form
+\begin{equation}
+\frac{1}{Z} e^{-\beta H(\omega)} d\omega_1.
+\end{equation}
+
+There are various justifications for studying Gibbs measures.
+One is the \emph{principle of maximum entropy}, which states roughly that the least
+biased choice of probability distributions from a given class of distributions is the
+one with the maximum entropy. It can be shown using the method of Lagrange multipliers
+that the canonical ensemble maximizes the
+entropy over all distributions $\mu$ on $\Omega$ satisfying the average energy constraint
+\begin{equation}
+\int_{\Omega} H(\omega) \; d\mu(\omega) = E.
+\end{equation}
+The constant $\beta$ then arises as a Lagrange multiplier.
+
+Another, purely mathematical, reason for studying measures of this form is the Hammersley-Clifford
+theorem, which states that any Markov random field on a graph has a representation as a Gibbs
+measure whose Hamiltonian is a sum of ``local'' interactions.
+
+Lastly, there is the variational principle, which states that the free energy associated to
+a pair $(H, \mu)$, where $H$ is a Hamiltonian and $\mu$ is a probability measure is minimized
+when $\mu$ is the Gibbs measure associated to $H$.
+
+
+\subsection{Grand canonical ensemble}
+
+By considering a physical system which is free to exchange both energy and particles with its
+environment, a similar derivation as above leads us to the definition of the \emph{grand
+canonical ensemble} with Hamiltonian $H$, given by
+\begin{equation}
+\frac{1}{Z_{\beta,\nu}} e^{-\beta (H(\omega) - \nu |\omega|)},
+\end{equation}
+where $|\omega|$ is a number representing the number of particles in the statem $\omega$.
+For mathematical purposes, the $\nu |\omega|$ term can be absorbed into the Hamiltonian.
+Thus, the grand canonical ensemble is itself a Gibbs measure and we will only loosely
+distinguish between the canonical and grand canonical ensembles. 
+
+
+\section{Lattice models}
+
+Let $\graph = (\vertices, \edges)$ be a graph and let $A$ be a symmetric
+$\vertices\times\vertices$ matrix.
+
+
+\subsection{Models of walks}
+
+Let $\Wcal_T$ denote the set of
+right-continuous paths $[0, T] \to \vertices$.
+We will refer to elements of $\Wcal := \bigcup_{T \geq 0} \Wcal_T$ as \emph{walks}.
+A model of walks is determined by a choice of finite measure $d\mu_T$ on
+$\Wcal_T$ for each $T$.
+
+Suppose we are given such a model $d\mu_T$. The associated
+canonical partition function associated with $d\mu_T$ is given by
+\begin{equation}
+c_T = \mu_T(1).
+\end{equation}
+There is also a natural measure on $\Wcal$ defined as follows:
+given a parameter $\nu \in \R$ (called the \emph{killing rate} or \emph{fugacity}),
+\begin{equation}
+\mu(f)
+  =
+\frac{1}{\chi(\nu)} \int_0^\infty dT \; e^{-\nu T} \int_{\Wcal_T} d\mu_T(\omega) f(\omega),
+\end{equation}
+where the grand canonical partition function
+\begin{equation}
+\chi(\nu) = \int_0^\infty dT \; e^{-\nu T} c_T
+\end{equation}
+is known as the \emph{susceptibility}.
+
+Suppose we restrict our attention to walks $\omega \in \Omega_T$ with $\omega_T = x$.
+We define the \emph{two-point function} by
+\begin{equation}
+G_x(\mu) = \int dT \; e^{-\nu T} c_T(x),
+\end{equation}
+where
+\begin{equation}
+c_T(x) = \mu_T(\1_{X_T=x}).
+\end{equation}
+
+The sequence $\tau_n$ of jump times is defined inductively by setting $\tau_0 = 0$ and
+\begin{equation}
+\tau_{n+1} = \inf(t > \tau_n : X_t \ne X_{\tau_n}).
+\end{equation}
+Suppose that the sequence $\mu_T$ is chosen so that $\tau_n = n$ for all $n$. Then $\mu_T$
+is supported on a finite set that can be identified with $\mu_{\lfloor T \rfloor}$.
+If we assume further (using this identification) that $\mu_T(\omega) = \mu_{\lfloor T \rfloor}(\omega)$
+for all $\omega \in \Wcal_T \simeq \Wcal_{\lfloor T \rfloor}$, then $\mu_T$ is said to model
+\emph{discrete-time} walks.
+In this case, it suffices to study the sequence $\mu_n$ for $n \in \Z_+$ (from which the
+$\mu_T$ can be recovered). Moreover, we can write
+\begin{align}
+\chi(\nu)   &= \frac{1 - e^{-\nu}}{\nu} \sum_{n=0}^\infty c_n z^n, \quad z = e^{-\nu}.
+\end{align}
+
+Many models of walks take the form
+\begin{equation}
+d\mu_T(\omega) = \frac{1}{Z_T} e^{-H_T(\omega)} d\lambda_T(\omega),
+\end{equation}
+where $d\lambda_T$ is a probability measure on $\Wcal_T$ and the function $H_T : \Wcal_T \to \R$
+is known as the \emph{Hamiltonian}.
+
+% In what follows, we let $Q$ be a $\vertices \times \vertices$ matrix with $Q_{xy} = 0$
+% whenever $\{ x, y \} \notin \edges$.
+
+
+\subsubsection{Simple random walk}
+
+Let $Q$ denote a $\vertices \times \vertices$ matrix with $Q_{xy} = 0$ whenever
+$\{ x, y \} \notin \edges$.
+Let $X = (X_T)_{T\ge 0}$ be the $V$-valued
+Markov process with generator $Q$ and let
+$A = e^Q$ so that $(X_n)_{n\in\Z_+}$ is a
+$V$-valued Markov chain with transition matrix $A$.
+For $v \in \vertices$, let $E_v$ denote the expectation
+with respect to the process $X$ conditioned so that $X_0 = v$.
+
+\subsubsection{Self-avoiding walk}
+
+The \emph{self-avoiding walk} is given by the microcanonical ensemble on the
+collection of self-intersecting paths starting at $0$ of length $n$.
+
+\subsubsection{Variants of the self-avoiding walk}
+
+The \emph{local time} of $\omega \in \Wcal_T$ at $x \in \Zd$ is defined by
+\begin{equation}
+\lt^x_T(\omega) = \int_0^T \1_{\omega(S)=x} \; dS.
+\end{equation}
+In the discrete-time case, $\lt^x_n$ is the number of times $\omega$ visits $x$
+and is bounded by $n$. In the continuous-time case, $\lt^x_T$ is almost surely
+finite for paths distributed as continuous-time simple random walks.
+
+For $\omega \in \Wcal_T$, we define the \emph{intersection local time}
+\begin{equation}
+\label{e:ITdef}
+I_T(\omega) = \sum_{x\in\Zd} (\lt^x_T)^2 = \int_0^T \int_0^T \1_{\omega(S_1)=\omega(S_2)} \; dS_1 dS_2
+\end{equation}
+and \emph{contact self-attraction} by
+\begin{equation}
+\label{e:CTdef}
+C_T(\omega) =
+  \sum_{x \in \Z^d}\sum_{e\in\Ucal} \lt_T^x(\omega) \lt_T^{x+e}(\omega)
+  = \int_0^T ds \int_0^T dt \; \1_{\omega_{s} \sim \omega_{t}}.
+\end{equation}
+% Recall that we have set the inverse temperature equal to $1$.
+Given a parameter $\gcc > 0$,
+and $\gamma \in \R$, we define
+\begin{equation}
+\label{e:Udef-neg}
+U_{\gcc,\gamma}(f)
+=
+\gcc \sum_{x\in\Zd} f_x^2
+- \frac{\gamma}{2d}
+\sum_{x\in\Zd} \sum_{e\in\Ucal} f_x f_{x+e}
+\end{equation}
+for $f : \Zd \to \R$.
+The Hamiltonian is given by
+\begin{equation}
+H_T(\omega) = U_{\gcc,\gamma}(L_T(\omega)).
+\end{equation}
+We denote the canonical partition function by
+\begin{equation}
+c_T = c_T(\gcc, \gamma) = E_0 \left( e^{-\gcc I(T) + \gamma C(T)} \right),
+\end{equation}
+where $0 \in \vertices$ is fixed,
+and the susceptibility by
+\begin{equation}
+\chi(\gcc, \gamma, \nu) = \int_0^\infty c_T e^{-\nu T} \; dT.
+\end{equation}
+
+In the case $\gamma = 0$, the discrete-time version of this model is known as
+the \emph{Domb-Joyce model}. In continuous-time, it is the \emph{continuous-time
+weakly self-avoiding walk}, which we will abbreviate as WSAW.
+
+
+\subsection{Spin systems}
+
+Assume for now that $\graph$ is a finite graph.
+
+Let $S \subset \R^n$. A \emph{spin system} on $\graph$ with spin in $S$ is given
+by a probability measure $\mu$ on $\Omega = S^V$. Such a measure is often given by the
+Gibbs measure
+\begin{equation}
+\frac{1}{Z} e^{-H(\omega)} d\varphi,
+\end{equation}
+where $d\varphi = \prod_{x\in\vertices} d\varphi_x$ is the Lebesgue measure on
+$\Omega$.
+
+Given a configuration $\varphi \in \Omega$
+of spins, we will denote the $i$-th component of $\varphi_x \in S$ by $\varphi^i_x$.
+We also define the inner product
+\begin{equation}
+\varphi \cdot \tilde\varphi = \sum_{i=1}^n \sum_{x\in\vertices} \varphi^i_x \tilde\varphi^i_x.
+\end{equation}
+We also let a $V \times V$ matrix $A$ act on $\varphi$ via
+\begin{equation}
+(A\varphi)^i_x = \sum_{y\in\vertices} A_{xy} \varphi^i_x.
+\end{equation}
+
+For any spin system, we define the \emph{two-point function}
+\begin{equation}
+G_x(\mu) = \int d\mu(\varphi) \; \varphi_0 \cdot \varphi_x
+\end{equation}
+and the \emph{susceptibility}
+\begin{equation}
+\chi(\mu) = \sum_{x\in\vertices} G_x(\mu).
+\end{equation}
+
+
+\subsubsection{Gaussian fields}
+
+Suppose that $A$ is positive-definite. Then the Gibbs measure induced by the Hamiltonian
+\begin{equation}
+H(\varphi) = \frac{1}{2} \varphi \cdot A \varphi
+\end{equation}
+is a Gaussian measure, known as the Gaussian field with covariance $C = A^{-1}$.
+In particular, when $C = (-\Delta + m^2)^{-1}$ with $m^2 \ge 0$, we get the \emph{discrete Gaussian
+free field} (DGFF). The DGFF is said to be \emph{massive} with \emph{mass} $m^2$ when $m^2 > 0$,
+and is said to be \emph{massless} when $m^2 = 0$.
+
+
+\subsubsection{The $|\varphi|^4$ spin model}
+
+The $|\varphi|^4$ spin model is given a quartic perturbation to the Gaussian free field.
+Precisely, the Hamiltonian has the form
+\begin{equation}
+H(\varphi)
+  =
+\sum_{x\in\vertices}
+\left(
+  \frac{1}{4} g |\varphi_x|^4
+    +
+  \frac{1}{2} \nu |\varphi_x|^2
+    +
+  \frac{1}{2} \varphi_x \cdot (-\Delta \varphi)_x
+\right).
+\end{equation}
+
+To do: replace $\Delta$ by $A$.
+
+
+\subsubsection{The $O(n)$ spin model}
+
+If we take the limit $g\to\infty$ and $\nu\to-\infty$ in the appropriate way, we get the
+$O(n)$ spin model with $S = S^{n-1}$ the $(n-1)$-sphere in $\R^n$ and with Hamiltonian
+\begin{equation}
+H(\varphi) = -\frac{1}{2} \varphi \cdot A \varphi.
+\end{equation}
+The case $n = 1$ is the well-known \emph{Ising model}. When $n = 2$, we get the \emph{XY model}
+and when $n = 3$, the \emph{classical Heisenberg model}.
+
+\todo{Diagonal part doesn't matter? Ferromagnetic $A$}
+
+
+\subsubsection{Infinite-volume Gibbs measures}
+
+The examples above do not generalize directly to the case of infinite graph due to the fact
+that the Hamiltonian is no longer absolutely summable. This obstacle was overcome in the work
+of Dobrushin, Lanford, and Ruelle.
+
+For every finite subset $A \subset \vertices$, let $\Phi_A : \Omega \to \R$ be a function that
+depends only on the values of the spins in $A$. Then we can define the Hamiltonian on a finite
+subset $\Lambda \subset \vertices$ by
+\begin{equation}
+H^\Phi_\Lambda(\varphi) = \sum \Phi_A(\varphi),
+\end{equation}
+where the sum is over all finite subset $A \subset \vertices$ that intersect $\Lambda$.
+For simplicity, suppose that the space of spins $S$ is either a discrete set equipped with the
+counting measure or is equipped with the Lebesgue measure. Let us also assume that the Hamiltonians
+$H^\Phi_\Lambda$ are bounded below. Then the  Gibbs measures corresponding to $H^\Phi_\Lambda$ are
+all well-defined. Then a measure $\mu$ on $\Omega$ is said to be a Gibbs measure if for $\mu$-almost
+every choice of boundary condition $\tilde\varphi$, the conditional distribution
+$\mu(\cdot \mid \varphi_{\Lambda^c} = \tilde\varphi_{\Lambda^c})$ is given by the finite-volume Gibbs
+measure
+\begin{equation}
+\mu^\Phi_\Lambda(\varphi \mid \tilde\varphi)
+  :=
+\frac{1}{Z^\Phi_\Lambda(\tilde\varphi)}
+e^{-H^\Phi_\Lambda(\varphi_\Lambda \tilde\varphi_{\Lambda^c})}
+d\varphi_\Lambda,
+\end{equation}
+where $\varphi_\Lambda\tilde\varphi_{\Lambda^c}$ is the concatenation of
+$\varphi_\Lambda = (\varphi_x)_{x\in\Lambda}$ and $\tilde\varphi_{\Lambda^c}$
+and where $d\varphi_\Lambda$ is the product measure on $S^\Lambda$.
+We denote the collection of all such Gibbs measures by $\Gibbs(\Phi)$.
+
+Let $\Lambda_N$ be a sequence of finite subsets of $\vertices$ such that $\Lambda_N \uparrow \vertices$
+and let $\varphi^{(N)}$ be a sequence of spin configurations in $\Omega$. It can be verified
+that, if the sequence of measure $\mu_N = \mu^\Phi_{\Lambda_N}(\cdot \mid \varphi^{(N)})$ converges weakly
+to a measure $\mu$, then $\mu$ is a Gibbs measure. In this case, we can study the measure $\mu$
+by studying \emph{observables}, which are bounded continuous functions $f : \Omega \to \R$. It suffices
+to study the limiting properties of $\mu_N(f)$.
+
+\todo{Two-point function and
+susceptibility. Discuss first-order and continuous phase transitions.
+Specialize to $\Zd$. Specialize to infinite-volume limits along tori (mainly
+to avoid pathological sequences of finite-volume approximations).}
+
+
+\section{Critical behaviour}
+
+Let $\Gcal_\beta$ denote the set of all Gibbs measures for some potential at inverse temperature
+$\beta$. A \emph{phase transition} is said to occur at inverse temperature $\beta$ if
+$|\Gcal_\beta| > 1$. Many systems possess a unique \emph{critical point} $\beta_c$, such that
+\begin{equation}
+|\Gcal_\beta|
+\begin{cases}
+=1,  & \beta < \beta_c \\
+> 1, & \beta > \beta_c
+\end{cases}.
+\end{equation}
+Moreover, such systems tend to exhibit \emph{critical behaviour} when $\beta = \beta_c$:
+roughly speaking, this means that a number of observables scale according to a power
+law (sometimes with logarithmic corrections) at or near $\beta_c$.
+
+The presence of critical behaviour is most notably signalled by the divergence of the
+\emph{correlation length}; this is defined for any model (of walks or spins) with two-point
+function $G_x(\mu)$ by
+\begin{equation}
+\xi(\mu) = \limsup_{k\to\infty} \frac{-k}{\log G_{ke}(\mu)}, \quad |e| = 1.
+\end{equation}
+\todo{Note: this is for the Euclidean lattice}
+A related quantity is the \emph{correlation length of order $p$}, defined by
+\begin{equation}
+\xi_p(\mu) = \left(\frac{\sum_{x\in\Zd} |x|^p G_x(\mu)}{\chi(\mu)}\right)^{1/p}
+\end{equation}
+
+
+\subsection{The DGFF}
+
+\todo{See candidacy report or preliminary version of it.}
+
+
+\subsection{Universality}
+
+Critical behaviour should, roughly speaking, only depend on ``tail properties''
+(global geometry, range of interaction, and symmetries).
+
+
+\section{Relations between models}
+
+
+\subsection{The SRW and DGFF}
+
+\todo{See candidacy report or preliminary version of it. See also misc notes}
+
+For the discrete-time simple random walk, the canonical partition function $c_n$,
+which is the number of such walks, is just $(2 d)^n$.
+
+
+\subsection{The Kac-Siegert representation}
+
+\todo{See notes on this}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\pagebreak
+
+\section{Collected definitions}
 
 Before defining the models, we establish some notation.
 Let $L > 1$ be an integer (which we will need to fix large).
@@ -61,7 +528,8 @@ We also use the
 % discrete Laplacian $\Delta_{\Zd}$ on $\Zd$, and the
 continuous Laplacian $\Delta_{\Rd}$ on $\Rd$.
 
-\subsubsection{The \texorpdfstring{\phifour}{phi4} model}
+\subsection{The \texorpdfstring{\phifour}{phi4} model}
+% From clp
 
 \commentbw{Might actually be easier to study a perturbation of
 the $|\varphi|^4$ model analogous to the WSAW-SA. However, do
@@ -118,9 +586,33 @@ centred cube in $\Z^d$ (say as $[-\frac12 L^N+1,\frac12 L^N]^d \cap \Z^d$ if $L^
 and as $[-\frac12 (L^N-1), \frac12 (L^N-1)]^d \cap \Z^d$ if $L^N$ is odd).
 \commentbw{This embedding is repeated elsewhere}
 
-\commentbw{Define susceptibility and correlation length}
+The \emph{susceptibility} is defined by
+\begin{equation}
+\label{e:susceptibility-def}
+\chi(g, \nu; n)
+= \lim_{N\to\infty} \sum_{x\in\Lambda_N} G_{x,N} (g,\nu; n).
+\end{equation}
+Given a unit vector $e\in \Zd$,
+the \emph{correlation length} $\xi$ is defined by
+\begin{equation}\label{e:xidef}
+\xi (g,\nu; n) = \limsup_{k \to \infty} \frac{k}{\log G_{ke}(g, \nu; n)}.
+\end{equation}
+It provides a characteristic length scale for the model.
+We study a related quantity,
+the \emph{correlation length of order} $\clo >0$,
+defined in terms of the infinite volume two-point function and susceptibility by
+\begin{equation}
+\label{e:clp}
+\xi_{\clo} (g, \nu; n)
+=
+    \left[\frac{\sum_{x \in \Z^4} |x|^\clo G_{x}(g, \nu; n)}
+    {\chi(g, \nu; n)}\right]^\frac{1}{\clo}
+\hspace{-8pt}.
+\end{equation}
 
-\subsubsection{The weakly self-avoiding walk with self-attraction}
+
+\subsection{The weakly self-avoiding walk with self-attraction}
+% From saw-sa
 
 For $d>0$, let $X$ denote the continuous-time simple random walk on $\Zd$.
 That is, $X$ is the stochastic process
@@ -240,9 +732,7 @@ contacts are encouraged by the factor
 $\exp[\frac{\gamma}{2d}C_T]$ when $\gamma > 0$.
 
 
-\section{The critical point}
-
-\commentbw{Add a discussion for the $|\varphi|^4$ model}
+\subsection{The critical point}
 
 The right-hand sides of \eqref{e:Gsa}--\eqref{e:suscept-def} % \eqref{e:xip-def}
 are positive or $+\infty$,
