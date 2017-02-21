@@ -35,7 +35,7 @@ Change $\chi$ and $\tilde\chi$ to $\backslash chicCov$ and $\backslash chicCovge
 \end{itemize}
 
 
-\section{Gibbs measure}
+\section{Statistical mechanics}
 
 
 \subsection{Hamiltonian mechanics}
@@ -142,11 +142,12 @@ The normalizing constant $Z_\beta$ is known as the \emph{(canonical) partition f
 
 \subsection{Gibbs measures}
 
-Given any state space $\Omega$ (not necessarily of point particles) and Hamiltonian
-$H : \Omega \to \R$, we define the \emph{Gibbs measure} at inverse temperature $\beta > 0$
+Given a measure space $(\Omega, d\lambda)$ (not necessarily of point particles) and measurable
+Hamiltonian $H : \Omega \to \R$ for which $e^{-H}$ is integrable with respect to $d\lambda$,
+we define the \emph{Gibbs measure} at inverse temperature $\beta > 0$
 on $\Omega$ to be the probability measure of the form
 \begin{equation}
-\frac{1}{Z} e^{-\beta H(\omega)} d\omega_1.
+\frac{1}{Z} e^{-\beta H(\omega)} d\omega.
 \end{equation}
 
 There are various justifications for studying Gibbs measures.
@@ -171,22 +172,39 @@ when $\mu$ is the Gibbs measure associated to $H$.
 
 \subsection{Grand canonical ensemble}
 
-By considering a physical system which is free to exchange both energy and particles with its
-environment, a similar derivation as above leads us to the definition of the \emph{grand
-canonical ensemble} with Hamiltonian $H$, given by
+Consider a physical system that is free to exchange particles with its environment
+and let $\Omega_T$ be the space of configurations with $T$
+particles and let $H_T : \Omega_T \to \R$ be the Hamiltonian on $\Omega_T$
+for $T\in\interval\subset\R$ (we allow $T$ to take non-integer values for
+additional generality).
+The state space for the full system is then given by $\Omega = \bigsqcup_{T \in \interval} \Omega_T$,
+where $\sqcup$ denotes the disjoint union. Let $|\omega|$ be the unique value of $T$
+such that $\omega \in \Omega_T$.
+We define $H : \Omega \to \R$ by $H(\omega) = H_{|\omega|}(\omega)$.
+
+By an argument similar to the derivation of the canonical ensemble (either by marginalizing
+the microcanonical ensemble or by maximum entropy) we are led to define the \emph{grand
+canonical ensemble} with Hamiltonian $H$ and \emph{fugacity} (or \emph{activity}) $\nu \in \R$ by
 \begin{equation}
-\frac{1}{Z_{\beta,\nu}} e^{-\beta (H(\omega) - \nu |\omega|)},
+\frac{1}{Z_{\beta,\nu}} e^{-\beta (H(\omega) - \nu |\omega|)}.
 \end{equation}
-where $|\omega|$ is a number representing the number of particles in the statem $\omega$.
-For mathematical purposes, the $\nu |\omega|$ term can be absorbed into the Hamiltonian.
-Thus, the grand canonical ensemble is itself a Gibbs measure and we will only loosely
+Since the $\nu |\omega|$ term can be absorbed into the Hamiltonian,
+the grand canonical ensemble is itself a Gibbs measure and we will only loosely
 distinguish between the canonical and grand canonical ensembles. 
 
 
 \section{Lattice models}
 
-Let $\graph = (\vertices, \edges)$ be a graph and let $A$ be a symmetric
-$\vertices\times\vertices$ matrix.
+Let $\graph = (\vertices, \edges)$ be a graph.
+% Let $J$ be a $\vertices \times \vertices$
+% matrix with $J_{xx} = 0$ and $J_{xy} \ge 0$ for all $x, y \in \vertices$ and suppose
+% that $J$ has summable rows: $\sum_{y\in\vertices} J_{xy} < \infty$. Let $D$ be
+% the diagonal matrix with entries $D_{xx} = \sum_{y\in\vertices} J_{xy}$, and let $A = D - J$.
+
+% \todo{The $Q$ matrix will be $Q = -A$, the matrix $J$ will be the (ferromagnetic) Ising interaction,
+% and $A$ will be the interaction for the $|\varphi|^4$ model.
+% E.g.\ $A = -\Delta + m^2$ has positive diagonal entries. Recall that
+% $\Delta_{xy} = \1_{x \sim y} - 2 d \1_{x=y}$.}
 
 
 \subsection{Models of walks}
@@ -218,7 +236,7 @@ Given such a model $d\mu_T$, we define
 \begin{equation}
 c_T = \int_{\Wcal_T} d\mu_T.
 \end{equation}
-Given a parameter $\nu \in \R$ (called the \emph{killing rate} or \emph{fugacity}),
+Given a parameter $\nu \in \R$ (called the \emph{killing rate}),
 there is a natural measure $\mu$ on $\Wcal$ defined by
 \begin{equation}
 \int f \; d\mu
@@ -241,6 +259,7 @@ with
 \end{equation}
 where $z = e^{-\nu}$.
 
+\todo{Since we are not translation-invariant yet, should replace $x$ by $(a, b)$.}
 Let $\Wcal_T(x) \subset \Wcal_T$ denote the collection of walks $\omega \in \Wcal_T$
 with $\omega(T) = x$. The conditional measure $\mu^{(x)}_T = \mu_T(\cdot \mid \Wcal_T(x))$
 is given by
@@ -264,27 +283,42 @@ In discrete time, we have
 G_x = \frac{1 - e^{-\nu}}{\nu} \sum_{n=0}^\infty c_n(x) z^n.
 \end{align}
 
-Many models of walks take the form
+Many models of walks are determined by letting $\mu_T$ be the canonical Gibbs measure
+associated to a Hamiltonian $H_T : \Wcal_T \to \R$ and a base measure $d\lambda$. That is,
 \begin{equation}
-d\mu_T(\omega) = \frac{1}{Z_T} e^{-H_T(\omega)} d\lambda_T(\omega),
+d\mu_T(\omega) = \frac{1}{Z_T} e^{-H_T(\omega)} d\lambda_T(\omega).
 \end{equation}
-where $d\lambda_T$ is a probability measure on $\Wcal_T$ and the function $H_T : \Wcal_T \to \R$
-is known as the \emph{Hamiltonian}.
+In this caes, $\mu$ is the corresponding grand canonical ensemble (with killing rate playing
+the role of fugacity) and $c_T$ and $\chi$
+are the canonical and grand canonical partition functions, respectively.
 
 % In what follows, we let $Q$ be a $\vertices \times \vertices$ matrix with $Q_{xy} = 0$
 % whenever $\{ x, y \} \notin \edges$.
 
 
-\subsubsection{Simple random walk}
+\subsubsection{Random walk}
 
-Let $Q$ denote a $\vertices \times \vertices$ matrix with $Q_{xy} = 0$ whenever
-$\{ x, y \} \notin \edges$.
-Let $X = (X_T)_{T\ge 0}$ be the $V$-valued
-Markov process with generator $Q$ and let
-$A = e^Q$ so that $(X_n)_{n\in\Z_+}$ is a
-$V$-valued Markov chain with transition matrix $A$.
+Let $J$ be a $\vertices \times \vertices$
+matrix with $J_{xx} = 0$ and $J_{xy} \ge 0$ for all $x, y \in \vertices$ and suppose
+that $J$ has summable rows: $\sum_{y\in\vertices} J_{xy} < \infty$. Let $D$ be
+the diagonal matrix with entries $D_{xx} = \sum_{y\in\vertices} J_{xy}$
+and let $Q = J - D$.
+
+Then $Q$ is the generator of a $V$-valued Markov process $(X_t)_{t \ge 0}$:
+the holding time of $X$ at $x$ is exponentially distributed with rate $-Q_{xx}$
+and the transition probability from $x$ to $y \ne x$ is
+$-Q_{xy} / Q_{xx} = J_{xy} / D_{xx}$.
+We call $X$ the \emph{continuous-time random walk} with generator $Q$.
+
+If $P$ is any stochastic matrix, then $P$ is the transition matrix for a Markov chain
+$(\tilde X_n)_{n\in\Z_+}$, called the \emph{random walk} with transition matrix $P$.
+In particular, we can let $P_{xy} = -Q_{xy} / Q_{xx}$ if $x \ne y$ and $P_{xx} = 0$.
+
+In both cases, the \emph{simple random walk} is the random walk with $Q = -\Delta$.
+\todo{Define killed SRW (or more general substochastic processes).}
+
 For $v \in \vertices$, let $E_v$ denote the expectation
-with respect to the process $X$ conditioned so that $X_0 = v$.
+with respect to either the process $X$ or $\tilde X$ conditioned so that $X_0 = v$.
 
 \subsubsection{Self-avoiding walk}
 
@@ -363,9 +397,9 @@ We also define the inner product
 \begin{equation}
 \varphi \cdot \tilde\varphi = \sum_{i=1}^n \sum_{x\in\vertices} \varphi^i_x \tilde\varphi^i_x.
 \end{equation}
-We also let a $V \times V$ matrix $A$ act on $\varphi$ via
+We also let a $V \times V$ matrix $M$ act on $\varphi$ via
 \begin{equation}
-(A\varphi)^i_x = \sum_{y\in\vertices} A_{xy} \varphi^i_x.
+(M\varphi)^i_x = \sum_{y\in\vertices} M_{xy} \varphi^i_x.
 \end{equation}
 
 For any spin system, we define the \emph{two-point function}
@@ -380,11 +414,12 @@ and the \emph{susceptibility}
 
 \subsubsection{Gaussian fields}
 
-Suppose that $A$ is positive-definite. Then the Gibbs measure induced by the Hamiltonian
+Suppose that $M$ is a positive-definite symmetric matrix.
+Then the Gibbs measure induced by the Hamiltonian
 \begin{equation}
-H(\varphi) = \frac{1}{2} \varphi \cdot A \varphi
+H(\varphi) = \frac{1}{2} \varphi \cdot M \varphi
 \end{equation}
-is a Gaussian measure, known as the Gaussian field with covariance $C = A^{-1}$.
+is a Gaussian measure, known as the discrete Gaussian field with covariance $C = M^{-1}$.
 In particular, when $C = (-\Delta + m^2)^{-1}$ with $m^2 \ge 0$, we get the \emph{discrete Gaussian
 free field} (DGFF). The DGFF is said to be \emph{massive} with \emph{mass} $m^2$ when $m^2 > 0$,
 and is said to be \emph{massless} when $m^2 = 0$.
@@ -403,24 +438,29 @@ H(\varphi)
     +
   \frac{1}{2} \nu |\varphi_x|^2
     +
-  \frac{1}{2} \varphi_x \cdot (-\Delta \varphi)_x
+  \frac{1}{2} \varphi_x \cdot (M \varphi)_x
 \right).
 \end{equation}
+Due to the presence of the quartic term, $M$ can be any symmetric
+matrix\footnote{Positive-definiteness is required for the Gaussian measure to be
+integrable. There is no loss of generality in assuming symmetry of $M$.}
+An important special case corresponds to the choice $M = -\Delta$.
 
-To do: replace $\Delta$ by $A$.
+\todo{Discuss ferromagnetism}
 
 
 \subsubsection{The $O(n)$ spin model}
 
-If we take the limit $g\to\infty$ and $\nu\to-\infty$ in the appropriate way, we get the
-$O(n)$ spin model with $S = S^{n-1}$ the $(n-1)$-sphere in $\R^n$ and with Hamiltonian
+\todo{This is for $M = -\Delta$. Do general $M$ by extracting the diagonal part.}
+
+If we take the limit $g\to\infty$ with $\nu = -g / 2$, the $|\varphi|^4$ spin model converges
+weakly to the $O(n)$ spin model, given by the Hamiltonian
 \begin{equation}
-H(\varphi) = -\frac{1}{2} \varphi \cdot A \varphi.
+H(\varphi) = -\frac{1}{2} \varphi \cdot A \varphi
 \end{equation}
+on the state space $S = S^{n-1} \subset \R^n$ the $(n-1)$-sphere.
 The case $n = 1$ is the well-known \emph{Ising model}. When $n = 2$, we get the \emph{XY model}
 and when $n = 3$, the \emph{classical Heisenberg model}.
-
-\todo{Diagonal part doesn't matter? Ferromagnetic $A$}
 
 
 \subsubsection{Infinite-volume Gibbs measures}
