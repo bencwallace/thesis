@@ -38,20 +38,22 @@ Change $\chi$ and $\tilde\chi$ to $\backslash chicCov$ and $\backslash chicCovge
 \section{Statistical mechanics}
 
 
-\subsection{Hamiltonian mechanics}
+\subsection{The microcanonical ensemble}
 
+A physical system may be determined by a choice of \emph{state space} $\Omega$ and a function
+$H : \Omega \to \R$, called the \emph{Hamiltonian}. The value $H(\omega)$ represents the
+total energy of the system in state $\omega\in\Omega$.
+
+\begin{example}
 Let $\Omega = U^n \times \R^{3n}$, where $U \subset \R^3$, and denote a generic element of
 $\Omega$ by $(q, p)$, where $q \in U^n$ and $p \in \R^{3n}$. Then $\Omega$ is the state
 space of a system of $n$ point particles $i = 1, \ldots, n$ with positions $q_i \in U$
-and momenta $p_i \in \R^3$. Given a $C^1$ function $H : \Omega \to \R$, known as the
-\emph{Hamiltonian},
+and momenta $p_i \in \R^3$. Given a $C^1$ Hamiltonian $H : \Omega \to \R$,
 the dynamics of such a system is determined by \emph{Hamilton's equations}
 \begin{align}
 \dd{q}{t} &= \nabla_q H(q(t), p(t)) \\
 \dd{p}{t} &= -\nabla_p H(q(t), p(t)).
 \end{align}
-
-The value $H(q, p)$ represents the total energy of the configuration $(q, p)$.
 An immediate consequence of Hamilton's equations and the chain rule is the principle
 of conservation of energy:
 \begin{equation}
@@ -60,35 +62,34 @@ of conservation of energy:
 Thus, a Hamiltonian system with initial configuration $(q(0), p(0))$ and energy
 $E = H(q(0), p(0))$ will evolve on the constant energy shell $S_E = H^{-1}(E)$.
 
-We will assume that $H$ has compact level sets so that the solutions to Hamilton's
-equations can be extended globally in time.
-
-
-\subsection{The microcanonical ensemble}
-
-In general, especially when $n$ is large, a Hamiltonian system is likely to be too
-complicated to understand in a precise way.
+Let us assume that $H$ has compact level sets so that the solutions to Hamilton's
+equations can be extended globally in time. In general, especially when $n$ is large,
+a Hamiltonian system is likely to be too complicated to understand in a precise way.
 The basic idea of statistical mechanics is to leverage this complexity by assuming
 (or in some cases proving) that, as $t\to\infty$, such a system will settle into a
-state of equilibrium in which all possible states are equiprobable.
+state of equilibrium in which all possible states are ``equiprobable''.
+% One can make sense of this notion via the measure defined by
+% \begin{equation}
+% \mu'_E(A) = \lim_{\delta\downarrow 0} \int_{H^{-1}([E, E + \delta])} \1_A(x) \; dx.
+% \end{equation}
+% This measure is well-defined, is supported on $S_E$, and is invariant under the Hamiltonian
+% dynamics \cite{Adams06}. Since $S_E$ is compact, $\mu'_E(S_E) < \infty$
+% we can define the probability measure
+% \begin{equation}
+% \mu_E(A) = \mu'_E(A) / \mu'_E(S_E).
+% \end{equation}
+\end{example}
 
-It can be shown that the measure defined by
-\begin{equation}
-\mu'_E(A) = \lim_{\delta\downarrow 0} \int_{H^{-1}([E, E + \delta])} \1_A(x) \; dx
-\end{equation}
-exists, is supported on $S_E$, and is invariant under the Hamiltonian dynamics
-\cite{Adams06}. By our assumption that $S_E$ is compact, $\mu'_E(S_E) < \infty$
-and we can define the \emph{microcanonical ensemble} $\mu_E$ by
-\begin{equation}
-\mu_E(A) = \mu'_E(A) / \mu'_E(S_E).
-\end{equation}
+Although one can make sense of the notion of an equiprobable probability distribution
+on $S_E$ in the above example, it is simpler (and more relevant to this thesis) to
+consider the case when $S_E$ is finite. In this case, we define the
+\emph{microcanonical distribution} on $S_E = H^{-1}(E)$ to be the usual uniform
+measure on the (finite) set $S_E$.
 
 
 \subsection{The canonical ensemble}
 
-The microcanonical ensemble may present obstacles to analysis due to the fact that
-it is typically singular with respect to the Lebesgue measure on $\Omega$.
-Moreover, in practice, most systems of interest are not truly isolated and may exchange
+In practice, most systems of interest are not truly isolated and may exchange
 energy with
 their environment. Everyday experience, however, suggests that
 a physical system that is left undisturbed for a sufficiently long time will achieve
@@ -102,32 +103,33 @@ constant, even if system $A$ is at a different temperature.
 It is then reasonable to assume that the total system $A \times B$
 is isolated and therefore described by a microcanonical distribution on a constant energy shell.
 
-The marginal distribution of $A$ can then be computed by the following rough argument.
+\begin{example}
 Let $\Omega_1$ and $\Omega_2$ be the state spaces of systems $A$ and
 $B$, respectively, and let $H_i : \Omega_i \to \R$ be their respective Hamiltonians,
-where $i = 1, 2$. Then the total system $A \times B$ has state space $\Omega_1 \times \Omega_2$
+where $i = 1, 2$. We assume that $|S^i_E| < \infty$ for $i = 1, 2$ and for any $E$.
+The total system $A \times B$ has state space $\Omega_1 \times \Omega_2$
 and Hamiltonian $H : \Omega \to \R$ given by\footnote{We are assuming the energy due to interactions
 between $A$ and $B$ is negligible.}
-$H(\omega_1, \omega_2) = H_1(\omega_1) + H_2(\omega_2)$
-for $\omega_i \in \Omega_i$. Suppose that $S_E$ is compact so that the microcanonical ensemble $\mu_E$
-on $S_E$ is well-defined.
+$H(\omega) = H_1(\omega_1) + H_2(\omega_2)$
+for $\omega = (\omega_1, \omega_2) \in \Omega$.
+% Suppose that $S_E$ is compact so that the microcanonical ensemble $\mu_E$ on $S_E$ is well-defined.
 
 For any $E_2 \in \R$, let $S^2_{E_2} = H_2^{-1}(E_2)$. Then the marginal distribution $\mu^1_E$
-of $\mu$ on $\Omega_1$ is given by the density
+of $\mu$ on $\Omega_1$ is given by
 \begin{equation}
-f^1_E(\omega_1)
+\mu^1_E(\omega_1)
   =
-\int \frac{\1_{(\omega_1, \omega_2) \in S_E}}{|S_E|} d\omega_2
+\sum_{\omega_2:\omega\in S_E} \mu_E(\omega)
   =
-\frac{|S^2_{E-H_1(\omega_1)}|}{|S_E|}
-  =
-\frac{e^{h^2_{E-H_1(\omega_1)}}}{|S_E|},
+\frac{\# S^2_{E-H_1(\omega_1)}}{\# S_E}
+  \propto
+e^{h^2_{E-H_1(\omega_1)}},
 \end{equation}
-where $|S|$ is the Lebesgue measure of a set $S$ and
+where
 \begin{equation}
 h^2_{E_2} = \log |S^2_{E_2}|
 \end{equation}
-is the entropy of the microcanonical ensemble on $S^2_{E_2}$.
+is the \emph{entropy} of the microcanonical ensemble on $S^2_{E_2}$.
 
 If $E_2 \mapsto h^2_{E_2}$ is $C^1$, then we have the first-order expansion
 \begin{equation}
@@ -146,25 +148,24 @@ The assumption that system $B$ is a ``heat bath'' then amounts to saying that
 $E - H_1(\omega_1)$ is such a negligible perturbation of $E$ that the first-order
 approximation above accurately represents the marginal density of $\mu^1_E$.
 
-The probability measure
-\begin{equation}
-\frac{1}{Z_\beta} e^{-\beta H_1(\omega_1)} d\omega_1
-\end{equation}
-is known as the \emph{canonical ensemble} on $\Omega_1$ at \emph{inverse temperature} $\beta > 0$.
-The normalizing constant $Z_\beta$ is known as the \emph{(canonical) partition function}.
-
-
-\subsection{Gibbs measures}
+% The probability measure
+% \begin{equation}
+% \frac{1}{Z_\beta} e^{-\beta H_1(\omega_1)} d\omega_1
+% \end{equation}
+% is known as the \emph{canonical ensemble} on $\Omega_1$ at \emph{inverse temperature} $\beta > 0$.
+% The normalizing constant $Z_\beta$ is known as the \emph{(canonical) partition function}.
+\end{example}
 
 Given a measure space $(\Omega, d\lambda)$ (not necessarily of point particles) and measurable
 Hamiltonian $H : \Omega \to \R$ for which $e^{-H}$ is integrable with respect to $d\lambda$,
-we define the \emph{Gibbs measure} at inverse temperature $\beta > 0$
+we define the \emph{canonical distribution} or \emph{Gibbs measure} at inverse temperature $\beta > 0$
 on $\Omega$ to be the probability measure of the form
 \begin{equation}
-\frac{1}{Z} e^{-\beta H(\omega)} d\omega.
+\frac{1}{Z_\beta} e^{-\beta H(\omega)} d\omega.
 \end{equation}
+The normalizing constant $Z_\beta$ is known as the \emph{canonical partition function}.
 
-There are various justifications for studying Gibbs measures.
+There are a number of reasons for studying measures of this form.
 One is the \emph{principle of maximum entropy}, which states roughly that the least
 biased choice of probability distributions from a given class of distributions is the
 one with the maximum entropy. It can be shown using the method of Lagrange multipliers
@@ -179,9 +180,9 @@ Another, purely mathematical, reason for studying measures of this form is the H
 theorem, which states that any Markov random field on a graph has a representation as a Gibbs
 measure whose Hamiltonian is a sum of ``local'' interactions.
 
-Lastly, there is the variational principle, which states that the free energy associated to
+\todo{Lastly, there is the variational principle, which states that the free energy associated to
 a pair $(H, \mu)$, where $H$ is a Hamiltonian and $\mu$ is a probability measure is minimized
-when $\mu$ is the Gibbs measure associated to $H$.
+when $\mu$ is the Gibbs measure associated to $H$.}
 
 
 \subsection{Grand canonical ensemble}
@@ -192,7 +193,8 @@ particles and let $H_T : \Omega_T \to \R$ be the Hamiltonian on $\Omega_T$
 for $T\in\interval\subset\R$ (we allow $T$ to take non-integer values for
 additional generality).
 The state space for the full system is then given by $\Omega = \bigsqcup_{T \in \interval} \Omega_T$,
-where $\sqcup$ denotes the disjoint union. Let $|\omega|$ be the unique value of $T$
+where $\sqcup$ denotes the disjoint union.
+For $\omega\in\Omega$, let $|\omega|$ be the unique value of $T$
 such that $\omega \in \Omega_T$.
 We define $H : \Omega \to \R$ by $H(\omega) = H_{|\omega|}(\omega)$.
 
@@ -202,6 +204,7 @@ canonical ensemble} with Hamiltonian $H$ and \emph{fugacity} (or \emph{activity}
 \begin{equation}
 \frac{1}{Z_{\beta,\nu}} e^{-\beta (H(\omega) - \nu |\omega|)}.
 \end{equation}
+The normalizing constant $Z_{\beta,\nu}$ is known as the \emph{grand canonical partition function}.
 Since the $\nu |\omega|$ term can be absorbed into the Hamiltonian,
 the grand canonical ensemble is itself a Gibbs measure and we will only loosely
 distinguish between the canonical and grand canonical ensembles. 
@@ -234,7 +237,7 @@ In the following, $\interval_T$ will denote one of the following choices (for al
 \end{equation}
 These two choices will be referred to, respectively, as the \emph{discrete-} and
 \emph{continuous-time} cases.
-Fix a designated vertex $0 \in \vertices$ in $\graph$ and
+Fix a designated vertex $0 \in \vertices$ and
 let $\Wcal_T$ denote the set of
 right-continuous paths $\omega : \interval_T \to \vertices$ with $\omega(0) = 0$.
 We will refer to elements of $\Wcal := \bigcup_{T \geq 0} \Wcal_T$ as \emph{walks}.
