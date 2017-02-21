@@ -1,8 +1,4 @@
-% This is the \documentclass[]{} command.  The manditory argument
-% specifies the "flavour" of thesis (ubcthesis for UBC).  The
-% optional arguments (in []) specify options that affect how the
-% thesis is displayed.  Please see the ubcthesis documentation for
-% details about the options.
+% Please see the ubcthesis documentation for details about the options.
 \documentclass[phd,oneside]{ubcthesis}
 % According to
 % https://www.grad.ubc.ca/current-students/dissertation-thesis-preparation/page-layout-margins-numbering
@@ -12,10 +8,13 @@
 
 % check ubcsample.tex for other potentially useful packages to include
 \input{macros}
+\input{extramacros}
 \renewcommand{\chicCov}{\vartheta}
 \newcommand{\chicCovgen}{{\tilde\chicCov}}
 \newcommand{\clo}{p}
 \newcommand{\gcc}{g}	% g = \beta coupling constant
+\newcommand{\interval}{\Ical}
+\newcommand{\todo}[1]{#1}
 
 %******** setspace *******************************
 % According to https://www.grad.ubc.ca/current-students/dissertation-thesis-preparation/page-layout-margins-numbering,
@@ -24,7 +23,7 @@
 % -acknowledgements, footnotes, table, figure and illustration captions and the bibliography can be single-spaced, provided that individual entries are separated by a full space
 \usepackage{setspace}
 \onehalfspacing
-%\doublespacing
+
 
 \institution{The University Of British Columbia}
 \faculty{The Faculty of Graduate Studies}
@@ -41,18 +40,7 @@
                                       % command from eating the space.
 \program{Mathematics}
 
-% % One might want to override the format of the section and chapter
-% % numbers.  This shows you how to do it.  Note that the current
-% % format is acceptable for submission to the FoGS: If you wish to modify
-% % these, you should check with the FoGS explicity. prior to making
-% % the modifications.
-% \renewcommand\thepart         {\Roman{part}}
-% \renewcommand\thechapter      {\arabic{chapter}}
-% \renewcommand\thesection      {\thechapter.\arabic{section}}
-% \renewcommand\thesubsection   {\thesection.\arabic{subsection}}
-% \renewcommand\thesubsubsection{\thesubsection.\arabic{subsubsection}}
-% \renewcommand\theparagraph    {\thesubsubsection.\arabic{paragraph}}
-% \renewcommand\thesubparagraph {\theparagraph.\arabic{subparagraph}}
+% See template regarding chapter numbers, etc.
 
 \setcounter{tocdepth}{2}
 \setcounter{secnumdepth}{2}
@@ -62,36 +50,18 @@
 % \input{frontmatter}
 \mainmatter
 \input{intro}
-\input{reformulation}
-\input{rg}
+% \input{reformulation}
+% \input{rg}
 % \input{sa}
 % \input{corr}			% probably best to focus on n \ge 1 here
 % \input{conclusion}
 
-%% This file is setup to use a bibtex file sample.bib and uses the
-%% plain style.  Other styles may be used depending on the conventions
-%% of your field of study.
-%%
+
 %%% Note: the bibliography must come before the appendices.
 \bibliographystyle{plain}
-\bibliography{rg}
+\bibliography{rg,thesis}
 
-%% Use this to reset the appendix counter.  Note that the FoGS
-%% requires that the word ``Appendices'' appear in the table of
-%% contents either before each appendix lable or as a division
-%% denoting the start of the appendices.  We take the latter option
-%% here.  This is ensured by making the \texttt{appendicestoc} option
-%% a default option to the UBC thesis class.
-
-%%% If you only have one appendix, please uncomment the following line.
-% \renewcommand{\appendicesname}{Appendix}
-% \appendix
-% \chapter{First Appendix}
-% Here you can have your appendices.  Note that if you only have a
-% single appendix, you should issue
-% \verb|\renewcommand{\appendicesname}{Appendix}| before calling
-% \verb|\appendix| to display the singular ``Appendix'' rather than the
-% default plural ``Appendices''.
+% See template regarding the appendix
 
 %% This changes the headings and chapter titles (no numbers for
 %% example).
