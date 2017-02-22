@@ -330,35 +330,46 @@ Let $J$ be a $\vertices \times \vertices$
 matrix with $J_{xx} = 0$ and $J_{xy} \ge 0$ for all $x, y \in \vertices$ and suppose
 that $J$ has summable rows: $\sum_{y\in\vertices} J_{xy} < \infty$. Let $D$ be
 the diagonal matrix with entries $D_{xx} = \sum_{y\in\vertices} J_{xy}$
-and let $\generator = D - J$.
+and let $\generator = m^2 + D - J$ for $m^2 \ge 0$.
 
-Then $\generator$ is the generator of a $V$-valued Markov process $(X_t)_{t \ge 0}$:
-the holding time of $X$ at $x$ is exponentially distributed with rate $-D_{xx}$
+Then $\generator$ is the generator of a Markov process $(X_t)_{t \ge 0}$ on
+$V \cup \{ \partial \}$, where $\partial$ is a designated state known as the
+\emph{cemetery state}:
+the holding time of $X$ at $x$ is exponentially distributed with rate $-(D_{xx} + m^2)$
 and the transition probability from $x$ to $y \ne x$ is
-$\hat P_{xy} = J_{xy} / D_{xx}$.
-We call $X$ the \emph{continuous-time random walk} with generator $\generator$.
+$\hat P_{xy} = J_{xy} / (D_{xx} + m^2)$ if $y \ne \partial$
+and $\hat P_{x\partial} = 1 - \sum_{y\in\vertices} J_{xy} / (D_{xx} + m^2)$
+otherwise.
+We call $X$ the \emph{killed continuous-time random walk} with generator $\generator$.
+\todo{What is the killing rate?}
 
-If $P$ is any stochastic matrix, then $P$ is the transition matrix for a Markov chain
-$(\hat X_n)_{n\in\Z_+}$, called the \emph{discrete-time random walk} with transition matrix $P$.
+If $P$ is any substochastic matrix, then $P$ is the transition matrix for a Markov chain
+on $V \cup \{\partial\}$ with transition probability from $x$ to $y \ne x$ given by $P_{xy}$
+if $y \ne x$ and $P_{x\partial} := 1 - \sum_{y\in\vertices} P_{xy}$ otherwise.
+The process
+$(\hat X_n)_{n\in\Z_+}$ is called the \emph{killed discrete-time random walk} with transition matrix $P$.
+\todo{What is the killing rate?}
 In particular, the random walk $\hat X_n$ with transition matrix given by $\hat P$ above
 is called the \emph{skeleton walk} associated with $X_t$.
 
+\begin{example}[Simple random walk]
 For $x, y \in \vertices$, write $x \sim y$ if $\{ x, y \} \in \edges$ and let
 $d_x = \#\{y \in \vertices : y \sim x \}$ denote the \emph{degree} of $x$. We define the
 \emph{graph Laplacian} $\Delta$ on $\graph$ by
 \begin{equation}
-\Delta_{xy} = \1_{x \sim y} - d_x \1_{x=y}.
+-\Delta_{xy} = D - J
 \end{equation}
-The continuous-time \emph{simple random walk} (SRW) is the random walk with $\generator = -\Delta$.
+with $D_{xy} = d_x \1_{x=y}$ and $J_{xy} = \1_{x \sim y}$.
+The continuous-time \emph{simple random walk} (SRW) is the random walk with $\generator = -\Delta + m^2$.
 The discrete-time SRW is the corresponding skeleton walk, which has transition matrix
-$P_{xy} = \1_{x=y} / d_x$.
-\todo{Define killed SRW (or more general substochastic processes).}
+$\hat P_{xy} = \1_{x \sim y} / (d_x + m^2)$ when $y \ne x, \partial$.
+\end{example}
 
 For $v \in \vertices$, let $E_v$ denote the expectation
 with respect to either the process $X$ or $\hat X$ conditioned so that $X_0 = v$.
 
 \begin{example}[The Green function]
-Let $P$ be a $\vertices \times \vertices$ stochastic matrix and suppose that the Neumann series
+Let $P$ be a $\vertices \times \vertices$ substochastic matrix and suppose that the Neumann series
 \begin{equation}
 \sum_{n=0}^\infty P^n
 \end{equation}
@@ -370,22 +381,23 @@ where $|f| = \sum_{x\in V} f_x^2$. Then $1 - P$ is invertible with inverse
 \begin{equation}
 (1 - P)^{-1} = \sum_{n=0}^\infty P^n.
 \end{equation}
-By writing $P^n_{xy} = E_x \1_{X_n=y}$, we see that the $xy$ entry of the
+By writing $P^n_{xy} = E_x( \1_{X_n=y})$, we see that the $xy$ entry of the
 above matrix is the expected number of visits to $y$ made by a random walk
 started at $x$. Thus, $1 - P$ is invertible if and only if the random walk
 with transition matrix $P$ is transient. \todo{(Does this really follow?)}
 
 In particular, consider the graph Laplacian on a graph of degree $d_0$
-(so $d_x = d_0$ for all $x$)
-and let $z = d_0 / (d_0 + m^2)$.
-% and $P = \frac{1}{d_0} J$, where $-\Delta = D - J$ with $J$ the off-diagonal part of $-\Delta$.
-Then
+(so $d_x = d_0$ for all $x$).
+% and let $z = d_0 / (d_0 + m^2)$.
+Then, with  $z = d_0 / (d_0 + m^2)$,
 \begin{equation}
--\Delta + m^2 = \frac{d_0}{z} (1 - z P).
+-\Delta + m^2 = (d_0 + m^2) (1 - z d_0^{-1} J).
+% -\Delta + m^2 = (d_0 + m^2) (1 - \hat P),
+% \frac{d_0}{z} (1 - z P).
 \end{equation}
-This is invertible whenever $m^2 > 0$ since $|z| < 1$ in this case.
+which is invertible whenever $m^2 > 0$ (since $|z| < 1$ in this case and $\|d_0^{-1} J\| = 1$).
 
-When $m^2 = 0$ ($z = 1$), we see that the massless Green function $(-\Delta)^{-1}$
+When $m^2 = 0$ ($z = 1$), the massless Green function $(-\Delta)^{-1}$
 exists if and only if the simple random walk is transient (in particular, it exists on
 $\Zd$ if and only if $d > 2$).
 \end{example}
@@ -396,32 +408,67 @@ $\Zd$ if and only if $d > 2$).
 
 A \emph{self-avoiding walk} of length $n$ on $\graph$ is a discrete walk $\omega\in\Wcal_n$
 that has no self intersections, i.e.\ $\omega_x = \omega_y$ if and only if $x = y$.
-We equip the collection of all self-avoiding walks of length $n$ with the uniform measure.
+We equip the collection of all self-avoiding walks of length $n$ with the uniform measure $\mu_n$.
+
+These measures do not form a consistent family due to the possibility of ``traps''.
+That is, the equality
+\begin{equation}
+\mu_{|\omega|}(\omega) = \sum_{\tilde\omega \supset \omega} \mu_{|\tilde\omega|}(\tilde\omega)
+\end{equation}
+does not hold for all $\omega\in\Wcal$ (the sum here is over all self-avoiding walks extending
+$\omega$).
+
+% \begin{wrapfigure}{R}{0.4\textwidth}
+% \vspace{-0.5cm}
+% \begin{center}
+%   \includegraphics[width=0.3\textwidth]{figures/trapped}
+%   \caption{A trapped self-avoiding walk}
+%   \label{fig:trap}
+% \end{center}
+% \vspace{-0.5cm}
+% \end{wrapfigure}
+
+For instance, consider the self-avoiding walk $\omega\in\Wcal_7$ on $\Zd$ in the Figure~\ref{fig:trap}.
+This walk has positive probability under $\mu_7$ but,
+since there are no self-avoiding walks extending $\omega$, the sum on the right-hand side
+above is $0$.
+
+As a result, the methods of stochastic processes cannot be directly used to study the self-avoiding
+walk. The existence of traps also contributes to the combinatorial difficulty of studying
+self-avoiding walk; for instance, it is not clear how to express $c_{n+1}$ (the number of
+$(n+1)$-step self-avoiding walks) in terms of $c_n$.
+
+% \begin{figure}[!htb]
+% \centering
+% \caption{A trapped self-avoiding walk}
+% \includegraphics{figures/trapped}
+% \end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsubsection{Weakly self-avoiding walk with self-attraction}
 
-The \emph{local time} of $\omega \in \Wcal_T$ at $x \in \Zd$ is defined by
+Define the \emph{local time} up to time $T$ of $\omega \in \Wcal$ at $x \in \Zd$ by
 \begin{equation}
 \lt^x_T(\omega) = \int_0^T \1_{\omega(S)=x} \; dS.
 \end{equation}
 In the discrete-time case, $\lt^x_n$ is the number of times $\omega$ visits $x$
 and is bounded by $n$. In the continuous-time case, $\lt^x_T$ is almost surely
-finite for paths distributed as continuous-time simple random walks.
+finite for the continuous-time simple random walk.
 
-For $\omega \in \Wcal_T$, we define the \emph{intersection local time}
+We also define the \emph{intersection local time}
 \begin{equation}
 \label{e:ITdef}
 I_T(\omega) = \sum_{x\in\Zd} (\lt^x_T)^2 = \int_0^T \int_0^T \1_{\omega(S_1)=\omega(S_2)} \; dS_1 dS_2
 \end{equation}
-and \emph{contact self-attraction} by
+and the \emph{contact self-attraction}
 \begin{equation}
 \label{e:CTdef}
 C_T(\omega) =
   \sum_{x \in \Z^d}\sum_{e\in\Ucal} \lt_T^x(\omega) \lt_T^{x+e}(\omega)
-  = \int_0^T ds \int_0^T dt \; \1_{\omega_{s} \sim \omega_{t}}.
+  = \int_0^T ds \int_0^T dt \; \1_{\omega_{s} \sim \omega_{t}}
 \end{equation}
+up to time $T$.
 % Recall that we have set the inverse temperature equal to $1$.
 Given a parameter $\gcc > 0$,
 and $\gamma \in \R$, we define
@@ -434,7 +481,8 @@ U_{\gcc,\gamma}(f)
 \sum_{x\in\Zd} \sum_{e\in\Ucal} f_x f_{x+e}
 \end{equation}
 for $f : \Zd \to \R$.
-The Hamiltonian is given by
+The \emph{weakly self-avoiding walk with self-attraction} (WSAW-SA) is defined via
+the Hamiltonian
 \begin{equation}
 H_T(\omega) = U_{\gcc,\gamma}(L_T(\omega)).
 \end{equation}
@@ -442,15 +490,14 @@ We denote the canonical partition function by
 \begin{equation}
 c_T = c_T(\gcc, \gamma) = E_0 \left( e^{-\gcc I(T) + \gamma C(T)} \right),
 \end{equation}
-where $0 \in \vertices$ is fixed,
-and the susceptibility by
+where $0 \in \vertices$ is fixed, and the susceptibility by
 \begin{equation}
 \chi(\gcc, \gamma, \nu) = \int_0^\infty c_T e^{-\nu T} \; dT.
 \end{equation}
 
 In the case $\gamma = 0$, the discrete-time version of this model is known as
 the \emph{Domb-Joyce model}. In continuous-time, it is the \emph{continuous-time
-weakly self-avoiding walk}, which we will abbreviate as WSAW.
+weakly self-avoiding walk} (WSAW).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -458,15 +505,15 @@ weakly self-avoiding walk}, which we will abbreviate as WSAW.
 
 Assume for now that $\graph$ is a finite graph.
 
-Let $S \subset \R^n$. A \emph{spin system} on $\graph$ with spin in $S$ is given
-by a probability measure $\mu$ on $\Omega = S^V$. Such a measure is often given by the
+Let $S \subset \R^n$. A \emph{spin system} on $\graph$ with spins in $S$ is given
+by a probability measure $\mu$ on $\Omega = S^V$. Such a measure is often given by a
 Gibbs measure
 \begin{equation}
 \frac{1}{Z} e^{-H(\varphi)} d\varphi,
 \end{equation}
 where $d\varphi = \prod_{x\in\vertices} d\varphi_x$ is the Lebesgue measure on
-$\Omega$. A spin system of the above form is said to be \emph{ferromagnetic} when
-the Gibbs measure can be written as
+$\Omega$. A spin system is said to be \emph{ferromagnetic} when the measure can
+be written as
 \begin{equation}
 \frac{1}{Z} e^{-\tilde H(\varphi)} \prod_{x\in\Lambda} \mu(d\varphi_x)
 \end{equation}
@@ -478,23 +525,25 @@ and $J_{xy} \ge 0$ for all $x, y$.
 
 Given a configuration $\varphi \in \Omega$
 of spins, we will denote the $i$-th component of $\varphi_x \in S$ by $\varphi^i_x$.
-We also define the inner product
+We define the inner product
 \begin{equation}
-\varphi \cdot \tilde\varphi = \sum_{i=1}^n \sum_{x\in\vertices} \varphi^i_x \tilde\varphi^i_x.
+\varphi \cdot \tilde\varphi = \sum_{i=1}^n \sum_{x\in\vertices} \varphi^i_x \tilde\varphi^i_x
 \end{equation}
-We also let a $V \times V$ matrix $M$ act on $\varphi$ via
+and we let a $V \times V$ matrix $M$ act on $\varphi$ via
 \begin{equation}
-(M\varphi)^i_x = \sum_{y\in\vertices} M_{xy} \varphi^i_x.
+(M\varphi)_x = \sum_{y\in\vertices} M_{xy} \varphi_x.
 \end{equation}
 
-For any spin system, we define the \emph{two-point function}
+We define the \emph{two-point function} (when it exists)
 \begin{equation}
-G_x(\mu) = \int d\mu(\varphi) \; \varphi_0 \cdot \varphi_x
+G_x(\mu) = \frac{1}{n} \int d\mu(\varphi) \; \varphi_0 \cdot \varphi_x
 \end{equation}
 and the \emph{susceptibility}
 \begin{equation}
 \chi(\mu) = \sum_{x\in\vertices} G_x(\mu).
 \end{equation}
+Note that this definition of the susceptibility is consistent with the corresponding
+definition for walks.
 
 
 \subsubsection{Gaussian fields}
@@ -513,7 +562,7 @@ free field} (DGFF), which is an example of a ferromagnetic spin system. The DGFF
 
 \subsubsection{The $|\varphi|^4$ spin model}
 
-The $|\varphi|^4$ spin model is given a quartic perturbation to the Gaussian free field.
+The $|\varphi|^4$ spin model is given by a quartic perturbation to the Gaussian free field.
 Precisely, the Hamiltonian has the form
 \begin{equation}
 H(\varphi)
@@ -524,64 +573,71 @@ H(\varphi)
     +
   \frac{1}{2} \nu |\varphi_x|^2
     +
-  \frac{1}{2} \varphi_x \cdot (C \varphi)_x
-\right).
+  \frac{1}{2} \varphi_x \cdot (A \varphi)_x
+\right)
 \end{equation}
-Due to the presence of the quartic term, $C$ can be any symmetric
-matrix\footnote{Positive-definiteness is required for the Gaussian measure to be
-integrable. There is no loss of generality in assuming symmetry of $C$.}.
-An important special case corresponds to the choice $C = -\Delta$, for which
+for $g > 0$, $\nu\in\R$, and $A$ any symmetric
+matrix \footnote{Positive-definiteness is required in the Gaussian case
+for integrability of the measure. There is no loss of generality in assuming
+symmetry of $A$.}.
+An important special case corresponds to the choice $A = -\Delta$, for which
 the $|\varphi|^4$ model is ferromagnetic.
 
 
 \subsubsection{The $O(n)$ spin model}
 
-Consider the $|\varphi|^4$ model with interaction matrix $C$ and suppose that $C$ has
-constant diagonal part with $C_{xx} \equiv c$. Let $J = C - c$ denote the off-diagonal
-part of $C$. Then the $|\varphi|^4$ Hamiltonian can be written as
+Consider the $|\varphi|^4$ model with interaction matrix $A = D - J$.
+Suppose that the
+diagonal part $D$ of $A$ is constant with $D_{xx} = d_0$
+Then the $|\varphi|^4$ Hamiltonian can be written as
 \begin{equation}
 \sum_{x\in\vertices}
 \left(
   \frac{1}{4} g |\varphi_x|^4
     +
-  \frac{1}{2} (\nu + c) |\varphi_x|^2
+  \frac{1}{2} (\nu + d_0) |\varphi_x|^2
 \right)
-  +
+  -
 \frac{1}{2} \varphi \cdot J \varphi
 \end{equation}
 
-If we take the limit $g\to\infty$ with $\nu = -(c + g / 2)$, the
+If we take the limit $g\to\infty$ with $\nu = -(d_0 + g / 2)$, the
 $|\varphi|^4$ spin model converges
 weakly to the $O(n)$ spin model, given by the Hamiltonian
 \begin{equation}
-H(\varphi) = \frac{1}{2} \varphi \cdot J \varphi
+H(\varphi) = -\frac{1}{2} \varphi \cdot J \varphi
 \end{equation}
 on the state space $S = S^{n-1} \subset \R^n$ the $(n-1)$-sphere.
 The case $n = 1$ is the well-known \emph{Ising model}. When $n = 2$, we get the \emph{XY model}
 and when $n = 3$, the \emph{classical Heisenberg model}.
+Once again, the choice $A = -\Delta$ with $J = \1_{x \sim y}$ leads to a ferromagnetic model.
 
 
 \subsubsection{Infinite-volume Gibbs measures}
 
-\todo{Does DLR work for general spins? See Friedli-Velenik and Georgii}
-
-The examples above do not generalize directly to the case of infinite graph due to the fact
-that the Hamiltonian is no longer absolutely summable. This obstacle was overcome in the work
-of Dobrushin, Lanford, and Ruelle.
+The examples above do not generalize directly to an infinite graph as
+the Hamiltonian is no longer well-defined in that case. This obstacle was overcome in the work
+of Dobrushin, Lanford, and Ruelle. We briefly sketch their ideas in this section.
 
 For every finite subset $A \subset \vertices$, let $\Phi_A : \Omega \to \R$ be a function that
-depends only on the values of the spins in $A$. Then we can define the Hamiltonian on a finite
-subset $\Lambda \subset \vertices$ by
+depends only on the values of the spins in $A$. The collection $\Phi = (\Phi_A)_{A\subset\vertices}$
+is known as a \emph{potential}. The Hamiltonian induced by $\Phi$ on a finite
+subset $\Lambda \subset \vertices$ is defined by
 \begin{equation}
 H^\Phi_\Lambda(\varphi) = \sum \Phi_A(\varphi),
 \end{equation}
 where the sum is over all finite subset $A \subset \vertices$ that intersect $\Lambda$.
 For simplicity, suppose that the space of spins $S$ is either a discrete set equipped with the
 counting measure or is equipped with the Lebesgue measure. Let us also assume that the Hamiltonians
-$H^\Phi_\Lambda$ are bounded below. Then the  Gibbs measures corresponding to $H^\Phi_\Lambda$ are
-all well-defined. Then a measure $\mu$ on $\Omega$ is said to be a Gibbs measure if for $\mu$-almost
+$H^\Phi_\Lambda$ are bounded below. Thus, the  Gibbs measures corresponding to $H^\Phi_\Lambda$ are
+all well-defined.
+
+For $\Lambda \subset \vertices$ and $\varphi \in \Omega$, let $\varphi_\Lambda \in S^\Lambda$
+denote the restriction of $\varphi$ to $\Lambda$.
+A measure $\mu$ on $\Omega$ is said to be a \emph{Gibbs measure} for the potential $\Phi$
+if for $\mu$-almost
 every choice of boundary condition $\tilde\varphi$, the conditional distribution
-$\mu(\cdot \mid \varphi_{\Lambda^c} = \tilde\varphi_{\Lambda^c})$ is given by the finite-volume Gibbs
+$\mu(d\varphi \mid \varphi_{\Lambda^c} = \tilde\varphi_{\Lambda^c})$ is given by the finite-volume Gibbs
 measure
 \begin{equation}
 \mu^\Phi_\Lambda(\varphi \mid \tilde\varphi)
@@ -590,17 +646,23 @@ measure
 e^{-H^\Phi_\Lambda(\varphi_\Lambda \tilde\varphi_{\Lambda^c})}
 d\varphi_\Lambda,
 \end{equation}
-where $\varphi_\Lambda\tilde\varphi_{\Lambda^c}$ is the concatenation of
-$\varphi_\Lambda = (\varphi_x)_{x\in\Lambda}$ and $\tilde\varphi_{\Lambda^c}$
-and where $d\varphi_\Lambda$ is the product measure on $S^\Lambda$.
+where $\varphi_\Lambda\tilde\varphi_{\Lambda^c} \in \Omega$ is the concatenation of
+$\varphi_\Lambda$ and $\tilde\varphi_{\Lambda^c}$
+and where $d\varphi_\Lambda$ is the Lebesgue measure on $S^\Lambda$.
 We denote the collection of all such Gibbs measures by $\Gibbs(\Phi)$.
 
-Let $\Lambda_N$ be a sequence of finite subsets of $\vertices$ such that $\Lambda_N \uparrow \vertices$
+It is straightforward to verify that any finite-volume Gibbs measure is a Gibbs measure
+in the above sense. A common procedure for constructing other elements of $\Gcal(\Phi)$
+is to take an \emph{infinite-volume limit}.
+
+To do so, let $\Lambda_N$ be a sequence of finite subsets of $\vertices$ such that
+$\Lambda_N \uparrow \vertices$
 and let $\varphi^{(N)}$ be a sequence of spin configurations in $\Omega$. It can be verified
-that, if the sequence of measure $\mu_N = \mu^\Phi_{\Lambda_N}(\cdot \mid \varphi^{(N)})$ converges weakly
-to a measure $\mu$, then $\mu$ is a Gibbs measure. In this case, we can study the measure $\mu$
-by studying \emph{observables}, which are bounded continuous functions $f : \Omega \to \R$. It suffices
-to study the limiting properties of $\mu_N(f)$.
+that, if the sequence of measures $\mu_N = \mu^\Phi_{\Lambda_N}(\cdot \mid \varphi^{(N)})$ converges weakly
+to a measure $\mu$, then $\mu\in\Gcal(\Phi)$. Any measure $\mu$ constructed in this way
+can be recovered from the limiting expectations $\lim_{N\to\infty} \mu_N(f)$ of sufficiently
+many \emph{observables}, which are bounded continuous functions $f : \Omega \to \R$.
+% It suffices to study the limiting properties of $\mu_N(f)$.
 
 \begin{example}[Periodic boundary conditions]
 Let $\graph = \Zd$ and suppose we are given a translation-invariant potential $\Phi$.
@@ -610,22 +672,36 @@ $|A| > R$ for some $R$. Let $\Lambda_N \subset \Zd$ be a sequence of finite boxe
 with $|\Lambda_N| > R$ for each $N$.
 
 Given a configuration $\varphi \in \Omega$, let $\varphi^N \in \Omega$
-be the periodic extension of the restriction of $\varphi$ to $\Lambda_N$.
+be the periodic extension of the restriction of $\varphi_{\Lambda_N}$.
 We define a potential $\Phi^N$ by
 \begin{equation}
-\Phi^N_A(\varphi) = \phi_A(\varphi^N) \1_{A \subset \Lambda_N}.
+\Phi^N_A(\varphi) = \Phi_A(\varphi^N) \1_{A \subset \Lambda_N}.
 \end{equation}
-The Gibbs measure on $\Lambda_N$ with \emph{periodic boundary conditions} is defined by
-\begin{equation}
-\mu_N(d\varphi) = \frac{1}{Z_N} \exp\left(-H^{\Phi^N}(\varphi)\right) d\varphi,
-\end{equation}
-where $H^{\Phi^N}$ is the Hamiltonian on $\Lambda_N$ associated to the potential $\Phi_N$.
+The Gibbs measure $\mu_N$ on $\Lambda_N$ with \emph{periodic boundary conditions}
+with potential $\Phi$ is defined to be the Gibbs measure on $\Lambda_N$ with
+potential $\Phi^N$ (and any choice of boundary conditions).
+% \begin{equation}
+% \mu_N(d\varphi) = \frac{1}{Z_N} \exp\left(-H^{\Phi^N}(\varphi)\right) d\varphi,
+% \end{equation}
+% where $H^{\Phi^N}$ is the Hamiltonian on $\Lambda_N$ associated to the potential $\Phi_N$.
 It is shown in \cite[Example 4.20]{Georgii11} that, if $\mu_N$ converges weakly to a
 measure $\mu$, then $\mu \in \Gibbs(\Phi)$.
 \end{example}
 
-\todo{Two-point function and
-susceptibility. Discuss first-order and continuous phase transitions.}
+\begin{example}
+Let $\graph = \Zd$ and let $\Lambda_N = \Zd/L^N\Zd$ for $L > 1$.
+Let $G_{N,x}$ denote the two-point function of a spin system on $\Lambda_N$.
+We define the two-point function on $\Zd$ by the limit
+\begin{equation}
+G_x = \lim_{N\to\infty} G_{x,N}.
+\end{equation}
+By the previous example, if the limit $\mu$ of the $\mu_N$ exists, then
+\begin{equation}
+G_x = \frac{1}{n} \int d\mu(\varphi) \varphi_0 \cdot \varphi_x.
+\end{equation}
+\end{example}
+
+\todo{Discuss first-order and continuous phase transitions.}
 
 
 \section{Critical behaviour}
@@ -653,7 +729,7 @@ function $G_x(\mu)$ by
 \todo{Note: this is for the Euclidean lattice}
 A related quantity is the \emph{correlation length of order $p$}, defined by
 \begin{equation}
-\xi_p(\mu) = \left(\frac{\sum_{x\in\Zd} |x|^p G_x(\mu)}{\chi(\mu)}\right)^{1/p}
+\xi_p(\mu) = \left(\frac{\sum_{x\in\Zd} |x|^p G_x(\mu)}{\chi(\mu)}\right)^{1/p}.
 \end{equation}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
