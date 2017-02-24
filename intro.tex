@@ -409,100 +409,97 @@ are the canonical and grand canonical partition functions, respectively.
 
 \subsubsection{Random walk}
 
-Let $Q$ be the $\vertices\cup\{\partial\}\times\vertices\cup\{\partial\}$ matrix with
+The Laplacian $\lap$ is the generator of a $\vertices$-valued Markov process $X_t$
+that jumps from $x$ at rate $d_x$ and jumps to $y$ (from $x$) with probability
+$P_{xy} = d_x^{-1} J_{xy}$. Let $P_x$ denote the probability of this process conditioned so
+that $X_0 = x$ and define the measure $\mu_T$ on $\Wcal_T$ by
 \begin{equation}
-Q_{xy}
-  =
-\begin{cases}
-J_{xy},       & x \ne y, \partial, y \in \vertices \\
-m^2,          & x \ne \partial, y = \partial \\
--(m^2 + d_x), & x = y \in \vertices \\
-0,            & x = \partial
-\end{cases}.
+\mu_T(d\omega) = P_0((X_t = d\omega_t)_{t \le T}).
 \end{equation}
-Let $X_t$ be the Markov process with generator $Q$.
-That is, $X$ takes jumps from $x$ at rate
-\begin{equation}
--Q_{xx}
-  =
-\begin{cases}
-m^2 + d_x,    & x = y \in \vertices \\
-0,            & x = y = \partial
-\end{cases}
-\end{equation}
-and jumps from $x$ to $y$ with probability (with $0/0 = 1$)
-\begin{equation}
-\hat P_{xy}
-  =
--Q_{xy} / Q_{xx}
-  =
-\begin{cases}
-z_x P_{xy},             & x \ne \partial, y \in \vertices \\
-\frac{m^2}{m^2 + d_x},  & x \ne \partial, y = \partial \\
-\1_{y=\partial},        & x = \partial
-\end{cases}.
-\end{equation}
-We call $X_t$ the \emph{continuous-time random walk} on $\graph$.
-In continuous time, we let
-\begin{equation}
-\lambda_T(d\omega) = P_0(d\omega \mid \tau_\partial = T),
-\end{equation}
-where $\tau_\partial = \inf(t : X_T = \partial)$.
+Then $c_T = 1$ for all $T$ and so $\chi(\nu) = \nu^{-1}$.
 
-The \emph{discrete-time random walk} on $\graph$ is the Markov chain
-$\hat X_n$ defined by
-\begin{equation}
-\hat X_n = X_{\tau_n},
-\end{equation}
-where $\tau_n$ is the $n$-th jump time of $X$. The transition matrix of
-$\hat X$ is given by $\hat P$.
+In discrete time, let $\mu_n(\omega) = 1$ for all $\omega\in\Wcal_n$.
+Then $c_n = \frac{1}{|\Wcal_n|}$ and $\mu(\omega) \propto z^{|\omega|}$.
 
-For $v \in \vertices$, let $P_v$ and $E_v$ denote the probability and expectation
-with respect to either the process $X$ or $\hat X$ conditioned so that $X_0 = v$.
-We have
-\begin{equation}
-c_T(x, y) = P_x (X_T = y) = (e^{t Q})_{xy}.
-\end{equation}
+% Let $Q$ be the $\vertices\cup\{\partial\}\times\vertices\cup\{\partial\}$ matrix with
+% \begin{equation}
+% Q_{xy}
+%   =
+% \begin{cases}
+% J_{xy},       & x \ne y, \partial, y \in \vertices \\
+% m^2,          & x \ne \partial, y = \partial \\
+% -(m^2 + d_x), & x = y \in \vertices \\
+% 0,            & x = \partial
+% \end{cases}.
+% \end{equation}
+% Let $X_t$ be the Markov process with generator $Q$.
+% That is, $X$ takes jumps from $x$ at rate
+% \begin{equation}
+% -Q_{xx}
+%   =
+% \begin{cases}
+% m^2 + d_x,    & x = y \in \vertices \\
+% 0,            & x = y = \partial
+% \end{cases}
+% \end{equation}
+% and jumps from $x$ to $y$ with probability (with $0/0 = 1$)
+% \begin{equation}
+% \hat P_{xy}
+%   =
+% -Q_{xy} / Q_{xx}
+%   =
+% \begin{cases}
+% z_x P_{xy},             & x \ne \partial, y \in \vertices \\
+% \frac{m^2}{m^2 + d_x},  & x \ne \partial, y = \partial \\
+% \1_{y=\partial},        & x = \partial
+% \end{cases}.
+% \end{equation}
+% We call $X_t$ the \emph{continuous-time random walk} on $\graph$.
+% In continuous time, we let
+% \begin{equation}
+% \lambda_T(d\omega) = P_0(d\omega \mid \tau_\partial = T),
+% \end{equation}
+% where $\tau_\partial = \inf(t : X_T = \partial)$.
 
-% If $P$ is any substochastic matrix, then $P$ is the transition matrix for a Markov chain
-% on $V \cup \{\partial\}$ with transition probability from $x$ to $y \ne x$ given by $P_{xy}$
-% if $y \ne x$ and $P_{x\partial} := 1 - \sum_{y\in\vertices} P_{xy}$ otherwise.
-% The process
-% $(\hat X_n)_{n\in\Z_+}$ is called the \emph{killed discrete-time random walk} with transition matrix $P$.
-% \todo{What is the killing rate?}
-% In particular, the random walk $\hat X_n$ with transition matrix given by $\hat P$ above
-% is called the \emph{skeleton walk} associated with $X_t$.
+% The \emph{discrete-time random walk} on $\graph$ is the Markov chain
+% $\hat X_n$ defined by
+% \begin{equation}
+% \hat X_n = X_{\tau_n},
+% \end{equation}
+% where $\tau_n$ is the $n$-th jump time of $X$. The transition matrix of
+% $\hat X$ is given by $\hat P$.
 
-\begin{example}
-We have
-\begin{equation}
-\int_0^\infty dT \; \1_{X_T=y}
-  =
-\sum_{n=0}^\infty \int_{\tau_n}^{\tau_{n+1}} dT \; \1_{\hat X_n=y}
-  =
-\sum_{n=0}^\infty (\tau_{n+1} - \tau_n) \1_{\hat X_n=y}.
-\end{equation}
-If $\hat X_n = y$, then $\tau_{n+1} - \tau_n$ is a Poisson random variable with rate $d_y$,
-so taking the expectation of the above yields
-\begin{equation}
-G_{xy} = d_y \sum_{n=0}^\infty c_n(x, y).
-\end{equation}
+% For $v \in \vertices$, let $P_v$ and $E_v$ denote the probability and expectation
+% with respect to either the process $X$ or $\hat X$ conditioned so that $X_0 = v$.
+% We have
+% \begin{equation}
+% c_T(x, y) = P_x (X_T = y) = (e^{t Q})_{xy}.
+% \end{equation}
 
-
-We have
-\begin{equation}
-G_{xy} = \sum_{n=0}^\infty c_n(x, y) \int_{\tau_n}^{\tau_{n+1}} dT \; e^{-\nu T}
-\end{equation}
-
-\begin{equation}
-C(x, y) = (m^2 + d_x)^{-1} E_x \left(\sum_{n=0}^\infty \1_{X_n=y} \right)
-\end{equation}
-so the sum converges if and only if the expected number of visits to $y$
-made a walk with transition $\hat P$ started at $x$ is finite. Thus, $C$ is
-well-defined if and only if the walk is transient.
-In particular, it is well-defined for $m^2 > 0$. When $\graph = \Zd$, it is
-well-defined for $m^2 = 0$ if and only if $d > 2$.
-\end{example}
+% \begin{example}
+% We have
+% \begin{equation}
+% \int_0^\infty dT \; \1_{X_T=y}
+%   =
+% \sum_{n=0}^\infty \int_{\tau_n}^{\tau_{n+1}} dT \; \1_{\hat X_n=y}
+%   =
+% \sum_{n=0}^\infty (\tau_{n+1} - \tau_n) \1_{\hat X_n=y}.
+% \end{equation}
+% If $\hat X_n = y$, then $\tau_{n+1} - \tau_n$ is a Poisson random variable with rate $d_y$,
+% so taking the expectation of the above yields
+% \begin{equation}
+% G_{xy} = d_y \sum_{n=0}^\infty c_n(x, y).
+% \end{equation}
+% \todo{Show that this is}
+% \begin{equation}
+% C(x, y) = (m^2 + d_x)^{-1} E_x \left(\sum_{n=0}^\infty \1_{X_n=y} \right)
+% \end{equation}
+% so the sum converges if and only if the expected number of visits to $y$
+% made a walk with transition $\hat P$ started at $x$ is finite. Thus, $C$ is
+% well-defined if and only if the walk is transient.
+% In particular, it is well-defined for $m^2 > 0$. When $\graph = \Zd$, it is
+% well-defined for $m^2 = 0$ if and only if $d > 2$.
+% \end{example}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
