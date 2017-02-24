@@ -220,50 +220,95 @@ distinguish between the canonical and grand canonical ensembles.
 % Let $\graph = (\vertices, \edges)$ be a graph with vertices
 % $\vertices$ and (undirected) edges $\edges$.
 
-Let $\vertices$ be a countable set and let $J$ be a symmetric $\vertices\times\vertices$
-with matrix $0$ diagonal entries. Let $\edges = \{ \{ x, y \} : J_{xy} \ne 0 \}$ so that
-$\graph = (\vertices, \edges, J)$ is a weighted graph. Assume that the rows of $J$ are
-summable and let $D$ be the diagonal matrix with diagonal entries
+Let $\vertices$ be a countable set. An $n$-component \emph{field} on $\vertices$
+is an element $\varphi$ of $(\R^n)^\vertices$.
+We denote the components of a field $\varphi$
+by $\varphi^i_x \in \R$ for $x \in \vertices$ and $i = 1, \ldots, n$.
+The Euclidean inner product on fields is defined by
 \begin{equation}
-D_{xx} = d_x = \sum_{y\in\vertices} J_{xy}.
+\varphi\cdot\tilde\varphi
+  =
+\sum_{x\in\vertices} \varphi_x \cdot \tilde\varphi_y
+  =
+\sum_{i=1}^n \sum_{x\in\vertices} \varphi^i_x \tilde\varphi^i_x
 \end{equation}
-For $m^2 \ge 0$, we define the \emph{massive graph Laplacian} with \emph{mass} $m^2 \ge 0$
+and the Euclidean norm is
+\begin{equation}
+|\varphi|^2 = \varphi \cdot \varphi.
+\end{equation}
+Given any $\vertices\times\vertices$ matrix $M$, we define the field $M \varphi$ by
+\begin{equation}
+(M \varphi)_x = \sum_{y\in\vertices} M_{xy} \varphi_y
+\end{equation}
+when the sum is well-defined.
+
+Let $\jay$ be a symmetric $\vertices\times\vertices$ matrix satisfying
+\begin{equation}
+0 < d_x = \sum_{y\in\vertices} J_{xy} < \infty,
+  \quad
+J_{xy} \ge 0,
+  \quad
+J_{xx} = 0
+\end{equation}
+for all $x, y$. Then we can define the diagonal matrix $\diag$ with entries
+\begin{equation}
+\diag_{xx} = d_x.
+\end{equation}
+Moreover, if $\edges = \{ \{ x, y \} : J_{xy} \ne 0 \}$, then
+$\graph = (\vertices, \edges, \jay)$ is a weighted connected undirected graph.
+We write $x \sim y$ if $\{ x, y \} \in \edges$.
+
+The \emph{graph Laplacian} on $\graph$ is defined by
+\begin{equation}
+\lap = \diag - \jay.
+\end{equation}
+We also define the \emph{massive Laplacian} with squared \emph{mass} $m^2 > 0$
 by
 \begin{equation}
-A = m^2 + D - J.
+m^2 + \lap.
 \end{equation}
-
-Define the inner product
+Note that
 \begin{equation}
-\varphi\cdot\tilde\varphi = \sum_{x\in\vertices} \varphi_x \cdot \varphi_y,
-  \quad
-\varphi, \tilde\varphi \in (\R^n)^\vertices
-\end{equation}
-and note that for any $\varphi\in\R^\vertices$,
-\begin{equation}
-\varphi \cdot A \varphi
+\varphi \cdot \lap \varphi
   =
-m^2 |\varphi_x|^2
-  +
-\frac{1}{2} \sum_{x,y\in\vertices} J_{xy} |\varphi_x - \varphi_y|^2.
+\frac{1}{2} \sum_{x,y\in\vertices} J_{xy} |\varphi_x - \varphi_y|^2
+  \ge
+0,
 \end{equation}
-We assume that $J$ has nonnegative entries. Consequently, $A$ is positive-semidefinite.
-If $m^2 > 0$, then $A$ is positive-definite.
+so $\lap$ is positive-semidefinite.
 
-An important case is when $J$ has $\{0, 1 \}$-valued entries. In this case, $d_x$ is the
-\emph{degree} of $x$ in $\graph$ and we denote the matrix $A$ by $-\Delta$, which has
+If $m^2 > 0$, then $m^2 + \lap$ is positive-definite, hence invertible with inverse
+\begin{equation}
+(m^2 + \lap)^{-1} = (m^2 + D)^{-1} \sum_{n=0}^\infty Z^n P^n,
+\end{equation}
+where
+\begin{align}
+Z = (m^2 + D)^{-1} D,
+  \quad
+P = D^{-1} J.
+\end{align}
+Let $z_x$ denote the diagonal elements of $Z$.
+The \emph{Green function} for $m^2 + \lap$ is the kernel of $(m^2 + \lap)^{-1}$, which we define by
+\begin{equation}
+C(x, y)
+  =
+(m^2 + d_x)^{-1} \sum_{n=0}^\infty z_x^n P^n_{xy}
+\end{equation}
+whenever this series converges.
+
+An important case is when $\jay$ has $\{0, 1 \}$-valued entries. In this case, $d_x$ is the
+\emph{degree} of $x$ in $\graph$ and we denote the matrix $\lap$ by $-\Delta$, which has
 entries
 \begin{equation}
--\Delta_{xy} = d_x \1_{x=y} - \1_{x \sim y},
+-\Delta_{xy} = d_x \1_{x=y} - \1_{x \sim y}.
 \end{equation}
-where $x \sim y$ if and only if $\{ x, y \} \in \edges$.
 
-% Let $J$ be a $\vertices \times \vertices$
+% Let $\jay$ be a $\vertices \times \vertices$
 % matrix with $J_{xx} = 0$ and $J_{xy} \ge 0$ for all $x, y \in \vertices$ and suppose
-% that $J$ has summable rows: $\sum_{y\in\vertices} J_{xy} < \infty$. Let $D$ be
-% the diagonal matrix with entries $D_{xx} = \sum_{y\in\vertices} J_{xy}$, and let $A = D - J$.
+% that $\jay$ has summable rows: $\sum_{y\in\vertices} J_{xy} < \infty$. Let $\diag$ be
+% the diagonal matrix with entries $D_{xx} = \sum_{y\in\vertices} J_{xy}$, and let $A = \diag - \jay$.
 
-% \todo{The $Q$ matrix will be $Q = -A$, the matrix $J$ will be the (ferromagnetic) Ising interaction,
+% \todo{The $Q$ matrix will be $Q = -A$, the matrix $\jay$ will be the (ferromagnetic) Ising interaction,
 % and $A$ will be the interaction for the $|\varphi|^4$ model.
 % E.g.\ $A = -\Delta + m^2$ has positive diagonal entries. Recall that
 % $\Delta_{xy} = \1_{x \sim y} - 2 d \1_{x=y}$.}
@@ -283,19 +328,18 @@ In the following, $\interval_T$ will denote one of the following choices (for al
 \end{equation}
 These two choices will be referred to, respectively, as the \emph{discrete-} and
 \emph{continuous-time} cases.
+\todo{Unless the graph is transitive, the following depends on $0$.}
 Fix a designated vertex $0 \in \vertices$ and
 let $\Wcal_T$ denote the set of
 right-continuous paths $\omega : \interval_T \to \vertices$ with $\omega(0) = 0$.
 We will refer to elements of $\Wcal := \bigcup_{T \geq 0} \Wcal_T$ as \emph{walks}.
 A model of walks is determined by a choice of finite measure $d\mu_T$ on
 $\Wcal_T$ for each $T$.
-
 In the discrete-time case, we will assume that
 $\mu_T = \mu_{\lfloor T \rfloor}$ for all $T$ (both are measures on
-$\Wcal_{\lfloor T \rfloor}$ in this case). Thus, it suffices to study consider only
-the measures $\mu_n$ ($n \in \Z_+$) in this case.
+$\Wcal_{\lfloor T \rfloor}$ in this case).
 
-Given a model $d\mu_T$, we define
+Given a model of walks $d\mu_T$, we define the normalizing constant
 \begin{equation}
 c_T = \int_{\Wcal_T} d\mu_T.
 \end{equation}
@@ -306,12 +350,14 @@ there is a natural measure $\mu$ on $\Wcal$ defined by
   =
 \int_0^\infty dT \; e^{-\nu T} \int_{\Wcal_T} d\mu_T f
 \end{equation}
-for any continuous function $f$ with compact support.
+for any continuous function $f$ on $\Wcal$ with compact support.
+\todo{When is $\mu$ well-defined?}
 The corresponding normalizing constant is denoted
 \begin{equation}
 \chi(\nu) = \int_0^\infty dT \; e^{-\nu T} c_T
 \end{equation}
-and is known as the \emph{susceptibility}. In the discrete-time case, this becomes
+and is known as the \emph{susceptibility}. In the discrete-time case,
+we let $z = e^{-\nu}$ and write
 \begin{equation}
 \mu(f)
   =
@@ -319,35 +365,31 @@ and is known as the \emph{susceptibility}. In the discrete-time case, this becom
 \end{equation}
 with
 \begin{equation}
-\chi(\nu) = \frac{1 - e^{-\nu}}{\nu} \sum_{n=0}^\infty c_n z^n,
+\chi(\nu) = \frac{1 - e^{-\nu}}{\nu} \sum_{n=0}^\infty c_n z^n.
 \end{equation}
-where $z = e^{-\nu}$.
 
-Let $\Wcal_T(x) \subset \Wcal_T$ denote the collection of walks $\omega \in \Wcal_T$
-with $\omega(T) = x$. The conditional measure $\mu^{(x)}_T = \mu_T(\cdot \mid \Wcal_T(x))$
+For $a, b \in \vertices$, let $\Wcal_T(a, b) \subset \Wcal_T$ denote the collection of walks
+$\omega \in \Wcal_T$ with $\omega_0 = a$ and $\omega_T = x$.
+The conditional measure $\mu^{(ab)}_T = \mu_T(\cdot \mid \Wcal_T(a, b))$
 is given by
 \begin{equation}
-\mu^{(x)}_T(d\omega) = \frac{\mu_T(d\omega) \1_{\Wcal_T(x)}(d\omega)}{c_T(x)},
+\mu^{(ab)}_T(d\omega) = \frac{\mu_T(d\omega) \1_{\Wcal_T(a, b)}(\omega)}{c_T(a, b)},
 \end{equation}
 where
 \begin{equation}
-c_T(x) = \mu_T(\Wcal_T(x)).
+c_T(a, b) = \mu_T(\Wcal_T(a, b)).
 \end{equation}
-Let $\Wcal(x) = \bigcup_{T \ge 0} \Wcal_T(x)$. Then
+Let $\Wcal(a, b) = \bigcup_{T \ge 0} \Wcal_T(a, b)$. Then
 \begin{equation}
-\mu^{(x)}(d\omega) = \frac{\mu(d\omega) \1_{\Wcal(x)}(d\omega)}{G_x},
+\mu^{(ab)}(d\omega) = \frac{\mu(d\omega) \1_{\Wcal(a, b)}(\omega)}{G_x},
 \end{equation}
-where the \emph{two-point function}\footnote{Since $\graph$ is not assumed to be
-transitive, we are being overly restrictive at this point by not considering analogues
-of these quantities for
-walks between any two points $a, b \in \vertices$. However, we will ultimately
-only be interested in the case of the transitive graph $\Zd$.}
+where the \emph{two-point function}
 \begin{equation}
-G_x = \mu(\Wcal(x)) = \int_0^\infty dT \; e^{-\nu T} c_T(x).
+G_{ab} = \mu(\Wcal(a, b)) = \int_0^\infty dT \; e^{-\nu T} c_T(a, b).
 \end{equation}
 In discrete time, we have
 \begin{align}
-G_x = \frac{1 - e^{-\nu}}{\nu} \sum_{n=0}^\infty c_n(x) z^n.
+G_{ab} = \frac{1 - e^{-\nu}}{\nu} \sum_{n=0}^\infty c_n(a, b) z^n.
 \end{align}
 
 Many models of walks are determined by letting $\mu_T$ be the canonical Gibbs measure
@@ -363,81 +405,103 @@ are the canonical and grand canonical partition functions, respectively.
 % In what follows, we let $Q$ be a $\vertices \times \vertices$ matrix with $Q_{xy} = 0$
 % whenever $\{ x, y \} \notin \edges$.
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsubsection{Random walk}
 
-\todo{First, define Markov process in terms of a matrix $Q$. Then set $Q = A$
-(similar to what we do with $P$ below).}
+Let $Q$ be the $\vertices\cup\{\partial\}\times\vertices\cup\{\partial\}$ matrix with
+\begin{equation}
+Q_{xy}
+  =
+\begin{cases}
+J_{xy},       & x \ne y, \partial, y \in \vertices \\
+m^2,          & x \ne \partial, y = \partial \\
+-(m^2 + d_x), & x = y \in \vertices \\
+0,            & x = \partial
+\end{cases}.
+\end{equation}
+Let $X_t$ be the Markov process with generator $Q$.
+That is, $X$ takes jumps from $x$ at rate
+\begin{equation}
+-Q_{xx}
+  =
+\begin{cases}
+m^2 + d_x,    & x = y \in \vertices \\
+0,            & x = y = \partial
+\end{cases}
+\end{equation}
+and jumps from $x$ to $y$ with probability (with $0/0 = 1$)
+\begin{equation}
+\hat P_{xy}
+  =
+-Q_{xy} / Q_{xx}
+  =
+\begin{cases}
+z_x P_{xy},             & x \ne \partial, y \in \vertices \\
+\frac{m^2}{m^2 + d_x},  & x \ne \partial, y = \partial \\
+\1_{y=\partial},        & x = \partial
+\end{cases}.
+\end{equation}
+We call $X_t$ the \emph{continuous-time random walk} on $\graph$.
+In continuous time, we let
+\begin{equation}
+\lambda_T(d\omega) = P_0(d\omega \mid \tau_\partial = T),
+\end{equation}
+where $\tau_\partial = \inf(t : X_T = \partial)$.
 
-The matrix $\generator$ is the generator of a Markov process $(X_t)_{t \ge 0}$ on
-$V \cup \{ \partial \}$, where $\partial$ is a designated state known as the
-\emph{cemetery state}:
-the holding time of $X$ at $x$ is exponentially distributed with rate $-(D_{xx} + m^2)$
-and the transition probability from $x$ to $y \ne x$ is
-$\hat P_{xy} = J_{xy} / (D_{xx} + m^2)$ if $y \ne \partial$
-and $\hat P_{x\partial} = 1 - \sum_{y\in\vertices} J_{xy} / (D_{xx} + m^2)$
-otherwise.
-We call $X$ the \emph{killed continuous-time random walk} on $\graph$.
-\todo{What is the killing rate?}
+The \emph{discrete-time random walk} on $\graph$ is the Markov chain
+$\hat X_n$ defined by
+\begin{equation}
+\hat X_n = X_{\tau_n},
+\end{equation}
+where $\tau_n$ is the $n$-th jump time of $X$. The transition matrix of
+$\hat X$ is given by $\hat P$.
 
-If $P$ is any substochastic matrix, then $P$ is the transition matrix for a Markov chain
-on $V \cup \{\partial\}$ with transition probability from $x$ to $y \ne x$ given by $P_{xy}$
-if $y \ne x$ and $P_{x\partial} := 1 - \sum_{y\in\vertices} P_{xy}$ otherwise.
-The process
-$(\hat X_n)_{n\in\Z_+}$ is called the \emph{killed discrete-time random walk} with transition matrix $P$.
-\todo{What is the killing rate?}
-In particular, the random walk $\hat X_n$ with transition matrix given by $\hat P$ above
-is called the \emph{skeleton walk} associated with $X_t$.
-
-% \begin{example}[Simple random walk]
-% The simple random walk is the case $A = -\Delta$.
-% % For $x, y \in \vertices$, write $x \sim y$ if $\{ x, y \} \in \edges$ and let
-% % $d_x = \#\{y \in \vertices : y \sim x \}$ denote the \emph{degree} of $x$. We define the
-% % \emph{graph Laplacian} $\Delta$ on $\graph$ by
-% % \begin{equation}
-% % -\Delta_{xy} = D - J
-% % \end{equation}
-% % with $D_{xy} = d_x \1_{x=y}$ and $J_{xy} = \1_{x \sim y}$.
-% % The continuous-time \emph{simple random walk} (SRW) is the random walk with $\generator = -\Delta + m^2$.
-% % The discrete-time SRW is the corresponding skeleton walk, which has transition matrix
-% % $\hat P_{xy} = \1_{x \sim y} / (d_x + m^2)$ when $y \ne x, \partial$.
-% \end{example}
-
-For $v \in \vertices$, let $E_v$ denote the expectation
+For $v \in \vertices$, let $P_v$ and $E_v$ denote the probability and expectation
 with respect to either the process $X$ or $\hat X$ conditioned so that $X_0 = v$.
+We have
+\begin{equation}
+c_T(x, y) = P_x (X_T = y) = (e^{t Q})_{xy}.
+\end{equation}
 
-\begin{example}[The Green function]
-Let $P$ be a $\vertices \times \vertices$ substochastic matrix and suppose that the Neumann series
-\begin{equation}
-\sum_{n=0}^\infty P^n
-\end{equation}
-converges in the operator norm
-\begin{equation}
-\|P\| = \sup_{f \in \R^V} \frac{|P f|}{|f|},
-\end{equation}
-where $|f| = \sum_{x\in V} f_x^2$. Then $1 - P$ is invertible with inverse
-\begin{equation}
-(1 - P)^{-1} = \sum_{n=0}^\infty P^n.
-\end{equation}
-By writing $P^n_{xy} = E_x( \1_{X_n=y})$, we see that the $xy$ entry of the
-above matrix is the expected number of visits to $y$ made by a random walk
-started at $x$. Thus, $1 - P$ is invertible if and only if the random walk
-with transition matrix $P$ is transient. \todo{(Does this really follow?)}
+% If $P$ is any substochastic matrix, then $P$ is the transition matrix for a Markov chain
+% on $V \cup \{\partial\}$ with transition probability from $x$ to $y \ne x$ given by $P_{xy}$
+% if $y \ne x$ and $P_{x\partial} := 1 - \sum_{y\in\vertices} P_{xy}$ otherwise.
+% The process
+% $(\hat X_n)_{n\in\Z_+}$ is called the \emph{killed discrete-time random walk} with transition matrix $P$.
+% \todo{What is the killing rate?}
+% In particular, the random walk $\hat X_n$ with transition matrix given by $\hat P$ above
+% is called the \emph{skeleton walk} associated with $X_t$.
 
-In particular, consider the graph Laplacian on a graph of degree $d_0$
-(so $d_x = d_0$ for all $x$).
-% and let $z = d_0 / (d_0 + m^2)$.
-Then, with  $z = d_0 / (d_0 + m^2)$,
+\begin{example}
+We have
 \begin{equation}
--\Delta + m^2 = (d_0 + m^2) (1 - z d_0^{-1} J).
-% -\Delta + m^2 = (d_0 + m^2) (1 - \hat P),
-% \frac{d_0}{z} (1 - z P).
+\int_0^\infty dT \; \1_{X_T=y}
+  =
+\sum_{n=0}^\infty \int_{\tau_n}^{\tau_{n+1}} dT \; \1_{\hat X_n=y}
+  =
+\sum_{n=0}^\infty (\tau_{n+1} - \tau_n) \1_{\hat X_n=y}.
 \end{equation}
-which is invertible whenever $m^2 > 0$ (since $|z| < 1$ in this case and $\|d_0^{-1} J\| = 1$).
+If $\hat X_n = y$, then $\tau_{n+1} - \tau_n$ is a Poisson random variable with rate $d_y$,
+so taking the expectation of the above yields
+\begin{equation}
+G_{xy} = d_y \sum_{n=0}^\infty c_n(x, y).
+\end{equation}
 
-When $m^2 = 0$ ($z = 1$), the massless Green function $(-\Delta)^{-1}$
-exists if and only if the simple random walk is transient (in particular, it exists on
-$\Zd$ if and only if $d > 2$).
+
+We have
+\begin{equation}
+G_{xy} = \sum_{n=0}^\infty c_n(x, y) \int_{\tau_n}^{\tau_{n+1}} dT \; e^{-\nu T}
+\end{equation}
+
+\begin{equation}
+C(x, y) = (m^2 + d_x)^{-1} E_x \left(\sum_{n=0}^\infty \1_{X_n=y} \right)
+\end{equation}
+so the sum converges if and only if the expected number of visits to $y$
+made a walk with transition $\hat P$ started at $x$ is finite. Thus, $C$ is
+well-defined if and only if the walk is transient.
+In particular, it is well-defined for $m^2 > 0$. When $\graph = \Zd$, it is
+well-defined for $m^2 = 0$ if and only if $d > 2$.
 \end{example}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -455,7 +519,6 @@ That is, the equality
 \end{equation}
 does not hold for all $\omega\in\Wcal$ (the sum here is over all self-avoiding walks extending
 $\omega$).
-
 % \begin{wrapfigure}{R}{0.4\textwidth}
 % \vspace{-0.5cm}
 % \begin{center}
@@ -465,8 +528,8 @@ $\omega$).
 % \end{center}
 % \vspace{-0.5cm}
 % \end{wrapfigure}
-
-For instance, consider the self-avoiding walk $\omega\in\Wcal_7$ on $\Zd$ in the Figure~\ref{fig:trap}.
+For instance, consider the self-avoiding walk $\omega\in\Wcal_7$ on $\Zd$ in
+Figure~\ref{fig:trap}.
 This walk has positive probability under $\mu_7$ but,
 since there are no self-avoiding walks extending $\omega$, the sum on the right-hand side
 above is $0$.
@@ -494,16 +557,18 @@ In the discrete-time case, $\lt^x_n$ is the number of times $\omega$ visits $x$
 and is bounded by $n$. In the continuous-time case, $\lt^x_T$ is almost surely
 finite for the continuous-time simple random walk.
 
-We also define the \emph{intersection local time}
+We define the \emph{intersection local time}
 \begin{equation}
 \label{e:ITdef}
-I_T(\omega) = \sum_{x\in\Zd} (\lt^x_T)^2 = \int_0^T \int_0^T \1_{\omega(S_1)=\omega(S_2)} \; dS_1 dS_2
+I_T(\omega) = \sum_{x\in\vertices} (\lt^x_T)^2
+  =
+\int_0^T \!\! \int_0^T \1_{\omega(S_1)=\omega(S_2)} \; dS_1 dS_2
 \end{equation}
 and the \emph{contact self-attraction}
 \begin{equation}
 \label{e:CTdef}
 C_T(\omega) =
-  \sum_{x \in \Z^d}\sum_{e\in\Ucal} \lt_T^x(\omega) \lt_T^{x+e}(\omega)
+  \sum_{x \in \vertices} \sum_{y \sim x} \lt_T^x(\omega) \lt_T^y(\omega)
   = \int_0^T ds \int_0^T dt \; \1_{\omega_{s} \sim \omega_{t}}
 \end{equation}
 up to time $T$.
@@ -514,11 +579,11 @@ and $\gamma \in \R$, we define
 \label{e:Udef-neg}
 U_{\gcc,\gamma}(f)
 =
-\gcc \sum_{x\in\Zd} f_x^2
+\gcc \sum_{x\in\vertices} f_x^2
 - \frac{\gamma}{2d}
-\sum_{x\in\Zd} \sum_{e\in\Ucal} f_x f_{x+e}
+\sum_{x\in\vertices} \sum_{y \sim x} f_x f_y
 \end{equation}
-for $f : \Zd \to \R$.
+for $f : \vertices \to \R$.
 The \emph{weakly self-avoiding walk with self-attraction} (WSAW-SA) is defined via
 the Hamiltonian
 \begin{equation}
@@ -584,21 +649,24 @@ and the \emph{susceptibility}
 Note that this definition of the susceptibility is consistent with the corresponding
 definition for walks.
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsubsection{Gaussian fields}
 
 Let $C$ be a positive-definite symmetric $\vertices\times\vertices$ matrix.
-Then the Gibbs measure induced by the Hamiltonian
+Then $C$ is invertible and the Gibbs measure induced by the Hamiltonian
 \begin{equation}
 H(\varphi) = \frac{1}{2} \varphi \cdot C^{-1} \varphi
 \end{equation}
 is a Gaussian measure, known as the discrete Gaussian field with covariance $C$.
-In particular, when $C = A^{-1} = (m^2 + D - J)^{-1}$ with $m^2 > 0$, we get the
+The two-point function is equal to the covariance.
+In particular, when $C = A^{-1} = (m^2 + \diag - \jay)^{-1}$ with $m^2 > 0$, we get the
 \emph{discrete massive Gaussian free field} (DGFF), which is an example of a ferromagnetic
 spin system.
 % The DGFF is said to be
 % \emph{massive} with \emph{mass} $m^2$ when $m^2 > 0$, and is said to be \emph{massless} when $m^2 = 0$.
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsubsection{The $|\varphi|^4$ spin model}
 
@@ -621,6 +689,7 @@ for $g > 0$, $\nu\in\R$. This is a ferromagnetic spin system.
 Here, $m^2$ need not be strictly positive (this was required for the DGFF for reasons of
 integrability). In fact, an important special case for us will be $A = -\Delta$.
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsubsection{The $O(n)$ spin model}
 
@@ -635,20 +704,21 @@ Then the $|\varphi|^4$ Hamiltonian can be written as
   \frac{1}{2} (\nu + d_0) |\varphi_x|^2
 \right)
   -
-\frac{1}{2} \varphi \cdot J \varphi
+\frac{1}{2} \varphi \cdot \jay \varphi
 \end{equation}
 
 If we take the limit $g\to\infty$ with $\nu = -(d_0 + g / 2)$, the
 $|\varphi|^4$ spin model converges
 weakly to the $O(n)$ spin model, given by the Hamiltonian
 \begin{equation}
-H(\varphi) = -\frac{1}{2} \varphi \cdot J \varphi
+H(\varphi) = -\frac{1}{2} \varphi \cdot \jay \varphi
 \end{equation}
 on the state space $S = S^{n-1} \subset \R^n$ the $(n-1)$-sphere.
 This again is a ferromagnetic spin system.
 The case $n = 1$ is the celebrated \emph{Ising model}. When $n = 2, 3$,
 we get the \emph{XY model} and the \emph{classical Heisenberg model}.
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsubsection{Infinite-volume Gibbs measures}
 
@@ -686,17 +756,17 @@ d\varphi_\Lambda,
 where $\varphi_\Lambda\tilde\varphi_{\Lambda^c} \in \Omega$ is the concatenation of
 $\varphi_\Lambda$ and $\tilde\varphi_{\Lambda^c}$
 and where $d\varphi_\Lambda$ is the Lebesgue measure on $S^\Lambda$.
-We denote the collection of all such Gibbs measures by $\Gibbs(\Phi)$.
+We denote the collection of all such Gibbs measures by $\gibbs(\Phi)$.
 
 It is straightforward to verify that any finite-volume Gibbs measure is a Gibbs measure
-in the above sense. A common procedure for constructing other elements of $\Gcal(\Phi)$
+in the above sense. A common procedure for constructing other elements of $\gibbs(\Phi)$
 is to take an \emph{infinite-volume limit}.
 
 To do so, let $\Lambda_N$ be a sequence of finite subsets of $\vertices$ such that
 $\Lambda_N \uparrow \vertices$
 and let $\varphi^{(N)}$ be a sequence of spin configurations in $\Omega$. It can be verified
 that, if the sequence of measures $\mu_N = \mu^\Phi_{\Lambda_N}(\cdot \mid \varphi^{(N)})$ converges weakly
-to a measure $\mu$, then $\mu\in\Gcal(\Phi)$. Any measure $\mu$ constructed in this way
+to a measure $\mu$, then $\mu\in\gibbs(\Phi)$. Any measure $\mu$ constructed in this way
 can be recovered from the limiting expectations $\lim_{N\to\infty} \mu_N(f)$ of sufficiently
 many \emph{observables}, which are bounded continuous functions $f : \Omega \to \R$.
 % It suffices to study the limiting properties of $\mu_N(f)$.
@@ -722,7 +792,7 @@ potential $\Phi^N$ (and any choice of boundary conditions).
 % \end{equation}
 % where $H^{\Phi^N}$ is the Hamiltonian on $\Lambda_N$ associated to the potential $\Phi_N$.
 It is shown in \cite[Example 4.20]{Georgii11} that, if $\mu_N$ converges weakly to a
-measure $\mu$, then $\mu \in \Gibbs(\Phi)$.
+measure $\mu$, then $\mu \in \gibbs(\Phi)$.
 \end{example}
 
 \begin{example}
@@ -738,36 +808,59 @@ G_x = \frac{1}{n} \int d\mu(\varphi) \varphi_0 \cdot \varphi_x.
 \end{equation}
 \end{example}
 
-\todo{Discuss first-order and continuous phase transitions.}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\section{Phase transitions and critical behaviour}
 
-\section{Critical behaviour}
+\todo{This description of critical behaviour is too narrow and does not apply to walks}
 
-Let $\Gcal_\beta$ denote the set of all Gibbs measures for some potential at inverse temperature
+In this section, we let $\graph = \Zd$.
+
+Let $\gibbs_\beta$ denote the set of all Gibbs measures for some potential at inverse temperature
 $\beta$. A \emph{phase transition} is said to occur at inverse temperature $\beta$ if
-$|\Gcal_\beta| > 1$. Many systems possess a unique \emph{critical point} $\beta_c$, such that
+$|\gibbs_\beta| > 1$. Many systems possess a unique \emph{critical point} $\beta_c$, such that
 \begin{equation}
-|\Gcal_\beta|
+|\gibbs_\beta|
 \begin{cases}
 =1,  & \beta < \beta_c \\
 > 1, & \beta > \beta_c
-\end{cases}.
+\end{cases}
 \end{equation}
+and it is usually expected that $|\gibbs_{\beta_c}| = 1$.
 Moreover, such systems tend to exhibit \emph{critical behaviour} when $\beta = \beta_c$:
 roughly speaking, this means that a number of observables scale according to a power
-law (sometimes with logarithmic corrections) at or near $\beta_c$.
+law (sometimes with logarithmic corrections) at or near $\beta_c$, whereas these same
+observables exhibit exponential decay away from $\beta_c$.
 
-The presence of critical behaviour is most notably signalled by the divergence of the
-\emph{correlation length}; this is defined for any model (of walks or spins) with two-point
+A strong indicator of critical behaviour is the divergence of the
+\emph{correlation length}, defined for any model (of walks or spins) with two-point
 function $G_x(\mu)$ by
 \begin{equation}
-\xi(\mu) = \limsup_{k\to\infty} \frac{-k}{\log G_{ke}(\mu)}, \quad |e| = 1.
+\xi(\mu) = \limsup_{k\to\infty} \frac{-k}{\log G_{ke}(\mu)},
 \end{equation}
-\todo{Note: this is for the Euclidean lattice}
+where $e \in \Zd$ is a unit vector.
+In other words, the correlation length is the exponential rate of decay of the
+two-point function.
 A related quantity is the \emph{correlation length of order $p$}, defined by
 \begin{equation}
 \xi_p(\mu) = \left(\frac{\sum_{x\in\Zd} |x|^p G_x(\mu)}{\chi(\mu)}\right)^{1/p}.
 \end{equation}
+\todo{Heuristic relation bewteen $\xi$ and $\xi_p$.}
+
+It is expected that
+\begin{align}
+G_x       &\sim C_1 |x|^{-(d - 2 + \eta)}, \\
+\chi(\nu) &\sim C_2 (\nu - \nu_c)^{-\gamma}, \\
+\xi       &\sim C_3 (\nu - \nu_c)^{-\nubar}, \\
+\xi_p     &\sim C_4 (\nu - \nu_c)^{-\nubar}
+\end{align}
+possibly with logarithmic corrections.
+For walks, it is expected that
+\begin{align}
+c_T                       &\sim C_5 e^{-\nu_c T} T^{-\gamma}, \\
+\langle |X_T|^2 \rangle   &\sim C_6 T^{-\nubar}.
+\end{align}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -775,16 +868,8 @@ A related quantity is the \emph{correlation length of order $p$}, defined by
 
 The two-point function is just the massive Green function $(-\Delta + m^2)^{-1}$
 which, on $\Zd$, has the well-known Ornstein-Uhlenbeck decay \todo{(show this;
-use random walks?)}. Write $-\Delta = D - J$ with $-J$ the off-diagonal part of
-$-\Delta$. Let $P = \frac{1}{2 d} J$ and let $z = 2 d / (2 d + m^2)$. Then
-\begin{equation}
-(-\Delta + m^2)^{-1}
-  =
-\frac{z}{2 d} (1 - z P)^{-1}
-  =
-\frac{z}{2 d} \sum_{n=0}^\infty z^n P^n
-\end{equation}
-and it follows that
+use random walks?)}.
+Moreover,
 \begin{equation}
 \chi
   =
@@ -799,6 +884,8 @@ and it follows that
 Thus, there is a critical point at $m^2 = 0$ ($z = 1$).
 
 \todo{See candidacy report or preliminary version of it.}
+
+\todo{For the Green function, see Theorem 1.5.4 in Lawler--Intersections of Random Walks}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -1019,11 +1106,11 @@ time the walk spends at each vertex, and $C_T$ receives a contribution from each
 these contributions have the same distribution for all walks taking the same number
 of steps.  The depicted intersections and contacts are the meaningful ones.
 
-\begin{figure}[ht]
- \centering\input{polymer-contact.pspdftex}
- \caption{Polymer with one self-intersection and four self-contacts shown.}
- \label{fig:polymer-contact}
-\end{figure}
+% \begin{figure}[ht]
+%  \centering\input{polymer-contact.pspdftex}
+%  \caption{Polymer with one self-intersection and four self-contacts shown.}
+%  \label{fig:polymer-contact}
+% \end{figure}
 
 Let $a,b \in \Zd$, and
 let $E_a$ denote the expectation for the
