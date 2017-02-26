@@ -221,41 +221,15 @@ viewed as a function of $T$.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Random walks and Gaussian measures}
+\section{Graphs}
 
 Most systems of interest do not have a finite (or even countable) state space. Nevertheless,
 finite systems serve as natural approximations of real systems. For instance, spatially-extended
-systems may be approximated by models on graphs. In this section, we discuss two of the
-simplest such models. We begin by introducing some notation and graph-theoretic background.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\subsection{Setting and notation}
-
-Let $\vertices$ be a countable set. An $n$-component \emph{field} on $\vertices$
-is an element $\varphi$ of $(\R^n)^\vertices$.
-We denote the components of a field $\varphi$
-by $\varphi^i_x \in \R$ for $x \in \vertices$ and $i = 1, \ldots, n$.
-The Euclidean inner product on fields is defined by
-\begin{equation}
-\varphi\cdot\tilde\varphi
-  =
-\sum_{x\in\vertices} \varphi_x \cdot \tilde\varphi_y
-  =
-\sum_{i=1}^n \sum_{x\in\vertices} \varphi^i_x \tilde\varphi^i_x
-\end{equation}
-and the Euclidean norm is
-\begin{equation}
-|\varphi|^2 = \varphi \cdot \varphi.
-\end{equation}
-Given any $\vertices\times\vertices$ matrix $M$, we define the field $M \varphi$ by
-\begin{equation}
-(M \varphi)_x = \sum_{y\in\vertices} M_{xy} \varphi_y
-\end{equation}
-when the sum is well-defined.
+systems may be approximated by models on graphs.
 
 \subsubsection{Graphs and the Laplacian}
 
+Let $\vertices$ be a countable set.
 Let $\jay$ be a symmetric $\vertices\times\vertices$ matrix satisfying
 \begin{equation}
 0 < d_x = \sum_{y\in\vertices} J_{xy} < \infty,
@@ -270,7 +244,8 @@ for all $x, y$. Then we can define the diagonal matrix $\diag$ with entries
 \end{equation}
 Moreover, if $\edges = \{ \{ x, y \} : J_{xy} \ne 0 \}$, then
 $\graph = (\vertices, \edges, \jay)$ is a weighted connected undirected graph.
-We write $x \sim y$ if $\{ x, y \} \in \edges$.
+We write $x \sim y$ if $\{ x, y \} \in \edges$. We will say that $\graph$ is
+$d_0$-regular if $d_x = d_0$ for all $x$.
 
 The \emph{graph Laplacian} on $\graph$ is defined by
 \begin{equation}
@@ -332,38 +307,360 @@ entries
 % $\Delta_{xy} = \1_{x \sim y} - 2 d \1_{x=y}$.}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Spin systems}
+
+An $n$-component \emph{field} or \emph{spin configuration} on $\vertices$
+is an element $\varphi$ of $(\R^n)^\vertices$.
+We denote the components of a field $\varphi$
+by $\varphi^i_x \in \R$ for $x \in \vertices$ and $i = 1, \ldots, n$.
+The Euclidean inner product on fields is defined by
+\begin{equation}
+\varphi\cdot\tilde\varphi
+  =
+\sum_{x\in\vertices} \varphi_x \cdot \tilde\varphi_y
+  =
+\sum_{i=1}^n \sum_{x\in\vertices} \varphi^i_x \tilde\varphi^i_x
+\end{equation}
+and the Euclidean norm is
+\begin{equation}
+|\varphi|^2 = \varphi \cdot \varphi.
+\end{equation}
+Given any $\vertices\times\vertices$ matrix $M$, we define the field $M \varphi$ by
+\begin{equation}
+(M \varphi)_x = \sum_{y\in\vertices} M_{xy} \varphi_y
+\end{equation}
+when the sum is well-defined.
+
+A \emph{spin system} is just a probability measure $d\mu$ on $\Omega = S^\vertices$.
+The elements $\varphi \in \Omega$ are called \emph{fields} or \emph{spin configurations}.
+
+Suppose that $S \subset \R^n$ is endowed with a measure $d\lambda^0$ and let
+$H : \Omega \to \R$ be a measurable function.
+We wish to study spin systems given by Gibbs measures of the form
+\begin{equation}
+d\mu_\beta(\varphi) = \frac{1}{Z_\beta} e^{-\beta H(\varphi)} d\lambda(\varphi),
+\end{equation}
+where
+\begin{equation}
+d\lambda(\varphi) = \prod_{x\in\vertices} d\lambda^0(\varphi_x).
+\end{equation}
+
+However, there are some problems with this definition when $\vertices$ is infinite.
+For one, $d\lambda$ may be pathological: for example, if $S = \R$ and $d\lambda^0$
+is Lebesgue measure, then it can be shown that $d\lambda$ takes values in $\{0, \infty\}$.
+Another problem is that it may be difficult to define a reasonable choice of $H$ on the
+infinite product space $\Omega$.
+
+For this reason, we temporarily restrict our attention to finite graphs, and define spin
+systems on such graphs as above. In many cases, the Hamiltonian will depend on one or
+more parameters; in this case, adjusting $\beta$ is equivalent to rescaling these parameters
+and so we will usually drop $\beta$ (or set $\beta = 1$).
+
+We will mainly be concerned with \emph{ferromagnetic} spin systems, for which the Hamiltonian
+has the form
+\begin{equation}
+H(\varphi) = \sum_{x, y \in \vertices} \varphi_x \cdot J_{xy} \varphi_y,
+\end{equation}
+where (recall) $J_{xy} \ge 0$.
+Let us fix a designated vertex\footnote{In general, some quantities we define will depend
+on the choice of vertex. However, we will ultimately be interested in the transitive graph
+$\graph = \Zd$ for which this choice is irrelevant.} $0 \in \vertices$.
+We define the \emph{two-point function} for such a spin system $\mu_\beta$ by
+\begin{equation}
+G_x(\mu_\beta) = \frac{1}{n} \int d\mu_\beta(\varphi) \; \varphi_0 \cdot \varphi_x
+\end{equation}
+when this is well-defined. If it is, we also define the \emph{susceptibility}
+\begin{equation}
+\chi(\mu_\beta) = \sum_{x\in\vertices} G_x(\mu_\beta).
+\end{equation}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Gaussian measures and the free field}
 
-Let $C$ be a positive-definite symmetric $\vertices\times\vertices$ matrix.
-The (centered) $n$-component \emph{Gaussian field} on $\vertices$ with
-\emph{covariance} $C$ is the unique measure $\mu$ on $(\R^n)^\vertices$ with
-characteristic function
+Let $S = \R^n$ and let $C$ be a positive-definite symmetric $\vertices\times\vertices$ matrix.
+The $n$-component
+\emph{Gaussian measure} $d\mu_C$ on $\vertices$ with mean $0$ and \emph{covariance} $C$ is defined
+by the Hamiltonian
 \begin{equation}
-\hat\mu(\xi)
-  \coloneqq
-\int_{(\R^n)^\vertices} \mu(d\varphi) \; e^{i \varphi \cdot \xi}
+H_C(\varphi) = \frac{1}{2} \varphi \cdot C^{-1} \varphi.
+\end{equation}
+This is essentially the simplest choice of non-constant Hamiltonian\footnote{Note that
+$e^{-\beta H}$ is not integrable if $H$ is linear.}.
+% is the unique measure $\mu$ on $(\R^n)^\vertices$ with characteristic function
+% \begin{equation}
+% \hat\mu(\xi)
+%   \coloneqq
+% \int_{(\R^n)^\vertices} \mu(d\varphi) \; e^{i \varphi \cdot \xi}
+%   =
+% e^{-\frac{1}{2} \xi \cdot C \xi}.
+% \end{equation}
+% If $\vertices$ is finite, then the Lebesgue measure $d\varphi$ on $(\R^n)^\vertices$
+% is well-defined and
+The partition function can be computed explicitly, giving\footnote{Here, we have employed
+our convention of setting $\beta = 1$ when the Hamiltonian depends on a parameter.}
+\begin{equation}
+d\mu_C(\varphi)
   =
-e^{-\frac{1}{2} \xi \cdot C \xi}.
+\frac{1}{\sqrt{\det(2\pi C)}} e^{-\frac{1}{2} \varphi\cdot C^{-1}\varphi} d\varphi.
 \end{equation}
-If $\vertices$ is finite, then the Lebesgue measure $d\varphi$ on $(\R^n)^\vertices$
-is well-defined and
+By \emph{Wick's theorem}, the two-point function is just the covariance $C$:
 \begin{equation}
-d\mu(\varphi)
+\int \varphi_a \cdot \varphi_b \; d\mu(\varphi) = C_{ab}.
+\end{equation}
+
+An important case is the \emph{Gaussian free field} on $\vertices$ with \emph{mass} $m^2 \ge 0$,
+for which the covariance is equal to the massive Green function: $C = (m^2 + \lap)^{-1}$.
+It is not hard to show, using the fact that $J$ has nonnegative entries, that the Gaussian
+free field is ferromagnetic.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{The \texorpdfstring{$|\varphi|^4$}{phi4} spin model}
+
+Let $S = \R^n$ again.
+The simplest choice of Hamiltonian that is not quadratic is given by a quartic function.
+The Hamiltonian for the $|\varphi|^4$ spin model is given by
+\begin{equation}
+H_{g,\nu}(\varphi)
   =
-\frac{1}{\sqrt{\det(2\pi C)}} e^{-\frac{1}{2} \varphi\cdot C^{-1}\varphi}
-d\varphi.
+\sum_{x\in\vertices}
+\left(
+  \frac{1}{4} g |\varphi_x|^4
+    +
+  \frac{1}{2} \nu |\varphi_x|^2
+    +
+  \frac{1}{2} \varphi_x \cdot (\lap \varphi)_x
+\right),
 \end{equation}
-This is just a canonical Gibbs measure with a quadratic Hamiltonian, which is essentially
-the simplest Gibbs measure besides the independent field with constant
-Hamiltonian\footnote{Note that $e^{-\beta H}$ is not integrable if $H$ is linear.}.
-By Wick's theorem,
+where $g > 0$ and $\nu\in\R$. When $\nu > 0$, we have $H_{g,\nu} = g |\varphi|^4 + H_C$,
+where $C = (\nu + \lap)^{-1}$ is the covariance of the Gaussian free field with mass $\nu$.
+Again, this is a ferromagnetic spin system.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{The \texorpdfstring{$O(n)$}{O(n)} spin model}
+
+Let $S = S^{n-1} \subset \R^n$ be the unit $(n-1)$-sphere equipped with the surface measure
+$d\lambda^0$ (in particular, $S^0 = \{ \pm 1 \}$, which is equipped with the counting measure).
+The $O(n)$ model is defined by the Hamiltonian
 \begin{equation}
-\int \mu(d\varphi) \; \varphi_a \cdot \varphi_b = C_{ab}.
+H_J(\sigma) = -\frac{1}{2} \sigma \cdot J \sigma,
 \end{equation}
-The \emph{Gaussian free field} on $\vertices$ with \emph{mass} $m^2 \ge 0$ is
-the Gaussian field on $\vertices$ with covariance equal to the massive Green
-function $C = (m^2 + L)^{-1}$.
+which is clearly ferromagnetic.
+
+The corresponding Gibbs measure arises naturally as a limiting case of the $|\varphi|^4$
+measure $d\mu_{g,\nu}$ on a regular graph.
+Indeed, suppose that the diagonal elements of $\lap$ are
+constant: that is, there exists $d_0$ such that $d_x = d_0$ for all $x$.
+Then the $|\varphi|^4$ Hamiltonian can be written as
+\begin{equation}
+H_{g,\nu}(\varphi)
+  =
+\sum_{x\in\vertices}
+\left(
+  \frac{1}{4} g |\varphi_x|^4
+    +
+  \frac{1}{2} (\nu + d_0) |\varphi_x|^2
+\right)
+  -
+\frac{1}{2} \varphi \cdot \jay \varphi
+\end{equation}
+Thus, $d\mu_{g,\nu} \Rightarrow d\mu_J$
+if we take the limit $g\to\infty$ with $\nu = -(d_0 + g / 2)$.
+
+The case $n = 1$ is the celebrated \emph{Ising model}. When $n = 2, 3$,
+we get the \emph{XY model} and the \emph{classical Heisenberg model}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Phase transitions in infinite volume}
+
+The presence of a phase transition in a physical system is signalled by an abrupt
+(i.e.\ non-analytic) change in an observable quantity as a parameter is varied. In fact,
+a $p$-th order phase transition is usually said to occur when the free energy
+has a discontinuous $p$-th derivative (but continuous derivatives of order less than $p$).
+However, the spin systems we have defined above all have smooth free energy (since the
+Hamiltonians are smooth functions). Ultimately, the reason we cannot detect phase
+transitions in these systems is that we have defined them on finite graphs. Thus, we
+are forced to face the problem of defining spin systems on an infinite volume $\graph$.
+Here we briefly outline the solution to this problem according to the theory of Dobrushin,
+Lanford, and Ruelle.
+
+We wish to define a measure corresponding to an ``infinite-volume Hamiltonian''
+\begin{equation}
+H^\Phi(\varphi) = \sum \Phi_A(\varphi),
+  \quad
+\varphi \in \Omega
+\end{equation}
+where the sum is over all finite subsets $A \subset \vertices$ and the $\Phi_A$ depend only on the
+values of $\varphi$ in $A$. Although $H^\Phi$ is typically a fictional object, the $\Phi_A$
+are well-defined. Thus, given a finite subset $\Lambda\subset\vertices$ and a choice of
+\emph{boundary condition} $\xi\in\Omega$,
+we can define the \emph{finite-volume} Hamiltonian $H^\xi_\Lambda : \Omega \to \R$ on $\Lambda$ by
+\begin{equation}
+H^\xi_\Lambda(\varphi) = \sum \Phi_A(\varphi_{\Lambda} \xi_{\Lambda^c}),
+\end{equation}
+where the sum is over all finite sets $A$ intersecting $\Lambda$, $\varphi_{\Lambda} \in S^{\Lambda}$
+is the restriction of $\varphi$ to $\Lambda$, and $\varphi_{\Lambda} \xi_{\Lambda^c} \in \Omega$
+is the concatenation of $\varphi_{\Lambda}$ and $\xi_{\Lambda^c}$.
+We then say that $\mu$ is a \emph{Gibbs measure} if for $\mu$-almost
+every choice of boundary condition $\xi$, the conditional distribution
+$\mu(d\varphi \mid \varphi_{\Lambda^c} = \xi_{\Lambda^c})$ is given by the finite-volume Gibbs
+measure
+\begin{equation}
+\mu^\Phi_\Lambda(\varphi \mid \xi)
+  :=
+\frac{1}{Z^\Phi_\Lambda(\xi)}
+e^{-H^\Phi_\Lambda(\varphi_\Lambda \xi_{\Lambda^c})}
+d\lambda^\Lambda(\varphi),
+\end{equation}
+where $d\lambda^\Lambda(\varphi) = \prod_{x\in\Lambda} d\lambda^0(\varphi_x)$.
+We denote the collection of all such Gibbs measures by $\gibbs(\Phi)$.
+
+\subsubsection{The infinite-volume limit}
+
+It can be checked that any finite-volume Gibbs measure (seen as a measure on $\Omega$) is a
+Gibbs measure in the above sense. More general Gibbs measures can be constructed by an explicit
+procedure known as the infinite-volume limit: generally speaking, one begins with a sequence
+$\Lambda_N \subset \vertices$ of finite subsets with $\Lambda_N\uparrow\vertices$. Letting
+$H_N$ be a Hamiltonian that only depends on the spins in $\Lambda_N$, one proceeds by taking
+the weak limit of the Gibbs measures $\mu_N$ corresponding to $H_N$. If the sequence
+$(\Lambda_N, H_N)$ is appropriately chosen, then the weak limit will exist and be an element
+of $\gibbs(\Phi)$.
+
+\subsubsection{Periodic boundary conditions}
+
+When $\graph = \Zd$ and the $\Phi$ are translation-invariant\footnote{That is, $\Phi_A = \Phi_{A+i}$
+for any $i\in\Zd$.}, there is a particularly convenient approach to taking the infinite-volume
+limit. Suppose that $\Phi$ has finite range\footnote{This is a mere convenience. This construction
+extends to potentials with infinite range.}, i.e.\ $\Phi_A = 0$ whenever $|A| > R$ for some $R$.
+We let $\Lambda_N = \Zd/L^N\Zd$ be the discrete torus of side $L^N$ (for $L > 1$) and identify
+the $\Lambda_N$ with an increasing sequence of subsets of $\Zd$ (since $\Phi$ is translation-invariant,
+it is not important how this identification is made). Then any subset $A \subset \Zd$ of side
+$|A| \le R$ can be identified with a subset of $\Lambda_N$ for $N$ sufficiently large. For such
+$N$, we let
+\begin{equation}
+H_N(\varphi) = \sum \Phi_A(\varphi),
+\end{equation}
+where the sum is over subsets of $\Lambda_N$. \todo{I don't think this is right.}
+It is shown in \cite[Example 4.20]{Georgii11} that, if $\mu_N$
+converges weakly to a measure $\mu$, then $\mu \in \gibbs(\Phi)$. The measure $\mu$ is said to have
+\emph{periodic} boundary conditions.
+
+\begin{example}
+Let $\graph = \Zd$ and let $\Lambda_N = \Zd/L^N\Zd$ for $L > 1$.
+Let $G_{N,x}$ denote the two-point function of a spin system on $\Lambda_N$.
+We define the two-point function on $\Zd$ by the limit
+\begin{equation}
+G_x = \lim_{N\to\infty} G_{x,N}.
+\end{equation}
+By the previous example, if the limit $\mu$ of the $\mu_N$ exists, then
+\begin{equation}
+G_x = \frac{1}{n} \int d\mu(\varphi) \varphi_0 \cdot \varphi_x.
+\end{equation}
+\end{example}
+
+\subsubsection{Phase transitions}
+
+\todo{To do}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Random polymer models}
+
+\todo{Here, we can specialize to simpler graphs}
+
+In the following, $\interval_T$ will denote one of the following choices (for all $T \ge 0$):
+\begin{equation}
+\interval_T
+  =
+\begin{cases}
+\{ 0, \ldots, \lfloor T \rfloor \} \\
+[0, T]
+\end{cases}.
+\end{equation}
+These two choices will be referred to, respectively, as the \emph{discrete-} and
+\emph{continuous-time} cases.
+\todo{Unless the graph is transitive, the following depends on $0$.}
+Fix a designated vertex $0 \in \vertices$ and
+let $\Wcal_T$ denote the set of
+right-continuous paths $\omega : \interval_T \to \vertices$ with $\omega(0) = 0$.
+We will refer to elements of $\Wcal := \bigcup_{T \geq 0} \Wcal_T$ as \emph{walks}.
+A model of walks is determined by a choice of finite measure $d\mu_T$ on
+$\Wcal_T$ for each $T$.
+In the discrete-time case, we will assume that
+$\mu_T = \mu_{\lfloor T \rfloor}$ for all $T$ (both are measures on
+$\Wcal_{\lfloor T \rfloor}$ in this case).
+
+Given a model of walks $d\mu_T$, we define the normalizing constant
+\begin{equation}
+c_T = \int_{\Wcal_T} d\mu_T.
+\end{equation}
+Given a parameter $\nu \in \R$ (called the \emph{killing rate}),
+there is a natural measure $\mu$ on $\Wcal$ defined by
+\begin{equation}
+\int f \; d\mu
+  =
+\int_0^\infty dT \; e^{-\nu T} \int_{\Wcal_T} d\mu_T f
+\end{equation}
+for any continuous function $f$ on $\Wcal$ with compact support.
+\todo{When is $\mu$ well-defined?}
+The corresponding normalizing constant is denoted
+\begin{equation}
+\chi(\nu) = \int_0^\infty dT \; e^{-\nu T} c_T
+\end{equation}
+and is known as the \emph{susceptibility}. In the discrete-time case,
+we let $z = e^{-\nu}$ and write
+\begin{equation}
+\mu(f)
+  =
+\frac{1 - e^{-\nu}}{\nu} \sum_{n=0}^\infty z^n \int_{\Wcal_n} d\mu_n(\omega) \; f(\omega).
+\end{equation}
+with
+\begin{equation}
+\chi(\nu) = \frac{1 - e^{-\nu}}{\nu} \sum_{n=0}^\infty c_n z^n.
+\end{equation}
+
+For $a, b \in \vertices$, let $\Wcal_T(a, b) \subset \Wcal_T$ denote the collection of walks
+$\omega \in \Wcal_T$ with $\omega_0 = a$ and $\omega_T = x$.
+The conditional measure $\mu^{(ab)}_T = \mu_T(\cdot \mid \Wcal_T(a, b))$
+is given by
+\begin{equation}
+\mu^{(ab)}_T(d\omega) = \frac{\mu_T(d\omega) \1_{\Wcal_T(a, b)}(\omega)}{c_T(a, b)},
+\end{equation}
+where
+\begin{equation}
+c_T(a, b) = \mu_T(\Wcal_T(a, b)).
+\end{equation}
+Let $\Wcal(a, b) = \bigcup_{T \ge 0} \Wcal_T(a, b)$. Then
+\begin{equation}
+\mu^{(ab)}(d\omega) = \frac{\mu(d\omega) \1_{\Wcal(a, b)}(\omega)}{G_x},
+\end{equation}
+where the \emph{two-point function}
+\begin{equation}
+G_{ab} = \mu(\Wcal(a, b)) = \int_0^\infty dT \; e^{-\nu T} c_T(a, b).
+\end{equation}
+In discrete time, we have
+\begin{align}
+G_{ab} = \frac{1 - e^{-\nu}}{\nu} \sum_{n=0}^\infty c_n(a, b) z^n.
+\end{align}
+
+Many models of walks are determined by letting $\mu_T$ be the canonical Gibbs measure
+associated to a Hamiltonian $H_T : \Wcal_T \to \R$ and a base measure $d\lambda_T$ on $\Wcal_T$.
+That is,
+\begin{equation}
+d\mu_T(\omega) = \frac{1}{Z_T} e^{-H_T(\omega)} d\lambda_T(\omega).
+\end{equation}
+In this caes, $\mu$ is the corresponding grand canonical ensemble (with killing rate playing
+the role of fugacity) and $c_T$ and $\chi$
+are the canonical and grand canonical partition functions, respectively.
+
+% In what follows, we let $Q$ be a $\vertices \times \vertices$ matrix with $Q_{xy} = 0$
+% whenever $\{ x, y \} \notin \edges$.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -483,109 +780,12 @@ well-defined for $m^2 = 0$ if and only if $d > 2$.
 invariance principle}
 \end{example}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\section{Lattice models}
-
 % Let $\graph = (\vertices, \edges)$ be a graph with vertices
 % $\vertices$ and (undirected) edges $\edges$.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{Models of walks}
-
-In the following, $\interval_T$ will denote one of the following choices (for all $T \ge 0$):
-\begin{equation}
-\interval_T
-  =
-\begin{cases}
-\{ 0, \ldots, \lfloor T \rfloor \} \\
-[0, T]
-\end{cases}.
-\end{equation}
-These two choices will be referred to, respectively, as the \emph{discrete-} and
-\emph{continuous-time} cases.
-\todo{Unless the graph is transitive, the following depends on $0$.}
-Fix a designated vertex $0 \in \vertices$ and
-let $\Wcal_T$ denote the set of
-right-continuous paths $\omega : \interval_T \to \vertices$ with $\omega(0) = 0$.
-We will refer to elements of $\Wcal := \bigcup_{T \geq 0} \Wcal_T$ as \emph{walks}.
-A model of walks is determined by a choice of finite measure $d\mu_T$ on
-$\Wcal_T$ for each $T$.
-In the discrete-time case, we will assume that
-$\mu_T = \mu_{\lfloor T \rfloor}$ for all $T$ (both are measures on
-$\Wcal_{\lfloor T \rfloor}$ in this case).
-
-Given a model of walks $d\mu_T$, we define the normalizing constant
-\begin{equation}
-c_T = \int_{\Wcal_T} d\mu_T.
-\end{equation}
-Given a parameter $\nu \in \R$ (called the \emph{killing rate}),
-there is a natural measure $\mu$ on $\Wcal$ defined by
-\begin{equation}
-\int f \; d\mu
-  =
-\int_0^\infty dT \; e^{-\nu T} \int_{\Wcal_T} d\mu_T f
-\end{equation}
-for any continuous function $f$ on $\Wcal$ with compact support.
-\todo{When is $\mu$ well-defined?}
-The corresponding normalizing constant is denoted
-\begin{equation}
-\chi(\nu) = \int_0^\infty dT \; e^{-\nu T} c_T
-\end{equation}
-and is known as the \emph{susceptibility}. In the discrete-time case,
-we let $z = e^{-\nu}$ and write
-\begin{equation}
-\mu(f)
-  =
-\frac{1 - e^{-\nu}}{\nu} \sum_{n=0}^\infty z^n \int_{\Wcal_n} d\mu_n(\omega) \; f(\omega).
-\end{equation}
-with
-\begin{equation}
-\chi(\nu) = \frac{1 - e^{-\nu}}{\nu} \sum_{n=0}^\infty c_n z^n.
-\end{equation}
-
-For $a, b \in \vertices$, let $\Wcal_T(a, b) \subset \Wcal_T$ denote the collection of walks
-$\omega \in \Wcal_T$ with $\omega_0 = a$ and $\omega_T = x$.
-The conditional measure $\mu^{(ab)}_T = \mu_T(\cdot \mid \Wcal_T(a, b))$
-is given by
-\begin{equation}
-\mu^{(ab)}_T(d\omega) = \frac{\mu_T(d\omega) \1_{\Wcal_T(a, b)}(\omega)}{c_T(a, b)},
-\end{equation}
-where
-\begin{equation}
-c_T(a, b) = \mu_T(\Wcal_T(a, b)).
-\end{equation}
-Let $\Wcal(a, b) = \bigcup_{T \ge 0} \Wcal_T(a, b)$. Then
-\begin{equation}
-\mu^{(ab)}(d\omega) = \frac{\mu(d\omega) \1_{\Wcal(a, b)}(\omega)}{G_x},
-\end{equation}
-where the \emph{two-point function}
-\begin{equation}
-G_{ab} = \mu(\Wcal(a, b)) = \int_0^\infty dT \; e^{-\nu T} c_T(a, b).
-\end{equation}
-In discrete time, we have
-\begin{align}
-G_{ab} = \frac{1 - e^{-\nu}}{\nu} \sum_{n=0}^\infty c_n(a, b) z^n.
-\end{align}
-
-Many models of walks are determined by letting $\mu_T$ be the canonical Gibbs measure
-associated to a Hamiltonian $H_T : \Wcal_T \to \R$ and a base measure $d\lambda_T$ on $\Wcal_T$.
-That is,
-\begin{equation}
-d\mu_T(\omega) = \frac{1}{Z_T} e^{-H_T(\omega)} d\lambda_T(\omega).
-\end{equation}
-In this caes, $\mu$ is the corresponding grand canonical ensemble (with killing rate playing
-the role of fugacity) and $c_T$ and $\chi$
-are the canonical and grand canonical partition functions, respectively.
-
-% In what follows, we let $Q$ be a $\vertices \times \vertices$ matrix with $Q_{xy} = 0$
-% whenever $\{ x, y \} \notin \edges$.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\subsubsection{Self-avoiding walk}
+\subsection{Self-avoiding walk}
 
 A \emph{self-avoiding walk} of length $n$ on $\graph$ is a discrete walk $\omega\in\Wcal_n$
 that has no self intersections, i.e.\ $\omega_x = \omega_y$ if and only if $x = y$.
@@ -626,7 +826,7 @@ $(n+1)$-step self-avoiding walks) in terms of $c_n$.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsubsection{Weakly self-avoiding walk with self-attraction}
+\subsection{Weakly self-avoiding walk with self-attraction}
 
 Define the \emph{local time} up to time $T$ of $\omega \in \Wcal$ at $x \in \Zd$ by
 \begin{equation}
@@ -680,232 +880,6 @@ where $0 \in \vertices$ is fixed, and the susceptibility by
 In the case $\gamma = 0$, the discrete-time version of this model is known as
 the \emph{Domb-Joyce model}. In continuous-time, it is the \emph{continuous-time
 weakly self-avoiding walk} (WSAW).
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\subsection{Spin systems}
-
-Assume for now that $\graph$ is a finite graph.
-
-Let $S \subset \R^n$. A \emph{spin system} on $\graph$ with spins in $S$ is given
-by a probability measure $\mu$ on $\Omega = S^V$. Such a measure is often given by a
-Gibbs measure
-\begin{equation}
-\frac{1}{Z} e^{-H(\varphi)} d\varphi,
-\end{equation}
-where $d\varphi = \prod_{x\in\vertices} d\varphi_x$ is the Lebesgue measure on
-$\Omega$. A spin system is said to be \emph{ferromagnetic} when the measure can
-be written as
-\begin{equation}
-\frac{1}{Z} e^{-\tilde H(\varphi)} \prod_{x\in\vertices} \mu(d\varphi_x)
-\end{equation}
-for some measure $\mu$ on $S$, with
-\begin{equation}
-\tilde H(\varphi) = -\sum_{x, y \in \vertices} J_{xy} \varphi_x \cdot \varphi_y
-\end{equation}
-and $J_{xy} \ge 0$ for all $x, y$.
-
-%%%%% MOVE EARLIER %%%%%%%%%%%%%%%%
-% Given a configuration $\varphi \in \Omega$
-% of spins, we will denote the $i$-th component of $\varphi_x \in S$ by $\varphi^i_x$.
-% We define the inner product
-% \begin{equation}
-% \varphi \cdot \tilde\varphi = \sum_{i=1}^n \sum_{x\in\vertices} \varphi^i_x \tilde\varphi^i_x
-% \end{equation}
-% and we let a $V \times V$ matrix $M$ act on $\varphi$ via
-% \begin{equation}
-% (M\varphi)_x = \sum_{y\in\vertices} M_{xy} \varphi_x.
-% \end{equation}
-
-We define the \emph{two-point function} (when it exists)
-\begin{equation}
-G_x(\mu) = \frac{1}{n} \int d\mu(\varphi) \; \varphi_0 \cdot \varphi_x
-\end{equation}
-and the \emph{susceptibility}
-\begin{equation}
-\chi(\mu) = \sum_{x\in\vertices} G_x(\mu).
-\end{equation}
-Note that this definition of the susceptibility is consistent with the corresponding
-definition for walks.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\subsection{Gaussian fields}
-
-The Gaussian field with covariance $C$ is a spin system with Hamiltonian (for finite
-$\vertices$)
-\begin{equation}
-H(\varphi) = \frac{1}{2} \varphi \cdot C^{-1} \varphi.
-\end{equation}
-By Wick's theorem, two-point function is just the covariance $C$.
-Since $J$ has nonnegative entries, the Gaussian free field (which must be massive when
-$\vertices$ is finite) is ferromagnetic.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\subsubsection{The $|\varphi|^4$ spin model}
-
-The $|\varphi|^4$ spin model is given by a quartic perturbation to the Gaussian free field.
-Precisely, the Hamiltonian has the form
-\begin{equation}
-H(\varphi)
-  =
-\sum_{x\in\vertices}
-\left(
-  \frac{1}{4} g |\varphi_x|^4
-    +
-  \frac{1}{2} \nu |\varphi_x|^2
-    +
-  \frac{1}{2} \varphi_x \cdot (A \varphi)_x
-\right)
-\end{equation}
-for $g > 0$, $\nu\in\R$. This is a ferromagnetic spin system.
-
-Here, $m^2$ need not be strictly positive (this was required for the DGFF for reasons of
-integrability). In fact, an important special case for us will be $A = -\Delta$.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\subsubsection{The $O(n)$ spin model}
-
-Consider the $|\varphi|^4$ model as above. Suppose that the $A$ are constant:
-there exists $d_0$ such that $d_x = d_0$ for all $x$.
-Then the $|\varphi|^4$ Hamiltonian can be written as
-\begin{equation}
-\sum_{x\in\vertices}
-\left(
-  \frac{1}{4} g |\varphi_x|^4
-    +
-  \frac{1}{2} (\nu + d_0) |\varphi_x|^2
-\right)
-  -
-\frac{1}{2} \varphi \cdot \jay \varphi
-\end{equation}
-
-If we take the limit $g\to\infty$ with $\nu = -(d_0 + g / 2)$, the
-$|\varphi|^4$ spin model converges
-weakly to the $O(n)$ spin model, given by the Hamiltonian
-\begin{equation}
-H(\varphi) = -\frac{1}{2} \varphi \cdot \jay \varphi
-\end{equation}
-on the state space $S = S^{n-1} \subset \R^n$ the $(n-1)$-sphere.
-This again is a ferromagnetic spin system.
-The case $n = 1$ is the celebrated \emph{Ising model}. When $n = 2, 3$,
-we get the \emph{XY model} and the \emph{classical Heisenberg model}.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\subsubsection{Infinite-volume Gibbs measures and phase transitions}
-
-\todo{This needs to be reworked. Don't need that much information on Gibbs measure
-since we will be dealing with the single-phase regime.}
-
-The presence of a phase transition in a physical system is signalled by an abrupt
-(i.e.\ non-analytic) change in an observable quantity as a parameter is varied. In fact,
-a $p$-th order phase transition is usually said to occur when the \emph{free energy}
-\begin{equation}
-F(\beta) = -\frac{1}{\beta} \log Z
-\end{equation}
-has a discontinuous $p$-th derivative (but continuous derivative of order $p - 1$).
-But when the Hamiltonian $H$ is a smooth, then so is the expression defining the free
-energy above. The solution to this problem is to study the limit of the free energy
-when the underlying graph $\graph$ becomes infinite.
-
-In other words, one takes a sequence $\Lambda_N \subset \graph$ of subgraphs such that
-$\Lambda_N \uparrow \graph$, defines a Hamiltonian $H_N$ on $S^{\Lambda_N}$ for each $N$,
-and attempts to take the limit
-\begin{equation}
-\lim_{N\to\infty} -\frac{1}{\beta} \log Z_N,
-\end{equation}
-where $Z_N$ is the partition function for the finite-volume Gibbs measure with Hamiltonian
-$H_N$. An immediate issue one faces is how to define the $H_N$ in an appropriate, consistent
-manner.
-
-Besides the case of Gaussian fields, the examples above do not generalize directly to an infinite
-graph as the Hamiltonian is no longer well-defined in that case. This obstacle was overcome in the
-work of Dobrushin, Lanford, and Ruelle. We briefly sketch their ideas in this section.
-
-For every finite subset $A \subset \vertices$, let $\Phi_A : \Omega \to \R$ be a function that
-depends only on the values of the spins in $A$. The collection $\Phi = (\Phi_A)_{A\subset\vertices}$
-is known as a \emph{potential}. The Hamiltonian induced by $\Phi$ on a finite
-subset $\Lambda \subset \vertices$ is defined by
-\begin{equation}
-H^\Phi_\Lambda(\varphi) = \sum \Phi_A(\varphi),
-\end{equation}
-where the sum is over all finite subset $A \subset \vertices$ that intersect $\Lambda$.
-For simplicity, suppose that the space of spins $S$ is either a discrete set equipped with the
-counting measure or is equipped with the Lebesgue measure. Let us also assume that the Hamiltonians
-$H^\Phi_\Lambda$ are bounded below. Thus, the  Gibbs measures corresponding to $H^\Phi_\Lambda$ are
-all well-defined.
-
-For $\Lambda \subset \vertices$ and $\varphi \in \Omega$, let $\varphi_\Lambda \in S^\Lambda$
-denote the restriction of $\varphi$ to $\Lambda$.
-A measure $\mu$ on $\Omega$ is said to be a \emph{Gibbs measure} for the potential $\Phi$
-if for $\mu$-almost
-every choice of boundary condition $\tilde\varphi$, the conditional distribution
-$\mu(d\varphi \mid \varphi_{\Lambda^c} = \tilde\varphi_{\Lambda^c})$ is given by the finite-volume Gibbs
-measure
-\begin{equation}
-\mu^\Phi_\Lambda(\varphi \mid \tilde\varphi)
-  :=
-\frac{1}{Z^\Phi_\Lambda(\tilde\varphi)}
-e^{-H^\Phi_\Lambda(\varphi_\Lambda \tilde\varphi_{\Lambda^c})}
-d\varphi_\Lambda,
-\end{equation}
-where $\varphi_\Lambda\tilde\varphi_{\Lambda^c} \in \Omega$ is the concatenation of
-$\varphi_\Lambda$ and $\tilde\varphi_{\Lambda^c}$
-and where $d\varphi_\Lambda$ is the Lebesgue measure on $S^\Lambda$.
-We denote the collection of all such Gibbs measures by $\gibbs(\Phi)$.
-
-It is straightforward to verify that any finite-volume Gibbs measure is a Gibbs measure
-in the above sense. A common procedure for constructing other elements of $\gibbs(\Phi)$
-is to take an \emph{infinite-volume limit}.
-
-To do so, let $\Lambda_N$ be a sequence of finite subsets of $\vertices$ such that
-$\Lambda_N \uparrow \vertices$
-and let $\varphi^{(N)}$ be a sequence of spin configurations in $\Omega$. It can be verified
-that, if the sequence of measures $\mu_N = \mu^\Phi_{\Lambda_N}(\cdot \mid \varphi^{(N)})$ converges weakly
-to a measure $\mu$, then $\mu\in\gibbs(\Phi)$. Any measure $\mu$ constructed in this way
-can be recovered from the limiting expectations $\lim_{N\to\infty} \mu_N(f)$ of sufficiently
-many \emph{observables}, which are bounded continuous functions $f : \Omega \to \R$.
-% It suffices to study the limiting properties of $\mu_N(f)$.
-
-\begin{example}[Periodic boundary conditions]
-Let $\graph = \Zd$ and suppose we are given a translation-invariant potential $\Phi$.
-That is, $\Phi_A = \Phi_{A + i}$ for any $i \in \Zd$.
-Suppose, moreover, that $\Phi$ is of finite range, i.e.\ $\Phi_A = 0$ whenever
-$|A| > R$ for some $R$. Let $\Lambda_N \subset \Zd$ be a sequence of finite boxes
-with $|\Lambda_N| > R$ for each $N$.
-
-Given a configuration $\varphi \in \Omega$, let $\varphi^N \in \Omega$
-be the periodic extension of the restriction of $\varphi_{\Lambda_N}$.
-We define a potential $\Phi^N$ by
-\begin{equation}
-\Phi^N_A(\varphi) = \Phi_A(\varphi^N) \1_{A \subset \Lambda_N}.
-\end{equation}
-The Gibbs measure $\mu_N$ on $\Lambda_N$ with \emph{periodic boundary conditions}
-with potential $\Phi$ is defined to be the Gibbs measure on $\Lambda_N$ with
-potential $\Phi^N$ (and any choice of boundary conditions).
-% \begin{equation}
-% \mu_N(d\varphi) = \frac{1}{Z_N} \exp\left(-H^{\Phi^N}(\varphi)\right) d\varphi,
-% \end{equation}
-% where $H^{\Phi^N}$ is the Hamiltonian on $\Lambda_N$ associated to the potential $\Phi_N$.
-It is shown in \cite[Example 4.20]{Georgii11} that, if $\mu_N$ converges weakly to a
-measure $\mu$, then $\mu \in \gibbs(\Phi)$.
-\end{example}
-
-\begin{example}
-Let $\graph = \Zd$ and let $\Lambda_N = \Zd/L^N\Zd$ for $L > 1$.
-Let $G_{N,x}$ denote the two-point function of a spin system on $\Lambda_N$.
-We define the two-point function on $\Zd$ by the limit
-\begin{equation}
-G_x = \lim_{N\to\infty} G_{x,N}.
-\end{equation}
-By the previous example, if the limit $\mu$ of the $\mu_N$ exists, then
-\begin{equation}
-G_x = \frac{1}{n} \int d\mu(\varphi) \varphi_0 \cdot \varphi_x.
-\end{equation}
-\end{example}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
