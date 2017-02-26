@@ -545,7 +545,7 @@ $N$, we let
 \begin{equation}
 H_N(\varphi) = \sum \Phi_A(\varphi),
 \end{equation}
-where the sum is over subsets of $\Lambda_N$. \todo{I don't think this is right.}
+where the sum is over subsets of $\Lambda_N$ of size at most $R$. \todo{I don't think this is right.}
 It is shown in \cite[Example 4.20]{Georgii11} that, if $\mu_N$
 converges weakly to a measure $\mu$, then $\mu \in \gibbs(\Phi)$. The measure $\mu$ is said to have
 \emph{periodic} boundary conditions.
@@ -571,8 +571,6 @@ G_x = \frac{1}{n} \int d\mu(\varphi) \varphi_0 \cdot \varphi_x.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Random polymer models}
-
-\todo{Here, we can specialize to simpler graphs}
 
 In the following, $\interval_T$ will denote one of the following choices (for all $T \ge 0$):
 \begin{equation}
@@ -670,23 +668,6 @@ are the canonical and grand canonical partition functions, respectively.
 there is no problem with the corresponding Gaussian measure (in what sense? see Friedli-Velenik).
 Put some of this in an external storage file.}
 
-% The Laplacian $\lap$ is the generator of a $\vertices$-valued Markov process $X_t$
-% that jumps from $x$ at rate $d_x$ and jumps to $y$ (from $x$) with probability
-% $P_{xy} = d_x^{-1} J_{xy}$. Let $P_x$ denote the probability of this process conditioned so
-% that $X_0 = x$ and define the measure $\mu_T$ on $\Wcal_T$ by
-% \begin{equation}
-% \mu_T(d\omega) = P_0((X_t = d\omega_t)_{t \le T}).
-% \end{equation}
-% Then $c_T = 1$ for all $T$ and so $\chi(\nu) = \nu^{-1}$.
-
-% Let $\hat\mu_n$ be the corresponding measure on discrete $n$-step walks.
-% Then $c_n(x, y) = P^n_{xy}$, so
-% \begin{equation}
-% G_{xy}
-%   =
-% \frac{1 - e^{-\nu}}{\nu} (1 - z P)^{-1}.
-% \end{equation}
-
 Let $Q$ be the $\vertices\cup\{\partial\}\times\vertices\cup\{\partial\}$ matrix with
 \begin{equation}
 Q_{xy}
@@ -779,9 +760,6 @@ well-defined for $m^2 = 0$ if and only if $d > 2$.
 \todo{On transitive graphs, SRW is a sum of iid random variables. This gives CLT and
 invariance principle}
 \end{example}
-
-% Let $\graph = (\vertices, \edges)$ be a graph with vertices
-% $\vertices$ and (undirected) edges $\edges$.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
