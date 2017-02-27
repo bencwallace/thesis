@@ -4,47 +4,46 @@
 % Chapters are the next main unit.
 \chapter{Introduction}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Statistical mechanics}
 
-The state of knowledge of a system with state space $(\Omega, d\lambda)$ can be
-expressed by a probability measure $\mu$ on $\Omega$. Let $\Mcal_\lambda(\Omega)$ denote
-the set of probability measures on $\Omega$ absolutely continuous with respect to $\lambda$.
-For $\mu \in \Mcal_\lambda(\Omega)$, we denote the Radon-Nikodym derivative of $\mu$ with
-respect to $\lambda$ by $d\mu/d\lambda$ and define the \emph{entropy} of $\mu$ with respect
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{The principle of maximum entropy}
+
+Let $(\Omega, \lambda)$ be a measure space. The state of knowledge of a system on $\Omega$ can be expressed by a probability measure $\mu$ on $\Omega$. Let
+$\Mcal_\lambda(\Omega)$ denote the set of probability measures on $\Omega$ absolutely continuous with respect to $\lambda$. For
+$\mu \in \Mcal_\lambda(\Omega)$, we denote the Radon-Nikodym derivative of
+$\mu$ with respect to $\lambda$ by $d\mu/d\lambda$ and define the \emph{entropy} of $\mu$ with respect
 to $\lambda$ by
 \begin{equation}
 h(\mu) = h_\lambda(\mu) = -\int_\Omega \log\frac{d\mu}{d\lambda} \; d\mu.
 \end{equation}
-In many cases, specific information about
-the state of knowledge is available, for example in the form of statements such as
-\begin{equation}
-\int f \; d\mu \in S_f
-\end{equation}
-with $f$ running over some collection of $\mu$-integrable functions
-that represent \emph{observable} quantities of the system, and $S_f$ a Borel
-subsets of $\R$ for each $f$. The \emph{principle of maximum entropy} asserts that, in this
+In many cases, specific information about the system under consideration is available, so that we may restrict our attention to a subspace $M \subset \Mcal_\lambda(\Omega)$.
+% for example in the form of statements such as
+% \begin{equation}
+% \int f \; d\mu \in S_f
+% \end{equation}
+% with $f$ running over some collection of $\mu$-integrable functions
+% that represent \emph{observable} quantities of the system, and $S_f$ a Borel
+% subsets of $\R$ for each $f$.
+The \emph{principle of maximum entropy} \cite{Jaynes57} asserts that, in this
 case, the measure best expressing the state of knowledge of the system is given by
 \begin{equation}
-\hat\mu = \argmax(h_\lambda(\mu) : \mu \in \Mcal_\lambda(\Omega)),
+\hat\mu = \argmax(h_\lambda(\mu) : \mu \in M),
 \end{equation}
-assuming such a measure exists and is unique.
+assuming such a measure exists and is unique. One may for instance regard the choice of a measure not attaining this maximum to be tantamount to the imposition of additional constraints on the system.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Microcanonical ensemble}
 
-Consider an \emph{isolated} physical system on $\Omega$, that is, one that cannot exchange
-energy with its surroundings. Such a system can be determined by a choice of function
-$H : \Omega \to \R$, called the \emph{Hamiltonian}. The value $H(\omega)$ represents the
-total energy of the system in state $\omega\in\Omega$.
+Consider an \emph{isolated} physical system on $\Omega$, that is, one that cannot exchange energy with its surroundings. Such a system can be determined by a choice of function $H : \Omega \to \R$, called the \emph{Hamiltonian}. The value $H(\omega)$ represents the total energy of the system in state $\omega\in\Omega$.
 
 \begin{example}
-Let $\Omega = U^n \times \R^{3n}$, where $U \subset \R^3$, and denote a generic element of
-$\Omega$ by $(q, p)$, where $q \in U^n$ and $p \in \R^{3n}$. Then $\Omega$ is the state
-space of a system of $n$ point particles $i = 1, \ldots, n$ with positions $q_i \in U$
+Let $\Omega = U^n \times \R^{3n}$, where $U \subset \R^3$, and denote a generic element of $\Omega$ by $(q, p)$, where $q \in U^n$ and $p \in \R^{3n}$. Then $\Omega$ is the state space of a system of $n$ point particles $i = 1, \ldots, n$ with positions $q_i \in U$
 and momenta $p_i \in \R^3$. Given a $C^1$ Hamiltonian $H : \Omega \to \R$,
 the dynamics of such a system is determined by \emph{Hamilton's equations}
 \begin{align}
@@ -72,12 +71,11 @@ $E = H(q(0), p(0))$ will evolve on the constant energy shell $S_E = H^{-1}(E)$.
 % consider the case when $S_E$ is finite.
 If $S_E = H^{-1}(E)$ is finite\footnote{We can view such a system as an approximation
 to a traditional continuous system with $S_E$ uncountable.}, then one can easily determine
-the maximum entropy measure on $S_E$. Indeed, the maximum entropy measure on a finite
-space is simply the uniform measure. We define the
-\emph{microcanonical distribution} on a finite set $F$ to be the uniform
-measure on $F$.
+that the maximum entropy measure on $S_E$ is simply the uniform measure. For a system
+with finite state space $\Omega$ and Hamiltonian $H$, we define the
+\emph{microcanonical distribution} with energy $E$ to be the uniform measure on $S_E$.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Canonical ensemble}
 
@@ -109,7 +107,7 @@ The \emph{free energy} of this system is defined by
 F_\beta = -\frac{1}{\beta} \log Z_\beta.
 \end{equation}
 This definition may seem obscure at first, but is elucidated by
-a computation of the entropy $h_\lambda(\mu_\beta)$, which implies that
+a computation of the entropy $h_\lambda(\mu_\beta)$ with $\beta = \beta(E)$, which implies that
 \begin{equation}
 F_\beta = E - \frac{1}{\beta} h_\lambda(\mu_\beta).
 \end{equation}
@@ -180,54 +178,51 @@ as a Gibbs measure whose Hamiltonian is a sum of ``local'' interactions.
 % approximation above accurately represents the marginal density of $\mu^1_E$.
 % \end{example}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Grand canonical ensemble}
 
-Consider a physical system that is free to exchange particles with its environment. We suppose
-the ``number of particles'' of this system take values in a measurable set $\interval \subset \R$.
-For $T \in \interval$, let $\Omega_T$ be the space of configurations with $T$
-particles and let $H_T : \Omega_T \to \R$ be the Hamiltonian on $\Omega_T$.
-The state space for the full system is then given by $\Omega = \bigsqcup_{T \in \interval} \Omega_T$,
-where $\sqcup$ denotes the disjoint union.
-For $\omega\in\Omega$, let $|\omega|$ be the unique value of $T$
-such that $\omega \in \Omega_T$.
-We define $H : \Omega \to \R$ by $H(\omega) = H_{|\omega|}(\omega)$.
+Consider a physical system that is free to exchange both energy and particles with its environment. We suppose the ``number of particles'' of this system takes values in a measurable set $\interval \subset \R$. For $T \in \interval$, let $\Omega_T$ be a space
+of $T$-particle configurations and let $H_T : \Omega_T \to \R$ be the Hamiltonian on
+$\Omega_T$. The state space for the full system is then given by
+$\Omega = \bigsqcup_{T \in \interval} \Omega_T$, where $\sqcup$ denotes the disjoint union.
+For $\omega\in\Omega$, let $|\omega|$ be the unique value of $T$ such that
+$\omega \in \Omega_T$. We define $H : \Omega \to \R$ by
+$H(\omega) = H_{|\omega|}(\omega)$.
 
 The \emph{grand canonical ensemble} for this system is defined to be the maximum entropy measure
 subject to the constraints of fixed average energy and fixed average number of particles. It can
 be shown that the grand canonical ensemble is given by a measure
 \begin{equation}
-d\mu_{\beta,\nu} = \frac{1}{Z_{\beta,\nu}} e^{-\beta (H(\omega) - \nu |\omega|)},
+d\mu_{\beta,\nu}
+  =
+\frac{1}{Z_{\beta,\nu}} e^{-\beta H(\omega) - \nu |\omega|},
 \end{equation}
-where $Z_{\beta,\nu}$ is the normalizing constant, known as the \emph{grand canonical partition
-function}. The parameters $\beta$ and $\nu$ are both Lagrange multipliers; we call $\nu$ the
-\emph{fugacity}. Since the $\nu |\omega|$ term can be absorbed into the Hamiltonian, the measure
-$\mu_{\beta,\nu}$ is really just an ordinary Gibbs measure as defined in the previous section.
-For this reason, the distinction between canonical and grand canonical ensembles is informal.
+where $Z_{\beta,\nu}$ is the normalizing constant, known as the \emph{grand canonical partition function}. We call $\nu$ the \emph{fugacity}. Since the
+$\nu |\omega|$ term can be absorbed into the Hamiltonian, the measure $\mu_{\beta,\nu}$ is really just an ordinary Gibbs measure as defined in the previous section. For this reason, the distinction between canonical and grand canonical ensembles is an informal one.
 
-\begin{example}
+\begin{rk}
 Note that the grand canonical partition function is given by
 \begin{equation}
 Z_{\beta,\nu}
   =
-\int_\interval e^{\nu T} Z_\beta^{(T)} \; dT,
+\int_\interval e^{-\nu T} Z_\beta^{(T)} \; dT,
 \end{equation}
 where $Z^{(T)}_\beta$ is the canonical partition function of $H_T$.
 Thus, $Z_{\beta,\nu}$ is the Laplace transform of the canonical partition function
 viewed as a function of $T$.
-\end{example}
+\end{rk}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Graphs}
 
-Most systems of interest do not have a finite (or even countable) state space. Nevertheless,
-finite systems serve as natural approximations of real systems. For instance, spatially-extended
-systems may be approximated by models on graphs.
+Most systems of interest do not have a finite (or even countable) state space. Nevertheless, finite systems serve as natural approximations of real systems. For instance, a natural way to approximate spatially-extended systems is by defining models on graphs.
 
-\subsubsection{Graphs and the Laplacian}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Graphs and the Laplacian}
 
 Let $\vertices$ be a countable set.
 Let $\jay$ be a symmetric $\vertices\times\vertices$ matrix satisfying
@@ -266,7 +261,18 @@ Note that
 \end{equation}
 so $\lap$ is positive-semidefinite.
 
-\subsubsection{The Green function}
+\begin{example}
+An important case is when $\jay$ has $\{0, 1 \}$-valued entries. In this case, $d_x$ is the
+\emph{degree} of $x$ in $\graph$ and we denote the matrix $\lap$ by $-\Delta$, which has
+entries
+\begin{equation}
+-\Delta_{xy} = d_x \1_{x=y} - \1_{x \sim y}.
+\end{equation}
+\end{example}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{The Green function}
 
 If $m^2 > 0$, then $m^2 + \lap$ is positive-definite, hence invertible with inverse
 \begin{equation}
@@ -287,15 +293,6 @@ C(x, y)
 \end{equation}
 whenever this series converges.
 
-\begin{example}
-An important case is when $\jay$ has $\{0, 1 \}$-valued entries. In this case, $d_x$ is the
-\emph{degree} of $x$ in $\graph$ and we denote the matrix $\lap$ by $-\Delta$, which has
-entries
-\begin{equation}
--\Delta_{xy} = d_x \1_{x=y} - \1_{x \sim y}.
-\end{equation}
-\end{example}
-
 % Let $\jay$ be a $\vertices \times \vertices$
 % matrix with $J_{xx} = 0$ and $J_{xy} \ge 0$ for all $x, y \in \vertices$ and suppose
 % that $\jay$ has summable rows: $\sum_{y\in\vertices} J_{xy} < \infty$. Let $\diag$ be
@@ -306,8 +303,8 @@ entries
 % E.g.\ $A = -\Delta + m^2$ has positive diagonal entries. Recall that
 % $\Delta_{xy} = \1_{x \sim y} - 2 d \1_{x=y}$.}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Spin systems}
 
@@ -363,7 +360,8 @@ has the form
 \begin{equation}
 H(\varphi) = \sum_{x, y \in \vertices} \varphi_x \cdot J_{xy} \varphi_y,
 \end{equation}
-where (recall) $J_{xy} \ge 0$.
+where (recall) $J_{xy} \ge 0$. Thus, $H(\varphi)$ is lower when the spins align.
+
 Let us fix a designated vertex\footnote{In general, some quantities we define will depend
 on the choice of vertex. However, we will ultimately be interested in the transitive graph
 $\graph = \Zd$ for which this choice is irrelevant.} $0 \in \vertices$.
@@ -376,7 +374,7 @@ when this is well-defined. If it is, we also define the \emph{susceptibility}
 \chi(\mu_\beta) = \sum_{x\in\vertices} G_x(\mu_\beta).
 \end{equation}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Gaussian measures and the free field}
 
@@ -416,7 +414,7 @@ for which the covariance is equal to the massive Green function: $C = (m^2 + \la
 It is not hard to show, using the fact that $J$ has nonnegative entries, that the Gaussian
 free field is ferromagnetic.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{The \texorpdfstring{$|\varphi|^4$}{phi4} spin model}
 
@@ -439,7 +437,7 @@ where $g > 0$ and $\nu\in\R$. When $\nu > 0$, we have $H_{g,\nu} = g |\varphi|^4
 where $C = (\nu + \lap)^{-1}$ is the covariance of the Gaussian free field with mass $\nu$.
 Again, this is a ferromagnetic spin system.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{The \texorpdfstring{$O(n)$}{O(n)} spin model}
 
@@ -474,7 +472,7 @@ if we take the limit $g\to\infty$ with $\nu = -(d_0 + g / 2)$.
 The case $n = 1$ is the celebrated \emph{Ising model}. When $n = 2, 3$,
 we get the \emph{XY model} and the \emph{classical Heisenberg model}.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Phase transitions in infinite volume}
 
@@ -563,16 +561,14 @@ G_x = \frac{1}{n} \int d\mu(\varphi) \varphi_0 \cdot \varphi_x.
 \end{equation}
 \end{example}
 
-\subsubsection{Phase transitions}
-
-\todo{To do}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Random polymer models}
 
-In the following, $\interval_T$ will denote one of the following choices (for all $T \ge 0$):
+For simplicity, we take $\graph$ to be a $d_0$-regular vertex-transitive graph and fix a
+designated vertex $0 \in \vertices$. We let $\interval_T$ denote either of the following
+choices for all $T \ge 0$:
 \begin{equation}
 \interval_T
   =
@@ -581,92 +577,123 @@ In the following, $\interval_T$ will denote one of the following choices (for al
 [0, T]
 \end{cases}.
 \end{equation}
-These two choices will be referred to, respectively, as the \emph{discrete-} and
-\emph{continuous-time} cases.
-\todo{Unless the graph is transitive, the following depends on $0$.}
-Fix a designated vertex $0 \in \vertices$ and
-let $\Wcal_T$ denote the set of
-right-continuous paths $\omega : \interval_T \to \vertices$ with $\omega(0) = 0$.
-We will refer to elements of $\Wcal := \bigcup_{T \geq 0} \Wcal_T$ as \emph{walks}.
+For any right-continuous function $\omega : \interval_T \to \vertices$, we define
+$\tau_n = \tau_n(\omega)$ inductively by setting $\tau_0 = 0$ and
+\begin{equation}
+\tau_{n+1} = \inf(t > \tau_n : \omega_t \ne \omega_{\tau_n}).
+\end{equation}
+We call such a function $\omega$ a \emph{walk} of length $T$ if $\{ \tau_n : n \in \Z_+ \}$
+does not have any
+cluster points and $\omega_{\tau_n} \sim \omega_{\tau_{n+1}}$ for all $n$; thus, $\omega$
+only jumps between neighbouring vertices. A \emph{discrete-time} (respectively,
+\emph{continuous-time}) walk of length $T$ is a walk indexed by $\{ 0, \ldots, \lfloor T \rfloor \}$
+(respectively, $[0, T]$).
+We let $\Wcal_T$ denote the set of walks of length $T$ with $\omega_0 = 0$ and set
+$\Wcal := \bigcup_{T \geq 0} \Wcal_T$.
+
 A model of walks is determined by a choice of finite measure $d\mu_T$ on
-$\Wcal_T$ for each $T$.
-In the discrete-time case, we will assume that
-$\mu_T = \mu_{\lfloor T \rfloor}$ for all $T$ (both are measures on
+$\Wcal_T$ for each $T$. All models we consider will be given by canonical Gibbs measures
+\begin{equation}
+d\mu_T(\omega) = \frac{1}{c_T} e^{-H_T(\omega)} \; d\lambda_T(\omega),
+\end{equation}
+with respect to some measure $\lambda_T$ on $\Wcal_T$. Note that we have denoted the
+partition function by $c_T$.
+We will assume that models of discrete-time walks satisfy
+$\mu_T = \mu_{\lfloor T \rfloor}$ for all $T$ (note that both are measures on
 $\Wcal_{\lfloor T \rfloor}$ in this case).
 
-Given a model of walks $d\mu_T$, we define the normalizing constant
+Given such a model, we write the corresponding grand canonical ensemble as
 \begin{equation}
-c_T = \int_{\Wcal_T} d\mu_T.
+d\mu(\omega) = \frac{1}{\chi(\nu)} e^{-\nu |\omega|} d\mu_{|\omega|}(\omega).
 \end{equation}
-Given a parameter $\nu \in \R$ (called the \emph{killing rate}),
-there is a natural measure $\mu$ on $\Wcal$ defined by
+In this setting, the fugacity $\nu$ is usually referred to as the \emph{killing rate}.
+The grand canonical partition function, denoted $\chi$, is known as the \emph{susceptibility}.
+Note that
 \begin{equation}
-\int f \; d\mu
-  =
-\int_0^\infty dT \; e^{-\nu T} \int_{\Wcal_T} d\mu_T f
+\mu(\cdot \mid \Wcal_T) = \mu_T.
 \end{equation}
-for any continuous function $f$ on $\Wcal$ with compact support.
 \todo{When is $\mu$ well-defined?}
-The corresponding normalizing constant is denoted
+
+For $x \in \vertices$, let $\Wcal_T(x) \subset \Wcal_T$ denote the collection of walks
+$\omega \in \Wcal_T$ with $\omega_0 = a$ and $\omega_T = x$.
+The conditional measure $\mu^x_T = \mu_T(\cdot \mid \Wcal_T(x))$
+is given by
 \begin{equation}
-\chi(\nu) = \int_0^\infty dT \; e^{-\nu T} c_T
+\mu^x_T(d\omega) = \frac{\mu_T(d\omega) \1_{\Wcal_T(x)}(\omega)}{c_T(x)},
 \end{equation}
-and is known as the \emph{susceptibility}. In the discrete-time case,
-we let $z = e^{-\nu}$ and write
+where
 \begin{equation}
-\mu(f)
+c_T(x) = \mu_T(\Wcal_T(x)).
+\end{equation}
+Let $\Wcal(x) = \bigcup_{T \ge 0} \Wcal_T(x)$. Then
+\begin{equation}
+\mu^x(d\omega) = \frac{\mu(d\omega) \1_{\Wcal(x)}(\omega)}{G_x(\nu)},
+\end{equation}
+where $G_x$ is the \emph{two-point function}, defined by
+\begin{equation}
+G_x(\nu) = \mu(\Wcal(x)) = \int_0^\infty dT \; e^{-\nu T} c_T(x).
+\end{equation}
+Note that
+\begin{equation}
+\chi(\nu) = \sum_{x\in\vertices} G_x(\nu),
+\end{equation}
+which is consistent with the analogous relation for spin systems.
+Later we will discuss the relationship between the two-point function for
+walks and spin systems.
+
+\begin{rk}
+In the discrete-time case, we let $z = e^{-\nu}$ and write
+\begin{equation}
+\mu(\omega)
   =
-\frac{1 - e^{-\nu}}{\nu} \sum_{n=0}^\infty z^n \int_{\Wcal_n} d\mu_n(\omega) \; f(\omega).
+\frac{1 - e^{-\nu}}{\nu} z^{|\omega|} \mu_{|\omega|}(\omega)
+% \mu(f)
+  % =
+% \frac{1 - e^{-\nu}}{\nu} \sum_{n=0}^\infty z^n \int_{\Wcal_n} d\mu_n(\omega) \; f(\omega).
 \end{equation}
 with
 \begin{equation}
 \chi(\nu) = \frac{1 - e^{-\nu}}{\nu} \sum_{n=0}^\infty c_n z^n.
 \end{equation}
-
-For $a, b \in \vertices$, let $\Wcal_T(a, b) \subset \Wcal_T$ denote the collection of walks
-$\omega \in \Wcal_T$ with $\omega_0 = a$ and $\omega_T = x$.
-The conditional measure $\mu^{(ab)}_T = \mu_T(\cdot \mid \Wcal_T(a, b))$
-is given by
-\begin{equation}
-\mu^{(ab)}_T(d\omega) = \frac{\mu_T(d\omega) \1_{\Wcal_T(a, b)}(\omega)}{c_T(a, b)},
-\end{equation}
-where
-\begin{equation}
-c_T(a, b) = \mu_T(\Wcal_T(a, b)).
-\end{equation}
-Let $\Wcal(a, b) = \bigcup_{T \ge 0} \Wcal_T(a, b)$. Then
-\begin{equation}
-\mu^{(ab)}(d\omega) = \frac{\mu(d\omega) \1_{\Wcal(a, b)}(\omega)}{G_x},
-\end{equation}
-where the \emph{two-point function}
-\begin{equation}
-G_{ab} = \mu(\Wcal(a, b)) = \int_0^\infty dT \; e^{-\nu T} c_T(a, b).
-\end{equation}
-In discrete time, we have
+Similarly,
 \begin{align}
-G_{ab} = \frac{1 - e^{-\nu}}{\nu} \sum_{n=0}^\infty c_n(a, b) z^n.
+G_x(\nu) = \frac{1 - e^{-\nu}}{\nu} \sum_{n=0}^\infty c_n(x) z^n.
 \end{align}
+\end{rk}
 
-Many models of walks are determined by letting $\mu_T$ be the canonical Gibbs measure
-associated to a Hamiltonian $H_T : \Wcal_T \to \R$ and a base measure $d\lambda_T$ on $\Wcal_T$.
-That is,
-\begin{equation}
-d\mu_T(\omega) = \frac{1}{Z_T} e^{-H_T(\omega)} d\lambda_T(\omega).
-\end{equation}
-In this caes, $\mu$ is the corresponding grand canonical ensemble (with killing rate playing
-the role of fugacity) and $c_T$ and $\chi$
-are the canonical and grand canonical partition functions, respectively.
-
-% In what follows, we let $Q$ be a $\vertices \times \vertices$ matrix with $Q_{xy} = 0$
-% whenever $\{ x, y \} \notin \edges$.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Random walk}
 
-\todo{For now specialize to unkilled walks. We only really need the transient case, for which
-there is no problem with the corresponding Gaussian measure (in what sense? see Friedli-Velenik).
-Put some of this in an external storage file.}
+\todo{Restrict to $d_0$-regular graph (otherwise, generating function has $z_x$ instead of $z$).
+Work towards showing that generating function (for unkilled SRW) is inverse of:
+\begin{equation}
+1 - z P = 1 - (z / d_0) J = (z / d_0) (m^2 + d_0 - J)
+\end{equation}
+with $m^2 = d_0 (1 - z) / z$.}
+
+The \emph{simple random walk} on
+$\graph$ is the Markov chain $X_n$ with transition matrix $P = d_0^{-1} J$. This induces
+the measure $\lambda_n$ on $\Wcal_n$ defined by
+\begin{equation}
+\lambda_n(\omega) = \Pr(X_k = \omega_k, \, k \le n \mid X_0 = 0).
+\end{equation}
+Then
+\begin{equation}
+c_n(0, x) = \Pr(X_n = x \mid X_0 = 0) = P^n_{0x}
+\end{equation}
+and
+\begin{equation}
+G_x = \sum_{n=0}^\infty (z P)^n_{0x} = (1 - z P)^{-1}_{0x},
+\end{equation}
+which converges for $|z| < 1$.
+Letting $m^2 = d_0 (1 - z) / z > 0$, we see that
+\begin{equation}
+1 - z P = (z / d_0) (m^2 + L),
+\end{equation}
+so the two-point function is just the Green function for the massive Laplacian.
+
+\vspace{3cm}
 
 Let $Q$ be the $\vertices\cup\{\partial\}\times\vertices\cup\{\partial\}$ matrix with
 \begin{equation}
@@ -761,7 +788,7 @@ well-defined for $m^2 = 0$ if and only if $d > 2$.
 invariance principle}
 \end{example}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Self-avoiding walk}
 
@@ -802,7 +829,7 @@ $(n+1)$-step self-avoiding walks) in terms of $c_n$.
 % \includegraphics{figures/trapped}
 % \end{figure}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Weakly self-avoiding walk with self-attraction}
 
@@ -859,8 +886,8 @@ In the case $\gamma = 0$, the discrete-time version of this model is known as
 the \emph{Domb-Joyce model}. In continuous-time, it is the \emph{continuous-time
 weakly self-avoiding walk} (WSAW).
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Critical behaviour and universality}
 
@@ -913,7 +940,7 @@ c_T                       &\sim C_5 e^{-\nu_c T} T^{-\gamma}, \\
 \langle |X_T|^2 \rangle   &\sim C_6 T^{-\nubar}.
 \end{align}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{The DGFF}
 
@@ -938,26 +965,26 @@ Thus, there is a critical point at $m^2 = 0$ ($z = 1$).
 
 \todo{For the Green function, see Theorem 1.5.4 in Lawler--Intersections of Random Walks}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Universality}
 
 Critical behaviour should, roughly speaking, only depend on ``tail properties''
 (global geometry, range of interaction, and symmetries).
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Scaling limits}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Relations between models}
 
 There are a number of close relationships between models of walks and ferromagnetic spin
 systems given by a Gibbs measure.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{The SRW and DGFF}
 
@@ -966,13 +993,13 @@ systems given by a Gibbs measure.
 For the discrete-time simple random walk, the canonical partition function $c_n$,
 which is the number of such walks, is just $(2 d)^n$.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{The Kac-Siegert representation}
 
 \todo{See notes on this}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Self-avoiding walk representations}
 
