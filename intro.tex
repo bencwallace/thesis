@@ -16,8 +16,8 @@
 Let $(\Omega, \lambda)$ be a measure space. The state of knowledge of a system on $\Omega$ can be expressed by a probability measure $\mu$ on $\Omega$. Let
 $\Mcal_\lambda(\Omega)$ denote the set of probability measures on $\Omega$ absolutely continuous with respect to $\lambda$. For
 $\mu \in \Mcal_\lambda(\Omega)$, we denote the Radon-Nikodym derivative of
-$\mu$ with respect to $\lambda$ by $d\mu/d\lambda$ and define the \emph{entropy} of $\mu$ with respect
-to $\lambda$ by
+$\mu$ with respect to $\lambda$ by $d\mu/d\lambda$ and define the
+\emph{entropy} of $\mu$ with respect to $\lambda$ by
 \begin{equation}
 h(\mu) = h_\lambda(\mu) = -\int_\Omega \log\frac{d\mu}{d\lambda} \; d\mu.
 \end{equation}
@@ -40,18 +40,17 @@ assuming such a measure exists and is unique. One may for instance regard the ch
 
 \subsection{Microcanonical ensemble}
 
-Consider an \emph{isolated} physical system on $\Omega$, that is, one that cannot exchange energy with its surroundings. Such a system can be determined by a choice of function $H : \Omega \to \R$, called the \emph{Hamiltonian}. The value $H(\omega)$ represents the total energy of the system in state $\omega\in\Omega$.
+Consider an \emph{isolated} physical system on $\Omega$, that is, one that cannot exchange energy with its surroundings. Such a system can be determined by a choice of function $H : \Omega \to \R$, called the \emph{Hamiltonian}. The value $H(\omega)$ represents the total energy of the system in state
+$\omega\in\Omega$.
 
 \begin{example}
-Let $\Omega = U^n \times \R^{3n}$, where $U \subset \R^3$, and denote a generic element of $\Omega$ by $(q, p)$, where $q \in U^n$ and $p \in \R^{3n}$. Then $\Omega$ is the state space of a system of $n$ point particles $i = 1, \ldots, n$ with positions $q_i \in U$
-and momenta $p_i \in \R^3$. Given a $C^1$ Hamiltonian $H : \Omega \to \R$,
-the dynamics of such a system is determined by \emph{Hamilton's equations}
+Let $\Omega = U^n \times \R^{3n}$, where $U \subset \R^3$, and denote a generic element of $\Omega$ by $(q, p)$, where $q \in U^n$ and $p \in \R^{3n}$. Then $\Omega$ is the state space of a system of $n$ point particles
+$i = 1, \ldots, n$ with positions $q_i \in U$ and momenta $p_i \in \R^3$. Given a $C^1$ Hamiltonian $H : \Omega \to \R$, the dynamics of such a system is determined by \emph{Hamilton's equations}
 \begin{align}
 \dd{q}{t}   &= \nabla_q H(q(t), p(t)) \\
 -\dd{p}{t}  &= \nabla_p H(q(t), p(t)).
 \end{align}
-An immediate consequence of these equations and the chain rule is the \emph{principle
-of conservation of energy}:
+An immediate consequence of these equations and the chain rule is the \emph{principle of conservation of energy}:
 \begin{equation}
 \dd{H}{t}(q(t), p(t)) = 0.
 \end{equation}
@@ -69,11 +68,7 @@ $E = H(q(0), p(0))$ will evolve on the constant energy shell $S_E = H^{-1}(E)$.
 % Although one can make sense of the notion of an equiprobable probability distribution
 % on $S_E$ in the above example, it is simpler (and more relevant to this thesis) to
 % consider the case when $S_E$ is finite.
-If $S_E = H^{-1}(E)$ is finite\footnote{We can view such a system as an approximation
-to a traditional continuous system with $S_E$ uncountable.}, then one can easily determine
-that the maximum entropy measure on $S_E$ is simply the uniform measure. For a system
-with finite state space $\Omega$ and Hamiltonian $H$, we define the
-\emph{microcanonical distribution} with energy $E$ to be the uniform measure on $S_E$.
+If $S_E = H^{-1}(E)$ is finite\footnote{We can view such a system as an approximation to a traditional continuous system with $S_E$ uncountable.}, then one can easily determine that the maximum entropy measure on $S_E$ is simply the uniform measure. For a system with finite state space $\Omega$ and Hamiltonian $H$, we define the \emph{microcanonical distribution} with energy $E$ to be the uniform measure on $S_E$.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -81,16 +76,12 @@ with finite state space $\Omega$ and Hamiltonian $H$, we define the
 
 In practice, most systems of interest are not truly isolated: they may exchange
 energy with their environments. Everyday experience, however, suggests that
-a physical system that is left undisturbed for a sufficiently long time will achieve
-\emph{thermal equilibrium}, in which the system's temperature is constant and equal to
-that of its surroundings. We define the \emph{canonical ensemble} for a system with
-state space $\Omega$ and Hamiltonian $H$ on $\Omega$
-to be the maximum entropy distribution subject to the fixed average energy constraint
+a physical system that is left undisturbed for a sufficiently long time will achieve \emph{thermal equilibrium}, in which the system's temperature is constant and equal to that of its surroundings. We define the \emph{canonical ensemble} for a system with state space $\Omega$ and Hamiltonian $H$ on
+$\Omega$ to be the maximum entropy distribution subject to the fixed average energy constraint
 \begin{equation}
 \int H \; d\mu = E.
 \end{equation}
-It can be shown by the method of Lagrange multipliers that the canonical ensemble is
-given by the \emph{Gibbs measure}
+It can be shown by the method of Lagrange multipliers that the canonical ensemble is given by the \emph{Gibbs measure}
 \begin{equation}
 d\mu_\beta = \frac{1}{Z_\beta} e^{-\beta H} d\lambda,
 \end{equation}
@@ -99,27 +90,24 @@ where
 Z_\beta = \int e^{-\beta H} \; d\lambda
 \end{equation}
 is the normalizing constant, known as the \emph{canonical partition function}.
-The quantity $\beta = \beta(E)$, which arises as a Lagrange multiplier, is known as
-the \emph{inverse temperature}.
+The quantity $\beta = \beta(E)$, which arises as a Lagrange multiplier, is known as the \emph{inverse temperature}.
 
 The \emph{free energy} of this system is defined by
 \begin{equation}
 F_\beta = -\frac{1}{\beta} \log Z_\beta.
 \end{equation}
-This definition may seem obscure at first, but is elucidated by
-a computation of the entropy $h_\lambda(\mu_\beta)$ with $\beta = \beta(E)$, which implies that
+This definition may seem obscure at first, but is elucidated by a computation of the entropy $h_\lambda(\mu_\beta)$ with $\beta = \beta(E)$, which implies that
 \begin{equation}
 F_\beta = E - \frac{1}{\beta} h_\lambda(\mu_\beta).
 \end{equation}
-This is the famous thermodynamic relation between free energy, internal energy $E$,
-temperature $1/\beta$, and entropy.
+This is the famous thermodynamic relation between free energy, internal energy $E$, temperature $1/\beta$, and entropy.
 
 
-In the context of spin systems, there is a natural mathematical reason for studying measures
-of the above form. This is the Hammersley-Clifford theorem, which states that any Markov
-random field (a spatial generalization of a Markov chain) on a graph has a representation
-as a Gibbs measure whose Hamiltonian is a sum of ``local'' interactions.
+In the context of spin systems, there is a natural mathematical reason for studying measures of the above form. This is the Hammersley-Clifford theorem, which states that any Markov random field (a spatial generalization of a Markov chain) on a graph has a representation as a Gibbs measure whose Hamiltonian is a sum of ``local'' interactions.
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% COMMENTED OUT: Canonical measure as marginal of microcanonical %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % This situation can be modeled as follows: call the system of interest system $A$ and
 % its surroundings system $B$. We assume that $B$ behaves as a \emph{thermal reservoir},
 % meaning that it is so large that its temperature may be assumed to be effectively
@@ -182,17 +170,13 @@ as a Gibbs measure whose Hamiltonian is a sum of ``local'' interactions.
 
 \subsection{Grand canonical ensemble}
 
-Consider a physical system that is free to exchange both energy and particles with its environment. We suppose the ``number of particles'' of this system takes values in a measurable set $\interval \subset \R$. For $T \in \interval$, let $\Omega_T$ be a space
-of $T$-particle configurations and let $H_T : \Omega_T \to \R$ be the Hamiltonian on
-$\Omega_T$. The state space for the full system is then given by
-$\Omega = \bigsqcup_{T \in \interval} \Omega_T$, where $\sqcup$ denotes the disjoint union.
-For $\omega\in\Omega$, let $|\omega|$ be the unique value of $T$ such that
-$\omega \in \Omega_T$. We define $H : \Omega \to \R$ by
+Consider a physical system that is free to exchange both energy and particles with its environment. We suppose the ``number of particles'' of this system takes values in a measurable set $\interval \subset \R$. For
+$T \in \interval$, let $\Omega_T$ be a space of $T$-particle configurations and let $H_T : \Omega_T \to \R$ be the Hamiltonian on $\Omega_T$. The state space for the full system is then given by
+$\Omega = \bigsqcup_{T \in \interval} \Omega_T$, where $\sqcup$ denotes the disjoint union. For $\omega\in\Omega$, let $|\omega|$ be the unique value of
+$T$ such that $\omega \in \Omega_T$. We define $H : \Omega \to \R$ by
 $H(\omega) = H_{|\omega|}(\omega)$.
 
-The \emph{grand canonical ensemble} for this system is defined to be the maximum entropy measure
-subject to the constraints of fixed average energy and fixed average number of particles. It can
-be shown that the grand canonical ensemble is given by a measure
+The \emph{grand canonical ensemble} for this system is defined to be the maximum entropy measure subject to the constraints of fixed average energy and fixed average number of particles. It can be shown that the grand canonical ensemble is given by a measure
 \begin{equation}
 d\mu_{\beta,\nu}
   =
@@ -208,8 +192,8 @@ Z_{\beta,\nu}
   =
 \int_\interval e^{-\nu T} Z_\beta^{(T)} \; dT,
 \end{equation}
-where $Z^{(T)}_\beta$ is the canonical partition function of $H_T$.
-Thus, $Z_{\beta,\nu}$ is the Laplace transform of the canonical partition function
+where $Z^{(T)}_\beta$ is the canonical partition function of $H_T$. Thus,
+$Z_{\beta,\nu}$ is the Laplace transform of the canonical partition function
 viewed as a function of $T$.
 \end{rk}
 
@@ -262,9 +246,7 @@ Note that
 so $\lap$ is positive-semidefinite.
 
 \begin{example}
-An important case is when $\jay$ has $\{0, 1 \}$-valued entries. In this case, $d_x$ is the
-\emph{degree} of $x$ in $\graph$ and we denote the matrix $\lap$ by $-\Delta$, which has
-entries
+An important case is when $\jay$ has $\{0, 1 \}$-valued entries. In this case, $d_x$ is the \emph{degree} of $x$ in $\graph$ and we denote the matrix $\lap$ by $-\Delta$, which has entries
 \begin{equation}
 -\Delta_{xy} = d_x \1_{x=y} - \1_{x \sim y}.
 \end{equation}
@@ -284,8 +266,8 @@ Z = (m^2 + D)^{-1} D,
   \quad
 P = D^{-1} J.
 \end{align}
-Let $z_x$ denote the diagonal elements of $Z$.
-The \emph{Green function} for $m^2 + \lap$ is the kernel of $(m^2 + \lap)^{-1}$, which we define by
+Let $z_x$ denote the diagonal elements of $Z$. The \emph{Green function} for
+$m^2 + \lap$ is the kernel of $(m^2 + \lap)^{-1}$, which we define by
 \begin{equation}
 C(x, y)
   =
@@ -309,10 +291,7 @@ whenever this series converges.
 \section{Spin systems}
 
 An $n$-component \emph{field} or \emph{spin configuration} on $\vertices$
-is an element $\varphi$ of $(\R^n)^\vertices$.
-We denote the components of a field $\varphi$
-by $\varphi^i_x \in \R$ for $x \in \vertices$ and $i = 1, \ldots, n$.
-The Euclidean inner product on fields is defined by
+is an element $\varphi$ of $(\R^n)^\vertices$. We denote the components of a field $\varphi$ by $\varphi^i_x \in \R$ for $x \in \vertices$ and $i = 1, \ldots, n$. The Euclidean inner product on fields is defined by
 \begin{equation}
 \varphi\cdot\tilde\varphi
   =
@@ -324,18 +303,19 @@ and the Euclidean norm is
 \begin{equation}
 |\varphi|^2 = \varphi \cdot \varphi.
 \end{equation}
-Given any $\vertices\times\vertices$ matrix $M$, we define the field $M \varphi$ by
+Given any $\vertices\times\vertices$ matrix $M$, we define the field
+$M \varphi$ by
 \begin{equation}
 (M \varphi)_x = \sum_{y\in\vertices} M_{xy} \varphi_y
 \end{equation}
 when the sum is well-defined.
 
-A \emph{spin system} is just a probability measure $d\mu$ on $\Omega = S^\vertices$.
-The elements $\varphi \in \Omega$ are called \emph{fields} or \emph{spin configurations}.
+A \emph{spin system} is just a probability measure $d\mu$ on
+$\Omega = S^\vertices$. The elements $\varphi \in \Omega$ are called
+\emph{fields} or \emph{spin configurations}.
 
 Suppose that $S \subset \R^n$ is endowed with a measure $d\lambda^0$ and let
-$H : \Omega \to \R$ be a measurable function.
-We wish to study spin systems given by Gibbs measures of the form
+$H : \Omega \to \R$ be a measurable function. We wish to study spin systems given by Gibbs measures of the form
 \begin{equation}
 d\mu_\beta(\varphi) = \frac{1}{Z_\beta} e^{-\beta H(\varphi)} d\lambda(\varphi),
 \end{equation}
@@ -344,28 +324,19 @@ where
 d\lambda(\varphi) = \prod_{x\in\vertices} d\lambda^0(\varphi_x).
 \end{equation}
 
-However, there are some problems with this definition when $\vertices$ is infinite.
-For one, $d\lambda$ may be pathological: for example, if $S = \R$ and $d\lambda^0$
-is Lebesgue measure, then it can be shown that $d\lambda$ takes values in $\{0, \infty\}$.
-Another problem is that it may be difficult to define a reasonable choice of $H$ on the
-infinite product space $\Omega$.
+However, there are some problems with this definition when $\vertices$ is infinite. For one, $d\lambda$ may be pathological: for example, if $S = \R$ and
+$d\lambda^0$ is Lebesgue measure, then it can be shown that $d\lambda$ takes values in $\{0, \infty\}$. Another problem is that it may be difficult to define a reasonable choice of $H$ on the infinite product space $\Omega$.
 
-For this reason, we temporarily restrict our attention to finite graphs, and define spin
-systems on such graphs as above. In many cases, the Hamiltonian will depend on one or
-more parameters; in this case, adjusting $\beta$ is equivalent to rescaling these parameters
-and so we will usually drop $\beta$ (or set $\beta = 1$).
+For this reason, we temporarily restrict our attention to finite graphs, and define spin systems on such graphs as above. In many cases, the Hamiltonian will depend on one or more parameters; in this case, adjusting $\beta$ is equivalent to rescaling these parameters and so we will usually drop $\beta$
+(or set $\beta = 1$).
 
-We will mainly be concerned with \emph{ferromagnetic} spin systems, for which the Hamiltonian
-has the form
+We will mainly be concerned with \emph{ferromagnetic} spin systems, for which the Hamiltonian has the form
 \begin{equation}
 H(\varphi) = \sum_{x, y \in \vertices} \varphi_x \cdot J_{xy} \varphi_y,
 \end{equation}
 where (recall) $J_{xy} \ge 0$. Thus, $H(\varphi)$ is lower when the spins align.
 
-Let us fix a designated vertex\footnote{In general, some quantities we define will depend
-on the choice of vertex. However, we will ultimately be interested in the transitive graph
-$\graph = \Zd$ for which this choice is irrelevant.} $0 \in \vertices$.
-We define the \emph{two-point function} for such a spin system $\mu_\beta$ by
+Let us fix a designated vertex\footnote{In general, some quantities we define will depend on the choice of vertex. However, we will ultimately be interested in the transitive graph $\graph = \Zd$ for which this choice is irrelevant.} $0 \in \vertices$. We define the \emph{two-point function} for such a spin system $\mu_\beta$ by
 \begin{equation}
 G_x(\mu_\beta) = \frac{1}{n} \int d\mu_\beta(\varphi) \; \varphi_0 \cdot \varphi_x
 \end{equation}
@@ -378,15 +349,13 @@ when this is well-defined. If it is, we also define the \emph{susceptibility}
 
 \subsection{Gaussian measures and the free field}
 
-Let $S = \R^n$ and let $C$ be a positive-definite symmetric $\vertices\times\vertices$ matrix.
-The $n$-component
-\emph{Gaussian measure} $d\mu_C$ on $\vertices$ with mean $0$ and \emph{covariance} $C$ is defined
-by the Hamiltonian
+Let $S = \R^n$ and let $C$ be a positive-definite symmetric $\vertices\times\vertices$ matrix. The $n$-component \emph{Gaussian measure} $d\mu_C$ on
+$\vertices$ with mean $0$ and \emph{covariance} $C$ is defined by the Hamiltonian
 \begin{equation}
 H_C(\varphi) = \frac{1}{2} \varphi \cdot C^{-1} \varphi.
 \end{equation}
-This is essentially the simplest choice of non-constant Hamiltonian\footnote{Note that
-$e^{-\beta H}$ is not integrable if $H$ is linear.}.
+This is essentially the simplest choice of non-constant
+Hamiltonian\footnote{Note that $e^{-\beta H}$ is not integrable if $H$ is linear.}.
 % is the unique measure $\mu$ on $(\R^n)^\vertices$ with characteristic function
 % \begin{equation}
 % \hat\mu(\xi)
@@ -397,8 +366,7 @@ $e^{-\beta H}$ is not integrable if $H$ is linear.}.
 % \end{equation}
 % If $\vertices$ is finite, then the Lebesgue measure $d\varphi$ on $(\R^n)^\vertices$
 % is well-defined and
-The partition function can be computed explicitly, giving\footnote{Here, we have employed
-our convention of setting $\beta = 1$ when the Hamiltonian depends on a parameter.}
+The partition function can be computed explicitly, giving\footnote{Here, we have employed our convention of setting $\beta = 1$ when the Hamiltonian depends on a parameter.}
 \begin{equation}
 d\mu_C(\varphi)
   =
@@ -409,18 +377,13 @@ By \emph{Wick's theorem}, the two-point function is just the covariance $C$:
 \int \varphi_a \cdot \varphi_b \; d\mu(\varphi) = C_{ab}.
 \end{equation}
 
-An important case is the \emph{Gaussian free field} on $\vertices$ with \emph{mass} $m^2 \ge 0$,
-for which the covariance is equal to the massive Green function: $C = (m^2 + \lap)^{-1}$.
-It is not hard to show, using the fact that $J$ has nonnegative entries, that the Gaussian
-free field is ferromagnetic.
+An important case is the \emph{Gaussian free field} on $\vertices$ with \emph{mass} $m^2 \ge 0$, for which the covariance is equal to the massive Green function: $C = (m^2 + \lap)^{-1}$. It is not hard to show, using the fact that $J$ has nonnegative entries, that the Gaussian free field is ferromagnetic.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{The \texorpdfstring{$|\varphi|^4$}{phi4} spin model}
 
-Let $S = \R^n$ again.
-The simplest choice of Hamiltonian that is not quadratic is given by a quartic function.
-The Hamiltonian for the $|\varphi|^4$ spin model is given by
+Let $S = \R^n$ again. The simplest choice of Hamiltonian that is not quadratic is given by a quartic function. The Hamiltonian for the $|\varphi|^4$ spin model is given by
 \begin{equation}
 H_{g,\nu}(\varphi)
   =
@@ -433,27 +396,20 @@ H_{g,\nu}(\varphi)
   \frac{1}{2} \varphi_x \cdot (\lap \varphi)_x
 \right),
 \end{equation}
-where $g > 0$ and $\nu\in\R$. When $\nu > 0$, we have $H_{g,\nu} = g |\varphi|^4 + H_C$,
-where $C = (\nu + \lap)^{-1}$ is the covariance of the Gaussian free field with mass $\nu$.
-Again, this is a ferromagnetic spin system.
+where $g > 0$ and $\nu\in\R$. When $\nu > 0$, we have
+$H_{g,\nu} = g |\varphi|^4 + H_C$, where $C = (\nu + \lap)^{-1}$ is the covariance of the Gaussian free field with mass $\nu$. Again, this is a ferromagnetic spin system.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{The \texorpdfstring{$O(n)$}{O(n)} spin model}
 
-Let $S = S^{n-1} \subset \R^n$ be the unit $(n-1)$-sphere equipped with the surface measure
-$d\lambda^0$ (in particular, $S^0 = \{ \pm 1 \}$, which is equipped with the counting measure).
-The $O(n)$ model is defined by the Hamiltonian
+Let $S = S^{n-1} \subset \R^n$ be the unit $(n-1)$-sphere equipped with the surface measure $d\lambda^0$ (in particular, $S^0 = \{ \pm 1 \}$, which is equipped with the counting measure). The $O(n)$ model is defined by the Hamiltonian
 \begin{equation}
 H_J(\sigma) = -\frac{1}{2} \sigma \cdot J \sigma,
 \end{equation}
 which is clearly ferromagnetic.
 
-The corresponding Gibbs measure arises naturally as a limiting case of the $|\varphi|^4$
-measure $d\mu_{g,\nu}$ on a regular graph.
-Indeed, suppose that the diagonal elements of $\lap$ are
-constant: that is, there exists $d_0$ such that $d_x = d_0$ for all $x$.
-Then the $|\varphi|^4$ Hamiltonian can be written as
+The corresponding Gibbs measure arises naturally as a limiting case of the $|\varphi|^4$ measure $d\mu_{g,\nu}$ on a regular graph. Indeed, suppose that the diagonal elements of $\lap$ are constant: that is, there exists $d_0$ such that $d_x = d_0$ for all $x$. Then the $|\varphi|^4$ Hamiltonian can be written as
 \begin{equation}
 H_{g,\nu}(\varphi)
   =
@@ -466,26 +422,15 @@ H_{g,\nu}(\varphi)
   -
 \frac{1}{2} \varphi \cdot \jay \varphi
 \end{equation}
-Thus, $d\mu_{g,\nu} \Rightarrow d\mu_J$
-if we take the limit $g\to\infty$ with $\nu = -(d_0 + g / 2)$.
+Thus, $d\mu_{g,\nu} \Rightarrow d\mu_J$ if we take the limit $g\to\infty$ with $\nu = -(d_0 + g / 2)$.
 
-The case $n = 1$ is the celebrated \emph{Ising model}. When $n = 2, 3$,
-we get the \emph{XY model} and the \emph{classical Heisenberg model}.
+The case $n = 1$ is the celebrated \emph{Ising model}. When $n = 2, 3$, we get the \emph{XY model} and the \emph{classical Heisenberg model}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Phase transitions in infinite volume}
 
-The presence of a phase transition in a physical system is signalled by an abrupt
-(i.e.\ non-analytic) change in an observable quantity as a parameter is varied. In fact,
-a $p$-th order phase transition is usually said to occur when the free energy
-has a discontinuous $p$-th derivative (but continuous derivatives of order less than $p$).
-However, the spin systems we have defined above all have smooth free energy (since the
-Hamiltonians are smooth functions). Ultimately, the reason we cannot detect phase
-transitions in these systems is that we have defined them on finite graphs. Thus, we
-are forced to face the problem of defining spin systems on an infinite volume $\graph$.
-Here we briefly outline the solution to this problem according to the theory of Dobrushin,
-Lanford, and Ruelle.
+The presence of a phase transition in a physical system is signalled by an abrupt (i.e.\ non-analytic) change in an observable quantity as a parameter is varied. In fact, a $p$-th order phase transition is usually said to occur when the free energy has a discontinuous $p$-th derivative (but continuous derivatives of order less than $p$). However, the spin systems we have defined above all have smooth free energy (since the Hamiltonians are smooth functions). Ultimately, the reason we cannot detect phase transitions in these systems is that we have defined them on finite graphs. Thus, we are forced to face the problem of defining spin systems on an infinite volume $\graph$. Here we briefly outline the solution to this problem according to the theory of Dobrushin, Lanford, and Ruelle.
 
 We wish to define a measure corresponding to an ``infinite-volume Hamiltonian''
 \begin{equation}
@@ -493,21 +438,17 @@ H^\Phi(\varphi) = \sum \Phi_A(\varphi),
   \quad
 \varphi \in \Omega
 \end{equation}
-where the sum is over all finite subsets $A \subset \vertices$ and the $\Phi_A$ depend only on the
-values of $\varphi$ in $A$. Although $H^\Phi$ is typically a fictional object, the $\Phi_A$
-are well-defined. Thus, given a finite subset $\Lambda\subset\vertices$ and a choice of
-\emph{boundary condition} $\xi\in\Omega$,
-we can define the \emph{finite-volume} Hamiltonian $H^\xi_\Lambda : \Omega \to \R$ on $\Lambda$ by
+where the sum is over all finite subsets $A \subset \vertices$ and the $\Phi_A$
+depend only on the values of $\varphi$ in $A$. Although $H^\Phi$ is typically a fictional object, the $\Phi_A$ are well-defined. Thus, given a finite subset $\Lambda\subset\vertices$ and a choice of \emph{boundary condition}
+$\xi\in\Omega$, we can define the \emph{finite-volume} Hamiltonian
+$H^\xi_\Lambda : \Omega \to \R$ on $\Lambda$ by
 \begin{equation}
 H^\xi_\Lambda(\varphi) = \sum \Phi_A(\varphi_{\Lambda} \xi_{\Lambda^c}),
 \end{equation}
-where the sum is over all finite sets $A$ intersecting $\Lambda$, $\varphi_{\Lambda} \in S^{\Lambda}$
-is the restriction of $\varphi$ to $\Lambda$, and $\varphi_{\Lambda} \xi_{\Lambda^c} \in \Omega$
-is the concatenation of $\varphi_{\Lambda}$ and $\xi_{\Lambda^c}$.
-We then say that $\mu$ is a \emph{Gibbs measure} if for $\mu$-almost
-every choice of boundary condition $\xi$, the conditional distribution
-$\mu(d\varphi \mid \varphi_{\Lambda^c} = \xi_{\Lambda^c})$ is given by the finite-volume Gibbs
-measure
+where the sum is over all finite sets $A$ intersecting $\Lambda$,
+$\varphi_{\Lambda} \in S^{\Lambda}$ is the restriction of $\varphi$ to
+$\Lambda$, and $\varphi_{\Lambda} \xi_{\Lambda^c} \in \Omega$ is the concatenation of $\varphi_{\Lambda}$ and $\xi_{\Lambda^c}$. We then say that
+$\mu$ is a \emph{Gibbs measure} if for $\mu$-almost every choice of boundary condition $\xi$, the conditional distribution $\mu(d\varphi \mid \varphi_{\Lambda^c} = \xi_{\Lambda^c})$ is given by the finite-volume Gibbs measure
 \begin{equation}
 \mu^\Phi_\Lambda(\varphi \mid \xi)
   :=
@@ -520,33 +461,17 @@ We denote the collection of all such Gibbs measures by $\gibbs(\Phi)$.
 
 \subsubsection{The infinite-volume limit}
 
-It can be checked that any finite-volume Gibbs measure (seen as a measure on $\Omega$) is a
-Gibbs measure in the above sense. More general Gibbs measures can be constructed by an explicit
-procedure known as the infinite-volume limit: generally speaking, one begins with a sequence
-$\Lambda_N \subset \vertices$ of finite subsets with $\Lambda_N\uparrow\vertices$. Letting
-$H_N$ be a Hamiltonian that only depends on the spins in $\Lambda_N$, one proceeds by taking
-the weak limit of the Gibbs measures $\mu_N$ corresponding to $H_N$. If the sequence
-$(\Lambda_N, H_N)$ is appropriately chosen, then the weak limit will exist and be an element
-of $\gibbs(\Phi)$.
+It can be checked that any finite-volume Gibbs measure (seen as a measure on $\Omega$) is a Gibbs measure in the above sense. More general Gibbs measures can be constructed by an explicit procedure known as the infinite-volume limit: generally speaking, one begins with a sequence $\Lambda_N \subset \vertices$ of finite subsets with $\Lambda_N\uparrow\vertices$. Letting $H_N$ be a Hamiltonian that only depends on the spins in $\Lambda_N$, one proceeds by taking the weak limit of the Gibbs measures $\mu_N$ corresponding to $H_N$. If the sequence $(\Lambda_N, H_N)$ is appropriately chosen, then the weak limit will exist and be an element of $\gibbs(\Phi)$.
 
 \subsubsection{Periodic boundary conditions}
 
-When $\graph = \Zd$ and the $\Phi$ are translation-invariant\footnote{That is, $\Phi_A = \Phi_{A+i}$
-for any $i\in\Zd$.}, there is a particularly convenient approach to taking the infinite-volume
-limit. Suppose that $\Phi$ has finite range\footnote{This is a mere convenience. This construction
-extends to potentials with infinite range.}, i.e.\ $\Phi_A = 0$ whenever $|A| > R$ for some $R$.
-We let $\Lambda_N = \Zd/L^N\Zd$ be the discrete torus of side $L^N$ (for $L > 1$) and identify
-the $\Lambda_N$ with an increasing sequence of subsets of $\Zd$ (since $\Phi$ is translation-invariant,
-it is not important how this identification is made). Then any subset $A \subset \Zd$ of side
-$|A| \le R$ can be identified with a subset of $\Lambda_N$ for $N$ sufficiently large. For such
-$N$, we let
+When $\graph = \Zd$ and the $\Phi$ are translation-invariant\footnote{That is, $\Phi_A = \Phi_{A+i}$ for any $i\in\Zd$.}, there is a particularly convenient approach to taking the infinite-volume limit. Suppose that $\Phi$ has finite range\footnote{This is a mere convenience. This construction extends to potentials with infinite range.}, i.e.\ $\Phi_A = 0$ whenever $|A| > R$ for some $R$. We let $\Lambda_N = \Zd/L^N\Zd$ be the discrete torus of side $L^N$ (for $L > 1$) and identify the $\Lambda_N$ with an increasing sequence of subsets of $\Zd$ (since $\Phi$ is translation-invariant, it is not important how this identification is made). Then any subset $A \subset \Zd$ of side
+$|A| \le R$ can be identified with a subset of $\Lambda_N$ for $N$ sufficiently large. For such $N$, we let
 \begin{equation}
 H_N(\varphi) = \sum \Phi_A(\varphi),
 \end{equation}
-where the sum is over subsets of $\Lambda_N$ of size at most $R$. \todo{I don't think this is right.}
-It is shown in \cite[Example 4.20]{Georgii11} that, if $\mu_N$
-converges weakly to a measure $\mu$, then $\mu \in \gibbs(\Phi)$. The measure $\mu$ is said to have
-\emph{periodic} boundary conditions.
+where the sum is over subsets of $\Lambda_N$ of size at most $R$. \todo{I don't think this is right.} It is shown in \cite[Example 4.20]{Georgii11} that, if $\mu_N$ converges weakly to a measure $\mu$, then
+$\mu \in \gibbs(\Phi)$. The measure $\mu$ is said to have \emph{periodic} boundary conditions.
 
 \begin{example}
 Let $\graph = \Zd$ and let $\Lambda_N = \Zd/L^N\Zd$ for $L > 1$.
@@ -566,9 +491,7 @@ G_x = \frac{1}{n} \int d\mu(\varphi) \varphi_0 \cdot \varphi_x.
 
 \section{Random polymer models}
 
-For simplicity, we take $\graph$ to be a $d_0$-regular vertex-transitive graph and fix a
-designated vertex $0 \in \vertices$. We let $\interval_T$ denote either of the following
-choices for all $T \ge 0$:
+For simplicity, we take $\graph$ to be a $d_0$-regular vertex-transitive graph and fix a designated vertex $0 \in \vertices$. We let $\interval_T$ denote either of the following choices for all $T \ge 0$:
 \begin{equation}
 \interval_T
   =
@@ -582,42 +505,33 @@ $\tau_n = \tau_n(\omega)$ inductively by setting $\tau_0 = 0$ and
 \begin{equation}
 \tau_{n+1} = \inf(t > \tau_n : \omega_t \ne \omega_{\tau_n}).
 \end{equation}
-We call such a function $\omega$ a \emph{walk} of length $T$ if $\{ \tau_n : n \in \Z_+ \}$
-does not have any
-cluster points and $\omega_{\tau_n} \sim \omega_{\tau_{n+1}}$ for all $n$; thus, $\omega$
+We call such a function $\omega$ a \emph{walk} of length $T$ if
+$\{ \tau_n : n \in \Z_+ \}$ does not have any cluster points and
+$\omega_{\tau_n} \sim \omega_{\tau_{n+1}}$ for all $n$; thus, $\omega$
 only jumps between neighbouring vertices. A \emph{discrete-time} (respectively,
-\emph{continuous-time}) walk of length $T$ is a walk indexed by $\{ 0, \ldots, \lfloor T \rfloor \}$
-(respectively, $[0, T]$).
-We let $\Wcal_T$ denote the set of walks of length $T$ with $\omega_0 = 0$ and set
-$\Wcal := \bigcup_{T \geq 0} \Wcal_T$.
+\emph{continuous-time}) walk of length $T$ is a walk indexed by
+$\{ 0, \ldots, \lfloor T \rfloor \}$ (respectively, $[0, T]$).
+We let $\Wcal_T$ denote the set of walks of length $T$ with $\omega_0 = 0$ and set $\Wcal := \bigcup_{T \geq 0} \Wcal_T$.
 
 A model of walks is determined by a choice of finite measure $d\mu_T$ on
 $\Wcal_T$ for each $T$. All models we consider will be given by canonical Gibbs measures
 \begin{equation}
 d\mu_T(\omega) = \frac{1}{c_T} e^{-H_T(\omega)} \; d\lambda_T(\omega),
 \end{equation}
-with respect to some measure $\lambda_T$ on $\Wcal_T$. Note that we have denoted the
-partition function by $c_T$.
-We will assume that models of discrete-time walks satisfy
-$\mu_T = \mu_{\lfloor T \rfloor}$ for all $T$ (note that both are measures on
-$\Wcal_{\lfloor T \rfloor}$ in this case).
+with respect to some measure $\lambda_T$ on $\Wcal_T$. Note that we have denoted the partition function by $c_T$. We will assume that models of discrete-time walks satisfy $\mu_T = \mu_{\lfloor T \rfloor}$ for all $T$
+(note that both are measures on $\Wcal_{\lfloor T \rfloor}$ in this case).
 
 Given such a model, we write the corresponding grand canonical ensemble as
 \begin{equation}
 d\mu(\omega) = \frac{1}{\chi(\nu)} e^{-\nu |\omega|} d\mu_{|\omega|}(\omega).
 \end{equation}
-In this setting, the fugacity $\nu$ is usually referred to as the \emph{killing rate}.
-The grand canonical partition function, denoted $\chi$, is known as the \emph{susceptibility}.
-Note that
+In this setting, the fugacity $\nu$ is usually referred to as the \emph{killing rate}. The grand canonical partition function, denoted $\chi$, is known as the \emph{susceptibility}. Note that
 \begin{equation}
 \mu(\cdot \mid \Wcal_T) = \mu_T.
 \end{equation}
 \todo{When is $\mu$ well-defined?}
 
-For $x \in \vertices$, let $\Wcal_T(x) \subset \Wcal_T$ denote the collection of walks
-$\omega \in \Wcal_T$ with $\omega_0 = a$ and $\omega_T = x$.
-The conditional measure $\mu^x_T = \mu_T(\cdot \mid \Wcal_T(x))$
-is given by
+For $x \in \vertices$, let $\Wcal_T(x) \subset \Wcal_T$ denote the collection of walks $\omega \in \Wcal_T$ with $\omega_0 = a$ and $\omega_T = x$. The conditional measure $\mu^x_T = \mu_T(\cdot \mid \Wcal_T(x))$ is given by
 \begin{equation}
 \mu^x_T(d\omega) = \frac{\mu_T(d\omega) \1_{\Wcal_T(x)}(\omega)}{c_T(x)},
 \end{equation}
@@ -637,9 +551,7 @@ Note that
 \begin{equation}
 \chi(\nu) = \sum_{x\in\vertices} G_x(\nu),
 \end{equation}
-which is consistent with the analogous relation for spin systems.
-Later we will discuss the relationship between the two-point function for
-walks and spin systems.
+which is consistent with the analogous relation for spin systems. Later we will discuss the relationship between the two-point function for walks and spin systems.
 
 \begin{rk}
 In the discrete-time case, we let $z = e^{-\nu}$ and write
@@ -672,9 +584,7 @@ Work towards showing that generating function (for unkilled SRW) is inverse of:
 \end{equation}
 with $m^2 = d_0 (1 - z) / z$.}
 
-The \emph{simple random walk} on
-$\graph$ is the Markov chain $X_n$ with transition matrix $P = d_0^{-1} J$. This induces
-the measure $\lambda_n$ on $\Wcal_n$ defined by
+The \emph{simple random walk} on $\graph$ is the Markov chain $X_n$ with transition matrix $P = d_0^{-1} J$. This induces the measure $\lambda_n$ on $\Wcal_n$ defined by
 \begin{equation}
 \lambda_n(\omega) = \Pr(X_k = \omega_k, \, k \le n \mid X_0 = 0).
 \end{equation}
@@ -686,8 +596,7 @@ and
 \begin{equation}
 G_x = \sum_{n=0}^\infty (z P)^n_{0x} = (1 - z P)^{-1}_{0x},
 \end{equation}
-which converges for $|z| < 1$.
-Letting $m^2 = d_0 (1 - z) / z > 0$, we see that
+which converges for $|z| < 1$. Letting $m^2 = d_0 (1 - z) / z > 0$, we see that
 \begin{equation}
 1 - z P = (z / d_0) (m^2 + L),
 \end{equation}
@@ -706,8 +615,7 @@ m^2,          & x \ne \partial, y = \partial \\
 0,            & x = \partial
 \end{cases}.
 \end{equation}
-Let $X_t$ be the Markov process with generator $Q$.
-That is, $X$ takes jumps from $x$ at rate
+Let $X_t$ be the Markov process with generator $Q$. That is, $X$ takes jumps from $x$ at rate
 \begin{equation}
 -Q_{xx}
   =
@@ -728,8 +636,7 @@ z_x P_{xy},             & x \ne \partial, y \in \vertices \\
 \1_{y=\partial},        & x = \partial
 \end{cases}.
 \end{equation}
-We call $X_t$ the \emph{continuous-time random walk} on $\graph$.
-In continuous time, we let
+We call $X_t$ the \emph{continuous-time random walk} on $\graph$. In continuous time, we let
 \begin{equation}
 \lambda_T(d\omega) = P_0(d\omega \mid \tau_\partial = T),
 \end{equation}
@@ -743,9 +650,7 @@ $\hat X_n$ defined by
 where $\tau_n$ is the $n$-th jump time of $X$. The transition matrix of
 $\hat X$ is given by $\hat P$.
 
-For $v \in \vertices$, let $P_v$ and $E_v$ denote the probability and expectation
-with respect to either the process $X$ or $\hat X$ conditioned so that $X_0 = v$.
-We have
+For $v \in \vertices$, let $P_v$ and $E_v$ denote the probability and expectation with respect to either the process $X$ or $\hat X$ conditioned so that $X_0 = v$. We have
 \begin{equation}
 c_T(x, y) = P_x (X_T = y) = (e^{T Q})_{xy}.
 \end{equation}
@@ -767,8 +672,7 @@ We have
   =
 \sum_{n=0}^\infty (\tau_{n+1} - \tau_n) \1_{\hat X_n=y}.
 \end{equation}
-If $\hat X_n = y$, then $\tau_{n+1} - \tau_n$ is a Poisson random variable with rate $d_y$,
-so taking the expectation of the above yields
+If $\hat X_n = y$, then $\tau_{n+1} - \tau_n$ is a Poisson random variable with rate $d_y$, so taking the expectation of the above yields
 \begin{equation}
 G_{xy} = d_y \sum_{n=0}^\infty c_n(x, y).
 \end{equation}
@@ -778,31 +682,24 @@ C(x, y) = (m^2 + d_x)^{-1} E_x \left(\sum_{n=0}^\infty \1_{X_n=y} \right)
 \end{equation}
 so the sum converges if and only if the expected number of visits to $y$
 made a walk with transition $\hat P$ started at $x$ is finite. Thus, $C$ is
-well-defined if and only if the walk is transient.
-In particular, it is well-defined for $m^2 > 0$. When $\graph = \Zd$, it is
-well-defined for $m^2 = 0$ if and only if $d > 2$.
+well-defined if and only if the walk is transient. In particular, it is well-defined for $m^2 > 0$. When $\graph = \Zd$, it is well-defined for $m^2 = 0$ if and only if $d > 2$.
 \end{example}
 
 \begin{example}
-\todo{On transitive graphs, SRW is a sum of iid random variables. This gives CLT and
-invariance principle}
+\todo{On transitive graphs, SRW is a sum of iid random variables. This gives CLT and invariance principle}
 \end{example}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Self-avoiding walk}
 
-A \emph{self-avoiding walk} of length $n$ on $\graph$ is a discrete walk $\omega\in\Wcal_n$
-that has no self intersections, i.e.\ $\omega_x = \omega_y$ if and only if $x = y$.
-We equip the collection of all self-avoiding walks of length $n$ with the uniform measure $\mu_n$.
+A \emph{self-avoiding walk} of length $n$ on $\graph$ is a discrete walk $\omega\in\Wcal_n$ that has no self intersections, i.e.\ $\omega_x = \omega_y$ if and only if $x = y$. We equip the collection of all self-avoiding walks of length $n$ with the uniform measure $\mu_n$.
 
-These measures do not form a consistent family due to the possibility of ``traps''.
-That is, the equality
+These measures do not form a consistent family due to the possibility of ``traps''. That is, the equality
 \begin{equation}
 \mu_{|\omega|}(\omega) = \sum_{\tilde\omega \supset \omega} \mu_{|\tilde\omega|}(\tilde\omega)
 \end{equation}
-does not hold for all $\omega\in\Wcal$ (the sum here is over all self-avoiding walks extending
-$\omega$).
+does not hold for all $\omega\in\Wcal$ (the sum here is over all self-avoiding walks extending $\omega$).
 % \begin{wrapfigure}{R}{0.4\textwidth}
 % \vspace{-0.5cm}
 % \begin{center}
@@ -813,15 +710,10 @@ $\omega$).
 % \vspace{-0.5cm}
 % \end{wrapfigure}
 For instance, consider the self-avoiding walk $\omega\in\Wcal_7$ on $\Zd$ in
-Figure~\ref{fig:trap}.
-This walk has positive probability under $\mu_7$ but,
-since there are no self-avoiding walks extending $\omega$, the sum on the right-hand side
-above is $0$.
+Figure~\ref{fig:trap}. This walk has positive probability under $\mu_7$ but,
+since there are no self-avoiding walks extending $\omega$, the sum on the right-hand side above is $0$.
 
-As a result, the methods of stochastic processes cannot be directly used to study the self-avoiding
-walk. The existence of traps also contributes to the combinatorial difficulty of studying
-self-avoiding walk; for instance, it is not clear how to express $c_{n+1}$ (the number of
-$(n+1)$-step self-avoiding walks) in terms of $c_n$.
+As a result, the methods of stochastic processes cannot be directly used to study the self-avoiding walk. The existence of traps also contributes to the combinatorial difficulty of studying self-avoiding walk; for instance, it is not clear how to express $c_{n+1}$ (the number of $(n+1)$-step self-avoiding walks) in terms of $c_n$.
 
 % \begin{figure}[!htb]
 % \centering
@@ -833,7 +725,8 @@ $(n+1)$-step self-avoiding walks) in terms of $c_n$.
 
 \subsection{Weakly self-avoiding walk with self-attraction}
 
-Define the \emph{local time} up to time $T$ of $\omega \in \Wcal$ at $x \in \Zd$ by
+Define the \emph{local time} up to time $T$ of $\omega \in \Wcal$ at
+$x \in \Zd$ by
 \begin{equation}
 \lt^x_T(\omega) = \int_0^T \1_{\omega(S)=x} \; dS.
 \end{equation}
@@ -868,8 +761,7 @@ U_{\gcc,\gamma}(f)
 \sum_{x\in\vertices} \sum_{y \sim x} f_x f_y
 \end{equation}
 for $f : \vertices \to \R$.
-The \emph{weakly self-avoiding walk with self-attraction} (WSAW-SA) is defined via
-the Hamiltonian
+The \emph{weakly self-avoiding walk with self-attraction} (WSAW-SA) is defined via the Hamiltonian
 \begin{equation}
 H_T(\omega) = U_{\gcc,\gamma}(L_T(\omega)).
 \end{equation}
@@ -883,8 +775,8 @@ where $0 \in \vertices$ is fixed, and the susceptibility by
 \end{equation}
 
 In the case $\gamma = 0$, the discrete-time version of this model is known as
-the \emph{Domb-Joyce model}. In continuous-time, it is the \emph{continuous-time
-weakly self-avoiding walk} (WSAW).
+the \emph{Domb-Joyce model}. In continuous-time, it is the
+\emph{continuous-time weakly self-avoiding walk} (WSAW).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -895,9 +787,7 @@ weakly self-avoiding walk} (WSAW).
 
 In this section, we let $\graph = \Zd$.
 
-Let $\gibbs_\beta$ denote the set of all Gibbs measures for some potential at inverse temperature
-$\beta$. A \emph{phase transition} is said to occur at inverse temperature $\beta$ if
-$|\gibbs_\beta| > 1$. Many systems possess a unique \emph{critical point} $\beta_c$, such that
+Let $\gibbs_\beta$ denote the set of all Gibbs measures for some potential at inverse temperature $\beta$. A \emph{phase transition} is said to occur at inverse temperature $\beta$ if $|\gibbs_\beta| > 1$. Many systems possess a unique \emph{critical point} $\beta_c$, such that
 \begin{equation}
 |\gibbs_\beta|
 \begin{cases}
@@ -905,21 +795,15 @@ $|\gibbs_\beta| > 1$. Many systems possess a unique \emph{critical point} $\beta
 > 1, & \beta > \beta_c
 \end{cases}
 \end{equation}
-and it is usually expected that $|\gibbs_{\beta_c}| = 1$.
-Moreover, such systems tend to exhibit \emph{critical behaviour} when $\beta = \beta_c$:
-roughly speaking, this means that a number of observables scale according to a power
-law (sometimes with logarithmic corrections) at or near $\beta_c$, whereas these same
-observables exhibit exponential decay away from $\beta_c$.
+and it is usually expected that $|\gibbs_{\beta_c}| = 1$. Moreover, such systems tend to exhibit \emph{critical behaviour} when $\beta = \beta_c$:
+roughly speaking, this means that a number of observables scale according to a power law (sometimes with logarithmic corrections) at or near $\beta_c$, whereas these same observables exhibit exponential decay away from $\beta_c$.
 
 A strong indicator of critical behaviour is the divergence of the
-\emph{correlation length}, defined for any model (of walks or spins) with two-point
-function $G_x(\mu)$ by
+\emph{correlation length}, defined for any model (of walks or spins) with two-point function $G_x(\mu)$ by
 \begin{equation}
 \xi(\mu) = \limsup_{k\to\infty} \frac{-k}{\log G_{ke}(\mu)},
 \end{equation}
-where $e \in \Zd$ is a unit vector.
-In other words, the correlation length is the exponential rate of decay of the
-two-point function.
+where $e \in \Zd$ is a unit vector. In other words, the correlation length is the exponential rate of decay of the two-point function.
 A related quantity is the \emph{correlation length of order $p$}, defined by
 \begin{equation}
 \xi_p(\mu) = \left(\frac{\sum_{x\in\Zd} |x|^p G_x(\mu)}{\chi(\mu)}\right)^{1/p}.
@@ -933,8 +817,7 @@ G_x       &\sim C_1 |x|^{-(d - 2 + \eta)}, \\
 \xi       &\sim C_3 (\nu - \nu_c)^{-\nubar}, \\
 \xi_p     &\sim C_4 (\nu - \nu_c)^{-\nubar}
 \end{align}
-possibly with logarithmic corrections.
-For walks, it is expected that
+possibly with logarithmic corrections. For walks, it is expected that
 \begin{align}
 c_T                       &\sim C_5 e^{-\nu_c T} T^{-\gamma}, \\
 \langle |X_T|^2 \rangle   &\sim C_6 T^{-\nubar}.
@@ -944,10 +827,8 @@ c_T                       &\sim C_5 e^{-\nu_c T} T^{-\gamma}, \\
 
 \subsection{The DGFF}
 
-The two-point function is just the massive Green function $(-\Delta + m^2)^{-1}$
-which, on $\Zd$, has the well-known Ornstein-Uhlenbeck decay \todo{(show this;
-use random walks?)}.
-Moreover,
+The two-point function is just the massive Green function
+$(-\Delta + m^2)^{-1}$ which, on $\Zd$, has the well-known Ornstein-Uhlenbeck decay \todo{(show this; use random walks?)}. Moreover,
 \begin{equation}
 \chi
   =
