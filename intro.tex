@@ -204,29 +204,23 @@ viewed as a function of $T$.
 
 Most systems of interest do not have a finite (or even countable) state space. Nevertheless, finite systems serve as natural approximations of real systems. For instance, a natural way to approximate spatially-extended systems is by defining models on graphs.
 
+An \emph{undirected graph} is a pair $\graph = (\vertices, \edges)$, where $\vertices$ is a set of \emph{vertices} and $\edges$ is a set of
+\emph{edges} $\{ x, y \}$ with $x, y \in \vertices$; we will write $x \sim y$ if $\{ x, y \} \in \edges$. We will assume that $\vertices$ is countable and that there are no \emph{self-loops} $\{ x \} \in \edges$.
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{Graphs and the Laplacian}
+\subsection{The graph Laplacian}
 
-Let $\vertices$ be a countable set.
-Let $\jay$ be a symmetric $\vertices\times\vertices$ matrix satisfying
-\begin{equation}
-0 < d_x = \sum_{y\in\vertices} J_{xy} < \infty,
-  \quad
-J_{xy} \ge 0,
-  \quad
-J_{xx} = 0
-\end{equation}
-for all $x, y$. Then we can define the diagonal matrix $\diag$ with entries
-\begin{equation}
-\diag_{xx} = d_x.
-\end{equation}
-Moreover, if $\edges = \{ \{ x, y \} : J_{xy} \ne 0 \}$, then
-$\graph = (\vertices, \edges, \jay)$ is a weighted connected undirected graph.
-We write $x \sim y$ if $\{ x, y \} \in \edges$. We will say that $\graph$ is
-$d_0$-regular if $d_x = d_0$ for all $x$.
+Let $\jay$ be a $\vertices\times\vertices$ matrix with $\jay_{xy} \ge 0$ for all $x, y$ with equality if and only if $\{ x, y \} \notin \edges$. The pair
+$(\graph, \jay)$, which we will usually abbreivate as $\graph$ with $\jay$ implicit, is an example of a \emph{weighted} graph.
 
-The \emph{graph Laplacian} on $\graph$ is defined by
+Define the diagonal $\vertices\times\vertices$ matrix $\diag$ by
+\begin{equation}
+\diag_{xx} = d_x = \sum_{y \sim x} J_{xy}.
+\end{equation}
+We will say that $\graph$ is $d_0$-regular if $d_x = d_0$ for all $x$.
+
+The \emph{(massless) graph Laplacian} on $\graph$ is defined by
 \begin{equation}
 \lap = \diag - \jay.
 \end{equation}
@@ -267,13 +261,12 @@ Z = (m^2 + D)^{-1} D,
 P = D^{-1} J.
 \end{align}
 Let $z_x$ denote the diagonal elements of $Z$. The \emph{Green function} for
-$m^2 + \lap$ is the kernel of $(m^2 + \lap)^{-1}$, which we define by
+$m^2 + \lap$ is the kernel of $(m^2 + \lap)^{-1}$, given by
 \begin{equation}
 C(x, y)
   =
-(m^2 + d_x)^{-1} \sum_{n=0}^\infty z_x^n P^n_{xy}
+(m^2 + d_x)^{-1} \sum_{n=0}^\infty z_x^n P^n_{xy}.
 \end{equation}
-whenever this series converges.
 
 % Let $\jay$ be a $\vertices \times \vertices$
 % matrix with $J_{xx} = 0$ and $J_{xy} \ge 0$ for all $x, y \in \vertices$ and suppose
@@ -291,7 +284,7 @@ whenever this series converges.
 \section{Spin systems}
 
 An $n$-component \emph{field} or \emph{spin configuration} on $\vertices$
-is an element $\varphi$ of $(\R^n)^\vertices$. We denote the components of a field $\varphi$ by $\varphi^i_x \in \R$ for $x \in \vertices$ and $i = 1, \ldots, n$. The Euclidean inner product on fields is defined by
+with spins in $S \subset \R^n$ is an element of $\Omega = S^\vertices$. We denote the components of a field $\varphi \in \Omega$ by $\varphi^i_x \in \R$ for $x \in \vertices$ and $i = 1, \ldots, n$. The Euclidean inner product on fields is defined by
 \begin{equation}
 \varphi\cdot\tilde\varphi
   =
@@ -299,64 +292,70 @@ is an element $\varphi$ of $(\R^n)^\vertices$. We denote the components of a fie
   =
 \sum_{i=1}^n \sum_{x\in\vertices} \varphi^i_x \tilde\varphi^i_x
 \end{equation}
-and the Euclidean norm is
+and the Euclidean norm $|\cdot|$ is defined by
 \begin{equation}
 |\varphi|^2 = \varphi \cdot \varphi.
 \end{equation}
-Given any $\vertices\times\vertices$ matrix $M$, we define the field
-$M \varphi$ by
+A $\vertices\times\vertices$ matrix $M$ acts as a linear map on fields via
 \begin{equation}
-(M \varphi)_x = \sum_{y\in\vertices} M_{xy} \varphi_y
+(M \varphi)_x = \sum_{y\in\vertices} M_{xy} \varphi_y.
 \end{equation}
-when the sum is well-defined.
 
-A \emph{spin system} is just a probability measure $d\mu$ on
-$\Omega = S^\vertices$. The elements $\varphi \in \Omega$ are called
-\emph{fields} or \emph{spin configurations}.
-
-Suppose that $S \subset \R^n$ is endowed with a measure $d\lambda^0$ and let
-$H : \Omega \to \R$ be a measurable function. We wish to study spin systems given by Gibbs measures of the form
-\begin{equation}
-d\mu_\beta(\varphi) = \frac{1}{Z_\beta} e^{-\beta H(\varphi)} d\lambda(\varphi),
-\end{equation}
-where
+A \emph{spin system} is a probability measure $d\mu$ on $\Omega$.
+Suppose that $S$ is endowed with a measure $d\lambda^0$ and let
+$H : \Omega \to \R$ be a measurable function. We wish to spin systems given by Gibbs measures with Hamiltonian $H$ and base measure given by the product measure
 \begin{equation}
 d\lambda(\varphi) = \prod_{x\in\vertices} d\lambda^0(\varphi_x).
 \end{equation}
+Thus,
+\begin{equation}
+d\mu_\beta(\varphi)
+  =
+\frac{1}{Z_\beta} e^{-\beta H(\varphi)} d\lambda(\varphi).
+\end{equation}
 
-However, there are some problems with this definition when $\vertices$ is infinite. For one, $d\lambda$ may be pathological: for example, if $S = \R$ and
-$d\lambda^0$ is Lebesgue measure, then it can be shown that $d\lambda$ takes values in $\{0, \infty\}$. Another problem is that it may be difficult to define a reasonable choice of $H$ on the infinite product space $\Omega$.
-
-For this reason, we temporarily restrict our attention to finite graphs, and define spin systems on such graphs as above. In many cases, the Hamiltonian will depend on one or more parameters; in this case, adjusting $\beta$ is equivalent to rescaling these parameters and so we will usually drop $\beta$
+However, there are some problems with this definition when $\vertices$ is infinite. For one, $d\lambda$ may not be well-defined (for instance if
+$S = \R$ and $d\lambda^0$ is Lebesgue measure). Another issue is that it may be difficult to define a reasonable choice of $H$ on the infinite product space
+$\Omega$. For this reason, we temporarily restrict our attention to finite graphs, and define spin systems on such graphs as above. In many cases, the Hamiltonian will depend on one or more parameters; in this case, adjusting $\beta$ is equivalent to rescaling these parameters and so we will usually drop $\beta$
 (or set $\beta = 1$).
+
+Let us fix\footnote{In general, some quantities we define will depend on the choice of vertex. However, we will ultimately be interested in the transitive graph $\graph = \Zd$ for which this choice is irrelevant.} a vertex
+$0 \in \vertices$. The \emph{two-point function} for a spin system $\mu_\beta$ is defined by normalizing the truncated correlation function between the spins at $0$ and $x$:
+\begin{equation}
+G_x(\mu_\beta)
+  =
+\frac{1}{n}
+(\mu_\beta(\varphi_0 \cdot \varphi_x)
+  -
+\mu_\beta(\varphi_0) \cdot \mu_\beta(\varphi_x)).
+\end{equation}
+The \emph{magnetization} of $\mu_\beta$ is the normalized expected value
+\begin{equation}
+\frac{1}{n} \mu_\beta(\varphi_0).
+\end{equation}
+Let $h \in (\R^n)^\vertices$ be an \emph{external field} and consider the spin system with Hamiltonian $H(\varphi) + h \cdot \varphi$;
+the \emph{(magnetic) susceptibility} is defined as the directional derivative of the magnetization of such a system in the constant direction. \todo{Then for translation-invariant spin systems (on transitive graphs), we can show that}
+\begin{equation}
+\chi(\mu_\beta) = \sum_{x\in\vertices} G_x(\mu_\beta).
+\end{equation}
 
 We will mainly be concerned with \emph{ferromagnetic} spin systems, for which the Hamiltonian has the form
 \begin{equation}
 H(\varphi) = \sum_{x, y \in \vertices} \varphi_x \cdot J_{xy} \varphi_y,
 \end{equation}
-where (recall) $J_{xy} \ge 0$. Thus, $H(\varphi)$ is lower when the spins align.
-
-Let us fix a designated vertex\footnote{In general, some quantities we define will depend on the choice of vertex. However, we will ultimately be interested in the transitive graph $\graph = \Zd$ for which this choice is irrelevant.} $0 \in \vertices$. We define the \emph{two-point function} for such a spin system $\mu_\beta$ by
-\begin{equation}
-G_x(\mu_\beta) = \frac{1}{n} \int d\mu_\beta(\varphi) \; \varphi_0 \cdot \varphi_x
-\end{equation}
-when this is well-defined. \todo{This should be the truncated correlation.}
-If it is, we also define the \emph{susceptibility}
-\begin{equation}
-\chi(\mu_\beta) = \sum_{x\in\vertices} G_x(\mu_\beta).
-\end{equation}
+where (recall) $J_{xy} \ge 0$. Thus, $H(\varphi)$ is smaller (and $d\mu_\beta(\varphi)$ larger) when the spins align (when $\varphi_x = \varphi_y$ for $x \sim y$).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Gaussian measures and the free field}
 
 Let $S = \R^n$ and let $C$ be a positive-definite symmetric $\vertices\times\vertices$ matrix. The $n$-component \emph{Gaussian measure} $d\mu_C$ on
-$\vertices$ with mean $0$ and \emph{covariance} $C$ is defined by the Hamiltonian
+$\Omega$ with mean $0$ and \emph{covariance} $C$ is defined by the Hamiltonian
 \begin{equation}
 H_C(\varphi) = \frac{1}{2} \varphi \cdot C^{-1} \varphi.
 \end{equation}
 This is essentially the simplest choice of non-constant
-Hamiltonian\footnote{Note that $e^{-\beta H}$ is not integrable if $H$ is linear.}.
+Hamiltonian\footnote{Note that $e^{-\beta H}$ is not integrable if $H$ is linear. Also, by completing the square, there is no additional generality gained by adding a linear term to $H_C$.}.
 % is the unique measure $\mu$ on $(\R^n)^\vertices$ with characteristic function
 % \begin{equation}
 % \hat\mu(\xi)
@@ -367,24 +366,25 @@ Hamiltonian\footnote{Note that $e^{-\beta H}$ is not integrable if $H$ is linear
 % \end{equation}
 % If $\vertices$ is finite, then the Lebesgue measure $d\varphi$ on $(\R^n)^\vertices$
 % is well-defined and
-The partition function can be computed explicitly, giving\footnote{Here, we have employed our convention of setting $\beta = 1$ when the Hamiltonian depends on a parameter.}
+The partition function can be computed explicitly, giving\footnote{Here, we have employed our convention of setting $\beta = 1$ when the Hamiltonian depends on a parameter ($C$ in this case).}
 \begin{equation}
 d\mu_C(\varphi)
   =
 \frac{1}{\sqrt{\det(2\pi C)}} e^{-\frac{1}{2} \varphi\cdot C^{-1}\varphi} d\varphi.
 \end{equation}
-By \emph{Wick's theorem}, the two-point function is just the covariance $C$:
+By \emph{Wick's theorem}, the magnetization is $0$ and the two-point function is the covariance:
 \begin{equation}
 \int \varphi_a \cdot \varphi_b \; d\mu(\varphi) = C_{ab}.
 \end{equation}
 
-An important case is the \emph{Gaussian free field} on $\vertices$ with \emph{mass} $m^2 \ge 0$, for which the covariance is equal to the massive Green function: $C = (m^2 + \lap)^{-1}$. It is not hard to show, using the fact that $J$ has nonnegative entries, that the Gaussian free field is ferromagnetic.
+An important case is the \emph{massive Gaussian free field} on $\graph$, for which the covariance is equal to the massive Green function:
+$C = (m^2 + \lap)^{-1}$. The Gaussian free field is an example of a ferromagnetic spin system since $J$ has nonnegative entries.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{The \texorpdfstring{$|\varphi|^4$}{phi4} spin model}
 
-Let $S = \R^n$ again. The simplest choice of Hamiltonian that is not quadratic is given by a quartic function. The Hamiltonian for the $|\varphi|^4$ spin model is given by
+Let $S = \R^n$. The $|\varphi|^4$ spin model on $\graph$ is defined by the quartic Hamiltonian
 \begin{equation}
 H_{g,\nu}(\varphi)
   =
@@ -397,8 +397,8 @@ H_{g,\nu}(\varphi)
   \frac{1}{2} \varphi_x \cdot (\lap \varphi)_x
 \right),
 \end{equation}
-where $g > 0$ and $\nu\in\R$. When $\nu > 0$, we have
-$H_{g,\nu} = g |\varphi|^4 + H_C$, where $C = (\nu + \lap)^{-1}$ is the covariance of the Gaussian free field with mass $\nu$. Again, this is a ferromagnetic spin system.
+where $g > 0$ and $\nu\in\R$. This is another example of a ferromagnetic spin system. Note that when $\nu > 0$, we have
+$H_{g,\nu} = g |\varphi|^4 + H_C$, where $C = (\nu + \lap)^{-1}$ is the covariance of the Gaussian free field with mass $\nu$.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -410,7 +410,8 @@ H_J(\sigma) = -\frac{1}{2} \sigma \cdot J \sigma,
 \end{equation}
 which is clearly ferromagnetic.
 
-The corresponding Gibbs measure arises naturally as a limiting case of the $|\varphi|^4$ measure $d\mu_{g,\nu}$ on a regular graph. Indeed, suppose that the diagonal elements of $\lap$ are constant: that is, there exists $d_0$ such that $d_x = d_0$ for all $x$. Then the $|\varphi|^4$ Hamiltonian can be written as
+The corresponding Gibbs measure arises naturally as a limiting case of the
+$|\varphi|^4$ measure $d\mu_{g,\nu}$ on a $d_0$-regular graph. Indeed, in this case the $|\varphi|^4$ Hamiltonian can be written as
 \begin{equation}
 H_{g,\nu}(\varphi)
   =
@@ -431,33 +432,34 @@ The case $n = 1$ is the celebrated \emph{Ising model}. When $n = 2, 3$, we get t
 
 \subsection{The infinite-volume limit}
 
-The presence of a phase transition in a physical system is signalled by an abrupt (i.e.\ non-analytic) change in an observable quantity as a parameter is varied. In fact, a $p$-th order phase transition is usually said to occur when the free energy has a discontinuous $p$-th derivative (but continuous derivatives of order less than $p$). However, the spin systems we have defined above all have smooth free energy (since the Hamiltonians are smooth functions). Ultimately, the reason we cannot detect phase transitions in these systems is that we have defined them on finite graphs. Thus, we are forced to face the problem of defining spin systems on an infinite volume $\graph$.
+The presence of a phase transition in a physical system is signalled by an abrupt (i.e.\ non-analytic) change in an observable quantity as a parameter is varied. In fact, a $p$-th order phase transition is usually said to occur when the free energy has a discontinuous derivative of order $p$ with respect to an external field (but continuous derivatives of order less than $p$). However, the spin systems we have defined above all have smooth free energy (since the Hamiltonians are smooth functions). Ultimately, the reason we cannot detect phase transitions in these systems is that we have defined them on finite graphs. Thus, we are forced to face the problem of defining spin systems on an infinite graph.
 
-A natural way to study spin systems on such a graph is via a procedure known as the \emph{infinite-volume limit}: For any
+A natural approach to defining such systems is via a procedure known as the
+\emph{infinite-volume limit}, which we describe here. For any
 finite subgraph $\Lambda \subset \graph$, let $H_\Lambda$ be the Hamiltonian
 of one of the above spin systems on $\Lambda$ and let $\mu_\Lambda$ be the
 corresponding Gibbs measure (which we can view as a measure on the full state
-space $\Omega$). Then taking the infinite-volume limit involves studying the
-limits
+space $\Omega$).
+
+Let $\Lambda_N \subset \graph$ be a sequence of subgraphs that exhaust
+$\graph$, i.e.\ $\Lambda_N \uparrow \graph$. If the limits
 \begin{equation}
-\lim_{\Lambda_N\uparrow\graph} \int f \; d\mu_\Lambda,
+\lim_{N\to\infty} \int f \; d\mu_{\Lambda_N}
 \end{equation}
-where $\Lambda_N \uparrow \graph$ and $f$ varies over a sufficiently rich
-class of functions on $\Omega$, e.g.\ all bounded continuous functions. When
-these limit exist for a given sequence $\Lambda_N$, they define a measure $\mu$
-on $\Omega$, which we call a \emph{Gibbs state} or \emph{infinite-volume Gibbs
-measure} on $\Omega$.
+exist for a sufficiently rich class of functions $f$ (such as all bounded continuous functions), then they define a measure $\mu$ on $\Omega$ (with $\mu(f)$ the above limit), which we call a \emph{Gibbs state} or
+\emph{infinite-volume Gibbs measure} on $\Omega$.
 
 We remark that there is a more general approach to the study of spin systems in infinite volume developed by Dobrushin, Lanford, and Ruelle. We do not detail their approach here, but merely mention that, for the examples above, this approach involves defining a Gibbs measure for the collection
-$H = (H_\Lambda)$ of Hamiltonians directly as a measure on $\Omega$ satisfying a system of constraints on its conditionals. This is somewhat in the spirit of Kolmogorov's consistency conditions with the importance difference that the resulting collection $\gibbs_\beta(H)$ of Gibbs states at inverse temperature
-$\beta$ need consist of only a single element. This is significant due to the interpretation of distinct elements of $\gibbs(H)$ as corresponding to different phases of the system under consideration.
+$H = (H_\Lambda)$ of Hamiltonians directly as a measure on $\Omega$ satisfying a system of constraints on its conditionals measures. This is somewhat in the spirit of Kolmogorov's consistency conditions with the importance difference that the resulting collection $\gibbs_\beta(H)$ of Gibbs states at inverse temperature
+$\beta$ need not consist of only a single element. This is significant due to the interpretation of distinct elements of $\gibbs(H)$ as corresponding to different phases of the system under consideration.
 
-Moreover, for many models, including the Ising and $|\varphi|^4$ models, it is known that there exists a critical inverse temperature $\beta_c$ such that
-$|\gibbs(H)| = 1$ if and only if $\beta \le \beta_c$ (\REF?). In this thesis, our main concern is with the behaviour at $\beta_c$ and as
+For many models, including the $O(n)$ and $n$-component $|\varphi|^4$ models on $\Zd$ with $d > 2$, it is known that there exists a critical inverse temperature $\beta_c < \infty$ such that
+$|\gibbs(H)| = 1$ if and only if $\beta \le \beta_c$ (\REF). In this thesis, our main concern is with the behaviour at $\beta_c$ and as
 $\beta \uparrow \beta_c$. Thus, we need not concern ourselves with the precise nature of the infinite-volume limit.
 
 \begin{rk}
-In fact, we will be studying translation-invariant systems on $\graph = \Zd$, for which a particular choice of finite-volume approximation is convenient. Namely, for $L > 1$ we will let $\Lambda_N = \Zd/L^N\Zd$ be the discrete torus, which we view as a subset of $\Zd$. Strictly speaking, $\Lambda_N$ is not a subgraph of $\Zd$; nevertheless, it can be shown that the infinite-volume limit (if it exists) is a Gibbs measure in the usual sense; see \cite[Example 4.20]{Georgii11} for details.
+Our interest will be in translation-invariant systems on $\Zd$, for which a particular approach to the infinite-volume limit will be convenient. Namely, for $L > 1$ we will let $\Lambda_N = \Zd/L^N\Zd$ be the discrete torus, which we view as a subset of $\Zd$. This allows us to preserve
+translation-invariance of these models in finite volume. Strictly speaking, $\Lambda_N$ is not a subgraph of $\Zd$; nevertheless, it can be shown that the infinite-volume limit (if it exists) is a Gibbs measure in the usual sense; see \cite[Example 4.20]{Georgii11} for details.
 \end{rk}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -566,6 +568,8 @@ In this setting, the fugacity $\nu$ is usually referred to as the \emph{killing 
 \end{equation}
 \todo{When is $\mu$ well-defined?}
 
+\todo{More natural to consider the probability of walk ending at $x$, giving
+$c_T(x) / c_T$.}
 For $x \in \vertices$, let $\Wcal_T(x) \subset \Wcal_T$ denote the collection of walks $\omega \in \Wcal_T$ with $\omega_0 = a$ and $\omega_T = x$. The conditional measure $\mu^x_T = \mu_T(\cdot \mid \Wcal_T(x))$ is given by
 \begin{equation}
 \mu^x_T(d\omega) = \frac{\mu_T(d\omega) \1_{\Wcal_T(x)}(\omega)}{c_T(x)},
