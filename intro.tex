@@ -588,6 +588,11 @@ Note that
 \end{equation}
 which is consistent with the analogous relation for spin systems. Later we will discuss the relationship between the two-point function for walks and spin systems.
 
+\todo{We really should not be defining terms for discrete- and continuous-time
+walks separately as (for example) $c_n$ in discrete-time is not the same as in
+continuous time. We should define discrete-time objects as the skeletons of
+continuous-time ones.}
+
 \begin{rk}
 In the discrete-time case, we let $z = e^{-\nu}$ and write
 \begin{equation}
@@ -604,7 +609,7 @@ with
 \end{equation}
 Similarly,
 \begin{align}
-G_x(\nu) = \frac{1 - e^{-\nu}}{\nu} \sum_{n=0}^\infty c_n(x) z^n.
+G_x(z) = \frac{1 - e^{-\nu}}{\nu} \sum_{n=0}^\infty c_n(x) z^n.
 \end{align}
 \end{rk}
 
@@ -637,88 +642,108 @@ which converges for $|z| < 1$. Letting $m^2 = d_0 (1 - z) / z > 0$, we see that
 \end{equation}
 so the two-point function is just the Green function for the massive Laplacian.
 
-\vspace{3cm}
+The Laplacian $\lap$ is the generator of the $\vertices$-valued Markov process
+$X = (X_t)_{t \ge 0}$ with transition probabilities
+\begin{equation}
+\Pr(X_t = y \mid X_0 = x) = (e^{-t \lap})_{xy},
+\end{equation}
+called the \emph{continuous-time simple random walk} on $\graph$.
+This process defines measure $\lambda_T$ on $\Wcal_T$ via
+\begin{equation}
+\lambda_T(d\omega) = \Pr(X_t = d\omega_t, \, t \le T \mid X_0 = 0).
+\end{equation}
+For the corresponding Gibbs measures (with $H_T \equiv 0$), we have
+\begin{equation}
+c_T(x) = (e^{-t \lap})_{0x},
+  \quad
+G_x = (\nu + \lap)^{-1}_{0x}
+\end{equation}
+for $\nu > 0$. Thus, the two-point function is the Green function for the
+massive Laplacian.
 
-Let $Q$ be the $\vertices\cup\{\partial\}\times\vertices\cup\{\partial\}$ matrix with
-\begin{equation}
-Q_{xy}
-  =
-\begin{cases}
-J_{xy},       & x \ne y, \partial, y \in \vertices \\
-m^2,          & x \ne \partial, y = \partial \\
--(m^2 + d_x), & x = y \in \vertices \\
-0,            & x = \partial
-\end{cases}.
-\end{equation}
-Let $X_t$ be the Markov process with generator $Q$. That is, $X$ takes jumps from $x$ at rate
-\begin{equation}
--Q_{xx}
-  =
-\begin{cases}
-m^2 + d_x,    & x = y \in \vertices \\
-0,            & x = y = \partial
-\end{cases}
-\end{equation}
-and jumps from $x$ to $y$ with probability (with $0/0 = 1$)
-\begin{equation}
-\hat P_{xy}
-  =
--Q_{xy} / Q_{xx}
-  =
-\begin{cases}
-z_x P_{xy},             & x \ne \partial, y \in \vertices \\
-\frac{m^2}{m^2 + d_x},  & x \ne \partial, y = \partial \\
-\1_{y=\partial},        & x = \partial
-\end{cases}.
-\end{equation}
-We call $X_t$ the \emph{continuous-time random walk} on $\graph$. In continuous time, we let
-\begin{equation}
-\lambda_T(d\omega) = P_0(d\omega \mid \tau_\partial = T),
-\end{equation}
-where $\tau_\partial = \inf(t : X_T = \partial)$.
+The \emph{discrete-time simple random walk} on $\graph$ is the Markov chain
+$\hat X = (\hat X_n)_{n\in\Z_+}$ defined by $\hat X_n = X_{\tau_n}$.
 
-The \emph{discrete-time random walk} on $\graph$ is the Markov chain
-$\hat X_n$ defined by
-\begin{equation}
-\hat X_n = X_{\tau_n},
-\end{equation}
-where $\tau_n$ is the $n$-th jump time of $X$. The transition matrix of
-$\hat X$ is given by $\hat P$.
+% Let $Q$ be the $\vertices\cup\{\partial\}\times\vertices\cup\{\partial\}$ matrix with
+% \begin{equation}
+% Q_{xy}
+%   =
+% \begin{cases}
+% J_{xy},       & x \ne y, \partial, y \in \vertices \\
+% m^2,          & x \ne \partial, y = \partial \\
+% -(m^2 + d_x), & x = y \in \vertices \\
+% 0,            & x = \partial
+% \end{cases}.
+% \end{equation}
+% Let $X_t$ be the Markov process with generator $Q$. That is, $X$ takes jumps from $x$ at rate
+% \begin{equation}
+% -Q_{xx}
+%   =
+% \begin{cases}
+% m^2 + d_x,    & x = y \in \vertices \\
+% 0,            & x = y = \partial
+% \end{cases}
+% \end{equation}
+% and jumps from $x$ to $y$ with probability (with $0/0 = 1$)
+% \begin{equation}
+% \hat P_{xy}
+%   =
+% -Q_{xy} / Q_{xx}
+%   =
+% \begin{cases}
+% z_x P_{xy},             & x \ne \partial, y \in \vertices \\
+% \frac{m^2}{m^2 + d_x},  & x \ne \partial, y = \partial \\
+% \1_{y=\partial},        & x = \partial
+% \end{cases}.
+% \end{equation}
+% We call $X_t$ the \emph{continuous-time random walk} on $\graph$. In continuous time, we let
+% \begin{equation}
+% \lambda_T(d\omega) = P_0(d\omega \mid \tau_\partial = T),
+% \end{equation}
+% where $\tau_\partial = \inf(t : X_T = \partial)$.
 
-For $v \in \vertices$, let $P_v$ and $E_v$ denote the probability and expectation with respect to either the process $X$ or $\hat X$ conditioned so that $X_0 = v$. We have
-\begin{equation}
-c_T(x, y) = P_x (X_T = y) = (e^{T Q})_{xy}.
-\end{equation}
-Thus,
-\begin{equation}
-\int_0^\infty dT \; e^{-\nu T} c_T(x, y)
-  =
-\sum_{n=0}^\infty \frac{1}{n!} Q^n_{xy} \int_0^\infty dT \; e^{-\nu T} T^n
-  =
-\sum_{n=0}^\infty Q^n_{xy} \nu^{-(n+1)}
-\end{equation}
+% The \emph{discrete-time random walk} on $\graph$ is the Markov chain
+% $\hat X_n$ defined by
+% \begin{equation}
+% \hat X_n = X_{\tau_n},
+% \end{equation}
+% where $\tau_n$ is the $n$-th jump time of $X$. The transition matrix of
+% $\hat X$ is given by $\hat P$.
 
-\begin{example}
-We have
-\begin{equation}
-\int_0^\infty dT \; \1_{X_T=y}
-  =
-\sum_{n=0}^\infty \int_{\tau_n}^{\tau_{n+1}} dT \; \1_{\hat X_n=y}
-  =
-\sum_{n=0}^\infty (\tau_{n+1} - \tau_n) \1_{\hat X_n=y}.
-\end{equation}
-If $\hat X_n = y$, then $\tau_{n+1} - \tau_n$ is a Poisson random variable with rate $d_y$, so taking the expectation of the above yields
-\begin{equation}
-G_{xy} = d_y \sum_{n=0}^\infty c_n(x, y).
-\end{equation}
-\todo{Show that this is}
-\begin{equation}
-C(x, y) = (m^2 + d_x)^{-1} E_x \left(\sum_{n=0}^\infty \1_{X_n=y} \right)
-\end{equation}
-so the sum converges if and only if the expected number of visits to $y$
-made a walk with transition $\hat P$ started at $x$ is finite. Thus, $C$ is
-well-defined if and only if the walk is transient. In particular, it is well-defined for $m^2 > 0$. When $\graph = \Zd$, it is well-defined for $m^2 = 0$ if and only if $d > 2$.
-\end{example}
+% For $v \in \vertices$, let $P_v$ and $E_v$ denote the probability and expectation with respect to either the process $X$ or $\hat X$ conditioned so that $X_0 = v$. We have
+% \begin{equation}
+% c_T(x, y) = P_x (X_T = y) = (e^{T Q})_{xy}.
+% \end{equation}
+% Thus,
+% \begin{equation}
+% \int_0^\infty dT \; e^{-\nu T} c_T(x, y)
+%   =
+% \sum_{n=0}^\infty \frac{1}{n!} Q^n_{xy} \int_0^\infty dT \; e^{-\nu T} T^n
+%   =
+% \sum_{n=0}^\infty Q^n_{xy} \nu^{-(n+1)}
+% \end{equation}
+
+% \begin{example}
+% We have
+% \begin{equation}
+% \int_0^\infty dT \; \1_{X_T=y}
+%   =
+% \sum_{n=0}^\infty \int_{\tau_n}^{\tau_{n+1}} dT \; \1_{\hat X_n=y}
+%   =
+% \sum_{n=0}^\infty (\tau_{n+1} - \tau_n) \1_{\hat X_n=y}.
+% \end{equation}
+% If $\hat X_n = y$, then $\tau_{n+1} - \tau_n$ is a Poisson random variable with rate $d_y$, so taking the expectation of the above yields
+% \begin{equation}
+% G_{xy} = d_y \sum_{n=0}^\infty c_n(x, y).
+% \end{equation}
+% \todo{Show that this is}
+% \begin{equation}
+% C(x, y) = (m^2 + d_x)^{-1} E_x \left(\sum_{n=0}^\infty \1_{X_n=y} \right)
+% \end{equation}
+% so the sum converges if and only if the expected number of visits to $y$
+% made a walk with transition $\hat P$ started at $x$ is finite. Thus, $C$ is
+% well-defined if and only if the walk is transient. In particular, it is well-defined for $m^2 > 0$. When $\graph = \Zd$, it is well-defined for $m^2 = 0$ if and only if $d > 2$.
+% \end{example}
 
 \begin{example}
 \todo{On transitive graphs, SRW is a sum of iid random variables. This gives CLT and invariance principle}
@@ -888,9 +913,12 @@ Thus, there is a critical point at $m^2 = 0$ ($z = 1$).
 Critical behaviour should, roughly speaking, only depend on ``tail properties''
 (global geometry, range of interaction, and symmetries).
 
+Discuss scaling limits and the RG
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{Scaling limits}
+\section{Main results}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
