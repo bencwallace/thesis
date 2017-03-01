@@ -528,16 +528,17 @@ translation-invariance of these models in finite volume. Strictly speaking, $\La
 
 \section{Random polymer models}
 
-For simplicity, we take $\graph$ to be a $d_0$-regular vertex-transitive graph and fix a designated vertex $0 \in \vertices$. We let $\interval_T$ denote either of the following choices for all $T \ge 0$:
-\begin{equation}
-\interval_T
-  =
-\begin{cases}
-\{ 0, \ldots, \lfloor T \rfloor \} \\
-[0, T]
-\end{cases}.
-\end{equation}
-For any right-continuous function $\omega : \interval_T \to \vertices$, we define
+For simplicity, we take $\graph$ to be a $d_0$-regular vertex-transitive graph and fix a designated vertex $0 \in \vertices$.
+% We let $\interval_T$ denote either of the following choices for all $T \ge 0$:
+% \begin{equation}
+% \interval_T
+%   =
+% \begin{cases}
+% \{ 0, \ldots, \lfloor T \rfloor \} \\
+% [0, T]
+% \end{cases}.
+% \end{equation}
+For any right-continuous function $\omega : [0, T] \to \vertices$, we define
 $\tau_n = \tau_n(\omega)$ inductively by setting $\tau_0 = 0$ and
 \begin{equation}
 \tau_{n+1} = \inf(t > \tau_n : \omega_t \ne \omega_{\tau_n}).
@@ -545,9 +546,10 @@ $\tau_n = \tau_n(\omega)$ inductively by setting $\tau_0 = 0$ and
 We call such a function $\omega$ a \emph{walk} of length $T$ if
 $\{ \tau_n : n \in \Z_+ \}$ does not have any cluster points and
 $\omega_{\tau_n} \sim \omega_{\tau_{n+1}}$ for all $n$; thus, $\omega$
-only jumps between neighbouring vertices. A \emph{discrete-time} (respectively,
-\emph{continuous-time}) walk of length $T$ is a walk indexed by
-$\{ 0, \ldots, \lfloor T \rfloor \}$ (respectively, $[0, T]$).
+only jumps between neighbouring vertices.
+% A \emph{discrete-time} (respectively,
+% \emph{continuous-time}) walk of length $T$ is a walk indexed by
+% $\{ 0, \ldots, \lfloor T \rfloor \}$ (respectively, $[0, T]$).
 We let $\Wcal_T$ denote the set of walks of length $T$ with $\omega_0 = 0$ and set $\Wcal := \bigcup_{T \geq 0} \Wcal_T$.
 
 A model of walks is determined by a choice of finite measure $d\mu_T$ on
@@ -555,36 +557,37 @@ $\Wcal_T$ for each $T$. All models we consider will be given by canonical Gibbs 
 \begin{equation}
 d\mu_T(\omega) = \frac{1}{c_T} e^{-H_T(\omega)} \; d\lambda_T(\omega),
 \end{equation}
-with respect to some measure $\lambda_T$ on $\Wcal_T$. Note that we have denoted the partition function by $c_T$. We will assume that models of discrete-time walks satisfy $\mu_T = \mu_{\lfloor T \rfloor}$ for all $T$
-(note that both are measures on $\Wcal_{\lfloor T \rfloor}$ in this case).
-
-Given such a model, we write the corresponding grand canonical ensemble as
+with respect to some measure $\lambda_T$ on $\Wcal_T$. Note that we have denoted the partition function by $c_T$.
+% We will assume that models of discrete-time walks satisfy $\mu_T = \mu_{\lfloor T \rfloor}$ for all $T$
+% (note that both are measures on $\Wcal_{\lfloor T \rfloor}$ in this case).
+Given such a model, the corresponding grand canonical ensemble is given by
 \begin{equation}
-d\mu(\omega) = \frac{1}{\chi(\nu)} e^{-\nu |\omega|} d\mu_{|\omega|}(\omega).
+d\mu(\omega)
+  =
+\frac{1}{\chi(\nu)}
+e^{-\nu |\omega| - H_{|\omega|}(\omega)}
+d\lambda_{|\omega|}(\omega)
 \end{equation}
-In this setting, the fugacity $\nu$ is usually referred to as the \emph{killing rate}. The grand canonical partition function, denoted $\chi$, is known as the \emph{susceptibility}. Note that
+and the grand canonical partition function, denoted $\chi(\nu)$, is known as the \emph{susceptibility}. In this setting, the fugacity $\nu$ is usually referred to as the \emph{killing rate}.
+% The grand canonical partition function, denoted $\chi$, is known as the \emph{susceptibility}.
+Note that
 \begin{equation}
 \mu(\cdot \mid \Wcal_T) = \mu_T.
 \end{equation}
-\todo{When is $\mu$ well-defined?}
 
-\todo{More natural to consider the probability of walk ending at $x$, giving
-$c_T(x) / c_T$.}
-For $x \in \vertices$, let $\Wcal_T(x) \subset \Wcal_T$ denote the collection of walks $\omega \in \Wcal_T$ with $\omega_0 = a$ and $\omega_T = x$. The conditional measure $\mu^x_T = \mu_T(\cdot \mid \Wcal_T(x))$ is given by
+Let $\Wcal_T(x) \subset \Wcal_T$ denote the set of walks in $\Wcal_T$ from $0$ to $x$ and let $\Wcal(x) = \bigcup_{T \ge 0} \Wcal_T(x)$. Then
 \begin{equation}
-\mu^x_T(d\omega) = \frac{\mu_T(d\omega) \1_{\Wcal_T(x)}(\omega)}{c_T(x)},
+\mu(\Wcal(x)) = G_x
 \end{equation}
-where
-\begin{equation}
-c_T(x) = \mu_T(\Wcal_T(x)).
-\end{equation}
-Let $\Wcal(x) = \bigcup_{T \ge 0} \Wcal_T(x)$. Then
-\begin{equation}
-\mu^x(d\omega) = \frac{\mu(d\omega) \1_{\Wcal(x)}(\omega)}{G_x(\nu)},
-\end{equation}
+% For $x \in \vertices$, let $\Wcal_T(x) \subset \Wcal_T$ denote the collection of walks $\omega \in \Wcal_T$ with $\omega_0 = a$ and $\omega_T = x$. The conditional measure $\mu^x_T = \mu_T(\cdot \mid \Wcal_T(x))$ is given by
+% \begin{equation}
+% \mu^x_T(d\omega) = \frac{\mu_T(d\omega) \1_{\Wcal_T(x)}(\omega)}{c_T(x)},
+% \end{equation}
 where $G_x$ is the \emph{two-point function}, defined by
 \begin{equation}
-G_x(\nu) = \mu(\Wcal(x)) = \int_0^\infty dT \; e^{-\nu T} c_T(x).
+G_x = \int_0^\infty e^{-\nu T} c_T(x) \; dT,
+  \quad
+c_T(x) = \int_{\Wcal_T(x)} e^{-H_T} \; d\lambda_T.
 \end{equation}
 Note that
 \begin{equation}
@@ -592,30 +595,35 @@ Note that
 \end{equation}
 which is consistent with the analogous relation for spin systems. Later we will discuss the relationship between the two-point function for walks and spin systems.
 
-\todo{We really should not be defining terms for discrete- and continuous-time
-walks separately as (for example) $c_n$ in discrete-time is not the same as in
-continuous time. We should define discrete-time objects as the skeletons of
-continuous-time ones.}
+The \emph{critical point} $\nu_c$ for a model of walks is defined
+\begin{equation}
+\nu_c = \inf (\nu : \chi(\nu) < \infty).
+\end{equation}
 
-\begin{rk}
-In the discrete-time case, we let $z = e^{-\nu}$ and write
-\begin{equation}
-\mu(\omega)
-  =
-\frac{1 - e^{-\nu}}{\nu} z^{|\omega|} \mu_{|\omega|}(\omega)
-% \mu(f)
-  % =
-% \frac{1 - e^{-\nu}}{\nu} \sum_{n=0}^\infty z^n \int_{\Wcal_n} d\mu_n(\omega) \; f(\omega).
-\end{equation}
-with
-\begin{equation}
-\chi(\nu) = \frac{1 - e^{-\nu}}{\nu} \sum_{n=0}^\infty c_n z^n.
-\end{equation}
-Similarly,
-\begin{align}
-G_x(z) = \frac{1 - e^{-\nu}}{\nu} \sum_{n=0}^\infty c_n(x) z^n.
-\end{align}
-\end{rk}
+% \todo{We really should not be defining terms for discrete- and continuous-time
+% walks separately as (for example) $c_n$ in discrete-time is not the same as in
+% continuous time. We should define discrete-time objects as the skeletons of
+% continuous-time ones.}
+
+% \begin{rk}
+% In the discrete-time case, we let $z = e^{-\nu}$ and write
+% \begin{equation}
+% \mu(\omega)
+%   =
+% \frac{1 - e^{-\nu}}{\nu} z^{|\omega|} \mu_{|\omega|}(\omega)
+% % \mu(f)
+%   % =
+% % \frac{1 - e^{-\nu}}{\nu} \sum_{n=0}^\infty z^n \int_{\Wcal_n} d\mu_n(\omega) \; f(\omega).
+% \end{equation}
+% with
+% \begin{equation}
+% \chi(\nu) = \frac{1 - e^{-\nu}}{\nu} \sum_{n=0}^\infty c_n z^n.
+% \end{equation}
+% Similarly,
+% \begin{align}
+% G_x(z) = \frac{1 - e^{-\nu}}{\nu} \sum_{n=0}^\infty c_n(x) z^n.
+% \end{align}
+% \end{rk}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
