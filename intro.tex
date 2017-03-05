@@ -11,7 +11,7 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{The principle of maximum entropy}
+\subsection{Entropy}
 
 Let $(\Omega, \lambda)$ be a measure space. The state of knowledge of a system on $\Omega$ can be expressed by a probability measure $\mu$ on $\Omega$. Let
 $\Mcal_\lambda(\Omega)$ denote the set of probability measures on $\Omega$ absolutely continuous with respect to $\lambda$. For
@@ -34,7 +34,7 @@ case, the measure best expressing the state of knowledge of the system is given 
 \begin{equation}
 \hat\mu = \argmax(h_\lambda(\mu) : \mu \in M),
 \end{equation}
-assuming such a measure exists and is unique. One may for instance regard the choice of a measure not attaining this maximum to be tantamount to the imposition of additional constraints on the system.
+assuming such a measure exists and is unique.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -209,6 +209,28 @@ An \emph{undirected graph} is a pair $\graph = (\vertices, \edges)$, where $\ver
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\subsection{Functions on graphs}
+
+Let $\varphi \in (\R^n)^\vertices$. We denote the components of $\varphi$ by
+$\varphi^i_x \in \R$ for $x \in \vertices$ and $i = 1, \ldots, n$. The Euclidean inner product on $(\R^n)^\vertices$ is defined by
+\begin{equation}
+\varphi\cdot\tilde\varphi
+  =
+\sum_{x\in\vertices} \varphi_x \cdot \tilde\varphi_y
+  =
+\sum_{i=1}^n \sum_{x\in\vertices} \varphi^i_x \tilde\varphi^i_x
+\end{equation}
+and the Euclidean norm $|\cdot|$ is defined by
+\begin{equation}
+|\varphi|^2 = \varphi \cdot \varphi.
+\end{equation}
+A $\vertices\times\vertices$ matrix $M$ acts on $\varphi$ via
+\begin{equation}
+(M \varphi)_x = \sum_{y\in\vertices} M_{xy} \varphi_y.
+\end{equation}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \subsection{The graph Laplacian}
 
 Let $\jay$ be a $\vertices\times\vertices$ matrix with $\jay_{xy} \ge 0$ for all $x, y$ with equality if and only if $\{ x, y \} \notin \edges$. The pair
@@ -222,25 +244,26 @@ We will say that $\graph$ is $d_0$-regular if $d_x = d_0$ for all $x$.
 
 The \emph{(massless) graph Laplacian} on $\graph$ is defined by
 \begin{equation}
-\lap = \diag - \jay.
+-\lap = \diag - \jay.
 \end{equation}
 We also define the \emph{massive Laplacian} with squared \emph{mass} $m^2 > 0$
 by
 \begin{equation}
-m^2 + \lap.
+-\lap + m^2.
 \end{equation}
 Note that
 \begin{equation}
-\varphi \cdot \lap \varphi
+\varphi \cdot (-\lap \varphi)
   =
 \frac{1}{2} \sum_{x,y\in\vertices} J_{xy} |\varphi_x - \varphi_y|^2
   \ge
 0,
 \end{equation}
-so $\lap$ is positive-semidefinite.
+so $-\lap$ is positive-semidefinite.
 
 \begin{example}
-An important case is when $\jay$ has $\{0, 1 \}$-valued entries. In this case, $d_x$ is the \emph{degree} of $x$ in $\graph$ and we denote the matrix $\lap$ by $-\Delta$, which has entries
+An important case is when $\jay$ has $\{0, 1 \}$-valued entries. In this case, $d_x$ is the \emph{degree} of $x$ in $\graph$ and we denote $\lap$ by
+$\Delta$, which has entries given by
 \begin{equation}
 -\Delta_{xy} = d_x \1_{x=y} - \1_{x \sim y}.
 \end{equation}
@@ -250,9 +273,9 @@ An important case is when $\jay$ has $\{0, 1 \}$-valued entries. In this case, $
 
 \subsection{The Green function}
 
-If $m^2 > 0$, then $m^2 + \lap$ is positive-definite, hence invertible with inverse
+If $m^2 > 0$, then $-\lap + m^2$ is positive-definite, hence invertible with inverse
 \begin{equation}
-(m^2 + \lap)^{-1} = (m^2 + D)^{-1} \sum_{n=0}^\infty Z^n P^n,
+(-\lap + m^2)^{-1} = (m^2 + D)^{-1} \sum_{n=0}^\infty Z^n P^n,
 \end{equation}
 where
 \begin{align}
@@ -261,7 +284,7 @@ Z = (m^2 + D)^{-1} D,
 P = D^{-1} J.
 \end{align}
 Let $z_x$ denote the diagonal elements of $Z$. The \emph{Green function} for
-$m^2 + \lap$ is the kernel of $(m^2 + \lap)^{-1}$, given by
+$-\lap + m^2$ is the kernel of $(-\lap + m^2)^{-1}$, given by
 \begin{equation}
 C(x, y)
   =
@@ -284,35 +307,20 @@ C(x, y)
 \section{Spin systems}
 
 An $n$-component \emph{field} or \emph{spin configuration} on $\vertices$
-with spins in $S \subset \R^n$ is an element of $\Omega = S^\vertices$. We denote the components of a field $\varphi \in \Omega$ by $\varphi^i_x \in \R$ for $x \in \vertices$ and $i = 1, \ldots, n$. The Euclidean inner product on fields is defined by
+with spins in $S \subset \R^n$ is an element of $\Omega = S^\vertices$.
+% A \emph{spin system} is a probability measure $d\mu$ on $\Omega$.
+Suppose that $S$ is endowed with a measure $d\lambda^0$ and define the product measure
 \begin{equation}
-\varphi\cdot\tilde\varphi
-  =
-\sum_{x\in\vertices} \varphi_x \cdot \tilde\varphi_y
-  =
-\sum_{i=1}^n \sum_{x\in\vertices} \varphi^i_x \tilde\varphi^i_x
+d\lambda(\varphi) = \prod_{x\in\vertices} d\lambda^0(\varphi_x)
 \end{equation}
-and the Euclidean norm $|\cdot|$ is defined by
-\begin{equation}
-|\varphi|^2 = \varphi \cdot \varphi.
-\end{equation}
-A $\vertices\times\vertices$ matrix $M$ acts as a linear map on fields via
-\begin{equation}
-(M \varphi)_x = \sum_{y\in\vertices} M_{xy} \varphi_y.
-\end{equation}
-
-A \emph{spin system} is a probability measure $d\mu$ on $\Omega$.
-Suppose that $S$ is endowed with a measure $d\lambda^0$ and let
-$H : \Omega \to \R$ be a measurable function. We wish to spin systems given by Gibbs measures with Hamiltonian $H$ and base measure given by the product measure
-\begin{equation}
-d\lambda(\varphi) = \prod_{x\in\vertices} d\lambda^0(\varphi_x).
-\end{equation}
-Thus,
+on $\Omega$.
+Given a (measurable) Hamiltonian function $H : \Omega \to \R$, we wish to define the measure
 \begin{equation}
 d\mu_\beta(\varphi)
   =
-\frac{1}{Z_\beta} e^{-\beta H(\varphi)} d\lambda(\varphi).
+\frac{1}{Z_\beta} e^{-\beta H(\varphi)} d\lambda(\varphi)
 \end{equation}
+on $\Omega$.
 
 However, there are some problems with this definition when $\vertices$ is infinite. For one, $d\lambda$ may not be well-defined (for instance if
 $S = \R$ and $d\lambda^0$ is Lebesgue measure). Another issue is that it may be difficult to define a reasonable choice of $H$ on the infinite product space
@@ -320,7 +328,7 @@ $\Omega$. For this reason, we temporarily restrict our attention to finite graph
 (or set $\beta = 1$).
 
 Let us fix\footnote{In general, some quantities we define will depend on the choice of vertex. However, we will ultimately be interested in the transitive graph $\graph = \Zd$ for which this choice is irrelevant.} a vertex
-$0 \in \vertices$. The \emph{two-point function} for a spin system $\mu_\beta$ is defined by normalizing the truncated correlation function between the spins at $0$ and $x$:
+$0 \in \vertices$. The \emph{two-point function} for a spin system $\mu_\beta$ is defined by
 \begin{equation}
 G_x(\mu_\beta)
   =
@@ -378,7 +386,7 @@ By \emph{Wick's theorem}, the magnetization is $0$ and the two-point function is
 \end{equation}
 
 An important case is the \emph{massive Gaussian free field} on $\graph$, for which the covariance is equal to the massive Green function:
-$C = (m^2 + \lap)^{-1}$. The Gaussian free field is an example of a ferromagnetic spin system since $J$ has nonnegative entries.
+$C = (-\lap + m^2)^{-1}$. The Gaussian free field is an example of a ferromagnetic spin system since $J$ has nonnegative entries.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -394,11 +402,11 @@ H_{g,\nu}(\varphi)
     +
   \frac{1}{2} \nu |\varphi_x|^2
     +
-  \frac{1}{2} \varphi_x \cdot (\lap \varphi)_x
+  \frac{1}{2} \varphi_x \cdot (-\lap \varphi)_x
 \right),
 \end{equation}
 where $g > 0$ and $\nu\in\R$. This is another example of a ferromagnetic spin system. Note that when $\nu > 0$, we have
-$H_{g,\nu} = g |\varphi|^4 + H_C$, where $C = (\nu + \lap)^{-1}$ is the covariance of the Gaussian free field with mass $\nu$.
+$H_{g,\nu} = g |\varphi|^4 + H_C$, where $C = (\nu - \lap)^{-1}$ is the covariance of the Gaussian free field with mass $\nu$.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -454,7 +462,7 @@ $H = (H_\Lambda)$ of Hamiltonians directly as a measure on $\Omega$ satisfying a
 $\beta$ need not consist of only a single element. This is significant due to the interpretation of distinct elements of $\gibbs(H)$ as corresponding to different phases of the system under consideration.
 
 For many models, including the $O(n)$ and $n$-component $|\varphi|^4$ models on $\Zd$ with $d > 2$, it is known that there exists a critical inverse temperature $\beta_c < \infty$ such that
-$|\gibbs(H)| = 1$ if and only if $\beta \le \beta_c$ (\REF). In this thesis, our main concern is with the behaviour at $\beta_c$ and as
+$|\gibbs_\beta(H)| = 1$ if and only if $\beta \le \beta_c$ (\REF). In this thesis, our main concern is with the behaviour at $\beta_c$ and as
 $\beta \uparrow \beta_c$. Thus, we need not concern ourselves with the precise nature of the infinite-volume limit.
 
 \begin{rk}
@@ -526,7 +534,7 @@ translation-invariance of these models in finite volume. Strictly speaking, $\La
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Random polymer models}
+\section{Models of walks}
 
 For simplicity, we take $\graph$ to be a $d_0$-regular vertex-transitive graph and fix a designated vertex $0 \in \vertices$.
 % We let $\interval_T$ denote either of the following choices for all $T \ge 0$:
@@ -543,21 +551,22 @@ $\tau_n = \tau_n(\omega)$ inductively by setting $\tau_0 = 0$ and
 \begin{equation}
 \tau_{n+1} = \inf(t > \tau_n : \omega_t \ne \omega_{\tau_n}).
 \end{equation}
-We call such a function $\omega$ a \emph{walk} of length $T$ if
+We call $\omega$ a \emph{walk} of length $T$ if
 $\{ \tau_n : n \in \Z_+ \}$ does not have any cluster points and
 $\omega_{\tau_n} \sim \omega_{\tau_{n+1}}$ for all $n$; thus, $\omega$
 only jumps between neighbouring vertices.
 % A \emph{discrete-time} (respectively,
 % \emph{continuous-time}) walk of length $T$ is a walk indexed by
 % $\{ 0, \ldots, \lfloor T \rfloor \}$ (respectively, $[0, T]$).
-We let $\Wcal_T$ denote the set of walks of length $T$ with $\omega_0 = 0$ and set $\Wcal := \bigcup_{T \geq 0} \Wcal_T$.
+A \emph{discrete-time} walk is one for which $\tau_n = n$ for all $n$.
+Let $\Wcal_T$ denote the set of walks of length $T$ with $\omega_0 = 0$ and set $\Wcal := \bigcup_{T \geq 0} \Wcal_T$.
 
 A model of walks is determined by a choice of finite measure $d\mu_T$ on
 $\Wcal_T$ for each $T$. All models we consider will be given by canonical Gibbs measures
 \begin{equation}
 d\mu_T(\omega) = \frac{1}{c_T} e^{-H_T(\omega)} \; d\lambda_T(\omega),
 \end{equation}
-with respect to some measure $\lambda_T$ on $\Wcal_T$. Note that we have denoted the partition function by $c_T$.
+with respect to some measure $\lambda_T$ on $\Wcal_T$ (we have denoted the partition function by $c_T$).
 % We will assume that models of discrete-time walks satisfy $\mu_T = \mu_{\lfloor T \rfloor}$ for all $T$
 % (note that both are measures on $\Wcal_{\lfloor T \rfloor}$ in this case).
 Given such a model, the corresponding grand canonical ensemble is given by
@@ -575,20 +584,19 @@ Note that
 \mu(\cdot \mid \Wcal_T) = \mu_T.
 \end{equation}
 
-Let $\Wcal_T(x) \subset \Wcal_T$ denote the set of walks in $\Wcal_T$ from $0$ to $x$ and let $\Wcal(x) = \bigcup_{T \ge 0} \Wcal_T(x)$. Then
+Let $\Wcal_T(x) \subset \Wcal_T$ denote the set of walks in $\Wcal_T$ from $0$ to $x$ and let $\Wcal(x) = \bigcup_{T \ge 0} \Wcal_T(x)$. We define the
+\emph{two-point function}
 \begin{equation}
-\mu(\Wcal(x)) = G_x
+G_x(\nu) = \mu(\Wcal(x)) \int_0^\infty e^{-\nu T} c_T(x) \; dT,
+\end{equation}
+where
+\begin{equation}
+c_T(x) = \int_{\Wcal_T(x)} e^{-H_T} \; d\lambda_T.
 \end{equation}
 % For $x \in \vertices$, let $\Wcal_T(x) \subset \Wcal_T$ denote the collection of walks $\omega \in \Wcal_T$ with $\omega_0 = a$ and $\omega_T = x$. The conditional measure $\mu^x_T = \mu_T(\cdot \mid \Wcal_T(x))$ is given by
 % \begin{equation}
 % \mu^x_T(d\omega) = \frac{\mu_T(d\omega) \1_{\Wcal_T(x)}(\omega)}{c_T(x)},
 % \end{equation}
-where $G_x$ is the \emph{two-point function}, defined by
-\begin{equation}
-G_x = \int_0^\infty e^{-\nu T} c_T(x) \; dT,
-  \quad
-c_T(x) = \int_{\Wcal_T(x)} e^{-H_T} \; d\lambda_T.
-\end{equation}
 Note that
 \begin{equation}
 \chi(\nu) = \sum_{x\in\vertices} G_x(\nu),
@@ -654,13 +662,14 @@ The \emph{critical point} $\nu_c$ for a model of walks is defined
 % \end{equation}
 % so the two-point function is just the Green function for the massive Laplacian.
 
-The Laplacian $\lap$ is the generator of the $\vertices$-valued Markov process
+Let $\generator = -\lap$
+Then $\generator$ is the generator of the $\vertices$-valued Markov process
 $X = (X_t)_{t \ge 0}$ with transition probabilities
 \begin{equation}
 \Pr(X_t = y \mid X_0 = x) = (e^{-t \lap})_{xy},
 \end{equation}
 called the \emph{continuous-time simple random walk} on $\graph$.
-This process defines measure $\lambda_T$ on $\Wcal_T$ via
+We define the measure $\lambda_T$ on $\Wcal_T$ by
 \begin{equation}
 \lambda_T(d\omega) = \Pr(X_t = d\omega_t, \, t \le T \mid X_0 = 0).
 \end{equation}
@@ -668,13 +677,15 @@ For the corresponding Gibbs measures (with $H_T \equiv 0$), we have
 \begin{equation}
 c_T(x) = (e^{-t \lap})_{0x},
   \quad
-G_x = (\nu + \lap)^{-1}_{0x}
+G_x = (\nu - \lap)^{-1}_{0x}
 \end{equation}
 for $\nu > 0$. Thus, the two-point function is the Green function for the
 massive Laplacian.
 
 \begin{example}
-\todo{On transitive graphs, SRW is a sum of iid random variables. This gives CLT and invariance principle}
+The discrete-time simple random walk is the Markov chain given by
+$X_n = X_{\tau_n}$. Consider the discrete-time simple random walk on $\Zd$, for which $X_n = X_0 + \sum_{i=1}^n Y_i$, where $Y_i$ are iid random variables in $\{ e \in \Zd : |e| = 1 \}$ with $\Ex Y_i = 0$. Thus, $\Ex |X_n|^2 = n$ and the central limit theorem implies that
+$X_n / \sqrt n \Rightarrow \Ncal(0, 1)$. More generally, Donsker's invariance principle states that a rescsaled version of $X$ converges to Brownian motion on $\Rd$.
 \end{example}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -771,50 +782,40 @@ the \emph{Domb-Joyce model}. In continuous-time, it is the
 
 \section{Critical behaviour and universality}
 
-\todo{This description of critical behaviour is too narrow and does not apply to walks}
+Many systems exhibit \emph{critical behaviour} at or near a particular parameter value. For concreteness, in the setting of the models discussed above, we denote this parameter value here by $\beta_c$ and suppose that it is defined as the small valuest of $\beta$ for which the susceptibility diverges. For spin systems, this is typically the same value that separates the uniqueness regime in which $|\gibbs_\beta| = 1$ from the non-uniqueness regime in which
+$|\gibbs_\beta| > 1$.
 
-In this section, we let $\graph = \Zd$.
+The critical point is characterized by long-range correlations. Namely, for
+$\beta \ne \beta_c$, the two-point function $G_x$ decays exponentially in $x$. Clearly, this cannot be the case at $\beta_c$ if the susceptibility is to diverge and it is expected that $G_x$ scales according to a power there 
+(possibly with logarithmic corrections).
 
-Let $\gibbs_\beta$ denote the set of all Gibbs measures for some potential at inverse temperature $\beta$. A \emph{phase transition} is said to occur at inverse temperature $\beta$ if $|\gibbs_\beta| > 1$. Many systems possess a unique \emph{critical point} $\beta_c$, such that
-\begin{equation}
-|\gibbs_\beta|
-\begin{cases}
-=1,  & \beta < \beta_c \\
-> 1, & \beta > \beta_c
-\end{cases}
-\end{equation}
-and it is usually expected that $|\gibbs_{\beta_c}| = 1$. Moreover, such systems tend to exhibit \emph{critical behaviour} when $\beta = \beta_c$:
-roughly speaking, this means that a number of observables scale according to a power law (sometimes with logarithmic corrections) at or near $\beta_c$, whereas these same observables exhibit exponential decay away from $\beta_c$.
-
-A strong indicator of critical behaviour is the divergence of the
-\emph{correlation length}, defined for any model (of walks or spins) with two-point function $G_x(\mu)$ by
+A fundamental quantity in the study of critical behaviour is the
+\emph{correlation length} $\xi$. On $\Zd$, this is defined to be one over the exponential rate of decay of the two-point function; that is,
 \begin{equation}
 \xi(\mu) = \limsup_{k\to\infty} \frac{-k}{\log G_{ke}(\mu)},
 \end{equation}
-where $e \in \Zd$ is a unit vector. In other words, the correlation length is the exponential rate of decay of the two-point function.
+where $e \in \Zd$ is a unit vector, whose choice is irrelevant for models for which the two-point function is invariant under lattice rotations.
 A related quantity is the \emph{correlation length of order $p$}, defined by
 \begin{equation}
 \xi_p(\mu) = \left(\frac{\sum_{x\in\Zd} |x|^p G_x(\mu)}{\chi(\mu)}\right)^{1/p}.
 \end{equation}
 \todo{Heuristic relation bewteen $\xi$ and $\xi_p$.}
 
-It is expected that
+We define the \emph{critical exponents} $\eta$, $\gamma$, and $\bar\nu$ by
 \begin{align}
 G_x       &\sim C_1 |x|^{-(d - 2 + \eta)}, \\
 \chi(\nu) &\sim C_2 (\nu - \nu_c)^{-\gamma}, \\
 \xi       &\sim C_3 (\nu - \nu_c)^{-\nubar}, \\
 \xi_p     &\sim C_4 (\nu - \nu_c)^{-\nubar}
 \end{align}
-possibly with logarithmic corrections. For walks, it is expected that
+when these relations hold. For walks, it is expected that
 \begin{align}
 c_T                       &\sim C_5 e^{-\nu_c T} T^{-\gamma}, \\
 \langle |X_T|^2 \rangle   &\sim C_6 T^{-\nubar}.
 \end{align}
+\todo{Motivate the above with an example somewhere.}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\subsection{The DGFF}
-
+\begin{example}
 The two-point function is just the massive Green function
 $(-\Delta + m^2)^{-1}$ which, on $\Zd$, has the well-known Ornstein-Uhlenbeck decay \todo{(show this; use random walks?)}. Moreover,
 \begin{equation}
@@ -830,18 +831,25 @@ $(-\Delta + m^2)^{-1}$ which, on $\Zd$, has the well-known Ornstein-Uhlenbeck de
 \end{equation}
 Thus, there is a critical point at $m^2 = 0$ ($z = 1$).
 
-\todo{See candidacy report or preliminary version of it.}
-
-\todo{For the Green function, see Theorem 1.5.4 in Lawler--Intersections of Random Walks}
+\todo{See candidacy report or preliminary version of it. For the Green function, see Theorem 1.5.4 in Lawler--Intersections of Random Walks}
+\end{example}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Universality}
 
-Critical behaviour should, roughly speaking, only depend on ``tail properties''
-(global geometry, range of interaction, and symmetries).
+It is generally expected that critical exponents depend only on the very coarse structure of a model such as symmetry and ``tail properties'' (e.g.\ global geometry of the underlying graph). For instance, consider a ferromagnetic spin system on $\Zd$ and suppose that the single-spin measure
+$d\lambda^0$ is invariant under Euclidean symmetries and whose interaction matrix $J$ is invariant under lattice symmetries ($J_{xy} = J_{Rx,Ry}$ for $R$ a rotation or reflection of $\Zd$) and is of finite-range ($J_{xy} = 0$ for $|x - y|$ sufficiently large). The exponents for such a system are expected only to depend on the dimensions $d$ of the underlying lattice and $n$ of the space of spins.
 
-Discuss scaling limits and the RG
+\todo{Discuss scaling limits}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{The upper-critical dimension}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{The renormalisation group}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
