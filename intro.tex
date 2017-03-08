@@ -562,11 +562,15 @@ A \emph{discrete-time} walk is one for which $\tau_n = n$ for all $n$.
 Let $\Wcal_T$ denote the set of walks of length $T$ with $\omega_0 = 0$ and set $\Wcal := \bigcup_{T \geq 0} \Wcal_T$.
 
 A model of walks is determined by a choice of finite measure $d\mu_T$ on
-$\Wcal_T$ for each $T$. All models we consider will be given by canonical Gibbs measures
+$\Wcal_T$ for each $T$. Our focus will be on canonical Gibbs measures of the form
 \begin{equation}
-d\mu_T(\omega) = \frac{1}{c_T} e^{-H_T(\omega)} \; d\lambda_T(\omega),
+\int f \; d\mu_T = \frac{1}{c_T} E_0 (f e^{-H_T}),
 \end{equation}
-with respect to some measure $\lambda_T$ on $\Wcal_T$ (we have denoted the partition function by $c_T$).
+where $E_0$ is the expectation for a random walk on $\graph$ (in discrete or continuous time), $H_T : \Wcal_T \to \R$, and we have denoted the canonical partition function by $c_T$.
+% \begin{equation}
+% d\mu_T(\omega) = \frac{1}{c_T} e^{-H_T(\omega)} \; d\lambda_T(\omega),
+% \end{equation}
+% with respect to some measure $\lambda_T$ on $\Wcal_T$ (we have denoted the partition function by $c_T$).
 % We will assume that models of discrete-time walks satisfy $\mu_T = \mu_{\lfloor T \rfloor}$ for all $T$
 % (note that both are measures on $\Wcal_{\lfloor T \rfloor}$ in this case).
 Given such a model, the corresponding grand canonical ensemble is given by
@@ -855,6 +859,59 @@ $d\lambda^0$ is invariant under Euclidean symmetries and whose interaction matri
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Main results}
+
+The main result is stated below.
+\todo{Discuss existence of $\nu_c$}
+
+\begin{theorem} \label{thm:suscept}
+  Let $d = 4$ and $n \ge 0$. For $L$ sufficiently large (depending on $n$),
+  there exist $\gcc_* > 0$
+  and a positive function $\gamma_* : (0, \gcc_*) \to \R$
+  such that whenever $0 < \gcc < \gcc_*$ and $|\gamma| < \gamma_*(\gcc)$,
+  there are constants $A_{\gcc,\gamma,n}$ and $B_{\gcc,\gamma,n}$ such that the following hold:
+
+  \smallskip\noindent
+  (i)
+  The critical two-point function decays as
+  \begin{equation}
+    G_x(\gcc,\gamma,\nu_c; n)
+        =
+    A_{\gcc,\gamma} |x|^{-2} (1 + O((\log |x|)^{-1}))
+        \quad
+    \text{as $|x|\to\infty$},
+  \end{equation}
+  with $A_{\gcc,\gamma} = (4 \pi)^{-2} (1 + O(\gcc))$ as $\gcc \downarrow 0$.
+
+  \smallskip\noindent
+  (ii)
+  The susceptibility diverges as
+  \begin{equation} \label{e:chieps-asympt}
+    \chi(\gcc, \gamma, \nu_c + \varepsilon; n)
+      \sim B_{\gcc,\gamma,n} \varepsilon^{-1} (\log \varepsilon^{-1})^{(n+2)/(n+8)},
+    \quad \varepsilon\downarrow 0
+  \end{equation}
+  with $B_{\gcc,\gamma,n} = ((n + 8) \gcc / 16\pi^2)^{(n+2)/(n+8)} (1 + O(\gcc))$
+  as $\gcc \downarrow 0$.
+
+  \smallskip\noindent
+  (iii) For any $p >0$, if $L$ is chosen large and $\gcc_*$ small both depending on $p$,
+  then the correlation length of order $p$ diverges as
+  \begin{equation} \label{e:xieps-asympt}
+    \xi_p(\gcc, \gamma, \nu_c + \varepsilon; n)
+     \sim B_{\gcc,\gamma,n}^{1/2} {\sf c}_p \varepsilon^{-1/2} (\log \varepsilon^{-1})^{(n+2)/2(n+8)},
+    \quad \varepsilon\downarrow 0
+  \end{equation}
+  with
+  \begin{equation}
+  {\sf c}_p^p = \int_{\R^4} |x|^p (-\Delta_{\R^4} + 1)^{-1}_{0x} \; dx.
+  \end{equation}
+\end{theorem}
+
+The $\gamma = 0$ cases of (i) and (ii) were proved by Bauerschmidt, Brydges, and
+Slade. The $n > 0$ case with $\gamma \ne 0$ is a new result in this thesis. We
+will only discuss the proof of the $\gamma \ge 0$ case, which is of primary
+interest. The proof of the $\gamma < 0$ case with $n = 0$ can be found in
+\REF and the extension to $n > 0$ is straightforward.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
