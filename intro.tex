@@ -182,34 +182,34 @@ In the context of spin systems, there is a natural mathematical reason for study
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{Grand canonical ensemble}
+% \subsection{Grand canonical ensemble}
 
-Consider a physical system that is free to exchange both energy and particles with its environment. We suppose the ``number of particles'' of this system takes values in a measurable set $\interval \subset \R$. For
-$T \in \interval$, let $\Omega_T$ be a space of $T$-particle configurations and let $H_T : \Omega_T \to \R$ be the Hamiltonian on $\Omega_T$. The state space for the full system is then given by
-$\Omega = \bigsqcup_{T \in \interval} \Omega_T$, where $\sqcup$ denotes the disjoint union. For $\omega\in\Omega$, let $|\omega|$ be the unique value of
-$T$ such that $\omega \in \Omega_T$. We define $H : \Omega \to \R$ by
-$H(\omega) = H_{|\omega|}(\omega)$.
+% Consider a physical system that is free to exchange both energy and particles with its environment. We suppose the ``number of particles'' of this system takes values in a measurable set $\interval \subset \R$. For
+% $T \in \interval$, let $\Omega_T$ be a space of $T$-particle configurations and let $H_T : \Omega_T \to \R$ be the Hamiltonian on $\Omega_T$. The state space for the full system is then given by
+% $\Omega = \bigsqcup_{T \in \interval} \Omega_T$, where $\sqcup$ denotes the disjoint union. For $\omega\in\Omega$, let $|\omega|$ be the unique value of
+% $T$ such that $\omega \in \Omega_T$. We define $H : \Omega \to \R$ by
+% $H(\omega) = H_{|\omega|}(\omega)$.
 
-The \emph{grand canonical ensemble} for this system is defined to be the maximum entropy measure subject to the constraints of fixed average energy and fixed average number of particles. It can be shown that the grand canonical ensemble is given by a measure
-\begin{equation}
-d\mu_{\beta,\nu}
-  =
-\frac{1}{Z_{\beta,\nu}} e^{-\beta H(\omega) - \nu |\omega|},
-\end{equation}
-where $Z_{\beta,\nu}$ is the normalizing constant, known as the \emph{grand canonical partition function}. We call $\nu$ the \emph{fugacity}. Since the
-$\nu |\omega|$ term can be absorbed into the Hamiltonian, the measure $\mu_{\beta,\nu}$ is really just an ordinary Gibbs measure as defined in the previous section. For this reason, the distinction between canonical and grand canonical ensembles is an informal one.
+% The \emph{grand canonical ensemble} for this system is defined to be the maximum entropy measure subject to the constraints of fixed average energy and fixed average number of particles. It can be shown that the grand canonical ensemble is given by a measure
+% \begin{equation}
+% d\mu_{\beta,\nu}
+%   =
+% \frac{1}{Z_{\beta,\nu}} e^{-\beta H(\omega) - \nu |\omega|},
+% \end{equation}
+% where $Z_{\beta,\nu}$ is the normalizing constant, known as the \emph{grand canonical partition function}. We call $\nu$ the \emph{fugacity}. Since the
+% $\nu |\omega|$ term can be absorbed into the Hamiltonian, the measure $\mu_{\beta,\nu}$ is really just an ordinary Gibbs measure as defined in the previous section. For this reason, the distinction between canonical and grand canonical ensembles is an informal one.
 
-\begin{rk}
-Note that the grand canonical partition function is given by
-\begin{equation}
-Z_{\beta,\nu}
-  =
-\int_\interval e^{-\nu T} Z_\beta^{(T)} \; dT,
-\end{equation}
-where $Z^{(T)}_\beta$ is the canonical partition function of $H_T$. Thus,
-$Z_{\beta,\nu}$ is the Laplace transform of the canonical partition function
-viewed as a function of $T$.
-\end{rk}
+% \begin{rk}
+% Note that the grand canonical partition function is given by
+% \begin{equation}
+% Z_{\beta,\nu}
+%   =
+% \int_\interval e^{-\nu T} Z_\beta^{(T)} \; dT,
+% \end{equation}
+% where $Z^{(T)}_\beta$ is the canonical partition function of $H_T$. Thus,
+% $Z_{\beta,\nu}$ is the Laplace transform of the canonical partition function
+% viewed as a function of $T$.
+% \end{rk}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -218,8 +218,15 @@ viewed as a function of $T$.
 
 Most systems of interest do not have a finite (or even countable) state space. Nevertheless, finite systems serve as natural approximations of real systems. For instance, a natural way to approximate spatially-extended systems is by defining models on graphs.
 
-An \emph{undirected graph} is a pair $\graph = (\vertices, \edges)$, where $\vertices$ is a set of \emph{vertices} and $\edges$ is a set of
-\emph{edges} $\{ x, y \}$ with $x, y \in \vertices$; we will write $x \sim y$ if $\{ x, y \} \in \edges$. We will assume that $\vertices$ is countable and that there are no \emph{self-loops} $\{ x \} \in \edges$.
+An \emph{undirected graph} is a pair $\graph = (\vertices, \edges)$, where $\vertices$
+is a set of \emph{vertices} and $\edges$ is a set of
+\emph{edges} $\{ x, y \}$ with $x, y \in \vertices$; we will write $x \sim y$ if
+$\{ x, y \} \in \edges$.
+For simplicity, we will assume that $\vertices$ is countable, that there are no
+\emph{self-loops} $\{ x \} \in \edges$, and that $\graph$ is \emph{vertex-transitive};
+the last condition means that for all pairs of distinct vertices $x, y \in \vertices$,
+there exists a mapping $f : \vertices \to \vertices$ such that $a \sim b$ if and only
+if $f(a) \sim f(b)$.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -320,53 +327,81 @@ C(x, y)
 
 \section{Spin systems}
 
+\subsection{The Ising model}
+
+The Ising model is defined by the Gibbs measure on $\Omega = \{ \pm 1 \}^\vertices$
+with Hamiltonian
+\begin{equation}
+H(\sigma) = -\frac{1}{2} \sum_{x \sim y} \sigma_x \sigma_y + h \sum_{x\in\vertices} \sigma_x,
+\end{equation}
+where $h \in \R$.
+% Note that $H$ is invariant under any graph automorphism $f : \vertices \to \vertices$;
+% that is, $H(f \cdot \sigma) = H(\sigma)$ where $(f \cdot \sigma)_x = \sigma_{f(x)}$.
+The magnetization is defined by
+\begin{equation}
+\langle \sigma_0 \rangle = \frac{1}{Z_\beta} \sum_{\sigma\in\Omega} \sigma_0 e^{-\beta H(\sigma)}.
+\end{equation}
+The \emph{magnetic susceptibility} is the derivative
+\begin{equation}
+\chi
+	=
+-\frac{1}{\beta} \dd{}{h} \langle \sigma_0 \rangle.
+\end{equation}
+A computation shows that
+\begin{equation}
+\chi = \sum_{x\in\vertices} G_x,
+\end{equation}
+where
+\begin{equation}
+G_x = \Big(\langle \sigma_0 \sigma_x \rangle - \langle \sigma_0 \rangle \langle \sigma_x \rangle\Big)
+\end{equation}
+is the \emph{two-point function}.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Ferromagnetic spin systems}
+
 An $n$-component \emph{field} or \emph{spin configuration} on $\vertices$
 with spins in $S \subset \R^n$ is an element of $\Omega = S^\vertices$.
 % A \emph{spin system} is a probability measure $d\mu$ on $\Omega$.
-Suppose that $S$ is endowed with a measure $d\lambda^0$ and define the product measure
-\begin{equation}
-d\lambda(\varphi) = \prod_{x\in\vertices} d\lambda^0(\varphi_x)
-\end{equation}
-on $\Omega$.
+Suppose that $S$ is endowed with a measure $d\lambda^0$.
 Given a (measurable) Hamiltonian function $H : \Omega \to \R$, we wish to define the measure
 \begin{equation}
 d\mu_\beta(\varphi)
   =
 \frac{1}{Z_\beta} e^{-\beta H(\varphi)} d\lambda(\varphi)
 \end{equation}
-on $\Omega$.
-
+on $\Omega$, where
+\begin{equation}
+d\lambda(\varphi) = \prod_{x\in\vertices} d\lambda^0(\varphi_x).
+\end{equation}
 However, there are some problems with this definition when $\vertices$ is infinite.
 For one, $d\lambda$ may not be well-defined (for instance if
 $S = \R$ and $d\lambda^0$ is Lebesgue measure). Another issue is that it may be
 difficult to define a reasonable choice of $H$ on the infinite product space
-$\Omega$. For this reason, we temporarily restrict our attention to finite graphs:
+$\Omega$.
+
+For this reason, we temporarily restrict our attention to finite graphs:
 \begin{equation}
 |\vertices| < \infty.
 \end{equation}
-In many cases, the Hamiltonian
-will depend on one or more parameters; in this case, adjusting $\beta$ is equivalent
-to rescaling these parameters and so we will usually drop $\beta$
-(or set $\beta = 1$).
+Then the Gibbs measure $\mu = \mu_\beta$ is well-defined and we will denote the
+expectation with respect to this measure by $\langle \cdot \rangle_\mu$.
 
-Let us fix\footnote{In general, some quantities we define will depend on the choice of vertex. However, we will ultimately be interested in the transitive graph $\graph = \Zd$ for which this choice is irrelevant.} a vertex
-$0 \in \vertices$. The \emph{two-point function} for a spin system $\mu_\beta$ is defined by
+Following our discussion of the Ising model, we define the two-point function
+and susceptibility by
 \begin{equation}
 G_x(\mu_\beta)
   =
 \frac{1}{n}
-(\mu_\beta(\varphi_0 \cdot \varphi_x)
+\big(\langle \varphi_0 \cdot \varphi_x \rangle_\mu
   -
-\mu_\beta(\varphi_0) \cdot \mu_\beta(\varphi_x)).
+\langle \varphi_0 \rangle_\mu \cdot \langle \varphi_x \rangle_\mu\big)
 \end{equation}
-The \emph{magnetization} of $\mu_\beta$ is the normalized expected value
+and
 \begin{equation}
-\frac{1}{n} \mu_\beta(\varphi_0).
-\end{equation}
-Let $h \in (\R^n)^\vertices$ be an \emph{external field} and consider the spin system with Hamiltonian $H(\varphi) + h \cdot \varphi$;
-the \emph{(magnetic) susceptibility} is defined as the directional derivative of the magnetization of such a system in the constant direction. \todo{Then for translation-invariant spin systems (on transitive graphs), we can show that}
-\begin{equation}
-\chi(\mu_\beta) = \sum_{x\in\vertices} G_x(\mu_\beta).
+\chi = \sum_x G_x.
 \end{equation}
 
 We will mainly be concerned with \emph{ferromagnetic} spin systems, for which the Hamiltonian has the form
@@ -377,8 +412,62 @@ where (recall) $J_{xy} \ge 0$. Thus, $H(\varphi)$ is smaller (and $d\mu_\beta(\v
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{Gaussian measures and the free field}
+% \subsection{The \texorpdfstring{$O(n)$}{O(n)} spin model}
 
+\begin{example}[The $O(n)$ model]
+Let $S = S^{n-1} \subset \R^n$ be the unit $(n-1)$-sphere equipped with the surface measure $d\lambda^0$ (in particular, $S^0 = \{ \pm 1 \}$, which is equipped with the counting measure). The $O(n)$ model is the
+ferromagnetic spin sysmste with Hamiltonian
+\begin{equation}
+H_J(\sigma) = -\frac{1}{2} \sigma \cdot J \sigma,
+\end{equation}
+which is clearly ferromagnetic. The case $n = 1$ is the celebrated \emph{Ising model}. When $n = 2, 3$, we get the \emph{XY model} and the \emph{classical Heisenberg model}.
+\end{example}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \subsection{The \texorpdfstring{$|\varphi|^4$}{phi4} spin model}
+
+\begin{example}[The $|\varphi|^4$ model]
+Let $S = \R^n$. The $|\varphi|^4$ spin model on $\graph$ is the ferromagnetic spin system
+defined by the quartic Hamiltonian
+\begin{equation}
+H_{g,\nu}(\varphi)
+  =
+\sum_{x\in\vertices}
+\left(
+  \frac{1}{4} g |\varphi_x|^4
+    +
+  \frac{1}{2} \nu |\varphi_x|^2
+    +
+  \frac{1}{2} \varphi_x \cdot (-\lap \varphi)_x
+\right),
+\end{equation}
+where $g > 0$ and $\nu\in\R$. This is a natural generalization of the $O(n)$ model
+in which spins are merely concentrated near a sphere.
+% Note that when $\nu > 0$, we have
+% $H_{g,\nu} = g |\varphi|^4 + H_C$, where $C = (\nu - \lap)^{-1}$ is the covariance of the Gaussian free field with mass $\nu$.
+Indeed, writing
+\begin{equation}
+H_{g,\nu}(\varphi)
+  =
+\sum_{x\in\vertices}
+\left(
+  \frac{1}{4} g |\varphi_x|^4
+    +
+  \frac{1}{2} (\nu + d_0) |\varphi_x|^2
+\right)
+  -
+\frac{1}{2} \varphi \cdot \jay \varphi
+\end{equation}
+we see that $d\mu_{g,\nu} \Rightarrow d\mu_J$ if we take the limit $g\to\infty$
+with $\nu = -(d_0 + g / 2)$.
+\end{example}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \subsection{Gaussian measures and the free field}
+
+\begin{example}[Gaussian free field]
 Let $S = \R^n$ and let $C$ be a positive-definite symmetric $\vertices\times\vertices$ matrix. The $n$-component \emph{Gaussian measure} $d\mu_C$ on
 $\Omega$ with mean $0$ and \emph{covariance} $C$ is defined by the Hamiltonian
 \begin{equation}
@@ -407,56 +496,10 @@ By \emph{Wick's theorem}, the magnetization is $0$ and the two-point function is
 \int \varphi_a \cdot \varphi_b \; d\mu(\varphi) = C_{ab}.
 \end{equation}
 
-An important case is the \emph{massive Gaussian free field} on $\graph$, for which the covariance is equal to the massive Green function:
-$C = (-\lap + m^2)^{-1}$. The Gaussian free field is an example of a ferromagnetic spin system since $J$ has nonnegative entries.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\subsection{The \texorpdfstring{$|\varphi|^4$}{phi4} spin model}
-
-Let $S = \R^n$. The $|\varphi|^4$ spin model on $\graph$ is defined by the quartic Hamiltonian
-\begin{equation}
-H_{g,\nu}(\varphi)
-  =
-\sum_{x\in\vertices}
-\left(
-  \frac{1}{4} g |\varphi_x|^4
-    +
-  \frac{1}{2} \nu |\varphi_x|^2
-    +
-  \frac{1}{2} \varphi_x \cdot (-\lap \varphi)_x
-\right),
-\end{equation}
-where $g > 0$ and $\nu\in\R$. This is another example of a ferromagnetic spin system. Note that when $\nu > 0$, we have
-$H_{g,\nu} = g |\varphi|^4 + H_C$, where $C = (\nu - \lap)^{-1}$ is the covariance of the Gaussian free field with mass $\nu$.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\subsection{The \texorpdfstring{$O(n)$}{O(n)} spin model}
-
-Let $S = S^{n-1} \subset \R^n$ be the unit $(n-1)$-sphere equipped with the surface measure $d\lambda^0$ (in particular, $S^0 = \{ \pm 1 \}$, which is equipped with the counting measure). The $O(n)$ model is defined by the Hamiltonian
-\begin{equation}
-H_J(\sigma) = -\frac{1}{2} \sigma \cdot J \sigma,
-\end{equation}
-which is clearly ferromagnetic.
-
-The corresponding Gibbs measure arises naturally as a limiting case of the
-$|\varphi|^4$ measure $d\mu_{g,\nu}$ on a $d_0$-regular graph. Indeed, in this case the $|\varphi|^4$ Hamiltonian can be written as
-\begin{equation}
-H_{g,\nu}(\varphi)
-  =
-\sum_{x\in\vertices}
-\left(
-  \frac{1}{4} g |\varphi_x|^4
-    +
-  \frac{1}{2} (\nu + d_0) |\varphi_x|^2
-\right)
-  -
-\frac{1}{2} \varphi \cdot \jay \varphi
-\end{equation}
-Thus, $d\mu_{g,\nu} \Rightarrow d\mu_J$ if we take the limit $g\to\infty$ with $\nu = -(d_0 + g / 2)$.
-
-The case $n = 1$ is the celebrated \emph{Ising model}. When $n = 2, 3$, we get the \emph{XY model} and the \emph{classical Heisenberg model}.
+An important case is the \emph{massive Gaussian free field} on $\graph$,
+which is the $g = 0$ case of the $|\varphi|^4$ model (with $\nu$ necessarily positive).
+Thus, the the covariance is equal to the massive Green function $C = (-\lap + \nu)^{-1}$.
+\end{example}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -558,7 +601,26 @@ translation-invariance of these models in finite volume. Strictly speaking, $\La
 
 \section{Critical behaviour and universality}
 
-\todo{Restrict this discussion to spin systems}
+For this discussion, let us restrict our attention to the graph $\graph = \Zd$
+with $J_{xy} \in \{ 0, 1 \}$. Thus, $L = \Delta$.
+
+\begin{example}
+Let $\langle \cdot \rangle_{0,\nu}$ denote the expectation with respect to the
+Gaussian free field with mass $\nu$. We have
+\begin{equation}
+-\Delta = 2 d (1 - P),
+\end{equation}
+where $P = (2 d)^{-1} J$ is the transition matrix for the simple random walk $X$ on $\Zd$.
+For $d > 2$, the simple random walk is transient. Thus, letting $E_0$ denote the expectation
+of $X$ conditioned so that $X_0 = 0$,
+\begin{equation}
+(1 - P)^{-1}_{0x} = \sum_{n=0}^\infty P^n_{0x} = E_0 \sum_{n=0}^\infty \1_{X_n=x} < \infty
+\end{equation}
+and we can define the \emph{massless} Gaussian free field on $\Zd$ to be the Gaussian
+measure with covariance $(-\Delta)^{-1} = (2 d)^{-1} (1 - P)^{-1}$.
+
+
+\end{example}
 
 Many systems exhibit \emph{critical behaviour} at or near a particular parameter value. For concreteness, in the setting of the models discussed above, we denote this parameter value here by $\beta_c$ and suppose that it is defined as the small valuest of $\beta$ for which the susceptibility diverges. For spin systems, this is typically the same value that separates the uniqueness regime in which $|\gibbs_\beta| = 1$ from the non-uniqueness regime in which
 $|\gibbs_\beta| > 1$.
@@ -624,6 +686,41 @@ $d\lambda^0$ is invariant under Euclidean symmetries and whose interaction matri
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{The upper-critical dimension}
+
+The critical exponents are conjectured to take on the following values:
+\begin{equation}
+\eta =
+	\begin{cases}
+	\frac{5 + n}{24},		& d = 2, \, n = 1 \\
+	\approx 0.03,			& d = 3, \\
+	0,						& d \ge 4
+	\end{cases}
+\qquad
+\gamma =
+	\begin{cases}
+	\frac{43 + 13 n}{32},	& d = 2, \, n = 1 \\
+	\approx 1,				& d = 3 \\
+	1,						& d \ge 4
+	\end{cases}
+\end{equation}
+and
+\begin{equation}
+\nubar =
+	\begin{cases}
+	\frac{3 + n}{4},		& d = 2, \, n = 1 \\
+	\approx 0.6,			& d = 3 \\
+	\frac{1}{2},			& d \ge 4
+	\end{cases}
+\end{equation}
+with logarithmic corrections in $d = 4$.
+Thus, it is expected that, when $d > 4$, the critical exponents cease to depend
+on the dimension and $n$. In fact, they are expected to equal the exponents of
+the corresponding non-interacting model, the Gaussian free field.
+
+This phenomenon is known as \emph{mean-field behaviour} and dimension $4$ is
+called the \emph{upper-critical dimension} for this class of models. The behaviour
+of models is generally better understood above than below their upper-critical
+dimension.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -887,6 +984,56 @@ the \emph{Domb-Joyce model}. In continuous-time, it is the
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Main results}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Definitions}
+
+To unify our treatment of the two models, if $n \ge 1$ we let
+\begin{equation}
+\tau_x = \tfrac{1}{2} |\varphi_x|^2,
+  \quad
+\tau_{\Delta,x} = \tfrac{1}{2} \varphi_x \cdot (-\Delta \varphi)_x,
+  \quad
+|\nabla\tau_x|^2 = \sum_e (\nabla^e |\phi_x|^2)^2
+\end{equation}
+and define
+\begin{equation}
+U_{g,\gamma,\nu,N}
+	=
+\sum_{x\in\Lambda_N}
+\Big(
+	g \tau_x^2 + \nu \tau_x + z \tau_{\Delta,x} - \tfrac{1}{2 d} \gamma |\nabla\tau_x|^2
+\Big).
+\end{equation}
+Then for $F \in \Ncal$, we let
+\begin{equation}
+\langle F \rangle_{g,\gamma,\nu,N}
+	=
+\begin{cases}
+\int F e^{-U_{g,\gamma,\nu,N}},								& n = 0 \\
+\frac{1}{Z_{g,\gamma,\nu,N}}
+	\int F(\varphi) e^{-U_{g,\gamma,\nu,N}} \; d\varphi,	& n \ge 1.
+\end{cases}
+\end{equation}
+The two-point function is defined by
+\begin{equation}
+G_x(g, \gamma, \nu; n) = \lim_{N\to\infty} G_{x,N}(g, \gamma, \nu; n),
+\end{equation}
+where
+\begin{equation}
+G_{x,N}(g, \gamma, \nu; n)
+	=
+\begin{cases}
+\langle \phib_0 \phi_x \rangle_{g,\gamma,\nu,N},			& n = 0 \\
+\langle \varphi_0 \cdot \varphi_x \rangle_{g,\gamma,\nu,N}	& n \ge 1.
+\end{cases}
+\end{equation}
+The susceptibility and finite-order correlation length are defined as before.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Results}
 
 The main result is stated below.
 \todo{Discuss existence of $\nu_c$}
