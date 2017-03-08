@@ -18,6 +18,9 @@ Sections~\ref{sec:prog}--\ref{sec:rgcoord}}
 
 % Discuss RG method with improved norms and non-trivial $K_0$
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \section{Reformulation of the problem}
 
 Let
@@ -28,7 +31,7 @@ Let
   \quad
 |\nabla\tau_x|^2 = \sum_e (\nabla^e |\phi_x|^2)^2.
 \end{equation}
-Given $g>0,\nu\in \R$, and  given $m^2>0$ and $z_0 >-1$, let
+Given $g>0$, $\nu\in \R$, and  given $m^2>0$ and $z_0 >-1$, let
 \begin{equation}
   \label{e:gg0}
   g_0 = g(1+z_0)^2, \quad \quad
@@ -65,12 +68,9 @@ with
   \prod_{x\in \Lambda} e^{-(V^+_{0,x} + \gamma_0 U^+_x)}.
 \end{equation}
 Here, the expectation is given by \refeq{ExCF}, with $C = (-\Delta + m^2)^{-1}$.
-Let
-\begin{equation}
-\label{e:ZNdef}
-Z_N = \Ex_C \theta Z_0.
-\end{equation}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Progressive integration}
 % Based on both
@@ -94,7 +94,9 @@ It is a property of Gaussian integration (see \cite{BS-rg-norm}) that
     (\Ex_{C_N}\theta \circ \Ex_{C_{N-1}}\theta \circ \ldots \circ \Ex_{C_1}\theta F)
     (\varphi).
 \end{equation}
-Let \begin{equation}
+Let
+\begin{equation}
+\label{e:ZNdef}
 Z_N = \Ex_C \theta Z_0
 =
 \Ex_{C_N}\theta \circ \Ex_{C_{N-1}}\theta \circ \ldots \circ \Ex_{C_1}\theta Z_0.
@@ -109,8 +111,6 @@ dynamical system $Z_j \mapsto Z_{j+1}$ defined by
 Z_{j+1} = \Ex_{C_{j+1}} \theta Z_j, \quad j < N.
 \end{equation}
 
-\commentbw{The space $\Ncal$ for $n = 0$ is introduced in Section~\ref{sec:forms}}
-
 For its analysis, we require
 a suitable space $\Ncal$ of functions of the spin
 and observable fields, on which the dynamical system acts.  The space $\Ncal$ is
@@ -121,13 +121,16 @@ given by
 \label{e:Ncaldef}
     \Ncal^\varnothing = \Ncal^\varnothing(\Lambda) = C^{p_\Ncal}((\R^n)^\Lambda,\R).
 \end{equation}
-The finite smoothness parameter $p_\Ncal$ is discussed in \REF %Section~\ref{sec:newnorm}
+The finite smoothness parameter $p_\Ncal$ is discussed in Section~\ref{sec:newnorm}
 below,
 where it is explained that $p_\Ncal$ must be chosen in a way that depends on the
 parameter $p$ in Theorem~\ref{thm:mr}.
 The part of $\Ncal$ involving the observable fields contains some subtleties that
 need not concern us here; see \cite[Section~\ref{phi4-sec:phi4observables_representation}]{ST-phi4}
 for details.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Local field polynomials}
 % Based on clp
@@ -182,12 +185,12 @@ $(z+y)\tau_{\Delta}$, and the latter
 additionally sets
 $u = q_\pp = q_\qq = 0$.
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Renormalisation group coordinates}
 % Based on clp
 \label{sec:rgcoord}
-
-\commentbw{Extend to infinite-volume and define $\Kcal_j$ (see saw-sa)}
 
 For $j=0,\ldots, N$,
 we partition $\Lambda$ into $L^{N-j}$ disjoint scale-$j$ blocks of side length $L^j$.
@@ -232,9 +235,7 @@ q_\pt = q + \lambda_0 \lambda_x C_{j+1;0x},
 and that the perturbative flow of $\lambda_0$ and $\lambda_x$ becomes the identity map
 once $j$ exceeds the coalescence scale $j_x$.
 
-\commentbw{Do not set $K_0 = \1_\varnothing$ below}
-
-At scale $j = 0$, we are given $V_0$ as defined in \eqref{e:V0def}
+At scale $j = 0$, we are given $V^+_0$ as defined in \eqref{e:V0def}
 and we set $\zeta_0 = 0$. In particular,
 the initial values of $u,q_0,q_x$ are zero, and the initial values of $\lambda_0,\lambda_x$
 are $1$. By definition, $W_0 = 0$.
@@ -262,8 +263,11 @@ The construction of (scale-dependent) maps $V_+$ and $K_+$ such that
 \begin{equation}
     (\delta\zeta_{j+1}, U_{j+1}, K_{j+1}) = (V_+(U_j, K_j), K_+(U_j, K_j))
 \end{equation}
-is the main accomplishment of \cite{BS-rg-step} and is summarised in Section~\REF % \ref{sec:step}
+is the main accomplishment of \cite{BS-rg-step} and is summarised in Section~\ref{sec:step}
 below, in a form adapted to our current setting.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Renormalisation group domains}
 % from saw-sa and clp
@@ -283,7 +287,7 @@ We define a scale-dependent norm
 \end{aligned}
 \end{equation}
 on $V \in \Vcal$, which depends on parameters $\ell_j$ and $\ell_{\sigma,j}$.
-An innovation in this paper is that we define these parameters by
+An innovation from \cite{BSTW-clp} is that we define these parameters by
 \begin{align}
 \label{e:elldef-zz}
 \ell_j &= \ell_0 L^{-j - s (j - j_m)_+}, \quad
@@ -295,7 +299,7 @@ where the mass scale $j_m$ is defined in \eqref{e:jmdef},
 the coalescence scale
 $j_x$ is defined in \eqref{e:Phi-def-jc},
 and $s$ is the parameter appearing in Proposition~\ref{prop:R}.
-The sequence $\ggen = \ggen(m^2,g_0)$ is defined in
+The sequence $\ggen_j = \ggen_j(m^2,g_0)$ is defined in
 \cite[\eqref{log-e:ggendef}]{BBS-saw4-log};
 it is bounded above and below by constant multiples of
 the sequence $\gbar$ defined in
@@ -305,28 +309,38 @@ by
 We discuss the origin of the definition \refeq{elldef-zz} in detail
 in Section~\ref{sec:Rpf1}.
 
-In \cite{BS-rg-step}, maps $V_+,K_+$ are defined which map a pair $(U,K)$ at scale $j$
-to $(V_+(U,K),K_+(U,K))$ at scale $j+1$, and which preserve the circle product
-$I\circ K$ under expectation as in \refeq{IcircKdu}.
-A norm has already been defined on the space $\Vcal$ in \refeq{Vnormdef}.
-We also require a norm on a space $\Kcal$ containing the non-perturbative
-coordinate $K$ (see \cite[Definition~\ref{phi4-def:Kspace}]{ST-phi4}),
-which is the $\Wcal_j$ norm of \cite[\eqref{step-e:9Kcalnorm}]{BS-rg-step}.
+% In \cite{BS-rg-step}, maps $V_+,K_+$ are defined which map a pair $(U,K)$ at scale $j$
+% to $(V_+(U,K),K_+(U,K))$ at scale $j+1$, and which preserve the circle product
+% $I\circ K$ under expectation as in \refeq{IcircKdu}.
+In \cite[Definition~\ref{step-def:Kspace}]{BS-rg-step},
+a space $\Kcal_j = \Kcal_j(\Lambda)$ of maps $\Pcal_j \to \Ncal$ required to satisfy
+several properties is defined.
+The coordinate $K_j$ is constructed in \cite{BS-rg-step} as an element of $\Kcal_j$.
+% A norm has already been defined on the space $\Vcal$ in \refeq{Vnormdef}.
+In \cite[Section~\ref{step-sec:Knorms}]{BS-rg-step},
+a sequence of norms $\|\cdot\|_{\Wcal_j} = \|\cdot\|_{\Wcal_j(\mgen^2, \ggen_j, \Lambda)}$
+parametrised by $(\mgen^2, \ggen_j)$ is defined on $\Kcal_j$.
 We denote the ball of radius $r$ in
 the normed space $\Wcal_j$ by $B_{\Wcal_j}(r)$.
-Given $C_\DV>0$ and $\alpha>0$, we define the domains
+In \cite[\eqref{log-e:mass-scale}--\eqref{log-e:chidef}]{BBS-saw4-log},
+a function $\chicCov_j = \chicCov_j(m^2)$ (denoted $\chi_j$ in \cite{BBS-saw4-log})
+is defined in such a way that $\chicCov_j$ decays exponentially
+when $j$ is sufficiently large depending on $m$.
+We write $\chicCovgen_j = \chicCov_j(\mgen^2)$.
+Given constants $\alpha > 0$ and $C_\DV > 0$,
+we define the (finite-volume)
+renormalisation group domains $\domRG_j \subset \R^3 \oplus \Wcal_j$ by
+% Given $C_\DV>0$ and $\alpha>0$, we define the domains
 \begin{align}
 \label{e:DVdef}
     \DV_j &= \{U\in \Vcal^{(0)} :
     g> C_{\DV}^{-1} \ggen_j  , \;  \|U\|_{\Vcal} < C_{\DV} \ggen_j \},
 \\
-\domRG_j &= \DV_j \times B_{\Wcal_j}(\alpha \chigen_j \ggen_j^3),
+\domRG_j &= \DV_j \times B_{\Wcal_j}(\alpha \chigen_j \ggen_j^3).
 \end{align}
-where $\ggen_j$ was discussed above,
-and $\chigen_j$ is a sequence that, roughly, is equal to 1 below the mass scale and decays
-exponentially above the mass scale (discussed above \cite[\eqref{step-e:domRGgen}]{BS-rg-step}).
-Then, at scale $j$, the maps $V_+,K_+$ act on the domain $\domRG_j$
-and map into $\Vcal_{j+1}^{(1)},\Kcal_{j+1}$, respectively.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Renormalisation group flow}
 % from saw-sa
