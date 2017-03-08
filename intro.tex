@@ -336,9 +336,17 @@ d\mu_\beta(\varphi)
 \end{equation}
 on $\Omega$.
 
-However, there are some problems with this definition when $\vertices$ is infinite. For one, $d\lambda$ may not be well-defined (for instance if
-$S = \R$ and $d\lambda^0$ is Lebesgue measure). Another issue is that it may be difficult to define a reasonable choice of $H$ on the infinite product space
-$\Omega$. For this reason, we temporarily restrict our attention to finite graphs, and define spin systems on such graphs as above. In many cases, the Hamiltonian will depend on one or more parameters; in this case, adjusting $\beta$ is equivalent to rescaling these parameters and so we will usually drop $\beta$
+However, there are some problems with this definition when $\vertices$ is infinite.
+For one, $d\lambda$ may not be well-defined (for instance if
+$S = \R$ and $d\lambda^0$ is Lebesgue measure). Another issue is that it may be
+difficult to define a reasonable choice of $H$ on the infinite product space
+$\Omega$. For this reason, we temporarily restrict our attention to finite graphs:
+\begin{equation}
+|\vertices| < \infty.
+\end{equation}
+In many cases, the Hamiltonian
+will depend on one or more parameters; in this case, adjusting $\beta$ is equivalent
+to rescaling these parameters and so we will usually drop $\beta$
 (or set $\beta = 1$).
 
 Let us fix\footnote{In general, some quantities we define will depend on the choice of vertex. However, we will ultimately be interested in the transitive graph $\graph = \Zd$ for which this choice is irrelevant.} a vertex
@@ -549,6 +557,8 @@ translation-invariance of these models in finite volume. Strictly speaking, $\La
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Critical behaviour and universality}
+
+\todo{Restrict this discussion to spin systems}
 
 Many systems exhibit \emph{critical behaviour} at or near a particular parameter value. For concreteness, in the setting of the models discussed above, we denote this parameter value here by $\beta_c$ and suppose that it is defined as the small valuest of $\beta$ for which the susceptibility diverges. For spin systems, this is typically the same value that separates the uniqueness regime in which $|\gibbs_\beta| = 1$ from the non-uniqueness regime in which
 $|\gibbs_\beta| > 1$.
