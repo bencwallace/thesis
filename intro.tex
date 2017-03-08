@@ -9,19 +9,26 @@
 
 \section{Statistical mechanics}
 
+\todo{Restructure this: just introduce Gibbs measure, don't make hard distinction
+between canonical and grand canonical. Only mention GCE when discussing walks
+later}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Entropy}
 
-Let $(\Omega, \lambda)$ be a measure space. The state of knowledge of a system on $\Omega$ can be expressed by a probability measure $\mu$ on $\Omega$. Let
-$\Mcal_\lambda(\Omega)$ denote the set of probability measures on $\Omega$ absolutely continuous with respect to $\lambda$. For
+Let $(\Omega, \lambda)$ be a measure space. The state of knowledge of a system on
+$\Omega$ can be expressed by a probability measure $\mu$ on $\Omega$. Let
+$\Mcal_\lambda(\Omega)$ denote the set of probability measures on $\Omega$ absolutely
+continuous with respect to $\lambda$. For
 $\mu \in \Mcal_\lambda(\Omega)$, we denote the Radon-Nikodym derivative of
 $\mu$ with respect to $\lambda$ by $d\mu/d\lambda$ and define the
 \emph{entropy} of $\mu$ with respect to $\lambda$ by
 \begin{equation}
 h(\mu) = h_\lambda(\mu) = -\int_\Omega \log\frac{d\mu}{d\lambda} \; d\mu.
 \end{equation}
-In many cases, specific information about the system under consideration is available, so that we may restrict our attention to a subspace $M \subset \Mcal_\lambda(\Omega)$.
+In many cases, specific information about the system under consideration is available,
+so that we may restrict our attention to a subspace $M \subset \Mcal_\lambda(\Omega)$.
 % for example in the form of statements such as
 % \begin{equation}
 % \int f \; d\mu \in S_f
@@ -40,12 +47,19 @@ assuming such a measure exists and is unique.
 
 \subsection{Microcanonical ensemble}
 
-Consider an \emph{isolated} physical system on $\Omega$, that is, one that cannot exchange energy with its surroundings. Such a system can be determined by a choice of function $H : \Omega \to \R$, called the \emph{Hamiltonian}. The value $H(\omega)$ represents the total energy of the system in state
+Consider an \emph{isolated} physical system on $\Omega$, that is, one that cannot
+exchange energy with its surroundings. Such a system can be determined by a choice
+of function $H : \Omega \to \R$, called the \emph{Hamiltonian}. The value $H(\omega)$
+represents the total energy of the system in state
 $\omega\in\Omega$.
 
 \begin{example}
-Let $\Omega = U^n \times \R^{3n}$, where $U \subset \R^3$, and denote a generic element of $\Omega$ by $(q, p)$, where $q \in U^n$ and $p \in \R^{3n}$. Then $\Omega$ is the state space of a system of $n$ point particles
-$i = 1, \ldots, n$ with positions $q_i \in U$ and momenta $p_i \in \R^3$. Given a $C^1$ Hamiltonian $H : \Omega \to \R$, the dynamics of such a system is determined by \emph{Hamilton's equations}
+Let $\Omega = U^n \times \R^{3n}$, where $U \subset \R^3$, and denote a generic
+element of $\Omega$ by $(q, p)$, where $q \in U^n$ and $p \in \R^{3n}$. Then
+$\Omega$ is the state space of a system of $n$ point particles
+$i = 1, \ldots, n$ with positions $q_i \in U$ and momenta $p_i \in \R^3$. Given
+a $C^1$ Hamiltonian $H : \Omega \to \R$, the dynamics of such a system is determined
+by \emph{Hamilton's equations}
 \begin{align}
 \dd{q}{t}   &= \nabla_q H(q(t), p(t)) \\
 -\dd{p}{t}  &= \nabla_p H(q(t), p(t)).
@@ -534,7 +548,85 @@ translation-invariance of these models in finite volume. Strictly speaking, $\La
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\section{Critical behaviour and universality}
+
+Many systems exhibit \emph{critical behaviour} at or near a particular parameter value. For concreteness, in the setting of the models discussed above, we denote this parameter value here by $\beta_c$ and suppose that it is defined as the small valuest of $\beta$ for which the susceptibility diverges. For spin systems, this is typically the same value that separates the uniqueness regime in which $|\gibbs_\beta| = 1$ from the non-uniqueness regime in which
+$|\gibbs_\beta| > 1$.
+
+The critical point is characterized by long-range correlations. Namely, for
+$\beta \ne \beta_c$, the two-point function $G_x$ decays exponentially in $x$. Clearly, this cannot be the case at $\beta_c$ if the susceptibility is to diverge and it is expected that $G_x$ scales according to a power there 
+(possibly with logarithmic corrections).
+
+A fundamental quantity in the study of critical behaviour is the
+\emph{correlation length} $\xi$. On $\Zd$, this is defined to be one over the exponential rate of decay of the two-point function; that is,
+\begin{equation}
+\xi(\mu) = \limsup_{k\to\infty} \frac{-k}{\log G_{ke}(\mu)},
+\end{equation}
+where $e \in \Zd$ is a unit vector, whose choice is irrelevant for models for which the two-point function is invariant under lattice rotations.
+A related quantity is the \emph{correlation length of order $p$}, defined by
+\begin{equation}
+\xi_p(\mu) = \left(\frac{\sum_{x\in\Zd} |x|^p G_x(\mu)}{\chi(\mu)}\right)^{1/p}.
+\end{equation}
+\todo{Heuristic relation bewteen $\xi$ and $\xi_p$.}
+
+We define the \emph{critical exponents} $\eta$, $\gamma$, and $\bar\nu$ by
+\begin{align}
+G_x       &\sim C_1 |x|^{-(d - 2 + \eta)}, \\
+\chi(\nu) &\sim C_2 (\nu - \nu_c)^{-\gamma}, \\
+\xi       &\sim C_3 (\nu - \nu_c)^{-\nubar}, \\
+\xi_p     &\sim C_4 (\nu - \nu_c)^{-\nubar}
+\end{align}
+when these relations hold. For walks, it is expected that
+\begin{align}
+c_T                       &\sim C_5 e^{-\nu_c T} T^{-\gamma}, \\
+\langle |X_T|^2 \rangle   &\sim C_6 T^{-\nubar}.
+\end{align}
+\todo{Motivate the above with an example somewhere.}
+
+\begin{example}
+The two-point function is just the massive Green function
+$(-\Delta + m^2)^{-1}$ which, on $\Zd$, has the well-known Ornstein-Uhlenbeck decay \todo{(show this; use random walks?)}. Moreover,
+\begin{equation}
+\chi
+  =
+\sum_{x\in\vertices} (-\Delta + m^2)^{-1}_{0x}
+  =
+\sum_{x\in\vertices} \sum_{n=0}^\infty z^n P^n_{0x}
+  =
+\sum_{n=0}^\infty z^n
+  =
+(1 - z)^{-1}.
+\end{equation}
+Thus, there is a critical point at $m^2 = 0$ ($z = 1$).
+
+\todo{See candidacy report or preliminary version of it. For the Green function, see Theorem 1.5.4 in Lawler--Intersections of Random Walks}
+\end{example}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Universality}
+
+It is generally expected that critical exponents depend only on the very coarse structure of a model such as symmetry and ``tail properties'' (e.g.\ global geometry of the underlying graph). For instance, consider a ferromagnetic spin system on $\Zd$ and suppose that the single-spin measure
+$d\lambda^0$ is invariant under Euclidean symmetries and whose interaction matrix $J$ is invariant under lattice symmetries ($J_{xy} = J_{Rx,Ry}$ for $R$ a rotation or reflection of $\Zd$) and is of finite-range ($J_{xy} = 0$ for $|x - y|$ sufficiently large). The exponents for such a system are expected only to depend on the dimensions $d$ of the underlying lattice and $n$ of the space of spins.
+
+\todo{Discuss scaling limits}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{The upper-critical dimension}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{The renormalisation group}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \section{Models of walks}
+
+\todo{Don't work in so much generality. Just mention SRW and SAW first. Then
+make a section ``Gibbs measures on walks'' or the like and discuss the other
+models, just in continuous time.}
 
 For simplicity, we take $\graph$ to be a $d_0$-regular vertex-transitive graph and fix a designated vertex $0 \in \vertices$.
 % We let $\interval_T$ denote either of the following choices for all $T \ge 0$:
@@ -780,80 +872,6 @@ where $0 \in \vertices$ is fixed, and the susceptibility by
 In the case $\gamma = 0$, the discrete-time version of this model is known as
 the \emph{Domb-Joyce model}. In continuous-time, it is the
 \emph{continuous-time weakly self-avoiding walk} (WSAW).
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\section{Critical behaviour and universality}
-
-Many systems exhibit \emph{critical behaviour} at or near a particular parameter value. For concreteness, in the setting of the models discussed above, we denote this parameter value here by $\beta_c$ and suppose that it is defined as the small valuest of $\beta$ for which the susceptibility diverges. For spin systems, this is typically the same value that separates the uniqueness regime in which $|\gibbs_\beta| = 1$ from the non-uniqueness regime in which
-$|\gibbs_\beta| > 1$.
-
-The critical point is characterized by long-range correlations. Namely, for
-$\beta \ne \beta_c$, the two-point function $G_x$ decays exponentially in $x$. Clearly, this cannot be the case at $\beta_c$ if the susceptibility is to diverge and it is expected that $G_x$ scales according to a power there 
-(possibly with logarithmic corrections).
-
-A fundamental quantity in the study of critical behaviour is the
-\emph{correlation length} $\xi$. On $\Zd$, this is defined to be one over the exponential rate of decay of the two-point function; that is,
-\begin{equation}
-\xi(\mu) = \limsup_{k\to\infty} \frac{-k}{\log G_{ke}(\mu)},
-\end{equation}
-where $e \in \Zd$ is a unit vector, whose choice is irrelevant for models for which the two-point function is invariant under lattice rotations.
-A related quantity is the \emph{correlation length of order $p$}, defined by
-\begin{equation}
-\xi_p(\mu) = \left(\frac{\sum_{x\in\Zd} |x|^p G_x(\mu)}{\chi(\mu)}\right)^{1/p}.
-\end{equation}
-\todo{Heuristic relation bewteen $\xi$ and $\xi_p$.}
-
-We define the \emph{critical exponents} $\eta$, $\gamma$, and $\bar\nu$ by
-\begin{align}
-G_x       &\sim C_1 |x|^{-(d - 2 + \eta)}, \\
-\chi(\nu) &\sim C_2 (\nu - \nu_c)^{-\gamma}, \\
-\xi       &\sim C_3 (\nu - \nu_c)^{-\nubar}, \\
-\xi_p     &\sim C_4 (\nu - \nu_c)^{-\nubar}
-\end{align}
-when these relations hold. For walks, it is expected that
-\begin{align}
-c_T                       &\sim C_5 e^{-\nu_c T} T^{-\gamma}, \\
-\langle |X_T|^2 \rangle   &\sim C_6 T^{-\nubar}.
-\end{align}
-\todo{Motivate the above with an example somewhere.}
-
-\begin{example}
-The two-point function is just the massive Green function
-$(-\Delta + m^2)^{-1}$ which, on $\Zd$, has the well-known Ornstein-Uhlenbeck decay \todo{(show this; use random walks?)}. Moreover,
-\begin{equation}
-\chi
-  =
-\sum_{x\in\vertices} (-\Delta + m^2)^{-1}_{0x}
-  =
-\sum_{x\in\vertices} \sum_{n=0}^\infty z^n P^n_{0x}
-  =
-\sum_{n=0}^\infty z^n
-  =
-(1 - z)^{-1}.
-\end{equation}
-Thus, there is a critical point at $m^2 = 0$ ($z = 1$).
-
-\todo{See candidacy report or preliminary version of it. For the Green function, see Theorem 1.5.4 in Lawler--Intersections of Random Walks}
-\end{example}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\subsection{Universality}
-
-It is generally expected that critical exponents depend only on the very coarse structure of a model such as symmetry and ``tail properties'' (e.g.\ global geometry of the underlying graph). For instance, consider a ferromagnetic spin system on $\Zd$ and suppose that the single-spin measure
-$d\lambda^0$ is invariant under Euclidean symmetries and whose interaction matrix $J$ is invariant under lattice symmetries ($J_{xy} = J_{Rx,Ry}$ for $R$ a rotation or reflection of $\Zd$) and is of finite-range ($J_{xy} = 0$ for $|x - y|$ sufficiently large). The exponents for such a system are expected only to depend on the dimensions $d$ of the underlying lattice and $n$ of the space of spins.
-
-\todo{Discuss scaling limits}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\subsection{The upper-critical dimension}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\subsection{The renormalisation group}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
