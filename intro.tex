@@ -29,13 +29,6 @@ h(\mu) = h_\lambda(\mu) = -\int_\Omega \log\frac{d\mu}{d\lambda} \; d\mu.
 \end{equation}
 In many cases, specific information about the system under consideration is available,
 so that we may restrict our attention to a subspace $M \subset \Mcal_\lambda(\Omega)$.
-% for example in the form of statements such as
-% \begin{equation}
-% \int f \; d\mu \in S_f
-% \end{equation}
-% with $f$ running over some collection of $\mu$-integrable functions
-% that represent \emph{observable} quantities of the system, and $S_f$ a Borel
-% subsets of $\R$ for each $f$.
 The \emph{principle of maximum entropy} \cite{Jaynes57} asserts that, in this
 case, the measure best expressing the state of knowledge of the system is given by
 \begin{equation}
@@ -70,18 +63,8 @@ An immediate consequence of these equations and the chain rule is the \emph{prin
 \end{equation}
 Thus, a Hamiltonian system with initial configuration $(q(0), p(0))$ of energy
 $E = H(q(0), p(0))$ will evolve on the constant energy shell $S_E = H^{-1}(E)$.
-
-% Let us assume that $H$ has compact level sets so that the solutions to Hamilton's
-% equations can be extended globally in time. In general, especially when $n$ is large,
-% a Hamiltonian system is likely to be too complicated to understand in a precise way.
-% The basic idea of statistical mechanics is to leverage this complexity by assuming
-% (or in some cases proving) that, as $t\to\infty$, such a system will settle into a
-% state of equilibrium in which all possible states are ``equiprobable''.
 \end{example}
 
-% Although one can make sense of the notion of an equiprobable probability distribution
-% on $S_E$ in the above example, it is simpler (and more relevant to this thesis) to
-% consider the case when $S_E$ is finite.
 If $S_E = H^{-1}(E)$ is finite\footnote{We can view such a system as an approximation to a traditional continuous system with $S_E$ uncountable.}, then one can easily determine that the maximum entropy measure on $S_E$ is simply the uniform measure. For a system with finite state space $\Omega$ and Hamiltonian $H$, we define the \emph{microcanonical distribution} with energy $E$ to be the uniform measure on $S_E$.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -679,10 +662,6 @@ where
 \begin{equation}
 c_T(x) = \int_{\cwalks_T(x)} e^{-H_T} \; d\lambda_T.
 \end{equation}
-% For $x \in \vertices$, let $\cwalks_T(x) \subset \cwalks_T$ denote the collection of walks $\omega \in \cwalks_T$ with $\omega_0 = a$ and $\omega_T = x$. The conditional measure $\mu^x_T = \mu_T(\cdot \mid \cwalks_T(x))$ is given by
-% \begin{equation}
-% \mu^x_T(d\omega) = \frac{\mu_T(d\omega) \1_{\cwalks_T(x)}(\omega)}{c_T(x)},
-% \end{equation}
 Note that
 \begin{equation}
 \chi(\nu) = \sum_{x\in\vertices} G_x(\nu),
@@ -694,59 +673,9 @@ The \emph{critical point} $\nu_c$ for a model of walks is defined
 \nu_c = \inf (\nu : \chi(\nu) < \infty).
 \end{equation}
 
-% \todo{We really should not be defining terms for discrete- and continuous-time
-% walks separately as (for example) $c_n$ in discrete-time is not the same as in
-% continuous time. We should define discrete-time objects as the skeletons of
-% continuous-time ones.}
-
-% \begin{rk}
-% In the discrete-time case, we let $z = e^{-\nu}$ and write
-% \begin{equation}
-% \mu(\omega)
-%   =
-% \frac{1 - e^{-\nu}}{\nu} z^{|\omega|} \mu_{|\omega|}(\omega)
-% % \mu(f)
-%   % =
-% % \frac{1 - e^{-\nu}}{\nu} \sum_{n=0}^\infty z^n \int_{\dwalks_n} d\mu_n(\omega) \; f(\omega).
-% \end{equation}
-% with
-% \begin{equation}
-% \chi(\nu) = \frac{1 - e^{-\nu}}{\nu} \sum_{n=0}^\infty c_n z^n.
-% \end{equation}
-% Similarly,
-% \begin{align}
-% G_x(z) = \frac{1 - e^{-\nu}}{\nu} \sum_{n=0}^\infty c_n(x) z^n.
-% \end{align}
-% \end{rk}
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{Simple random walk}
-
-% \todo{Restrict to $d_0$-regular graph (otherwise, generating function has $z_x$ instead of $z$).
-% Work towards showing that generating function (for unkilled SRW) is inverse of:
-% \begin{equation}
-% 1 - z P = 1 - (z / d_0) J = (z / d_0) (m^2 + d_0 - J)
-% \end{equation}
-% with $m^2 = d_0 (1 - z) / z$.}
-
-% The \emph{simple random walk} on $\graph$ is the Markov chain $X_n$ with transition matrix $P = d_0^{-1} J$. This induces the measure $\lambda_n$ on $\dwalks_n$ defined by
-% \begin{equation}
-% \lambda_n(\omega) = \Pr(X_k = \omega_k, \, k \le n \mid X_0 = 0).
-% \end{equation}
-% Then
-% \begin{equation}
-% c_n(0, x) = \Pr(X_n = x \mid X_0 = 0) = P^n_{0x}
-% \end{equation}
-% and
-% \begin{equation}
-% G_x = \sum_{n=0}^\infty (z P)^n_{0x} = (1 - z P)^{-1}_{0x},
-% \end{equation}
-% which converges for $|z| < 1$. Letting $m^2 = d_0 (1 - z) / z > 0$, we see that
-% \begin{equation}
-% 1 - z P = (z / d_0) (m^2 + L),
-% \end{equation}
-% so the two-point function is just the Green function for the massive Laplacian.
+\subsection{Continuous-time simple random walk}
 
 Let $\generator = -\lap$
 Then $\generator$ is the generator of the $\vertices$-valued Markov process
