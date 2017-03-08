@@ -119,98 +119,6 @@ This is the famous thermodynamic relation between free energy, internal energy $
 
 In the context of spin systems, there is a natural mathematical reason for studying measures of the above form. This is the Hammersley-Clifford theorem, which states that any Markov random field (a spatial generalization of a Markov chain) on a graph has a representation as a Gibbs measure whose Hamiltonian is a sum of ``local'' interactions.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% COMMENTED OUT: Canonical measure as marginal of microcanonical %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% This situation can be modeled as follows: call the system of interest system $A$ and
-% its surroundings system $B$. We assume that $B$ behaves as a \emph{thermal reservoir},
-% meaning that it is so large that its temperature may be assumed to be effectively
-% constant, even if system $A$ is at a different temperature.
-% It is then reasonable to assume that the total system $A \times B$ is isolated.
-
-% \begin{example}
-% Let $\Omega_1$ and $\Omega_2$ be the state spaces of systems $A$ and
-% $B$ and let $H_i : \Omega_i \to \R$ be their respective Hamiltonians.
-% The system $A \times B$ then has state space $\Omega_1 \times \Omega_2$.
-% If we assume that the contribution to the energy due to interactions between systems $A$
-% and $B$ is negligible, then the Hamiltonian of $A \times B$ is the function $H : \Omega \to \R$
-% defined by $H(\omega_1, \omega_2) = H_1(\omega_1) + H_2(\omega_2)$.
-
-% Let us assume that the 
-% Let $S^i_{E_i} = H_i^{-1}(E_i)$ and $S_E = H^{-1}(S_E)$ and assume that $|S^i_{E_i}| < \infty$
-% for any $E_i$. Then
-% \begin{equation}
-% S_E = \bigcup_{E_1=0}^E S^1_{E_1} \times S^2_{E-E_2}
-% \end{equation}
-% is finite for all $E$.
-% % Suppose that $S_E$ is compact so that the microcanonical ensemble $\mu_E$ on $S_E$ is well-defined.
-
-% For any $E_2 \in \R$, let $S^2_{E_2} = H_2^{-1}(E_2)$. Then the marginal distribution $\mu^1_E$
-% of $\mu$ on $\Omega_1$ is given by
-% \begin{equation}
-% \mu^1_E(\omega_1)
-%   =
-% \sum_{\omega_2:\omega\in S_E} \mu_E(\omega)
-%   =
-% \frac{\# S^2_{E-H_1(\omega_1)}}{\# S_E}
-%   \propto
-% e^{h^2_{E-H_1(\omega_1)}},
-% \end{equation}
-% where
-% \begin{equation}
-% h^2_{E_2} = \log |S^2_{E_2}|
-% \end{equation}
-% is the \emph{entropy} of the microcanonical ensemble on $S^2_{E_2}$.
-
-% If $E_2 \mapsto h^2_{E_2}$ is $C^1$, then we have the first-order expansion
-% \begin{equation}
-% h^2_{E - H_1(\omega_1)}
-%   =
-% h^2_E - \dd{h^2_E}{E} H_1(\omega_1) + O(H_1(\omega_1)^2).
-% \end{equation}
-% Thus,
-% \begin{equation}
-% e^{-h^2_{E-H_1(\omega_1)}}
-%   \approx
-% C e^{-\beta H_1(\omega_1)},
-% \end{equation}
-% where $\beta = \dd{h^2_E}{E}$ and $C$ is a constant independent of $\omega_1$.
-% The assumption that system $B$ is a ``heat bath'' then amounts to saying that
-% $E - H_1(\omega_1)$ is such a negligible perturbation of $E$ that the first-order
-% approximation above accurately represents the marginal density of $\mu^1_E$.
-% \end{example}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-% \subsection{Grand canonical ensemble}
-
-% Consider a physical system that is free to exchange both energy and particles with its environment. We suppose the ``number of particles'' of this system takes values in a measurable set $\interval \subset \R$. For
-% $T \in \interval$, let $\Omega_T$ be a space of $T$-particle configurations and let $H_T : \Omega_T \to \R$ be the Hamiltonian on $\Omega_T$. The state space for the full system is then given by
-% $\Omega = \bigsqcup_{T \in \interval} \Omega_T$, where $\sqcup$ denotes the disjoint union. For $\omega\in\Omega$, let $|\omega|$ be the unique value of
-% $T$ such that $\omega \in \Omega_T$. We define $H : \Omega \to \R$ by
-% $H(\omega) = H_{|\omega|}(\omega)$.
-
-% The \emph{grand canonical ensemble} for this system is defined to be the maximum entropy measure subject to the constraints of fixed average energy and fixed average number of particles. It can be shown that the grand canonical ensemble is given by a measure
-% \begin{equation}
-% d\mu_{\beta,\nu}
-%   =
-% \frac{1}{Z_{\beta,\nu}} e^{-\beta H(\omega) - \nu |\omega|},
-% \end{equation}
-% where $Z_{\beta,\nu}$ is the normalizing constant, known as the \emph{grand canonical partition function}. We call $\nu$ the \emph{fugacity}. Since the
-% $\nu |\omega|$ term can be absorbed into the Hamiltonian, the measure $\mu_{\beta,\nu}$ is really just an ordinary Gibbs measure as defined in the previous section. For this reason, the distinction between canonical and grand canonical ensembles is an informal one.
-
-% \begin{rk}
-% Note that the grand canonical partition function is given by
-% \begin{equation}
-% Z_{\beta,\nu}
-%   =
-% \int_\interval e^{-\nu T} Z_\beta^{(T)} \; dT,
-% \end{equation}
-% where $Z^{(T)}_\beta$ is the canonical partition function of $H_T$. Thus,
-% $Z_{\beta,\nu}$ is the Laplace transform of the canonical partition function
-% viewed as a function of $T$.
-% \end{rk}
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -312,16 +220,6 @@ C(x, y)
 (m^2 + d_x)^{-1} \sum_{n=0}^\infty z_x^n P^n_{xy}.
 \end{equation}
 
-% Let $\jay$ be a $\vertices \times \vertices$
-% matrix with $J_{xx} = 0$ and $J_{xy} \ge 0$ for all $x, y \in \vertices$ and suppose
-% that $\jay$ has summable rows: $\sum_{y\in\vertices} J_{xy} < \infty$. Let $\diag$ be
-% the diagonal matrix with entries $D_{xx} = \sum_{y\in\vertices} J_{xy}$, and let $A = \diag - \jay$.
-
-% \todo{The $Q$ matrix will be $Q = -A$, the matrix $\jay$ will be the (ferromagnetic) Ising interaction,
-% and $A$ will be the interaction for the $|\varphi|^4$ model.
-% E.g.\ $A = -\Delta + m^2$ has positive diagonal entries. Recall that
-% $\Delta_{xy} = \1_{x \sim y} - 2 d \1_{x=y}$.}
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -335,8 +233,6 @@ with Hamiltonian
 H(\sigma) = -\frac{1}{2} \sum_{x \sim y} \sigma_x \sigma_y + h \sum_{x\in\vertices} \sigma_x,
 \end{equation}
 where $h \in \R$.
-% Note that $H$ is invariant under any graph automorphism $f : \vertices \to \vertices$;
-% that is, $H(f \cdot \sigma) = H(\sigma)$ where $(f \cdot \sigma)_x = \sigma_{f(x)}$.
 The magnetization is defined by
 \begin{equation}
 \langle \sigma_0 \rangle = \frac{1}{Z_\beta} \sum_{\sigma\in\Omega} \sigma_0 e^{-\beta H(\sigma)}.
@@ -444,8 +340,6 @@ H_{g,\nu}(\varphi)
 \end{equation}
 where $g > 0$ and $\nu\in\R$. This is a natural generalization of the $O(n)$ model
 in which spins are merely concentrated near a sphere.
-% Note that when $\nu > 0$, we have
-% $H_{g,\nu} = g |\varphi|^4 + H_C$, where $C = (\nu - \lap)^{-1}$ is the covariance of the Gaussian free field with mass $\nu$.
 Indeed, writing
 \begin{equation}
 H_{g,\nu}(\varphi)
@@ -475,16 +369,6 @@ H_C(\varphi) = \frac{1}{2} \varphi \cdot C^{-1} \varphi.
 \end{equation}
 This is essentially the simplest choice of non-constant
 Hamiltonian\footnote{Note that $e^{-\beta H}$ is not integrable if $H$ is linear. Also, by completing the square, there is no additional generality gained by adding a linear term to $H_C$.}.
-% is the unique measure $\mu$ on $(\R^n)^\vertices$ with characteristic function
-% \begin{equation}
-% \hat\mu(\xi)
-%   \coloneqq
-% \int_{(\R^n)^\vertices} \mu(d\varphi) \; e^{i \varphi \cdot \xi}
-%   =
-% e^{-\frac{1}{2} \xi \cdot C \xi}.
-% \end{equation}
-% If $\vertices$ is finite, then the Lebesgue measure $d\varphi$ on $(\R^n)^\vertices$
-% is well-defined and
 The partition function can be computed explicitly, giving\footnote{Here, we have employed our convention of setting $\beta = 1$ when the Hamiltonian depends on a parameter ($C$ in this case).}
 \begin{equation}
 d\mu_C(\varphi)
