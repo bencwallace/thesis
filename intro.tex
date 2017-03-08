@@ -535,67 +535,6 @@ Our interest will be in translation-invariant systems on $\Zd$, for which a part
 translation-invariance of these models in finite volume. Strictly speaking, $\Lambda_N$ is not a subgraph of $\Zd$; nevertheless, it can be shown that the infinite-volume limit (if it exists) is a Gibbs measure in the usual sense; see \cite[Example 4.20]{Georgii11} for details.
 \end{rk}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% COMMENTED OUT: Phase transitions in infinite volume %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% \subsection{Phase transitions in infinite volume}
-
-% The presence of a phase transition in a physical system is signalled by an abrupt (i.e.\ non-analytic) change in an observable quantity as a parameter is varied. In fact, a $p$-th order phase transition is usually said to occur when the free energy has a discontinuous $p$-th derivative (but continuous derivatives of order less than $p$). However, the spin systems we have defined above all have smooth free energy (since the Hamiltonians are smooth functions). Ultimately, the reason we cannot detect phase transitions in these systems is that we have defined them on finite graphs. Thus, we are forced to face the problem of defining spin systems on an infinite volume $\graph$. Here we briefly outline the solution to this problem according to the theory of Dobrushin, Lanford, and Ruelle.
-
-% We wish to define a measure corresponding to an ``infinite-volume Hamiltonian''
-% \begin{equation}
-% H^\Phi(\varphi) = \sum \Phi_A(\varphi),
-%   \quad
-% \varphi \in \Omega
-% \end{equation}
-% where the sum is over all finite subsets $A \subset \vertices$ and the $\Phi_A$
-% depend only on the values of $\varphi$ in $A$. Although $H^\Phi$ is typically a fictional object, the $\Phi_A$ are well-defined. Thus, given a finite subset $\Lambda\subset\vertices$ and a choice of \emph{boundary condition}
-% $\xi\in\Omega$, we can define the \emph{finite-volume} Hamiltonian
-% $H^\xi_\Lambda : \Omega \to \R$ on $\Lambda$ by
-% \begin{equation}
-% H^\xi_\Lambda(\varphi) = \sum \Phi_A(\varphi_{\Lambda} \xi_{\Lambda^c}),
-% \end{equation}
-% where the sum is over all finite sets $A$ intersecting $\Lambda$,
-% $\varphi_{\Lambda} \in S^{\Lambda}$ is the restriction of $\varphi$ to
-% $\Lambda$, and $\varphi_{\Lambda} \xi_{\Lambda^c} \in \Omega$ is the concatenation of $\varphi_{\Lambda}$ and $\xi_{\Lambda^c}$. We then say that
-% $\mu$ is a \emph{Gibbs measure} if for $\mu$-almost every choice of boundary condition $\xi$, the conditional distribution $\mu(d\varphi \mid \varphi_{\Lambda^c} = \xi_{\Lambda^c})$ is given by the finite-volume Gibbs measure
-% \begin{equation}
-% \mu^\Phi_\Lambda(\varphi \mid \xi)
-%   :=
-% \frac{1}{Z^\Phi_\Lambda(\xi)}
-% e^{-H^\Phi_\Lambda(\varphi_\Lambda \xi_{\Lambda^c})}
-% d\lambda^\Lambda(\varphi),
-% \end{equation}
-% where $d\lambda^\Lambda(\varphi) = \prod_{x\in\Lambda} d\lambda^0(\varphi_x)$.
-% We denote the collection of all such Gibbs measures by $\gibbs(\Phi)$.
-
-% \subsubsection{The infinite-volume limit}
-
-% It can be checked that any finite-volume Gibbs measure (seen as a measure on $\Omega$) is a Gibbs measure in the above sense. More general Gibbs measures can be constructed by an explicit procedure known as the infinite-volume limit: generally speaking, one begins with a sequence $\Lambda_N \subset \vertices$ of finite subsets with $\Lambda_N\uparrow\vertices$. Letting $H_N$ be a Hamiltonian that only depends on the spins in $\Lambda_N$, one proceeds by taking the weak limit of the Gibbs measures $\mu_N$ corresponding to $H_N$. If the sequence $(\Lambda_N, H_N)$ is appropriately chosen, then the weak limit will exist and be an element of $\gibbs(\Phi)$.
-
-% \subsubsection{Periodic boundary conditions}
-
-% When $\graph = \Zd$ and the $\Phi$ are translation-invariant\footnote{That is, $\Phi_A = \Phi_{A+i}$ for any $i\in\Zd$.}, there is a particularly convenient approach to taking the infinite-volume limit. Suppose that $\Phi$ has finite range\footnote{This is a mere convenience. This construction extends to potentials with infinite range.}, i.e.\ $\Phi_A = 0$ whenever $|A| > R$ for some $R$. We let $\Lambda_N = \Zd/L^N\Zd$ be the discrete torus of side $L^N$ (for $L > 1$) and identify the $\Lambda_N$ with an increasing sequence of subsets of $\Zd$ (since $\Phi$ is translation-invariant, it is not important how this identification is made). Then any subset $A \subset \Zd$ of side
-% $|A| \le R$ can be identified with a subset of $\Lambda_N$ for $N$ sufficiently large. For such $N$, we let
-% \begin{equation}
-% H_N(\varphi) = \sum \Phi_A(\varphi),
-% \end{equation}
-% where the sum is over subsets of $\Lambda_N$ of size at most $R$. \todo{I don't think this is right.} It is shown in \cite[Example 4.20]{Georgii11} that, if $\mu_N$ converges weakly to a measure $\mu$, then
-% $\mu \in \gibbs(\Phi)$. The measure $\mu$ is said to have \emph{periodic} boundary conditions.
-
-% \begin{example}
-% Let $\graph = \Zd$ and let $\Lambda_N = \Zd/L^N\Zd$ for $L > 1$.
-% Let $G_{N,x}$ denote the two-point function of a spin system on $\Lambda_N$.
-% We define the two-point function on $\Zd$ by the limit
-% \begin{equation}
-% G_x = \lim_{N\to\infty} G_{x,N}.
-% \end{equation}
-% By the previous example, if the limit $\mu$ of the $\mu_N$ exists, then
-% \begin{equation}
-% G_x = \frac{1}{n} \int d\mu(\varphi) \varphi_0 \cdot \varphi_x.
-% \end{equation}
-% \end{example}
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Critical behaviour}
