@@ -597,9 +597,8 @@ translation-invariance of these models in finite volume. Strictly speaking, $\La
 % \end{example}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Critical behaviour and universality}
+\subsection{Critical behaviour}
 
 For this discussion, let us restrict our attention to the graph $\graph = \Zd$
 with $J_{xy} \in \{ 0, 1 \}$. Thus, $L = \Delta$.
@@ -675,67 +674,127 @@ Thus, there is a critical point at $m^2 = 0$ ($z = 1$).
 \end{example}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\subsection{Universality}
-
-It is generally expected that critical exponents depend only on the very coarse structure of a model such as symmetry and ``tail properties'' (e.g.\ global geometry of the underlying graph). For instance, consider a ferromagnetic spin system on $\Zd$ and suppose that the single-spin measure
-$d\lambda^0$ is invariant under Euclidean symmetries and whose interaction matrix $J$ is invariant under lattice symmetries ($J_{xy} = J_{Rx,Ry}$ for $R$ a rotation or reflection of $\Zd$) and is of finite-range ($J_{xy} = 0$ for $|x - y|$ sufficiently large). The exponents for such a system are expected only to depend on the dimensions $d$ of the underlying lattice and $n$ of the space of spins.
-
-\todo{Discuss scaling limits}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\subsection{The upper-critical dimension}
-
-The critical exponents are conjectured to take on the following values:
-\begin{equation}
-\eta =
-	\begin{cases}
-	\frac{5 + n}{24},		& d = 2, \, n = 1 \\
-	\approx 0.03,			& d = 3, \\
-	0,						& d \ge 4
-	\end{cases}
-\qquad
-\gamma =
-	\begin{cases}
-	\frac{43 + 13 n}{32},	& d = 2, \, n = 1 \\
-	\approx 1,				& d = 3 \\
-	1,						& d \ge 4
-	\end{cases}
-\end{equation}
-and
-\begin{equation}
-\nubar =
-	\begin{cases}
-	\frac{3 + n}{4},		& d = 2, \, n = 1 \\
-	\approx 0.6,			& d = 3 \\
-	\frac{1}{2},			& d \ge 4
-	\end{cases}
-\end{equation}
-with logarithmic corrections in $d = 4$.
-Thus, it is expected that, when $d > 4$, the critical exponents cease to depend
-on the dimension and $n$. In fact, they are expected to equal the exponents of
-the corresponding non-interacting model, the Gaussian free field.
-
-This phenomenon is known as \emph{mean-field behaviour} and dimension $4$ is
-called the \emph{upper-critical dimension} for this class of models. The behaviour
-of models is generally better understood above than below their upper-critical
-dimension.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\subsection{The renormalisation group}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Models of walks}
 
-\todo{Don't work in so much generality. Just mention SRW and SAW first. Then
-make a section ``Gibbs measures on walks'' or the like and discuss the other
-models, just in continuous time.}
+\subsection{Discrete-time walks}
 
-For simplicity, we take $\graph$ to be a $d_0$-regular vertex-transitive graph and fix a designated vertex $0 \in \vertices$.
+For simplicity, suppose that $J_{xy} \in \{ 0, 1 \}$ and that $\graph$ is
+$d_0$-regular.
+
+Let $[n] = \{ 0, \ldots, n \}$.
+An $n$-step \emph{walk} is a function $\omega : [n] \to \vertices$ with
+$\omega_i \sim \omega_{i+1}$ for all $i \in [n]$. Let $\dwalks_n$ denote the collection
+of $n$-step walks $\omega$ with $\omega_0 = 0$ and let $\dwalks = \bigcup_n \dwalks_n$.
+Given $\omega\in\dwalks_n$, we write $|\omega| = n$.
+A model of discrete-time walks is defined by a weight function $w : \dwalks \to \R$.
+
+The \emph{generating function} of a sequence $c_n$ is the function defined by
+the power series
+\begin{equation}
+\sum_n c_n z^n.
+\end{equation}
+Let $\dwalks_n(x)$ denote the collection of walks $\omega\in\dwalks_n$ with $\omega_n = x$
+and set $\dwalks(x) = \bigcup_n \dwalks_n(x)$.
+The two-point function $G_x$ for walks with weight function $w$ is the generating
+function of the sequence
+\begin{equation}
+c_n(x) = \sum_{\omega\in\dwalks_n(x)} w(\omega).
+\end{equation}
+That is,
+\begin{equation}
+G_x = \sum_n z^n c_n(x)
+	= \sum_{\omega\in\dwalks(x)} w(\omega) z^{|\omega|}.
+\end{equation}
+The susceptibility is the generating function for $c_n = \sum_x c_n(x)$:
+\begin{equation}
+\chi = \sum_n c_n z^n = \sum_x G_x.
+\end{equation}
+
+We define a probability measure $\mu_n$ on $\dwalks_n$ by $\mu(\omega) = w(\omega) / c_n$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{example}[Simple random walk]
+The (discrete-time) simple random walk $X_n$ is the Markov chain on $\graph$ with
+transition matrix $P = d_0^{-1} J$. This is a model of walks in the sense above
+with $w(\omega) = 1$ for all $\omega$.
+
+There is a close relationship between the
+simple random walk and the Gaussian free field. Since $P$ is a stochastic matrix,
+the two-point function converges for $|z| < 1$. For $0 < z < 1$, we can write
+$z = d_0 / (d_0 + m^2)$ with $m^2 > 0$ to get
+\begin{equation}
+G_x = \sum_n P^n_{0x} z^n = (2 d + m^2) (-\Delta + m^2)^{-1}_{0x}.
+\end{equation}
+In other words, the two-point function for simple random walk is the two-point
+function for the Gaussian free field.
+
+When $z = 1$, the power series above is the expected number of visits $X$ makes
+to $x$ when started at $0$. Thus, $G_x$ converges at $z = 1$ when $X$ is transient.
+% Since $\sum_x P^n_{0x} = 1$
+\end{example}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \subsection{Self-avoiding walk}
+
+\begin{example}[Self-avoiding walk]
+A walk $\omega$ is said to be \emph{self-avoiding} if $\omega_i \ne \omega_j$
+for all $i \ne j$. Let $\Scal_n \subset \dwalks_n$ denote the set of $n$-step
+self-avoiding walks starting at $0$. We define the weights $w(\omega) = \1_{\omega\in\Scal_n}$.
+Then $c_n(x)$ is the number of $n$-step self-avoiding walks from $0$ to $x$
+and $c_n = |\Scal_n|$.
+
+Note that the sequence $c_n$ is sub-multiplicative: $c_{m+n} \le c_m c_n$.
+Thus, Fekete's lemma implies that the existence of the \emph{connective constant}
+$c(\graph)$ of $\graph$, defined by
+\begin{equation}
+c(\graph) = \lim_{n\to\infty} n^{-1} \log c_n.
+\end{equation}
+Note that, by the trivial bounds $1 \le c_n \le d_0^n$ for $n \ge 1$, $c(\graph) \in [0, d_0]$.
+% Roughly speaking, this means that $c_n \approx c(\graph)^n$ for large $n$.
+By definition, the susceptibility has radius of convergence $c(\graph)^{-1}$.
+Since $c_n \ge 0$ for all $n$, the susceptibility diverges at $c(\graph)^{-1}$.
+
+The measure $\mu_n$ on $\dwalks_n$ is the uniform measure.
+These measures do not form a consistent family due to the possibility of ``traps''. That is, the equality
+\begin{equation}
+\mu_{|\omega|}(\omega) = \sum_{\tilde\omega \supset \omega} \mu_{|\tilde\omega|}(\tilde\omega)
+\end{equation}
+does not hold for all $\omega\in\dwalks$ (the sum here is over all self-avoiding walks extending $\omega$).
+% \begin{wrapfigure}{R}{0.4\textwidth}
+% \vspace{-0.5cm}
+% \begin{center}
+%   \includegraphics[width=0.3\textwidth]{trapped}
+%   \caption{A trapped self-avoiding walk}
+%   \label{fig:trap}
+% \end{center}
+% \vspace{-0.5cm}
+% \end{wrapfigure}
+For instance, consider the self-avoiding walk $\omega\in\dwalks_7$ on $\Zd$ in
+Figure~\ref{fig:trap}. This walk has positive probability under $\mu_7$ but,
+since there are no self-avoiding walks extending $\omega$, the sum on the 
+right-hand side above is $0$.
+
+As a result, the methods of stochastic processes cannot be directly used to
+study the self-avoiding walk. The existence of traps also contributes to the
+combinatorial difficulty of studying self-avoiding walk; for instance, it is
+not clear how to express $c_{n+1}$ (the number of $(n+1)$-step self-avoiding walks)
+in terms of $c_n$.
+
+% \begin{figure}[!htb]
+% \centering
+% \caption{A trapped self-avoiding walk}
+% \includegraphics{trapped}
+% \end{figure}
+\end{example}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Gibbs measures on walks}
+
 % We let $\interval_T$ denote either of the following choices for all $T \ge 0$:
 % \begin{equation}
 % \interval_T
@@ -758,20 +817,21 @@ only jumps between neighbouring vertices.
 % \emph{continuous-time}) walk of length $T$ is a walk indexed by
 % $\{ 0, \ldots, \lfloor T \rfloor \}$ (respectively, $[0, T]$).
 A \emph{discrete-time} walk is one for which $\tau_n = n$ for all $n$.
-Let $\Wcal_T$ denote the set of walks of length $T$ with $\omega_0 = 0$ and set $\Wcal := \bigcup_{T \geq 0} \Wcal_T$.
+Let $\cwalks_T$ denote the set of walks of length $T$ with $\omega_0 = 0$
+and set $\cwalks := \bigcup_{T \geq 0} \cwalks_T$.
 
 A model of walks is determined by a choice of finite measure $d\mu_T$ on
-$\Wcal_T$ for each $T$. Our focus will be on canonical Gibbs measures of the form
+$\cwalks_T$ for each $T$. Our focus will be on canonical Gibbs measures of the form
 \begin{equation}
 \int f \; d\mu_T = \frac{1}{c_T} E_0 (f e^{-H_T}),
 \end{equation}
-where $E_0$ is the expectation for a random walk on $\graph$ (in discrete or continuous time), $H_T : \Wcal_T \to \R$, and we have denoted the canonical partition function by $c_T$.
+where $E_0$ is the expectation for a random walk on $\graph$ (in discrete or continuous time), $H_T : \cwalks_T \to \R$, and we have denoted the canonical partition function by $c_T$.
 % \begin{equation}
 % d\mu_T(\omega) = \frac{1}{c_T} e^{-H_T(\omega)} \; d\lambda_T(\omega),
 % \end{equation}
-% with respect to some measure $\lambda_T$ on $\Wcal_T$ (we have denoted the partition function by $c_T$).
+% with respect to some measure $\lambda_T$ on $\cwalks_T$ (we have denoted the partition function by $c_T$).
 % We will assume that models of discrete-time walks satisfy $\mu_T = \mu_{\lfloor T \rfloor}$ for all $T$
-% (note that both are measures on $\Wcal_{\lfloor T \rfloor}$ in this case).
+% (note that both are measures on $\cwalks_{\lfloor T \rfloor}$ in this case).
 Given such a model, the corresponding grand canonical ensemble is given by
 \begin{equation}
 d\mu(\omega)
@@ -784,21 +844,21 @@ and the grand canonical partition function, denoted $\chi(\nu)$, is known as the
 % The grand canonical partition function, denoted $\chi$, is known as the \emph{susceptibility}.
 Note that
 \begin{equation}
-\mu(\cdot \mid \Wcal_T) = \mu_T.
+\mu(\cdot \mid \cwalks_T) = \mu_T.
 \end{equation}
 
-Let $\Wcal_T(x) \subset \Wcal_T$ denote the set of walks in $\Wcal_T$ from $0$ to $x$ and let $\Wcal(x) = \bigcup_{T \ge 0} \Wcal_T(x)$. We define the
+Let $\cwalks_T(x) \subset \cwalks_T$ denote the set of walks in $\cwalks_T$ from $0$ to $x$ and let $\cwalks(x) = \bigcup_{T \ge 0} \cwalks_T(x)$. We define the
 \emph{two-point function}
 \begin{equation}
-G_x(\nu) = \mu(\Wcal(x)) \int_0^\infty e^{-\nu T} c_T(x) \; dT,
+G_x(\nu) = \mu(\cwalks(x)) \int_0^\infty e^{-\nu T} c_T(x) \; dT,
 \end{equation}
 where
 \begin{equation}
-c_T(x) = \int_{\Wcal_T(x)} e^{-H_T} \; d\lambda_T.
+c_T(x) = \int_{\cwalks_T(x)} e^{-H_T} \; d\lambda_T.
 \end{equation}
-% For $x \in \vertices$, let $\Wcal_T(x) \subset \Wcal_T$ denote the collection of walks $\omega \in \Wcal_T$ with $\omega_0 = a$ and $\omega_T = x$. The conditional measure $\mu^x_T = \mu_T(\cdot \mid \Wcal_T(x))$ is given by
+% For $x \in \vertices$, let $\cwalks_T(x) \subset \cwalks_T$ denote the collection of walks $\omega \in \cwalks_T$ with $\omega_0 = a$ and $\omega_T = x$. The conditional measure $\mu^x_T = \mu_T(\cdot \mid \cwalks_T(x))$ is given by
 % \begin{equation}
-% \mu^x_T(d\omega) = \frac{\mu_T(d\omega) \1_{\Wcal_T(x)}(\omega)}{c_T(x)},
+% \mu^x_T(d\omega) = \frac{\mu_T(d\omega) \1_{\cwalks_T(x)}(\omega)}{c_T(x)},
 % \end{equation}
 Note that
 \begin{equation}
@@ -824,7 +884,7 @@ The \emph{critical point} $\nu_c$ for a model of walks is defined
 % \frac{1 - e^{-\nu}}{\nu} z^{|\omega|} \mu_{|\omega|}(\omega)
 % % \mu(f)
 %   % =
-% % \frac{1 - e^{-\nu}}{\nu} \sum_{n=0}^\infty z^n \int_{\Wcal_n} d\mu_n(\omega) \; f(\omega).
+% % \frac{1 - e^{-\nu}}{\nu} \sum_{n=0}^\infty z^n \int_{\dwalks_n} d\mu_n(\omega) \; f(\omega).
 % \end{equation}
 % with
 % \begin{equation}
@@ -847,7 +907,7 @@ The \emph{critical point} $\nu_c$ for a model of walks is defined
 % \end{equation}
 % with $m^2 = d_0 (1 - z) / z$.}
 
-% The \emph{simple random walk} on $\graph$ is the Markov chain $X_n$ with transition matrix $P = d_0^{-1} J$. This induces the measure $\lambda_n$ on $\Wcal_n$ defined by
+% The \emph{simple random walk} on $\graph$ is the Markov chain $X_n$ with transition matrix $P = d_0^{-1} J$. This induces the measure $\lambda_n$ on $\dwalks_n$ defined by
 % \begin{equation}
 % \lambda_n(\omega) = \Pr(X_k = \omega_k, \, k \le n \mid X_0 = 0).
 % \end{equation}
@@ -872,7 +932,7 @@ $X = (X_t)_{t \ge 0}$ with transition probabilities
 \Pr(X_t = y \mid X_0 = x) = (e^{-t \lap})_{xy},
 \end{equation}
 called the \emph{continuous-time simple random walk} on $\graph$.
-We define the measure $\lambda_T$ on $\Wcal_T$ by
+We define the measure $\lambda_T$ on $\cwalks_T$ by
 \begin{equation}
 \lambda_T(d\omega) = \Pr(X_t = d\omega_t, \, t \le T \mid X_0 = 0).
 \end{equation}
@@ -887,47 +947,19 @@ massive Laplacian.
 
 \begin{example}
 The discrete-time simple random walk is the Markov chain given by
-$X_n = X_{\tau_n}$. Consider the discrete-time simple random walk on $\Zd$, for which $X_n = X_0 + \sum_{i=1}^n Y_i$, where $Y_i$ are iid random variables in $\{ e \in \Zd : |e| = 1 \}$ with $\Ex Y_i = 0$. Thus, $\Ex |X_n|^2 = n$ and the central limit theorem implies that
-$X_n / \sqrt n \Rightarrow \Ncal(0, 1)$. More generally, Donsker's invariance principle states that a rescsaled version of $X$ converges to Brownian motion on $\Rd$.
+$X_n = X_{\tau_n}$. Consider the discrete-time simple random walk on $\Zd$,
+for which $X_n = X_0 + \sum_{i=1}^n Y_i$, where $Y_i$ are iid random variables
+in $\{ e \in \Zd : |e| = 1 \}$ with $\Ex Y_i = 0$. Thus, $\Ex |X_n|^2 = n$ and
+the central limit theorem implies that
+$X_n / \sqrt n \Rightarrow \Ncal(0, 1)$. More generally, Donsker's invariance
+principle states that a rescsaled version of $X$ converges to Brownian motion on $\Rd$.
 \end{example}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\subsection{Self-avoiding walk}
-
-A \emph{self-avoiding walk} of length $n$ on $\graph$ is a discrete walk $\omega\in\Wcal_n$ that has no self intersections, i.e.\ $\omega_x = \omega_y$ if and only if $x = y$. We equip the collection of all self-avoiding walks of length $n$ with the uniform measure $\mu_n$.
-
-These measures do not form a consistent family due to the possibility of ``traps''. That is, the equality
-\begin{equation}
-\mu_{|\omega|}(\omega) = \sum_{\tilde\omega \supset \omega} \mu_{|\tilde\omega|}(\tilde\omega)
-\end{equation}
-does not hold for all $\omega\in\Wcal$ (the sum here is over all self-avoiding walks extending $\omega$).
-% \begin{wrapfigure}{R}{0.4\textwidth}
-% \vspace{-0.5cm}
-% \begin{center}
-%   \includegraphics[width=0.3\textwidth]{figures/trapped}
-%   \caption{A trapped self-avoiding walk}
-%   \label{fig:trap}
-% \end{center}
-% \vspace{-0.5cm}
-% \end{wrapfigure}
-For instance, consider the self-avoiding walk $\omega\in\Wcal_7$ on $\Zd$ in
-Figure~\ref{fig:trap}. This walk has positive probability under $\mu_7$ but,
-since there are no self-avoiding walks extending $\omega$, the sum on the right-hand side above is $0$.
-
-As a result, the methods of stochastic processes cannot be directly used to study the self-avoiding walk. The existence of traps also contributes to the combinatorial difficulty of studying self-avoiding walk; for instance, it is not clear how to express $c_{n+1}$ (the number of $(n+1)$-step self-avoiding walks) in terms of $c_n$.
-
-% \begin{figure}[!htb]
-% \centering
-% \caption{A trapped self-avoiding walk}
-% \includegraphics{figures/trapped}
-% \end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Weakly self-avoiding walk with self-attraction}
 
-Define the \emph{local time} up to time $T$ of $\omega \in \Wcal$ at
+Define the \emph{local time} up to time $T$ of $\omega \in \cwalks$ at
 $x \in \Zd$ by
 \begin{equation}
 \lt^x_T(\omega) = \int_0^T \1_{\omega(S)=x} \; dS.
@@ -981,6 +1013,63 @@ the \emph{Domb-Joyce model}. In continuous-time, it is the
 \emph{continuous-time weakly self-avoiding walk} (WSAW).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Critical behaviour}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Universality}
+
+It is generally expected that critical exponents depend only on the very coarse structure of a model such as symmetry and ``tail properties'' (e.g.\ global geometry of the underlying graph). For instance, consider a ferromagnetic spin system on $\Zd$ and suppose that the single-spin measure
+$d\lambda^0$ is invariant under Euclidean symmetries and whose interaction matrix $J$ is invariant under lattice symmetries ($J_{xy} = J_{Rx,Ry}$ for $R$ a rotation or reflection of $\Zd$) and is of finite-range ($J_{xy} = 0$ for $|x - y|$ sufficiently large). The exponents for such a system are expected only to depend on the dimensions $d$ of the underlying lattice and $n$ of the space of spins.
+
+\todo{Discuss scaling limits}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{The upper-critical dimension}
+
+The critical exponents are conjectured to take on the following values:
+\begin{equation}
+\eta =
+	\begin{cases}
+	\frac{5 + n}{24},		& d = 2, \, n = 1 \\
+	\approx 0.03,			& d = 3, \\
+	0,						& d \ge 4
+	\end{cases}
+\qquad
+\gamma =
+	\begin{cases}
+	\frac{43 + 13 n}{32},	& d = 2, \, n = 1 \\
+	\approx 1,				& d = 3 \\
+	1,						& d \ge 4
+	\end{cases}
+\end{equation}
+and
+\begin{equation}
+\nubar =
+	\begin{cases}
+	\frac{3 + n}{4},		& d = 2, \, n = 1 \\
+	\approx 0.6,			& d = 3 \\
+	\frac{1}{2},			& d \ge 4
+	\end{cases}
+\end{equation}
+with logarithmic corrections in $d = 4$.
+Thus, it is expected that, when $d > 4$, the critical exponents cease to depend
+on the dimension and $n$. In fact, they are expected to equal the exponents of
+the corresponding non-interacting model, the Gaussian free field.
+
+This phenomenon is known as \emph{mean-field behaviour} and dimension $4$ is
+called the \emph{upper-critical dimension} for this class of models. The behaviour
+of models is generally better understood above than below their upper-critical
+dimension.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{The renormalisation group}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Main results}
@@ -1006,6 +1095,7 @@ U_{g,\gamma,\nu,N}
 	g \tau_x^2 + \nu \tau_x + z \tau_{\Delta,x} - \tfrac{1}{2 d} \gamma |\nabla\tau_x|^2
 \Big).
 \end{equation}
+\todo{Define $\Ncal = \Ncal(n)$.}
 Then for $F \in \Ncal$, we let
 \begin{equation}
 \langle F \rangle_{g,\gamma,\nu,N}
