@@ -21,6 +21,39 @@ Sections~\ref{sec:prog}--\ref{sec:rgcoord}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\section{Unified notation}
+
+To unify our treatment of the two models, if $n \ge 1$ we let
+\begin{equation}
+\tau_x = \tfrac{1}{2} |\varphi_x|^2,
+  \quad
+\tau_{\Delta,x} = \tfrac{1}{2} \varphi_x \cdot (-\Delta \varphi)_x,
+  \quad
+|\nabla\tau_x|^2 = \sum_e (\nabla^e |\phi_x|^2)^2
+\end{equation}
+and define
+\begin{equation}
+U_{g,\gamma,\nu,N}
+  =
+\sum_{x\in\Lambda_N}
+\Big(
+  g \tau_x^2 + \nu \tau_x + \tau_{\Delta,x} - \tfrac{1}{2 d} \gamma |\nabla\tau_x|^2
+\Big).
+\end{equation}
+\todo{Define $\Ncal = \Ncal(n)$.}
+Then for $F \in \Ncal$, we let
+\begin{equation}
+\langle F \rangle_{g,\gamma,\nu,N}
+  =
+\begin{cases}
+\int F e^{-U_{g,\gamma,\nu,N}},               & n = 0 \\
+\frac{1}{Z_{g,\gamma,\nu,N}}
+  \int F(\varphi) e^{-U_{g,\gamma,\nu,N}} \; d\varphi,  & n \ge 1.
+\end{cases}
+\end{equation}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \section{Reformulation of the problem}
 
 Let

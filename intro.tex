@@ -344,7 +344,7 @@ with $\nu = -(d_0 + g / 2)$.
 
 % \subsection{Gaussian measures and the free field}
 
-\begin{example}[Gaussian free field]
+\begin{example}[The Gaussian free field]
 Let $S = \R^n$ and let $C$ be a positive-definite symmetric $\vertices\times\vertices$ matrix. The $n$-component \emph{Gaussian measure} $d\mu_C$ on
 $\Omega$ with mean $0$ and \emph{covariance} $C$ is defined by the Hamiltonian
 \begin{equation}
@@ -407,11 +407,12 @@ translation-invariance of these models in finite volume. Strictly speaking, $\La
 \subsection{Critical behaviour}
 
 For this discussion, let us restrict our attention to the graph $\graph = \Zd$
-with $J_{xy} \in \{ 0, 1 \}$. Thus, $L = \Delta$.
+with $J_{xy} \in \{ 0, 1 \}$. Thus, $\lap = \Delta$.
 
 \begin{example}
-Let $\langle \cdot \rangle_{0,\nu}$ denote the expectation with respect to the
-Gaussian free field with mass $\nu$. We have
+% Let $\langle \cdot \rangle_{0,\nu}$ denote the expectation with respect to the
+% Gaussian free field with mass $\nu$.
+We have
 \begin{equation}
 -\Delta = 2 d (1 - P),
 \end{equation}
@@ -601,15 +602,6 @@ in terms of $c_n$.
 
 \subsection{Gibbs measures on walks}
 
-% We let $\interval_T$ denote either of the following choices for all $T \ge 0$:
-% \begin{equation}
-% \interval_T
-%   =
-% \begin{cases}
-% \{ 0, \ldots, \lfloor T \rfloor \} \\
-% [0, T]
-% \end{cases}.
-% \end{equation}
 For any right-continuous function $\omega : [0, T] \to \vertices$, we define
 $\tau_n = \tau_n(\omega)$ inductively by setting $\tau_0 = 0$ and
 \begin{equation}
@@ -619,12 +611,6 @@ We call $\omega$ a \emph{walk} of length $T$ if
 $\{ \tau_n : n \in \Z_+ \}$ does not have any cluster points and
 $\omega_{\tau_n} \sim \omega_{\tau_{n+1}}$ for all $n$; thus, $\omega$
 only jumps between neighbouring vertices.
-% A \emph{discrete-time} (respectively,
-% \emph{continuous-time}) walk of length $T$ is a walk indexed by
-% $\{ 0, \ldots, \lfloor T \rfloor \}$ (respectively, $[0, T]$).
-A \emph{discrete-time} walk is one for which $\tau_n = n$ for all $n$.
-Let $\cwalks_T$ denote the set of walks of length $T$ with $\omega_0 = 0$
-and set $\cwalks := \bigcup_{T \geq 0} \cwalks_T$.
 
 A model of walks is determined by a choice of finite measure $d\mu_T$ on
 $\cwalks_T$ for each $T$. Our focus will be on canonical Gibbs measures of the form
@@ -730,9 +716,11 @@ I_T(\omega) = \sum_{x\in\vertices} (\lt^x_T)^2
 and the \emph{contact self-attraction}
 \begin{equation}
 \label{e:CTdef}
-C_T(\omega) =
-  \sum_{x \in \vertices} \sum_{y \sim x} \lt_T^x(\omega) \lt_T^y(\omega)
-  = \int_0^T ds \int_0^T dt \; \1_{\omega_{s} \sim \omega_{t}}
+C_T(\omega)
+	=
+\sum_{x \in \vertices} \sum_{y \sim x} \lt_T^x(\omega) \lt_T^y(\omega)
+	=
+\int_0^T ds \int_0^T dt \; \1_{\omega_s \sim \omega_t}
 \end{equation}
 up to time $T$.
 % Recall that we have set the inverse temperature equal to $1$.
@@ -763,6 +751,10 @@ where $0 \in \vertices$ is fixed, and the susceptibility by
 In the case $\gamma = 0$, the discrete-time version of this model is known as
 the \emph{Domb-Joyce model}. In continuous-time, it is the
 \emph{continuous-time weakly self-avoiding walk} (WSAW).
+
+\subsubsection{Finite-volume approximation}
+
+\todo{Include this for consistency with $|\varphi|^4$ model}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -821,6 +813,9 @@ dimension.
 
 \subsection{The renormalisation group}
 
+\todo{General idea; Kadanoff decimation; fixed points and stable manifolds;
+dependence on dimension}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -830,35 +825,9 @@ dimension.
 
 \subsection{Definitions}
 
-To unify our treatment of the two models, if $n \ge 1$ we let
-\begin{equation}
-\tau_x = \tfrac{1}{2} |\varphi_x|^2,
-  \quad
-\tau_{\Delta,x} = \tfrac{1}{2} \varphi_x \cdot (-\Delta \varphi)_x,
-  \quad
-|\nabla\tau_x|^2 = \sum_e (\nabla^e |\phi_x|^2)^2
-\end{equation}
-and define
-\begin{equation}
-U_{g,\gamma,\nu,N}
-	=
-\sum_{x\in\Lambda_N}
-\Big(
-	g \tau_x^2 + \nu \tau_x + z \tau_{\Delta,x} - \tfrac{1}{2 d} \gamma |\nabla\tau_x|^2
-\Big).
-\end{equation}
-\todo{Define $\Ncal = \Ncal(n)$.}
-Then for $F \in \Ncal$, we let
-\begin{equation}
-\langle F \rangle_{g,\gamma,\nu,N}
-	=
-\begin{cases}
-\int F e^{-U_{g,\gamma,\nu,N}},								& n = 0 \\
-\frac{1}{Z_{g,\gamma,\nu,N}}
-	\int F(\varphi) e^{-U_{g,\gamma,\nu,N}} \; d\varphi,	& n \ge 1.
-\end{cases}
-\end{equation}
-The two-point function is defined by
+Our main results concern the two-point function, susceptibility, and finite-order
+correlation length of both models. For the $|\varphi|^4$ model, we take the infinite-volume
+limit using periodic boundary conditions. That is, for $n \ge 1$,
 \begin{equation}
 G_x(g, \gamma, \nu; n) = \lim_{N\to\infty} G_{x,N}(g, \gamma, \nu; n),
 \end{equation}
@@ -933,31 +902,225 @@ interest. The proof of the $\gamma < 0$ case with $n = 0$ can be found in
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Relations between models}
+\section{Spin systems and models of walks}
 
-There are a number of close relationships between models of walks and ferromagnetic spin
-systems given by a Gibbs measure.
+We have already discussed the close relationship between the simple random walk
+and the Gaussian free field, which ultimately stems from the representation of
+matrix powers in terms of walks and which should be somewhat familiar to anyone
+who has studied Markov chains. Namely, if $M$ is a $\vertices\times\vertices$
+matrix, then
+\begin{equation}
+M^n_{ab} = \sum_{x_1,\ldots,x_n\in\vertices} M_{ax_1} M_{x_1x_2} \ldots M_{x_nb}.
+\end{equation}
+When $M$ is indexed by edges (i.e.\ when $M_{xy} = 0$ for $x \not\sim y$), the
+above sum can be replaced by a sum over $n$-step walks from $a$ to $b$ on $\graph$.
+When the entries of $M$ are non-negative, such a sum acquires a probabilistic
+interpretation as an expectation with respect to the random walk whose steps
+are weighted by the entries of $M$.
+
+This idea can be extended to obtain relationships between certain models of
+interacting walks and spin systems.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{The SRW and DGFF}
+\subsection{High-temperature expansion of the \texorpdfstring{$O(n)$}{O(n)} model}
 
-\todo{See candidacy report or preliminary version of it. See also misc notes}
+The high-temperature expansion of a spin system is based on the expansion of the
+Boltzmann weight $e^{\beta H}$ around $\beta = 0$.
+For the $O(n)$ spin model, an uncontrolled high-temperature expansion yields
+\begin{align}
+Z 	&= \int d\lambda(\sigma) \prod_{xy\in\edges} e^{\beta \sigma_x \cdot \sigma_y} \\
+	&\approx \int d\lambda(\sigma) \prod_{xy\in\edges} (1 + \beta \sigma_x \cdot \sigma_y) \\
+	&= \sum_{E \subset \edges} \beta^{|E|} \int d\lambda(\sigma) \prod_{xy \in E} \sigma_x \cdot \sigma_y
+\end{align}
+By reflection-invariance of the sphere measure, the last integral above is non-zero
+if and only if every vertex in the product over $E$ appears an even number of times;
+thus, the sum over subsets of $\edges$ can be replaced by a sum over collections of
+loops (walks from a vertex to itself) in $\graph$.
 
-For the discrete-time simple random walk, the canonical partition function $c_n$,
-which is the number of such walks, is just $(2 d)^n$.
+A similar expansion can be performed for the numerator in the definition of the
+two-point function, yielding:
+\begin{equation}
+\int d\lambda(\sigma) \sigma_a \cdot \sigma_b
+	\approx
+\sum_{E\subset\edges} \beta^{|E|}
+\int d\lambda(\sigma) \sigma_a \cdot \sigma_b
+\prod_{xy\in E} \sigma_x \cdot \sigma_y.
+\end{equation}
+Once again, every vertex must appear twice on the right-hand side. This time,
+there are additional non-zero contributions from subsets $E$ of edges containg
+a path from $a$ to $b$. For instance, if $a \sim b$, there is a non-zero
+contribution from $E = \{ \{ a, b \} \}$.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{The Kac-Siegert representation}
+\subsection{The \texorpdfstring{$n\to0$}{n to 0} limit}
 
-\todo{See notes on this}
+A more careful analysis of the high-temperature expansion of the $O(n)$ model
+above will reveal the $n$-dependence of the non-zero contributions to the
+partition function and two-point function. When the spins are restricted to
+the sphere of radius of $\sqrt n$, it can be shown that formally setting $n = 0$
+results in $Z = 1$ and the two-point function receives contributions only from
+self-avoiding walks from $a$ to $b$. See \cite[Section 2.3]{MS93} for details.
+
+Based on this idea, De Gennes predicted the critical exponents of the self-avoiding
+walk by setting $n = 0$ in the predicted exponents for the $O(n)$ spin model.
+This is known as the $n \to 0$ ``limit''.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{Self-avoiding walk representations}
+\subsection{Self-avoiding walk representation}
+% This section based on saw-sa
 
-\todo{High-temperature expansion of spin system (can be used later to motivate polymer
-expansion) to get loop models, De Gennes $n\downarrow0$ limit, McKane/Parisi-Sourlas
-and supersymmetry, Grassmann integration and BIS representation (sufficiently general
-for WSAW-SA)}
+It is not clear how to make rigorous the $n\to0$ limit of De Gennes. Parisi and
+Sourlas and, independently, McKane, discovered an alternative approach to the
+predictions of De Gennes. They argued that the weakly
+self-avoiding walk \todo{two-point function} could be represented as the two-point
+function for a version of the $|\varphi|^4$ model involving both boson and fermion
+fields. The formal appearance of $n = 0$ quantities was then explained as a
+consequence of a symmetry between the bosons and fermions known as \emph{supersymmetry}.
+
+In this section we describe an integral representation of the of WSAW-SA, which
+is a special case of a result of Brydges, Imbrie, and Slade \cite{BIS09}.
+We restrict out attention to the graph $\Lambda = \Lambda_N = \Zd/L^N\Zd$.
+We begin by introducing the notions of bosons and fermion fields on $\Lambda$.
+
+\subsubsection{Boson and fermion fields}
+\label{sec:forms}
+
+We fix $N$ and write $\Lambda = \Lambda_N$.
+Given complex variables $\phi_x, \bar\phi_x$
+(the boson field) for $x \in \Lambda$,
+we define the differentials (the fermion field)
+\begin{equation}
+\psi_x = \frac{1}{\sqrt{2\pi i}} d\phi_x,
+\quad
+\bar\psi_x = \frac{1}{\sqrt{2\pi i}} d\bar\phi_x,
+\end{equation}
+where we fix a choice of complex square root.
+The fermion fields are multiplied with each other
+via the anti-commutative wedge product,
+though we suppress this in our notation.
+
+A differential form that is the
+product of a function of $(\phi, \bar\phi)$
+with $p$ differentials is said to have degree $p$.
+A sum of forms of even degree is said to be \emph{even}.
+We introduce a copy $\bar\Lambda$ of $\Lambda$
+and we denote the copy of $X \subset \Lambda$ by $\bar X \subset \bar\Lambda$.
+We also denote the copy of $x \in \Lambda$
+by $\bar x \in \bar\Lambda$ and define $\phi_{\bar x} = \bar\phi_x$ and $\psi_{\bar x} = \bar\psi_x$.
+Then any differential form $F$ can be written
+\begin{equation}
+\lbeq{FinNcal}
+F
+=
+\sum_{\vec y}
+F_{\vec y} (\phi, \bar\phi)
+\psi^{\vec y}
+\end{equation}
+where the sum is over finite sequences $\vec y$ over $\Lambda\sqcup\bar\Lambda$,
+and $\psi^{\vec y} = \psi_{y_1} \ldots \psi_{y_p}$ when $\vec y = (y_1, \ldots, y_p)$.
+When $\vec y = \varnothing$ is the empty sequence,
+$F_\varnothing$ denotes the $0$-degree (bosonic) part of $F$.
+
+In order to apply the results of \cite{BBS-saw4-log,BBS-saw4,BSTW-clp}, we require
+smoothness of the coefficients $F_{\vec y}$ of $F$.  For Theorem~\ref{thm:suscept}(i,ii),
+we need these coefficients to be $C^{10}$, and for Theorem~\ref{thm:suscept}(iii) we require
+a $p$-dependent number of derivatives for the analysis of $\xi_p$, as discussed in \cite{BSTW-clp}.
+We let $\Ncal$ be the algebra of even forms with sufficiently smooth coefficients
+and we let $\Ncal(X) \subset \Ncal$ be the sub-algebra of even forms only depending on fields
+in $X$. Thus, for $F \in \Ncal(X)$, the sum in \eqref{e:FinNcal} runs over sequences $\vec y$
+over $X \sqcup \bar X$.
+Note that $\Ncal = \Ncal(\Lambda)$.
+
+
+Now let $F = (F_j)_{j \in J}$ be a finite collection of even forms
+indexed by a set $J$
+and write $F_\varnothing = (F_{\varnothing,j})_{j \in J}$.
+Given a $C^\infty$ function $f : \R^J \to \C$, we define
+$f(F)$ by its Taylor expansion about $F_\varnothing$:
+\begin{equation}
+f(F) = \sum_\alpha \frac{1}{\alpha!} f^{(\alpha)}(F_\varnothing) (F - F_\varnothing)^\alpha.
+\end{equation}
+The summation terminates as a finite sum,
+since $\psi_x^2 = \bar\psi_x^2 = 0$ due to the anti-commut\-ative product.
+
+We define the integral
+$\int F$
+of a differential form $F$ in the usual way
+as the Riemann integral of its top-degree part
+(which may be regarded as a function
+of the boson field).
+In particular, given a positive-definite
+$\Lambda \times \Lambda$ symmetric matrix $C$
+with inverse $A = C^{-1}$,
+we define the \emph{Gaussian expectation}
+(or \emph{super-expectation}) of $F$ by
+\begin{equation}
+\lbeq{ExCF}
+\Ex_C F = \int e^{-S_A} F,
+\end{equation}
+where
+\begin{equation}
+\label{e:action}
+S_A = \sum_{x\in\Lambda} \Big(\phi_x (A\bar\phi)_x + \psi_x (A \bar\psi)_x\Big).
+\end{equation}
+
+Finally, for $F = f(\phi, \bar\phi) \psi^{\vec y}$,
+we let
+\begin{equation}
+\theta F = f(\phi + \xi, \bar\phi + \bar\xi) (\psi + \eta)^{\vec y},
+\end{equation}
+where $\xi$ is a new boson field, $\eta = (2\pi i)^{-1/2} d\xi$ a new fermion field,
+and $\bar\xi, \bar\eta$ are the corresponding conjugate fields.
+We extend $\theta$ to all $F \in \Ncal$ by linearity
+and define the convolution operator $\Ex_C\theta$ by letting
+$\Ex_C\theta F \in \Ncal$ denote the Gaussian expectation of $\theta F$ with respect
+to $(\xi, \bar\xi, \eta, \bar\eta)$, with $\phi,\phib,\psi,\psib$ held fixed.
+
+\subsubsection{Integral representation of the two-point function}
+\label{sec:Gintrep}
+
+An integral representation formula applying to general local time functionals
+is given in \cite{BEI92,BIS09}; see also \cite[Appendix~A]{ST-phi4}.
+We state the result we need in the proposition below.
+
+Let $\Delta$ denote the Laplacian on $\Lambda$,
+i.e.\ $\Delta_{xy}$ is given by the right-hand side of
+\eqref{e:Deltaxy} for $x, y \in \Lambda$.
+We define the differential forms:
+\begin{align}
+\tau_x
+&= \phi_x \bar\phi_x
++ \psi_x   \bar\psi_x
+\\
+\label{e:addDelta}
+\tau_{\Delta,x}
+&=
+\frac 12 \Big(
+\phi_{x} (- \Delta \bar{\phi})_{x} + (- \Delta \phi)_{x} \bar{\phi}_{x} +
+\psi_{x}  (- \Delta \bar{\psi})_{x} + (- \Delta \psi)_{x}  \bar{\psi}_{x}
+\Big) \\
+|\nabla \tau_x|^2
+&= \sum_{e\in\Ucal} (\nabla^e \tau)_x^2.
+\end{align}
+Let
+\begin{equation}
+U_{\gcc,\gamma,\nu,N}
+	=
+\sum_{x\in\Lambda_N}
+\Big(
+	\gcc \tau_x^2 + \nu \tau_x + \tau_{\Delta,x} - \tfrac{1}{2 d} \gamma |\nabla \tau_x|^2
+\Big)
+\end{equation}
+
+\begin{prop}
+Let $d > 0$ and $\gcc > 0$. For $\gamma < \gcc$ and $\nu \in \R$,
+\begin{align}
+\label{e:Grep-pos-bis}
+G_{N,\gcc,\gamma,\nu}(a, b)
+	&=
+\int e^{-U_{\gcc,\gamma,\nu,N}} \bar\phi_a \phi_b.
+\end{align}
+\end{prop}
