@@ -73,7 +73,8 @@ If $S_E = H^{-1}(E)$ is finite\footnote{We can view such a system as an approxim
 
 In practice, most systems of interest are not truly isolated: they may exchange
 energy with their environments. Everyday experience, however, suggests that
-a physical system that is left undisturbed for a sufficiently long time will achieve \emph{thermal equilibrium}, in which the system's temperature is constant and equal to that of its surroundings. We define the \emph{canonical ensemble} for a system with state space $\Omega$ and Hamiltonian $H$ on
+a physical system that is left undisturbed for a sufficiently long time will achieve \emph{thermal equilibrium}, in which the system's temperature is constant and equal to that of its surroundings. We define the \emph{canonical ensemble} for a system with state space $\Omega$ and Hamiltonian $H$
+(assumed to be integrable) on
 $\Omega$ to be the maximum entropy distribution subject to the fixed average energy constraint
 \begin{equation}
 \int H \; d\mu = E.
@@ -107,36 +108,55 @@ In the context of spin systems, there is a natural mathematical reason for study
 
 \section{Graphs}
 
-Most systems of interest do not have a finite (or even countable) state space. Nevertheless, finite systems serve as natural approximations of real systems. For instance, a natural way to approximate spatially-extended systems is by defining models on graphs.
+Most systems of interest do not have a finite (or even countable) state space.
+Nevertheless, large finite systems may be used as approximations of real systems.
+A natural approach to approximating spatially-extended systems is by studying
+models on graphs.
 
-An \emph{undirected graph} is a pair $\graph = (\vertices, \edges)$, where $\vertices$
+An \emph{undirected graph} or simply a \emph{graph} is a pair $\graph = (\vertices, \edges)$,
+where $\vertices$
 is a set of \emph{vertices} and $\edges$ is a set of
 \emph{edges} $\{ x, y \}$ with $x, y \in \vertices$; we will write $x \sim y$ if
 $\{ x, y \} \in \edges$.
-For simplicity, we will assume that $\vertices$ is countable, that there are no
-\emph{self-loops} $\{ x \} \in \edges$, and that $\graph$ is \emph{vertex-transitive};
-the last condition means that for all pairs of distinct vertices $x, y \in \vertices$,
-there exists a mapping $f : \vertices \to \vertices$ such that $a \sim b$ if and only
-if $f(a) \sim f(b)$.
+For simplicity, we will assume that $\vertices$ is countable annd that there are no
+\emph{self-loops} $\{ x \} \in \edges$.
+We will also assume that $\graph$ is \emph{(vertex-)transitive}: that is, for all pairs
+of distinct
+vertices $a, b \in \vertices$, there exists a mapping $f : \vertices \to \vertices$
+such that $x \sim y$ if and only if $f(x) \sim f(y)$.
+We fix a vertex $0\in\vertices$; the assumption of transitivity implies
+that the particular choice of $0$ is immaterial.
+
+\begin{example}\mbox{}\\
+\smallskip\noindent
+(i) We view any set $X \subset \Zd$ as a graph with $\vertices = X$ and
+$x\sim y$ if $|x - y| = 1$. In particular, $X = \Zd$ is transitive.
+
+\smallskip\noindent
+(ii) Let $L > 1$ be an integer. For $N \ge 0$, let
+\begin{equation}
+\Lambda_N = \Zd/L^N\Zd.
+\end{equation}
+We call $\Lambda_N$ the \emph{discrete $d$-dimensional torus} of side $L^N$.
+We view $\Lambda_N$ as a graph with $\vertices = \Lambda_N$ and $x \sim y$
+if $|x - y| = 1$ modulo $L^N$.
+\end{example}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Functions on graphs}
 
-Let $\varphi \in (\R^n)^\vertices$. We denote the components of $\varphi$ by
-$\varphi^i_x \in \R$ for $x \in \vertices$ and $i = 1, \ldots, n$. The Euclidean inner product on $(\R^n)^\vertices$ is defined by
-\begin{equation}
+Let us denote the components of a function $\varphi : \vertices \to \R^n$ by
+$\varphi^i_x \in \R$ for $x \in \vertices$ and $i = 1, \ldots, n$.
+The Euclidean inner product and norm on the space $(\R^n)^\vertices$ of such functions
+are defined by
+\begin{align}
 \varphi\cdot\tilde\varphi
-  =
-\sum_{x\in\vertices} \varphi_x \cdot \tilde\varphi_y
-  =
-\sum_{i=1}^n \sum_{x\in\vertices} \varphi^i_x \tilde\varphi^i_x
-\end{equation}
-and the Euclidean norm $|\cdot|$ is defined by
-\begin{equation}
-|\varphi|^2 = \varphi \cdot \varphi.
-\end{equation}
-A $\vertices\times\vertices$ matrix $M$ acts on $\varphi$ via
+	&= \sum_{x\in\vertices} \varphi_x \cdot \tilde\varphi_y
+  		= \sum_{i=1}^n \sum_{x\in\vertices} \varphi^i_x \tilde\varphi^i_x \\
+	&=|\varphi|^2 = \varphi \cdot \varphi.
+\end{align}
+A $\vertices\times\vertices$ matrix $M = (M_{xy})_{x,y\in\vertices}$ acts on $\varphi$ via
 \begin{equation}
 (M \varphi)_x = \sum_{y\in\vertices} M_{xy} \varphi_y.
 \end{equation}
@@ -145,14 +165,20 @@ A $\vertices\times\vertices$ matrix $M$ acts on $\varphi$ via
 
 \subsection{The graph Laplacian}
 
-Let $\jay$ be a $\vertices\times\vertices$ matrix with $\jay_{xy} \ge 0$ for all $x, y$ with equality if and only if $\{ x, y \} \notin \edges$. The pair
-$(\graph, \jay)$, which we will usually abbreivate as $\graph$ with $\jay$ implicit, is an example of a \emph{weighted} graph.
+Let us say that a $\vertices\times\vertices$ matrix $M$ is \emph{indexed by} $\edges$
+if $M_{xy} = 0$ if and only if $x \not\sim y$.
+Let $\jay$ be a matrix indexed by $\edges$.
+Throughout this thesis, we will assume that the $\jay$ has nonnegative entries;
+thus, $\jay_{xy} \ge 0$ with equality if and only if $x\not\sim y$.
+The pair $(\graph, \jay)$ is an example of a \emph{weighted} graph.
+We will usually denote this weighted graph simply as $\graph$, with $\jay$
+implicit.
 
-Define the diagonal $\vertices\times\vertices$ matrix $\diag$ by
+Let $\diag$ be a diagonal $\vertices\times\vertices$ matrix with diagonal entries
 \begin{equation}
-\diag_{xx} = d_x = \sum_{y \sim x} J_{xy}.
+d_x = \diag_{xx} = \sum_{y \sim x} J_{xy}.
 \end{equation}
-We will say that $\graph$ is $d_0$-regular if $d_x = d_0$ for all $x$.
+We say that $\graph$ is $d_0$-regular if $d_x = d_y$ for all $x, y$.
 
 The \emph{(massless) graph Laplacian} on $\graph$ is defined by
 \begin{equation}
@@ -174,7 +200,8 @@ Note that
 so $-\lap$ is positive-semidefinite.
 
 \begin{example}
-An important case is when $\jay$ has $\{0, 1 \}$-valued entries. In this case, $d_x$ is the \emph{degree} of $x$ in $\graph$ and we denote $\lap$ by
+An important case is when $\jay$ has $\{0, 1 \}$-valued entries.
+In this case, $d_x$ is the \emph{degree} of $x$ in $\graph$ and we denote $\lap$ by
 $\Delta$, which has entries given by
 \begin{equation}
 -\Delta_{xy} = d_x \1_{x=y} - \1_{x \sim y}.
@@ -208,44 +235,67 @@ C(x, y)
 
 \section{Spin systems}
 
-\subsection{The Ising model}
+\subsection{Example: the Ising model}
 
-The Ising model is defined by the Gibbs measure on $\Omega = \{ \pm 1 \}^\vertices$
+Suppose that $|\vertices| < \infty$.
+The \emph{Ising model} on $\graph$ is defined by the Gibbs measure on $\Omega = \{ \pm 1 \}^\vertices$
 with Hamiltonian
 \begin{equation}
-H(\sigma) = -\frac{1}{2} \sum_{x \sim y} \sigma_x \sigma_y + h \sum_{x\in\vertices} \sigma_x,
-\end{equation}
-where $h \in \R$.
-The magnetization is defined by
-\begin{equation}
-\langle \sigma_0 \rangle = \frac{1}{Z_\beta} \sum_{\sigma\in\Omega} \sigma_0 e^{-\beta H(\sigma)}.
-\end{equation}
-The \emph{magnetic susceptibility} is the derivative
-\begin{equation}
-\chi
+H_h(\sigma)
 	=
--\frac{1}{\beta} \dd{}{h} \langle \sigma_0 \rangle.
+-\frac{1}{2} \sum_{x \sim y} \sigma_x \sigma_y - h \sum_{x\in\vertices} \sigma_x,
+\end{equation}
+where $h \in \R$ is known as the \emph{external field}.
+The first term encourages spins to \emph{align}: an edge $\{ x, y \}$ makes
+a negative contribution to the total energy (so a positive contribution to
+the probability of a configuration) when $\sigma_x = \sigma_y$.
+For a similar reason, the second term encourages spins to adopt the same sign as $h$.
+
+Let $\langle\cdot\rangle_{\beta,h}$ denote the expectation with respect to
+this Gibbs measure and let $Z_{\beta,h}$ be the partition function.
+The \emph{magnetization} is defined by
+\begin{equation}
+\langle \sigma_0 \rangle_{\beta,h} = \frac{1}{Z_\beta} \sum_{\sigma\in\Omega} \sigma_0 e^{-\beta H(\sigma)}.
+\end{equation}
+When $\beta > 0$, it is reasonable to expect that the magnetization has the
+same sign as $h$.
+
+To see this, define the \emph{magnetic susceptibility} by
+\begin{equation}
+\chi(\beta, h)
+	=
+\frac{1}{\beta} \dd{}{h} \langle \sigma_0 \rangle_{\beta,h}.
 \end{equation}
 A computation shows that
 \begin{equation}
-\chi = \sum_{x\in\vertices} G_x,
+\chi(\beta, h) = \sum_{x\in\vertices} G_x(\beta, h),
 \end{equation}
 where
 \begin{equation}
-G_x = \Big(\langle \sigma_0 \sigma_x \rangle - \langle \sigma_0 \rangle \langle \sigma_x \rangle\Big)
+G_x(\beta, h)
+	=
+\Big(
+	\langle \sigma_0 \sigma_x \rangle_{\beta,h}
+		-
+	\langle \sigma_0 \rangle_{\beta,h} \langle \sigma_x \rangle_{\beta,h}
+\Big)
 \end{equation}
 is the \emph{two-point function}.
-
+Thus, the susceptibility is positive and so the magnetization is increasing
+in $h$. When $h = 0$, the Gibbs measure is invariant under the spin flip
+$\sigma \mapsto -\sigma$, and so the magnetization is $0$. It follows that
+$\langle \sigma_0 \rangle_{\beta,h} > 0$ if and only if $h > 0$.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Ferromagnetic spin systems}
 
+We continue to assume that $|\vertices| < \infty$.
 An $n$-component \emph{field} or \emph{spin configuration} on $\vertices$
 with spins in $S \subset \R^n$ is an element of $\Omega = S^\vertices$.
 % A \emph{spin system} is a probability measure $d\mu$ on $\Omega$.
-Suppose that $S$ is endowed with a measure $d\lambda^0$.
-Given a (measurable) Hamiltonian function $H : \Omega \to \R$, we wish to define the measure
+Suppose that $S$ is equipped with a measure $d\lambda^0$.
+Given a Hamiltonian $H : \Omega \to \R$, we wish to define the measure
 \begin{equation}
 d\mu_\beta(\varphi)
   =
@@ -255,51 +305,58 @@ on $\Omega$, where
 \begin{equation}
 d\lambda(\varphi) = \prod_{x\in\vertices} d\lambda^0(\varphi_x).
 \end{equation}
-However, there are some problems with this definition when $\vertices$ is infinite.
-For one, $d\lambda$ may not be well-defined (for instance if
-$S = \R$ and $d\lambda^0$ is Lebesgue measure). Another issue is that it may be
-difficult to define a reasonable choice of $H$ on the infinite product space
-$\Omega$.
-
-For this reason, we temporarily restrict our attention to finite graphs:
-\begin{equation}
-|\vertices| < \infty.
-\end{equation}
-Then the Gibbs measure $\mu = \mu_\beta$ is well-defined and we will denote the
-expectation with respect to this measure by $\langle \cdot \rangle_\mu$.
+We denote the expectation with respect to this measure by $\langle\cdot\rangle_\beta$.
+% However, there are some problems with this definition when $\vertices$ is infinite.
+% For one, $d\lambda$ may not be well-defined (for instance if
+% $S = \R$ and $d\lambda^0$ is Lebesgue measure). Another issue is that it may be
+% difficult to define a reasonable choice of $H$ on the infinite product space
+% $\Omega$.
+% 
+% For this reason, we temporarily restrict our attention to finite graphs:
+% \begin{equation}
+% |\vertices| < \infty.
+% \end{equation}
+% Then the Gibbs measure $\mu = \mu_\beta$ is well-defined and we will denote the
+% expectation with respect to this measure by $\langle \cdot \rangle_\mu$.
 
 Following our discussion of the Ising model, we define the two-point function
 and susceptibility by
 \begin{equation}
-G_x(\mu_\beta)
+G_x(\beta)
   =
 \frac{1}{n}
-\big(\langle \varphi_0 \cdot \varphi_x \rangle_\mu
+\big(\langle \varphi_0 \cdot \varphi_x \rangle_\beta
   -
-\langle \varphi_0 \rangle_\mu \cdot \langle \varphi_x \rangle_\mu\big)
+\langle \varphi_0 \rangle_\beta \cdot \langle \varphi_x \rangle_\beta\big)
 \end{equation}
 and
 \begin{equation}
-\chi = \sum_x G_x.
+\chi(\beta) = \sum_x G_x(\beta).
 \end{equation}
 
-We will mainly be concerned with \emph{ferromagnetic} spin systems, for which the Hamiltonian has the form
+We will mainly be concerned with \emph{ferromagnetic} spin systems, for which the
+Hamiltonian has the form
 \begin{equation}
-H(\varphi) = \sum_{x, y \in \vertices} \varphi_x \cdot J_{xy} \varphi_y,
+H(\varphi) = -\varphi \cdot M\varphi,
 \end{equation}
-where (recall) $J_{xy} \ge 0$. Thus, $H(\varphi)$ is smaller (and $d\mu_\beta(\varphi)$ larger) when the spins align (when $\varphi_x = \varphi_y$ for $x \sim y$).
+where $M_{xy} \ge 0$.
+% Thus, $H(\varphi)$ is smaller (and $d\mu_\beta(\varphi)$ larger) when the spins align
+% (when $\varphi_x = \varphi_y$ for $x \sim y$).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % \subsection{The \texorpdfstring{$O(n)$}{O(n)} spin model}
 
 \begin{example}[The $O(n)$ model]
-Let $S = S^{n-1} \subset \R^n$ be the unit $(n-1)$-sphere equipped with the surface measure $d\lambda^0$ (in particular, $S^0 = \{ \pm 1 \}$, which is equipped with the counting measure). The $O(n)$ model is the
-ferromagnetic spin sysmste with Hamiltonian
+Let $S = S^{n-1} \subset \R^n$ be the unit $(n-1)$-sphere equipped with the normalized sphere measure
+$d\lambda^0$ (in particular, $S^0 = \{ \pm 1 \}$).
+The \emph{$O(n)$ spin model} or \emph{$n$-vector model} is the
+ferromagnetic spin system with Hamiltonian
 \begin{equation}
 H_J(\sigma) = -\frac{1}{2} \sigma \cdot J \sigma,
 \end{equation}
-which is clearly ferromagnetic. The case $n = 1$ is the celebrated \emph{Ising model}. When $n = 2, 3$, we get the \emph{XY model} and the \emph{classical Heisenberg model}.
+which is clearly ferromagnetic.
+When $n = 1$ we recover the Ising model. When $n = 2, 3$, we get the \emph{XY model} and the \emph{classical Heisenberg model}.
 \end{example}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -321,22 +378,30 @@ H_{g,\nu}(\varphi)
   \frac{1}{2} \varphi_x \cdot (-\lap \varphi)_x
 \right),
 \end{equation}
-where $g > 0$ and $\nu\in\R$. This is a natural generalization of the $O(n)$ model
-in which spins are merely concentrated near a sphere.
-Indeed, writing
+where $g > 0$ and $\nu\in\R$. Adjusting $\beta$ is equivalent to  rescaling
+$g$ and $\nu$, so we set $\beta = 1$ without loss of generality.
+% This is a natural generalization of the $O(n)$ model
+% in which spins are merely concentrated near a sphere.
+When $\graph$ is $d_0$-regular, we can write
 \begin{equation}
 H_{g,\nu}(\varphi)
   =
-\sum_{x\in\vertices}
-\left(
-  \frac{1}{4} g |\varphi_x|^4
-    +
-  \frac{1}{2} (\nu + d_0) |\varphi_x|^2
-\right)
-  -
-\frac{1}{2} \varphi \cdot \jay \varphi
+\sum_{x\in\vertices} U_{g,\nu}(\varphi_x) - \frac{1}{2} \varphi \cdot \jay \varphi,
 \end{equation}
-we see that $d\mu_{g,\nu} \Rightarrow d\mu_J$ if we take the limit $g\to\infty$
+where the \emph{single-spin potential} $U_{g,\nu}$ is defined by
+\begin{equation}
+U_{g,\nu}(t)
+	=
+\frac{1}{4} g |t|^4
+	+
+\frac{1}{2} (\nu + d_0) |t|^2,
+	\quad
+t \in \R^n.
+\end{equation}
+\todo{Attach graph.}
+When $\nu + d_0 < 0$, the potential has roots at $0$ and $\pm\sqrt{-2 (\nu + d_0) / g}$.
+It follows that the Gibbs measure for $|\varphi|^4$ model converges weakly to the
+Gibbs measure for the $O(n)$ model in the limit $g\to\infty$
 with $\nu = -(d_0 + g / 2)$.
 \end{example}
 
@@ -345,20 +410,21 @@ with $\nu = -(d_0 + g / 2)$.
 % \subsection{Gaussian measures and the free field}
 
 \begin{example}[The Gaussian free field]
-Let $S = \R^n$ and let $C$ be a positive-definite symmetric $\vertices\times\vertices$ matrix. The $n$-component \emph{Gaussian measure} $d\mu_C$ on
+Let $S = \R^n$ and let $C$ be a positive-definite symmetric $\vertices\times\vertices$
+matrix. The $n$-component \emph{Gaussian measure} $d\mu_C$ on
 $\Omega$ with mean $0$ and \emph{covariance} $C$ is defined by the Hamiltonian
 \begin{equation}
 H_C(\varphi) = \frac{1}{2} \varphi \cdot C^{-1} \varphi.
 \end{equation}
-This is essentially the simplest choice of non-constant
-Hamiltonian\footnote{Note that $e^{-\beta H}$ is not integrable if $H$ is linear. Also, by completing the square, there is no additional generality gained by adding a linear term to $H_C$.}.
-The partition function can be computed explicitly, giving\footnote{Here, we have employed our convention of setting $\beta = 1$ when the Hamiltonian depends on a parameter ($C$ in this case).}
+Setting $\beta = 1$ again, the partition function $Z_C$ can be computed explicitly,
+giving
 \begin{equation}
-d\mu_C(\varphi)
+Z_C
   =
-\frac{1}{\sqrt{\det(2\pi C)}} e^{-\frac{1}{2} \varphi\cdot C^{-1}\varphi} d\varphi.
+\frac{1}{\sqrt{\det(2\pi C)}}.
 \end{equation}
-By \emph{Wick's theorem}, the magnetization is $0$ and the two-point function is the covariance:
+The correlations can also be computed explictly (this is sometimes known as
+\emph{Wick's theorem}). In particular, the two-point function is the covariance:
 \begin{equation}
 \int \varphi_a \cdot \varphi_b \; d\mu(\varphi) = C_{ab}.
 \end{equation}
