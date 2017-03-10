@@ -367,42 +367,42 @@ When $n = 1$ we recover the Ising model. When $n = 2, 3$, we get the \emph{XY mo
 Let $S = \R^n$. The $|\varphi|^4$ spin model on $\graph$ is the ferromagnetic spin system
 defined by the quartic Hamiltonian
 \begin{equation}
-H_{g,\nu}(\varphi)
+H_{\gcc,\nu}(\varphi)
   =
 \sum_{x\in\vertices}
 \left(
-  \frac{1}{4} g |\varphi_x|^4
+  \frac{1}{4} \gcc |\varphi_x|^4
     +
   \frac{1}{2} \nu |\varphi_x|^2
     +
   \frac{1}{2} \varphi_x \cdot (-\lap \varphi)_x
 \right),
 \end{equation}
-where $g > 0$ and $\nu\in\R$. Adjusting $\beta$ is equivalent to  rescaling
-$g$ and $\nu$, so we set $\beta = 1$ without loss of generality.
+where $\gcc > 0$ and $\nu\in\R$. Adjusting $\beta$ is equivalent to  rescaling
+$\gcc$ and $\nu$, so we set $\beta = 1$ without loss of generality.
 % This is a natural generalization of the $O(n)$ model
 % in which spins are merely concentrated near a sphere.
 When $\graph$ is $d_0$-regular, we can write
 \begin{equation}
-H_{g,\nu}(\varphi)
+H_{\gcc,\nu}(\varphi)
   =
-\sum_{x\in\vertices} U_{g,\nu}(\varphi_x) - \frac{1}{2} \varphi \cdot \jay \varphi,
+\sum_{x\in\vertices} U_{\gcc,\nu}(\varphi_x) - \frac{1}{2} \varphi \cdot \jay \varphi,
 \end{equation}
-where the \emph{single-spin potential} $U_{g,\nu}$ is defined by
+where the \emph{single-spin potential} $U_{\gcc,\nu}$ is defined by
 \begin{equation}
-U_{g,\nu}(t)
+U_{\gcc,\nu}(t)
 	=
-\frac{1}{4} g |t|^4
+\frac{1}{4} \gcc |t|^4
 	+
 \frac{1}{2} (\nu + d_0) |t|^2,
 	\quad
 t \in \R^n.
 \end{equation}
 \todo{Attach graph.}
-When $\nu + d_0 < 0$, the potential has roots at $0$ and $\pm\sqrt{-2 (\nu + d_0) / g}$.
+When $\nu + d_0 < 0$, the potential has roots at $0$ and $\pm\sqrt{-2 (\nu + d_0) / \gcc}$.
 It follows that the Gibbs measure for $|\varphi|^4$ model converges weakly to the
-Gibbs measure for the $O(n)$ model in the limit $g\to\infty$
-with $\nu = -(d_0 + g / 2)$.
+Gibbs measure for the $O(n)$ model in the limit $\gcc\to\infty$
+with $\nu = -(d_0 + \gcc / 2)$.
 \end{example}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -430,7 +430,7 @@ The correlations can also be computed explictly (this is sometimes known as
 \end{equation}
 
 An important case is the \emph{massive Gaussian free field} on $\graph$,
-which is the $g = 0$ case of the $|\varphi|^4$ model (with $\nu$ necessarily positive).
+which is the $\gcc = 0$ case of the $|\varphi|^4$ model (with $\nu$ necessarily positive).
 Thus, the the covariance is equal to the massive Green function $C = (-\lap + \nu)^{-1}$.
 \end{example}
 
@@ -471,6 +471,9 @@ translation-invariance of these models in finite volume. Strictly speaking, $\La
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Critical behaviour}
+
+\todo{This would be a good place to define the exact quantities we will study,
+i.e.\ as limits of finite-volume quantities on $\Lambda_N$}
 
 For this discussion, let us restrict our attention to the graph $\graph = \Zd$
 with $J_{xy} \in \{ 0, 1 \}$. Thus, $\lap = \Delta$.
@@ -818,10 +821,6 @@ In the case $\gamma = 0$, the discrete-time version of this model is known as
 the \emph{Domb-Joyce model}. In continuous-time, it is the
 \emph{continuous-time weakly self-avoiding walk} (WSAW).
 
-\subsubsection{Finite-volume approximation}
-
-\todo{Include this for consistency with $|\varphi|^4$ model}
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Critical behaviour}
@@ -891,22 +890,91 @@ dependence on dimension}
 
 \subsection{Definitions}
 
-Our main results concern the two-point function, susceptibility, and finite-order
-correlation length of both models. For the $|\varphi|^4$ model, we take the infinite-volume
-limit using periodic boundary conditions. That is, for $n \ge 1$,
+\subsubsection{The \texorpdfstring{$|\varphi|^4$}{phi4} model}
+
+We study a generalization of the $|\varphi|^4$ model defined by the Hamiltonian
 \begin{equation}
-G_x(g, \gamma, \nu; n) = \lim_{N\to\infty} G_{x,N}(g, \gamma, \nu; n),
+V_{\gcc,\gamma,\nu,N}(\varphi)
+	=
+\sum_{x\in\Lambda_N}
+\Big(
+	\tfrac{1}{4} \gcc |\varphi_x|^4
+		+
+	\tfrac{1}{2} \nu |\varphi_x|^2
+		+
+	\tfrac{1}{2} \varphi_x \cdot (-\Delta \varphi)_x
+		-
+	\tfrac{1}{2 d} \gamma (\nabla |\phi_x|^2)^2
+\Big),
 \end{equation}
 where
 \begin{equation}
-G_{x,N}(g, \gamma, \nu; n)
+(\nabla |\phi_x|^2)^2
 	=
-\begin{cases}
-\langle \phib_0 \phi_x \rangle_{g,\gamma,\nu,N},			& n = 0 \\
-\langle \varphi_0 \cdot \varphi_x \rangle_{g,\gamma,\nu,N}	& n \ge 1.
-\end{cases}
+\sum_{|e|=1} (\nabla^e |\phi_x|^2)^2.
 \end{equation}
-The susceptibility and finite-order correlation length are defined as before.
+The expectation with respect to the corresponding Gibbs measure will
+be denoted $\langle\cdot\rangle_{\gcc,\gamma,\nu,N}$.
+We define the two-point function
+\begin{equation}
+G_x(\gcc, \gamma, \nu; n) = \lim_{N\to\infty} G_{x,N}(\gcc, \gamma, \nu; n),
+\end{equation}
+where
+\begin{equation}
+G_{x,N}(\gcc, \gamma, \nu; n)
+	=
+\langle \varphi_0 \cdot \varphi_x \rangle_{\gcc,\gamma,\nu,N}.
+\end{equation}
+In the above limit, we identify a point $x \in \Zd$ with $x \in \Lambda_N$
+for large $N$, by embedding the vertices of $\Lambda_N$ as an approximately
+centred cube in $\Z^d$ (say as $[-\frac12 L^N+1,\frac12 L^N]^d \cap \Z^d$ if $L^N$ is even
+and as $[-\frac12 (L^N-1), \frac12 (L^N-1)]^d \cap \Z^d$ if $L^N$ is odd).
+
+The susceptibility and correlation length of order $p$ are defined by
+\begin{equation}
+\chi(\gcc, \gamma, \nu; n)
+	=
+\lim_{N\to\infty} \sum_{x\in\Lambda_N} G_{x,N}(\gcc, \gamma, \nu; n)
+\end{equation}
+and
+\begin{equation}
+\xi_p(\gcc, \gamma, \nu; n)
+	=
+\left(
+\frac{\sum_{x\in\Zd} |x|^p G_x(\gcc, \gamma, \nu; n)}{\chi(\gcc, \gamma, \nu; n)}
+\right)^{\tfrac{1}{p}}.
+\end{equation}
+
+\subsubsection{The weakly self-avoiding walk with self-attraction}
+
+Recall that
+\begin{equation}
+U_{\gcc,\gamma}(f)
+	=
+\gcc \sum_{x\in\Zd} f_x^2 - \frac{1}{2 d} \gamma \sum_{x\in\Zd} \sum_{y \sim x} f_x f_y
+\end{equation}
+and let
+\begin{equation}
+U_{\gcc,\gamma,T} = U_{\gcc,\gamma}(\lt_T) = \gcc I_T - \frac{1}{2 d} \gamma C_T.
+\end{equation}
+Let
+\begin{equation}
+c_T = E_0 \big(e^{-U_{\gcc,\gamma,T}}\big),
+	\quad
+c_T(x) = E_0 \big(e^{-U_{\gcc,\gamma,T}} \1_{X_T=x}\big).
+\end{equation}
+The WSAW-SA two-point function and susceptibility are defined by
+\begin{equation}
+G_x(\gcc, \gamma, \nu; 0)
+	=
+\int_0^\infty c_T(x) e^{-\nu T} \; dT
+\end{equation}
+and
+\begin{equation}
+\chi(\gcc, \gamma, \nu; 0)
+	=
+\int_0^\infty c_T e^{-\nu T} \; dT = \sum_{x\in\Zd} G_x(\gcc,\gamma,\nu;0).
+\end{equation}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
