@@ -23,35 +23,46 @@ Sections~\ref{sec:prog}--\ref{sec:rgcoord}}
 
 \section{Unified notation}
 
-To unify our treatment of the two models, if $n \ge 1$ we let
+To unify our treatment of the two models, if $n \ge 1$ we set
 \begin{equation}
+\label{e:tauphi}
 \tau_x = \tfrac{1}{2} |\varphi_x|^2,
   \quad
 \tau_{\Delta,x} = \tfrac{1}{2} \varphi_x \cdot (-\Delta \varphi)_x,
   \quad
 |\nabla\tau_x|^2 = \sum_e (\nabla^e |\phi_x|^2)^2
 \end{equation}
-and define
+and
 \begin{equation}
-U_{g,\gamma,\nu,N}
+\label{e:Ncaldef}
+\Ncal^\varnothing
+  = \Ncal^\varnothing(\Lambda)
+  = C^{p_\Ncal}((\R^n)^\Lambda,\R).
+\end{equation}
+When $n = 0$, the forms \eqref{e:tauphi} are defined by
+\eqref{e:taudef}--\eqref{e:nablatau}
+and $\Ncal^\varnothing$ is defined as in Section~\ref{sec:intrep}.
+Then by \eqref{e:Vdef1} and \eqref{e:Vdef2},
+\begin{equation}
+V_{g,\gamma,\nu,N}
   =
 \sum_{x\in\Lambda_N}
 \Big(
   g \tau_x^2 + \nu \tau_x + \tau_{\Delta,x} - \tfrac{1}{2 d} \gamma |\nabla\tau_x|^2
-\Big).
+\Big)
 \end{equation}
-\todo{Define $\Ncal = \Ncal(n)$.}
+for any choice of $n$.
 Then for $F \in \Ncal$, we let
 \begin{equation}
 \langle F \rangle_{g,\gamma,\nu,N}
   =
 \begin{cases}
-\int F e^{-U_{g,\gamma,\nu,N}},               & n = 0 \\
-\frac{1}{Z_{g,\gamma,\nu,N}}
+\displaystyle \int F e^{-U_{g,\gamma,\nu,N}},           & n = 0 \\
+\displaystyle \frac{1}{Z_{g,\gamma,\nu,N}}
   \int F(\varphi) e^{-U_{g,\gamma,\nu,N}} \; d\varphi,  & n \ge 1.
 \end{cases}
 \end{equation}
-By the finite-volume approximation, the two-point function is given by
+By \eqref{e:two-point-function-phi4}, \eqref{e:Givlc}, and \eqref{e:Grep-pos-bis},
 \begin{equation}
 G_x(g, \gamma, \nu; n) = \lim_{N\to\infty} G_{x,N}(g, \gamma, \nu; n),
 \end{equation}
@@ -64,19 +75,12 @@ G_{x,N}(g, \gamma, \nu; n)
 \langle \varphi_0 \cdot \varphi_x \rangle_{g,\gamma,\nu,N}  & n \ge 1.
 \end{cases}
 \end{equation}
+\todo{Susceptibility and correlation length}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Reformulation of the problem}
 
-Let
-\begin{equation}
-\tau_x = \tfrac{1}{2} |\varphi_x|^2,
-  \quad
-\tau_{\Delta,x} = \tfrac{1}{2} \varphi_x \cdot (-\Delta \varphi)_x,
-  \quad
-|\nabla\tau_x|^2 = \sum_e (\nabla^e |\phi_x|^2)^2.
-\end{equation}
 Given $g>0$, $\nu\in \R$, and  given $m^2>0$ and $z_0 >-1$, let
 \begin{equation}
   \label{e:gg0}

@@ -486,6 +486,7 @@ translation-invariance of these models in finite volume. Strictly speaking, $\La
 
 We study a generalization of the $|\varphi|^4$ model defined by the Hamiltonian
 \begin{equation}
+\label{e:Vdef1}
 V_{\gcc,\gamma,\nu,N}(\varphi)
 	=
 \sum_{x\in\Lambda_N}
@@ -509,13 +510,14 @@ The expectation with respect to the corresponding Gibbs measure will
 be denoted $\langle\cdot\rangle_{\gcc,\gamma,\nu,N}$.
 We define the two-point function
 \begin{equation}
-G_x(\gcc, \gamma, \nu; n) = \lim_{N\to\infty} G_{x,N}(\gcc, \gamma, \nu; n),
-\end{equation}
-where
-\begin{equation}
-G_{x,N}(\gcc, \gamma, \nu; n)
+\label{e:two-point-function-phi4}
+G_{x, N}(g,\gamma,\nu; n)
 	=
-\langle \varphi_0 \cdot \varphi_x \rangle_{\gcc,\gamma,\nu,N}.
+\frac{1}{n} \pair{\varphi_0 \cdot \varphi_x}_{g,\gamma,\nu,N},
+	\quad
+G_x(g,\gamma,\nu; n)
+	=
+\lim_{N \to \infty} G_{x, N}(g,\gamma,\nu; n).
 \end{equation}
 In the above limit, we identify a point $x \in \Zd$ with $x \in \Lambda_N$
 for large $N$, by embedding the vertices of $\Lambda_N$ as an approximately
@@ -938,7 +940,7 @@ $X_n = X_{\tau_n}$. Consider the discrete-time simple random walk on $\Zd$,
 for which $X_n = X_0 + \sum_{i=1}^n Y_i$, where $Y_i$ are iid random variables
 in $\{ e \in \Zd : |e| = 1 \}$ with $\Ex Y_i = 0$. Thus, $\Ex |X_n|^2 = n$ and
 the central limit theorem implies that
-$X_n / \sqrt n \Rightarrow \Ncal(0, 1)$. More generally, Donsker's invariance
+$X_n / \sqrt n \Rightarrow \normal(0, 1)$. More generally, Donsker's invariance
 principle states that a rescsaled version of $X$ converges to Brownian motion on $\Rd$.
 \end{example}
 
@@ -946,11 +948,10 @@ principle states that a rescsaled version of $X$ converges to Brownian motion on
 
 \subsection{Weakly self-avoiding walk with self-attraction}
 
-\todo{Do this on general graphs.}
-
 Define the \emph{local time} up to time $T$ of $\omega \in \cwalks$ at
-$x \in \Zd$ by
+$x \in \vertices$ by
 \begin{equation}
+\label{e:LTx-def}
 \lt^x_T(\omega) = \int_0^T \1_{\omega(S)=x} \; dS.
 \end{equation}
 In the discrete-time case, $\lt^x_n$ is the number of times $\omega$ visits $x$
@@ -975,8 +976,7 @@ C_T(\omega)
 \end{equation}
 up to time $T$.
 % Recall that we have set the inverse temperature equal to $1$.
-Given a parameter $\gcc > 0$,
-and $\gamma \in \R$, we define
+Given a parameter $\gcc > 0$, and $\gamma \in \R$, let
 \begin{equation}
 \label{e:Udef-neg}
 U_{\gcc,\gamma}(f)
@@ -988,7 +988,7 @@ U_{\gcc,\gamma}(f)
 for $f : \vertices \to \R$.
 The \emph{weakly self-avoiding walk with self-attraction} (WSAW-SA) is defined via the Hamiltonian
 \begin{equation}
-H_T(\omega) = U_{\gcc,\gamma}(L_T(\omega)).
+U_{\gcc,\gamma,T} = U_{\gcc,\gamma} \circ L_T.
 \end{equation}
 We denote the canonical partition function by
 \begin{equation}
@@ -1002,11 +1002,6 @@ where $0 \in \vertices$ is fixed, and the susceptibility by
 In the case $\gamma = 0$, the discrete-time version of this model is known as
 the \emph{Domb-Joyce model}. In continuous-time, it is the
 \emph{continuous-time weakly self-avoiding walk} (WSAW).
-
-\subsubsection{Finite-volume approximation}
-
-\todo{Do this in such a way as to be consistent with the definitions used in the
-main results.}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -1026,45 +1021,6 @@ c_T                       &\sim C_5 e^{-\nu_c T} T^{-\gammabar}, \\
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Main results}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\subsection{Definitions}
-
-\subsubsection{The weakly self-avoiding walk with self-attraction}
-
-Recall that
-\begin{equation}
-U_{\gcc,\gamma}(f)
-	=
-\gcc \sum_{x\in\Zd} f_x^2 - \frac{1}{2 d} \gamma \sum_{x\in\Zd} \sum_{y \sim x} f_x f_y
-\end{equation}
-and let
-\begin{equation}
-U_{\gcc,\gamma,T} = U_{\gcc,\gamma}(\lt_T) = \gcc I_T - \frac{1}{2 d} \gamma C_T.
-\end{equation}
-Let
-\begin{equation}
-c_T = E_0 \big(e^{-U_{\gcc,\gamma,T}}\big),
-	\quad
-c_T(x) = E_0 \big(e^{-U_{\gcc,\gamma,T}} \1_{X_T=x}\big).
-\end{equation}
-The WSAW-SA two-point function and susceptibility are defined by
-\begin{equation}
-G_x(\gcc, \gamma, \nu; 0)
-	=
-\int_0^\infty c_T(x) e^{-\nu T} \; dT
-\end{equation}
-and
-\begin{equation}
-\chi(\gcc, \gamma, \nu; 0)
-	=
-\int_0^\infty c_T e^{-\nu T} \; dT = \sum_{x\in\Zd} G_x(\gcc,\gamma,\nu;0).
-\end{equation}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\subsection{Results}
 
 The main result is stated below.
 \todo{Discuss existence of $\nu_c$}
@@ -1117,7 +1073,7 @@ The $\gamma = 0$ cases of (i) and (ii) were proved by Bauerschmidt, Brydges, and
 Slade. The $n > 0$ case with $\gamma \ne 0$ is a new result in this thesis. We
 will only discuss the proof of the $\gamma \ge 0$ case, which is of primary
 interest. The proof of the $\gamma < 0$ case with $n = 0$ can be found in
-\REF and the extension to $n > 0$ is straightforward.
+\cite{BSW-saw-sa} and the extension to $n > 0$ is straightforward.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1191,6 +1147,7 @@ This is known as the $n \to 0$ ``limit''.
 
 \subsection{Self-avoiding walk representation}
 % This section based on saw-sa
+\label{sec:intrep}
 
 It is not clear how to make rigorous the $n\to0$ limit of De Gennes. Parisi and
 Sourlas and, independently, McKane, discovered an alternative approach to the
@@ -1248,11 +1205,11 @@ In order to apply the results of \cite{BBS-saw4-log,BBS-saw4,BSTW-clp}, we requi
 smoothness of the coefficients $F_{\vec y}$ of $F$.  For Theorem~\ref{thm:suscept}(i,ii),
 we need these coefficients to be $C^{10}$, and for Theorem~\ref{thm:suscept}(iii) we require
 a $p$-dependent number of derivatives for the analysis of $\xi_p$, as discussed in \cite{BSTW-clp}.
-We let $\Ncal$ be the algebra of even forms with sufficiently smooth coefficients
-and we let $\Ncal(X) \subset \Ncal$ be the sub-algebra of even forms only depending on fields
-in $X$. Thus, for $F \in \Ncal(X)$, the sum in \eqref{e:FinNcal} runs over sequences $\vec y$
+We let $\Ncal^\varnothing$ be the algebra of even forms with sufficiently smooth coefficients
+and we let $\Ncal^\varnothing(X) \subset \Ncal^\varnothing$ be the sub-algebra of even forms only depending on fields
+in $X$. Thus, for $F \in \Ncal^\varnothing(X)$, the sum in \eqref{e:FinNcal} runs over sequences $\vec y$
 over $X \sqcup \bar X$.
-Note that $\Ncal = \Ncal(\Lambda)$.
+Note that $\Ncal^\varnothing = \Ncal^\varnothing(\Lambda)$.
 
 
 Now let $F = (F_j)_{j \in J}$ be a finite collection of even forms
@@ -1294,9 +1251,9 @@ we let
 \end{equation}
 where $\xi$ is a new boson field, $\eta = (2\pi i)^{-1/2} d\xi$ a new fermion field,
 and $\bar\xi, \bar\eta$ are the corresponding conjugate fields.
-We extend $\theta$ to all $F \in \Ncal$ by linearity
+We extend $\theta$ to all $F \in \Ncal^\varnothing$ by linearity
 and define the convolution operator $\Ex_C\theta$ by letting
-$\Ex_C\theta F \in \Ncal$ denote the Gaussian expectation of $\theta F$ with respect
+$\Ex_C\theta F \in \Ncal^\varnothing$ denote the Gaussian expectation of $\theta F$ with respect
 to $(\xi, \bar\xi, \eta, \bar\eta)$, with $\phi,\phib,\psi,\psib$ held fixed.
 
 \subsubsection{Integral representation of the two-point function}
@@ -1311,23 +1268,30 @@ i.e.\ $\Delta_{xy}$ is given by the right-hand side of
 \eqref{e:Deltaxy} for $x, y \in \Lambda$.
 We define the differential forms:
 \begin{align}
+\label{e:taudef}
 \tau_x
-&= \phi_x \bar\phi_x
-+ \psi_x   \bar\psi_x
-\\
+	&=
+\phi_x \bar\phi_x + \psi_x \bar\psi_x
+	\\
 \label{e:addDelta}
 \tau_{\Delta,x}
-&=
-\frac 12 \Big(
-\phi_{x} (- \Delta \bar{\phi})_{x} + (- \Delta \phi)_{x} \bar{\phi}_{x} +
-\psi_{x}  (- \Delta \bar{\psi})_{x} + (- \Delta \psi)_{x}  \bar{\psi}_{x}
-\Big) \\
+	&=
+\frac 12
+\Big(
+	\phi_{x} (- \Delta \bar{\phi})_{x} + (- \Delta \phi)_{x} \bar{\phi}_{x}
+		+
+	\psi_{x}  (- \Delta \bar{\psi})_{x} + (- \Delta \psi)_{x}  \bar{\psi}_{x}
+\Big)
+	\\
+\label{e:nablatau}
 |\nabla \tau_x|^2
-&= \sum_{e\in\Ucal} (\nabla^e \tau)_x^2.
+	&=
+\sum_{|e|=1} (\nabla^e \tau)_x^2.
 \end{align}
 Let
 \begin{equation}
-U_{\gcc,\gamma,\nu,N}
+\label{e:Vdef2}
+V_{\gcc,\gamma,\nu,N}
 	=
 \sum_{x\in\Lambda_N}
 \Big(
@@ -1344,3 +1308,61 @@ G_{N,\gcc,\gamma,\nu}(a, b)
 \int e^{-U_{\gcc,\gamma,\nu,N}} \bar\phi_a \phi_b.
 \end{align}
 \end{prop}
+
+\subsubsection{Finite-volume approximation}
+
+In order to make use of the integral representation above, we must approximate the
+WSAW-SA on $\Zd$ by a model on $\Lambda_N$.
+
+Let $X^{L^N}$ denote the simple random walk on $\Lambda_N$.
+For $F_T = F_T(X)$ any one of the functions $L_T^x,I_T,C_T$
+of $X$ defined in \eqref{e:LTx-def}--\eqref{e:CTdef},
+we write $F_{N,T} = F_T(X^{L^N})$. For instance, with $n=L^N$,
+\begin{equation}
+    L^x_{N,T} = \int_0^T \1_{X^{n}_t=\;x} \; dt,
+    \quad I_{N,T} = \sum_{x \in \Lambda_N}(L_{N,T}^x)^2 .
+\end{equation}
+
+As before, we identify the vertices of $\Lambda_N$ with nested subsets of $\Zd$,
+centred at the origin (approximately if $L$ is even),
+with $\Lambda_{N+1}$ paved by $L^d$ translates of $\Lambda_N$.
+% We can thus define $\partial \Lambda_N$ to be the inner vertex boundary of $\Lambda_N$.
+We denote the expectation of $X^{L^N}$ started from $a \in \Lambda_N$ by $E^{\Lambda_N}_a$
+and define
+\begin{align}
+\label{e:cN}
+c_{N,T}(a, b)
+    &= E^{\Lambda_N}_a \left( e^{-U_{\beta,\gamma,T}} \1_{X(T)=b} \right)
+    \quad (a, b \in \Lambda_N), \\
+c_{N,T}
+    &= E^{\Lambda_N}_0 \left( e^{-U_{\beta,\gamma,T}} \right).
+\end{align}
+The finite-volume two-point function and susceptibility
+are defined by
+\begin{align}
+G_{N,\beta,\gamma,\nu}(a,b)
+    &= \int_0^\infty c_{N,T}(a, b) e^{-\nu T} \; dT, \\
+\chi_N(\beta, \gamma, \nu)
+    &= \int_0^\infty c_{N,T} e^{-\nu T} \; dT
+    .
+    \label{e:chiNdef}
+\end{align}
+
+\begin{prop}
+\label{prop:finvol}
+Let $d >0$, $\beta >0$ and $\gamma < \beta$. For all $\nu \in \R$,
+\begin{equation}
+\label{e:Givlc}
+\lim_{N \to \infty}
+G_{N,\beta,\gamma,\nu}(a,b)
+=
+G_{\beta,\gamma,\nu}(a,b)
+\end{equation}
+and
+\begin{equation}
+\label{e:chilim}
+\lim_{N\to\infty}\chi_N(\beta,\gamma,\nu)=   \chi(\beta,\gamma,\nu).
+\end{equation}
+\end{prop}
+
+The proof is in the appendix.
