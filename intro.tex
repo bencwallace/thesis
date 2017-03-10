@@ -235,7 +235,7 @@ C(x, y)
 
 \section{Spin systems}
 
-\subsection{Example: the Ising model}
+\subsection{The Ising model}
 
 Suppose that $|\vertices| < \infty$.
 The \emph{Ising model} on $\graph$ is defined by the Gibbs measure on $\Omega = \{ \pm 1 \}^\vertices$
@@ -288,7 +288,7 @@ $\langle \sigma_0 \rangle_{\beta,h} > 0$ if and only if $h > 0$.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{Ferromagnetic spin systems}
+\subsection{Spin systems on finite graphs}
 
 We continue to assume that $|\vertices| < \infty$.
 An $n$-component \emph{field} or \emph{spin configuration} on $\vertices$
@@ -438,6 +438,10 @@ Thus, the the covariance is equal to the massive Green function $C = (-\lap + \n
 
 \subsection{The infinite-volume limit}
 
+\todo{Briefly discuss the need for infinite-volume in terms of vanishing magnetization
+and analytic free energy (stress the latter). Define infinite-volume quantities we will
+need on $\Zd$. Mention relation to theory of Gibbs measure.}
+
 The presence of a phase transition in a physical system is signalled by an abrupt (i.e.\ non-analytic) change in an observable quantity as a parameter is varied. In fact, a $p$-th order phase transition is usually said to occur when the free energy has a discontinuous derivative of order $p$ with respect to an external field (but continuous derivatives of order less than $p$). However, the spin systems we have defined above all have smooth free energy (since the Hamiltonians are smooth functions). Ultimately, the reason we cannot detect phase transitions in these systems is that we have defined them on finite graphs. Thus, we are forced to face the problem of defining spin systems on an infinite graph.
 
 A natural approach to defining such systems is via a procedure known as the
@@ -469,18 +473,122 @@ translation-invariance of these models in finite volume. Strictly speaking, $\La
 \end{rk}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{Critical behaviour}
+\section{Critical behaviour and universality}
 
-\todo{This would be a good place to define the exact quantities we will study,
+\todo{This (or above) might be a good place to define the exact quantities we will study,
 i.e.\ as limits of finite-volume quantities on $\Lambda_N$}
 
 For this discussion, let us restrict our attention to the graph $\graph = \Zd$
-with $J_{xy} \in \{ 0, 1 \}$. Thus, $\lap = \Delta$.
+with $d > 1$ and with $J_{xy} \in \{ 0, 1 \}$. Thus, $\lap = \Delta$.
 
-\begin{example}
-% Let $\langle \cdot \rangle_{0,\nu}$ denote the expectation with respect to the
-% Gaussian free field with mass $\nu$.
+\subsection{The critical point}
+
+Many systems exhibit \emph{critical behaviour} at or near a particular parameter value.
+For concreteness, let us discuss the $|\varphi|^4$ model. For convenience, we will
+actually discuss a generalization of the $|\varphi|^4$ model. \todo{Define it and
+the susceptibility, etc.}
+
+Let
+\begin{equation}
+\nu_c = \nu_c(\gcc, n) = \inf \{ \nu : \chi(g, \nu; n) < \infty \}.
+\end{equation}
+Since the susceptibility can be written as the second derivative of the free energy
+with respect to an external field, there is a second-order phase transition at $\nu_c$.
+By the expression for the susceptibility in terms of the two-point function, it is
+reasonable to expect rapid (i.e.\ summable) decay of $G_x(g, \nu; n)$ in $|x|$ for
+$\nu > \nu_c$ and much slower decay at $\nu = \nu_c$. In fact, the two-point function
+is expected to decay exponentially above $\nu_c$ and sub-exponentially at $\nu_c$.
+The \emph{correlation length} $\xi$ is defined to be the reciprocal of the exponential
+rate of decay of the two-point function; concretely, we let
+\begin{equation}
+\xi(g, \nu; n) = \limsup_{k\to\infty} \frac{-k}{\log G_{ke}(g, \nu; n)},
+\end{equation}
+where $e \in \Zd$ is a unit vector. Roughly speaking, the correlation length acts as
+a ``macroscopic length scale'' of the model; it is a measure of the largest scale at
+which spins are strongly correlated.
+Based on the above discussion, we expect $\xi$
+to diverge as $\nu\downarrow\nu_c$. This divergence is usually seen as one of the
+key features of critical behaviour and is indicative of strong correlations at all
+scales. A related quantity is the \emph{correlation length of order $p$}, defined by
+\begin{equation}
+\xi_p(g, \nu; n)
+	=
+\left(\frac{\sum_{x\in\Zd} |x|^p G_x(g, \nu; n)}{\chi(g, \nu; n)}\right)^{1/p}.
+\end{equation}
+
+\begin{rk}
+There is a simple heuristic relationship between $\xi$ and $\xi_p$: Let us suppose that
+the two-point function decays exponentially at rate $1/\xi$, possibly with some
+sub-exponential multiplicative correction; for instance, suppose that
+\begin{equation}
+G_x(g, \nu; n) \approx C |x|^{-\alpha} e^{-|x|/\xi(g, \nu; n)},
+\end{equation}
+in some sense, where $\alpha$ and $C$ are positive constants independent of $\nu$.
+Then the main contributions to the sum in the numerator in the definition of
+$\xi_p$ should come from $|x| \le \xi = \xi(g, \nu; n)$. For such $|x|$,
+$G_x(g, \nu; n) \approx C |x|^{-\alpha}$ and so
+\begin{equation}
+\sum_{x\in\Zd} |x|^p G_x(g, \nu; n)
+	\approx
+C \sum_{|x| \le \xi} |x|^{-(\alpha-p)}
+	\approx
+C \xi(g, \nu; n)^{-(\alpha-p)}.
+\end{equation}
+By definition, it follows that
+\begin{equation}
+\xi^p_p(g, \nu; n) \approx \xi^p(g, \nu; n).
+\end{equation}
+\end{rk}
+
+\subsection{Critical exponents}
+
+For simplicity, let us drop $g$ and $n$ from the notation.
+It is predicted that there exist constants $\eta$, $\gammabar$, and $\nubar$,
+known as \emph{critical exponents}, such that
+\begin{align}
+G_x(\nu_c)
+	&\sim
+C_1 |x|^{-(d - 2 + \eta)},
+	\qquad
+|x|\to\infty \\
+\chi(\nu)
+	&\sim
+C_2 (\nu - \nu_c)^{-\gammabar},
+	\qquad
+\nu\downarrow\nu_c \\
+\xi(\nu)
+	&\sim
+C_3 (\nu - \nu_c)^{-\nubar},
+	\qquad
+\nu\downarrow\nu_c \\
+\xi_p(\nu)
+	&\sim
+C_4 (\nu - \nu_c)^{-\nubar},
+	\qquad
+\nu\downarrow\nu_c.
+\end{align}
+where $a \sim b$ means that $\lim (a/b) = 1$ and $C_i$ for $i = 1,2,3,4$
+are constants that may depend on $g$ and $n$ (and $p$ when $i = 4$).
+The critical exponents are expected to be \emph{universal} in the sense that they
+only depend on ``large-scale properties'' of the model such as the global geometry
+of the underlying graph and the symmetries of the Gibbs measure. In particular,
+for the $n$-component $|\varphi|^4$ model on $\Zd$, these exponents should only
+depend on $n$ and $d$ and independent of $g$ and when $g > 0$. In fact,
+analogous relations are expected to hold for the $O(n)$ spin model, with the
+\emph{same} critical exponents.
+
+These and other relations are all believed to be manifestations of the existence of
+a universal \emph{scaling limit} for the $|\varphi|^4$ model and other models in its
+\emph{universality class}. That is, any spin system in this class, when appropriately
+rescaled, is expected to converge in distribution to a unique continuum random field.
+In this sense, the study of critical behaviour involves a set of far-reaching
+generalizations of the central limit theorem.
+
+\begin{example}[The Gaussian free field]
+\todo{Needs work}
+
 We have
 \begin{equation}
 -\Delta = 2 d (1 - P),
@@ -494,43 +602,6 @@ of $X$ conditioned so that $X_0 = 0$,
 and we can define the \emph{massless} Gaussian free field on $\Zd$ to be the Gaussian
 measure with covariance $(-\Delta)^{-1} = (2 d)^{-1} (1 - P)^{-1}$.
 
-
-\end{example}
-
-Many systems exhibit \emph{critical behaviour} at or near a particular parameter value. For concreteness, in the setting of the models discussed above, we denote this parameter value here by $\beta_c$ and suppose that it is defined as the small valuest of $\beta$ for which the susceptibility diverges. For spin systems, this is typically the same value that separates the uniqueness regime in which $|\gibbs_\beta| = 1$ from the non-uniqueness regime in which
-$|\gibbs_\beta| > 1$.
-
-The critical point is characterized by long-range correlations. Namely, for
-$\beta \ne \beta_c$, the two-point function $G_x$ decays exponentially in $x$. Clearly, this cannot be the case at $\beta_c$ if the susceptibility is to diverge and it is expected that $G_x$ scales according to a power there 
-(possibly with logarithmic corrections).
-
-A fundamental quantity in the study of critical behaviour is the
-\emph{correlation length} $\xi$. On $\Zd$, this is defined to be one over the exponential rate of decay of the two-point function; that is,
-\begin{equation}
-\xi(\mu) = \limsup_{k\to\infty} \frac{-k}{\log G_{ke}(\mu)},
-\end{equation}
-where $e \in \Zd$ is a unit vector, whose choice is irrelevant for models for which the two-point function is invariant under lattice rotations.
-A related quantity is the \emph{correlation length of order $p$}, defined by
-\begin{equation}
-\xi_p(\mu) = \left(\frac{\sum_{x\in\Zd} |x|^p G_x(\mu)}{\chi(\mu)}\right)^{1/p}.
-\end{equation}
-\todo{Heuristic relation bewteen $\xi$ and $\xi_p$.}
-
-We define the \emph{critical exponents} $\eta$, $\gamma$, and $\bar\nu$ by
-\begin{align}
-G_x       &\sim C_1 |x|^{-(d - 2 + \eta)}, \\
-\chi(\nu) &\sim C_2 (\nu - \nu_c)^{-\gamma}, \\
-\xi       &\sim C_3 (\nu - \nu_c)^{-\nubar}, \\
-\xi_p     &\sim C_4 (\nu - \nu_c)^{-\nubar}
-\end{align}
-when these relations hold. For walks, it is expected that
-\begin{align}
-c_T                       &\sim C_5 e^{-\nu_c T} T^{-\gamma}, \\
-\langle |X_T|^2 \rangle   &\sim C_6 T^{-\nubar}.
-\end{align}
-\todo{Motivate the above with an example somewhere.}
-
-\begin{example}
 The two-point function is just the massive Green function
 $(-\Delta + m^2)^{-1}$ which, on $\Zd$, has the well-known Ornstein-Uhlenbeck decay \todo{(show this; use random walks?)}. Moreover,
 \begin{equation}
@@ -549,10 +620,58 @@ Thus, there is a critical point at $m^2 = 0$ ($z = 1$).
 \todo{See candidacy report or preliminary version of it. For the Green function, see Theorem 1.5.4 in Lawler--Intersections of Random Walks}
 \end{example}
 
+\subsection{}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{The upper-critical dimension}
+
+The critical exponents are conjectured to take on the following values:
+\begin{equation}
+\eta =
+	\begin{cases}
+	\frac{5 + n}{24},		& d = 2, \, n = 1 \\
+	\approx 0.03,			& d = 3, \\
+	0,						& d \ge 4
+	\end{cases}
+\qquad
+\gamma =
+	\begin{cases}
+	\frac{43 + 13 n}{32},	& d = 2, \, n = 1 \\
+	\approx 1,				& d = 3 \\
+	1,						& d \ge 4
+	\end{cases}
+\end{equation}
+and
+\begin{equation}
+\nubar =
+	\begin{cases}
+	\frac{3 + n}{4},		& d = 2, \, n = 1 \\
+	\approx 0.6,			& d = 3 \\
+	\frac{1}{2},			& d \ge 4
+	\end{cases}
+\end{equation}
+with logarithmic corrections in $d = 4$.
+Thus, it is expected that, when $d > 4$, the critical exponents cease to depend
+on the dimension and $n$. In fact, they are expected to equal the exponents of
+the corresponding non-interacting model, the Gaussian free field.
+
+This phenomenon is known as \emph{mean-field behaviour} and dimension $4$ is
+called the \emph{upper-critical dimension} for this class of models. The behaviour
+of models is generally better understood above than below their upper-critical
+dimension.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{The renormalisation group}
+
+\todo{General idea; Kadanoff decimation; fixed points and stable manifolds;
+dependence on dimension}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Models of walks}
+\section{Walks}
 
 \subsection{Discrete-time walks}
 
@@ -766,6 +885,8 @@ principle states that a rescsaled version of $X$ converges to Brownian motion on
 
 \subsection{Weakly self-avoiding walk with self-attraction}
 
+\todo{Do this on general graphs.}
+
 Define the \emph{local time} up to time $T$ of $\omega \in \cwalks$ at
 $x \in \Zd$ by
 \begin{equation}
@@ -821,65 +942,24 @@ In the case $\gamma = 0$, the discrete-time version of this model is known as
 the \emph{Domb-Joyce model}. In continuous-time, it is the
 \emph{continuous-time weakly self-avoiding walk} (WSAW).
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Finite-volume approximation}
 
-\subsection{Critical behaviour}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\section{Universality}
-
-It is generally expected that critical exponents depend only on the very coarse structure of a model such as symmetry and ``tail properties'' (e.g.\ global geometry of the underlying graph). For instance, consider a ferromagnetic spin system on $\Zd$ and suppose that the single-spin measure
-$d\lambda^0$ is invariant under Euclidean symmetries and whose interaction matrix $J$ is invariant under lattice symmetries ($J_{xy} = J_{Rx,Ry}$ for $R$ a rotation or reflection of $\Zd$) and is of finite-range ($J_{xy} = 0$ for $|x - y|$ sufficiently large). The exponents for such a system are expected only to depend on the dimensions $d$ of the underlying lattice and $n$ of the space of spins.
-
-\todo{Discuss scaling limits}
+\todo{Do this in such a way as to be consistent with the definitions used in the
+main results.}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{The upper-critical dimension}
+\subsection{Predicted behaviour}
 
-The critical exponents are conjectured to take on the following values:
-\begin{equation}
-\eta =
-	\begin{cases}
-	\frac{5 + n}{24},		& d = 2, \, n = 1 \\
-	\approx 0.03,			& d = 3, \\
-	0,						& d \ge 4
-	\end{cases}
-\qquad
-\gamma =
-	\begin{cases}
-	\frac{43 + 13 n}{32},	& d = 2, \, n = 1 \\
-	\approx 1,				& d = 3 \\
-	1,						& d \ge 4
-	\end{cases}
-\end{equation}
-and
-\begin{equation}
-\nubar =
-	\begin{cases}
-	\frac{3 + n}{4},		& d = 2, \, n = 1 \\
-	\approx 0.6,			& d = 3 \\
-	\frac{1}{2},			& d \ge 4
-	\end{cases}
-\end{equation}
-with logarithmic corrections in $d = 4$.
-Thus, it is expected that, when $d > 4$, the critical exponents cease to depend
-on the dimension and $n$. In fact, they are expected to equal the exponents of
-the corresponding non-interacting model, the Gaussian free field.
+\todo{State expected critical behaviour.}
 
-This phenomenon is known as \emph{mean-field behaviour} and dimension $4$ is
-called the \emph{upper-critical dimension} for this class of models. The behaviour
-of models is generally better understood above than below their upper-critical
-dimension.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\subsection{The renormalisation group}
-
-\todo{General idea; Kadanoff decimation; fixed points and stable manifolds;
-dependence on dimension}
+\todo{
+For walks, it is expected that
+\begin{align}
+c_T                       &\sim C_5 e^{-\nu_c T} T^{-\gammabar}, \\
+\langle |X_T|^2 \rangle   &\sim C_6 T^{-\nubar}.
+\end{align}
+\todo{Motivate the above with an example somewhere.}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
