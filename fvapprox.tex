@@ -1,0 +1,294 @@
+%% Use this to reset the appendix counter.  Note that the FoGS
+%% requires that the word ``Appendices'' appear in the table of
+%% contents either before each appendix lable or as a division
+%% denoting the start of the appendices.  We take the latter option
+%% here.  This is ensured by making the \texttt{appendicestoc} option
+%% a default option to the UBC thesis class.
+
+%%% If you only have one appendix, please uncomment the following line.
+\renewcommand{\appendicesname}{Appendix}
+
+% Start appendices
+\appendix
+
+% First appendix (from saw-sa)
+\chapter{Proof of finite-volume approximation}
+\label{sec:finvol}
+
+In this appendix, we prove Proposition~\ref{prop:finvol}.
+
+\todo{Other things that could be included are the proof of the integral
+representation and bounds on the critical point. This would also be a
+good place to briefly explain how $\gamma < 0$ is handled.}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{The potential}
+
+From the definition, we see that
+\begin{equation}
+\label{e:sbp}
+\sum_{x\in\Zd}   f_x \Delta_{\Zd} f_x
+=
+-\frac{1}{2} |\nabla f|^2.
+\end{equation}
+It follows that
+\begin{equation}
+\sum_{x\in\Zd} \sum_{e\in\Ucal} f_x f_{x+e}
+=
+2 d \sum_{x\in\Zd} f_x^2
++ \sum_{x\in\Zd} f_x \Delta_{\Zd} f_x
+=
+2 d \sum_{x\in\Zd} f_x^2
+- \frac{1}{2} \sum_{x\in\Zd} |\nabla f_x|^2
+\end{equation}
+and so we get the useful representation:
+\begin{equation}
+\label{e:Udef-pos}
+U_{\beta,\gamma}(f)
+= (\beta - \gamma) \sum_{x\in\Zd} f_x^2
++ \frac{\gamma}{4d} \sum_{x\in\Zd} \sum_{e\in\Ucal} |\nabla^e f_x|^2.
+\end{equation}
+In particular,
+\begin{equation}
+  \label{e:V2}
+  U_{\beta,\gamma,T} =
+  (\beta - \gamma) I_T
+  + \frac{\gamma}{4d}
+  |\nabla \lt_T|^2
+  .
+\end{equation}
+A version of \refeq{V2} can be found in \cite{HK01a}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Proof}
+
+Before proving the proposition, we require some preliminaries.
+Let $P^n$ be the projection
+of $\Zd$ onto the discrete torus of side $n$,
+which we denote $\Z_n^d$.
+Then $P^n$ has a natural action
+on the path space $(\Zd)^{[0,\infty)}$. We let
+$X^n = P^n(X)$ be the projection of $X$
+and note that $X^n$ is a simple random walk on $\Z^d_n$.
+
+We call $h = (h_x)_{x\in\Zd}$ a \emph{field of path functionals} if
+$h_x : (\Zd)^{[0,\infty)} \to \R$ is a function on continuous-time paths
+for each $x \in \Zd$;
+a simple example is given by the local time functional.
+We assume that the \emph{random} field $h(X) = (h_x(X))_{x\in\Zd}$
+has finite support almost surely, i.e.,
+with probability $1$, $h_x(X) = 0$ for all but finitely many $x$.
+Denote by $h(X^n)$ the corresponding random field for $X^n$, i.e., for $x \in \Z_n^d$,
+\begin{equation}
+h_x(X^n) = \sum_{y\in\Zd} h_{x+ny}(X).
+\end{equation}
+
+Given a positive integer $k$, we define
+$Q_k \subset \Z^d$ by $Q_k = \{y \in \Z^d : 0 \le y_i < k, \;   i=1,\ldots,d\}$.
+Then, for integers $n,k \ge 1$,
+\begin{equation}
+\label{e:ffold1}
+    \sum_{y \in Q_k} h_{x+ny}(X^{kn})
+  = \sum_{y \in Q_k} \sum_{z\in\Zd} h_{x+ny+knz}(X)
+  = \sum_{y\in\Zd} h_{x+ny}(X)
+  = h_x(X^n),
+\end{equation}
+and it follows by summation over $x \in \Z^d_n$ that
+\begin{equation}
+\label{e:ffold2}
+\sum_{x\in\Z^d_{kn}} h_x(X^{kn})
+  =
+\sum_{x\in\Z^d_n} h_x(X^n).
+\end{equation}
+
+\begin{lemma}
+\label{lem:mono}
+Let $n,k \ge 1$ and let $f$ and $g$ be nonnegative fields of path functionals
+with finite support almost surely.
+Then
+\begin{equation}
+\sum_{x\in\Z^d_{kn}} f_x(X^{kn}) g_x(X^{kn})
+  \leq
+\sum_{x\in\Z^d_n} f_x(X^n) g_x(X^n).
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+By \eqref{e:ffold2} and \eqref{e:ffold1},
+\begin{equation}
+\sum_{x\in\Z_{kn}^d} f_x(X^{kn}) g_x(X^{kn})
+  =
+\sum_{x\in\Z_n^d}
+\sum_{y \in Q_k}
+  f_{x+ny}(X^{kn}) g_{x+ny}(X^{kn}).
+\lbeq{mono}
+\end{equation}
+By nonnegativity and two more applications of \eqref{e:ffold1},
+\begin{align}
+\sum_{x\in\Z_n^d}
+\sum_{y \in Q_k}
+f_{x+ny}(X^{kn}) g_{x+ny}(X^{kn})
+  &\le \sum_{x\in\Z_n^d}
+      \left(\sum_{y \in Q_k} f_{x+ny}(X^{kn})\right)
+      \left(\sum_{y \in Q_k} g_{x+ny}(X^{kn})\right) \nonumber \\
+  &= \sum_{x\in\Z_n^d} f_x(X^n) g_x(X^n).
+\end{align}
+This completes the proof.
+\end{proof}
+
+For $L \geq 2$ and $N \geq 1$
+note that $\Lambda_N$ is the torus $\Z^d_n$ with $n=L^N$.
+Thus, $X^{L^N}$ is the simple random walk on $\Lambda_N$.
+For $F_T = F_T(X)$ any one of the functions $L_T^x,I_T,C_T$
+of $X$ defined in \eqref{e:LTx-def}--\eqref{e:CTdef},
+we write $F_{N,T} = F_T(X^{L^N})$. For instance, with $n=L^N$,
+\begin{equation}
+    L^x_{N,T} = \int_0^T \1_{X^{n}_t=\;x} \; dt,
+    \quad I_{N,T} = \sum_{x \in \Lambda_N}(L_{N,T}^x)^2 .
+\end{equation}
+We apply Lemma~\ref{lem:mono} with $k = L$ and $n = L^N$ for three
+choices of $f$, $g$:
+\begin{alignat}{2}
+\label{e:ILT-mon}
+I_{N+1,T} &\leq I_{N,T}
+	\quad
+&&(f_x=g_x=L_T^x),
+	\\
+\label{e:CSA-mon}
+C_{N+1,T} &\leq C_{N,T}
+	\quad
+&&(f_x=\textstyle{\sum_{e\in \Ucal}L_T^{x+e}},\; g_x=L_T^x),
+	\\
+\lbeq{nabL}
+\sum_{x\in\Lambda_{N+1}} |\nabla^e L^x_{N+1,T}|^2
+	&\leq
+\sum_{x\in\Lambda_N} |\nabla^e L^x_{N,T}|^2
+	\quad
+&& (f_x = g_x = \left|\nabla^e L_T^x\right|).
+\end{alignat}
+Summation of \refeq{nabL} over unit vectors $e\in\Zd$ also gives
+\begin{align}
+\label{e:gradLT-mon}
+\sum_{x\in\Lambda_{N+1}} |\nabla L^x_{N+1,T}|^2
+  \leq
+\sum_{x\in\Lambda_N} |\nabla L^x_{N,T}|^2.
+\end{align}
+
+Recall that we are identifying the vertices of $\Lambda_N$ with nested subsets of $\Zd$.
+% centred at the origin (approximately if $L$ is even),
+% with $\Lambda_{N+1}$ paved by $L^d$ translates of $\Lambda_N$.
+We can thus define $\partial \Lambda_N$ to be the inner vertex boundary of $\Lambda_N$.
+We denote the expectation of $X^{L^N}$ started from $0$ by $E^{\Lambda_N}_0$
+and define
+\begin{align}
+\label{e:cN}
+c_{N,T}(x)
+    &=
+E^{\Lambda_N}_0 \left( e^{-U_{\gcc,\gamma,T}} \1_{X(T)=b} \right),
+	\quad
+x \in \Lambda_N \\
+c_{N,T}
+    &=
+E^{\Lambda_N}_0 \left( e^{-U_{\gcc,\gamma,T}} \right).
+\end{align}
+The finite-volume two-point function and susceptibility
+are defined by
+\begin{align}
+G_x(\gcc,\gamma,\nu)
+    &= \int_0^\infty c_{N,T}(x) e^{-\nu T} \; dT, \\
+\chi_N(\gcc, \gamma, \nu)
+    &= \int_0^\infty c_{N,T} e^{-\nu T} \; dT
+    .
+    \label{e:chiNdef}
+\end{align}
+Here and throughout this section we have dropped the parameter $n$
+from the notation since $n = 0$.
+
+\begin{prop}
+\label{prop:finvol-re}
+Let $d >0$, $\gcc >0$ and $\gamma < \gcc$. For all $\nu \in \R$,
+\begin{equation}
+\label{e:Givlc}
+\lim_{N \to \infty}
+G_x(\gcc,\gamma,\nu)
+=
+G_x(\gcc,\gamma,\nu)
+\end{equation}
+and
+\begin{equation}
+\label{e:chilim}
+\lim_{N\to\infty}\chi_N(\gcc,\gamma,\nu)=   \chi(\gcc,\gamma,\nu).
+\end{equation}
+\end{prop}
+
+\begin{proof}
+We only prove the case $\gamma \ge 0$. The proof for $\gamma < 0$ can be found in
+\cite{BSW-saw-sa}.
+
+Fix $x \in \Zd$, and consider $N$ sufficiently large that $x$ can be identified
+with points in $\Lambda_N$.
+By \eqref{e:V2}, \eqref{e:ILT-mon} and \eqref{e:gradLT-mon}
+% (if $0 \le \gamma < \gcc$),
+% or by \eqref{e:V}, \eqref{e:ILT-mon} and \eqref{e:CSA-mon} (if $\gamma < 0$),
+\begin{equation}
+\label{e:ctmon}
+c_{N,T}(x) \leq c_{N+1,T}(x).
+\end{equation}
+Thus, \eqref{e:Givlc} follows by monotone convergence, once we show that
+\begin{equation}
+\lim_{N\to\infty} c_{N,T}(x) = c_T(x).
+\end{equation}
+
+% This follows as in \cite[(2.8)]{BBS-saw4}.
+To show this, we define
+\begin{align}
+c_{N,T}^*(x)
+  &=
+E^{\Lambda_N}_0
+\left(
+  e^{-U_{\gcc,\gamma,T}} \1_{X(T)=b} \1_{\{X([0, T]) \cap \partial \Lambda_N \neq \varnothing\}}
+\right) \\
+c_T^*(x)
+  &=
+E_0
+\left(
+  e^{-U_{\gcc,\gamma,T}} \1_{X(T)=b} \1_{\{X([0, T]) \cap \partial \Lambda_N \neq \varnothing\}}
+\right).
+\end{align}
+Since walks which do not reach $\partial \Lambda_N$ make equal contributions to both
+$c_T(x)$ and $c_{N,T}(x)$,
+we have
+\begin{equation}
+c_T(x) - c_T^*(x) = c_{N,T}(x) - c_{N,T}^*(x).
+\end{equation}
+Thus,
+\begin{align}
+|c_T(x) - c_{N,T}(x)|
+= |c_T^*(x) - c_{N,T}^*(x)|
+\leq c_T^*(x) + c_{N,T}^*(x).
+\end{align}
+Let $P^{\Lambda_N}_0$ and $P_0$ be the measures
+associated with $E^{\Lambda_N}_0$ and $E_0$, respectively.
+With $Y_t$ a rate-$2d$ Poisson process with measure ${\sf P}$,
+\begin{align}
+ c_T^*(x) + c_{N,T}^*(x)
+  &\leq P_0 (X([0, T]) \cap \partial\Lambda_N \neq \varnothing)
+    + P^{\Lambda_N}_0 (X([0, T]) \cap \partial\Lambda_N \neq \varnothing) \nonumber \\
+  &\leq 2 {\sf P} (Y_T \geq \diam{\Lambda_N}) \to 0
+\end{align}
+as $N\to\infty$.
+This completes the proof of \eqref{e:Givlc}.
+
+Finally, by monotone convergence of $G_N$ to $G$,
+for $\nu \in \R$,
+\begin{equation}
+\lim_{N\to\infty} \chi_N(g, \gamma, \nu)
+    = \sum_{x\in\Zd} \lim_{N\to\infty} G_{x,N}(\gcc,\gamma,\nu) \1_{x\in\Lambda_N}
+    = \chi(g, \gamma, \nu),
+\end{equation}
+which proves \eqref{e:chilim}.
+\end{proof}
