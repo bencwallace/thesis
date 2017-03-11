@@ -1,0 +1,1077 @@
+\chapter{Critical initial conditions}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Initial coordinates for the renormalisation group}
+\label{sec:K0bd}
+
+Following the approach of \cite{BBS-saw4-log},
+we represent $Z_j$
+by a pair of coordinates $I_j$ and $K_j$ that capture the \emph{relevant} (expanding),
+\emph{marginal},
+and \emph{irrelevant} (contracting) parts of $Z_j$.
+We begin in Section~\ref{sec:IK} by defining coordinates $(I_0, K_0)$ for $Z_0$.
+Norms used to control the evolution of these coordinates are introduced
+in Section~\ref{sec:norms}, and it is shown in
+Sections~\ref{sec:K0bds}--\ref{sec:KWcal} that $K_0$ satisfies norm estimates
+that permit the results of \cite{BS-rg-step,BBS-rg-flow} to be applied.
+The initial coordinate $K_0$
+depends on the coupling constants $(g_0, \gamma_0, \nu_0, z_0)$
+of \eqref{e:gg0}, and regularity of $K_0$ as a function of these variables
+is established in Section~\ref{sec:Ksmooth}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Norms}
+\label{sec:norms}
+
+In this section, we recall some definitions and basic facts concerning norms,
+from \cite{BS-rg-norm}.
+For now, we only consider the case of scale $j = 0$.
+
+Recall the notation introduced in Section~\ref{sec:forms}.
+A \emph{test function} $g$ is defined to be a function $(\vec x, \vec y) \mapsto g_{\vec x,\vec y}$,
+where $\vec x$ and $\vec y$ are finite sequences of elements in $\Lambda \sqcup \bar\Lambda$.
+When $\vec x$ or $\vec y$ is the empty sequence $\varnothing$,
+we drop it from the notation as long as this causes no confusion;
+e.g., we may write $g_{\vec x} = g_{\vec x,\varnothing}$.
+The length of a sequence $\vec x$ is denoted $|\vec x|$.
+Gradients of test functions are defined component-wise.
+Thus, if $\vec x = (x_1, \ldots, x_m)$
+and $\alpha = (\alpha_1, \ldots, \alpha_m)$
+with each $\alpha_i \in \N_0^\Ucal$, and similarly for $\vec y=(y_1,\ldots,y_n)$ and
+$\beta=(\beta_1,\ldots,\beta_n)$,
+then
+\begin{equation}
+\nabla^{\alpha,\beta}_{\vec x,\vec y} g_{\vec x,\vec y}
+  =
+\nabla^{\alpha_1}_{x_1} \ldots \nabla^{\alpha_m}_{x_m}
+\nabla^{\beta_1}_{y_1} \ldots \nabla^{\beta_n}_{y_n}  g_{x_1,\ldots,x_m,y_1,\ldots,y_n}.
+\end{equation}
+
+Let $\h_0 > 0$
+be a parameter, which we set below.
+We fix positive constants $p_\Phi\ge 4$ and
+$p_\Ncal$
+and assume that all test functions
+vanish when $|\vec x|  +|\vec y| > p_\Ncal$.
+For Theorem~\ref{thm:suscept}(i-ii), any choice of $p_\Ncal \ge 10$ is sufficient,
+whereas for Theorem~\ref{thm:suscept}(iii) it is necessary to choose $p_\Ncal$ large
+depending on $p$ \cite{BSTW-clp}.
+The $\Phi = \Phi(\h_0)$ norm on such test functions is defined by
+\begin{equation}
+\|g\|_\Phi
+  =
+    \sup_{\vec x, \vec y} \h_0^{-(|\vec x| +|\vec y|)}
+    \shift\shift \sup_{\alpha,\beta: |\alpha|_1+|\beta|_1 \le p_\Phi}
+    |\nabla^{\alpha,\beta} g_{\vec x, \vec y}|,
+\end{equation}
+where $|\alpha|_1$ denotes the total order of the differential operator $\nabla^\alpha$.
+Thus, for any test function $g$ and for sequences
+$\vec x, \vec y$ with $|\vec x| +|\vec y| \leq p_\Ncal$ and
+corresponding $\alpha, \beta$ with $|\alpha|_1 + |\beta|_1 \leq p_\Phi$,
+\begin{equation}
+\label{e:testfcnbd}
+|\nabla^{\alpha,\beta} g_{\vec x,\vec y}| \leq \h_0^{|\vec x| + |\vec y|} \|g\|_\Phi.
+\end{equation}
+
+For any $F \in \Ncal$,
+there exist \emph{unique} functions $F_{\vec y}$ of $(\phi, \bar\phi)$
+that are anti-symmetric under permutations of $\vec y$, such that
+\begin{equation}
+F = \sum_{\vec y} \frac{1}{|\vec y|!} F_{\vec y}(\phi, \bar\phi) \psi^{\vec y}.
+\end{equation}
+Given a sequence $\vec{x}$ with $|\vec{x}| = m$, we define
+\begin{equation}
+F_{\vec x, \vec y} = \ddp{^m F_{\vec y}}{\phi_{x_1} \ldots \partial\phi_{x_m}}.
+\end{equation}
+We define a $\phi$-dependent pairing of elements of $\Ncal$ with test functions, by
+\begin{equation}
+\langle F, g \rangle_\phi
+  =
+\sum_{\vec x, \vec y} \frac{1}{|\vec x|! |\vec y|!} F_{\vec x,\vec y}(\phi, \bar\phi) g_{\vec x,\vec y}.
+\end{equation}
+Let $B(\Phi)$ denote the unit $\Phi$-ball
+in the space of test functions. Then the
+$T_\phi = T_\phi(\h_0)$ semi-norm on $\Ncal$
+is defined by
+\begin{equation}
+\|F\|_{T_\phi} = \sup_{g\in B(\Phi)} |\langle F, g \rangle_\phi|.
+\end{equation}
+
+We need several properties of the $T_\phi$ semi-norm,
+whose proofs can be found in \cite{BS-rg-norm}.
+First, there is the important \emph{product property}
+\cite[Proposition~\ref{norm-prop:prod}]{BS-rg-norm}
+\begin{equation}
+\label{e:prod}
+\|F G\|_{T_\phi} \leq \|F\|_{T_\phi} \|G\|_{T_\phi}.
+\end{equation}
+An immediate consequence is that $\|e^{-F}\|_{T_\phi} \leq e^{\|F\|_{T_\phi}}$.
+This is improved in \cite[Proposition~\ref{norm-prop:eK}]{BS-rg-norm},
+which states that (recall that $F_\varnothing$ denotes the $0$-degree part of $F$)
+\begin{equation}
+\label{e:eK}
+\|e^{-F}\|_{T_\phi} \leq e^{-2 {\rm Re} F_\varnothing(\phi) + \|F\|_{T_\phi}}.
+\end{equation}
+
+Each of the two choices $\varphi = \phi, \bar\phi$
+can be viewed as a test function supported on sequences with
+$|\vec x| = 1$ and $|\vec y| = 0$
+and satisfying $\varphi_{\bar x} = \bar\varphi_x$.
+In particular, $\|\phi\|_\Phi$ is defined as the norm of a test function.
+We use \cite[Proposition~\ref{norm-prop:T0K}]{BS-rg-norm},
+which states that if $F \in \Ncal$ is a polynomial in $\phi,\phib,\psi,\psib$ of
+total degree $A \leq p_\Ncal$, then
+\begin{equation}
+\label{e:T0K}
+\|F\|_{T_\phi} \leq \|F\|_{T_0} (1 + \|\phi\|_\Phi)^A.
+\end{equation}
+
+We write $x^\Box = \{y: |y-x|_\infty \le 2^d-1\}$,
+where $|x|_\infty = \max\{|x_i| : 1 \le i \le d\}$
+(this is the scale-0 version
+of \cite[\eqref{IE-e:ssn}]{BS-rg-IE} for a single point).
+The $\Phi_x \equiv \Phi(x^\square)$ norm of $\phi \in \C^\Lambda$ is defined by
+\begin{equation}
+\|\phi\|_{\Phi_x}
+  =
+\inf
+\left\{
+  \|\phi - f\|_\Phi : f \in \C^\Lambda \text{ such that } f_y = 0 \;\forall y \in x^\square
+\right\}
+.
+\end{equation}
+By taking the infimum in \eqref{e:T0K} over all possible
+re-definitions of $\phi_y$ for $y \notin x^\square$, we get
+\begin{equation}
+\label{e:T0Kx}
+\|F\|_{T_\phi}
+  \leq
+\|F\|_{T_0} (1 + \|\phi\|_{\Phi_x})^A
+\end{equation}
+when $F \in \Ncal(x^\square)$.
+
+We need two choices of the parameter $\h_0$ (for both choices, $\h_0 \ge 1$):
+either $\h_0 = \ell_0$, an $L$-dependent constant;
+or $\h_0 = h_0 = k_0 \ggen_0^{-1/4}$, where $k_0$ is a small constant and
+$\ggen_0$ is a constant which must be chosen small depending on $L$.
+Some discussion of these constants occurs in the
+proof of Proposition~\ref{prop:K0bd}.
+In \cite{BS-rg-IE}, two \emph{regulators} are defined.
+At scale $0$, these are given by
+\begin{equation}
+\lbeq{regdef}
+G_0(x, \phi)
+  = e^{\|\phi\|^2_{\Phi_x(\ell_0)}},
+  \qquad
+\tilde G_0(x, \phi)
+  =
+e^{\frac{1}{2} \|\phi\|^2_{\tilde\Phi_x(\ell_0)}}.
+\end{equation}
+The $\tilde \Phi_x$ norm in the definition of $\tilde G_0$,
+is defined in \cite[\eqref{IE-e:Phitilnorm}]{BS-rg-IE};
+it is a modification of the $\Phi_x$ norm that is invariant under shifts by
+linear test functions.  Its specific properties do not play a direct role  in this paper.
+Two regulator norms are defined for $F \in \Ncal(x^\square)$ by
+\begin{equation}
+\lbeq{reg0}
+    \|F\|_{G_0} = \sup_{\phi\in\C^\Lambda} \frac{\|F\|_{T_\phi(\ell_0)}}{G_0(x,\phi)}
+    , \quad
+    \|F\|_{\tilde{G}^{\sf t}_0} = \sup_{\phi\in\C^\Lambda} \frac{\|F\|_{T_\phi(h_0)}}{\tilde{G}^{\sf t}_0(x,\phi)}
+    ,
+\end{equation}
+where ${\sf t} \in (0, 1]$ is a constant power.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Bounds on \texorpdfstring{$K_0$}{K0}}
+\label{sec:K0bds}
+
+\todo{Do this with $n \ge 1$.}
+
+The main estimate on $K^\pm_{0,x}$ is given by the following proposition.
+Consistent with \cite[\eqref{IE-e:DV1-bis}]{BS-rg-IE}, we
+fix a large constant $C_\DV$ and define
+\begin{equation}
+\label{e:DV0}
+    \DV_0 = \DV_0(\ggen_0) = \{(g,\nu,z) \in \R^3 : C_{\DV}^{-1}\ggen_0 < g < C_{\DV}\ggen_0,
+    \; |\nu|,|z| < C_{\DV}\ggen_0\}.
+\end{equation}
+
+\begin{prop}
+\label{prop:K0bd}
+Suppose that $V^\pm_0 \in \DV_0$, with $\ggen_0$ sufficiently small.
+If $|\gamma_0| \leq  \ggen_0$, then
+(with constants that may depend on $L$)
+\begin{equation}
+\lbeq{K0bds}
+\|K^\pm_{0,x}\|_{G_0} = O(|\gamma_0|),
+\quad
+\|K^\pm_{0,x}\|_{\tilde G_0} = O(|\gamma_0|/g_0),
+\end{equation}
+where the bounds on $K^+$ and $K^-$ hold for $\gamma_0 \geq 0$
+and $\gamma_0 < 0$, respectively.
+\end{prop}
+
+
+The form of the estimates \refeq{K0bds} can be anticipated from the definition of
+$K_0^\pm$ in \refeq{Kpm}.  The upper bound arises from the small size of
+$e^{-|\gamma_0|U_x^\pm}-1$.  For small fields, hence small $U_x^\pm$, this is of order $|\gamma_0|$,
+as reflected by the $G_0$ norm estimate of \eqref{e:K0bds}.
+For large fields, namely fields of size $|\phi| \approx \ggen_{0}^{-1/4}$, the difference
+$e^{-|\gamma_0|U_x^\pm}-1$ is roughly of size $|\gamma_0|\,|\phi|^4 \approx |\gamma_0|/\ggen_0$.
+This effect is measured by the $\tilde G_0$ norm.
+
+Before proving the proposition, we
+write \refeq{Kpm} for a singleton as
+\begin{equation}
+K^\pm_{0,x} = I^\pm_{0,x} J^\pm_x
+  \label{e:KIJ},
+\end{equation}
+where, by the fundamental theorem of calculus,
+\begin{align}
+    I^\pm_{0,x} &= e^{-V^\pm_{0,x}} \\
+    J^\pm_x
+    &= e^{-|\gamma_0|U^\pm_x} - 1
+    = - \int_0^{1} |\gamma_0| U^\pm_x e^{-t |\gamma_0| U^\pm_x} \; dt.
+\label{e:J}
+\end{align}
+As in \eqref{e:Kpm}, the $+$ versions of \eqref{e:KIJ}--\eqref{e:J} hold
+only for $\gamma_0 \geq 0$ and the $-$ versions only for $\gamma_0 < 0$.
+
+Let $F \in \Ncal(x^\square)$ be a polynomial of degree at most $p_\Ncal$.
+Then the stability estimates \cite[\eqref{IE-e:Iupper-a}--\eqref{IE-e:Iupper-b}]{BS-rg-IE}
+imply that there exists $c_3 > 0$ and, for any $c_1 \geq 0$,
+there exist positive constants $C, c_2$ such that
+if $V_0^\pm \in \DV_0$ then
+\begin{equation}
+\label{e:Iupper}
+\|I^\pm_{0,x} F\|_{T_\phi(\h_0)}
+  \leq
+C \|F\|_{T_0(\h_0)}
+\begin{cases}
+  e^{c_3 g_0 \left(1 + \|\phi\|^2_{\Phi_x(\ell_0)}\right)}
+    & \h_0 = \ell_0 \\
+  e^{-c_1 k_0^4 \|\phi\|^2_{\Phi_x(h_0)}} e^{c_2 k_0^4 \|\phi\|^2_{\tilde\Phi_x(\ell_0)}}
+    & \h_0 = h_0.
+\end{cases}
+\end{equation}
+This essentially reduces our task to estimating $J^\pm_x$.
+The next lemma is an ingredient for this.
+
+\begin{lemma}
+\label{lem:FFnull-loc}
+There is a universal constant $\tilde C$ such that
+\begin{equation}
+\label{e:FFnull}
+\|U^\pm_x\|_{T_\phi(\h_0)}
+  \leq
+2 U^\pm_{\varnothing,x} + \tilde C \h_0^4 (1 + \|\phi\|^2_{\Phi_x(\h_0)}),
+\end{equation}
+where $U^\pm_\varnothing$ is the 0-degree part of $U^\pm$.
+\end{lemma}
+
+\begin{proof}
+Let
+\begin{equation}
+M^+ = M^+_e = (\nabla^e \tau_x)^2,
+\quad
+M^- = M^-_e = 2 \tau_x \tau_{x+e},
+\end{equation}
+so that $U^\pm_x = \sum_{e\in\Ucal} M^\pm_e$.
+It suffices to prove \eqref{e:FFnull} with $U^\pm_x$ replaced by $M^\pm$
+(on both sides of the equation).
+In addition, we can replace the $\Phi_x$ norm by the $\Phi$ norm;
+the bound with the $\Phi_x$ norm then follows in the same way that \eqref{e:T0Kx} is a consequence of \eqref{e:T0K},
+since $M^\pm \in \Ncal(x^\Box)$.
+
+By definition of $\tau_x$,
+\begin{equation}
+M^\pm = M^\pm_{\varnothing} + R^\pm,
+\end{equation}
+where
+\begin{alignat}{2}
+&M^+_{\varnothing} = (\nabla^e |\phi_x|^2)^2,
+  \quad
+&&R^+ = 2 (\nabla^e |\phi_x|^2) \nabla^e (\psi_x\psib_x),
+  \\
+&M^-_\varnothing = 2 |\phi_x|^2 |\phi_{x+e}|^2,
+  \quad
+&&R^- = 2 (|\phi_x|^2 \psi_{x+e}\bar\psi_{x+e}
++ \psi_x\bar\psi_x |\phi_{x+e}|^2 + \psi_x\bar\psi_x\psi_{x+e}\bar\psi_{x+e}).
+\end{alignat}
+Thus, $\|M^\pm\|_{T_\phi} \leq \|M^\pm_{\varnothing}\|_{T_\phi} + \|R^\pm\|_{T_\phi}$.
+A straightforward computation shows that
+\begin{equation}
+\label{e:Rpm-bound}
+\|R^\pm\|_{T_\phi} = O(\h_0^4 (1 + \|\phi\|_\Phi)^2).
+\end{equation}
+
+By definition of the $T_\phi$ semi-norm,
+\begin{equation}
+\label{e:nabla-phi-sq-bd}
+\|\nabla^e |\phi_x|^2\|_{T_\phi}
+  \le
+\nabla^e |\phi_x|^2 + 2 \h_0 (|\phi_x| + |\phi_{x+e}|) + 2 \h_0^2.
+\end{equation}
+Together with \eqref{e:Rpm-bound}, the product property,
+and \eqref{e:testfcnbd}, this implies that
+\begin{equation}
+\|M^+\|_{T_\phi}
+  \le
+M^+_\varnothing
+  + 2 |\nabla^e |\phi_x|^2| (2 \h_0 (|\phi_x| + |\phi_{x+e}|))
+  + O(\h_0^4) (1 + \|\phi\|^2_\Phi).
+\end{equation}
+By the inequality
+\begin{equation}
+\label{e:young-ineq}
+2|ab| \le |a|^2 + |b|^2
+\end{equation}
+and another application of \eqref{e:testfcnbd},
+\begin{equation}
+2 |\nabla^e |\phi_x|^2| (2 \h_0 (|\phi_x| + |\phi_{x+e}|))
+  \le
+M^+_\varnothing + O(\h_0^2 \|\phi\|^2_\Phi),
+\end{equation}
+and the bound on $M^+$ follows.
+
+For the bound on $M^-$, we use the identity
+\begin{equation}
+\label{e:taunorm}
+\|\tau_x\|_{T_\phi}
+  =
+(|\phi_x| + \h_0)^2 + \h_0^2
+\end{equation}
+from \cite[\eqref{norm-e:taunorm}]{BS-rg-norm}.
+By the product property and \eqref{e:testfcnbd}, this implies that
+\begin{equation}
+\|M^-\|_{T_\phi}
+  \le
+2 |\phi_x|^2 |\phi_{x+e}|^2
+  +
+2 (|\phi_x| |\phi_{x+e}|) (2 \h_0 (|\phi_{x+e}| + |\phi_x|))
+  +
+O(\h_0^4) (1 + \|\phi\|^2_\Phi).
+\end{equation}
+Another application of \eqref{e:young-ineq} and \eqref{e:testfcnbd} gives
+\begin{equation}
+2 (|\phi_x| |\phi_{x+e}|) (2 \h_0 (|\phi_{x+e}| + |\phi_x|))
+  \le
+|\phi_x|^2 |\phi_{x+e}|^2 + O(\h_0^2 \|\phi\|^2_\Phi),
+\end{equation}
+and the proof is complete.
+\end{proof}
+
+An immediate consequence of Lemma~\ref{lem:FFnull-loc}, using \eqref{e:eK},
+is that for any $s \ge 0$,
+\begin{equation}
+\label{e:Itilbd}
+\|e^{-s U^\pm_x}\|_{T_\phi(\h_0)} \leq e^{\tilde C s \h_0^4 (1 + \|\phi\|^2_{\Phi_x(\h_0)})}.
+\end{equation}
+
+\begin{proof}[Proof of Proposition~\ref{prop:K0bd}]
+According to the definition of the
+regulator norms in \refeq{regdef}--\refeq{reg0},
+it suffices to prove that, under the hypothesis on $\gamma_0$,
+\begin{equation}
+\label{e:K0bd}
+  \|K^\pm_{0,x}\|_{T_\phi(\h_0)} = O(|\gamma_0| \h_0^4)
+  \begin{cases}
+  e^{\|\phi\|_{\Phi_x}^2} & (\h_0=\ell_0)
+  \\
+  e^{\frac{{\sf t}}{2} \|\phi\|_{\tilde\Phi}} & (\h_0=h_0).
+  \end{cases}
+\end{equation}
+For $t \in [0,1]$, let $\tilde I^\pm_x(t) = e^{-t |\gamma_0| U^\pm_x}$.
+By \eqref{e:KIJ}, \eqref{e:J}, and the product property,
+\begin{align}
+\label{e:K0x-est}
+    \|K^\pm_{0,x}\|_{T_\phi(\h_0)}
+    & \le |\gamma_0| \|I^\pm_{0,x} U^\pm_x\|_{T_\phi(\h_0)}
+    \sup_{t\in [0, 1]} \|\tilde I^\pm_{x}(t)\|_{T_\phi(\h_0)}.
+\end{align}
+By \refeq{Iupper} and Lemma~\ref{lem:FFnull-loc},
+there exists $c_3 > 0$, and, for any $c_1 \geq 0$ there exists $c_2 > 0$, such that
+\begin{equation}
+\label{e:Iupper-bis}
+\|I^\pm_{0,x} U^\pm_x\|_{T_\phi(\h_0)}
+  \leq
+O(\h_0^4)
+\begin{cases}
+  e^{c_3 g_0  \|\phi\|^2_{\Phi_x(\ell_0)}}
+    & \h_0 = \ell_0 \\
+  e^{-c_1 k_0^4 \|\phi\|^2_{\Phi_x(h_0)}} e^{c_2 k_0^4 \|\phi\|^2_{\tilde\Phi_x(\ell_0)}}
+    & \h_0 = h_0.
+\end{cases}
+\end{equation}
+The constant in $O(|\gamma_0| \h_0^4)$ may depend on $c_1$,
+but this is unimportant.
+Also, by \eqref{e:Itilbd},
+\begin{equation}
+\sup_{t\in[0,1]} \|\tilde I_{x}^\pm(t) \|_{T_\phi(\h_0)}
+  \le
+e^{\tilde C |\gamma_0| \h_0^4 (1+\|\phi\|^2_{\Phi_x(\h_0)})}.
+\end{equation}
+
+Thus, for $\h_0=\ell_0$,
+the total exponent in our estimate for the right-hand side of \refeq{K0x-est}
+is
+\begin{equation}
+    \tilde C |\gamma_0| \ell_0^4
+       +(c_3 g_0 + \tilde C |\gamma_0| \ell_0^4) \|\phi\|^2_{\Phi_x(\ell_0)}
+     .
+\end{equation}
+This gives the $\h_0=\ell_0$ version of \refeq{K0bd} provided that
+$g_0$ is small and $|\gamma_0|$ is small depending on $L$.
+
+For $\h_0=h_0$, the total exponent in our estimate for the right-hand side of \refeq{K0x-est}
+is
+\begin{equation}
+    \tilde C |\gamma_0| k_0^4 \ggen_0^{-1}
+        + (\tilde C |\gamma_0| k_0^4 \ggen_0^{-1} - c_1 k_0^4) \|\phi\|^2_{\Phi_x(h_0)}
+        + c_2 k_0^4 \|\phi\|^2_{\tilde\Phi_x(\ell_0)}.
+\end{equation}
+This gives the $\h_0=h_0$ version of \refeq{K0bd} provided that
+$|\gamma_0| \le \ggen_0$, $c_1\ge \tilde C$, and $c_2 k_0^4 \le {\sf t}/2$.
+
+All the provisos are satisfied
+if we choose
+$c_1 \ge \tilde C$,
+$k_0$ small depending on $c_1$
+and $\ggen_0$ small.
+\end{proof}
+
+
+\begin{rk}
+By a small modification to the proof of Proposition~\ref{prop:K0bd},
+it can be shown that if $M_x \in \Ncal(x^\square)$ is a monomial of
+degree $r \le p_\Ncal -4$ (so that $M_xU_x^\pm$ has degree at most $p_\Ncal$), then
+\begin{equation}
+\label{e:K0bd-gen}
+\|M_x K^\pm_{0,x}\|_{\Gcal_0} = O(|\gamma_0| \h_0^{4+r}).
+\end{equation}
+\end{rk}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Unified bound on \texorpdfstring{$K_0$}{K0}}
+\label{sec:KWcal}
+
+The results of \cite{BS-rg-step,BBS-rg-flow} are formulated in a sequence of spaces $\Wcal_j$ that
+enable the combination of small-field and large-field estimates into a single norm estimate.
+In this section, we recast the result of Proposition~\ref{prop:K0bd} to see that $K_0^\pm$
+fits into this formulation.
+
+We restrict attention in this section to the $\Wcal_0$ norm,
+whose definition is recalled below.
+This requires several preliminaries.
+Let $\Pcal_0 = \Pcal_0(\Lambda)$ denote the collection of subsets of vertices in $\Lambda$.
+We refer to the elements of $\Pcal_0$ as \emph{polymers}.
+We call a nonempty polymer $X\in \Pcal_0$ \emph{connected}
+if for any $x, x' \in X$, there is a sequence
+$x = x_0, \ldots, x_n = x' \in X$ such that
+$|x_{i+1} - x_i|_\infty = 1$ for $i = 0, \ldots, n - 1$.
+Let $\Ccal_0$ denote the set of connected polymers.
+The \emph{small set neighbourhood} $X^\Box$ of $X\in\Pcal_0$ is defined by
+\begin{equation}
+    X^\Box =
+    \{y \in \Lambda : \exists x \in \Lambda \; \text{such that}\; |y-x|_\infty \le 2^d\}.
+\end{equation}
+We extend the definitions of the regulators $\Gcal_0 = G_0, \tilde G_0^{\sf t}$,
+defined in \refeq{regdef}, by setting
+\begin{equation} \label{e:Gcalprod}
+\Gcal_0(X, \phi) = \prod_{x\in X} \Gcal_0(x, \phi),
+\end{equation}
+and extend the definitions \refeq{reg0} to define norms, for $F \in \Ncal(X^\Box)$, by
+\begin{equation}
+\lbeq{reg0X}
+    \|F\|_{G_0} = \sup_{\phi\in\C^\Lambda} \frac{\|F\|_{T_\phi(\ell_0)}}{G_0(X,\phi)}
+    , \quad
+    \|F\|_{\tilde{G}^{\sf t}_0} = \sup_{\phi\in\C^\Lambda} \frac{\|F\|_{T_\phi(h_0)}}{\tilde{G}^{\sf t}_0(X,\phi)}
+    .
+\end{equation}
+It follows from the product property of the $T_\phi$ norm that these norms obey the product property
+\begin{equation}
+    \|F_1F_2\|_{\Gcal_0} \le   \|F_1\|_{\Gcal_0} \|F_2\|_{\Gcal_0}
+    \quad \text{for $F_i\in \Ncal(X_i^\Box)$ with $X_1 \cap X_2=\varnothing$.}
+\end{equation}
+
+Given a map $K: \Pcal_0 \to \Ncal$ with the property that $K(X) \in \Ncal(X^\Box)$
+for all $X \in \Pcal_0$,
+we define the $\Fcal_0(\Gcal)$ norms (for $\Gcal = G, \tilde G$) by
+\begin{align}
+\|K\|_{\Fcal_0(G)}        &= \sup_{X\in\Ccal_0} \ggen_0^{-f_0(a, X)} \|K(X)\|_{G_0} \\
+\|K\|_{\Fcal_0(\tilde G)} &= \sup_{X\in\Ccal_0}
+\ggen_0^{-f_0(a, X)} \|K(X)\|_{\tilde G_0^{\sf t}},
+\end{align}
+with
+\begin{equation}
+    \label{e:f0def}
+    f_0 (\amain, X)
+    =
+    \amain (|X|-2^d)_+
+    =
+    \begin{cases}
+    a (|X| - 2^d)
+    & \text{if } |X| > 2^d   \\
+    0
+    & \text{otherwise}.
+    \end{cases}
+\end{equation}
+Here $a$ is a small constant;  its value is discussed below \cite[\eqref{step-e:T0dom}]{BS-rg-step}.
+The $\Wcal_0$ norm is then defined by
+\begin{align}
+\label{e:9Kcalnorm}
+\|K\|_{\Wcal_0}
+  &=
+  \max
+  \Big\{
+  \|K \|_{\Fcal_0(G)},\,
+  \ggen_0^{9/4}
+  \|K \|_{\Fcal_0(\tilde{G})}
+  \Big\}.
+\end{align}
+Since this definition depends on $\ggen_0$ and the
+volume $\Lambda$, we sometimes write $\Wcal_0 = \Wcal_0(\ggen_0, \Lambda)$.
+The following proposition uses Proposition~\ref{prop:K0bd} to obtain a bound on the $\Wcal_0$ norm
+of the map $K_0^\pm : \Pcal_0 \to \Ncal$ defined by
+\begin{equation}
+    K_0^\pm(X) = \prod_{x \in X} K_{0,x}^\pm \qquad (X \in \Pcal_0)
+    .
+\end{equation}
+
+\begin{prop}
+\label{prop:KWcal}
+If $V_0^\pm \in \DV_0$ with $\ggen_0$ sufficiently small
+(depending on $L$), and if $|\gamma_0| \le O(\ggen_0^{1+a'})$
+for some $a' >a$,
+then $\|K_0^\pm\|_{\Wcal_0} \le O(|\gamma_0|)$,
+where all constants may depend on $L$.
+\end{prop}
+
+\begin{proof}
+Let $X$ be a connected polymer in $\Pcal_0$.
+By the product property and Proposition~\ref{prop:K0bd},
+\begin{align}
+\lbeq{K0prod}
+    \|K_0^\pm(X)\|_{\Gcal_0} \le (c|\gamma_0|\h_0^4)^{|X|}
+    &=
+    (c|\gamma_0|\h_0^4)^{|X|\wedge 2^d} (c|\gamma_0|\h_0^4)^{(|X|-2^d)_+}.
+\end{align}
+For $\Gcal_0=G_0$, we use $\h_0=\ell_0$,
+$(c|\gamma_0|\h_0^4)^{|X|\wedge 2^d}\le O(|\gamma_0|)$, and
+\begin{equation}
+    (c|\gamma_0|\h_0^4)^{(|X|-2^d)_+} \le (c' \ggen_0)^{(1+a')(|X|-2^d)_+} \le \ggen_0^{f_0(a,X)}.
+\end{equation}
+For $\Gcal_0=\tilde G_0$, we use $\h_0=h_0 = O(\ggen_0^{-1/4})$ and, since $a'>a$,
+\begin{equation}
+    (c|\gamma_0|\h_0^4)^{(|X|-2^d)_+} \le (c' \ggen_0)^{a'(|X|-2^d)_+} \le \ggen_0^{f_0(a,X)}.
+\end{equation}
+Since $|\gamma_0| \le \ggen_0$, it follows from \refeq{K0prod} that
+\begin{equation}
+    \ggen_0^{9/4}   \|K_0^\pm \|_{\Fcal_0(\tilde{G})}
+    \le
+    \ggen_0^{9/4}O(|\gamma_0| \ggen_0^{-1})
+    \le |\gamma_0|,
+\end{equation}
+and the proof is complete.
+\end{proof}
+
+The above discussion is based on norms in the setting of the torus $\Lambda$.
+As in \cite{BS-rg-step}, a version on the infinite lattice $\Zd$ is also required.
+This can be done in exactly the same manner,
+by defining
+the polymers $\Pcal_0 = \Pcal_0(\Zd)$
+to be the collection
+of subsets of $\Zd$, with $K_0^\pm(X)$ defined for subsets of $\Zd$ by
+$\prod_{x \in X} K_{0,x}^\pm$.
+The $\Wcal_0 = \Wcal_0(\ggen_0, \Zd)$ norm (in infinite volume)
+can be defined analogously to \eqref{e:9Kcalnorm}.
+The hypotheses and conclusion of Proposition~\ref{prop:KWcal} remain the same
+in the setting of $\Zd$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Smoothness of \texorpdfstring{$K_0$}{K0}}
+\label{sec:Ksmooth}
+
+Let $\Ccal_0(\Z^d) \subset \Pcal_0(\Z^d)$ be the set of connected polymers.
+By definition, a connected polymer is nonempty.
+Given $\ggen_0>0$, let
+$\Wcal^*_0(\ggen_0, \Zd)$ denote the space of maps
+$F :\Ccal_0(\Zd) \to \Ncal$,
+with $F(X) \in \Ncal(X^\Box)$ and $\|F\|_{\Wcal_0(\ggen_0, \Zd)} < \infty$.
+Addition in this space is defined by $(F_1+F_2)(X)=F_1(X)+F_2(X)$.
+We extend any $F :\Ccal_0(\Zd) \to \Ncal$ to $F :\Pcal_0(\Zd) \to \Ncal$
+by taking $F(X) = \prod_{Y} F(Y)$ where the product is over the connected components $Y$ of $X$.
+
+Given any map $F : D \to \Wcal^*_0(\ggen_0, \Zd)$ for $D \subset \R$ an open interval,
+write $F_X, F^\phi_X : D \to \Ncal(X^\square)$ for the
+maps defined by partial evaluation of $F$ at $X$ and at
+$(X, \phi)$, respectively. We say $F^\phi_X$ is $C^k$
+if all of its coefficients in the decomposition \eqref{e:FinNcal}
+are $C^k$ as functions $D \to \R$.
+
+\begin{lemma}
+\label{lem:smoothness}
+Let $D \subset \R$ be open and $F : D \to \Wcal^*_0(\ggen_0, \Zd)$ be a map.
+Suppose that $F^\phi_X$ is $C^2$ for all $X \in \Ccal_0$
+and $\phi \in \C^\Lambda$, and define 
+$F^{(i)} : D \to \Wcal^*_0(\ggen_0, \Zd)$ by $(F^{(i)}(t))^\phi_X = (F^\phi_X)^{(i)}(t)$ for $i = 1, 2$,
+where the right-hand side denotes the (component-wise) $i^{\rm th}$
+derivative of $F^\phi_X$.
+If $\|F^{(i)}(t)\|_{\Wcal_0} < \infty$ for $i = 1, 2$ and $t \in D$, then 
+$F^{(1)}$ is the derivative of $F$.
+\end{lemma}
+
+\begin{proof}
+For $t, t + s \in D$, define $R(t, s) \in \Wcal_0$ by
+\begin{equation}
+R^\phi_X(t, s) = F^\phi_X(t + s) - F^\phi_X(t) - s (F^\phi_X)'(t).
+\end{equation}
+By Taylor's theorem, for any $\phi$ and $X$,
+\begin{equation}
+R^\phi_X(t, s) = s^2 \int_0^1 (F^\phi_X)''(t + u s) (1 - u) \; du,
+\end{equation}
+where the integral is taken component-wise.
+It follows
+that
+\begin{equation}
+\|R(t, s)\|_{\Wcal_0}
+  \le |s|^2 \sup_{u\in[0,1]} \|F''(t+us)\|_{\Wcal_0}
+  \le O(|s|^2),
+\end{equation}
+so $F$ is differentiable 
+and its derivative satisfies $(F')^\phi_X = (F^\phi_X)'$.
+Continuity of $F'$ follows similarly, since, by the
+fundamental theorem of calculus,
+\begin{equation}
+\|F'(t+s) - F'(t)\|_{\Wcal_0}
+  \le
+|s| \sup_{u\in[t,t+s]} \|F''(u)\|_{\Wcal_0}
+  \le
+O(|s|),
+\end{equation}
+which suffices.
+\end{proof}
+
+Consider the map
+\begin{equation}
+(g_0, \gamma_0, \nu_0, z_0) \mapsto K_0 \in \Wcal^*_0(\ggen_0, \Zd)
+\end{equation}
+defined by
+\begin{equation}
+\label{e:K0def}
+K_0(g_0, \gamma_0, \nu_0, z_0) =
+\begin{cases}
+K^+_0(g_0, \gamma_0, \nu_0, z_0)
+  & (\gamma_0 \geq 0) \\
+K^-_0(g_0, \gamma_0, \nu_0, z_0)
+  & (\gamma_0 < 0),
+\end{cases}
+\end{equation}
+for $(g_0, \gamma_0, \nu_0, z_0)$ satisfying the hypotheses
+of Proposition~\ref{prop:KWcal}.
+The map $K_0$ is in fact analytic away from $\gamma_0 = 0$.
+However, we only prove the following, which is what we need later.
+
+\begin{prop}
+\label{prop:Ksmooth}
+Suppose that $V_0^\pm \in \DV_0$, with $\ggen_0$ sufficiently small
+(depending on $L$) and $|\gamma_0| \le O(\ggen_0^{1+a'})$
+for some $a' >a$.
+The map $K_0(g_0, \gamma_0, \nu_0, z_0)$ is jointly continuous
+in its four variables, is
+$C^1$ in $(g_0, \nu_0, z_0)$,
+and (when $\gamma_0 \ne 0$) is $C^1$ in $(g_0, \gamma_0, \nu_0, z_0)$,
+with partial derivatives with respect to $t = g_0$, $\nu_0$, and $z_0$ satisfying
+\begin{equation}
+\label{e:ddpK}
+\|\partial K_0 / \partial t\|_{\Wcal_0} = O(|\gamma_0| \h_0^8).
+\end{equation}
+Moreover, $K_0$
+is left- and right-differentiable in $\gamma_0$ at $\gamma_0 = 0$.
+\end{prop}
+
+\begin{proof}
+Let $t$ denote any one of the coupling constants $g_0, \gamma_0, \nu_0$ or $z_0$.
+We drop the subscript $0$, and let $K(t)$ denote $K_0$ viewed as a function of $t$,
+with the remaining coupling constants fixed. Then $K^\phi_X$ is smooth for any $\phi, X$.
+If $t$ is $g_0, \nu_0$ or $z_0$, then
+\begin{align}
+(K^\phi_x)'  &= -M_x(\phi) K^\phi_x, \quad
+(K^\phi_x)'' = M_x^2(\phi) K^\phi_x,
+\end{align}
+where $M_x$ is $\tau_x^2, \tau_x$ or $\tau_{\Delta,x}$, respectively.
+The maximal degree of $M_x$ is $4$, so
+\eqref{e:K0bd-gen} implies that
+\begin{equation}
+\label{e:Kprime-bd1}
+\|K'_x\|_{\Gcal_0} \le O(|\gamma_0| \h_0^{8}),
+  \quad
+\|K''_x\|_{\Gcal_0} \le O(|\gamma_0| \h_0^{12}).
+\end{equation}
+
+For $t$ denoting $\gamma_0$,
+we restrict attention to $\gamma_0 > 0$, and write $U = U^+$
+and $V_0 = V^+_0$ (the case $\gamma_0 < 0$ is similar). Then
+\begin{equation}
+\label{e:dKdgamma0}
+(K^\phi_x)'  = -U_x(\phi) e^{-V_x(\phi) - \gamma_0 U_x(\phi)}, \quad
+(K^\phi_x)'' = U_x^2(\phi) e^{-V_x(\phi) - \gamma_0 U_x(\phi)},
+\end{equation}
+and \eqref{e:Iupper} and \eqref{e:Itilbd} imply that
+\begin{equation}
+\label{e:Kprime-bd2}
+\|K'_x\|_{\Gcal_0} \le O(\h_0^4),
+  \quad
+\|K''_x\|_{\Gcal_0} \le O(\h_0^8).
+\end{equation}
+
+By definition, $K_X = \prod_{x \in X} K_x$, so, for derivatives with respect to any one
+of the four variables (with $\gamma_0 \neq 0$ when differentiating with respect to $\gamma_0$),
+\begin{equation}
+\label{e:KXprime}
+(K^\phi_X)'  = \sum_{x \in X} (K^\phi_x)' K^\phi_{X \setminus x}, \quad
+(K^\phi_X)'' = \sum_{x \in X} ((K^\phi_x)'' K^\phi_{X \setminus x} + (K^\phi_x)' (K^\phi_{X \setminus x})').
+\end{equation}
+Thus, by the product property, \eqref{e:Kprime-bd1}, and Proposition~\ref{prop:K0bd},
+\begin{equation}
+\|K'_X\|_{\Gcal_0}
+  \le
+O(|X|) |\gamma_0| \h_0^8 (|\gamma_0| \h_0^4)^{|X|-1}.
+\end{equation}
+when differentiating with respect to $g_0$, $\nu_0$, or $z_0$.
+The bound \eqref{e:ddpK} then follows from the hypothesis on $\gamma_0$.
+Similarly, using \eqref{e:Kprime-bd2},
+\begin{equation}
+\|K'_X\|_{\Gcal_0}
+  \le
+O(|X|) \h_0^4 (|\gamma_0| \h_0^4)^{|X|-1}
+\end{equation}
+when differentiating with respect to $\gamma_0$ away from $\gamma_0 = 0$.
+In both cases, we have
+\begin{equation}
+\|K''_X\|_{\Gcal_0}
+  \le
+O(|X|^2) \h_0^8 (|\gamma_0| \h_0^4)^{(|X|-2) \wedge 0}.
+\end{equation}
+Thus, by Lemma~\ref{lem:smoothness}, $K$ is $C^1$ in any of its variables.
+Therefore, $K$ is $C^1$ in $(g_0, \nu_0, z_0)$ on the whole domain and in all the variables when $\gamma_0 \ne 0$.
+
+To show right-continuity in $\gamma_0$ at $\gamma_0 = 0$,
+fix $(g_0, \nu_0, z_0)$ and define $F \in \Wcal^*_0$ by
+\begin{equation}
+F(X) =
+\begin{cases}
+  -U_x e^{-V_{0,x}}
+    & X = \{ x \} \\
+  0 & |X| > 1,
+\end{cases}
+\end{equation}
+where $U_x, V_{0,x}$ are defined above.
+Let $K'(\gamma_0)$ denote the $\gamma_0$ derivative of $K$ evaluated at $\gamma_0 > 0$.  Then
+\eqref{e:dKdgamma0} and \eqref{e:KXprime} imply that
+\begin{equation}
+F(X) - K'_X(\gamma_0)
+  =
+\begin{cases}
+  U_x K_x(\gamma_0)
+    & X = \{ x \} \\
+  \sum_{x \in X} K'_x(\gamma_0) K_{X \setminus x}(\gamma_0)
+    & |X| > 1.
+\end{cases}
+\end{equation}
+Thus, by \eqref{e:K0bd-gen}, \eqref{e:Kprime-bd2}, and Proposition~\ref{prop:K0bd},
+\begin{equation}
+\|F(X) - K'_X(\gamma_0)\|_{\Gcal_0}
+  \le
+\begin{cases}
+  O(\gamma_0 \h_0^8)
+    & X = \{ x \} \\
+  O(|X|) \h_0^4 (\gamma_0 \h_0^4)^{|X|-1}
+    & |X| > 1.
+\end{cases}
+\end{equation}
+It follows that
+\begin{equation}
+\lim_{\gamma_0\downarrow 0} \|F - K'(\gamma_0)\|_{\Wcal_0} = 0,
+\end{equation}
+i.e., $F$ is the right-derivative of $K$ in $\gamma_0$ at $\gamma_0 = 0$.
+Left-continuity is handled similarly.
+\end{proof}
+
+\section{Renormalisation group flow}
+\label{sec:flow}
+
+The following theorem is an extension of \cite[Proposition~\ref{log-prop:flow-flow}]{BBS-saw4-log}
+to non-trivial $K_0$. Such an extension is possible,
+with only minor modifications to the proof of the $K_0 = \1_\varnothing$ case,
+due to the generality allowed by the main result of \cite{BBS-rg-flow}.
+
+The theorem provides, for any $N \ge 1$ and for initial error coordinate $K_0$
+in a specified domain, a choice of initial condition $(\nu_0^c,z_0^c)$
+for which there exists
+a finite-volume renormalisation group flow $(V_j, K_j) \in \domRG_j$ for $0 \le j \le N$.
+In order to ensure a degree of consistency amongst the sequences $(V_j, K_j)$, which depend on
+the volume $\Lambda_N$, a notion of consistency must be imposed upon the collection of initial
+error coordinates $K_{0,\Lambda} \in \Kcal_0(\Lambda)$ for varying $\Lambda$.
+Specifically, the family $K_{0,\Lambda}$ is required to satisfy the property $(\Zd)$ of
+\cite[Definition~\ref{step-defn:KZd}]{BS-rg-step}.
+We refer to any such family as a $\Lambda$-family.
+As discussed in \cite[Definition~\ref{step-defn:KZd}]{BS-rg-step},
+any $\Lambda$-family
+induces an infinite-volume error coordinate $K_{0,\Zd} \in \Kcal_0(\Zd)$ in a natural way.
+
+\begin{theorem}
+\label{thm:flow-flow}
+Let $d = 4$.
+There exists a constant $a_* > 0$ and continuous functions $\nu_0^c, z_0^c$
+of $(m^2, g_0, K_0)$, defined for $(m^2, g_0) \in [0, \delta]^2$
+(for some $\delta > 0$ sufficiently small) and for any $K_0 \in \Wcal_0(m^2, g_0, \Zd)$
+with $\|K_0\|_{\Wcal_0(m^2, g_0, \Zd)} \leq a_* g_0^3$, such that
+the following holds for $g_0 > 0$:
+if $K_{0,\Lambda} \in \Kcal_0(\Lambda)$ is a $\Lambda$-family
+that induces the infinite-volume coordinate $K_0$, and if
+\begin{equation}
+\label{e:flow-flow-ic}
+V_0 = V_0^c(m^2, g_0, K_0) = (g_0, \nu_0^c(m^2,g_0,K_0), z_0^c(m^2,g_0,K_0)),
+\end{equation}
+then for any $N \in \N$ and $m^2 \in [\delta L^{-2 (N - 1)}, \delta]$,
+there exists a sequence $(V_j, K_j) \in \domRG_j(m^2, g_0, \Lambda)$
+such that
+\begin{equation}
+  \label{e:VjKjDj}
+  (V_{j+1},K_{j+1}) = (V_{j+1}(V_j, K_j), K_{j+1}(V_j, K_j)) \text{ for all } j < N
+\end{equation}
+and \eqref{e:ZjIjKj} is satisfied.
+Moreover, $\nu_0^c,z_0^c$ are continuously differentiable in
+$g_0 \in (0, \delta)$ and $K_0 \in B_{\Wcal_0(m^2, g_0, \Lambda)}(a_* g_0^3)$, and
+\begin{align}
+&\nu_0^c(m^2,0,0) = z_0^c(m^2,0,0) = 0,
+\quad
+\ddp{\nu_0^c}{g_0} = O(1),
+\quad
+\label{e:z0est}
+\ddp{z_0^c}{g_0} = O(1),
+\end{align}
+where the estimates above hold uniformly in $m^2 \in [0, \delta]$.
+\end{theorem}
+
+\begin{proof}
+The proof results from small modifications to the proofs of
+\cite[Proposition~\ref{log-prop:flow-flow}]{BBS-saw4-log} and then to
+\cite[Proposition~\ref{log-prop:KjNbd}]{BBS-saw4-log},
+where (in both cases) we relax the requirement that $K_0 = \1_\varnothing$,
+which was chosen in \cite{BBS-saw4-log} due to the fact that
+$K_0 = \1_\varnothing$ when $\gamma=0$.
+The more general condition that $K_0 \in B_{\Wcal_0(m^2, g_0, \Lambda)}(a_* g_0^3)$
+comes from the hypothesis of \cite[Theorem~\ref{flow-thm:flow}]{BBS-rg-flow}
+when $(m^2, g_0) = (\mgen^2, \ggen_0)$.
+By \cite[Remark~\ref{flow-rk:Nrad}]{BBS-rg-flow}, no major changes to the proof
+result from this choice of $K_0$.
+The following paragraph outlines
+in more detail the modifications to the proof of
+\cite[Proposition~\ref{log-prop:flow-flow}]{BBS-saw4-log}.
+
+By \cite[Theorem~\ref{flow-thm:flow}]{BBS-rg-flow} and
+\cite[Corollary~\ref{flow-cor:masscont}]{BBS-rg-flow},
+for any $(\mgen^2, \ggen_0) \in (0, \delta)^2$ and
+$\tilde K_0 \in B_{\Wcal_0(\mgen^2, \ggen_0, \Zd)}(a_* \ggen_0^3)$,
+there is a neighbourhood
+${\sf N}(\ggen_0, \tilde K_0)$ of $(\ggen_0, \tilde K_0)$
+such that for all
+$(m^2, g_0, K_0) \in \Igen(\mgen^2) \times {\sf N}(\ggen_0, \tilde K_0)$,
+there is an infinite-volume renormalisation group flow
+\begin{equation}
+(\Vch_j, K_j) = \xch^d_j(\mgen^2, \ggen_0, \tilde K_0; m^2, g_0, K_0)
+\end{equation}
+in \emph{transformed variables} $(\Vch_j, K_j)$.
+The transformed variables are defined in
+\cite[Section~\ref{log-sec:trans}]{BBS-saw4-log} and a flow
+in the original variables can be recovered from the transformed flow.
+The global solution is defined by
+$\xch^c_j(m^2, g_0, K_0) = \xch^d_j(m^2, g_0, K_0; m^2, g_0, K_0)$
+(or $\xch^c \equiv 0$ if $g_0 = 0$).
+By \cite[Remark~\ref{flow-rk:Nrad}]{BBS-rg-flow},
+the proof of regularity of $\xch^c$ can proceed as in \cite{BBS-saw4-log}.
+The functions $(\nu_0^c, z_0^c)$ are given by the $(\nu_0, z_0)$ components
+of $\xch^c_0 = (\Vch_0, K_0) = (V_0, K_0)$.
+\end{proof}
+
+
+\begin{rk}
+The proof of \cite[Proposition~\ref{log-prop:flow-flow}]{BBS-saw4-log},
+hence of Theorem~\ref{thm:flow-flow},
+makes important use of the parameter $\ggen_0$ in order to prove regularity
+of the renormalisation group flow in $g_0$. However, once the flow has been
+constructed, we can and do set $\ggen_0 = g_0$.
+\end{rk}
+
+We wish to obtain a version of \eqref{e:chi-m}--\eqref{e:chiprime-m}
+with the initial conditions of Section~\ref{sec:IK}, i.e.\ with
+$(\hat g_0, K_0) = (g_0, K^+_0)$.
+It is straightforward to verify that $K^\pm_0 \in \Kcal_0$.
+For instance, the fact that $K^\pm_0$ is supersymmetric
+(which is required of all elements of $\Kcal_0$) follows
+from the fact that $K^\pm_{0,x}$ is a function of $\tau_x$
+(see \cite[Section~\ref{pt-sec:bulksym}]{BBS-rg-pt} for more on this topic).
+It also follows from the definition that
+the finite-volume coordinates $K^\pm_{0,\Lambda}$ form a $\Lambda$-family.
+
+Moreover,
+by Proposition~\ref{prop:KWcal}, if
+$|\gamma_0|$ is sufficiently small (depending on $g_0$; we now take $\ggen_0=g_0$)
+then $K_0 = K^\pm_0$ satisfies the bound required by Theorem~\ref{thm:flow-flow}.
+However, we cannot apply the theorem immediately with this choice
+of $K_0$,
+due to the fact that $K^\pm_0$
+depends on $(g_0, \nu_0, z_0)$.
+We resolve this issue in the next section.
+
+\section{Critical parameters}
+\label{sec:nu0z0c}
+
+% For convenience, let
+% \begin{equation}
+% \lbeq{g0hatdef}
+% \hat g_0 = \hat g_0(g_0, \gamma_0) = g_0 + 4 d \gamma_0 \1_{\gamma_0 < 0}.
+% \end{equation}
+% Thus, $\hat g_0$ is the coefficient of $\tau_x^2$ in $V^+_{0,x}$
+% when $\gamma_0 \ge 0$, and in $V^-_{0,x}$ when $\gamma_0 < 0$.
+Recall the function $K_0(g_0, \gamma_0, \nu_0, z_0)$
+defined in \eqref{e:K0def}.
+We wish to initialise the renormalisation group with $(\nu_0, z_0)$ a solution
+to the system of equations
+\begin{align}
+&\nu_0 = \nu_0^c(m^2, \hat g_0(g_0, \gamma_0), K_0(g_0, \gamma_0, \nu_0, z_0)), \label{e:mu0c}
+\\
+&z_0 = z_0^c(m^2, \hat g_0(g_0, \gamma_0), K_0(g_0, \gamma_0, \nu_0, z_0)) \label{e:z0c}
+.
+\end{align}
+Such a choice of $(\nu_0, z_0)$ will be critical for $K_0$,
+where $K_0$ is itself evaluated at this same choice of $(\nu_0, z_0)$.
+
+When $\gamma_0 = 0$, we get $K_0 = \1_\varnothing$, so $K_0$ no longer depends on $(\nu_0, z_0)$
+and this system is solved by $(\nu_0^c(m^2, g_0, 0), z_0^c(m^2, g_0, 0))$
+for any (small) $m^2, g_0 \geq 0$.
+Local solutions for $\gamma_0 \neq 0$ can then be
+constructed using a version of the implicit function theorem from \cite{LS14}
+that allows for the continuous but non-smooth behaviour of $K_0$ in $\gamma_0$.
+In order to obtain global solutions with certain desired regularity properties
+(needed in the next section), we make use of Proposition~\ref{prop:IFT},
+which is based on a version of the implicit function theorem from \cite{LS14}.
+
+Recall that $D(\delta, r)$ was defined in \eqref{e:Ddef}.
+
+\begin{prop}
+\label{prop:nuzhat}
+There exists a continuous positive-definite function $\hat r : [0, \delta] \to [0, \infty)$
+and continuous functions
+$\hat\nu_0^c, \hat z_0^c \in C^{0,1,\pm}(D(\delta, \hat r))$ such that
+the system \eqref{e:mu0c}--\eqref{e:z0c} is solved by $(\nu_0, z_0) = (\hat\nu_0^c, \hat z_0^c)$
+whenever $(m^2, g_0, \gamma_0) \in D(\delta, \hat r)$.
+Moreover, these functions satisfy the bounds
+\begin{equation}
+\label{e:hat-est-re}
+\hat\nu_0^c = O(g_0),
+\quad
+\hat z_0^c = O(g_0)
+\end{equation}
+uniformly in $(m^2, \gamma_0)$.
+\end{prop}
+
+\begin{proof}
+Recall the definition of $\ghat_0$ in \refeq{g0hatdef}, and
+let
+\begin{equation}
+F(m^2, g_0, \gamma_0, \nu_0, z_0)
+= (\nu_0, z_0)
+  -
+  (\nu_0^c(m^2, \hat g_0, K_0),
+  z_0^c(m^2, \hat g_0, K_0)
+),
+\end{equation}
+where $K_0 = K_0(g_0, \gamma_0, \nu_0, z_0)$.
+Then for $\delta > 0$ small and an appropriate constant $c > 0$ (depending on $a_*$),
+$F$ is well-defined on
+\begin{equation}
+\{ (m^2, g_0, \gamma_0, \nu_0, z_0) : (m^2, \hat g_0, \gamma_0) \in D(\delta, c g_0^3),
+|\nu_0|, |z_0| \leq C_\DV g_0 \}.
+\end{equation}
+Indeed, for $(m^2, g_0, \gamma_0, \nu_0, z_0)$ in this domain,
+Proposition~\ref{prop:KWcal} (with $\ggen_0 = g_0$) implies that $(m^2, \hat g_0, K_0)$ is in the domain of
+$(\nu_0^c, z_0^c)$.
+By Theorem~\ref{thm:flow-flow} and Proposition~\ref{prop:Ksmooth},
+$F$ is $C^1$ in $(g_0, \nu_0, z_0)$
+and also in $\gamma_0$ away from $\gamma_0 = 0$,
+continuous in $m^2$, and has one-sided derivatives in $\gamma_0$ at $\gamma_0 = 0$.
+
+For fixed $(\bar m^2, {\bar g_0}) \in [0, \delta]^2$,
+set $({\bar\nu_0}, \bar z_0) = (\nu_0^c(\bar m^2, \bar g_0, 0), z_0^c(\bar m^2, \bar g_0, 0))$
+so that
+\begin{equation}
+F(\bar m^2, \bar g_0, 0, \bar\nu_0, \bar z_0) = (0, 0).
+\end{equation}
+By \eqref{e:ddpK}, at $(\bar g_0, 0, \bar\nu_0, \bar z_0)$,
+\begin{equation}
+\frac{\partial K_{0,x}}{\partial\nu_0}
+= \frac{\partial K_{0,x}}{\partial z_0} = 0.
+\end{equation}
+It follows that $D_{\nu_0,z_0} F(\bar m^2, \bar g_0, 0, \bar\nu_0, \bar z_0)$
+is the identity map on $\R^2$.
+The existence of $\delta, \hat r$ and $\hat\nu_0^c, \hat z_0^c$
+follows from Proposition~\ref{prop:IFT} with
+$w = m^2, x = g_0, y = \gamma_0, z = (\nu_0, z_0)$,
+and with $r_1(g_0) = c g_0^3$, $r_2(g_0) = C_\DV g_0$.
+
+By the fundamental theorem of calculus, for any $0 < a < \gamma_0$,
+\begin{equation}
+\hat\nu_0^c(m^2, g_0, \gamma_0)
+  =
+\hat\nu_0^c(m^2, g_0, a)
+  +
+\int_a^{\gamma_0} \ddp{\hat\nu_0^c}{\gamma_0} (m^2, g_0, t) \; dt.
+\end{equation}
+Taking the limit $a\downarrow 0$ and using \eqref{e:z0est}, we obtain
+\begin{equation}
+|\hat\nu_0^c(m^2, g_0, \gamma_0)|
+  \leq
+O(g_0)
+  +
+\gamma_0
+\sup_{t \in (0, \gamma_0]}
+\left|\ddp{\hat\nu_0^c}{\gamma_0}(m^2, g_0, t)\right|.
+\end{equation}
+The supremum above is bounded by a constant and so
+the first estimate of \eqref{e:hat-est-re} for $\gamma_0 \geq 0$
+follows from the fact that $|\gamma_0| \leq \hat r(g_0)$
+(since $\hat r(g_0)$ can be taken as small as desired).
+The case $\gamma_0 < 0$ and the second estimate follow similarly.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:rhatflow}]
+By Proposition~\ref{prop:KWcal},
+and by taking $\hat r$ smaller if necessary,
+$K_0 = K^\pm_0$ satisfies the estimate required by Theorem~\ref{thm:flow-flow}
+whenever $(m^2, g_0, \gamma_0) \in D(\delta, \hat r)$. The
+existence of the sequence \eqref{e:VjKjDj-hat} then follows from
+Theorem~\ref{thm:flow-flow} and Proposition~\ref{prop:nuzhat}.
+Although the presence of $\gamma_0$ causes a shift in initial
+conditions, the second-order evolution of $V_j$ is still given by the map
+$V_\pt$ (see \eqref{e:Vflow}),
+which is independent of $\gamma_0$.
+\end{proof}
+
+\begin{rk}
+We have invoked \eqref{e:ddpK} above in order to satisfy the condition
+\begin{equation}
+\|\partial K_0/\partial\nu_0\|_{\Wcal_0} \le O(g_0^3)
+\end{equation}
+required in the proof of \cite[Lemma~\ref{log-lem:gzmuprime}]{BBS-saw4-log}
+(see \cite[\eqref{log-e:induct1}]{BBS-saw4-log}). This condition holds trivially
+when $K_0$ does not depend on $\nu_0$, as in \eqref{e:chi-m}--\eqref{e:chiprime-m}.
+\end{rk}
