@@ -89,19 +89,36 @@
 % \input{frontmatter}
 % \input{todo}				% temporary
 
+
 %%%% Main matter %%%%
 \mainmatter
-% \input{intro}
+
+%% Chapter 1 %%
+\input{intro}
+\input{main}				% main results
+\input{rep}					% integral representations/finite-volume approximation
+
+%% Chapter 2 %%
 \input{rg}					% setup and statement of main flow result
+
+%% Chapter 3 %%
 \input{proofs}				% proof of main result
+
+%% Chapter 4 %%
 % \input{step}				% improved bounds on rg-step from clp
+
+%% Chapter 5 %%
 % \input{flow}				% critical parameters from saw-sa
+
+%% Chapter 6 %%
 % \input{conclusion}
+
 
 %%%% Bibliography %%%%
 % Note: the bibliography must come before the appendices
 \bibliographystyle{plain}
 \bibliography{thesis}
+
 
 %%%% Appendices %%%%
 
@@ -112,7 +129,8 @@
 %% here.  This is ensured by making the \texttt{appendicestoc} option
 %% a default option to the UBC thesis class.
 
-%%% If you only have one appendix, please uncomment the following line.
+
+%%%% If you only have one appendix, please uncomment the following line.
 % \renewcommand{\appendicesname}{Appendix}
 
 % \appendix 					% Start appendices
