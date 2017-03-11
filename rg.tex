@@ -372,14 +372,6 @@ with $W_j$ an explicit quadratic term in $V$ (defined in \cite[\eqref{pt-e:WLTF}
 The evolution of $(\zeta, V)$ to second order is called the \emph{perturbative flow} and is
 given by the explicit map $\Vpt : \Vcal \to \Vcal$ defined in
 \cite[\eqref{pt-e:Vptdef}]{BBS-rg-pt}.
-In particular, it is shown in \cite[Proposition~\ref{phi4-prop:pt}]{ST-phi4}
-that the perturbative flow of $q$ is given by
-\begin{align}
-\label{e:qpt}
-q_\pt = q + \lambda_0 \lambda_x C_{j+1;0x},
-\end{align}
-and that the perturbative flow of $\lambda_0$ and $\lambda_x$ becomes the identity map
-once $j$ exceeds the coalescence scale $j_x$.
 
 At scale $j = 0$, we are given $V^+_0$ as defined in \eqref{e:V0def}
 and we set $\zeta_0 = 0$. In particular,
@@ -443,10 +435,15 @@ An innovation from \cite{BSTW-clp} is that we define these parameters by
 =
 \ell_{j \wedge j_{x}}^{-1} 2^{(j - j_{x})_+} \ggen_j,
 \end{align}
-\todo{where the mass scale $j_m$ is defined in \eqref{e:jmdef},
-the coalescence scale
-$j_x$ is defined in \eqref{e:Phi-def-jc},
-and $s$ is the parameter appearing in Proposition~\ref{prop:R}.}
+where the \emph{mass scale} $j_m$ and \emph{coalescence scale} $j_x$
+are defined by
+\begin{align}
+\label{e:jmdef}
+j_m		&= \lfloor\log_{L} m^{-1}\rfloor
+	\\
+\label{e:jxdef}
+j_x 	&= \max\{0,\lfloor \log_{L} (2 |x|)\rfloor\}.
+\end{align}
 The sequence $\ggen_j = \ggen_j(m^2,g_0)$ is defined in
 \cite[\eqref{log-e:ggendef}]{BBS-saw4-log};
 it is bounded above and below by constant multiples of
@@ -615,3 +612,45 @@ Tthese functions satisfy the bounds
 uniformly in $(m^2, \gamma_0)$.
 Moreover, the second-order evolution equation for $V_j$ is independent of $\gamma_0$.
 \end{theorem}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{The flow of \texorpdfstring{$g$}{g} and \texorpdfstring{$q$}{q}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{The flow of \texorpdfstring{$g$}{g}}
+
+We have
+\begin{equation} \label{e:gbar}
+  \gbar_{j+1}
+  =
+  \gbar_j
+  -
+  \beta_j  \gbar_j^{2}, \qquad \gbar_0 = g_0,
+\end{equation}
+It follows from \cite[Proposition~\ref{log-prop:approximate-flow}]{BBS-saw4-log} that
+\begin{equation}
+\label{e:gjxgjmbd}
+\gbar_{j}
+	=
+O((\log m^{-1})^{-1}) \;\; \text{for $j \geq j_m$},
+	\quad
+\gbar_{j_x}
+	=
+O((\log |x|)^{-1}) \;\; \text{for $j_x \leq j_m$.}
+\end{equation}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{The flow of \texorpdfstring{$q$}{q}}
+
+It is shown in \cite[Proposition~\ref{phi4-prop:pt}]{ST-phi4}
+that the perturbative flow of $q$ is given by
+\begin{align}
+\label{e:qpt}
+q_\pt = q + \lambda_0 \lambda_x C_{j+1;0x},
+\end{align}
+and that the perturbative flow of $\lambda_0$ and $\lambda_x$ becomes the identity map
+once $j$ exceeds the coalescence scale $j_x$.

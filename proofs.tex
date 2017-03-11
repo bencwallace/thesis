@@ -359,32 +359,6 @@ whose solution yields Theorem~\ref{thm:mr}(ii).
 
 \section{The two-point function}
 
-We divide $\Z^4$ into shells $S_1 = \{x : |x| < \frac 12 L\}$ and, for $j \ge 2$,
-$S_j = \{x : \frac 12 L^{j-1} \le |x| < \frac 12 L^{j}\}$.
-The number of points in $S_j$ is bounded by $O(L^{4j})$.
-We refer to the integer $j$ as a \emph{scale}.
-Given $x\in \Z^4$, we define the \emph{coalescence scale}
-to be the unique scale $j_x$ such that
-\begin{equation}
-   \label{e:Phi-def-jc}
-    x \in S_{j_x +1}
-   .
-\end{equation}
-Equivalently, $j_{x} = \max\{0,\lfloor \log_{L} (2 |x|)\rfloor\}$; this introduces a minor
-notational clash with the mass scale $j_m$ defined in \refeq{jmdef}
-that should not cause problems.
-It follows from \cite[Proposition~\ref{log-prop:approximate-flow}]{BBS-saw4-log} that
-\begin{equation}
-\label{e:gjxgjmbd}
-\gbar_{j}
-	=
-O((\log m^{-1})^{-1}) \;\; \text{for $j \geq j_m$},
-	\quad
-\gbar_{j_x}
-	=
-O((\log |x|)^{-1}) \;\; \text{for $j_x \leq j_m$.}
-\end{equation}
-
 The analysis of the two-point function and finite-order correlation length is
 based on the following result.
 
@@ -533,25 +507,26 @@ In particular, $\xi_p(0,\varepsilon) = {\sf c}_p \varepsilon^{-1/2}
 (1+O(\varepsilon^{1/2}))$ as $\varepsilon \downarrow 0$.
 \end{prop}
 
-Before proving Proposition~\ref{prop:R}, we
-prove Theorem~\ref{thm:mr} assuming Proposition~\ref{prop:R}.
-In the proof, we use the important relation
-that
+% Before proving Proposition~\ref{prop:R}, we
+% prove Theorem~\ref{thm:mr} assuming Proposition~\ref{prop:R}.
+In the following proof, we use the important relation that
 \begin{equation}
 \label{e:mass-epsilon-asympt}
- m^2
- \sim \tilde A_{g,n}^{-1} \varepsilon (\log \varepsilon^{-1})^{-\frac{n + 2}{n + 8}}
-\quad \text{as $\varepsilon \downarrow 0$},
+m^2
+	\sim
+\tilde A_{g,n}^{-1} \varepsilon (\log \varepsilon^{-1})^{-\frac{n + 2}{n + 8}}
+	\quad
+\text{as $\varepsilon \downarrow 0$},
 \end{equation}
 which is proved in \cite[\eqref{phi4-log-e:masymp}]{BBS-phi4-log} for $n\geq 1$
 and \cite[\eqref{log-e:m-mu}]{BBS-saw4-log} for $n=0$.
-In particular, the dependence of $m^2$ on $\varepsilon$
-encompasses the logarithmic correction for the susceptibility since
-\begin{equation}\label{e:susceptibility-mass-identity}
-\chi(g,\nu; n) = \frac{1 + z_0}{m^2},
-\end{equation}
-according to \cite[\eqref{phi4-log-e:chim2}]{BBS-phi4-log} for $n\geq 1$
-and \cite[\eqref{log-e:chi-mtil0}]{BBS-saw4-log} for $n=0$.
+% In particular, the dependence of $m^2$ on $\varepsilon$
+% encompasses the logarithmic correction for the susceptibility since
+% \begin{equation}\label{e:susceptibility-mass-identity}
+% \chi(g,\nu; n) = \frac{1 + z_0}{m^2},
+% \end{equation}
+% according to \cite[\eqref{phi4-log-e:chim2}]{BBS-phi4-log} for $n\geq 1$
+% and \cite[\eqref{log-e:chi-mtil0}]{BBS-saw4-log} for $n=0$.
 
 \begin{proof}[Proof of Theorem~\ref{thm:mr}]
 We multiply \eqref{e:Gab-to-sum-Rqj} by $|x|^p$, sum over $x \in \Z^4$,
@@ -609,6 +584,15 @@ to see that
 =
 O(\gbar_{j_x})
 L^{-2j_x - 2s (j_x - j_m)_+}.
+\end{equation}
+We divide $\Z^4$ into shells $S_1 = \{x : |x| < \frac 12 L\}$ and, for $j \ge 2$,
+$S_j = \{x : \frac 12 L^{j-1} \le |x| < \frac 12 L^{j}\}$.
+The number of points in $S_j$ is bounded by $O(L^{4j})$.
+Note that $j_x$ is the unique scale so that
+\begin{equation}
+   \label{e:Phi-def-jc}
+    x \in S_{j_x +1}
+   .
 \end{equation}
 By \eqref{e:rab-bound-scales-bis} and \refeq{Phi-def-jc},
 \begin{equation} \label{e:xpr-shells}
