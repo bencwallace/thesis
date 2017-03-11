@@ -526,6 +526,7 @@ and as $[-\frac12 (L^N-1), \frac12 (L^N-1)]^d \cap \Z^d$ if $L^N$ is odd).
 
 The susceptibility and correlation length of order $p$ are defined by
 \begin{equation}
+\label{e:susceptibility-def}
 \chi(\gcc, \gamma, \nu; n)
 	=
 \lim_{N\to\infty} \sum_{x\in\Lambda_N} G_{x,N}(\gcc, \gamma, \nu; n)
@@ -988,15 +989,33 @@ U_{\gcc,\gamma}(f)
 for $f : \vertices \to \R$.
 The \emph{weakly self-avoiding walk with self-attraction} (WSAW-SA) is defined via the Hamiltonian
 \begin{equation}
-U_{\gcc,\gamma,T} = U_{\gcc,\gamma} \circ L_T.
+\label{e:V}
+U_{\gcc,\gamma,T}
+	= U_{\gcc,\gamma} \circ L_T
+	= \gcc I_T - \frac{\gamma}{2 d} C_T.
 \end{equation}
-We denote the canonical partition function by
+Thus,
 \begin{equation}
-c_T = c_T(\gcc, \gamma) = E_0 \left( e^{-\gcc I(T) + \gamma C(T)} \right),
+\label{e:c}
+    c_T = E_a\left(e^{-U_{\gcc,\gamma,T}}\right),
+    \quad
+    c_T(x) = E_0\left(e^{-U_{\gcc,\gamma,T}}\1_{X_T = x}\right)
 \end{equation}
-where $0 \in \vertices$ is fixed, and the susceptibility by
+and the two-point function and susceptibility are given by
+\begin{align}
+\lbeq{Gsa}
+G_x(\gcc,\gamma,\nu)
+    &=
+\int_0^\infty c_T(x) e^{-\nu T} \; dT
+\end{align}
+and
 \begin{equation}
-\chi(\gcc, \gamma, \nu) = \int_0^\infty c_T e^{-\nu T} \; dT.
+\label{e:suscept-def}
+\chi(\gcc, \gamma, \nu)
+	=
+\int_0^\infty c_T e^{-\nu T} \; dT
+	=
+\sum_{x\in\Zd} G_x(\gcc,\gamma,\nu)
 \end{equation}
 
 In the case $\gamma = 0$, the discrete-time version of this model is known as
@@ -1303,7 +1322,7 @@ V_{\gcc,\gamma,\nu,N}
 Let $d > 0$ and $\gcc > 0$. For $\gamma < \gcc$ and $\nu \in \R$,
 \begin{align}
 \label{e:Grep-pos-bis}
-G_{N,\gcc,\gamma,\nu}(a, b)
+G_{x,N}(\gcc, \gamma, \nu)
 	&=
 \int e^{-U_{\gcc,\gamma,\nu,N}} \bar\phi_a \phi_b.
 \end{align}
@@ -1331,37 +1350,38 @@ We denote the expectation of $X^{L^N}$ started from $a \in \Lambda_N$ by $E^{\La
 and define
 \begin{align}
 \label{e:cN}
-c_{N,T}(a, b)
-    &= E^{\Lambda_N}_a \left( e^{-U_{\beta,\gamma,T}} \1_{X(T)=b} \right)
-    \quad (a, b \in \Lambda_N), \\
+c_{N,T}(x)
+    &= E^{\Lambda_N}_a \left( e^{-U_{\gcc,\gamma,T}} \1_{X(T)=b} \right)
+    \quad (x \in \Lambda_N), \\
 c_{N,T}
-    &= E^{\Lambda_N}_0 \left( e^{-U_{\beta,\gamma,T}} \right).
+    &= E^{\Lambda_N}_0 \left( e^{-U_{\gcc,\gamma,T}} \right).
 \end{align}
 The finite-volume two-point function and susceptibility
 are defined by
 \begin{align}
-G_{N,\beta,\gamma,\nu}(a,b)
-    &= \int_0^\infty c_{N,T}(a, b) e^{-\nu T} \; dT, \\
-\chi_N(\beta, \gamma, \nu)
-    &= \int_0^\infty c_{N,T} e^{-\nu T} \; dT
-    .
-    \label{e:chiNdef}
+G_{x,N}(\gcc,\gamma,\nu)
+    &=
+\int_0^\infty c_{N,T}(x) e^{-\nu T} \; dT, \\
+\label{e:chiNdef}
+\chi_N(\gcc, \gamma, \nu)
+    &=
+\int_0^\infty c_{N,T} e^{-\nu T} \; dT.
 \end{align}
 
 \begin{prop}
 \label{prop:finvol}
-Let $d >0$, $\beta >0$ and $\gamma < \beta$. For all $\nu \in \R$,
+Let $d >0$, $\gcc >0$ and $\gamma < \gcc$. For all $\nu \in \R$,
 \begin{equation}
 \label{e:Givlc}
 \lim_{N \to \infty}
-G_{N,\beta,\gamma,\nu}(a,b)
+G_{x,N}(\gcc,\gamma,\nu)
 =
-G_{\beta,\gamma,\nu}(a,b)
+G_x(\gcc,\gamma,\nu)
 \end{equation}
 and
 \begin{equation}
 \label{e:chilim}
-\lim_{N\to\infty}\chi_N(\beta,\gamma,\nu)=   \chi(\beta,\gamma,\nu).
+\lim_{N\to\infty}\chi_N(\gcc,\gamma,\nu) =   \chi(\gcc,\gamma,\nu).
 \end{equation}
 \end{prop}
 
