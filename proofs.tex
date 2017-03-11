@@ -8,6 +8,7 @@
 Note that at the final scale $j = N$, the representation \eqref{e:IcircKnew}
 becomes
 \begin{equation}
+\label{e:ZNINKN}
 Z_N = e^{\zeta_N} (I_N(\Lambda) + K_N(\Lambda)).
 \end{equation}
 Thus, \eqref{e:chibarm} and the definitions of $I_N$ and $V_N$ imply that
@@ -234,7 +235,7 @@ identify the critical point $\nu_c$, as follows.
 By \eqref{e:chi-m-hat}, \eqref{e:chichihat}, Proposition~\ref{prop:finvol}, and Proposition~\ref{prop:changevariables1},
 \begin{equation}
 \label{e:chistar}
-\chi(\gcc_0, \gamma, \nu^*) = \frac{1 + z_0^*}{m^2} = \frac{1 + O(\gcc_0)}{m^2}.
+\chi(\gcc, \gamma, \nu^*) = \frac{1 + z_0^*}{m^2} = \frac{1 + O(\gcc_0)}{m^2}.
 \end{equation}
 Thus, with $\nu = \nu^*$, we see that $\chi < \infty$ when $m^2 > 0$, and
 $\chi = \infty$ when $m^2 = 0$.
@@ -249,12 +250,12 @@ By \eqref{e:nuc-def}, this implies that
 \end{equation}
 It follows that
 \begin{equation}
-\chi(\gcc_0, \gamma, \nu_c) = \infty,
+\chi(\gcc, \gamma, \nu_c) = \infty,
 \end{equation}
 which is a fact that cannot be concluded immediately from the definition \refeq{nuc-def}.
 
 In \eqref{e:chistar}, $\chi$ is evaluated at $\nu^* = \nu^*(m^2, \gcc_0, \gamma)$.
-However, in the setting of Theorem~\ref{thm:suscept},
+However, in the setting of Theorem~\ref{thm:mr},
 we need to evaluate $\chi$ at a \emph{given} value of $\nu$
 and then take $\nu \downarrow \nu_c$.
 To do so, we must determine a choice of $m^2$ in terms of $\nu$
@@ -358,25 +359,56 @@ whose solution yields Theorem~\ref{thm:mr}(ii).
 
 \section{The two-point function}
 
-\begin{prop}\label{prop:R}
+We divide $\Z^4$ into shells $S_1 = \{x : |x| < \frac 12 L\}$ and, for $j \ge 2$,
+$S_j = \{x : \frac 12 L^{j-1} \le |x| < \frac 12 L^{j}\}$.
+The number of points in $S_j$ is bounded by $O(L^{4j})$.
+We refer to the integer $j$ as a \emph{scale}.
+Given $x\in \Z^4$, we define the \emph{coalescence scale}
+to be the unique scale $j_x$ such that
+\begin{equation}
+   \label{e:Phi-def-jc}
+    x \in S_{j_x +1}
+   .
+\end{equation}
+Equivalently, $j_{x} = \max\{0,\lfloor \log_{L} (2 |x|)\rfloor\}$; this introduces a minor
+notational clash with the mass scale $j_m$ defined in \refeq{jmdef}
+that should not cause problems.
+It follows from \cite[Proposition~\ref{log-prop:approximate-flow}]{BBS-saw4-log} that
+\begin{equation}
+\label{e:gjxgjmbd}
+\gbar_{j}
+	=
+O((\log m^{-1})^{-1}) \;\; \text{for $j \geq j_m$},
+	\quad
+\gbar_{j_x}
+	=
+O((\log |x|)^{-1}) \;\; \text{for $j_x \leq j_m$.}
+\end{equation}
+
+The analysis of the two-point function and finite-order correlation length is
+based on the following result.
+
+\begin{prop}
+\label{prop:R}
 Let $d=4$, $n \ge 0$, $\varepsilon \in (0,\delta)$ with $\delta$ sufficiently small,
 and $\nu = \nu_c + \varepsilon$.
 Let $x \in \Z^4$ with $x \neq 0$.
 Fix any $s \geq 0$.
 For $L$ sufficiently large and for $g > 0$ sufficiently small (depending on $s$),
 \begin{equation}
-\frac{1}{1+z_0} G_x(g, \nu; n) = (1 + O(\gbar_{j_x})) G_x(0, m^2) + R_x,
+\label{e:Gab-to-sum-Rqj}
+\frac{1}{1+z_0} G_x(g, \gamma, \nu; n) = (1 + O(\gbar_{j_x})) G_x(0, 0, m^2) + R_x
 \end{equation}
-with
-\begin{equation}\label{e:Rab-bound}
+and the remainder $R_x$ satisfies the bound
+\begin{equation}
+\label{e:Rab-bound}
 |R_{x}|
-\le
-\frac{ O(\gbar_{j_{x}}) }{|x|^2}
-\times
+	\le
+\frac{O(\gbar_{j_{x}}) }{|x|^2}
+	\times
 \begin{cases}
-    1 & (m|x|\le 1)
-    \\
-    (m|x|)^{-2s} & (m|x|\ge 1),
+1,				& (m|x|\le 1) \\
+(m|x|)^{-2s},	& (m|x|\ge 1)
 \end{cases}
 \end{equation}
 with the  constant depending on $L$ and $s$.
@@ -384,7 +416,7 @@ with the  constant depending on $L$ and $s$.
 
 \begin{proof}
 % [Proof of Proposition~\ref{prop:R} (assuming Theorem~\ref{thm:step-mr-fv})]
-By \eqref{e:generating-fn}
+By \eqref{e:generating-fn}, \eqref{e:ZNINKN}, and \eqref{e:IcircKnew},
 \begin{equation}
 \lbeq{GK}
 \frac{1}{1+z_0} G_{x,N}(g, \nu)
@@ -432,6 +464,13 @@ with
 R_x = \frac{1}{2} \sum_{i=j_\qq}^\infty (R^{q_0}_i + R^{q_x}_i).
 \end{equation}
 
+By the first bound of \eqref{e:RKplus} and the definition \eqref{e:Vnormdef},
+\begin{align}
+\label{e:vq-new}
+    |R^{q_u}_{+,i}|
+&
+\le O(\ell_{\sigma,i}^{-2}\chicCov_i\gbar_i^{3}).
+\end{align}
 We insert the definition of $\ell_{\sigma,j}$ from \refeq{elldef-zz} into \refeq{vq-new}.
 We also use $\ggen_j^{-2} = O(\gbar_j^{-2})$, $\chicCov_i \le 1$, $\ell_0^2 \le O(1)$,
 as well as $\gbar_{j} \leq O(\gbar_{j_{x}})$ for $j \geq j_x$.
@@ -456,14 +495,68 @@ L^{-2j_{x} - 2s (j_{x} - j_m)_+}
 This gives the desired estimate \eqref{e:Rab-bound}.
 \end{proof}
 
+A version of this result with $s = 0$ was obtained in \cite{BBS-saw4,ST-phi4}.
+This version is sufficient for studying the \emph{critical} two-point function.
+
+\begin{proof}[Proof of Theorem~\ref{thm:mr}(i)]
+Indeed, with $\nu_c = 0$ (hence $m^2 = 0$), we have $R_x = O(\gbar_{j_x}) G_x(0, 0, 0; n)$,
+so
+\begin{equation}
+\frac{1}{1 + z_0} G_x(g, \gamma, \nu; n)
+	=
+(1 + O(\gbar_{j_x})) G_x(0, 0, m^2; n).
+\end{equation}
+The result follows from \eqref{e:gjxgjmbd}.
+\end{proof}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Finite-order correlation length}
 
+An elementary ingredient in the proof of Theorem~\ref{thm:mr} is the following result for
+the $g=0$ case, which is independent of $n\ge 0$.
+For simplicity, we restrict attention to dimensions $d>2$, as only $d=4$ is used here.
+A proof is provided in Appendix~\ref{app:free-moments}.
+
+\begin{prop}\label{prop:Gab-free-moment-estimate}
+Let ${\sf c}_p$ be the constant defined by \eqref{e:cpdef}.
+For all dimensions $d>2$ and all $p>0$,
+as $m^2 \downarrow 0$,
+\begin{equation}
+\label{e:Gab-free-moment-estimate}
+\sum_{x\in\Zd} |x|^p G_{x}(0, m^2)
+=
+{\sf c}_p^p m^{-(p + 2)} (1 + O(m)).
+\end{equation}
+In particular, $\xi_p(0,\varepsilon) = {\sf c}_p \varepsilon^{-1/2}
+(1+O(\varepsilon^{1/2}))$ as $\varepsilon \downarrow 0$.
+\end{prop}
+
+Before proving Proposition~\ref{prop:R}, we
+prove Theorem~\ref{thm:mr} assuming Proposition~\ref{prop:R}.
+In the proof, we use the important relation
+that
+\begin{equation}
+\label{e:mass-epsilon-asympt}
+ m^2
+ \sim \tilde A_{g,n}^{-1} \varepsilon (\log \varepsilon^{-1})^{-\frac{n + 2}{n + 8}}
+\quad \text{as $\varepsilon \downarrow 0$},
+\end{equation}
+which is proved in \cite[\eqref{phi4-log-e:masymp}]{BBS-phi4-log} for $n\geq 1$
+and \cite[\eqref{log-e:m-mu}]{BBS-saw4-log} for $n=0$.
+In particular, the dependence of $m^2$ on $\varepsilon$
+encompasses the logarithmic correction for the susceptibility since
+\begin{equation}\label{e:susceptibility-mass-identity}
+\chi(g,\nu; n) = \frac{1 + z_0}{m^2},
+\end{equation}
+according to \cite[\eqref{phi4-log-e:chim2}]{BBS-phi4-log} for $n\geq 1$
+and \cite[\eqref{log-e:chi-mtil0}]{BBS-saw4-log} for $n=0$.
+
 \begin{proof}[Proof of Theorem~\ref{thm:mr}]
 We multiply \eqref{e:Gab-to-sum-Rqj} by $|x|^p$, sum over $x \in \Z^4$,
-and use \eqref{e:susceptibility-mass-identity},
+and use \eqref{e:chistar}
+% \eqref{e:susceptibility-mass-identity},
 to obtain
 \begin{align}
 \xi_p^p(g,\nu)

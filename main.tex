@@ -3,48 +3,57 @@
 The main result is stated below.
 \todo{Discuss existence of $\nu_c$}
 
-\begin{theorem} \label{thm:mr}
-  Let $d = 4$ and $n \ge 0$. For $L$ sufficiently large (depending on $n$),
-  there exist $\gcc_* > 0$
-  and a positive function $\gamma_* : (0, \gcc_*) \to \R$
-  such that whenever $0 < \gcc < \gcc_*$ and $|\gamma| < \gamma_*(\gcc)$,
-  there are constants $A_{\gcc,\gamma,n}$ and $B_{\gcc,\gamma,n}$ such that the following hold:
+\begin{theorem}
+\label{thm:mr}
+Let $d = 4$ and $n \ge 0$. For $L$ sufficiently large (depending on $n$),
+there exist $\gcc_* > 0$
+and a positive function $\gamma_* : (0, \gcc_*) \to \R$
+such that whenever $0 < \gcc < \gcc_*$ and $|\gamma| < \gamma_*(\gcc)$,
+there are constants $A_{\gcc,\gamma,n}$ and $B_{\gcc,\gamma,n}$ such that the following hold:
 
-  \smallskip\noindent
-  (i)
-  The critical two-point function decays as
-  \begin{equation}
-    G_x(\gcc,\gamma,\nu_c; n)
-        =
-    A_{\gcc,\gamma} |x|^{-2} (1 + O((\log |x|)^{-1}))
-        \quad
-    \text{as $|x|\to\infty$},
-  \end{equation}
-  with $A_{\gcc,\gamma} = (4 \pi)^{-2} (1 + O(\gcc))$ as $\gcc \downarrow 0$.
+\smallskip\noindent
+(i)
+The critical two-point function decays as
+\begin{equation}
+G_x(\gcc,\gamma,\nu_c; n)
+    =
+A_{\gcc,\gamma} |x|^{-2} (1 + O((\log |x|)^{-1}))
+    \quad
+\text{as $|x|\to\infty$},
+\end{equation}
+with $A_{\gcc,\gamma} = (4 \pi)^{-2} (1 + O(\gcc))$ as $\gcc \downarrow 0$.
 
-  \smallskip\noindent
-  (ii)
-  The susceptibility diverges as
-  \begin{equation} \label{e:chieps-asympt}
-    \chi(\gcc, \gamma, \nu_c + \varepsilon; n)
-      \sim B_{\gcc,\gamma,n} \varepsilon^{-1} (\log \varepsilon^{-1})^{(n+2)/(n+8)},
-    \quad \varepsilon\downarrow 0
-  \end{equation}
-  with $B_{\gcc,\gamma,n} = ((n + 8) \gcc / 16\pi^2)^{(n+2)/(n+8)} (1 + O(\gcc))$
-  as $\gcc \downarrow 0$.
+\smallskip\noindent
+(ii)
+The susceptibility diverges as
+\begin{equation} \label{e:chieps-asympt}
+\chi(\gcc, \gamma, \nu_c + \varepsilon; n)
+	\sim
+B_{\gcc,\gamma,n} \varepsilon^{-1} (\log \varepsilon^{-1})^{(n+2)/(n+8)},
+	\quad
+\varepsilon\downarrow 0
+\end{equation}
+with $B_{\gcc,\gamma,n} = ((n + 8) \gcc / 16\pi^2)^{(n+2)/(n+8)} (1 + O(\gcc))$
+as $\gcc \downarrow 0$.
 
-  \smallskip\noindent
-  (iii) For any $p >0$, if $L$ is chosen large and $\gcc_*$ small both depending on $p$,
-  then the correlation length of order $p$ diverges as
-  \begin{equation} \label{e:xieps-asympt}
-    \xi_p(\gcc, \gamma, \nu_c + \varepsilon; n)
-     \sim B_{\gcc,\gamma,n}^{1/2} {\sf c}_p \varepsilon^{-1/2} (\log \varepsilon^{-1})^{(n+2)/2(n+8)},
-    \quad \varepsilon\downarrow 0
-  \end{equation}
-  with
-  \begin{equation}
-  {\sf c}_p^p = \int_{\R^4} |x|^p (-\Delta_{\R^4} + 1)^{-1}_{0x} \; dx.
-  \end{equation}
+\smallskip\noindent
+(iii)
+For any $p >0$, if $L$ is chosen large and $\gcc_*$ small both depending on $p$,
+then the correlation length of order $p$ diverges as
+\begin{equation} \label{e:xieps-asympt}
+\xi_p(\gcc, \gamma, \nu_c + \varepsilon; n)
+	\sim
+B_{\gcc,\gamma,n}^{1/2} {\sf c}_p \varepsilon^{-1/2} (\log \varepsilon^{-1})^{(n+2)/2(n+8)},
+	\quad
+\varepsilon\downarrow 0
+\end{equation}
+with
+\begin{equation}
+\label{e:cpdef}
+{\sf c}_p^p
+	=
+\int_{\R^4} |x|^p (-\Delta_{\R^4} + 1)^{-1}_{0x} \; dx.
+\end{equation}
 \end{theorem}
 
 The $\gamma = 0$ cases of (i) and (ii) were proved by Bauerschmidt, Brydges, and

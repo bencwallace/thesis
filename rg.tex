@@ -1,20 +1,8 @@
 \chapter{Renormalisation group method}
 
-\commentbw{Outline:
-\begin{itemize}
-\item
-extend map to new norms: independent of $K_0$, do $n \ge 1$ ($n = 0$ similar)
-
-\item
-extend bulk flow to general $K_0$
-(done for $n = 0$, but extension to $n \ge 1$ should be straightforward)
-
-\item
-do observable flow
-\end{itemize}}
-
-\commentbw{We are presently considering $n \ge 1$ throughout
-Sections~\ref{sec:prog}--\ref{sec:rgcoord}}
+\todo{Somewhere should include a discussion of the flow of $g$, $\lambda$,
+and $q$. We should also state bounds on derivatives in terms of bounds on
+$T_0$ norm and state an application of this to bounds on $K$.}
 
 % Discuss RG method with improved norms and non-trivial $K_0$
 
@@ -498,6 +486,15 @@ renormalisation group domains $\domRG_j \subset \R^3 \oplus \Wcal_j$ by
 \\
 \domRG_j &= \DV_j \times B_{\Wcal_j}(\alpha \chicCovgen_j \ggen_j^3).
 \end{align}
+Then, at scale $j$, the maps $V_+,K_+$ act on the domain $\domRG_j$
+and map into $\Vcal_{j+1}^{(1)},\Kcal_{j+1}$, respectively.
+The deviation of the map $V_+$ from the perturbative map $\Vpt$ (mentioned above \refeq{qpt})
+is denoted by $R_+$, and is defined by
+\begin{equation}
+\label{e:Rplusdef}
+    R_+(V,K) = V_+(V,K) -\Vpt^{(1)}(V).
+\end{equation}
+The following theorem is applied with $\alpha =4M$ as a convenient choice.
 
 \begin{theorem}
 \label{thm:step-mr-fv}
