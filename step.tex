@@ -1,0 +1,408 @@
+\chapter{Renormalisation group step}
+
+\section{Improved norm}
+\label{sec:Rpf1}
+
+The proof of Theorem~\ref{thm:step-mr-fv} is based on the observation that
+it is possible to use the parameters \refeq{elldef-zz}
+in the norm used in \cite{BS-rg-IE}, instead of the $s=0$ version used
+previously.  In this section, we first
+state improved covariance estimates, thereby indicating why it is possible
+to improve the norm.
+This leads to a discussion of simplified norm pairs beyond the mass
+scale.  A lemma concerning the fluctuation-field regulator indicates why the
+simplification is possible.
+In the following, we use the notation appropriate for the spin field
+$\varphi \in (\R^n)^\Lambda$ for $n \ge 1$; only notational modifications are needed for
+$n=0$.
+
+
+
+
+\subsection{Covariance bounds}
+\label{sec:Cbds}
+
+% The starting point for the renormalisation group method leading to \eqref{e:vq-new}
+% is a finite range decomposition of the covariance
+% $(-\Delta_\Lambda + m^2)^{-1} =C_1+C_2+\ldots + C_{N-1}+C_{N,N}$, provided by \cite{BGM04,Baue13a}.  Properties
+% of this covariance decomposition can be found in
+% \cite[Section~\ref{pt-sec:Cdecomp}]{BBS-rg-pt}, and we do not repeat them all here.
+
+The estimate in \cite{ST-phi4} which yields the $s = 0$ case of \refeq{Rab-bound}
+uses the norms defined in \cite{BS-rg-IE}.
+One of these norms is the $\Phi_j(\ell_j)$ norm defined by
+\begin{equation}
+\lbeq{phinorm}
+\|\varphi\|_{\Phi_j(\ell_j)}
+=
+\ell_j^{-1}
+\sup_{x\in \Lambda}
+\sup_{|\alpha|_1  \le p_\Phi}
+L^{j|\alpha|_1}
+|\nabla^{\alpha} \varphi_x|,
+\end{equation}
+which depends on the parameter $\ell_j$,
+and on the maximal number of discrete derivatives $p_\Phi$
+(fixed to be at least $4$ in \cite{BS-rg-IE}).
+% In this paper, we set
+% \begin{equation}
+% % \lbeq{elldefs}
+% \ell_j = \ell_0 L^{-j - s (j - j_m)_+}.
+% \end{equation}
+As in \refeq{elldef-zz}, we now define
+\begin{align}
+\label{e:elldef}
+\ell_j &= \ell_0 L^{-j - s (j - j_m)_+}, \quad
+\ell_{\sigma,j}
+=
+\ell_{j \wedge j_{x}}^{-1} 2^{(j - j_{x})_+} \ggen_j.
+\end{align}
+The analysis of \cite{BS-rg-IE,BS-rg-step} uses the norm parameters $\ell_j$ and $\ell_{\sigma,j}$ with $s = 0$.
+To distinguish these from our
+new choice \refeq{elldef} of $\ell_j$ and $\ell_{\sigma,j}$, we write
+\begin{equation}
+\label{e:ell-old}
+    \ell_j^\old = \ell_0 L^{-j},
+    \quad
+    \ell_{\sigma,j}^\old  =
+    (\ell_{j \wedge j_{x}}^{\rm old})^{-1}2^{(j - j_{x})_+}\ggen_j.
+\end{equation}
+
+In the more general terminology and notation of \cite{BS-rg-norm,BS-rg-IE},
+we may regard a covariance $C_j$
+in the decomposition \eqref{e:NCj}
+as a test function depending on
+two arguments $x,y$, and with this identification its $\Phi_j(\ell_j)$
+norm is
+\begin{equation}
+    \label{e:Phinorm}
+    \|C_j\|_{\Phi_{j}(\ell_j)}  =
+    \ell_j^{-2}
+    \sup_{x,y\in \Lambda}
+    \;
+    \sup_{|\alpha|_1 + |\beta|_1 \le p_\Phi}
+    L^{(|\alpha|_1+  |\beta|_1)j}
+    |\nabla_x^{\alpha} \nabla_y^{\beta} C_{j;x,y}|.
+\end{equation}
+The purpose of the $\Phi_j(\ell_j)$ norm is to measure the size of typical
+fluctuation fields $\varphi$ with covariance $C_j$.
+The parameter $\ell_j$ is chosen so that the norm of a typical field should
+be $O(1)$, independent of $j$.
+
+The following lemma justifies our choice of $\ell_j$
+in \refeq{elldef}, by showing that the
+bound \cite[\eqref{IE-e:CLbd}]{BS-rg-IE}, proved there only for the $s=0$ version
+$\ell_j^\old$ of \refeq{ell-old},
+remains true with the stronger
+choice of norm parameter $\ell_j$ that permits arbitrary $s \ge 0$.
+%The sequence $\chicCov_j$ in the lemma is called $\chi_j$ in \cite{BS-rg-IE}, but here we use
+%a different symbol to avoid confusion with the susceptibility.
+In its statement, the bounded sequence $\chicCov_j$ decays exponentially after the
+mass scale and may be taken to be equal to
+$2^{-(j-j_m)_+}$; its details are given
+in \cite[Section~\ref{IE-sec:frp}]{BS-rg-IE} (where it is called $\chi_j$ rather
+than $\chicCov_j$).
+
+\begin{lemma}
+[{Extension of \cite[\eqref{IE-e:CLbd}]{BS-rg-IE}}]
+\label{lem:Cbd}
+Given $\ellconst \in (0, 1]$, $\ell_0$ can be chosen large (depending on $L,\ellconst,s$)
+so that
+\begin{equation}
+\lbeq{Cbd}
+\|C_j\|_{\Phi_{j}(\ell_j)} \leq \min(\ellconst, \chicCov_j).
+\end{equation}
+\end{lemma}
+
+
+
+The proof of Lemma~\ref{lem:Cbd} uses an estimate from
+\cite[Proposition~\ref{pt-prop:Cdecomp}]{BBS-rg-pt}, which we repeat here as
+the following proposition.
+
+\begin{prop}[{Restatement of \cite[Proposition~\ref{pt-prop:Cdecomp}(a)]{BBS-rg-pt}}]
+\label{prop:Cdecomp}
+  Let $d >2$, $L\geq 2$, $j \ge 1$, $\bar m^2 >0$.
+  For multi-indices $\alpha,\beta$ with
+  $\ell^1$ norms $|\alpha|_1,|\beta|_1$ at most
+  some fixed value $p$,
+  and for any $k$, and for $m^2 \in [0,\bar m^2]$,
+  \begin{equation}
+    \label{e:scaling-estimate}
+    |\nabla_x^\alpha \nabla_y^\beta C_{j;x,y}|
+    \leq c(1+m^2L^{2(j-1)})^{-k}
+    L^{-(j-1)(d-2 +|\alpha|_1+|\beta|_1)},
+  \end{equation}
+  where $c=c(p,k,\bar m^2)$ is independent of $m^2,j,L$.
+  The same bound holds for $C_{N,N}$ if
+  $m^2L^{2(N-1)} \ge \varepsilon$ for some $\varepsilon >0$,
+  with $c$ depending on $\varepsilon$ but independent of $N$.
+\end{prop}
+
+\begin{proof}[Proof of Lemma~\ref{lem:Cbd}]
+For $d=4$, insertion of \refeq{scaling-estimate} into \refeq{Phinorm} gives
+\begin{equation}
+    \label{e:Phinorm2}
+    \|C_j\|_{\Phi_{j}(\ell_j)}
+    \le
+    c
+    L^{p_\Phi}
+    \ell_j^{-2}(1+m^2L^{2(j-1)})^{-k}
+    L^{-2(j-1)}.
+\end{equation}
+With $s=0$ in \eqref{e:elldef}, \refeq{Phinorm2} gives
+$\|C_j\|_{\Phi_{j}(\ell_j)} \le c_L \ell_0^{-2} (1+m^2L^{2(j-1)})^{-k}$
+for an $L$-dependent constant $c_L$ (whose value may now change from line to line).
+The estimate \cite[\eqref{IE-e:CLbd}]{BS-rg-IE}
+is wasteful in that it does not make any use of the factor
+$(1+m^2L^{2(j-1)})^{-k}$ in \refeq{Phinorm2} beyond extraction of the factor $\chicCov_j$.
+To improve this, we now allow arbitrary $s$, and fix the arbitrary parameter $k$ to be $k=s+1$
+in \refeq{Phinorm2} so that
+\begin{equation} \label{e:mass-decay}
+(1 + m^2 L^{2j})^{-k} \le c_L L^{-2(s+1)(j - j_m)_+}.
+\end{equation}
+We insert \refeq{mass-decay} and the definition $\ell_j=\ell_0 L^{-j-s(j-j_m)_+}$ from
+\refeq{elldef} into
+\eqref{e:Phinorm2}, to conclude that there exists $c_0 = c_0(s, L)$ such that
+\begin{equation}
+    \|C_j\|_{\Phi_{j}(\ell_j)} \leq c_0 \ell_0^{-2} L^{-2(j - j_m)_+}
+    .
+\end{equation}
+By definition of $\chicCov_j$ (see \cite[Section~\ref{IE-sec:frp}]{BS-rg-IE}),
+$L^{-2(j - j_m)_+}$ is bounded by a multiple of $\chicCov_j$.
+It thus suffices to choose $\ell_0$ large enough that
+$\ell_0^2 \ge c_0 \ellconst^{-1}$.
+\end{proof}
+
+
+
+\subsection{New choice of norm beyond the mass scale}
+\label{sec:newnorm}
+
+
+As in \cite[(\ref{IE-e:PhiXdef})]{BS-rg-IE}, we use the localised version
+of \eqref{e:phinorm}, defined for subsets
+$X \subset \Lambda$  by
+\begin{align}
+\label{e:PhiXdef}
+    \|\varphi\|_{\Phi_j(X)}
+    &=
+    \inf \{ \|\varphi -f\|_{\Phi_j} :
+    \text{$f \in \C^\Lambda$ such that $f_{x} = 0$
+    $\forall x\in X$}\}.
+\end{align}
+A \emph{small set} is defined to be a
+connected polymer $X \in \Pcal_j$ consisting of at most $2^d$ blocks
+(the specific number
+$2^d$ plays no direct role here),
+and $\Scal_j \subset \Pcal_j$ denotes the set of small sets.
+The \emph{small set neighbourhood} of $X \subset \Lambda $ is
+the enlargement of $X$ defined by
+$
+    X^{\Box}
+=
+    \bigcup_{Y\in \Scal_{j}:X\cap Y \not =\varnothing } Y$.
+
+Given $X \subset \Lambda$ and $\varphi \in (\R^n)^{\Lambda}$,
+we recall from \cite[\eqref{IE-e:GPhidef}]{BS-rg-IE}
+that the
+\emph{fluctuation-field regulator} $G_j$
+is defined by
+\begin{align}
+\label{e:GPhidef}
+    G_j(X,\varphi)
+    =
+    \prod_{x \in X} \exp
+    \left(|B_{x}|^{-1}\|\varphi\|_{\Phi_j (B_{x}^\Box,\ell_j )}^2 \right)
+    ,
+\end{align}
+where $B_{x}\in \Bcal_j$ is the unique block that contains $x$,
+and hence $|B_x| = L^{dj}$.
+The \emph{large-field regulator} is defined in \cite[\eqref{IE-e:9Gdef}]{BS-rg-IE} by
+\begin{align}
+\label{e:9Gdef}
+    \tilde G_j  (X,\varphi)
+    =
+    \prod_{x \in X}
+    \exp \left(
+    \frac 12 |B_{x}|^{-1}\|\varphi\|_{\tilde\Phi_j (B_{x}^\Box,\ell_j)}^2
+    \right)
+    .
+\end{align}
+The $\tilde\Phi_j$ norm appearing on the right-hand side of \refeq{9Gdef} is
+similar to the $\Phi_j$ norm, with the important difference that it is insensitive to
+shifts by linear test functions; see \cite[\eqref{IE-e:Phitilnorm}]{BS-rg-IE} for the
+precise definition.
+The two regulators serve as weights in the \emph{regulator norms} of
+\cite[Definition~\ref{IE-def:Gnorms}]{BS-rg-IE}.
+The regulator norms are defined,  with $\gamma \in (0,1]$ and
+for $F$ in the space $\Ncal(X^\Box)$ of functionals
+of the field (see \cite[\eqref{norm-e:NXdef}]{BS-rg-norm}), by
+\begin{align}
+\label{e:Gnormdef1}
+    \| F\|_{G_j(\ell_j)}
+    &=
+    \sup_{\varphi \in (\R^n)^\Lambda}
+    \frac{\|F\|_{T_{\varphi,j}(\ell_j)}}{G_{j}(X,\varphi)}
+    ,
+\\
+\label{e:Gnormdef2}
+    \|F\|_{\tilde G_j^{\Gtilp}(h_j)}
+    &=
+    \sup_{\varphi \in (\R^n)^\Lambda}
+    \frac{\|F \|_{T_{\varphi,j}(h_j)}}{\tilde{G}^{\Gtilp}_{j}(X,\varphi)}
+    .
+\end{align}
+The parameter $\ell_j$ that appears in the regulators \refeq{GPhidef}--\refeq{9Gdef} and
+in the numerator of \refeq{Gnormdef1} was taken to be $\ell_j^\old$ in \cite{BS-rg-IE},
+but now we use $\ell_j$ instead. As in \cite{BS-rg-IE},
+the parameter $h_j$ and its observable counterpart $h_{\sigma,j}$ are given by
+\begin{align}
+\label{e:h}
+    h_{j} &= k_0 \ggen_j^{-1/4}L^{-j},
+    \quad
+    h_{\sigma,j}  = (\ell_{j \wedge j_{x}}^{\rm old})^{-1}
+    2^{(j - j_{x})_+}\ggen_j^{1/4}.
+\end{align}
+
+In \cite{BS-rg-IE}, estimates on $\|\cdot\|_{j+1}$ are given in terms of
+$\|\cdot\|_j$, where the pair $(\|\cdot\|_j, \|\cdot\|_{j+1})$ refers to
+either of the norm pairs
+\begin{equation}
+\label{e:np1}
+    \|F\|_j = \|F\|_{G_j(\ell_j^\old)}
+    \quad \text{and} \quad
+    \|F\|_{j+1} = \|F\|_{T_{0,j+1}(\ell_{j+1}^\old)},
+\end{equation}
+or
+\begin{equation}
+\label{e:np2}
+    \|F\|_j = \|F\|_{\tilde{G}_j(h_j)}
+    \quad \text{and} \quad
+    \|F\|_{j+1} = \|F\|_{\tilde{G}_{j+1}^{\Gtilp}(h_{j+1})}.
+\end{equation}
+We will show that, \emph{above the mass scale} $j_m$ (see \eqref{e:jmdef}), the results of \cite{BS-rg-IE} hold  with
+both norm pairs in \eqref{e:np1} and \eqref{e:np2} replaced by the single new norm pair
+\begin{equation}
+\label{e:npmass}
+    \|F\|_j = \|F\|_{G_j(\ell_j)}
+    \quad \text{and} \quad
+    \|F\|_{j+1} = \|F\|_{G_{j+1}(\ell_{j+1})},
+\end{equation}
+with the improved $\ell_j$ of \eqref{e:elldef} with $s>0$ fixed as large as desired.
+
+
+
+
+The space $\Ncal$ containing the functionals $F$ appearing above requires control on
+up to $p_\Ncal$ derivatives of $F$ with respect to the field $\varphi$,
+where $p_\Ncal$ is a parameter of the $T_\varphi$-norm.
+In the proof of Proposition~\ref{prop:cl} below,
+we must choose $p_\Ncal$ to be large depending on $p$,
+in order to analyse the correlation length
+of order $p$.  The renormalisation group analysis is predicated on fixed (but arbitrary)
+$p_\Ncal$, so it can proceed with this modification.  However,
+we do not prove that constants are uniform in $p_\Ncal$,
+and in particular we do not prove that the required smallness of $g$ in
+Theorem~\ref{thm:mr} is uniform in the choice of $p_\Ncal$.
+Thus we do not have a result for \emph{all} $p>0$ for any fixed $g$.
+
+
+The use of two norm pairs adds intricacy to \cite{BS-rg-IE,BS-rg-step}.
+The pair \refeq{np1} is insufficient, on its own, because the scale-$(j+1)$ norm
+is the $T_0$ semi-norm which controls only small fields, and an estimate in this norm
+does not imply an estimate for the $G_{j+1}$ norm.  The norm pair \refeq{np2} is
+used to supplement the norm pair \refeq{np1}, and estimates in both of the scale-$(j+1)$
+norms can be combined to provide an estimate for the $G_{j+1}$ norm.  This then
+sets the stage for the next renormalisation group step.  Above the mass scale,
+the use of \refeq{npmass} now bypasses many issues.  For example, for $j>j_m$
+ the $\Wcal_j$ norm of \cite[\eqref{step-e:9Kcalnorm}]{BS-rg-step} is replaced
+ simply by the $\Fcal_j(G)$ norm, and there is no need for the $\Ycal_j$ norm of
+\cite[\eqref{step-e:Ycaldef}]{BS-rg-step} nor for \cite[Lemma~\ref{step-lem:KKK}]{BS-rg-step}.
+
+The need for both norm pairs \eqref{e:np1}--\eqref{e:np2} is discussed in
+\cite[Section~\ref{IE-sec:lfp}]{BS-rg-IE} and is related to the
+so-called \emph{large-field problem}. Roughly speaking, the
+norm pair \refeq{np2} is used to take advantage of the quartic term in the interaction to
+suppress the effects of large values of the fields. This approach
+relies on the fact that the interaction polynomial is dominated by the
+quartic term in the $h$-norm, as expressed by
+\cite[\eqref{IE-e:tau2dom}]{BS-rg-IE}, together with the lower bound
+\cite[\eqref{IE-e:epVbark0}]{BS-rg-IE} on the quartic term.
+However, above the mass scale, large fields are naturally suppressed
+by the rapid decay of the covariance.
+This idea is captured in Lemma~\ref{lem:mart} below, which replaces
+\cite[Lemma~\ref{IE-lem:mart}]{BS-rg-IE} above the mass scale.
+The regulators in its statement are defined by \refeq{GPhidef} with the $s$-dependent
+$\ell_j$ of \refeq{elldef}.
+
+
+\begin{lemma}[{Replacement for \cite[Lemma~\ref{IE-lem:mart}]{BS-rg-IE}}]
+\label{lem:mart}
+Let $X \subset \Lambda$ and assume that $s > 1$.
+For any $q >0$, if $L$ is sufficiently large depending on $q$, then for $j_m \leq j < N$,
+\begin{equation}
+\label{e:mart}
+    G_{j}(X, \varphi)^{q}
+    \le
+    G_{j+1}(X, \varphi).
+\end{equation}
+\end{lemma}
+\begin{proof}
+By \eqref{e:GPhidef}, it suffices to show that, for any scale-$j$ block $B_j$ and any scale-$(j+1)$ block $B_{j+1}$ containing $B_j$,
+\begin{equation}
+q \|\varphi\|^2_{\Phi_j (B_j^\Box,\ell_j )}
+\leq
+L^{-4} \|\varphi\|^2_{\Phi_{j+1} (B_{j+1}^\Box,\ell_{j+1})}.
+\end{equation}
+In fact, since $\|\varphi\|_{\Phi_j (B_j^\Box,\ell_j )}
+\leq \|\varphi\|_{\Phi_j (B_{j+1}^\Box,\ell_j )}$ by definition,
+it suffices to prove the above bound with $B_j$ replaced by $B_{j+1}$ on the left-hand side.
+According to the definition of the norm in \eqref{e:PhiXdef},
+to show this it suffices to prove that
+\begin{equation}
+\lbeq{martwant}
+q \|\varphi\|_{\Phi_j(\ell_j)}^2 \leq L^{-4} \|\varphi\|_{\Phi_{j+1}(\ell_{j+1})}^2
+\end{equation}
+(then we replace $\varphi$ by $\varphi -f$ in the above and take the infimum).
+
+By definition,
+\begin{equation}
+\|\varphi\|_{\Phi_j(\ell_j)}
+\le
+\ell_j^{-1} \ell_{j+1}
+\sup_{x\in \Lambda} \sup_{|\alpha| \leq p_\Phi}
+\ell_{j+1}^{-1}
+L^{(j+1) |\alpha|}
+|\nabla^\alpha \varphi_x|,
+\end{equation}
+with the inequality due to replacement of $L^{j |\alpha|}$ on the left-hand
+side by $L^{(j+1) |\alpha|}$ on the right-hand side.
+Since $\ell_j^{-1} \ell_{j+1} = L^{-1 - s \1_{j \geq j_m}}$,
+\begin{equation}
+\|\varphi\|_{\Phi_j(\ell_j)} \leq L^{-1 - s \1_{j \geq j_m}} \|\varphi\|_{\Phi_{j+1}(\ell_{j+1})}.
+\end{equation}
+Thus,
+\begin{equation}
+q \|\varphi\|_{\Phi_j(\ell_j)}^2
+\leq q L^{-4} L^{2 - 2s \1_{j \geq j_m}} \|\varphi\|^2_{\Phi_{j+1}(\ell_{j+1})},
+\end{equation}
+and then \refeq{martwant}
+follows once $L$ is large enough that $q L^{2 - 2s} \leq 1$.
+\end{proof}
+
+\begin{rk}
+The elimination of the $h$-norm after the mass scale is more than a convenience.
+It becomes a necessity when we improve the $\ell$-norm.
+Briefly, the reason is as follows. In the proof of
+\cite[Lemma~\ref{step-lem:KKK}]{BS-rg-step}, the ratio
+$\ell_{\sigma}/h_{\sigma}$
+must be bounded. For this, we would need
+to increase $h_{\sigma}$
+beyond the mass scale  (since $\ell_{\sigma}$ has been increased).
+This forces a compensating decrease in $h$
+beyond $j_m$, to keep the product $hh_{\sigma}$ bounded for stability (as in
+Section~\ref{sec:stability1} below).
+But if we do this, we lose the lower bound required on $\epsilon_{g\tau^2}$
+required for stability in the $h$-norm (see \cite[\eqref{IE-e:epVbardefz-app}]{BS-rg-IE}).
+\end{rk}
