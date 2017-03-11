@@ -90,6 +90,12 @@ By \eqref{e:susceptibility-def}, \eqref{e:chiNdef}, and \eqref{e:chilim},
 \end{equation}
 \todo{Correlation length}
 
+\todo{For both models, we have}
+\begin{equation}
+\label{e:nuc-def}
+\nu_c = \nu_c(\gcc, \gamma, n) = \inf \{ \nu : \chi(g, \gamma, \nu; n) < \infty \}.
+\end{equation}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Reformulation of the problem}
@@ -115,8 +121,37 @@ we introduce \emph{observable fields} $\sigmaa, \sigmab \in \R$, and define
 	\quad
 	U^+_x = |\nabla \tau_x|^2.
 \end{equation}
-\todo{Then we can show that}
+Let
+\begin{equation}
+\label{e:Z0def}
+Z_0 = \prod_{x\in \Lambda} e^{-(V^+_{0,x} + \gamma_0 U^+_x)}
+\end{equation}
+and
+\begin{equation}
+\label{e:ZNdef}
+Z_N = \Ex_C \theta Z_0,
+\end{equation}
+where the expectation is given by \refeq{ExCF} with $C = (-\Delta + m^2)^{-1}$.
+Recall that $Z_{N,\varnothing}$ denotes the $0$-degree part of $Z_N$.
+We define a test function $\1: \Lambda_N \to \R$ by $\1_x=1$ for all $x$,
+and write $D^2 Z_{N,\varnothing}(0; \1, \1)$ for the directional derivative of
+$Z_{N,\varnothing}$ evaluated with all fields equal to $0$ and
+% at $(\phi, \bar\phi) = (0, 0)$,
+with both directions equal to $\1$.
+That is,
+\begin{equation}
+D^2 Z_{N,\varnothing}(0; \1, \1)
+  =
+\ddp{^2}{s\partial t} Z_{N,\varnothing}(s \1, t\1)\big|_{s=t=0}.
+\end{equation}
+
+\begin{prop}
+\label{prop:intrep}
+% from saw-sa
+Let $d > 0$, $\gamma, \nu \in \R$, $\gcc >0$ and $\gamma <\gcc$.
+If the relations \eqref{e:gg0} hold, then
 \begin{align}
+% from clp
 \label{e:generating-fn}
 G_{x,N}(g, \nu; n)
 	&=
@@ -124,12 +159,71 @@ G_{x,N}(g, \nu; n)
 \frac{\partial^2 }{\partial \sigma_\pp  \partial \sigma_\qq}\Big|_{0}
 \log \Ex_C  Z_0
 \end{align}
+% \begin{equation}
+% \label{e:GG2}
+% G_{x,N}(\gcc,\gamma,\nu)
+%     =
+% (1+z_0)
+% \Ex_C (Z_0 \bar\phi_a \phi_b),
+% \end{equation}
+and
+\begin{equation}
+\label{e:chichibar}
+  \chi_N\left(\gcc,\gamma,\nu\right)
+  = (1+z_0)\hat\chi_N(m^2, g_0, \gamma_0, \nu_0, z_0)
+  ,
+\end{equation}
 with
 \begin{equation}
-\label{e:Z0def}
-Z_0 = \prod_{x\in \Lambda} e^{-(V^+_{0,x} + \gamma_0 U^+_x)}.
+\label{e:chibarm}
+\hat\chi_N(m^2, g_0, \gamma_0, \nu_0, z_0)
+	=
+\frac{1}{m^2}
+	+
+\frac{1}{m^4} \frac{1}{|\Lambda|} \frac{D^2 Z_{N,\varnothing}(0; \1, \1)}{Z_N(0)}.
 \end{equation}
-Here, the expectation is given by \refeq{ExCF}, with $C = (-\Delta + m^2)^{-1}$.
+\end{prop}
+
+\begin{proof}
+\todo{We prove the case $n = 0$.}
+We make the change of variables
+$\varphi_x \mapsto (1 + z_0)^{1/2} \varphi_x$ (with $\varphi = \phi, \bar\phi, \psi, \bar\psi$)
+in \eqref{e:Grep-pos-bis}, and obtain
+\begin{align}
+    G_{x,N}(\gcc,\gamma,\nu)
+    &=  (1+z_0)
+    \int
+    e^{-\sum_{x\in\Lambda}
+    \left(
+    g_0 \tau_x^2 + \gamma_0 |\nabla \tau_x|^2
+    + \nu (1+z_0) \tau_x + (1+z_0)\tau_{\Delta,x}\right)} \bar\phi_a \phi_b
+    .
+    \label{e:Grep-pos}
+\end{align}
+Then, for any $m^2 \in\R$, we have
+\begin{equation}
+\lbeq{GNint}
+G_{x,N}(\gcc,\gamma,\nu)
+    =
+(1 + z_0) \int
+e^{-\sum_{x\in\Lambda} (\tau_{\Delta,x} + m^2 \tau_x)}
+Z_0 \bar\phi_a \phi_b
+\end{equation}
+($m^2$ simply cancels with $\nu_0$ on the right-hand side).
+We use this with $m^2>0$, so that the inverse matrix $C=(-\Delta+m^2)^{-1}$ exists.
+By symmetry of the matrix $\Delta$, \refeq{action} gives
+\begin{equation}
+\label{e:SAtauDelta}
+S_{(-\Delta+m^2)}
+=
+\sum_{x\in\Lambda} \left( \tau_{\Delta,x}
++ m^2  \tau_x \right).
+\end{equation}
+Then \eqref{e:generating-fn} follows from \refeq{GNint}--\eqref{e:SAtauDelta} and \refeq{ExCF}.  Summation
+over $x\in \Lambda_N$ gives the formula $\chi_N(\gcc,\gamma,\nu) = (1+z_0)\sum_{x\in \Lambda} \Ex_C
+(Z_0\phib_0\phi_x)$.  Then \refeq{chichibar}, with \refeq{chibarm}, follows
+by an elementary computation as in \cite[Section~\ref{log-sec:ga}]{BBS-saw4-log}.
+\end{proof}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -156,10 +250,11 @@ It is a property of Gaussian integration (see \cite{BS-rg-norm}) that
 	(\Ex_{C_N}\theta \circ \Ex_{C_{N-1}}\theta \circ \ldots \circ \Ex_{C_1}\theta F)
 	(\varphi).
 \end{equation}
-Let
+Then
 \begin{equation}
-\label{e:ZNdef}
-Z_N = \Ex_C \theta Z_0
+% \label{e:ZNdef}
+Z_N
+% = \Ex_C \theta Z_0
 =
 \Ex_{C_N}\theta \circ \Ex_{C_{N-1}}\theta \circ \ldots \circ \Ex_{C_1}\theta Z_0.
 \end{equation}
@@ -404,7 +499,76 @@ renormalisation group domains $\domRG_j \subset \R^3 \oplus \Wcal_j$ by
 \domRG_j &= \DV_j \times B_{\Wcal_j}(\alpha \chicCovgen_j \ggen_j^3).
 \end{align}
 
-\todo{\textbf{Add statement of RG step and comment on the novelty in the domains}}
+\begin{theorem}
+\label{thm:step-mr-fv}
+Let $d = 4$ and let $n \ge 0$. Fix $s > 0$.
+Let $C_\DV$ and $L$ be sufficiently large.
+There exist $M>0$ and $\delta >0$ such that
+for $\ggen \in (0,\delta)$, % and $\mgen^2 \in \Iint_+$,
+and with the domain
+$\domRG$ defined using any $\DVa> M$, the maps
+\begin{equation}
+\label{e:RKplusmaps}
+R_+:\domRG %\times \Igen_+(\mgen^2)
+\to \Vcal^{(1)},
+\quad
+K_+:\domRG %\times \Igen_+(\mgen^2)
+\to \Wcal_{+}%(\sgen_+)
+\end{equation}
+define $(U,K)\mapsto (V_+,K_+)$ obeying \eqref{e:IcircKdu},
+and satisfy the estimates
+\begin{equation}
+\label{e:RKplus}
+\|R_+\|_{\Vcal}
+\le
+M\chigen_+\ggen_+^{3}
+, \qquad
+\|K_+\|_{\Wcal_+}
+\le
+M\chigen_+ \ggen_+^{3}
+.
+\end{equation}
+\end{theorem}
+
+The proof of Theorem~\ref{thm:step-mr-fv} is identical to the proof of
+\cite[Theorem~\ref{phi4-thm:step-mr-fv}]{ST-phi4}, via a version of
+\cite[Theorems~\ref{step-thm:mr-R}--\ref{step-thm:mr}]{BS-rg-step} that
+uses the norm parameters \eqref{e:elldef-zz} with $s > 0$.
+The proof of the latter results with these new norm parameters amounts to
+checking that the proof of the $s = 0$ case contained in \cite{BS-rg-IE,BS-rg-step}
+continues to hold with $s > 0$. A verification of this fact is carried
+out in Section~\ref{sec:Rpf2} below.
+
+Theorem~\ref{thm:step-mr-fv} expresses a contractive property of the map $K_+$,
+as it takes $K$ in a ball whose radius involves $\alpha=4M$ at scale $j$ to
+an image which lies in a ball whose radius involves the smaller number $M$ at scale
+$j+1$.  The fact that $K_+$ is a contraction is used
+in \cite[Proposition~\ref{log-prop:KjNbd}]{BBS-saw4-log} (for $n=0$) and
+\cite[Theorem~\ref{phi4-log-thm:flow-flow}]{BBS-phi4-log}
+(for $n \ge 1$) to prove that, for $m^2$ and
+$g_0$ sufficiently small, there exist \emph{critical} initial conditions
+$\nu_0 = \nu_0^c(m^2, g_0)$ and $z_0 = z_0^c(m^2, g_0)$ such that,
+for the case of no observables ($\sigma_0=\sigma_x=0$), iteration of
+the maps $(V_+,K_+)$ defines a
+sequence $(V_j^{(0)}, K_j)$ which lies
+in the domain $\domRG_j$ and obeys the estimates \refeq{RKplus}
+\emph{for all} $j = 1, \ldots, N$.
+This construction of critical initial conditions uses the $s=0$ version
+of \refeq{elldef-zz}.
+
+The case with observable fields included is handled in \cite{ST-phi4}.
+Because we have increased $\ell_{\sigma,j}$ beyond the mass scale, the
+estimates on $q_0,q_x$ given by the bound on $R_+$ in \refeq{RKplus} are
+significantly improved compared to their versions with $s=0$ in \cite{ST-phi4}.
+As is discussed in detail in  \cite[Section~\ref{phi4-sec:pfmr1}]{ST-phi4},
+$V_j^{(0)}$ remains in the domain $\domRG_j$ for all $j$
+(also concerning $\lambda_{0,j}, \lambda_{x,j}$).
+Moreover,
+$\lambda_{0,j}, \lambda_{x,j},q_{0,j},q_{x,j}$, are independent of the volume parameter $N$ and
+so can be extended to infinite sequences, and the following limits exist:
+\begin{equation}
+q_{u,\infty} = \lim_{j\to\infty} q_{u,j}, \quad u = 0, x.
+\end{equation}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -444,6 +608,13 @@ there exists a sequence $(V_j, K_j) \in \domRG_j(m^2, g_0, \Lambda)$ such that
 	(V_{j+1},K_{j+1}) = (V_{j+1}(V_j, K_j), K_{j+1}(V_j, K_j)) \text{ for all } j < N
 \end{equation}
 and \eqref{e:IcircKnew} is satisfied.
+Tthese functions satisfy the bounds
+\begin{equation}
+\label{e:hat-est}
+\hat\nu_0^c = O(g_0),
+\quad
+\hat z_0^c = O(g_0)
+\end{equation}
+uniformly in $(m^2, \gamma_0)$.
 Moreover, the second-order evolution equation for $V_j$ is independent of $\gamma_0$.
-% and $\zeta_j = \lambda_{0,j} = \lambda_{x,j} = 0$ for all $j$.
 \end{theorem}

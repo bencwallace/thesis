@@ -1,0 +1,142 @@
+\chapter{Implicit function theorem}
+\label{sec:IFT}
+
+\section{Implicit function theorem with a parameter}
+
+We make use of \cite[Chapter 4, Theorem~9.3]{LS14},
+which is a version of the implicit function theorem that allows
+for a continuous, rather than differentiable, parameter.
+While the precise statement of \cite[Chapter 4, Theorem~9.3]{LS14}
+takes this parameter from an open subset of a Banach space,
+by \cite[Chapter 4, Theorem~9.2]{LS14}, the
+parameter can in fact be taken from an arbitrary metric space.
+With this minor change, we restate \cite[Chapter 4, Theorem~9.3]{LS14}
+as the following proposition.
+
+\begin{prop}
+\label{prop:LS-IFT}
+Let $A$ be a metric space, let $W,X$ be Banach spaces,
+and let $B \subset W$ be an open subset.
+Let $F : A \times B \to X$ be continuous,
+and suppose that $F$ is $C^1$ in its second argument.
+Let $(\alpha, \beta) \in A \times B$ be a point such that
+$F(\alpha, \beta) = 0$ and $D_2 F(\alpha, \beta)^{-1}$ exists.
+Then there are open balls $M \ni \alpha$ and $N \ni \beta$
+and a unique continuous mapping $f : M \to N$ such that $F(\xi, f(\xi)) = 0$
+for all $\xi \in M$.
+\end{prop}
+
+We also use the following lemma, which is a small modification of
+\cite[Chapter 3, Theorem~11.1]{LS14}. In particular, it considers
+functions that may only be left- or right-differentiable.
+
+\begin{lemma}
+\label{lem:IFT-C1}
+Let $F$ be a mapping as in the previous proposition
+with $A \subset \R^{m_1} \times \R^{m_2}$.
+In addition, suppose that $F$ is left-differentiable (respectively, right-differentiable)
+in $\alpha_2$ at $(\alpha, \beta)$, with $\alpha = (\alpha_1, \alpha_2)$.
+If $f$ is a continuous mapping defined in a neighbourhood of
+$\alpha$, such that $F(\xi, f(\xi)) = 0$,
+then $f$ is left-differentiable (respectively, right-differentiable) in $\alpha_2$ at $\alpha$.
+\end{lemma}
+
+\section{Main result}
+
+The above results lead to the following proposition, which we apply
+in the proofs of Propositions~\ref{prop:nuzhat} and \ref{prop:changevariables1}.
+Recall that $D(\delta, r)$ is defined in \refeq{Ddef}.
+
+\begin{prop}
+\label{prop:IFT-re}
+Let $\delta > 0$, and let $r_1, r_2$ be continuous positive-definite functions on $[0, \delta]$.
+Set
+\begin{equation}
+    D(\delta, r_1, r_2)
+    =
+    \{ (w, x, y, z) \in D(\delta, r_1) \times \R^n : |z| \leq r_2(x) \},
+\end{equation}
+and let $F$ be a continuous function on $D(\delta, r_1, r_2)$ that is $C^1$ in $(x, z)$.
+Suppose that for all $(\bar w, \bar x) \in [0, \delta]^2$ there exists $\bar z$
+such that both $F(\bar w, \bar x, 0, \bar z) = 0$
+and $D_Y F(\bar w, \bar x, 0, \bar z)$ is invertible.
+Then there is a continuous positive-definite function $r$ on $[0, \delta]$ and
+a continuous map $f : D(\delta, r) \to \R^n$
+that is $C^1$ in $x$
+and such that $F(w, x, y, f(w, x, y)) = 0$
+for all $(w, x, y) \in D(\delta, r)$.
+Moreover, if $F$ is left-differentiable
+(respectively, right-differentiable) in $y$ at some point $(w, x, y, z)$,
+then $f$ is left-differentiable (respectively, right-differentiable) at $(w, x, y)$.
+\end{prop}
+
+\begin{proof}
+Take any $(\bar w, \bar x) \in [0, \delta] \times (0, \delta]$
+and let $R(\bar w, \bar x)$ be the maximal radius $s$ such that
+for all $(w, x, y) \in B(\bar w, \bar x, 0; s)$ there exists $z$
+such that both $F(w, x, y, z) = 0$ and $D_Z F(w, x, y, z)$ is
+invertible. By continuity of $(D_Z F(w, x, y, z))^{-1}$ near
+$(\bar w, \bar x, 0, \bar z)$, and by Proposition~\ref{prop:LS-IFT}
+(applied to the restriction of $F$ to $A \times B$, for some
+$A \ni (\bar w, \bar x, 0)$ and an open set $B \ni \bar z$),
+we have $R(\bar w, \bar x) > 0$ and there is a continuous function
+\begin{equation}
+f_{\bar w,\bar x} : B(\bar w, \bar x, 0; R(\bar w, \bar x)) \to \R^n
+\end{equation}
+such that $F(w, x, y, f_{\bar w,\bar x}(w, x, y)) = 0$
+for all $(w, x, y) \in B(\bar w, \bar x, 0; R(\bar w, \bar x))$.
+Moreover, the unique solution to $F(w, x, y, z) = 0$
+is given by $z = f_{\bar w,\bar x}(w, x, y)$ for all such $(w, x, y)$.
+By an application of Lemma~\ref{lem:IFT-C1}
+(with $\alpha_1 = (w, x), \alpha_2 = y$),
+we see that $f_{\bar w, \bar x}$ is
+left- or right-differentiable in $y$ wherever $F$ is.
+By another application of Lemma~\ref{lem:IFT-C1} (with $\alpha_1 = (w, y), \alpha_2 = x$),
+we see that $f_{\bar w, \bar x}$ is $C^1$ in $x$.
+
+Set $R(\bar w, 0) = 0$ for all $\bar w \in [0, \delta]$, and
+let
+\begin{equation}
+D_f = \bigcup_{(\bar w,\bar x)\in [0, \delta]^2} B(\bar w, \bar x, 0; R(\bar w, \bar x)).
+\end{equation}
+We define $f(w, 0, 0) = 0$ and, for $x > 0$,
+\begin{equation}
+f(w, x, y) = f_{\bar w,\bar x}(w, x, y)
+  \quad\text{for}\quad
+(w, x, y) \in B(\bar w, \bar x, 0; R(\bar w, \bar x)).
+\end{equation}
+By uniqueness, this function is well-defined.
+Continuity of $f$ at $(w, 0, 0)$
+follows from the fact that $|f(w, x, y)| \le r_2(x)$.
+The remaining desired regularity properties of $f$
+follow from those of the $f_{\bar w,\bar x}$.
+It remains to show that $D(\delta,r) \subset D_f$
+for some continuous positive-definite function $r$ on $[0, \delta]$.
+
+First, let us show that $R$ is continuous on $[0, \delta]^2$.
+Let $\bar x > 0$ and fix $0 < \epsilon < R(\bar w, \bar x)$.
+Then for any $(\bar w', \bar x') \in [0,\delta] \times (0, \delta]$ such that
+$|(\bar w, \bar x) - (\bar w', \bar x')| < \epsilon$,
+we have $B(\bar w', \bar x', 0; R(\bar w, \bar x) - \epsilon) \subset B(\bar w, \bar x, 0; R(\bar w, \bar x))$
+by maximality of $R$.
+It follows that $R(\bar w', \bar x') \geq R(\bar w, \bar x) - \epsilon$.
+By a similar argument, $R(\bar w', \bar x') \leq R(\bar w, \bar x) + \epsilon$,
+so $|R(\bar w, \bar x) - R(\bar w', \bar x')| \leq \epsilon$.
+Thus, $R$ is continuous on $[0, \delta] \times (0, \delta]$.
+Continuity at $\bar x = 0$ follows from the fact that $R(\bar w, \bar x) \le r_1(\bar x)$
+uniformly in $\bar w$.
+
+For $\bar x \in [0,\delta]$, let
+\begin{equation}
+r(\bar x) = \inf (R(\bar w, \bar x) : \bar w \in [0, \delta]).
+\end{equation}
+Since $R(\cdot, \bar x)$ is continuous, $r(\bar x) > 0$
+for $\bar x > 0$. Moreover, $0 \le r(0) \le r_1(0) = 0$, so $r$ is positive-definite.
+Continuity of $r$ follows from joint continuity of $R$.
+For any $(w, x, y) \in D(\delta, r)$ (with this choice of $r$),
+\begin{equation}
+|(w, x, y) - (w, x, 0)| = |y| < r(x) \leq R(w, x),
+\end{equation}
+so $(w, x, y) \in B(w, x, 0; R(w, x))$.
+We conclude that $D(\delta, r) \subset D_f$.
+\end{proof}
