@@ -28,18 +28,18 @@ $\Ncal^\varnothing$, which is defined as in Section~\ref{sec:intrep} if $n = 0$ 
 \begin{equation}
 \label{e:Ncaldef}
 \Ncal^\varnothing
-  = \Ncal^\varnothing(\Lambda)
-  = C^{p_\Ncal}((\R^n)^\Lambda,\R).
+	= \Ncal^\varnothing(\Lambda)
+	= C^{p_\Ncal}((\R^n)^\Lambda,\R).
 \end{equation}
-if $n \ge 1$.
+if $n \ge 1$ ($p_\Ncal$ is the smoothness parameter discussed in Section~\ref{sec:intrep}).
 We define the forms $\tau_x, \tau_{\Delta,x}, |\nabla\tau_x|^2 \in \Ncal^\varnothing$ according
 to \eqref{e:taudef}--\eqref{e:nablatau} if $n = 0$ and
 \begin{equation}
 \label{e:tauphi}
 \tau_x = \tfrac{1}{2} |\varphi_x|^2,
-  \quad
+	\quad
 \tau_{\Delta,x} = \tfrac{1}{2} \varphi_x \cdot (-\Delta \varphi)_x,
-  \quad
+	\quad
 |\nabla\tau_x|^2 = \sum_{|e|=1} (\nabla^e |\phi_x|^2)^2
 \end{equation}
 if $n \ge 1$.
@@ -48,21 +48,21 @@ Then by \eqref{e:Vdef1}, \eqref{e:Udef-pos}, and \eqref{e:Vdef2},
 $V_{g,\gamma,\nu,N} \in \Ncal^\varnothing$ is given by
 \begin{equation}
 V_{g,\gamma,\nu,N}
-  =
+	=
 \sum_{x\in\Lambda_N}
 \Big(
-  (g - \gamma) \tau_x^2 + \nu \tau_x + \tau_{\Delta,x} + \tfrac{1}{4 d} \gamma |\nabla\tau_x|^2
+	(g - \gamma) \tau_x^2 + \nu \tau_x + \tau_{\Delta,x} + \tfrac{1}{4 d} \gamma |\nabla\tau_x|^2
 \Big)
 \end{equation}
 for any choice of $n$.
 For $F \in \Ncal^\varnothing$, let
 \begin{equation}
 \langle F \rangle_{g,\gamma,\nu,N}
-  =
+	=
 \begin{cases}
 \displaystyle \int F e^{-U_{g,\gamma,\nu,N}},           & n = 0 \\
 \displaystyle \frac{1}{Z_{g,\gamma,\nu,N}}
-  \int F(\varphi) e^{-U_{g,\gamma,\nu,N}} \; d\varphi,  & n \ge 1.
+	\int F(\varphi) e^{-U_{g,\gamma,\nu,N}} \; d\varphi,  & n \ge 1.
 \end{cases}
 \end{equation}
 By \eqref{e:two-point-function-phi4}, \eqref{e:Givlc}, and \eqref{e:Grep-pos-bis},
@@ -72,7 +72,7 @@ G_x(g, \gamma, \nu; n) = \lim_{N\to\infty} G_{x,N}(g, \gamma, \nu; n),
 where
 \begin{equation}
 G_{x,N}(g, \gamma, \nu; n)
-  =
+	=
 \begin{cases}
 \langle \phib_0 \phi_x \rangle_{g,\gamma,\nu,N},      & n = 0 \\
 \langle \varphi_0 \cdot \varphi_x \rangle_{g,\gamma,\nu,N}  & n \ge 1.
@@ -81,11 +81,11 @@ G_{x,N}(g, \gamma, \nu; n)
 By \eqref{e:susceptibility-def}, \eqref{e:chiNdef}, and \eqref{e:chilim},
 \begin{equation}
 \chi(\gcc, \gamma, \nu; n)
-  =
+	=
 \lim_{N\to\infty} \chi_N(\gcc, \gamma, \nu; n),
-  \quad
+	\quad
 \chi_N(\gcc, \gamma, \nu; n)
-  =
+	=
 \sum_{x\in\Lambda_N} G_{x,N}(\gcc, \gamma, \nu; n).
 \end{equation}
 \todo{Correlation length}
@@ -94,41 +94,40 @@ By \eqref{e:susceptibility-def}, \eqref{e:chiNdef}, and \eqref{e:chilim},
 
 \section{Reformulation of the problem}
 
-Given $g>0$, $\nu\in \R$, and  given $m^2>0$ and $z_0 >-1$, let
+Given $m^2>0$ and $z_0 >-1$, let
 \begin{equation}
-  \label{e:gg0}
-  g_0 = g(1+z_0)^2, \quad \quad
-  \nu_0 = (1+z_0)\nu-m^2.
+\label{e:gg0}
+g_0 = (\gcc - \gamma) (1 + z_0)^2,
+	\quad
+\nu_0 = \nu (1 + z_0) - m^2,
+	\quad
+\gamma_0 = \frac{1}{4d} \gamma (1 + z_0)^2.
 \end{equation}
 Let ${\sf h} = n^{-1/2}(1, \ldots, 1) \in \R^n$.
 With the two points $0,x\in \Lambda$ fixed,
 we introduce \emph{observable fields} $\sigmaa, \sigmab \in \R$, and define
 \begin{equation}
 \label{e:V0def}
-  V^+_{0,x}
-  = g_0\tau_x^2 + \nu_0 \tau_x + z_0 \tau_{\Delta,x} -
-    \sigma_\pp (\varphi_{\pp} \cdot {\sf h})
-    - \sigma_\qq (\varphi_{\qq} \cdot {\sf h}),
-  \quad
-  U^+_x = |\nabla \tau_x|^2.
+	V^+_{0,x}
+	= g_0\tau_x^2 + \nu_0 \tau_x + z_0 \tau_{\Delta,x} -
+	\sigma_\pp (\varphi_{\pp} \cdot {\sf h})
+	- \sigma_\qq (\varphi_{\qq} \cdot {\sf h}),
+	\quad
+	U^+_x = |\nabla \tau_x|^2.
 \end{equation}
-Then we can show that
+\todo{Then we can show that}
 \begin{align}
 \label{e:generating-fn}
-    G_{x,N}(g, \nu; n)
-    &=
-    (1+z_0)
-    \frac{\partial^2 }{\partial \sigma_\pp  \partial \sigma_\qq }
-    \Big|_{0}
-    \log
-    \Ex_C  Z_0
+G_{x,N}(g, \nu; n)
+	&=
+(1+z_0)
+\frac{\partial^2 }{\partial \sigma_\pp  \partial \sigma_\qq}\Big|_{0}
+\log \Ex_C  Z_0
 \end{align}
 with
 \begin{equation}
 \label{e:Z0def}
-  Z_0
-  =
-  \prod_{x\in \Lambda} e^{-(V^+_{0,x} + \gamma_0 U^+_x)}.
+Z_0 = \prod_{x\in \Lambda} e^{-(V^+_{0,x} + \gamma_0 U^+_x)}.
 \end{equation}
 Here, the expectation is given by \refeq{ExCF}, with $C = (-\Delta + m^2)^{-1}$.
 
@@ -146,16 +145,16 @@ the covariance decomposition
 C = C_1 + \cdots + C_{N-1} + C_{N,N}
 \end{equation}
 constructed in \cite{Baue13a} (see also \cite{BGM04}). For simplicity, we write $C_N = C_{N,N}$.
-For an integrable function $F$ of the spin field $\varphi$, we let
-$\Ex_{w}\theta F$ be the convolution of $F$ with the Gaussian measure of covariance $w$, i.e.,
-$(\Ex_w\theta F)(\varphi) = \Ex_wF(\varphi + \zeta)$ where the expectation integrates the
-variable $\zeta$.
+% For $F \in \Ncal$, we let
+% $\Ex_{w}\theta F$ be the convolution of $F$ with the Gaussian measure of covariance $w$, i.e.,
+% $(\Ex_w\theta F)(\varphi) = \Ex_wF(\varphi + \zeta)$ where the expectation integrates the
+% variable $\zeta$.
 It is a property of Gaussian integration (see \cite{BS-rg-norm}) that
 \begin{equation}
-    (\Ex_C \theta F)(\varphi)
-    =
-    (\Ex_{C_N}\theta \circ \Ex_{C_{N-1}}\theta \circ \ldots \circ \Ex_{C_1}\theta F)
-    (\varphi).
+	(\Ex_C \theta F)(\varphi)
+	=
+	(\Ex_{C_N}\theta \circ \Ex_{C_{N-1}}\theta \circ \ldots \circ \Ex_{C_1}\theta F)
+	(\varphi).
 \end{equation}
 Let
 \begin{equation}
@@ -168,26 +167,26 @@ In particular,
 \begin{equation}
 \Ex_C Z_0 = Z_N(0).
 \end{equation}
+
 This allows us to evaluate the integral $\Ex_C Z_0$ by studying the
 dynamical system $Z_j \mapsto Z_{j+1}$ defined by
 \begin{equation}
 Z_{j+1} = \Ex_{C_{j+1}} \theta Z_j, \quad j < N.
 \end{equation}
-
-For its analysis, we require
-a suitable space $\Ncal$ of functions of the spin
-and observable fields, on which the dynamical system acts.  The space $\Ncal$ is
-discussed in detail in \cite[Section~\ref{phi4-sec:phi4observables_representation}]{ST-phi4}.
-The part of $\Ncal$ which does not involve the observable fields $\sigmaa,\sigmab$ is
-given by
-\begin{equation}
-\label{e:Ncaldef}
-    \Ncal^\varnothing = \Ncal^\varnothing(\Lambda) = C^{p_\Ncal}((\R^n)^\Lambda,\R).
-\end{equation}
-The finite smoothness parameter $p_\Ncal$ is discussed in Section~\ref{sec:newnorm}
+For its analysis, we require a suitable space on which this dynamical system acts.
+This space is the extension $\Ncal$ of $\Ncal^\varnothing$ that includes functions
+of the observable fields $\sigma_0$ and $\sigma_x$. Its definition is given
+in \cite[Section~\ref{phi4-sec:phi4observables_representation}]{ST-phi4}.
+% The part of $\Ncal$ which does not involve the observable fields $\sigmaa,\sigmab$ is
+% given by
+% \begin{equation}
+% \label{e:Ncaldef}
+% 	\Ncal^\varnothing = \Ncal^\varnothing(\Lambda) = C^{p_\Ncal}((\R^n)^\Lambda,\R).
+% \end{equation}
+% The finite smoothness parameter $p_\Ncal$ is discussed in Section~\ref{sec:newnorm}
 below,
 where it is explained that $p_\Ncal$ must be chosen in a way that depends on the
-parameter $p$ in Theorem~\ref{thm:mr}.
+parameter $p$ in Theorem~\ref{thm:mr}(iii).
 The part of $\Ncal$ involving the observable fields contains some subtleties that
 need not concern us here; see \cite[Section~\ref{phi4-sec:phi4observables_representation}]{ST-phi4}
 for details.
@@ -203,39 +202,40 @@ to second order in $g$, together with a third-order non-perturbative part whose 
 forms the main part of our effort.  For the perturbative part, we first introduce
 an appropriate space of local field polynomials.
 
-For $y \in \Lambda$, we supplement \refeq{tauphi} by defining
-% \begin{align}
-% &\tau_y = |\varphi_y|^2 \\
-% &\tau_{\Delta,y} = \\
-% &\tau_{\nabla\nabla,y} = \frac{1}{4} \sum_e \nabla^e \varphi_y \cdot \nabla^e \varphi_y.
-% \end{align}
+For $y \in \Lambda$, we supplement \eqref{e:taudef}--\eqref{e:nablatau} and \refeq{tauphi}
+by defining
 \begin{equation}
 \label{e:tauphi2}
 \quad \tau_{\nabla\nabla,y}
-= \frac{1}{4} \sum_{e\in\Z^d:|e| = 1} \nabla^e \varphi_y \cdot \nabla^e \varphi_y.
+	=
+\begin{cases}
+\frac 12 \sum_{e \in \units}
+\left(
+	(\nabla^e \phi)_y (\nabla^e \bar\phi)_y +
+	(\nabla^e \psi)_y (\nabla^e \bar\psi)_y
+\right),
+	& n = 0 \\
+\frac{1}{4} \sum_{|e| = 1} \nabla^e \varphi_y \cdot \nabla^e \varphi_y,
+	& n \ge 1.
+\end{cases}
 \end{equation}
-With $x \in \Lambda$ fixed, and
-given $g,\nu,z,y,u,\lambda_0,\lambda_x,q_0,q_x \in \R$, we extend
-% \refeq{Vtil0def}--\refeq{V0def}
-\refeq{V0def}
-by defining the polynomial
+Now for fixed $x \in \Lambda$,
+we define $\Vcal$ to be the space of functions $V=V_y$ of the form 
 \begin{align}
-% U_y = \frac{1}{4} g |\varphi_y|^4 + \frac{1}{2} \nu |\varphi_y|^2 + \frac{1}{2} z \varphi_y \cdot (-\Delta \varphi)_y + \frac{1}{2} y \tau_{\nabla\nabla,y} + u,
-    V_y &= g \tau_y^2 + \nu \tau_y + z \tau_{\Delta,y} + y \tau_{\nabla\nabla,y} + u
-    \nnb
-    & \quad
-    - \1_{y=\pp}\lambda_{\pp}(\varphi_{\pp} \cdot {\sf h})\sigma_\pp
-    - \1_{y=\qq}\lambda_{\qq}(\varphi_{\qq} \cdot {\sf h})\sigma_\qq
-     \nnb
-    & \quad
-    - \textstyle{\frac 12} (\1_{y=\pp} q_\pp + \1_{y=\qq}q_\qq )\sigma_\pp\sigma_\qq .
 \lbeq{Vy}
+V_y
+	&=
+g \tau_y^2 + \nu \tau_y + z \tau_{\Delta,y} + y \tau_{\nabla\nabla,y} + u
+	\nnb&\quad
+- \1_{y=\pp}\lambda_{\pp}(\varphi_{\pp} \cdot {\sf h})\sigma_\pp
+- \1_{y=\qq}\lambda_{\qq}(\varphi_{\qq} \cdot {\sf h})\sigma_\qq
+	\nnb&\quad
+- \textstyle{\frac 12} (\1_{y=\pp} q_\pp + \1_{y=\qq}q_\qq )\sigma_\pp\sigma_\qq.
 \end{align}
-Then we define $\Vcal$ to be the space of functions $V=V_y$ of the form \refeq{Vy}.
 Given $X \subset \Lambda$, we also define
 \begin{equation}
 \label{e:Vcalesig}
-    \Vcal(X) = \{V(X) = \textstyle{\sum_{y\in X}} V_y : V \in \Vcal \}.
+\Vcal(X) = \{V(X) = \textstyle{\sum_{y\in X}} V_y : V \in \Vcal \}.
 \end{equation}
 
 We also make use of the subspaces $\Vcal^{(1)} \subseteq \Vcal$ consisting of polynomials with $y = 0$, as well as the subspace
@@ -255,8 +255,8 @@ $u = q_\pp = q_\qq = 0$.
 % Based on clp
 \label{sec:rgcoord}
 
-For $j=0,\ldots, N$,
-we partition $\Lambda$ into $L^{N-j}$ disjoint scale-$j$ blocks of side length $L^j$.
+For $j=0,\ldots, N$, we partition $\Lambda$ into $L^{N-j}$ disjoint scale-$j$
+blocks of side length $L^j$.
 A scale-$j$ \emph{polymer} is a union of scale-$j$ blocks.
 The set of all scale-$j$ blocks is denoted $\Bcal_j$, and
 the set of all scale-$j$ polymers is denoted $\Pcal_j$.
@@ -271,11 +271,11 @@ $\zeta_j \in \R$,
 $I_j, K_j : \Pcal_j \to \Ncal$, defined such that
 \begin{equation}
 \label{e:IcircKnew}
-    Z_j = e^{\zeta_j}(I_j\circ K_j)(\Lambda),
-    \qquad
-    \zeta_j= - u_j|\Lambda|
-    + \textstyle{\frac 12} (q_{\pp,j} + q_{\qq,j}) \sigma_\pp\sigma_\qq
-    .
+	Z_j = e^{\zeta_j}(I_j\circ K_j)(\Lambda),
+	\qquad
+	\zeta_j= - u_j|\Lambda|
+	+ \textstyle{\frac 12} (q_{\pp,j} + q_{\qq,j}) \sigma_\pp\sigma_\qq
+	.
 \end{equation}
 The coordinate $I_j$ tracks the evolution of the
 \emph{relevant} and \emph{marginal} directions.  It
@@ -304,10 +304,10 @@ the initial values of $u,q_0,q_x$ are zero, and the initial values of $\lambda_0
 are $1$. By definition, $W_0 = 0$.
 For $X \subset \Lambda$, we define
 \begin{equation}
-  \label{e:IK0def}
-    I_0^+(X) = \prod_{x\in X} e^{-V^+_{0,x}},
-    \quad\quad
-    K_0^+(X) = \prod_{x \in X} I_{0,x}^+ (e^{-\gamma_0 U^{+}_{x}} - 1).
+	\label{e:IK0def}
+	I_0^+(X) = \prod_{x\in X} e^{-V^+_{0,x}},
+	\quad\quad
+	K_0^+(X) = \prod_{x \in X} I_{0,x}^+ (e^{-\gamma_0 U^{+}_{x}} - 1).
 \end{equation}
 With these choices, $Z_0$ of \refeq{Z0def}
 takes the form \eqref{e:IcircKnew}, and we seek $(\zeta_j, U_j, K_j)$ such that
@@ -315,16 +315,16 @@ this continues to hold as the scale advances.
 
 Equivalently, given $(U_j, K_j)$, we define $(\delta\zeta_{j+1}, U_{j+1}, K_{j+1})$ so that
 \begin{equation} \label{e:IcircKdu}
-  \Ex_{j+1}\theta(I_j \circ K_j)(\Lambda)
-  =
-  e^{-\delta \zeta_{j+1}}(I_{j+1} \circ K_{j+1})(\Lambda),
+	\Ex_{j+1}\theta(I_j \circ K_j)(\Lambda)
+	=
+	e^{-\delta \zeta_{j+1}}(I_{j+1} \circ K_{j+1})(\Lambda),
 \end{equation}
 where $\delta\zeta_{j+1} = \zeta_{j+1} - \zeta_j$.
 Moreover, we need $K_j$ to contract as the scale advances, under an appropriate norm.
 The construction of (scale-dependent) maps $V_+$ and $K_+$ such that
 \eqref{e:IcircKdu} holds with
 \begin{equation}
-    (\delta\zeta_{j+1}, U_{j+1}, K_{j+1}) = (V_+(U_j, K_j), K_+(U_j, K_j))
+	(\delta\zeta_{j+1}, U_{j+1}, K_{j+1}) = (V_+(U_j, K_j), K_+(U_j, K_j))
 \end{equation}
 is the main accomplishment of \cite{BS-rg-step} and is summarised in Section~\ref{sec:step}
 below, in a form adapted to our current setting.
@@ -396,8 +396,8 @@ renormalisation group domains $\domRG_j \subset \R^3 \oplus \Wcal_j$ by
 % Given $C_\DV>0$ and $\alpha>0$, we define the domains
 \begin{align}
 \label{e:DVdef}
-    \DV_j &= \{U\in \Vcal^{(0)} :
-    g> C_{\DV}^{-1} \ggen_j  , \;  \|U\|_{\Vcal} < C_{\DV} \ggen_j \},
+	\DV_j &= \{U\in \Vcal^{(0)} :
+	g> C_{\DV}^{-1} \ggen_j  , \;  \|U\|_{\Vcal} < C_{\DV} \ggen_j \},
 \\
 \domRG_j &= \DV_j \times B_{\Wcal_j}(\alpha \chigen_j \ggen_j^3).
 \end{align}
@@ -415,13 +415,13 @@ We define
 \begin{equation}
 \lbeq{Ddef}
 D(\delta, r)
-    =
+	=
 \{ (w, x, y) \in [0, \delta]^2 \times (-\delta, \delta) : |y| \leq r(x) \}
 \end{equation}
 and we let $C^{0,1,\pm}(D(\delta, r))$ denote the space of continuous functions on $D(\delta, r)$
 that are $C^1$ in $(x, y)$ away from $y = 0$, $C^1$ in $x$ everywhere,
 and have left- and right-derivatives in $y$ at $y = 0$.
-In our applications, we take $w = m^2$, $x = g_0$ or $\beta$,
+In our applications, we take $w = m^2$, $x = g_0$ or $\gcc$,
 and $y = \gamma_0$ or $\gamma$.
 
 \begin{theorem}
@@ -434,8 +434,8 @@ Then for any $N \in \N$,
 there exists a sequence $(V_j, K_j) \in \domRG_j(m^2, g_0, \Lambda)$
 such that
 \begin{equation}
-  \label{e:VjKjDj-hat}
-  (V_{j+1},K_{j+1}) = (V_{j+1}(V_j, K_j), K_{j+1}(V_j, K_j)) \text{ for all } j < N
+	\label{e:VjKjDj-hat}
+	(V_{j+1},K_{j+1}) = (V_{j+1}(V_j, K_j), K_{j+1}(V_j, K_j)) \text{ for all } j < N
 \end{equation}
 and \eqref{e:ZjIjKj} is satisfied.
 Moreover, the second-order evolution equation for $V_j$ is independent of $\gamma_0$.
