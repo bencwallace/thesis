@@ -13,6 +13,8 @@
 
 % Drafthead
 \usepackage{drafthead}
+\usepackage[notcite,notref]{showkeys}
+\renewcommand*\showkeyslabelformat[1]{\normalfont\tiny\ttfamily(#1)}
 % \usepackage[draft]{showkeys-hara}			% This seems to clash with xr
 
 % According to
@@ -82,7 +84,7 @@
 \begin{document}
 
 %%%% Front matter %%%%
-\input{frontmatter}
+% \input{frontmatter}
 % \input{todo}				% temporary
 
 %%%% Main matter %%%%
