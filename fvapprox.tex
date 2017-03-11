@@ -1,18 +1,5 @@
-%% Use this to reset the appendix counter.  Note that the FoGS
-%% requires that the word ``Appendices'' appear in the table of
-%% contents either before each appendix lable or as a division
-%% denoting the start of the appendices.  We take the latter option
-%% here.  This is ensured by making the \texttt{appendicestoc} option
-%% a default option to the UBC thesis class.
-
-%%% If you only have one appendix, please uncomment the following line.
-\renewcommand{\appendicesname}{Appendix}
-
-% Start appendices
-\appendix
-
 % First appendix (from saw-sa)
-\chapter{Proof of finite-volume approximation}
+\chapter{Finite-volume approximation}
 \label{sec:finvol}
 
 In this appendix, we prove Proposition~\ref{prop:finvol}.
@@ -138,41 +125,39 @@ Summation of \refeq{nabL} over unit vectors $e\in\Zd$ also gives
 \sum_{x\in\Lambda_N} |\nabla L^x_{N,T}|^2.
 \end{align}
 
-Recall that we are identifying the vertices of $\Lambda_N$ with nested subsets of $\Zd$.
 % centred at the origin (approximately if $L$ is even),
 % with $\Lambda_{N+1}$ paved by $L^d$ translates of $\Lambda_N$.
-We can thus define $\partial \Lambda_N$ to be the inner vertex boundary of $\Lambda_N$.
-We denote the expectation of $X^{L^N}$ started from $0$ by $E^{\Lambda_N}_0$
-and define
-\begin{align}
-\label{e:cN}
-c_{N,T}(x)
-    &=
-E^{\Lambda_N}_0 \left( e^{-U_{\gcc,\gamma,T}} \1_{X(T)=b} \right),
-	\quad
-x \in \Lambda_N \\
-c_{N,T}
-    &=
-E^{\Lambda_N}_0 \left( e^{-U_{\gcc,\gamma,T}} \right).
-\end{align}
-The finite-volume two-point function and susceptibility
-are defined by
-\begin{align}
-G_x(\gcc,\gamma,\nu)
-    &= \int_0^\infty c_{N,T}(x) e^{-\nu T} \; dT, \\
-\chi_N(\gcc, \gamma, \nu)
-    &= \int_0^\infty c_{N,T} e^{-\nu T} \; dT
-    .
-    \label{e:chiNdef}
-\end{align}
-Here and throughout this section we have dropped the parameter $n$
+% We denote the expectation of $X^{L^N}$ started from $0$ by $E^{\Lambda_N}_0$
+% and define
+% \begin{align}
+% \label{e:cN}
+% c_{N,T}(x)
+%     &=
+% E^{\Lambda_N}_0 \left( e^{-U_{\gcc,\gamma,T}} \1_{X(T)=b} \right),
+% 	\quad
+% x \in \Lambda_N \\
+% c_{N,T}
+%     &=
+% E^{\Lambda_N}_0 \left( e^{-U_{\gcc,\gamma,T}} \right).
+% \end{align}
+% The finite-volume two-point function and susceptibility
+% are defined by
+% \begin{align}
+% G_x(\gcc,\gamma,\nu)
+%     &= \int_0^\infty c_{N,T}(x) e^{-\nu T} \; dT, \\
+% \chi_N(\gcc, \gamma, \nu)
+%     &= \int_0^\infty c_{N,T} e^{-\nu T} \; dT
+%     .
+%     \label{e:chiNdef}
+% \end{align}
+Here and throughout this section we drop the parameter $n$
 from the notation since $n = 0$.
 
 \begin{prop}
 \label{prop:finvol-re}
 Let $d >0$, $\gcc >0$ and $\gamma < \gcc$. For all $\nu \in \R$,
 \begin{equation}
-\label{e:Givlc}
+\label{e:Givlc-re}
 \lim_{N \to \infty}
 G_x(\gcc,\gamma,\nu)
 =
@@ -180,7 +165,7 @@ G_x(\gcc,\gamma,\nu)
 \end{equation}
 and
 \begin{equation}
-\label{e:chilim}
+\label{e:chilim-re}
 \lim_{N\to\infty}\chi_N(\gcc,\gamma,\nu)=   \chi(\gcc,\gamma,\nu).
 \end{equation}
 \end{prop}
@@ -198,13 +183,15 @@ By \eqref{e:V2}, \eqref{e:ILT-mon} and \eqref{e:gradLT-mon}
 \label{e:ctmon}
 c_{N,T}(x) \leq c_{N+1,T}(x).
 \end{equation}
-Thus, \eqref{e:Givlc} follows by monotone convergence, once we show that
+Thus, \eqref{e:Givlc-re} follows by monotone convergence, once we show that
 \begin{equation}
 \lim_{N\to\infty} c_{N,T}(x) = c_T(x).
 \end{equation}
 
 % This follows as in \cite[(2.8)]{BBS-saw4}.
-To show this, we define
+To show this, recall that we are identifying the vertices of $\Lambda_N$
+with nested subsets of $\Zd$. We can thus define $\partial \Lambda_N$ to be
+the inner vertex boundary of $\Lambda_N$. We set
 \begin{align}
 c_{N,T}^*(x)
   &=
@@ -241,7 +228,7 @@ With $Y_t$ a rate-$2d$ Poisson process with measure ${\sf P}$,
   &\leq 2 {\sf P} (Y_T \geq \diam{\Lambda_N}) \to 0
 \end{align}
 as $N\to\infty$.
-This completes the proof of \eqref{e:Givlc}.
+This completes the proof of \eqref{e:Givlc-re}.
 
 Finally, by monotone convergence of $G_N$ to $G$,
 for $\nu \in \R$,
@@ -250,5 +237,5 @@ for $\nu \in \R$,
     = \sum_{x\in\Zd} \lim_{N\to\infty} G_{x,N}(\gcc,\gamma,\nu) \1_{x\in\Lambda_N}
     = \chi(g, \gamma, \nu),
 \end{equation}
-which proves \eqref{e:chilim}.
+which proves \eqref{e:chilim-re}.
 \end{proof}

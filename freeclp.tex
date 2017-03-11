@@ -1,0 +1,180 @@
+\chapter{Moments of the free Green function}
+\label{app:free-moments}
+% from clp
+
+\section{Main result}
+
+\begin{prop}\label{prop:Gab-free-moment-estimate-bis}
+Let ${\sf c}_p$ be the constant defined by \eqref{e:cpdef}.
+For all dimensions $d>2$ and all $p>0$,
+as $m^2 \downarrow 0$,
+\begin{equation}
+\label{e:Gab-free-moment-estimate-bis}
+\sum_{x\in\Zd} |x|^p G_{x}(0, m^2)
+=
+{\sf c}_p^p m^{-(p + 2)} (1 + O(m)).
+\end{equation}
+In particular, $\xi_p(0,\varepsilon) = {\sf c}_p \varepsilon^{-1/2}
+(1+O(\varepsilon^{1/2}))$ as $\varepsilon \downarrow 0$.
+\end{prop}
+
+The last sentence in the the proposition follows immediately from
+\refeq{Gab-free-moment-estimate-bis} and the fact that $\chi(0,m^2)=m^{-2}$,
+so it suffices to prove \refeq{Gab-free-moment-estimate-bis}.
+
+The case $p = 2$ of \refeq{Gab-free-moment-estimate-bis}
+can be obtained easily from the identity
+\begin{equation}
+\sum_{x\in\Zd} |x|^2 G_x(0, m^2) = -\Delta_\Rd \hat{G}(0),
+\end{equation}
+where $\hat G$ is the Fourier transform of $G$.
+Higher even moments could in principle
+be computed by further differentiating $\hat G$.
+We adopt a different approach
+for general $p>0$,
+based on the finite range decomposition of $(-\Delta_{\Zd}+m^2)^{-1}$
+given in \cite{BGM04,Baue13a}.
+This finite range decomposition also provides the basis for the renormalisation group method.
+
+\section{Covariance decomposition}
+
+The finite range decomposition is
+\begin{equation}
+    G_x(0,m^2) = \sum_{j=1}^\infty C_{j;x}(m^2).
+\end{equation}
+The finite range property refers to the fact that $C_{j;x}(m^2) = 0$ if
+$|x| \ge \frac 12 L^j$,
+where $L>1$ is fixed arbitrarily.
+ We review some properties of this decomposition, from
+\cite{BBS-rg-pt,Baue13a}, before
+proving Proposition~\ref{prop:Gab-free-moment-estimate-bis}.
+The positive definiteness of the finite range
+decomposition is not needed here, and $L$ need not be large.
+
+The terms $C_{j;x}(m^2)$ are defined in \cite[Section~\ref{pt-sec:Cdecomp}]{BBS-rg-pt} by
+\begin{equation} \label{e:Cdef}
+  C_{j;x}(m^2) = \left\{\begin{aligned}
+      &\int_{0}^{\frac{1}{2} L}  \phi_{t}^*(x; m^2) \; \frac{dt}{t}
+      &\quad& (j=1)
+      \\
+      &\int_{\frac{1}{2} L^{j-1}}^{\frac{1}{2} L^{j}}  \phi_{t}^*(x; m^2) \; \frac{dt}{t}
+      && (j\ge 2)
+    \end{aligned}\right.
+\end{equation}
+(in \cite{BBS-rg-pt}, the notation $C_{j;0,x}$ and $\phi^*_t(0, x; m^2)$ was used instead).
+Here, $\phi_t^*$ is a function of $x \in \Rd$ and $m^2 > 0$ given in
+\cite[Example 1.1]{Baue13a}. It satisfies the finite range property that
+$\phi_t^*(x; m^2) = 0$ for $|x| > t$.
+It was also shown in \cite{Baue13a} that there exists a function $\phi_t$
+satisfying the same finite range property but giving a decomposition of the
+\emph{continuum} Green function:
+\begin{align}
+\label{e:frd-cont-int}
+    (-\Delta_{\Rd} + m^2)^{-1}_{0x}
+    &=
+    \int_0^\infty \phi_t(x; m^2) \frac{dt}{t} .
+\end{align}
+Moreover, by \cite[(1.37)]{Baue13a}, for $|x| \leq t$,
+\begin{equation}
+\label{e:frd-Zd-Rd}
+\phi^*_t(x; m^2) = \phi_t(x; m^2) + O(t^{-(d-1)} (1 + m^2 t^2)^{-k}).
+\end{equation}
+This allows us to approximate the discrete Green function by the continuum one, for which the moments are easily computed.
+We have set the constant $c$ present in \cite{Baue13a} equal to $1$, which we can do by rescaling $\phi_t^*$.
+
+As $t$ approaches $0$, the error bound in \eqref{e:frd-Zd-Rd} degenerates.
+However, to estimate \eqref{prop:Gab-free-moment-estimate-bis}, it suffices to
+restrict to $x \neq 0$.
+Then, since $x \in \Z^d$, the finite range property permits replacement of the lower bound
+in the range of integration for $j=1$ in \eqref{e:Cdef} by $\frac12$, and the contribution
+due to $j=1$ can be estimated in the same way as the terms $j\geq 2$.
+
+Also, by \cite[(1.34)]{Baue13a}, for any $k$ there is a constant $C_k$ such that
+\begin{equation}
+\label{e:frd-deriv-est}
+|D_x \phi_t(x; m^2)| \leq C_k t^{-(d - 1)} (1 + m^2 t^2)^{-k}.
+\end{equation}
+We fix a choice of $k$ which obeys $k > \frac 12 (p+1)$ and use only this choice.
+By \cite[(1.38)]{Baue13a}, there exists a function $\bar\phi$ such that
+\begin{equation}
+\label{e:frd-scaling}
+\phi_t(x; m^2) = t^{-(d - 2)} \bar\phi\left(\frac{x}{t}; m^2 t^2\right).
+\end{equation}
+
+\section{Proof of main result}
+
+\begin{proof}[Proof of Proposition~\ref{prop:Gab-free-moment-estimate}]
+
+We begin by writing
+\begin{align}
+\sum_{x\in\Zd} |x|^p G_x(0, m^2)
+    &=
+    \sum_{x\in\Zd} |x|^p
+    \sum_{j=1}^\infty C_{j;x}(m^2)
+    =
+M(m^2)
++
+E(m^2)
+,
+\end{align}
+where the main and error terms are respectively
+\begin{align}
+M(m^2) &=
+\sum_{x\in\Zd} |x|^p \sum_{j=1}^\infty
+\int_{\frac 12 L^{j-1}}^{\frac 12 L^j} \phi_t(x; m^2) \;\frac{dt}{t},
+\\
+E(m^2) &= \sum_{x\in\Zd} |x|^p \sum_{j=1}^\infty \left(C_{j;x} - \int_{\frac{1}{2} L^{j-1}}^{\frac{1}{2} L^j} \phi_t(x; m^2) \frac{dt}{t}\right).
+\end{align}
+
+We first compute the main term $M$. By \eqref{e:frd-scaling},
+\begin{equation}
+\phi_t(x; m^2) = m^{d-2} \phi_{mt}(mx; 1).
+\end{equation}
+Therefore, by Riemann sum approximation,
+\begin{align}
+\sum_{x\in\Zd} &|x|^p \int_{\frac{1}{2} L^{j-1}}^{\frac{1}{2} L^j} \phi_t(x; m^2) \; \frac{dt}{t} \\
+  &= m^{-(p+2)} m^d \sum_{x\in\Zd} |mx|^p \int_{\frac{1}{2} L^{j-1}}^{\frac{1}{2} L^j} \phi_{mt}(mx; 1) \; \frac{dt}{t}
+  \\ \nonumber
+  &= m^{-(p + 2)} \int_\Rd |x|^p \int_{\frac{1}{2} L^{j-1}}^{\frac{1}{2} L^j} \phi_{mt}(x; 1) \; \frac{dt}{t}
+    + O(L^{(p + 1) j}
+    L^{-2k(j-j_m)_+})
+    ,
+\end{align}
+where the error estimate follows from \eqref{e:frd-deriv-est} and \eqref{e:mass-decay}.
+Summation over $j$ gives
+\begin{align}
+M(m^2)
+&= {\sf c}_p^p m^{-(p + 2)} + O(m^{-(p + 1)}),
+\end{align}
+where we used
+\eqref{e:frd-cont-int} for the first term, and we used $2k>p+1$ and
+Lemma~\ref{lem:mass-scale-sum} for the second term.
+
+For the error term,
+it follows from
+\eqref{e:Cdef}, \eqref{e:frd-Zd-Rd},
+and the observation that the lower bound in the range of integration for the $j=1$ term in \eqref{e:Cdef}
+can be changed to $\frac12$ that
+\begin{equation}
+\label{e:frd-integral-approx}
+C_{j;x}
+=
+\int_{\frac{1}{2} L^{j-1}}^{\frac{1}{2} L^j} \phi_t(x; m^2) \frac{dt}{t}
++
+O(L^{-j (d - 1)} (1 + m^2 L^{2j})^{-k})
+\1_{|x|\leq L^j}.
+\end{equation}
+Therefore, again using \eqref{e:mass-decay}, we have
+\begin{align}
+E(m^2)
+&= \sum_{j=1}^\infty \sum_{|x|\leq L^j} |x|^p O(L^{-j (d - 1)}
+L^{-2k(j-j_m)_+})
+\\
+&= \sum_{j=1}^\infty O(L^{(p+1)j}L^{-2k(j-j_m)_+})
+\label{e:free-error-estimate}
+.
+\end{align}
+With $2k>p+1$ and Lemma~\ref{lem:mass-scale-sum}, this gives
+$E(m^2) = O(m^{-(p+1)})$,
+and the proof is complete.
+\end{proof}

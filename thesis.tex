@@ -1,67 +1,118 @@
 % Please see the ubcthesis documentation for details about the options.
 \documentclass[phd,oneside]{ubcthesis}
+
+%%%%%%%%%%%%
+% PACKAGES %
+%%%%%%%%%%%%
+
 % According to
 % https://www.grad.ubc.ca/current-students/dissertation-thesis-preparation/page-layout-margins-numbering
 % Left: 1.25 inches (32 mm) recommended for binding; 1 inch minimum.
 % Right, top, and bottom: 1 inch recommended; 0.75 inches (19 mm) minimum
 \usepackage[left=1.25in,right=1in,bottom=1in,top=1in]{geometry}
-\usepackage{mathrsfs,mathtools,	wrapfig}
 
-% check ubcsample.tex for other potentially useful packages to include
-\input{macros}
-\input{extramacros}
-\newcommand{\todo}[1]{#1}
+% Drafthead
+\usepackage{drafthead}
+% \usepackage[draft]{showkeys-hara}			% This seems to clash with xr
 
-%******** setspace *******************************
-% According to https://www.grad.ubc.ca/current-students/dissertation-thesis-preparation/page-layout-margins-numbering,
+% According to
+% 	grad.ubc.ca/current-students/dissertation-thesis-preparation/page-layout-margins-numbering
 % -lines of text must be 1.5 or double spaced
 % -quotations of more than one line can be single-spaced
-% -acknowledgements, footnotes, table, figure and illustration captions and the bibliography can be single-spaced, provided that individual entries are separated by a full space
+% -acknowledgements, footnotes, table, figure and illustration captions and the bibliography can be single-spaced,
+% 	provided that individual entries are separated by a full space
 \usepackage{setspace}
 \onehalfspacing
 
+% Other packages
+\usepackage{mathrsfs,mathtools,	wrapfig}
 
+%%%%%%%%%%
+% MACROS %
+%%%%%%%%%%
+
+\input{macros}
+\input{extramacros}
+
+% check ubcsample.tex for other potentially useful packages to include
+
+%%%%%%%%%
+% TITLE %
+%%%%%%%%%
+
+% Institution
 \institution{The University Of British Columbia}
 \faculty{The Faculty of Graduate Studies}
 \institutionaddress{Vancouver}
-\previousdegree{B.Sc., Queen's University, 2012}
+
+% Degrees
+\previousdegree{B.Sc.~Honours, Queen's University, 2012}
 \previousdegree{M.Sc., Queen's University, 2013}
 
+% Program
+\program{Mathematics}
+
+% Title and author
 \title{Renormalisation group analysis of self-interacting walks and spin systems}
 % \subtitle{Subtitle}
 \author{Benjamin C.\ Wallace}
+
+% Copyright
 \copyrightyear{2017}
-\submitdate{\monthname\ \number\year} % The "\ " is required after
-                                      % \monthname to prevent the
-                                      % command from eating the space.
-\program{Mathematics}
+
+% Date
+% For the examination committee: month, year of submission to committe/examiner
+% For final, post-defence submission: should be the month, year of final submissions of defended thesis
+\submitdate{\monthname\ \number\year}
+% The "\ " is required after \monthname to
+% prevent the command from eating the space.
+
+%%%%%%%%%%%%%%%%%%%%%
+% TABLE OF CONTENTS %
+%%%%%%%%%%%%%%%%%%%%%
 
 % See template regarding chapter numbers, etc.
-
 \setcounter{tocdepth}{2}
 \setcounter{secnumdepth}{2}
 
+%%%%%%%%%%%%
+% DOCUMENT %
+%%%%%%%%%%%%
+
 \begin{document}
 
-% Front matter
-% \input{frontmatter}
+%%%% Front matter %%%%
+\input{frontmatter}
+% \input{todo}				% temporary
 
-% Main matter
+%%%% Main matter %%%%
 \mainmatter
 \input{intro}
-\input{rg}					% setup and state flow result sufficient
-							% for proofs (cf. log Section 4)
+\input{rg}					% setup and statement of main flow result
 % \input{proofs}			% proofs of main results
 % \input{step}				% improved bounds on rg-step from clp
 % \input{flow}				% critical parameters from saw-sa
 % \input{conclusion}
 
-% Note: the bibliography must come before the appendices.
+%%%% Bibliography %%%%
+% Note: the bibliography must come before the appendices
 \bibliographystyle{plain}
 \bibliography{thesis}
 
-% Appendices
-\input{fvapprox}
+%%%% Appendices %%%%
+
+%% Use this to reset the appendix counter.  Note that the FoGS
+%% requires that the word ``Appendices'' appear in the table of
+%% contents either before each appendix lable or as a division
+%% denoting the start of the appendices.  We take the latter option
+%% here.  This is ensured by making the \texttt{appendicestoc} option
+%% a default option to the UBC thesis class.
+
+%%% If you only have one appendix, please uncomment the following line.
+% \renewcommand{\appendicesname}{Appendix}
+
+% \appendix 					% Start appendices
+% \input{fvapprox}
+% \input{freeclp}
 
 \end{document}
-\endinput
