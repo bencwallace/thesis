@@ -367,6 +367,7 @@ When $n = 1$ we recover the Ising model. When $n = 2, 3$, we get the \emph{XY mo
 Let $S = \R^n$. The $|\varphi|^4$ spin model on $\graph$ is the ferromagnetic spin system
 defined by the quartic Hamiltonian
 \begin{equation}
+\label{e:phi4-Ham}
 H_{\gcc,\nu}(\varphi)
   =
 \sum_{x\in\vertices}
@@ -491,13 +492,13 @@ V_{\gcc,\gamma,\nu,N}(\varphi)
 	=
 \sum_{x\in\Lambda_N}
 \Big(
-	\tfrac{1}{4} \gcc |\varphi_x|^4
+	\tfrac{1}{4} (\gcc - \gamma) |\varphi_x|^4
 		+
 	\tfrac{1}{2} \nu |\varphi_x|^2
 		+
 	\tfrac{1}{2} \varphi_x \cdot (-\Delta \varphi)_x
-		-
-	\tfrac{1}{2 d} \gamma (\nabla |\phi_x|^2)^2
+		+
+	\tfrac{1}{4 d} \gamma (\nabla |\phi_x|^2)^2
 \Big),
 \end{equation}
 where
@@ -506,6 +507,7 @@ where
 	=
 \sum_{|e|=1} (\nabla^e |\phi_x|^2)^2.
 \end{equation}
+Note that we recover \eqref{e:phi4-Ham} when $\gamma = 0$.
 The expectation with respect to the corresponding Gibbs measure will
 be denoted $\langle\cdot\rangle_{\gcc,\gamma,\nu,N}$.
 We define the two-point function
@@ -1022,6 +1024,43 @@ In the case $\gamma = 0$, the discrete-time version of this model is known as
 the \emph{Domb-Joyce model}. In continuous-time, it is the
 \emph{continuous-time weakly self-avoiding walk} (WSAW).
 
+\subsubsection{Alternative representation}
+
+For $f : \Zd \to \R$,
+\begin{equation}
+\label{e:sbp}
+\sum_{x\in\Zd}   f_x \Delta_{\Zd} f_x
+=
+-\frac{1}{2} |\nabla f|^2.
+\end{equation}
+It follows that
+\begin{equation}
+\sum_{x\in\Zd} \sum_{e\in\Ucal} f_x f_{x+e}
+=
+2 d \sum_{x\in\Zd} f_x^2
++ \sum_{x\in\Zd} f_x \Delta_{\Zd} f_x
+=
+2 d \sum_{x\in\Zd} f_x^2
+- \frac{1}{2} \sum_{x\in\Zd} |\nabla f_x|^2
+\end{equation}
+and so we get the useful representation:
+\begin{equation}
+\label{e:Udef-pos}
+U_{\gcc,\gamma}(f)
+= (\gcc - \gamma) \sum_{x\in\Zd} f_x^2
++ \frac{\gamma}{4d} \sum_{x\in\Zd} \sum_{e\in\Ucal} |\nabla^e f_x|^2.
+\end{equation}
+In particular,
+\begin{equation}
+  \label{e:V2}
+  U_{\gcc,\gamma,T} =
+  (\gcc - \gamma) I_T
+  + \frac{\gamma}{4d}
+  |\nabla \lt_T|^2
+  .
+\end{equation}
+% A version of \refeq{V2} can be found in \cite{HK01a}.
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Predicted behaviour}
@@ -1312,10 +1351,16 @@ Let
 \label{e:Vdef2}
 V_{\gcc,\gamma,\nu,N}
 	=
+U_{\gcc,\gamma}(\tau)
+	+
 \sum_{x\in\Lambda_N}
 \Big(
-	\gcc \tau_x^2 + \nu \tau_x + \tau_{\Delta,x} - \tfrac{1}{2 d} \gamma |\nabla \tau_x|^2
+	\nu \tau_x + \tau_{\Delta,x}
 \Big)
+% \sum_{x\in\Lambda_N}
+% \Big(
+% 	\gcc \tau_x^2 + \nu \tau_x + \tau_{\Delta,x} - \tfrac{1}{2 d} \gamma |\nabla \tau_x|^2
+% \Big)
 \end{equation}
 
 \begin{prop}
@@ -1324,7 +1369,8 @@ Let $d > 0$ and $\gcc > 0$. For $\gamma < \gcc$ and $\nu \in \R$,
 \label{e:Grep-pos-bis}
 G_{x,N}(\gcc, \gamma, \nu)
 	&=
-\int e^{-U_{\gcc,\gamma,\nu,N}} \bar\phi_a \phi_b.
+\int e^{-V_{\gcc,\gamma,\nu,N}} \phib_0 \phi_x.
+% \int e^{-U_{\gcc,\gamma,\nu,N}} \bar\phi_a \phi_b.
 \end{align}
 \end{prop}
 

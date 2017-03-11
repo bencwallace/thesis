@@ -23,7 +23,17 @@ Sections~\ref{sec:prog}--\ref{sec:rgcoord}}
 
 \section{Unified notation}
 
-To unify our treatment of the two models, if $n \ge 1$ we set
+To unify our treatment of the two models, we define an $n$-dependent space of forms
+$\Ncal^\varnothing$, which is defined as in Section~\ref{sec:intrep} if $n = 0$ and
+\begin{equation}
+\label{e:Ncaldef}
+\Ncal^\varnothing
+  = \Ncal^\varnothing(\Lambda)
+  = C^{p_\Ncal}((\R^n)^\Lambda,\R).
+\end{equation}
+if $n \ge 1$.
+We define the forms $\tau_x, \tau_{\Delta,x}, |\nabla\tau_x|^2 \in \Ncal^\varnothing$ according
+to \eqref{e:taudef}--\eqref{e:nablatau} if $n = 0$ and
 \begin{equation}
 \label{e:tauphi}
 \tau_x = \tfrac{1}{2} |\varphi_x|^2,
@@ -32,27 +42,20 @@ To unify our treatment of the two models, if $n \ge 1$ we set
   \quad
 |\nabla\tau_x|^2 = \sum_{|e|=1} (\nabla^e |\phi_x|^2)^2
 \end{equation}
-and
-\begin{equation}
-\label{e:Ncaldef}
-\Ncal^\varnothing
-  = \Ncal^\varnothing(\Lambda)
-  = C^{p_\Ncal}((\R^n)^\Lambda,\R).
-\end{equation}
-When $n = 0$, we define $\tau_x$, $\tau_{\Delta,x}$, and $|\nabla\tau_x|^2$
-as in \eqref{e:taudef}--\eqref{e:nablatau}
-and we define $\Ncal^\varnothing$ as in Section~\ref{sec:intrep}.
-Then by \eqref{e:Vdef1} and \eqref{e:Vdef2},
+if $n \ge 1$.
+
+Then by \eqref{e:Vdef1}, \eqref{e:Udef-pos}, and \eqref{e:Vdef2},
+$V_{g,\gamma,\nu,N} \in \Ncal^\varnothing$ is given by
 \begin{equation}
 V_{g,\gamma,\nu,N}
   =
 \sum_{x\in\Lambda_N}
 \Big(
-  g \tau_x^2 + \nu \tau_x + \tau_{\Delta,x} - \tfrac{1}{2 d} \gamma |\nabla\tau_x|^2
+  (g - \gamma) \tau_x^2 + \nu \tau_x + \tau_{\Delta,x} + \tfrac{1}{4 d} \gamma |\nabla\tau_x|^2
 \Big)
 \end{equation}
 for any choice of $n$.
-For $F \in \Ncal$, let
+For $F \in \Ncal^\varnothing$, let
 \begin{equation}
 \langle F \rangle_{g,\gamma,\nu,N}
   =
@@ -85,7 +88,7 @@ By \eqref{e:susceptibility-def}, \eqref{e:chiNdef}, and \eqref{e:chilim},
   =
 \sum_{x\in\Lambda_N} G_{x,N}(\gcc, \gamma, \nu; n).
 \end{equation}
-\todo{Susceptibility and correlation length}
+\todo{Correlation length}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
