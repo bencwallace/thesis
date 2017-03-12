@@ -10,16 +10,8 @@ $g$, $\lambda$, and $q$.}
 
 \section{Unified notation}
 
-To unify our treatment of the two models, we define an $n$-dependent space of forms
-$\Ncal^\varnothing$, which is defined as in Section~\ref{sec:intrep} if $n = 0$ and
-\begin{equation}
-\label{e:Ncaldef}
-\Ncal^\varnothing
-	= \Ncal^\varnothing(\Lambda)
-	= C^{p_\Ncal}((\R^n)^\Lambda,\R).
-\end{equation}
-if $n \ge 1$, where $p_\Ncal$ is the smoothness parameter discussed in Section~\ref{sec:intrep}.
-We define the forms $\tau_x, \tau_{\Delta,x}, |\nabla\tau_x|^2 \in \Ncal^\varnothing$ according
+To unify our treatment of the two models,
+we define the forms $\tau_x, \tau_{\Delta,x}, |\nabla\tau_x|^2 \in \Ncal^\varnothing$ according
 to \eqref{e:taudef}--\eqref{e:nablatau} if $n = 0$ and
 \begin{equation}
 \label{e:tauphi}
@@ -42,7 +34,7 @@ V_{g,\gamma,\nu,N}
 \Big)
 \end{equation}
 for any choice of $n$.
-For $F \in \Ncal^\varnothing$, let
+We write
 \begin{equation}
 \langle F \rangle_{g,\gamma,\nu,N}
 	=
@@ -249,39 +241,46 @@ In particular,
 \begin{equation}
 \Ex_C Z_0 = Z_N(0).
 \end{equation}
-
 This allows us to evaluate the integral $\Ex_C Z_0$ by studying the
 dynamical system $Z_j \mapsto Z_{j+1}$ defined by
 \begin{equation}
+\label{e:rgmapZ}
 Z_{j+1} = \Ex_{C_{j+1}} \theta Z_j, \quad j < N.
 \end{equation}
-For its analysis, we require a suitable space on which this dynamical system acts.
-This space is the extension $\Ncal$ of $\Ncal^\varnothing$ that includes functions
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{The space of field functionals}
+
+For the analysis of the dynamical system \eqref{e:rgmapZ}, we require a suitable
+space on which this dynamical system acts.
+
+We define an $n$-dependent space of forms
+$\Ncal^\varnothing$, which is defined as in Section~\ref{sec:intrep} if $n = 0$ and
+\begin{equation}
+\label{e:Ncaldef}
+\Ncal^\varnothing
+	= \Ncal^\varnothing(\Lambda)
+	= C^{p_\Ncal}((\R^n)^\Lambda,\R).
+\end{equation}
+if $n \ge 1$, where $p_\Ncal$ is the smoothness parameter discussed in Section~\ref{sec:intrep}.
+
+We define a space $\Ncal$ of $\Ncal^\varnothing$ that includes functions
 of the observable fields $\sigma_0$ and $\sigma_x$. Its definition is given
 in \cite[Section~\ref{phi4-sec:phi4observables_representation}]{ST-phi4}.
-% The part of $\Ncal$ which does not involve the observable fields $\sigmaa,\sigmab$ is
-% given by
-% \begin{equation}
-% \label{e:Ncaldef}
-% 	\Ncal^\varnothing = \Ncal^\varnothing(\Lambda) = C^{p_\Ncal}((\R^n)^\Lambda,\R).
-% \end{equation}
-% The finite smoothness parameter $p_\Ncal$ is discussed in Section~\ref{sec:newnorm}
-below,
-where it is explained that $p_\Ncal$ must be chosen in a way that depends on the
+The finite smoothness parameter $p_\Ncal$ is discussed in Section~\ref{sec:newnorm}
+below, where it is explained that $p_\Ncal$ must be chosen in a way that depends on the
 parameter $p$ in Theorem~\ref{thm:mr}(iii).
 The part of $\Ncal$ involving the observable fields contains some subtleties that
 need not concern us here; see \cite[Section~\ref{phi4-sec:phi4observables_representation}]{ST-phi4}
 for details.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\section{Seminorms}
-
 In order to control the evolution of $Z_j$, we make use of a family
-$\|\cdot\|_{T_{\phi,j}(\h_j)}$ of scale-dependent dependent seminorms parameterized
-by $\phi\in\C^\Lambda$ and a sequence of parameters $\h_j > 0$. For convenience,
-we simply write $\|\cdot\|_{T_\phi(\h_j)}$ with the scale $j$ implicit in the
+$\|\cdot\|_{T_{\phi,j}(\h_j)}$ of scale-dependent dependent seminorms depending on a
+sequence of weights $\h_j > 0$; the field $\phi$ lies in $\C^\Lambda$ if $n = 0$ and
+$(\R^n)^\Lambda$ if $n \ge 1$. For convenience,
+we will simply write $\|\cdot\|_{T_\phi(\h_j)}$ with the scale $j$ implied by the
 choice of parameter $\h_j$.
 
 \subsection{Test functions}
@@ -334,6 +333,8 @@ corresponding $\alpha, \beta$ with $|\alpha|_1 + |\beta|_1 \leq p_\Phi$,
 \end{equation}
 
 \subsection{The \texorpdfstring{$T_\phi$}{Tphi} seminorm}
+
+\todo{Define for observables.}
 
 For any $F \in \Ncal$,
 there exist \emph{unique} functions $F_{\vec y}$ of $(\phi, \bar\phi)$
@@ -433,7 +434,7 @@ $(z+y)\tau_{\Delta}$, and the latter
 additionally sets
 $u = q_\pp = q_\qq = 0$.
 
-We define a scale-dependent norm
+We define the $\Vcal = \Vcal_j$ norm by
 \begin{equation}
 \label{e:Vnormdef}
 \begin{aligned}
@@ -480,7 +481,32 @@ in Section~\ref{sec:Rpf1}.
 
 \subsection{Perturbative flow}
 
-\todo{Discuss $I$, $W$, and $\Vpt$}
+In \cite{BBS-rg-pt}, a map $\Vpt : \Vcal\to\Vcal$
+is defined so as to maintain the approximation form
+\begin{equation}
+Z_j \approx e^{-V_j} (1 + O(V_j^2)).
+\end{equation}
+Precisely, $\Vpt$ depends on a covariance $C$ and satisfies
+\begin{equation}
+\Ex_C\theta e^{-V(\Lambda)} (1 + W(V))
+	=
+e^{-\Vpt(\Lambda)} (1 + W(\Vpt)) + O(V^3),
+\end{equation}
+where $W = W(V)$ is an explicit polynomial defined
+in \cite[\eqref{pt-e:WLTF}]{BBS-rg-pt}. \todo{Explain $O(V^3)$.}
+In practice, we set $C = C_j$ and obtain a sequence $\Vpt = V_{\mathrm{pt},j}$ of maps
+and $W_j$ of polynomials. By \cite[\eqref{IE-e:W-logwish}]{BS-rg-IE},
+\todo{(check this)},
+\begin{equation}
+\label{e:Wbilinbd}
+\|W_j\|_{T_0(\ell_j)}
+	\le
+O(\chicCov_j) \|V\|_\Vcal^2.
+\end{equation}
+The maps $V \mapsto \Vpt$
+generate a sequence of couplings constants that we refer to as the
+\emph{perturbative flow}. The equations defining this flow can be
+computed exactly by way of Feynman diagrams.
 
 \subsubsection{The flow of \texorpdfstring{$g$}{g}}
 
@@ -555,14 +581,6 @@ and takes the form
 I_j(X; V)
 	=
 \prod_{B \in \Bcal_j(X)} e^{-V(B)} (1 + W_j(B, V)), \quad X \in \Pcal_j.
-\end{equation}
-Here, $W_j$ an explicit polynomial quadratic in $V$ defined in
-\cite[\eqref{pt-e:WLTF}]{BBS-rg-pt}. By \cite[\eqref{IE-e:W-logwish}]{BS-rg-IE},
-\begin{equation}
-\label{e:Wbilinbd}
-\|W_N\|_{T_0(\ell_N)}
-	\le
-O(\chicCov_N) \|V\|_\Vcal^2.
 \end{equation}
 The evolution of $(\zeta, V)$ to second order is called the \emph{perturbative flow} and is
 given by the explicit map $\Vpt : \Vcal \to \Vcal$ defined in
