@@ -1,5 +1,8 @@
 \chapter{Renormalisation group step}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \section{Improved norm}
 \label{sec:Rpf1}
 
@@ -16,8 +19,7 @@ In the following, we use the notation appropriate for the spin field
 $\varphi \in (\R^n)^\Lambda$ for $n \ge 1$; only notational modifications are needed for
 $n=0$.
 
-
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Covariance bounds}
 \label{sec:Cbds}
@@ -62,9 +64,9 @@ To distinguish these from our
 new choice \refeq{elldef} of $\ell_j$ and $\ell_{\sigma,j}$, we write
 \begin{equation}
 \label{e:ell-old}
-    \ell_j^\old = \ell_0 L^{-j},
+    \ell_j^\oldrm = \ell_0 L^{-j},
     \quad
-    \ell_{\sigma,j}^\old  =
+    \ell_{\sigma,j}^\oldrm  =
     (\ell_{j \wedge j_{x}}^{\rm old})^{-1}2^{(j - j_{x})_+}\ggen_j.
 \end{equation}
 
@@ -92,7 +94,7 @@ be $O(1)$, independent of $j$.
 The following lemma justifies our choice of $\ell_j$
 in \refeq{elldef}, by showing that the
 bound \cite[\eqref{IE-e:CLbd}]{BS-rg-IE}, proved there only for the $s=0$ version
-$\ell_j^\old$ of \refeq{ell-old},
+$\ell_j^\oldrm$ of \refeq{ell-old},
 remains true with the stronger
 choice of norm parameter $\ell_j$ that permits arbitrary $s \ge 0$.
 %The sequence $\chicCov_j$ in the lemma is called $\chi_j$ in \cite{BS-rg-IE}, but here we use
@@ -174,7 +176,7 @@ It thus suffices to choose $\ell_0$ large enough that
 $\ell_0^2 \ge c_0 \ellconst^{-1}$.
 \end{proof}
 
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{New choice of norm beyond the mass scale}
 \label{sec:newnorm}
@@ -254,7 +256,7 @@ of the field (see \cite[\eqref{norm-e:NXdef}]{BS-rg-norm}), by
     .
 \end{align}
 The parameter $\ell_j$ that appears in the regulators \refeq{GPhidef}--\refeq{9Gdef} and
-in the numerator of \refeq{Gnormdef1} was taken to be $\ell_j^\old$ in \cite{BS-rg-IE},
+in the numerator of \refeq{Gnormdef1} was taken to be $\ell_j^\oldrm$ in \cite{BS-rg-IE},
 but now we use $\ell_j$ instead. As in \cite{BS-rg-IE},
 the parameter $h_j$ and its observable counterpart $h_{\sigma,j}$ are given by
 \begin{align}
@@ -270,9 +272,9 @@ $\|\cdot\|_j$, where the pair $(\|\cdot\|_j, \|\cdot\|_{j+1})$ refers to
 either of the norm pairs
 \begin{equation}
 \label{e:np1}
-    \|F\|_j = \|F\|_{G_j(\ell_j^\old)}
+    \|F\|_j = \|F\|_{G_j(\ell_j^\oldrm)}
     \quad \text{and} \quad
-    \|F\|_{j+1} = \|F\|_{T_{0,j+1}(\ell_{j+1}^\old)},
+    \|F\|_{j+1} = \|F\|_{T_{0,j+1}(\ell_{j+1}^\oldrm)},
 \end{equation}
 or
 \begin{equation}
@@ -291,14 +293,11 @@ both norm pairs in \eqref{e:np1} and \eqref{e:np2} replaced by the single new no
 \end{equation}
 with the improved $\ell_j$ of \eqref{e:elldef} with $s>0$ fixed as large as desired.
 
-
-
-
 The space $\Ncal$ containing the functionals $F$ appearing above requires control on
 up to $p_\Ncal$ derivatives of $F$ with respect to the field $\varphi$,
 where $p_\Ncal$ is a parameter of the $T_\varphi$-norm.
-In the proof of Proposition~\ref{prop:cl} below,
-we must choose $p_\Ncal$ to be large depending on $p$,
+In the proof of Proposition~\REF % \ref{prop:cl}
+below, we must choose $p_\Ncal$ to be large depending on $p$,
 in order to analyse the correlation length
 of order $p$.  The renormalisation group analysis is predicated on fixed (but arbitrary)
 $p_\Ncal$, so it can proceed with this modification.  However,
@@ -401,8 +400,8 @@ must be bounded. For this, we would need
 to increase $h_{\sigma}$
 beyond the mass scale  (since $\ell_{\sigma}$ has been increased).
 This forces a compensating decrease in $h$
-beyond $j_m$, to keep the product $hh_{\sigma}$ bounded for stability (as in
-Section~\ref{sec:stability1} below).
-But if we do this, we lose the lower bound required on $\epsilon_{g\tau^2}$
+beyond $j_m$, to keep the product $hh_{\sigma}$ bounded for stability
+(as in Section~\REF % \ref{sec:stability1}
+below). But if we do this, we lose the lower bound required on $\epsilon_{g\tau^2}$
 required for stability in the $h$-norm (see \cite[\eqref{IE-e:epVbardefz-app}]{BS-rg-IE}).
 \end{rk}
