@@ -10,7 +10,7 @@
 
 % use hyperref by default (can be overridden by inserting
 % \let\macrosH\undefined in macros_local.tex)
-\def\macrosH{}
+% \def\macrosH{}
 
 \InputIfFileExists{./macros_local.tex}{}{}
 
@@ -569,6 +569,12 @@
 \else
   \newcommand{\texorpdfstring}[2]{#1}
   \usepackage{xr}
+  \usepackage[colorlinks=true,
+  	linkcolor=blue,
+  	citecolor=blue,
+  	linktoc=page,
+  	pdfauthor={Benjamin C. Wallace},
+  	pdftitle=\titlename]{hyperref}
   \externaldocument[norm-]{rg-norm}
   \externaldocument[loc-]{rg-loc}
   \externaldocument[pt-]{rg-pt}

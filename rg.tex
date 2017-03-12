@@ -1,8 +1,7 @@
 \chapter{Renormalisation group method}
 
-\todo{Somewhere should include a discussion of the flow of $g$, $\lambda$,
-and $q$. We should also state bounds on derivatives in terms of bounds on
-$T_0$ norm and state an application of this to bounds on $K$.}
+\todo{Somewhere should include a discussion of the flow of
+$g$, $\lambda$, and $q$.}
 
 % Discuss RG method with improved norms and non-trivial $K_0$
 
@@ -19,7 +18,7 @@ $\Ncal^\varnothing$, which is defined as in Section~\ref{sec:intrep} if $n = 0$ 
 	= \Ncal^\varnothing(\Lambda)
 	= C^{p_\Ncal}((\R^n)^\Lambda,\R).
 \end{equation}
-if $n \ge 1$ ($p_\Ncal$ is the smoothness parameter discussed in Section~\ref{sec:intrep}).
+if $n \ge 1$, where $p_\Ncal$ is the smoothness parameter discussed in Section~\ref{sec:intrep}.
 We define the forms $\tau_x, \tau_{\Delta,x}, |\nabla\tau_x|^2 \in \Ncal^\varnothing$ according
 to \eqref{e:taudef}--\eqref{e:nablatau} if $n = 0$ and
 \begin{equation}
@@ -33,7 +32,7 @@ to \eqref{e:taudef}--\eqref{e:nablatau} if $n = 0$ and
 if $n \ge 1$.
 
 Then by \eqref{e:Vdef1}, \eqref{e:Udef-pos}, and \eqref{e:Vdef2},
-$V_{g,\gamma,\nu,N} \in \Ncal^\varnothing$ is given by
+% $V_{g,\gamma,\nu,N} \in \Ncal^\varnothing$ is given by
 \begin{equation}
 V_{g,\gamma,\nu,N}
 	=
@@ -277,13 +276,117 @@ for details.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Local field polynomials}
-% Based on clp
+\section{Seminorms}
+
+In order to control the evolution of $Z_j$, we make use of a family
+$\|\cdot\|_{T_{\phi,j}(\h_j)}$ of scale-dependent dependent seminorms parameterized
+by $\phi\in\C^\Lambda$ and a sequence of parameters $\h_j > 0$. For convenience,
+we simply write $\|\cdot\|_{T_\phi(\h_j)}$ with the scale $j$ implicit in the
+choice of parameter $\h_j$.
+
+\subsection{Test functions}
+
+Recall the notation introduced in Section~\ref{sec:forms}.
+A \emph{test function} $g$ is defined to be a function $(\vec x, \vec y) \mapsto g_{\vec x,\vec y}$,
+where $\vec x$ and $\vec y$ are finite sequences of elements in $\Lambda \sqcup \bar\Lambda$.
+When $\vec x$ or $\vec y$ is the empty sequence $\varnothing$,
+we drop it from the notation as long as this causes no confusion;
+e.g., we may write $g_{\vec x} = g_{\vec x,\varnothing}$.
+The length of a sequence $\vec x$ is denoted $|\vec x|$.
+Gradients of test functions are defined component-wise.
+Thus, if $\vec x = (x_1, \ldots, x_m)$
+and $\alpha = (\alpha_1, \ldots, \alpha_m)$
+with each $\alpha_i \in \N_0^\Ucal$, and similarly for $\vec y=(y_1,\ldots,y_n)$ and
+$\beta=(\beta_1,\ldots,\beta_n)$,
+then
+\begin{equation}
+\nabla^{\alpha,\beta}_{\vec x,\vec y} g_{\vec x,\vec y}
+  =
+\nabla^{\alpha_1}_{x_1} \ldots \nabla^{\alpha_m}_{x_m}
+\nabla^{\beta_1}_{y_1} \ldots \nabla^{\beta_n}_{y_n}  g_{x_1,\ldots,x_m,y_1,\ldots,y_n}.
+\end{equation}
+
+We fix a positive constant $p_\Phi\ge 4$ and recall $p_\Ncal$
+and assume that all test functions
+vanish when $|\vec x|  +|\vec y| > p_\Ncal$.
+% For Theorem~\ref{thm:suscept}(i-ii), any choice of $p_\Ncal \ge 10$ is sufficient,
+% whereas for Theorem~\ref{thm:suscept}(iii) it is necessary to choose $p_\Ncal$ large
+% depending on $p$ \cite{BSTW-clp}.
+The $\Phi_j = \Phi(\h_j)$ norm on such test functions is defined by
+\begin{equation}
+\|g\|_{\Phi_j}
+	=
+\sup_{\vec x, \vec y} \h_j^{-(|\vec x| +|\vec y|)}
+	\shift\shift
+\sup_{\alpha,\beta: |\alpha|_1+|\beta|_1 \le p_\Phi}
+L^{j (|\alpha|_1 + |\beta|_1)}
+|\nabla^{\alpha,\beta} g_{\vec x, \vec y}|,
+\end{equation}
+where $|\alpha|_1$ denotes the total order of the differential operator $\nabla^\alpha$.
+Thus, for any test function $g$ and for sequences
+$\vec x, \vec y$ with $|\vec x| +|\vec y| \leq p_\Ncal$ and
+corresponding $\alpha, \beta$ with $|\alpha|_1 + |\beta|_1 \leq p_\Phi$,
+\begin{equation}
+\label{e:testfcnbd}
+|\nabla^{\alpha,\beta} g_{\vec x,\vec y}|
+	\leq
+\h_j^{|\vec x| + |\vec y|} L^{-j (|\alpha|_1 + |\beta|_1)} \|g\|_{\Phi_j}.
+\end{equation}
+
+\subsection{The \texorpdfstring{$T_\phi$}{Tphi} seminorm}
+
+For any $F \in \Ncal$,
+there exist \emph{unique} functions $F_{\vec y}$ of $(\phi, \bar\phi)$
+that are anti-symmetric under permutations of $\vec y$, such that
+\begin{equation}
+F = \sum_{\vec y} \frac{1}{|\vec y|!} F_{\vec y}(\phi, \bar\phi) \psi^{\vec y}.
+\end{equation}
+Given a sequence $\vec{x}$ with $|\vec{x}| = m$, we define
+\begin{equation}
+F_{\vec x, \vec y} = \ddp{^m F_{\vec y}}{\phi_{x_1} \ldots \partial\phi_{x_m}}.
+\end{equation}
+
+We define a $\phi$-dependent pairing of elements of $\Ncal$ with test functions, by
+\begin{equation}
+\langle F, g \rangle_\phi
+  =
+\sum_{\vec x, \vec y}
+\frac{1}{|\vec x|! |\vec y|!}
+F_{\vec x,\vec y}(\phi, \bar\phi)
+g_{\vec x,\vec y}.
+\end{equation}
+Let $B(\Phi)$ denote the unit $\Phi$-ball in the space of test functions. Then the
+$T_\phi = T_\phi(\h_j)$ semi-norm on $\Ncal$ is defined by
+\begin{equation}
+\|F\|_{T_\phi} = \sup_{g\in B(\Phi_j)} |\langle F, g \rangle_\phi|.
+\end{equation}
+
+The $T_\phi$ seminorm controls the values of $F$ and its derivatives (up to order
+$p_\Ncal$) at $\phi$. For instance, in order to bound the derivative in \eqref{e:chibarm},
+we will use the fact that
+\begin{equation}
+\label{e:deriv-norm-bd}
+|D^2 F_\varnothing(0; \1, \1)|
+	\le
+2 \|F\|_{T_0(\h_N)} \|\1\|^2_{\Phi_N(\h_N)}
+	=
+2 \|F\|_{T_0(\h_N)} \h_N^{-1}.
+\end{equation}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Perturbative coordinate}
 
 The dynamical system is analysed via a perturbative part which is tracked accurately
 to second order in $g$, together with a third-order non-perturbative part whose study
 forms the main part of our effort.  For the perturbative part, we first introduce
 an appropriate space of local field polynomials.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Local field polynomials}
+% Based on clp
 
 For $y \in \Lambda$, we supplement \eqref{e:taudef}--\eqref{e:nablatau} and \refeq{tauphi}
 by defining
@@ -320,7 +423,6 @@ Given $X \subset \Lambda$, we also define
 \label{e:Vcalesig}
 \Vcal(X) = \{V(X) = \textstyle{\sum_{y\in X}} V_y : V \in \Vcal \}.
 \end{equation}
-
 We also make use of the subspaces $\Vcal^{(1)} \subseteq \Vcal$ consisting of polynomials with $y = 0$, as well as the subspace
 $\Vcal^{(0)} \subseteq \Vcal^{(1)}$ of polynomials with
 $u = y =   q_\pp=q_\qq = 0$.
@@ -330,6 +432,90 @@ $z\tau_{\Delta}+y\tau_{\nabla\nabla}$ by
 $(z+y)\tau_{\Delta}$, and the latter
 additionally sets
 $u = q_\pp = q_\qq = 0$.
+
+We define a scale-dependent norm
+\begin{equation}
+\label{e:Vnormdef}
+\begin{aligned}
+\|V\|_{\Vcal} &=
+\max\Big\{
+|g|, L^{2j}|\nu|, |z|, |y|,  L^{4j}|u|,
+\ell_j\ell_{\sigma,j}(|\lambda_\pp|\vee|\lambda_\qq|),\;
+%\\
+%& \qquad\qquad\qquad
+ \ell_{\sigma,j}^{2} (|q_\pp|\vee|q_\qq|)
+\Big\}
+\end{aligned}
+\end{equation}
+on $V \in \Vcal$, which depends on parameters $\ell_j$ and $\ell_{\sigma,j}$.
+The $\Vcal = \Vcal_j$ norm is equivalent to the $T_0(\ell_j)$ seminorm.
+An innovation from \cite{BSTW-clp} is that we define these parameters by
+\begin{align}
+\label{e:elldef-zz}
+\ell_j &= \ell_0 L^{-j - s (j - j_m)_+}, \quad
+\ell_{\sigma,j}
+=
+\ell_{j \wedge j_{x}}^{-1} 2^{(j - j_{x})_+} \ggen_j,
+\end{align}
+where the \emph{mass scale} $j_m$ and \emph{coalescence scale} $j_x$
+are defined by
+\begin{align}
+\label{e:jmdef}
+j_m		&= \lfloor\log_{L} m^{-1}\rfloor
+	\\
+\label{e:jxdef}
+j_x 	&= \max\{0,\lfloor \log_{L} (2 |x|)\rfloor\}.
+\end{align}
+The sequence $\ggen_j = \ggen_j(m^2,g_0)$ is defined in
+\cite[\eqref{log-e:ggendef}]{BBS-saw4-log};
+it is bounded above and below by constant multiples of
+the sequence $\gbar$ defined in
+\eqref{e:gbar},
+by
+\cite[Lemma~\ref{log-lem:gbarmcomp}]{BBS-saw4-log}.
+We discuss the origin of the definition \refeq{elldef-zz} in detail
+in Section~\ref{sec:Rpf1}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Perturbative flow}
+
+\todo{Discuss $I$, $W$, and $\Vpt$}
+
+\subsubsection{The flow of \texorpdfstring{$g$}{g}}
+
+We have
+\begin{equation} \label{e:gbar}
+  \gbar_{j+1}
+  =
+  \gbar_j
+  -
+  \beta_j  \gbar_j^{2}, \qquad \gbar_0 = g_0,
+\end{equation}
+It follows from \cite[Proposition~\ref{log-prop:approximate-flow}]{BBS-saw4-log} that
+\begin{equation}
+\label{e:gjxgjmbd}
+\gbar_{j}
+	=
+O((\log m^{-1})^{-1}) \;\; \text{for $j \geq j_m$},
+	\quad
+\gbar_{j_x}
+	=
+O((\log |x|)^{-1}) \;\; \text{for $j_x \leq j_m$.}
+\end{equation}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsubsection{The flow of \texorpdfstring{$q$}{q}}
+
+It is shown in \cite[Proposition~\ref{phi4-prop:pt}]{ST-phi4}
+that the perturbative flow of $q$ is given by
+\begin{align}
+\label{e:qpt}
+q_\pt = q + \lambda_0 \lambda_x C_{j+1;0x},
+\end{align}
+and that the perturbative flow of $\lambda_0$ and $\lambda_x$ becomes the identity map
+once $j$ exceeds the coalescence scale $j_x$.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -366,9 +552,18 @@ is determined by a local polynomial
 $U\in \Vcal^{(0)}$,
 and takes the form
 \begin{equation}
-I_j(X; V) = \prod_{B \in \Bcal_j(X)} e^{-V(B)} (1 + W_j(B, V)), \quad X \in \Pcal_j,
+I_j(X; V)
+	=
+\prod_{B \in \Bcal_j(X)} e^{-V(B)} (1 + W_j(B, V)), \quad X \in \Pcal_j.
 \end{equation}
-with $W_j$ an explicit quadratic term in $V$ (defined in \cite[\eqref{pt-e:WLTF}]{BBS-rg-pt}).
+Here, $W_j$ an explicit polynomial quadratic in $V$ defined in
+\cite[\eqref{pt-e:WLTF}]{BBS-rg-pt}. By \cite[\eqref{IE-e:W-logwish}]{BS-rg-IE},
+\begin{equation}
+\label{e:Wbilinbd}
+\|W_N\|_{T_0(\ell_N)}
+	\le
+O(\chicCov_N) \|V\|_\Vcal^2.
+\end{equation}
 The evolution of $(\zeta, V)$ to second order is called the \emph{perturbative flow} and is
 given by the explicit map $\Vpt : \Vcal \to \Vcal$ defined in
 \cite[\eqref{pt-e:Vptdef}]{BBS-rg-pt}.
@@ -413,48 +608,6 @@ below, in a form adapted to our current setting.
 % from saw-sa and clp
 \label{sec:step}
 
-We define a scale-dependent norm
-\begin{equation}
-\label{e:Vnormdef}
-\begin{aligned}
-\|V\|_{\Vcal} &=
-\max\Big\{
-|g|, L^{2j}|\nu|, |z|, |y|,  L^{4j}|u|,
-\ell_j\ell_{\sigma,j}(|\lambda_\pp|\vee|\lambda_\qq|),\;
-%\\
-%& \qquad\qquad\qquad
- \ell_{\sigma,j}^{2} (|q_\pp|\vee|q_\qq|)
-\Big\}
-\end{aligned}
-\end{equation}
-on $V \in \Vcal$, which depends on parameters $\ell_j$ and $\ell_{\sigma,j}$.
-An innovation from \cite{BSTW-clp} is that we define these parameters by
-\begin{align}
-\label{e:elldef-zz}
-\ell_j &= \ell_0 L^{-j - s (j - j_m)_+}, \quad
-\ell_{\sigma,j}
-=
-\ell_{j \wedge j_{x}}^{-1} 2^{(j - j_{x})_+} \ggen_j,
-\end{align}
-where the \emph{mass scale} $j_m$ and \emph{coalescence scale} $j_x$
-are defined by
-\begin{align}
-\label{e:jmdef}
-j_m		&= \lfloor\log_{L} m^{-1}\rfloor
-	\\
-\label{e:jxdef}
-j_x 	&= \max\{0,\lfloor \log_{L} (2 |x|)\rfloor\}.
-\end{align}
-The sequence $\ggen_j = \ggen_j(m^2,g_0)$ is defined in
-\cite[\eqref{log-e:ggendef}]{BBS-saw4-log};
-it is bounded above and below by constant multiples of
-the sequence $\gbar$ defined in
-\eqref{e:gbar},
-by
-\cite[Lemma~\ref{log-lem:gbarmcomp}]{BBS-saw4-log}.
-We discuss the origin of the definition \refeq{elldef-zz} in detail
-in Section~\ref{sec:Rpf1}.
-
 % In \cite{BS-rg-step}, maps $V_+,K_+$ are defined which map a pair $(V,K)$ at scale $j$
 % to $(V_+(V,K),K_+(V,K))$ at scale $j+1$, and which preserve the circle product
 % $I\circ K$ under expectation as in \refeq{IcircKdu}.
@@ -466,8 +619,14 @@ The coordinate $K_j$ is constructed in \cite{BS-rg-step} as an element of $\Kcal
 In \cite[Section~\ref{step-sec:Knorms}]{BS-rg-step},
 a sequence of norms $\|\cdot\|_{\Wcal_j} = \|\cdot\|_{\Wcal_j(\mgen^2, \ggen_j, \Lambda)}$
 parametrised by $(\mgen^2, \ggen_j)$ is defined on $\Kcal_j$.
-We denote the ball of radius $r$ in
-the normed space $\Wcal_j$ by $B_{\Wcal_j}(r)$.
+We note here only the fact that the $\Wcal_j$ norm dominates the $T_0(\ell_j)$ norm
+in the sense that
+\begin{equation}
+\label{e:T0dom}
+\|F(\Lambda)\|_{T_0(\ell_j)} \le \|F\|_{\Wcal_j}.
+\end{equation}
+We denote the ball of radius $r$ in the normed space $\Wcal_j$ by $B_{\Wcal_j}(r)$.
+
 In \cite[\eqref{log-e:mass-scale}--\eqref{log-e:chidef}]{BBS-saw4-log},
 a function $\chicCov_j = \chicCov_j(m^2)$ (denoted $\chi_j$ in \cite{BBS-saw4-log})
 is defined in such a way that $\chicCov_j$ decays exponentially
@@ -475,16 +634,30 @@ when $j$ is sufficiently large depending on $m$.
 We write $\chicCovgen_j = \chicCov_j(\mgen^2)$.
 Given constants $\alpha > 0$ and $C_\DV > 0$,
 we define the (finite-volume)
-renormalisation group domains $\domRG_j \subset \R^3 \oplus \Wcal_j$ by
+renormalisation group domains
+% $\domRG_j \subset \R^3 \oplus \Wcal_j$ by
 % Given $C_\DV>0$ and $\alpha>0$, we define the domains
 \begin{align}
 \label{e:DVdef}
-	\DV_j &= \{V\in \Vcal^{(0)} :
-	g> C_{\DV}^{-1} \ggen_j  , \;  \|V\|_{\Vcal} < C_{\DV} \ggen_j \},
-\\
-\domRG_j &= \DV_j \times B_{\Wcal_j}(\alpha \chicCovgen_j \ggen_j^3).
+\DV_j
+	&=
+\{ V\in \Vcal^{(0)} :
+	g> C_{\DV}^{-1} \ggen_j  , \;  \|V\|_{\Vcal} < C_{\DV} \ggen_j \}, \\
+\label{e:domRG}
+\domRG_j
+	&=
+\DV_j \times B_{\Wcal_j}(\alpha \chicCovgen_j \ggen_j^3).
 \end{align}
-Then, at scale $j$, the maps $V_+,K_+$ act on the domain $\domRG_j$
+In particular, if $(V_N, K_N) \in \domRG_N$, then \eqref{e:deriv-norm-bd} implies that
+\begin{equation}
+\label{e:Kderiv-bd}
+|D^2 K_{N,\varnothing}(0; \1, \1)|
+	\le
+O(\chicCovgen_N \ggen_N^3).
+\end{equation}
+\todo{Above incomplete}
+
+At scale $j$, the maps $V_+,K_+$ act on the domain $\domRG_j$
 and map into $\Vcal_{j+1}^{(1)},\Kcal_{j+1}$, respectively.
 The deviation of the map $V_+$ from the perturbative map $\Vpt$ (mentioned above \refeq{qpt})
 is denoted by $R_+$, and is defined by
@@ -537,17 +710,17 @@ below.
 
 Theorem~\ref{thm:step-mr-fv} expresses a contractive property of the map $K_+$,
 as it takes $K$ in a ball whose radius involves $\alpha=4M$ at scale $j$ to
-an image which lies in a ball whose radius involves the smaller number $M$ at scale
-$j+1$.  The fact that $K_+$ is a contraction is used
-in \cite[Proposition~\ref{log-prop:KjNbd}]{BBS-saw4-log} (for $n=0$) and
-\cite[Theorem~\ref{phi4-log-thm:flow-flow}]{BBS-phi4-log}
-(for $n \ge 1$) to prove that, for $m^2$ and
-$g_0$ sufficiently small, there exist \emph{critical} initial conditions
-$\nu_0 = \nu_0^c(m^2, g_0)$ and $z_0 = z_0^c(m^2, g_0)$ such that,
-for the case of no observables ($\sigma_0=\sigma_x=0$), iteration of
-the maps $(V_+,K_+)$ defines a
-sequence $(V_j^{(0)}, K_j)$ which lies
-in the domain $\domRG_j$ and obeys the estimates \refeq{RKplus}
+an image which lies in a ball whose radius involves the smaller number $M$
+at scale $j+1$.  The fact that $K_+$ is a contraction is used in
+Theorem~\ref{thm:rhatflow}
+% \cite[Proposition~\ref{log-prop:KjNbd}]{BBS-saw4-log} (for $n=0$) and
+% \cite[Theorem~\ref{phi4-log-thm:flow-flow}]{BBS-phi4-log}
+% (for $n \ge 1$)
+to prove that, for $m^2$ and $g_0$ sufficiently small, there exist
+\emph{critical} initial conditions
+$\nu_0 = \nu_0^c(m^2, g_0)$ and $z_0 = z_0^c(m^2, g_0)$ such that
+iteration of the maps $(V_+,K_+)$ defines a sequence $(V_j^{(0)}, K_j)$
+which lies in the domain $\domRG_j$ and obeys the estimates \refeq{RKplus}
 \emph{for all} $j = 1, \ldots, N$.
 This construction of critical initial conditions uses the $s=0$ version
 of \refeq{elldef-zz}.
@@ -569,7 +742,7 @@ q_{u,\infty} = \lim_{j\to\infty} q_{u,j}, \quad u = 0, x.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Renormalisation group flow}
+\section{Main theorem}
 % mainly from saw-sa
 
 Suppose $\delta > 0$ and suppose $r : [0, \delta] \to [0, \infty)$
@@ -604,7 +777,7 @@ there exists a sequence $(V_j, K_j) \in \domRG_j(m^2, g_0, \Lambda)$ such that
 	(V_{j+1},K_{j+1}) = (V_{j+1}(V_j, K_j), K_{j+1}(V_j, K_j)) \text{ for all } j < N
 \end{equation}
 and \eqref{e:IcircKnew} is satisfied.
-Tthese functions satisfy the bounds
+These functions satisfy the bounds
 \begin{equation}
 \label{e:hat-est}
 \hat\nu_0^c = O(g_0),
@@ -614,45 +787,3 @@ Tthese functions satisfy the bounds
 uniformly in $(m^2, \gamma_0)$.
 Moreover, the second-order evolution equation for $V_j$ is independent of $\gamma_0$.
 \end{theorem}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\section{The flow of \texorpdfstring{$g$}{g} and \texorpdfstring{$q$}{q}}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\subsection{The flow of \texorpdfstring{$g$}{g}}
-
-We have
-\begin{equation} \label{e:gbar}
-  \gbar_{j+1}
-  =
-  \gbar_j
-  -
-  \beta_j  \gbar_j^{2}, \qquad \gbar_0 = g_0,
-\end{equation}
-It follows from \cite[Proposition~\ref{log-prop:approximate-flow}]{BBS-saw4-log} that
-\begin{equation}
-\label{e:gjxgjmbd}
-\gbar_{j}
-	=
-O((\log m^{-1})^{-1}) \;\; \text{for $j \geq j_m$},
-	\quad
-\gbar_{j_x}
-	=
-O((\log |x|)^{-1}) \;\; \text{for $j_x \leq j_m$.}
-\end{equation}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\subsection{The flow of \texorpdfstring{$q$}{q}}
-
-It is shown in \cite[Proposition~\ref{phi4-prop:pt}]{ST-phi4}
-that the perturbative flow of $q$ is given by
-\begin{align}
-\label{e:qpt}
-q_\pt = q + \lambda_0 \lambda_x C_{j+1;0x},
-\end{align}
-and that the perturbative flow of $\lambda_0$ and $\lambda_x$ becomes the identity map
-once $j$ exceeds the coalescence scale $j_x$.
