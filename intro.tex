@@ -81,6 +81,7 @@ $\Omega$ to be the maximum entropy distribution subject to the fixed average ene
 \end{equation}
 It can be shown by the method of Lagrange multipliers that the canonical ensemble is given by the \emph{Gibbs measure}
 \begin{equation}
+\label{e:gibbs}
 d\mu_\beta = \frac{1}{Z_\beta} e^{-\beta H} d\lambda,
 \end{equation}
 where
@@ -224,8 +225,9 @@ Z = (m^2 + D)^{-1} D,
 P = D^{-1} J.
 \end{align}
 Let $z_x$ denote the diagonal elements of $Z$. The \emph{Green function} for
-$-\lap + m^2$ is the kernel of $(-\lap + m^2)^{-1}$, given by
+of the graph $\graph$ is the kernel of $(-\lap + m^2)^{-1}$, given by
 \begin{equation}
+\label{e:greendef}
 C(x, y)
   =
 (m^2 + d_x)^{-1} \sum_{n=0}^\infty z_x^n P^n_{xy}.
@@ -296,7 +298,7 @@ An $n$-component \emph{field} or \emph{spin configuration} on $\vertices$
 with spins in $S \subset \R^n$ is an element of $\Omega = S^\vertices$.
 % A \emph{spin system} is a probability measure $d\mu$ on $\Omega$.
 Suppose that $S$ is equipped with a measure $d\lambda^0$.
-Given a Hamiltonian $H : \Omega \to \R$, we wish to define the measure
+Given a Hamiltonian $H : \Omega \to \R$, we define the measure
 \begin{equation}
 d\mu_\beta(\varphi)
   =
@@ -349,15 +351,16 @@ where $M_{xy} \ge 0$.
 % \subsection{The \texorpdfstring{$O(n)$}{O(n)} spin model}
 
 \begin{example}[The $O(n)$ model]
-Let $S = S^{n-1} \subset \R^n$ be the unit $(n-1)$-sphere equipped with the normalized sphere measure
-$d\lambda^0$ (in particular, $S^0 = \{ \pm 1 \}$).
-The \emph{$O(n)$ spin model} or \emph{$n$-vector model} is the
-ferromagnetic spin system with Hamiltonian
+Let $S = S^{n-1} \subset \R^n$ be the unit $(n-1)$-sphere equipped with the
+normalized sphere measure $d\lambda^0$ (in particular, $S^0 = \{ \pm 1 \}$).
+The \emph{$O(n)$ spin model} or \emph{$n$-vector model} is the ferromagnetic
+spin system with Hamiltonian
 \begin{equation}
 H_J(\sigma) = -\frac{1}{2} \sigma \cdot J \sigma,
 \end{equation}
-which is clearly ferromagnetic.
-When $n = 1$ we recover the Ising model. When $n = 2, 3$, we get the \emph{XY model} and the \emph{classical Heisenberg model}.
+which is clearly ferromagnetic. When $n = 1$ we recover the Ising model (with
+$0$ external field). When $n = 2, 3$, we get the \emph{XY model} and the
+\emph{classical Heisenberg model}.
 \end{example}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -401,6 +404,7 @@ U_{\gcc,\nu}(t)
 t \in \R^n.
 \end{equation}
 \todo{Attach graph.}
+We see from this expression that this model is ferromagnetic.
 When $\nu + d_0 < 0$, the potential has roots at $0$ and $\pm\sqrt{-2 (\nu + d_0) / \gcc}$.
 It follows that the Gibbs measure for $|\varphi|^4$ model converges weakly to the
 Gibbs measure for the $O(n)$ model in the limit $\gcc\to\infty$
@@ -428,6 +432,7 @@ Z_C
 The correlations can also be computed explictly (this is sometimes known as
 \emph{Wick's theorem}). In particular, the two-point function is the covariance:
 \begin{equation}
+\label{e:wick}
 \int \varphi_a \cdot \varphi_b \; d\mu(\varphi) = C_{ab}.
 \end{equation}
 
@@ -438,55 +443,91 @@ Thus, the the covariance is equal to the massive Green function $C = (-\lap + \n
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{The infinite-volume limit}
-
-\todo{Briefly discuss the need for infinite-volume in terms of vanishing magnetization
-and analytic free energy (stress the latter). Define infinite-volume quantities we will
-need on $\Zd$. Mention relation to theory of Gibbs measure.}
+\subsection{Spin systems in infinite volume}
 
 The presence of a phase transition in a physical system is signalled by an abrupt
-(i.e.\ non-analytic) change in an observable quantity (usually the free energy) as a
-parameter (usually an external field) is varied. We make a broad distinction between
+change in an observable quantity with respect to a parameter;
+We make a broad distinction between
 \emph{first-order} phase transitions in which the free energy has discontinuous first
 derivative (with respect to an external field $h$) and \emph{continuous} phase transitions,
 in which the free energy is differentiable but non-analytic.
 
-The spin systems we have defined above all
+The systems we have defined above all
 have smooth free energy since the Hamiltonians are smooth functions. The reason we cannot
 detect a phase transition in these systems is that they have been defined on finite volumes.
-Thus, in order to study phase transitionns, we are forced to face the problem of defining
-spin systems on an infinite graph.
+This is also the reason that, as we have observered in \REF, the magnetization of the Ising
+model in a finite volume is $0$ in the absence of a magnetic field, despite physical evidence
+that a ferromagnet can sustain a non-zero magnetization on its own (the magnetization can
+be expressed as a derivative of the free energy).
+Thus, in order to study phase transitions, we are forced to consider
+spin systems on infinite graphs.
 
-A natural approach to defining such systems is via a procedure known as the
-\emph{infinite-volume limit}, which we describe here. For any
-finite subgraph $\Lambda \subset \graph$, let $H_\Lambda$ be the Hamiltonian
-of one of the above spin systems on $\Lambda$ and let $\mu_\Lambda$ be the
-corresponding Gibbs measure (which we can view as a measure on the full state
-space $\Omega$).
+A systematic approach to this problem was developed in the work of Dobrushin \cite{Dobrushin68}
+and Lanford and Ruelle \cite{LR69}. A comprehensive reference to this subject is \cite{Georgii11}
+(see also \cite{LP76} for unbounded spin systems).
+Loosely speaking, they take as fundamental not the Hamiltonian
+but rather a ``potential'', which is a collection of functions encoding the microscopic interactions
+from which the Hamiltonian is to be defined; for instance, for the Ising model,
+the Hamiltonian is a sum of contributions of the form $J_{xy} \sigma_x \sigma_y$ whenever
+$x \sim y$. Given such a potential, a Hamiltonian can be defined on any
+finite subgraph of $\graph$ and a probability measure on $\Omega$ is said to be a Gibbs
+measure whenever its finite-volume conditional measures are of the form \eqref{e:gibbs}.
+This is somewhat in the spirit of Kolmogorov's consistency conditions with the importance
+difference that the resulting collection $\gibbs_\beta$ of Gibbs states at inverse temperature
+$\beta$ need not consist of only a single element. This is significant due to the interpretation
+of distinct elements of $\gibbs_\beta$ as corresponding to different phases of the system under
+consideration.
 
-Let $\Lambda_N \subset \graph$ be a sequence of subgraphs that exhaust
-$\graph$, i.e.\ $\Lambda_N \uparrow \graph$. If the limits
-\begin{equation}
-\lim_{N\to\infty} \int f \; d\mu_{\Lambda_N}
-\end{equation}
-exist for a sufficiently rich class of functions $f$ (such as all bounded continuous functions), then they define a measure $\mu$ on $\Omega$ (with $\mu(f)$ the above limit), which we call a \emph{Gibbs state} or
-\emph{infinite-volume Gibbs measure} on $\Omega$.
+For many systems of interest there is a critical inverse temperature $\beta_c$ such that
+$|\gibbs_\beta| > 1$ if and only if $\beta > \beta_c$. The region $\beta > \beta_c$ is typically
+associated with first-order phase transitions whereas continuous phase transitions usually occur
+at the critical point $\beta_c$.
+In this thesis, our interest lies in the behaviour of spin systems at $\beta = \beta_c$ and in the
+high-temperature approach to criticality given by $\beta \uparrow \beta_c$.
+Thus, we need not concern ourselves with subtleties concerning the approach to infinite volume.
 
-We remark that there is a more general approach to the study of spin systems in infinite volume developed by Dobrushin, Lanford, and Ruelle. We do not detail their approach here, but merely mention that, for the examples above, this approach involves defining a Gibbs measure for the collection
-$H = (H_\Lambda)$ of Hamiltonians directly as a measure on $\Omega$ satisfying a system of constraints on its conditionals measures. This is somewhat in the spirit of Kolmogorov's consistency conditions with the importance difference that the resulting collection $\gibbs_\beta(H)$ of Gibbs states at inverse temperature
-$\beta$ need not consist of only a single element. This is significant due to the interpretation of distinct elements of $\gibbs(H)$ as corresponding to different phases of the system under consideration.
+In fact, we will avoid the entire issue of existence and uniqueness of infinite-volume Gibbs
+measures (which is not well understood for multi-component spin systems with unbounded spins
+such as the $n$-component $|\varphi|^4$ model) by defining the observable quantities in infinite
+volume as limits of their finite-volume counterparts.
 
-For many models, including the $O(n)$ and $n$-component $|\varphi|^4$ models on $\Zd$ with $d > 2$, it is known that there exists a critical inverse temperature $\beta_c < \infty$ such that
-$|\gibbs_\beta(H)| = 1$ if and only if $\beta \le \beta_c$ (\REF). In this thesis, our main concern is with the behaviour at $\beta_c$ and as
-$\beta \uparrow \beta_c$. Thus, we need not concern ourselves with the precise nature of the infinite-volume limit.
+% A natural approach to defining such systems is a procedure known as the
+% \emph{infinite-volume limit}, which we describe here. For any
+% finite subgraph $\Lambda \subset \graph$, let $H_\Lambda$ be the Hamiltonian
+% of one of the above spin systems on $\Lambda$ and let $\mu_\Lambda$ be the
+% corresponding Gibbs measure (which we can view as a measure on the full state
+% space $\Omega = S^\vertices$).
+% Now let $\Lambda_N \subset \graph$ be a sequence of subgraphs that exhaust
+% $\graph$, i.e.\ $\Lambda_N \uparrow \graph$. If the limits
+% \begin{equation}
+% \lim_{N\to\infty} \int f \; d\mu_{\Lambda_N}
+% \end{equation}
+% exist for a sufficiently rich class of functions $f$ (such as all bounded continuous functions), then they define a measure $\mu$ on $\Omega$ (with $\mu(f)$ the above limit), which we call a \emph{Gibbs state} or
+% \emph{infinite-volume Gibbs measure} on $\Omega$.
+
+% We remark that there is a more general approach to the study of spin systems in infinite volume developed by Dobrushin, Lanford, and Ruelle. We do not detail their approach here, but merely mention that, for the examples above, this approach involves defining a Gibbs measure for the collection
+% $H = (H_\Lambda)$ of Hamiltonians directly as a measure on $\Omega$ satisfying a system of constraints on its conditionals measures. This is somewhat in the spirit of Kolmogorov's consistency conditions with the importance difference that the resulting collection $\gibbs_\beta(H)$ of Gibbs states at inverse temperature
+% $\beta$ need not consist of only a single element. This is significant due to the interpretation of distinct elements of $\gibbs(H)$ as corresponding to different phases of the system under consideration.
+
+% For many models, including the $O(n)$ and $n$-component $|\varphi|^4$ models on $\Zd$ with $d > 2$, it is known that there exists a critical inverse temperature $\beta_c < \infty$ such that
+% $|\gibbs_\beta(H)| = 1$ if and only if $\beta \le \beta_c$ (\REF). In this thesis, our main concern is with the behaviour at $\beta_c$ and as
+% $\beta \uparrow \beta_c$. Thus, we need not concern ourselves with the precise nature of the infinite-volume limit.
 
 \subsubsection{Translation-invariant systems}
 
-Our interest will be in translation-invariant systems on $\Zd$, for which a particular approach to the infinite-volume limit will be convenient. Namely, for $L > 1$ we will let $\Lambda_N = \Zd/L^N\Zd$ be the discrete torus, which we view as a subset of $\Zd$. This allows us to preserve
-translation-invariance of these models in finite volume. Strictly speaking, $\Lambda_N$ is not a subgraph of $\Zd$; nevertheless, it can be shown that the infinite-volume limit (if it exists) is a Gibbs measure in the usual sense; see \cite[Example 4.20]{Georgii11} for details.
+Our interest will be in translation-invariant systems on $\Zd$, for which a particular
+approach to infinite volume is especially convenient. We begin by letting
+\begin{equation}
+\Lambda_N = \Zd/L^N\Zd
+\end{equation}
+be the discrete torus of side $L^N$, where $L \ge 2$. is an integer. We view $\Lambda_N$
+as a subset of $\Zd$ approximately centered at the origin (say as
+$[-\frac12 L^N+1,\frac12 L^N]^d \cap \Z^d$ if $L^N$ is even
+and as $[-\frac12 (L^N-1), \frac12 (L^N-1)]^d \cap \Z^d$ if $L^N$ is odd). This allows us to preserve
+translation-invariance of the models that concern us when defining them in finite volume.
 
-
-We study a generalization of the $|\varphi|^4$ model defined by the Hamiltonian
+In particular, we study a generalization of the $|\varphi|^4$ model whose Hamiltonian
+on $\Lambda_N$ is given by
 \begin{equation}
 \label{e:Vdef1}
 V_{\gcc,\gamma,\nu,N}(\varphi)
@@ -508,10 +549,10 @@ where
 	=
 \sum_{|e|=1} (\nabla^e |\phi_x|^2)^2.
 \end{equation}
-Note that we recover \eqref{e:phi4-Ham} when $\gamma = 0$.
+Note that we recover \eqref{e:phi4-Ham} when $\gamma = 0$ and $\graph = \Lambda_N$.
 The expectation with respect to the corresponding Gibbs measure will
 be denoted $\langle\cdot\rangle_{\gcc,\gamma,\nu,N}$.
-We define the two-point function
+We define the infinite-volume two-point function for this model by
 \begin{equation}
 \label{e:two-point-function-phi4}
 G_{x, N}(g,\gamma,\nu; n)
@@ -522,25 +563,12 @@ G_x(g,\gamma,\nu; n)
 	=
 \lim_{N \to \infty} G_{x, N}(g,\gamma,\nu; n).
 \end{equation}
-In the above limit, we identify a point $x \in \Zd$ with $x \in \Lambda_N$
-for large $N$, by embedding the vertices of $\Lambda_N$ as an approximately
-centred cube in $\Z^d$ (say as $[-\frac12 L^N+1,\frac12 L^N]^d \cap \Z^d$ if $L^N$ is even
-and as $[-\frac12 (L^N-1), \frac12 (L^N-1)]^d \cap \Z^d$ if $L^N$ is odd).
-
-The susceptibility and correlation length of order $p$ are defined by
+The susceptibility is defined by
 \begin{equation}
 \label{e:susceptibility-def}
 \chi(\gcc, \gamma, \nu; n)
 	=
-\lim_{N\to\infty} \sum_{x\in\Lambda_N} G_{x,N}(\gcc, \gamma, \nu; n)
-\end{equation}
-and
-\begin{equation}
-\xi_p(\gcc, \gamma, \nu; n)
-	=
-\left(
-\frac{\sum_{x\in\Zd} |x|^p G_x(\gcc, \gamma, \nu; n)}{\chi(\gcc, \gamma, \nu; n)}
-\right)^{\tfrac{1}{p}}.
+\lim_{N\to\infty} \sum_{x\in\Lambda_N} G_{x,N}(\gcc, \gamma, \nu; n).
 \end{equation}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -548,26 +576,26 @@ and
 
 \section{Critical behaviour and universality}
 
-For this discussion, let us restrict our attention to the graph $\graph = \Zd$
-with $d > 1$ and with $J_{xy} \in \{ 0, 1 \}$. Thus, $\lap = \Delta$.
+Many systems exhibit singular behaviour at or near the critical temperature in
+the form of power law scaling of various observable quantities. This is known as
+\emph{critical behaviour}. For concreteness, let us discuss the $|\varphi|^4$ model
+on $\Zd$ with $d > 1$ and with $J_{xy} \in \{ 0, 1 \}$. Thus, $\lap = \Delta$.
 
 \subsection{The critical point}
 
-Many systems exhibit \emph{critical behaviour} at or near a particular parameter value.
-For concreteness, let us discuss the $|\varphi|^4$ model. For convenience, we will
-actually discuss a generalization of the $|\varphi|^4$ model. \todo{Define it and
-the susceptibility, etc.}
-
-Let
+Since adjust $\beta$ for the $|\varphi|^4$ model is equivalent to rescaling the
+parameters $g$ and $\nu$, we fix $\beta = 1$ and vary $\nu$ instead.
+The \emph{critical point} is defined by
 \begin{equation}
 \nu_c = \nu_c(\gcc, \gamma, n) = \inf \{ \nu : \chi(g, \gamma, \nu; n) < \infty \}.
 \end{equation}
 Since the susceptibility can be written as the second derivative of the free energy
-with respect to an external field, there is a second-order phase transition at $\nu_c$.
-By the expression for the susceptibility in terms of the two-point function, it is
+with respect to an external field, there is a continuous phase transition at $\nu_c$.
+By \eqref{e:susceptibility-def}, it is
 reasonable to expect rapid (i.e.\ summable) decay of $G_x(g, \gamma, \nu; n)$ in $|x|$ for
 $\nu > \nu_c$ and much slower decay at $\nu = \nu_c$. In fact, the two-point function
 is expected to decay exponentially above $\nu_c$ and sub-exponentially at $\nu_c$.
+
 The \emph{correlation length} $\xi$ is defined to be the reciprocal of the exponential
 rate of decay of the two-point function; concretely, we let
 \begin{equation}
@@ -577,25 +605,26 @@ where $e \in \Zd$ is a unit vector. Roughly speaking, the correlation length act
 a ``macroscopic length scale'' of the model; it is a measure of the largest scale at
 which spins are strongly correlated.
 Based on the above discussion, we expect $\xi$
-to diverge as $\nu\downarrow\nu_c$. This divergence is usually seen as one of the
+to diverge as $\nu\downarrow\nu_c$. This divergence is one of the
 key features of critical behaviour and is indicative of strong correlations at all
 scales. A related quantity is the \emph{correlation length of order $p$}, defined by
 \begin{equation}
+\label{e:clp-spins}
 \xi_p(g, \gamma, \nu; n)
 	=
 \left(\frac{\sum_{x\in\Zd} |x|^p G_x(g, \gamma, \nu; n)}{\chi(g, \gamma, \nu; n)}\right)^{1/p}.
 \end{equation}
 
 \begin{rk}
-There is a simple heuristic relationship between $\xi$ and $\xi_p$: Let us suppose that
+There is a simple heuristic relationship between $\xi$ and $\xi_p$. Suppose that
 the two-point function decays exponentially at rate $1/\xi$, possibly with some
 sub-exponential multiplicative correction; for instance, suppose that
 \begin{equation}
 G_x(g, \gamma, \nu; n) \approx C |x|^{-\alpha} e^{-|x|/\xi(g, \gamma, \nu; n)},
 \end{equation}
 in some sense, where $\alpha$ and $C$ are positive constants independent of $\nu$.
-Then the main contributions to the sum in the numerator in the definition of
-$\xi_p$ should come from $|x| \le \xi = \xi(g, \gamma, \nu; n)$. For such $|x|$,
+Then the main contributions to the numerator of
+\eqref{e:clp-spins} should come from $|x| \le \xi = \xi(g, \gamma, \nu; n)$. For such $|x|$,
 $G_x(g, \gamma, \nu; n) \approx C |x|^{-\alpha}$ and so
 \begin{equation}
 \sum_{x\in\Zd} |x|^p G_x(g, \gamma, \nu; n)
@@ -604,7 +633,7 @@ C \sum_{|x| \le \xi} |x|^{-(\alpha-p)}
 	\approx
 C \xi(g, \gamma, \nu; n)^{-(\alpha-p)}.
 \end{equation}
-By definition, it follows that
+It follows then from the definition that
 \begin{equation}
 \xi^p_p(g, \gamma, \nu; n) \approx \xi^p(g, \gamma, \nu; n).
 \end{equation}
@@ -613,8 +642,8 @@ By definition, it follows that
 \subsection{Critical exponents}
 
 For simplicity, let us drop $\gcc$, $\gamma$, and $n$ from the notation.
-It is predicted that there exist constants $\eta$, $\gammabar$, and $\nubar$,
-known as \emph{critical exponents}, such that
+It is predicted that there exist constants $\eta$, $\gammabar$, and $\nubar$
+(unrelated to $\gamma$ and $\nu$), known as \emph{critical exponents}, such that
 \begin{align}
 G_x(\nu_c)
 	&\sim
@@ -640,10 +669,10 @@ C_4 (\nu - \nu_c)^{-\nubar},
 where $a \sim b$ means that $\lim (a/b) = 1$ and $C_i$ for $i = 1,2,3,4$
 are constants that may depend on $g$ and $n$ (and $p$ when $i = 4$).
 The critical exponents are expected to be \emph{universal} in the sense that they
-only depend on ``large-scale properties'' of the model such as the global geometry
-of the underlying graph and the symmetries of the Gibbs measure. In particular,
+only depend on ``large-scale properties'' of the model such as its symmetries and
+the global geometry of the underlying graph. In particular,
 for the $n$-component $|\varphi|^4$ model on $\Zd$, these exponents should only
-depend on $n$ and $d$ and independent of $g$ and $\gamma$ when $g > 0$ and $\gamma$
+depend on $n$ and $d$ and be independent of $g$ and $\gamma$ when $g > 0$ and $\gamma$
 is sufficiently small (depending on $g$). In fact,
 analogous relations are expected to hold for the $O(n)$ spin model, with the
 \emph{same} critical exponents.
@@ -656,84 +685,141 @@ In this sense, the study of critical behaviour involves a set of far-reaching
 generalizations of the central limit theorem.
 
 \begin{example}[The Gaussian free field]
-\todo{Needs work}
-
-We have
+\label{ex:gff-asymp}
+On $\Zd$, \eqref{e:greendef} and \eqref{e:wick} imply that
 \begin{equation}
--\Delta = 2 d (1 - P),
+G_x(0, 0, m^2; n)
+	=
+(m^2 + 2 d)^{-1} \sum_{n=0}^\infty z^n P^n_{xy},
 \end{equation}
-where $P = (2 d)^{-1} J$ is the transition matrix for the simple random walk $X$ on $\Zd$.
-For $d > 2$, the simple random walk is transient. Thus, letting $E_0$ denote the expectation
-of $X$ conditioned so that $X_0 = 0$,
+where $z = 2 d / (m^2 + 2 d)$ and $P = (2 d)^{-1} J$
+% \begin{equation}
+% -\Delta = 2 d (1 - P),
+% \end{equation}
+is the transition matrix for the simple random walk $X$ on $\Zd$.
+Thus, for $m^2 > 0$,
 \begin{equation}
-(1 - P)^{-1}_{0x} = \sum_{n=0}^\infty P^n_{0x} = E_0 \sum_{n=0}^\infty \1_{X_n=x} < \infty
-\end{equation}
-and we can define the \emph{massless} Gaussian free field on $\Zd$ to be the Gaussian
-measure with covariance $(-\Delta)^{-1} = (2 d)^{-1} (1 - P)^{-1}$.
-
-The two-point function is just the massive Green function
-$(-\Delta + m^2)^{-1}$ which, on $\Zd$, has the well-known Ornstein-Uhlenbeck decay \todo{(show this; use random walks?)}. Moreover,
-\begin{equation}
-\chi
+\chi(0, 0, m^2; n)
+  % =
+% \sum_{x\in\vertices} (-\Delta + m^2)^{-1}_{0x}
   =
-\sum_{x\in\vertices} (-\Delta + m^2)^{-1}_{0x}
-  =
-\sum_{x\in\vertices} \sum_{n=0}^\infty z^n P^n_{0x}
+\sum_{n=0}^\infty z^n \sum_{x\in\Zd} P^n_{0x}
   =
 \sum_{n=0}^\infty z^n
   =
 (1 - z)^{-1}.
 \end{equation}
-Thus, there is a critical point at $m^2 = 0$ ($z = 1$).
+This diverges linearly at $z = 1$ (corresponding to $m^2 = 0$),
+so $\nu_c(0, 0; n) = 0$ and $\gammabar = 1$.
 
-\todo{See candidacy report or preliminary version of it. For the Green function, see Theorem 1.5.4 in Lawler--Intersections of Random Walks}
+For $d > 2$, the simple random walk is transient. Thus, letting $E_x$ denote the expectation
+of $X$ conditioned so that $X_0 = x$,
+\begin{equation}
+\sum_{n=0}^\infty P^n_{xy} = E_x \sum_{n=0}^\infty \1_{X_n=y} < \infty
+\end{equation}
+and we can define the \emph{massless} Gaussian free field on $\Zd$ to be the Gaussian
+measure with covariance $(-\Delta)^{-1}$. It is a well-known fact that
+\begin{equation}
+(-\Delta + m^2)^{-1}_{0x} \sim C |x|^{-(d-1)/2} e^{-m |x|}
+\end{equation}
+and
+\begin{equation}
+(-\Delta)^{-1}_{0x} \sim C' |x|^{-(d-2)}
+\end{equation}
+corresponding to $\gcc = \gamma = 0$ critical exponents of $\nubar = 1/2$
+and $\eta = 0$, respectively.
+% Now if $X_0 = 0$, then $X_n = \sum_{i=1} Y_i$,
+% where $Y_i, i \ge 1$ is a sequence of independent random vectors uniformly distributed
+% over the set $\Ucal$ of unit vectors in $\Zd$. The central limit theorem states that
+% \begin{equation}
+% \label{e:clt}
+% \frac{1}{\sqrt n} X_n \Rightarrow N,
+% \end{equation}
+% where $N$ is a normal random variable in $\Rd$. Thus, $P^n_{0x}$ is well-approximated
+% \todo{See candidacy report or preliminary version of it. For the Green function, see Theorem 1.5.4 in Lawler--Intersections of Random Walks}
 \end{example}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{The upper-critical dimension}
+\subsection{The effect of dimension}
 
-The critical exponents are conjectured to take on the following values:
-\begin{equation}
-\eta =
-	\begin{cases}
-	\frac{5 + n}{24},		& d = 2, \, n = 1 \\
-	\approx 0.03,			& d = 3, \\
-	0,						& d \ge 4
-	\end{cases}
-\qquad
-\gamma =
-	\begin{cases}
-	\frac{43 + 13 n}{32},	& d = 2, \, n = 1 \\
-	\approx 1,				& d = 3 \\
-	1,						& d \ge 4
-	\end{cases}
-\end{equation}
-and
-\begin{equation}
-\nubar =
-	\begin{cases}
-	\frac{3 + n}{4},		& d = 2, \, n = 1 \\
-	\approx 0.6,			& d = 3 \\
-	\frac{1}{2},			& d \ge 4
-	\end{cases}
-\end{equation}
-with logarithmic corrections in $d = 4$.
-Thus, it is expected that, when $d > 4$, the critical exponents cease to depend
-on the dimension and $n$. In fact, they are expected to equal the exponents of
-the corresponding non-interacting model, the Gaussian free field.
+\subsubsection{Dimensions $d = 2, 3$}
 
+In $d = 2$, the $O(n)$ model and $|\varphi|^4$ model are not expected to possess
+a phase transition for $n > 2$. For $n = 2$, the behaviour is quite subtle so
+we restrict our attention to $n = 1$.
+
+The $1$-component planar models are
+expected to possess \emph{conformally invariant} scaling limits. Recent years
+have shown rapid progress in this direction, stimulated
+by the identification by Schramm \cite{Schramm00} of a $1$-parameter family of
+conformally invariant random planar curves now known as the \emph{Schramm-Loewner
+evolution} or \emph{SLE} with parameter $\kappa$. \todo{Convergence of interfaces.}
+As a consequence of the conformal symmetries enjoyed by the scaling limits of planar
+models, their critical exponents are expected to take on rational; in particular,
+it is predicted that $\gammabar = 56/32$, $\nubar = 1$, and $\eta = 1/4$.
+
+% The critical exponents for the $|\varphi|^4$ model (with $g > 0$ and $\gamma$ small)
+% and the $O(n)$ spin model are conjectured to take on the following values:
+% \begin{equation}
+% \eta =
+% 	\begin{cases}
+% 	\frac{5 + n}{24},		& d = 2, \, n = 1 \\
+% 	\approx 0.03,			& d = 3, \\
+% 	0,						& d \ge 4
+% 	\end{cases}
+% \qquad
+% \gamma =
+% 	\begin{cases}
+% 	\frac{43 + 13 n}{32},	& d = 2, \, n = 1 \\
+% 	\approx 1,				& d = 3 \\
+% 	1,						& d \ge 4
+% 	\end{cases}
+% \end{equation}
+% and
+% \begin{equation}
+% \nubar =
+% 	\begin{cases}
+% 	\frac{3 + n}{4},		& d = 2, \, n = 1 \\
+% 	\approx 0.6,			& d = 3 \\
+% 	\frac{1}{2},			& d \ge 4
+% 	\end{cases}
+% \end{equation}
+% with logarithmic corrections in $d = 4$.
+% Thus, it is expected that, when $d > 4$, the critical exponents cease to depend
+% on the dimension and $n$. In fact, they are expected to equal the exponents of
+% the corresponding non-interacting model, the Gaussian free field.
+
+Three-dimensional models are very poorly understood and only numerical approximations
+are available for their critical exponents.
+
+\subsubsection{Dimensions $d > 4$}
+
+If $d > 4$, the critical exponents for the $O(n)$ and $|\varphi|^4$ models are
+predicted to become independent of $d$ and $n$ and to take on the values of the
+corresponding exponents for the Gaussian free field, i.e.\ $\gammabar = 1$,
+$\nubar = 1/2$, and $\eta = 0$. For $n = 1$ and $2$ it is known that $\eta = 0$
+for the \emph{continuum limit} of these models \cite{Aiz82,Fro82}.
 This phenomenon is known as \emph{mean-field behaviour} and dimension $4$ is
-called the \emph{upper-critical dimension} for this class of models. The behaviour
-of models is generally better understood above than below their upper-critical
-dimension.
+called the \emph{upper-critical dimension} for this class of models.
+
+\subsubsection{Dimension $d = 4$}
+
+In this thesis, we focus on the behaviour in the upper-critical dimension $d = 4$.
+It is predicted in dimension $4$ that a number of scales scale according to a
+power law with mean-field critical exponents and multiplicative logarithmic
+corrections. The behaviour of the $1$-component $|\varphi|^4$ model has been
+studied in dimension $4$ by Feldman, Magnen, Rivasseau, and S\'{e}n\'{e}or
+\cite{FMRS87} as well as Gawedzki and Kupiainen \cite{GK85}, who showed
+that $\eta = 0$. Using the latter method, Hara and Tasaki \cite{HT87} identified
+logarithmic corrections to scaling.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{The renormalisation group}
 
 \todo{General idea; Kadanoff decimation; fixed points and stable manifolds;
-dependence on dimension}
+dimensional analysis; dependence on dimension}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1020,6 +1106,13 @@ and
 \int_0^\infty c_T e^{-\nu T} \; dT
 	=
 \sum_{x\in\Zd} G_x(\gcc,\gamma,\nu)
+\end{equation}
+There is also a version of the correlation length of order $p$:
+\begin{equation}
+\label{e:clp-wsawsa}
+\xi_p(\gcc, \gamma, \nu; 0)
+	=
+\left(\frac{\sum_{x\in\Zd} |x|^p G_x(g, \gamma, \nu; 0)}{\chi(g, \gamma, \nu; 0)}\right)^{1/p}.
 \end{equation}
 
 In the case $\gamma = 0$, the discrete-time version of this model is known as

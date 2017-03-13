@@ -57,19 +57,29 @@ G_{x,N}(g, \gamma, \nu; n)
 \langle \varphi_0 \cdot \varphi_x \rangle_{g,\gamma,\nu,N}  & n \ge 1.
 \end{cases}
 \end{equation}
-By \eqref{e:susceptibility-def}, \eqref{e:chiNdef}, and \eqref{e:chilim},
+By \eqref{e:susceptibility-def}, \eqref{e:chiNdef-pre}, and \eqref{e:chilim-pre},
 \begin{equation}
+\label{e:chilim}
 \chi(\gcc, \gamma, \nu; n)
 	=
-\lim_{N\to\infty} \chi_N(\gcc, \gamma, \nu; n),
-	\quad
+\lim_{N\to\infty} \chi_N(\gcc, \gamma, \nu; n)
+\end{equation}
+with
+\begin{equation}
+\label{e:chiNdef}
 \chi_N(\gcc, \gamma, \nu; n)
 	=
 \sum_{x\in\Lambda_N} G_{x,N}(\gcc, \gamma, \nu; n).
 \end{equation}
-\todo{Correlation length}
-
-\todo{For both models, we have}
+Lastly, we note that
+\begin{equation}
+\label{e:clp}
+\xi_p(g, \gamma, \nu; n)
+	=
+\left(\frac{\sum_{x\in\Zd} |x|^p G_x(g, \gamma, \nu; n)}{\chi(g, \gamma, \nu; n)}\right)^{1/p}
+\end{equation}
+for all $n \ge 0$.
+For both models, we have
 \begin{equation}
 \label{e:nuc-def}
 \nu_c = \nu_c(\gcc, \gamma, n) = \inf \{ \nu : \chi(g, \gamma, \nu; n) < \infty \}.
