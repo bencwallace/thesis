@@ -239,6 +239,7 @@ Z_N
 \end{equation}
 In particular,
 \begin{equation}
+\label{e:exp-conv}
 \Ex_C Z_0 = Z_N(0).
 \end{equation}
 This allows us to evaluate the integral $\Ex_C Z_0$ by studying the
@@ -336,7 +337,7 @@ corresponding $\alpha, \beta$ with $|\alpha|_1 + |\beta|_1 \leq p_\Phi$,
 
 \todo{Define for observables.}
 
-For any $F \in \Ncal$,
+For any $F \in \Ncal^\varnothing$,
 there exist \emph{unique} functions $F_{\vec y}$ of $(\phi, \bar\phi)$
 that are anti-symmetric under permutations of $\vec y$, such that
 \begin{equation}
@@ -357,22 +358,94 @@ F_{\vec x,\vec y}(\phi, \bar\phi)
 g_{\vec x,\vec y}.
 \end{equation}
 Let $B(\Phi)$ denote the unit $\Phi$-ball in the space of test functions. Then the
-$T_\phi = T_\phi(\h_j)$ semi-norm on $\Ncal$ is defined by
+$T_\phi = T_\phi(\h_j)$ semi-norm on $\Ncal^\varnothing$ is defined by
 \begin{equation}
 \|F\|_{T_\phi} = \sup_{g\in B(\Phi_j)} |\langle F, g \rangle_\phi|.
 \end{equation}
 
-The $T_\phi$ seminorm controls the values of $F$ and its derivatives (up to order
-$p_\Ncal$) at $\phi$. For instance, in order to bound the derivative in \eqref{e:chibarm},
-we will use the fact that
+The $T_\phi$ norm is defined in greater generality in \cite{BS-rg-norm}.
+In particular, for $F \in \Ncal$ an additional sequence $\h_{\sigma,j}$
+of parameters is used and the $T_\phi$ norm is defined so that for
+\begin{equation}
+F = F_\varnothing + F_a + F_b + F_{ab},
+	\quad
+F_\alpha \in \Ncal^\varnothing
+\end{equation}
+we have
+\begin{equation}
+\|F\|_{T_\phi}
+	=
+\|F_\varnothing\|_{T_\phi}
+	+ (\|F_a\|_{T_\phi} + \|F_b\|_{T_\phi}) \h_\sigma
+	+ \|F_{ab}\|_{T_\phi} \h_\sigma^2.
+\end{equation}
+
+By its definition, the $T_\phi$ seminorm controls the values of $F$ and its derivatives
+(up to order $p_\Ncal$) at $\phi$. For instance, we will make use of the following facts.
+
+\begin{lemma}
+\label{lem:deriv-norm-bds}
+For $F \in \Ncal$, we have $|F_\varnothing(0)| \le \|F\|_{T_0}$ and
 \begin{equation}
 \label{e:deriv-norm-bd}
 |D^2 F_\varnothing(0; \1, \1)|
 	\le
-2 \|F\|_{T_0(\h_N)} \|\1\|^2_{\Phi_N(\h_N)}
+2 \|F\|_{T_0(\h_j)} \|\1\|^2_{\Phi_N(\h_j)}
 	=
-2 \|F\|_{T_0(\h_N)} \h_N^{-1}.
+2 \|F\|_{T_0(\h_j)} \h_j^{-1}
 \end{equation}
+Letting $F_{\varnothing;\sigma_0\sigma_x}(0)$ denote the second derivative of $F$ with
+respect to $\sigma_0$ and $\sigma_x$ evaluated at $0$ field,
+\begin{equation}
+|F_{\varnothing;\sigma_0\sigma_x}|
+	\le
+\h_{\sigma,j}^{-2} \|F\|_{T_0}.
+\end{equation}
+\end{lemma}
+
+\subsection{Norm parameters}
+
+Control of the $T_\phi$ seminorm is needed for all values of
+$\phi$ in order to control the Gaussian expectation in \eqref{e:rgmapZ}. This will
+be discussed further in the sequel.
+
+For now, we turn our attention to the special case of the $T_0$ seminorm. Recalling
+\eqref{e:exp-conv}, the value of $\|F\|_{T_0(\h_j)}$ should reflect the size the
+Gaussian expectation $\Ex_{C_{j+1}} F$. For a monomial $\phi_x^{2p}$, we have
+\begin{equation}
+\|\phi_x^{2p}\|_{T_0(\h_j)} \asymp \h_j^p
+\end{equation}
+and
+\begin{equation}
+\Ex_{C_{j+1}} \phi_x^{2p} = \mathrm{const}_p C_{j+1;00}^p
+\end{equation}
+and this suggests letting $\h_j \approx |C_{j+1;00}|$. Together with the covariance
+bounds \REF, this leads us to define the weights $\ell_j$ by
+\begin{align}
+\label{e:elldef-zz}
+\ell_j &= \ell_0 L^{-j - s (j - j_m)_+}, \quad
+\ell_{\sigma,j}
+=
+\ell_{j \wedge j_{x}}^{-1} 2^{(j - j_{x})_+} \ggen_j,
+\end{align}
+where the \emph{mass scale} $j_m$ and \emph{coalescence scale} $j_x$
+are defined by
+\begin{align}
+\label{e:jmdef}
+j_m		&= \lfloor\log_{L} m^{-1}\rfloor
+	\\
+\label{e:jxdef}
+j_x 	&= \max\{0,\lfloor \log_{L} (2 |x|)\rfloor\}.
+\end{align}
+The sequence $\ggen_j = \ggen_j(m^2,g_0)$ is defined in
+\cite[\eqref{log-e:ggendef}]{BBS-saw4-log};
+it is bounded above and below by constant multiples of
+the sequence $\gbar$ defined in
+\eqref{e:gbar},
+by
+\cite[Lemma~\ref{log-lem:gbarmcomp}]{BBS-saw4-log}.
+We discuss the origin of the definition \refeq{elldef-zz} in detail
+in Section~\ref{sec:Rpf1}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -448,34 +521,8 @@ We define the $\Vcal = \Vcal_j$ norm by
 \Big\}
 \end{aligned}
 \end{equation}
-on $V \in \Vcal$, which depends on parameters $\ell_j$ and $\ell_{\sigma,j}$.
+on $V \in \Vcal$, which depends on the parameters $\ell_j$ and $\ell_{\sigma,j}$.
 The $\Vcal = \Vcal_j$ norm is equivalent to the $T_0(\ell_j)$ seminorm.
-An innovation from \cite{BSTW-clp} is that we define these parameters by
-\begin{align}
-\label{e:elldef-zz}
-\ell_j &= \ell_0 L^{-j - s (j - j_m)_+}, \quad
-\ell_{\sigma,j}
-=
-\ell_{j \wedge j_{x}}^{-1} 2^{(j - j_{x})_+} \ggen_j,
-\end{align}
-where the \emph{mass scale} $j_m$ and \emph{coalescence scale} $j_x$
-are defined by
-\begin{align}
-\label{e:jmdef}
-j_m		&= \lfloor\log_{L} m^{-1}\rfloor
-	\\
-\label{e:jxdef}
-j_x 	&= \max\{0,\lfloor \log_{L} (2 |x|)\rfloor\}.
-\end{align}
-The sequence $\ggen_j = \ggen_j(m^2,g_0)$ is defined in
-\cite[\eqref{log-e:ggendef}]{BBS-saw4-log};
-it is bounded above and below by constant multiples of
-the sequence $\gbar$ defined in
-\eqref{e:gbar},
-by
-\cite[Lemma~\ref{log-lem:gbarmcomp}]{BBS-saw4-log}.
-We discuss the origin of the definition \refeq{elldef-zz} in detail
-in Section~\ref{sec:Rpf1}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -494,8 +541,8 @@ e^{-\Vpt(\Lambda)} (1 + W(\Vpt)) + O(V^3),
 \end{equation}
 where $W = W(V)$ is an explicit polynomial defined
 in \cite[\eqref{pt-e:WLTF}]{BBS-rg-pt}. \todo{Explain $O(V^3)$.}
-In practice, we set $C = C_j$ and obtain a sequence $\Vpt = V_{\mathrm{pt},j}$ of maps
-and $W_j$ of polynomials. By \cite[\eqref{IE-e:W-logwish}]{BS-rg-IE},
+In practice, we set $C = C_{j+1}$ and obtain a sequence $\Vpt = V_{\mathrm{pt},j+1}$
+of maps and $W_j$ of polynomials. By \cite[\eqref{IE-e:W-logwish}]{BS-rg-IE},
 \todo{(check this)},
 \begin{equation}
 \label{e:Wbilinbd}
@@ -510,15 +557,18 @@ computed exactly by way of Feynman diagrams.
 
 \subsubsection{The flow of \texorpdfstring{$g$}{g}}
 
+\todo{Find a good way to introduce the ``nice'' perturbative flow of $g$
+following the approximate change of variables.}
 We have
 \begin{equation} \label{e:gbar}
-  \gbar_{j+1}
-  =
-  \gbar_j
-  -
-  \beta_j  \gbar_j^{2}, \qquad \gbar_0 = g_0,
+\gbar_{j+1}
+	=
+\gbar_j - \beta_j  \gbar_j^{2}, \qquad \gbar_0
+	=
+g_0,
 \end{equation}
-It follows from \cite[Proposition~\ref{log-prop:approximate-flow}]{BBS-saw4-log} that
+It follows from \cite[Proposition~\ref{log-prop:approximate-flow}]{BBS-saw4-log}
+that
 \begin{equation}
 \label{e:gjxgjmbd}
 \gbar_{j}
@@ -532,16 +582,38 @@ O((\log |x|)^{-1}) \;\; \text{for $j_x \leq j_m$.}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsubsection{The flow of \texorpdfstring{$q$}{q}}
+\subsubsection{The flow of \texorpdfstring{$\lambda$ and $q$}{lambda and q}}
 
-It is shown in \cite[Proposition~\ref{phi4-prop:pt}]{ST-phi4}
-that the perturbative flow of $q$ is given by
+It is shown in \cite[\eqref{pt-e:lambdapt2}--\eqref{pt-e:qpt2}]{BBS-rg-pt} (for $n = 0$)
+and \cite[Proposition~\ref{phi4-prop:pt}]{ST-phi4} (for $n \ge 1$) that,
+with $C = C_{j+1}$ and $u = 0, x$,
 \begin{align}
+\label{e:lampt}
+\lambda_{u,\pt}
+	&=
+\begin{cases}
+(1 - \delta[\nu w^{(1)}]) \lambda_u,
+	& j + 1 < j_x \\
+\lambda_u,
+	& j + 1 \ge j_x
+\end{cases}
+	\\
 \label{e:qpt}
-q_\pt = q + \lambda_0 \lambda_x C_{j+1;0x},
+q_\pt
+	&=
+q + \lambda_0 \lambda_x C_{0x},
 \end{align}
-and that the perturbative flow of $\lambda_0$ and $\lambda_x$ becomes the identity map
-once $j$ exceeds the coalescence scale $j_x$.
+where
+\begin{equation}
+\label{e:deltanuw1}
+\delta[\nu w^{(1)}] = (\nu + 2 g C_{00}) w^{(1)}_{j+1} - \nu w^{(1)}_j,
+	\qquad
+w^{(1)}_j = \sum_{x\in\Lambda} \sum_{i=1}^j C_{i;0x}.
+\end{equation}
+Note that $q_\pt = q$ for $j + 1 < j_x$.
+% \todo{It's strange that $w$ appears in the flow of $\lambda$ when $\Vpt$ only
+% depends on $C$.}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -666,19 +738,24 @@ renormalisation group domains
 	&=
 \DV_j \times B_{\Wcal_j}(\alpha \chicCovgen_j \ggen_j^3).
 \end{align}
-In particular, if $(V_N, K_N) \in \domRG_N$, then \eqref{e:deriv-norm-bd} implies that
-\begin{equation}
-\label{e:Kderiv-bd}
-|D^2 K_{N,\varnothing}(0; \1, \1)|
-	\le
-O(\chicCovgen_N \ggen_N^3).
-\end{equation}
-\todo{Above incomplete}
+% In particular, if $(V_j, K_j) \in \domRG_j$, then Lemma~\ref{lem:deriv-norm-bds}
+% and \eqref{e:T0dom} imply that
+% \begin{equation}
+% \label{e:VKbds}
+% \|V_j\|_{\Vcal} \le O(\ggen_j),
+% 	\quad
+% |D^2 K_{j,\varnothing}(0; \1, \1)|
+% 	\le
+% \ell_j^{-2} |K_{j,\varnothing}(0)|
+% 	\le
+% \ell_j^{-2} O(\chicCovgen_j \ggen_j^3).
+% \end{equation}
 
 At scale $j$, the maps $V_+,K_+$ act on the domain $\domRG_j$
 and map into $\Vcal_{j+1}^{(1)},\Kcal_{j+1}$, respectively.
-The deviation of the map $V_+$ from the perturbative map $\Vpt$ (mentioned above \refeq{qpt})
-is denoted by $R_+$, and is defined by
+The deviation of the map $V_+$ from the perturbative map $\Vpt$
+% (mentioned above \refeq{qpt})
+is denoted by $R_+$:
 \begin{equation}
 \label{e:Rplusdef}
     R_+(V,K) = V_+(V,K) -\Vpt^{(1)}(V).

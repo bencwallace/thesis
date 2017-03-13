@@ -5,13 +5,28 @@
 
 \section{The susceptibility}
 
-Note that at the final scale $j = N$, the representation \eqref{e:IcircKnew}
-becomes
+We initialize the renormalisation group with the critical parameters of
+Theorem~\ref{thm:rhatflow}. Then for any $N$, the representation
+\eqref{e:IcircKnew} at scale $j = N$ becomes
 \begin{equation}
 \label{e:ZNINKN}
-Z_N = e^{\zeta_N} (I_N(\Lambda) + K_N(\Lambda)).
+Z_N = e^{\zeta_N} (I_N(\Lambda) + K_N(\Lambda))
 \end{equation}
-Thus, \eqref{e:chibarm} and the definitions of $I_N$ and $V_N$ imply that
+with $(V_N, K_N) \in \domRG_N$; in particular, using
+\eqref{e:Vnormdef}, \eqref{e:Wbilinbd}, and \eqref{e:T0dom},
+\begin{align}
+\label{e:unu-bd}
+u_N |\Lambda_N| = O(1),
+	&\qquad
+\nu_N = O(L^{-2 N} g_N),
+	\\
+\label{e:WKbd}
+\|W_N\|_{T_0(\ell_N)} \le O(\chicCov_N g_N^2),
+	&\qquad
+\|K_N\|_{T_0(\ell_N)} \le O(\chicCov_N g_N^3).
+\end{align}
+Now \eqref{e:ZNINKN} and \eqref{e:chibarm} together with the definitions of $I_N$ and $V_N$
+imply that
 \begin{equation}
 \hat\chi_N(m^2, \gcc_0, \gamma_0, \nu_0^c, z_0^c)
 	=
@@ -20,8 +35,10 @@ Thus, \eqref{e:chibarm} and the definitions of $I_N$ and $V_N$ imply that
 \frac{1}{m^4 |\Lambda|}
 \frac{-\nu_N |\Lambda| + D^2 W_N(0; \1, \1) + D^2 K_N(0; \1, \1)}{e^{u_N |\Lambda|} (1 + W_N(0) + K_N(0))}.
 \end{equation}
-By \eqref{e:Wbilinbd}, \eqref{e:Kderiv-bd}, and \eqref{e:VjKjDj-hat} the second term
-vanishes as $N\to\infty$ leaving
+Using Lemma~\ref{lem:deriv-norm-bds} with $s = 0$ (recall \eqref{e:elldef-zz}),
+we see that the last term vanishes as $N\to\infty$ leaving
+% By \eqref{e:Wbilinbd}, \eqref{e:VKbds}, and \eqref{e:VjKjDj-hat} with $s = 0$
+% in the choice of $\ell_j$, the second term vanishes as $N\to\infty$ leaving
 \begin{equation}
 \label{e:chi-m-hat}
 \hat\chi(m^2, \gcc_0, \gamma_0, \nu_0, z_0)
@@ -31,13 +48,15 @@ vanishes as $N\to\infty$ leaving
 \frac{1}{m^2}.
 \end{equation}
 
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Change of parameters}
 \label{sec:nuztilde}
 
-Recall from \eqref{e:chichibar} that
+We wish to conclude the proof of Theorem~\ref{thm:mr}(ii) using \eqref{e:chi-m-hat}
+and \eqref{e:chichibar}. The latter states that
 \begin{equation}
 \label{e:chichihat}
 \chi_N(\gcc_0, \gamma, \nu)
@@ -53,29 +72,41 @@ whenever the variables on the left- and right-hand sides satisfy
 \quad
 \gamma_0 = \frac{1}{4d} \gamma (1 + z_0)^2.
 \end{equation}
-Given $\gcc_0,\gamma,\nu$,
-these relations leave free two of the variables
-$(m^2, \gcc_0, \gamma_0, \nu_0, z_0)$.
-More generally, if any three of the variables
-$(\gcc_0, \gamma, \nu, m^2, \gcc_0, \gamma_0, \nu_0, z_0)$
-are fixed, then two of the remaining variables are free.
-In the following two propositions,
-which together form an extension of \cite[Proposition~\ref{log-prop:changevariables}]{BBS-saw4-log},
-we fix three variables and show that the addition of the constraints
+On the other hand, \eqref{e:chi-m-hat} is contingent on the initialization of
+the renormalisation group with the critical parameters
 \begin{equation}
 \label{e:crit-constraint}
 \nu_0 = \hat \nu_0^c(m^2, \gcc_0, \gamma_0),
 	\quad
-z_0   = \hat z_0^c(m^2, \gcc_0, \gamma_0)
+z_0   = \hat z_0^c(m^2, \gcc_0, \gamma_0).
 \end{equation}
+
+Given $\gcc_0,\gamma,\nu$,
+the relations \eqref{e:gg0-re} leave free two of the variables
+$(m^2, \gcc_0, \gamma_0, \nu_0, z_0)$.
+More generally, if any three of the variables
+$(\gcc_0, \gamma, \nu, m^2, \gcc_0, \gamma_0, \nu_0, z_0)$
+are fixed, then two of the remaining variables are free.
+In the following two propositions, which together form an extension of
+\cite[Proposition~\ref{log-prop:changevariables}]{BBS-saw4-log},
+we fix three variables and show that the addition of the constraints
+\eqref{e:crit-constraint}
+% \begin{equation}
+% \label{e:crit-constraint}
+% \nu_0 = \hat \nu_0^c(m^2, \gcc_0, \gamma_0),
+% 	\quad
+% z_0   = \hat z_0^c(m^2, \gcc_0, \gamma_0)
+% \end{equation}
 allows us to uniquely specify the two remaining variables.
 For this, we make use of the following version of the
 implicit function theorem, which we prove in Appendix~\ref{sec:IFT}.
 
+\todo{The following need to be simplified to $\gamma_0 \ge 0$.}
+
 \begin{prop}
 \label{prop:IFT}
 Let $\delta > 0$, and let $r_1, r_2$ be continuous positive-definite functions on $[0, \delta]$.
-Set
+Recalling \eqref{e:Ddef}, set
 \begin{equation}
 		D(\delta, r_1, r_2)
 		=
@@ -359,9 +390,6 @@ whose solution yields Theorem~\ref{thm:mr}(ii).
 
 \section{The two-point function}
 
-The analysis of the two-point function and finite-order correlation length is
-based on the following result.
-
 \begin{prop}
 \label{prop:R}
 Let $d=4$, $n \ge 0$, $\varepsilon \in (0,\delta)$ with $\delta$ sufficiently small,
@@ -402,28 +430,23 @@ By \eqref{e:generating-fn}, \eqref{e:ZNINKN}, and \eqref{e:IcircKnew},
 \frac{\left(D_{\sigma_0}K_{N}\right) \left(D_{\sigma_x}K_{N}\right)}{(1 + K_{N})^2}
 \end{equation}
 (with derivatives taken at $\sigma_0=\sigma_x=0$ on the right-hand side).
-% The bound \cite[\eqref{phi4-e:Kg1}]{ST-phi4} is only improved by the new choice of norm,
-% to assert that, for $l=0,1,2$, the $l^{\rm th}$ derivative of $K_N(\Lambda)$
-% with respect to the observable field is
-% bounded above by a multiple of $2^{-l(N-j_x)}|x|^{-l} L^{-ls(N-j_x)} \chicCov_N \gbar_N^{3-l}$.
-\todo{By the bounds on $K$, the last two terms of \refeq{GK} vanish as $N \to \infty$, and}
+By \eqref{e:WKbd} and Lemma~\ref{lem:deriv-norm-bds}, the last two terms of
+\refeq{GK} vanish as $N \to \infty$, and
 \begin{equation}
-\frac{1}{1+z_0} G_x(g, \nu; n) = \frac{1}{2} (q_{0,\infty} + q_{x,\infty}).
+\frac{1}{1+z^c_0} G_x(g, \nu; n) = \frac{1}{2} (q_{0,\infty} + q_{x,\infty}),
 \end{equation}
+where the $q_{u,\infty}$ are evaluated at the renormalized mass $m^2$.
 
-It is then a consequence of
-\eqref{e:qpt} and \eqref{e:Rplusdef} (as in the proof of \cite[Lemma~\ref{phi4-lem:qflow}]{ST-phi4}) that
+Now it is a straightforward computation using \eqref{e:lampt}--\eqref{e:deltanuw1}
+and \eqref{e:Rplusdef} to show that
 \begin{equation}
-% \label{e:q}
-% q_{u,j}(m^2)
-% = \lambda_{\pp, j_\qq} \lambda_{\qq, j_\qq}  C_{j;\pp\qq} + \sum_{i = j_\qq}^{j - 1} R^{q_\alpha}_i, \quad u = 0, x
 \label{e:q}
 q_{u,\infty}(m^2)
 = \lambda_{\pp, j_\qq} \lambda_{\qq, j_\qq}  G_x(0, m^2) + \sum_{i = j_\qq}^\infty R^{q_u}_i,
 \quad u = 0, x,
 \end{equation}
 where $R^{q_u}_i$ is the coefficient of $\1_{y=u}\sigma_0\sigma_x$ (recall \refeq{Vy})
-of $R_{+,i}$ (recall \refeq{Rplusdef}).
+in $R_{+,i}$.
 Moreover, as in \cite[\eqref{phi4-e:lam-star}]{ST-phi4} and \cite[Corollary~\ref{phi4-cor:vx}]{ST-phi4},
 \begin{equation}
 \lambda_{u,j_\qq} = 1 + O(\chicCov_{j_\qq} \gbar_{j_\qq}).
@@ -438,7 +461,8 @@ with
 R_x = \frac{1}{2} \sum_{i=j_\qq}^\infty (R^{q_0}_i + R^{q_x}_i).
 \end{equation}
 
-By the first bound of \eqref{e:RKplus} and the definition \eqref{e:Vnormdef},
+By the first bound of \eqref{e:RKplus} and the definition \eqref{e:Vnormdef}
+of the $\Vcal$ norm,
 \begin{align}
 \label{e:vq-new}
     |R^{q_u}_{+,i}|
@@ -446,8 +470,8 @@ By the first bound of \eqref{e:RKplus} and the definition \eqref{e:Vnormdef},
 \le O(\ell_{\sigma,i}^{-2}\chicCov_i\gbar_i^{3}).
 \end{align}
 We insert the definition of $\ell_{\sigma,j}$ from \refeq{elldef-zz} into \refeq{vq-new}.
-We also use $\ggen_j^{-2} = O(\gbar_j^{-2})$, $\chicCov_i \le 1$, $\ell_0^2 \le O(1)$,
-as well as $\gbar_{j} \leq O(\gbar_{j_{x}})$ for $j \geq j_x$.
+\todo{We also use $\ggen_j^{-2} = O(\gbar_j^{-2})$, $\chicCov_i \le 1$, $\ell_0^2 \le O(1)$,
+as well as $\gbar_{j} \leq O(\gbar_{j_{x}})$ for $j \geq j_x$.}
 The definitions of
 the coalescence scale $j_x$ and the mass scale $j_m$ imply that  $L^{-2j_x} \le O(|x|^{-2})$
 and $L^{ -  (j_{x} - j_m)_+} \le O((m|x|)^{-1})$.
@@ -469,8 +493,10 @@ L^{-2j_{x} - 2s (j_{x} - j_m)_+}
 This gives the desired estimate \eqref{e:Rab-bound}.
 \end{proof}
 
-A version of this result with $s = 0$ was obtained in \cite{BBS-saw4,ST-phi4}.
+A version of this result with $s = 0$ and $\gamma = 0$ was obtained in \cite{BBS-saw4,ST-phi4}.
 This version is sufficient for studying the \emph{critical} two-point function.
+With the extension to $\gamma \ne 0$, we can complete the proof of the first part of
+Theorem~\ref{thm:mr}.
 
 \begin{proof}[Proof of Theorem~\ref{thm:mr}(i)]
 Indeed, with $\nu_c = 0$ (hence $m^2 = 0$), we have $R_x = O(\gbar_{j_x}) G_x(0, 0, 0; n)$,
