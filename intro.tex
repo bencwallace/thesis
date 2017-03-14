@@ -754,7 +754,8 @@ expected to possess \emph{conformally invariant} scaling limits. Recent years
 have shown rapid progress in this direction, stimulated
 by the identification by Schramm \cite{Schramm00} of a $1$-parameter family of
 conformally invariant random planar curves now known as the \emph{Schramm-Loewner
-evolution} or \emph{SLE} with parameter $\kappa$. \todo{Convergence of interfaces.}
+evolution} or \emph{SLE} with parameter $\kappa$. \todo{It was shown in \cite{CDHKS14}
+that the interfaces of the Ising model converge to SLE with $\kappa = 3$.}
 As a consequence of the conformal symmetries enjoyed by the scaling limits of planar
 models, their critical exponents are expected to take on rational; in particular,
 it is predicted that $\gammabar = 56/32$, $\nubar = 1$, and $\eta = 1/4$.
@@ -818,8 +819,53 @@ logarithmic corrections to scaling.
 
 \subsection{The renormalisation group}
 
-\todo{General idea; Kadanoff decimation; fixed points and stable manifolds;
-dimensional analysis; dependence on dimension}
+In \cite{Kada66}, Leo Kadanoff considered a coarse-graining procedure for
+studying the Ising model in which disjoint
+blocks in $\Zd$ of side $L \ll \xi$ are replaced by single spins. He argued
+that spins inside such blocks are so strongly correlated that the model
+obtained by making this replacement should behave approximately like an Ising
+model with new (renormalized) couplings.
+
+At the critical point, $\xi = \infty$ this transformation
+$T$ can be iterated indefinitely resulting in a dynamical system on a space
+of models: the one-parameter semigroup $(T^j)_{j\in\Z_+}$ is known as the
+\emph{renormalisation group}\footnote{The name
+renormalisation \emph{group} is more sensible in the context of quantum field
+theory where the scale can be arbitrarily small or large, resulting in a
+one-parameter group $(T^j)_{j\in\Z}$.}. This was basis for Ken Wilson's
+generalizations of Wilson's idea in \cite{Wils71I,Wils71II}.
+
+The coarse-graining procedure of Kadanoff can be viewed as an approximate
+method for computing integrals with respect to a Boltzmann weight $e^{-\beta H}$
+by successively integrating out fluctuations that are ``small'' in the sense
+that they are spatially localized. An alternative approach, suggested by
+Wilson, is to successively integrate out fluctuations that are localized in
+momentum (i.e.\ Fourier) space. \todo{Explain this further. Introduce momentum
+space covariance decomposition. Define effective theory.}
+
+Although Wilson did not follow the same coarse-graining procedure as Kadanoff,
+his method nevertheless resulted in a dynamical system as above on a space of
+models that acts by appropriately integrating out small fluctuations. At the
+critical, he argued that this should not affect the long-range behaviour of
+the model. Consequently, critical models lying in the same orbit should have
+the same universality class. That is, they should possess the same critical
+exponents and scaling limit; moreover, this scaling limit, which results from
+integrating out all microscopic fluctuations, should arise as a fixed point
+of the renormalisation group transformation.
+
+In addition to these rather broad statements regarding the nature of universality
+and scaling limits, Wilson demonstrated that critical exponents could be computed
+by a careful analysis of the asymptotics of the renormalisation group near its
+fixed points. He claimed that such an analysis could be performed by approximating
+this infinite-dimensional dynamical system by a \emph{finite-dimensonal} system.
+
+Gaussian behaviour above the upper-critical dimension was explained by the
+existence of a unique hyperbolic fixed point in dimensions $4$ and up: the Gaussian
+fixed point. In dimension $4$, a bifurcation occurs: when $d = 4$, the Gaussian
+fixed point ceases to be hyperbolic and as $d$ is lowered, the fixed point splits
+into a stable fixed point and an unstable one (this is an example of a saddle-node
+bifurcation). The unstable fixed point corresponds to Gaussian behaviour (this is
+why the critical exponents are different for $g = 0$ and $g > 0$ when $d < 4$).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
