@@ -7,6 +7,74 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\section{Introduction}
+
+Classical thermodynamics deals with the properties of bulk matter. Thus, it seeks
+to answer questions regarding the properties of matter that are only well-defined
+in terms of large collections of interacting particles. A familiar example of
+such a property is density, which is usually defined as the mass of a substance
+per unit volume. In order for this to truly be a property of the substance under
+consideration (and not of a particular sample), this substance must contain a
+sufficiently large number of particles that the ratio defining the density
+no longer depends (up to empirical error) on the amount of substance. This is
+what is meant by bulk matter.
+
+More generally, such properties of matter are necessarily averages of properties
+of many interacting particles. This is the basic idea of statistical mechanics,
+as observed by Boltzmann and Gibbs. In its modern formulation, these averages
+are seen as arising from a probability measure over possible particle configurations
+and different measures are understood to correspond to different \emph{phases}
+of matter. In this sense, the phases of matter are a primary object of study
+of statistical mechanics and it is not surprising that some of the most interesting
+questions deal with phase \emph{transitions}.
+
+There are different kinds of phase transitions. The familiar example of boiling
+water is signalled by an abrupt drop in density. From an idealized mathematical
+point of view, there is a discontinuity in the density as a function of temperature;
+phase transitions of this kind are said to be of first order.
+
+In this example,
+we have tacitly assumed that the water is being boiled under normal atmospheric
+pressure. At higher pressure, the boiling point of water increases; moreover,
+the difference in density between the liquid and gaseous phases \emph{decreases}.
+Once the pressure reaches a critical value $P_c$ (see Figure~\ref{fig:liquid-vapour}),
+the density difference between
+these two phases \emph{vanishes}; if $T_c = T_c(P)$ is the boiling point of water
+at pressure $P$, then the point $(T_c, P_c)$ is known as the \emph{critical point}
+for water.
+
+\begin{figure}
+\centering
+\label{fig:liquid-vapour}
+\includegraphics{liquid_vapour}
+\caption{The phase diagram of $\rm H_2 O$}
+\end{figure}
+
+Since statistical mechanics deals with extremely large, complicated systems of
+interacting particles, only simplified models of real materials can usually be
+studied in detail. These models often serve as a good way to obtain a
+\emph{qualitative} understanding of the phases and phase transitions; however,
+the simplifications inherent in their definitions means they are usually not
+suitable for making quantitative predictions.
+
+A remarkable phenomenon, known as \emph{universality}, is that this is no longer
+entirely true at the critical point. At criticality, many observable quantities
+behave in a way that is independent of the fine details of the model under
+consideration. Thus, the \emph{quantitative} properties of real materials can in
+principle be predicted exactly by studying models whose only resemblance to these
+materials is in their very coarse properties, such as their symmetries.
+
+In the 1970's, Ken Wilson gave an explanation of universality in terms of an
+abstract dynamical system on a space of models, known as the \emph{renormalisation
+group}. Wilson won the Nobel Prize for his discovery and his method has become
+a standard way amongst physicists to understand critical phenomena.
+
+Nevertheless, a rigorous understanding of the renormalisation group is still
+incomplete.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \section{Statistical mechanics}
 
 \todo{Restructure this: just introduce Gibbs measure, don't make hard distinction
