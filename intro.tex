@@ -75,112 +75,175 @@ incomplete.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Statistical mechanics}
+\section{Asymptotics}
 
-\todo{Restructure this: just introduce Gibbs measure, don't make hard distinction
-between canonical and grand canonical. Only mention GCE when discussing walks
-later}
+Before we introduce the formal structure of statistical mechanics, we make a
+few remarks concerning some of the general mathematical principles underlying
+it. We begin with some notation.
+
+\subsection{Asymptotic notation}
+
+Let $F$ and $G$ be a functions on a subset of the real line or the integers.
+We write
+\begin{equation}
+F(x) \sim G(x),
+	\quad
+x \to a
+\end{equation}
+if
+\begin{equation}
+\lim_{x\to a} \frac{F(x)}{G(x)} = 1.
+\end{equation}
+Here $a$ is allowed to be $\pm\infty$. We write
+\begin{equation}
+F(x) = O(G(x))
+	\text{ or }
+F(x) \le O(G(x)),
+	\quad
+x \to a
+\end{equation}
+if there is a neighbourhood $N$ of $a$ and a constant $C > 0$ such that
+\begin{equation}
+F(x) \le C G(x)
+\end{equation}
+whenever $x \in N$. Again, $a$ can be $\pm\infty$ and a neighbourhood
+of $\pm\infty$ is defined in the sense of the extended real line.
+Similarly, we write
+\begin{equation}
+F(x) = o(G(x)),
+	\quad
+x \to a
+\end{equation}
+if
+\begin{equation}
+\lim_{x\to a} \frac{F(x)}{G(x)} = 0.
+\end{equation}
+
+\subsection{The generating function}
+
+The \emph{generating function} of a sequence $a_n$ is defined by
+\begin{equation}
+f(z) = \sum_{n=0}^\infty a_n z^n.
+\end{equation}
+If the function $f$ is well understood, then the coefficients $a_n$ can be
+recovered via
+\begin{equation}
+a_n = \frac{1}{n!} f^{(n)}(0).
+\end{equation}
+This is known as the method of generating functions.
+
+In many cases, $f$ cannot be computed exactly. Nevertheless, there is a close
+relationship between the asymptotics of the sequence $a_n$
+as $n\to\infty$ and the function $f(z)$ near its dominant singularities, i.e.\
+its singularities closest to the origin.
+
+For instance, if $a_n \sim r^{-n} n^\alpha$, then the root test implies that
+the generating function $f$ has radius of convergence $r$ and it can be shown
+(\todo{\REF, see Madras-Slade}) that $f(z) \sim (r - z)^{-\alpha-1}$ as
+$z \uparrow r$ (\todo{what about the constant?}). This is an
+example of an \emph{Abelian theorem}. The converse does not always hold; a
+theorem providing conditions under which the converse is true is known as a
+\emph{Tauberian theorem}, and is generally harder to prove than its Abelian
+counterpart. \todo{State Tauberian theorem.}
+
+% Let $X$ be a random variable and write $\Ex$ for expectation.
+% The generating function $f_X$ of the sequence $a_n = \tfrac{1}{n!} \Ex(X^n)$ is the
+% \emph{moment-generating function} of $X$. However, it is often
+% more convenient to work with the \emph{cumulant generating function} $\log f_X$.
+% Let $X$ be a discrete random variable in $\Z_+$ with $\Pr(X = n) = p_n$. The
+% generating function $f_X$ of $p_n$ is known as the probability generating function.
+
+\subsection{The Laplace transform}
+
+Given a sequence $a_T$ parameterized by $T \in \R$, the generating function is
+not well-defined. Instead, it is useful to consider the \emph{Laplace transform}
+\begin{equation}
+\label{e:laplace-transform-def}
+F(\nu) = \int a_T e^{-\nu T} \; dT.
+\end{equation}
+Once again, there is a relationship between the asymptotics of $a_T$ as $T\to\infty$
+and of $F(\nu)$ as $\nu$ approaches its nearest singularity.
+
+\begin{theorem}
+Suppose that there exist $\nu_0$ such that
+the function $F(\nu)$ defined by \eqref{e:laplace-transform-def} converges for
+$\nu > \nu_0$. If there exist $A$ and $\alpha \ge 0$ such that
+\begin{equation}
+a_T \sim \frac{A}{\Gamma(\alpha + 1)} T^\alpha,
+\end{equation}
+then
+\begin{equation}
+F(\nu) \sim A \nu_0 (\nu - \nu_0)^{-(\alpha+1)}.
+\end{equation}
+Moreover, the converse holds if $a_T$ is increasing.
+\end{theorem}
+
+The converse is a case of Karamata's theorem; see \cite[Chapter V]{Widd41}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\subsection{Entropy}
-
-Let $(\Omega, \lambda)$ be a measure space. The state of knowledge of a system on
-$\Omega$ can be expressed by a probability measure $\mu$ on $\Omega$. Let
-$\Mcal_\lambda(\Omega)$ denote the set of probability measures on $\Omega$ absolutely
-continuous with respect to $\lambda$. For
-$\mu \in \Mcal_\lambda(\Omega)$, we denote the Radon-Nikodym derivative of
-$\mu$ with respect to $\lambda$ by $d\mu/d\lambda$ and define the
-\emph{entropy} of $\mu$ with respect to $\lambda$ by
-\begin{equation}
-h(\mu) = h_\lambda(\mu) = -\int_\Omega \log\frac{d\mu}{d\lambda} \; d\mu.
-\end{equation}
-In many cases, specific information about the system under consideration is available,
-so that we may restrict our attention to a subspace $M \subset \Mcal_\lambda(\Omega)$.
-The \emph{principle of maximum entropy} \cite{Jaynes57} asserts that, in this
-case, the measure best expressing the state of knowledge of the system is given by
-\begin{equation}
-\hat\mu = \argmax(h_\lambda(\mu) : \mu \in M),
-\end{equation}
-assuming such a measure exists and is unique.
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{Microcanonical ensemble}
+\section{Gibbs measure}
 
-Consider an \emph{isolated} physical system on $\Omega$, that is, one that cannot
-exchange energy with its surroundings. Such a system can be determined by a choice
-of function $H : \Omega \to \R$, called the \emph{Hamiltonian}. The value $H(\omega)$
-represents the total energy of the system in state
-$\omega\in\Omega$.
+Let $(\Omega, \lambda)$ be a measure space. We view $\lambda$ as some ``natural''
+measure on $\Omega$.
 
-\begin{example}
-Let $\Omega = U^n \times \R^{3n}$, where $U \subset \R^3$, and denote a generic
-element of $\Omega$ by $(q, p)$, where $q \in U^n$ and $p \in \R^{3n}$. Then
-$\Omega$ is the state space of a system of $n$ point particles
-$i = 1, \ldots, n$ with positions $q_i \in U$ and momenta $p_i \in \R^3$. Given
-a $C^1$ Hamiltonian $H : \Omega \to \R$, the dynamics of such a system is determined
-by \emph{Hamilton's equations}
-\begin{align}
-\dd{q}{t}   &= \nabla_q H(q(t), p(t)) \\
--\dd{p}{t}  &= \nabla_p H(q(t), p(t)).
-\end{align}
-An immediate consequence of these equations and the chain rule is the \emph{principle of conservation of energy}:
+The dynamics of a physical system with state space $\Omega$
+is often determined by a function $H$ on $\Omega$, known as the \emph{Hamiltonian}.
+In statistical mechanics, the systems of concern consist of an extraordinarily
+large number of particles; typically, the state space $\Omega$ is very
+high-dimensional and it is infeasible to study the exact dynamics of such a
+system.
+
+A common simplifying assumption is that after a long time has passed, the system
+under consideration will settle into a state of \emph{thermal equilibrium}, meaning
+that there is no net flow of heat with its surroundings. In this case, the temperature
+of the system is constant and we denote by $\beta$ the \emph{inverse temperature}.
+The \emph{Gibbs measure} for a system with Hamiltonian $H$ at inverse temperature
+$\beta$ is the probability measure on $\Omega$ given by
 \begin{equation}
-\dd{H}{t}(q(t), p(t)) = 0.
+\label{e:gibbs-def}
+\mu_\beta(d\omega) = \frac{1}{Z} e^{-\beta H(\omega)} d\lambda(\omega).
 \end{equation}
-Thus, a Hamiltonian system with initial configuration $(q(0), p(0))$ of energy
-$E = H(q(0), p(0))$ will evolve on the constant energy shell $S_E = H^{-1}(E)$.
-\end{example}
-
-If $S_E = H^{-1}(E)$ is finite\footnote{We can view such a system as an approximation to a traditional continuous system with $S_E$ uncountable.}, then one can easily determine that the maximum entropy measure on $S_E$ is simply the uniform measure. For a system with finite state space $\Omega$ and Hamiltonian $H$, we define the \emph{microcanonical distribution} with energy $E$ to be the uniform measure on $S_E$.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\subsection{Canonical ensemble}
-
-In practice, most systems of interest are not truly isolated: they may exchange
-energy with their environments. Everyday experience, however, suggests that
-a physical system that is left undisturbed for a sufficiently long time will achieve \emph{thermal equilibrium}, in which the system's temperature is constant and equal to that of its surroundings. We define the \emph{canonical ensemble} for a system with state space $\Omega$ and Hamiltonian $H$
-(assumed to be integrable) on
-$\Omega$ to be the maximum entropy distribution subject to the fixed average energy constraint
+The normalizing constant
 \begin{equation}
-\int H \; d\mu = E.
+Z = \int e^{-\beta H} \; d\lambda
 \end{equation}
-It can be shown by the method of Lagrange multipliers that the canonical ensemble is given by the \emph{Gibbs measure}
-\begin{equation}
-\label{e:gibbs}
-d\mu_\beta = \frac{1}{Z_\beta} e^{-\beta H} d\lambda,
-\end{equation}
-where
-\begin{equation}
-Z_\beta = \int e^{-\beta H} \; d\lambda
-\end{equation}
-is the normalizing constant, known as the \emph{canonical partition function}.
-The quantity $\beta = \beta(E)$, which arises as a Lagrange multiplier, is known as the \emph{inverse temperature}.
+is known as the \emph{partition function}.
 
-The \emph{free energy} of this system is defined by
+An elegant approach to the derivation of this measure was provided by Jaynes
+\cite{Jaynes57}: amongst all probability measures $\tilde\mu$ on $\Omega$ absolutely
+continuous with respect to $\lambda$, the Gibbs measure maximizes the \emph{entropy}
+\begin{equation}
+\label{e:entropy-def}
+h(\tilde\mu) = -\int \log \frac{d\tilde\mu}{d\lambda} \; d\mu
+\end{equation}
+with respect to $\lambda$, subject to the fixed average energy constraint
+\begin{equation}
+\int H \; d\tilde\mu = E.
+\end{equation}
+This can be shown using the method of Lagrange multipliers; the parameter
+$\beta = \beta(E)$ arises as a Lagrange multiplier.
+
+The \emph{free energy} of the system with Hamiltonian $H$ is given by
 \begin{equation}
 F_\beta = -\frac{1}{\beta} \log Z_\beta.
 \end{equation}
-This definition may seem obscure at first, but is elucidated by a computation of the entropy $h_\lambda(\mu_\beta)$ with $\beta = \beta(E)$, which implies that
+A computation of the entropy \eqref{e:entropy-def} of the Gibbs measure
+$\mu_\beta$ with inverse temperature $\beta = \beta(E)$ shows that
 \begin{equation}
 F_\beta = E - \frac{1}{\beta} h_\lambda(\mu_\beta).
 \end{equation}
-This is the famous thermodynamic relation between free energy, internal energy $E$, temperature $1/\beta$, and entropy.
-
-
-In the context of spin systems, there is a natural mathematical reason for studying measures of the above form. This is the Hammersley-Clifford theorem, which states that any Markov random field (a spatial generalization of a Markov chain) on a graph has a representation as a Gibbs measure whose Hamiltonian is a sum of ``local'' interactions.
+This is the well-known thermodynamic relation between the free energy $F_\beta$,
+internal energy $E$, temperature $1/\beta$, and entropy $h_\lambda(\mu_\beta)$.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Graphs}
 
-Most systems of interest do not have a finite (or even countable) state space.
-Nevertheless, large finite systems may be used as approximations of real systems.
-A natural approach to approximating spatially-extended systems is by studying
-models on graphs.
+Graphs are a useful setting for the definitions of spatially-extended systems of
+particles.
 
 An \emph{undirected graph} or simply a \emph{graph} is a pair $\graph = (\vertices, \edges)$,
 where $\vertices$
@@ -942,85 +1005,29 @@ why the critical exponents are different for $g = 0$ and $g > 0$ when $d < 4$).
 
 \subsection{Discrete-time walks}
 
-For simplicity, suppose that $J_{xy} \in \{ 0, 1 \}$ and that $\graph$ is
-$d_0$-regular.
+Let $[n] = \{0,\ldots,n\}$ and call a function $\omega : [n]\to\vertices$
+a \emph{discrete-time walk of length $n$} if $\omega_i \sim \omega_{i+1}$ for all
+$i\in[n-1]$.
+A model of discrete-time walks can be defined by an assigning of weights
+$w_n : \dwalks_n \to \R$ for each $n \in \Z_+$, where $\Wcal_n$ is the
+collection of discrete-time walks $\omega$ of length $n$ with $\omega_0 = 0$.
+When these weights are nonnegative and summable, this is equivalent to
+equipping each $\Wcal_n$ with a probability measure; such \emph{probabilistic}
+models of walks are often closely related to ferromagnetic spin systems,
+as we will discuss in Section~\REF.
 
-Let $[n] = \{ 0, \ldots, n \}$.
-An $n$-step \emph{walk} is a function $\omega : [n] \to \vertices$ with
-$\omega_i \sim \omega_{i+1}$ for all $i \in [n]$. Let $\dwalks_n$ denote the collection
-of $n$-step walks $\omega$ with $\omega_0 = 0$ and let $\dwalks = \bigcup_n \dwalks_n$.
-Given $\omega\in\dwalks_n$, we write $|\omega| = n$.
-A model of discrete-time walks is defined by a weight function $w : \dwalks \to \R$.
-
-The \emph{generating function} of a sequence $c_n$ is the function defined by
-the power series
-\begin{equation}
-\sum_n c_n z^n.
-\end{equation}
-Let $\dwalks_n(x)$ denote the collection of walks $\omega\in\dwalks_n$ with $\omega_n = x$
-and set $\dwalks(x) = \bigcup_n \dwalks_n(x)$.
-The two-point function $G_x$ for walks with weight function $w$ is the generating
-function of the sequence
-\begin{equation}
-c_n(x) = \sum_{\omega\in\dwalks_n(x)} w(\omega).
-\end{equation}
-That is,
-\begin{equation}
-G_x = \sum_n z^n c_n(x)
-	= \sum_{\omega\in\dwalks(x)} w(\omega) z^{|\omega|}.
-\end{equation}
-The susceptibility is the generating function for $c_n = \sum_x c_n(x)$:
-\begin{equation}
-\chi = \sum_n c_n z^n = \sum_x G_x.
-\end{equation}
-
-We define a probability measure $\mu_n$ on $\dwalks_n$ by $\mu(\omega) = w(\omega) / c_n$.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\begin{example}[Simple random walk]
-The (discrete-time) simple random walk $X_n$ is the Markov chain on $\graph$ with
-transition matrix $P = d_0^{-1} J$. This is a model of walks in the sense above
-with $w(\omega) = 1$ for all $\omega$.
-
-There is a close relationship between the
-simple random walk and the Gaussian free field. Since $P$ is a stochastic matrix,
-the two-point function converges for $|z| < 1$. For $0 < z < 1$, we can write
-$z = d_0 / (d_0 + m^2)$ with $m^2 > 0$ to get
-\begin{equation}
-G_x = \sum_n P^n_{0x} z^n = (2 d + m^2) (-\Delta + m^2)^{-1}_{0x}.
-\end{equation}
-In other words, the two-point function for simple random walk is the two-point
-function for the Gaussian free field.
-
-When $z = 1$, the power series above is the expected number of visits $X$ makes
-to $x$ when started at $0$. Thus, $G_x$ converges at $z = 1$ when $X$ is transient.
-% Since $\sum_x P^n_{0x} = 1$
-\end{example}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-% \subsection{Self-avoiding walk}
+In this thesis, we focus on continuous-time walks, which we define in the next
+section. Before proceeding, however, we discuss the following important example.
 
 \begin{example}[Self-avoiding walk]
-A walk $\omega$ is said to be \emph{self-avoiding} if $\omega_i \ne \omega_j$
+A discrete-time walk $\omega$ is said to be \emph{self-avoiding} if
+$\omega_i \ne \omega_j$
 for all $i \ne j$. Let $\Scal_n \subset \dwalks_n$ denote the set of $n$-step
-self-avoiding walks starting at $0$. We define the weights $w(\omega) = \1_{\omega\in\Scal_n}$.
-Then $c_n(x)$ is the number of $n$-step self-avoiding walks from $0$ to $x$
-and $c_n = |\Scal_n|$.
+self-avoiding walks starting at $0$.
+The \emph{self-avoiding walk} is a model of a linear polymer introduced by
+Flory \REF and defined by the weights $w(\omega) = \1_{\omega\in\Scal_n}$.
 
-Note that the sequence $c_n$ is sub-multiplicative: $c_{m+n} \le c_m c_n$.
-Thus, Fekete's lemma implies that the existence of the \emph{connective constant}
-$c(\graph)$ of $\graph$, defined by
-\begin{equation}
-c(\graph) = \lim_{n\to\infty} n^{-1} \log c_n.
-\end{equation}
-Note that, by the trivial bounds $1 \le c_n \le d_0^n$ for $n \ge 1$, $c(\graph) \in [0, d_0]$.
-% Roughly speaking, this means that $c_n \approx c(\graph)^n$ for large $n$.
-By definition, the susceptibility has radius of convergence $c(\graph)^{-1}$.
-Since $c_n \ge 0$ for all $n$, the susceptibility diverges at $c(\graph)^{-1}$.
-
-The measure $\mu_n$ on $\dwalks_n$ is the uniform measure.
+Equivalently, we equip $\Scal_n$ with the uniform measure $\mu_n$ for each $n$.
 These measures do not form a consistent family due to the possibility of ``traps''. That is, the equality
 \begin{equation}
 \mu_{|\omega|}(\omega) = \sum_{\tilde\omega \supset \omega} \mu_{|\tilde\omega|}(\tilde\omega)
@@ -1041,12 +1048,22 @@ This walk has positive probability under $\mu_7$ but,
 since there are no self-avoiding walks extending $\omega$, the sum on the 
 right-hand side above is $0$.
 
-As a result, the methods of stochastic processes cannot be directly used to
-study the self-avoiding walk. The existence of traps also contributes to the
+As a result, there is no straightforward way to apply the methods of stochastic processes
+to study the self-avoiding walk. The existence of traps also contributes to the
 combinatorial difficulty of studying self-avoiding walk; for instance, it is
 not clear how to express $c_{n+1}$ (the number of $(n+1)$-step self-avoiding walks)
 in terms of $c_n$.
 
+Nevertheless, we know that the sequence $c_n$ is sub-multiplicative: $c_{m+n} \le c_m c_n$.
+Thus, Fekete's lemma \REF implies that the existence of the \emph{connective constant}
+$c(\graph)$ of $\graph$, defined by
+\begin{equation}
+c(\graph) = \lim_{n\to\infty} n^{-1} \log c_n.
+\end{equation}
+Note that, by the trivial bounds $1 \le c_n \le d_0^n$ for $n \ge 1$, $c(\graph) \in [0, d_0]$.
+% Roughly speaking, this means that $c_n \approx c(\graph)^n$ for large $n$.
+By definition, the susceptibility has radius of convergence $c(\graph)^{-1}$.
+Since $c_n \ge 0$ for all $n$, the susceptibility diverges at $c(\graph)^{-1}$.
 % \begin{figure}[!htb]
 % \centering
 % \caption{A trapped self-avoiding walk}
@@ -1056,98 +1073,26 @@ in terms of $c_n$.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{Gibbs measures on walks}
+\subsection{Continuous-time walks}
 
-For any right-continuous function $\omega : [0, T] \to \vertices$, we define
+Let $\omega : [0, T] \to \vertices$ be a right-continuous function and define
 $\tau_n = \tau_n(\omega)$ inductively by setting $\tau_0 = 0$ and
 \begin{equation}
-\tau_{n+1} = \inf(t > \tau_n : \omega_t \ne \omega_{\tau_n}).
+\tau_{n+1} = \inf (t > \tau_n : \omega_t \ne \omega_{\tau_n}).
 \end{equation}
-We call $\omega$ a \emph{walk} of length $T$ if
-$\{ \tau_n : n \in \Z_+ \}$ does not have any cluster points and
-$\omega_{\tau_n} \sim \omega_{\tau_{n+1}}$ for all $n$; thus, $\omega$
-only jumps between neighbouring vertices.
+Call $\omega$ a \emph{continuous-time walk of length $T$} if $\{ \tau_n \}$
+has no cluster points and $\omega_{\tau_i} \sim \omega_{\tau_{i+1}}$ for all $i$.
+Let $\cwalks_T$ denote the space of continuous-time walks $\omega$ of length $T$
+with $\omega_0 = 0$.
 
-A model of walks is determined by a choice of finite measure $d\mu_T$ on
-$\cwalks_T$ for each $T$. Our focus will be on canonical Gibbs measures of the form
+We can define general models of continuous-time walks in terms of measures on
+the $\cwalks_T$. Let us restrict our attention to models defined by Gibbs measures
+with base measure given by the continuous-time simple random walk on $\graph$.
+That is, given a Hamiltonian $H$ on $\cwalks = \bigcup_{T \ge 0} \cwalks_T$,
+we consider the measures of the form
 \begin{equation}
-\int f \; d\mu_T = \frac{1}{c_T} E_0 (f e^{-H_T}),
+\mu_{\beta,H}(A) = E_0 (e^{-\beta H} \1_A)
 \end{equation}
-where $E_0$ is the expectation for a random walk on $\graph$ (in discrete or continuous time), $H_T : \cwalks_T \to \R$, and we have denoted the canonical partition function by $c_T$.
-% \begin{equation}
-% d\mu_T(\omega) = \frac{1}{c_T} e^{-H_T(\omega)} \; d\lambda_T(\omega),
-% \end{equation}
-% with respect to some measure $\lambda_T$ on $\cwalks_T$ (we have denoted the partition function by $c_T$).
-% We will assume that models of discrete-time walks satisfy $\mu_T = \mu_{\lfloor T \rfloor}$ for all $T$
-% (note that both are measures on $\cwalks_{\lfloor T \rfloor}$ in this case).
-Given such a model, the corresponding grand canonical ensemble is given by
-\begin{equation}
-d\mu(\omega)
-  =
-\frac{1}{\chi(\nu)}
-e^{-\nu |\omega| - H_{|\omega|}(\omega)}
-d\lambda_{|\omega|}(\omega)
-\end{equation}
-and the grand canonical partition function, denoted $\chi(\nu)$, is known as the \emph{susceptibility}. In this setting, the fugacity $\nu$ is usually referred to as the \emph{killing rate}.
-% The grand canonical partition function, denoted $\chi$, is known as the \emph{susceptibility}.
-Note that
-\begin{equation}
-\mu(\cdot \mid \cwalks_T) = \mu_T.
-\end{equation}
-
-Let $\cwalks_T(x) \subset \cwalks_T$ denote the set of walks in $\cwalks_T$ from $0$ to $x$ and let $\cwalks(x) = \bigcup_{T \ge 0} \cwalks_T(x)$. We define the
-\emph{two-point function}
-\begin{equation}
-G_x(\nu) = \mu(\cwalks(x)) \int_0^\infty e^{-\nu T} c_T(x) \; dT,
-\end{equation}
-where
-\begin{equation}
-c_T(x) = \int_{\cwalks_T(x)} e^{-H_T} \; d\lambda_T.
-\end{equation}
-Note that
-\begin{equation}
-\chi(\nu) = \sum_{x\in\vertices} G_x(\nu),
-\end{equation}
-which is consistent with the analogous relation for spin systems. Later we will discuss the relationship between the two-point function for walks and spin systems.
-
-The \emph{critical point} $\nu_c$ for a model of walks is defined
-\begin{equation}
-\nu_c = \inf (\nu : \chi(\nu) < \infty).
-\end{equation}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\subsection{Continuous-time simple random walk}
-
-Let $\generator = -\lap$
-Then $\generator$ is the generator of the $\vertices$-valued Markov process
-$X = (X_t)_{t \ge 0}$ with transition probabilities
-\begin{equation}
-\Pr(X_t = y \mid X_0 = x) = (e^{-t \lap})_{xy},
-\end{equation}
-called the \emph{continuous-time simple random walk} on $\graph$.
-We define the measure $\lambda_T$ on $\cwalks_T$ by
-\begin{equation}
-\lambda_T(d\omega) = \Pr(X_t = d\omega_t, \, t \le T \mid X_0 = 0).
-\end{equation}
-For the corresponding Gibbs measures (with $H_T \equiv 0$), we have
-\begin{equation}
-c_T(x) = (e^{-t \lap})_{0x},
-  \quad
-G_x = (\nu - \lap)^{-1}_{0x}
-\end{equation}
-for $\nu > 0$. Thus, the two-point function is the Green function for the
-massive Laplacian.
-
-\begin{example}
-The discrete-time simple random walk is the Markov chain given by
-$X_n = X_{\tau_n}$. Consider the discrete-time simple random walk on $\Zd$,
-for which $X_n = X_0 + \sum_{i=1}^n Y_i$, where $Y_i$ are iid random variables
-in $\{ e \in \Zd : |e| = 1 \}$ with $\Ex Y_i = 0$. Thus, $\Ex |X_n|^2 = n$ and
-the central limit theorem implies that
-$X_n / \sqrt n \Rightarrow \normal(0, 1)$. More generally, Donsker's invariance
-principle states that a rescsaled version of $X$ converges to Brownian motion on $\Rd$.
-\end{example}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
