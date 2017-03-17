@@ -2,6 +2,52 @@
 \label{app:free-moments}
 % from clp
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Riemann sum approximation}
+
+We will make use of the following elementary result.
+
+\begin{lemma}
+Let $f : \Rd \to \R$ be a Lipschitz function with support in a box of side $t$
+centered at the origin.
+Then there is a constant $C$ such that for any $\epsilon > 0$,
+\begin{equation}
+\left|\int_\Rd f(x) \; dx - \epsilon^d \sum_{x\in\Zd} f(\epsilon x)\right|
+	\le
+C (t \epsilon)^d.
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+For any $x\in\Zd$, let $S_x(\epsilon)$ denote the square of side $\epsilon$
+centered at $\epsilon x\in\Rd$. Then
+\begin{equation}
+\int_{\Rd} f(x) \; dx
+	=
+\sum_{x\in\Zd} \int_{S_x(\epsilon)} f(y) \; dy.
+\end{equation}
+By the mean value theorem, there exists $y_x = y_x(\epsilon) \in S_x(\epsilon)$ such that
+\begin{equation}
+\int_{S_x(\epsilon)} f(y) \; dy
+	=
+\epsilon^d f(y_x).
+\end{equation}
+Thus,
+\begin{equation}
+\left|\int_\Rd f(x) \; dx - \epsilon^d \sum_{x\in\Zd} f(\epsilon x)\right|
+	\le
+\epsilon^d \sum_{x\in\Zd} |f(y_x) - f(\epsilon x)|.
+\end{equation}
+By the Lipschitz condition on $f$, each summand on the right-hand side is bounded
+by a $O(\epsilon)$. By the support assumption on $f$, there are at most
+$O(t^d/\epsilon)$ such summands and the result follows.
+\end{proof}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \section{Main result}
 
 \begin{prop}\label{prop:Gab-free-moment-estimate-bis}
@@ -35,6 +81,9 @@ for general $p>0$,
 based on the finite range decomposition of $(-\Delta_{\Zd}+m^2)^{-1}$
 given in \cite{BGM04,Baue13a}.
 This finite range decomposition also provides the basis for the renormalisation group method.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Covariance decomposition}
 
@@ -100,6 +149,9 @@ By \cite[(1.38)]{Baue13a}, there exists a function $\bar\phi$ such that
 \label{e:frd-scaling}
 \phi_t(x; m^2) = t^{-(d - 2)} \bar\phi\left(\frac{x}{t}; m^2 t^2\right).
 \end{equation}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Proof of main result}
 
