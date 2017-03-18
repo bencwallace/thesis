@@ -124,6 +124,8 @@ where ${\sf t} \in (0, 1]$ is a constant power.
 \subsection{Bounds on \texorpdfstring{$K_0$}{K0}}
 \label{sec:K0bds}
 
+\commentbw{Bound the observable part.}
+
 The main estimate on $K^\pm_{0,x}$ is given by the following proposition.
 Recall that $\DV_j$ was defined in \eqref{e:DVdef}.
 % Consistent with \cite[\eqref{IE-e:DV1-bis}]{BS-rg-IE}, we
@@ -764,7 +766,10 @@ which is in turn needed in Section~\ref{sec:suscept-conc}.
 \commentbw{Remark on new domain.}
 
 The following theorem is an extension of \cite[Proposition~\ref{log-prop:flow-flow}]{BBS-saw4-log}
-to non-trivial $K_0$. Such an extension is possible,
+to non-trivial $K_0$ and with the new domains $\domRG_j$ defined in terms of the weights
+\eqref{e:elldef-zz}. The extension to the new domains is immediate given Theorem~\ref{thm:step-mr-fv}.
+
+The further extension to non-trivial $K_0$ is possible,
 with only minor modifications to the proof of the $K_0 = \1_\varnothing$ case,
 due to the generality allowed by the main result of \cite{BBS-rg-flow}.
 
@@ -870,11 +875,12 @@ constructed, we can and do set $\ggen_0 = g_0$.
 \end{rk}
 
 We wish to apply this theorem with $(\gcc_0, K_0) = (g_0, K^+_0)$.
-It is straightforward to verify that $K^\pm_0 \in \Kcal_0$.
-For instance, the fact that $K^\pm_0$ is supersymmetric
-(which is required of all elements of $\Kcal_0$) follows
-from the fact that $K^\pm_{0,x}$ is a function of $\tau_x$
-(see \cite[Section~\ref{pt-sec:bulksym}]{BBS-rg-pt} for more on this topic).
+We have already remarked that $K^\pm_0 \in \Kcal_0$.
+% It is straightforward to verify that $K^\pm_0 \in \Kcal_0$.
+% For instance, the fact that $K^\pm_0$ is supersymmetric
+% (which is required of all elements of $\Kcal_0$) follows
+% from the fact that $K^\pm_{0,x}$ is a function of $\tau_x$
+% (see \cite[Section~\ref{pt-sec:bulksym}]{BBS-rg-pt} for more on this topic).
 It also follows from the definition that
 the finite-volume coordinates $K^\pm_{0,\Lambda}$ form a $\Lambda$-family.
 
@@ -898,14 +904,14 @@ We resolve this issue in the next section.
 % \end{equation}
 % Thus, $\hat g_0$ is the coefficient of $\tau_x^2$ in $V^+_{0,x}$
 % when $\gamma_0 \ge 0$, and in $V^-_{0,x}$ when $\gamma_0 < 0$.
-Recall the function $K_0(g_0, \gamma_0, \nu_0, z_0)$
-defined in \eqref{e:K0def}.
+% Recall the function $K_0(g_0, \gamma_0, \nu_0, z_0)$
+% defined in \eqref{e:K0def}.
 We wish to initialise the renormalisation group with $(\nu_0, z_0)$ a solution
 to the system of equations
 \begin{align}
-&\nu_0 = \nu_0^c(m^2, \gcc, K_0(g_0, \gamma_0, \nu_0, z_0)), \label{e:mu0c}
+&\nu_0 = \nu_0^c(m^2, \gcc, K^+_0(g_0, \gamma_0, \nu_0, z_0)), \label{e:mu0c}
 \\
-&z_0 = z_0^c(m^2, \gcc, K_0(g_0, \gamma_0, \nu_0, z_0)) \label{e:z0c}
+&z_0 = z_0^c(m^2, \gcc, K^+_0(g_0, \gamma_0, \nu_0, z_0)) \label{e:z0c}
 .
 \end{align}
 Such a choice of $(\nu_0, z_0)$ will be critical for $K_0$,
@@ -919,7 +925,7 @@ constructed using a version of the implicit function theorem from \cite{LS14}
 that allows for the continuous but non-smooth behaviour of $K_0$ in $\gamma_0$.
 In order to obtain global solutions with certain desired regularity properties
 (needed in the next section), we make use of Proposition~\ref{prop:IFT},
-which is based on a version of the implicit function theorem from \cite{LS14}.
+which is based on the implicit function theorem from \cite{LS14}.
 
 Recall that $D(\delta, r)$ was defined in \eqref{e:Ddef}.
 
@@ -950,7 +956,7 @@ F(m^2, g_0, \gamma_0, \nu_0, z_0)
   z_0^c(m^2, \gcc_0, K_0)
 ),
 \end{equation}
-where $K_0 = K_0(g_0, \gamma_0, \nu_0, z_0)$.
+where $K_0 = K^+_0(g_0, \gamma_0, \nu_0, z_0)$.
 Then for $\delta > 0$ small and an appropriate constant $c > 0$ (depending on $a_*$),
 $F$ is well-defined on
 \begin{equation}
@@ -963,7 +969,9 @@ $(\nu_0^c, z_0^c)$.
 By Theorem~\ref{thm:flow-flow} and Proposition~\ref{prop:Ksmooth},
 $F$ is $C^1$ in $(g_0, \nu_0, z_0)$
 and also in $\gamma_0$ away from $\gamma_0 = 0$,
-continuous in $m^2$, and has one-sided derivatives in $\gamma_0$ at $\gamma_0 = 0$.
+continuous in $m^2$, and
+is right-differentiable in $\gamma_0$ at $\gamma_0 = 0$.
+% has one-sided derivatives in $\gamma_0$ at $\gamma_0 = 0$.
 
 For fixed $(\bar m^2, {\bar g_0}) \in [0, \delta]^2$,
 set $({\bar\nu_0}, \bar z_0) = (\nu_0^c(\bar m^2, \bar g_0, 0), z_0^c(\bar m^2, \bar g_0, 0))$
@@ -1005,7 +1013,7 @@ The supremum above is bounded by a constant and so
 the first estimate of \eqref{e:hat-est-re} for $\gamma_0 \geq 0$
 follows from the fact that $\gamma_0 \leq \hat r(g_0)$
 (since $\hat r(g_0)$ can be taken as small as desired).
-The case $\gamma_0 < 0$ and the second estimate follow similarly.
+% The case $\gamma_0 < 0$ and the second estimate follow similarly.
 \end{proof}
 
 \begin{proof}[Proof of Theorem~\ref{thm:rhatflow}]
