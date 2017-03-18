@@ -1,5 +1,17 @@
 \chapter{Critical initial conditions}
-\label{sec:flow}
+\label{sec:RGflow}
+
+In this chapter, we prove Theorem~\ref{thm:rhatflow}. We begin in
+Section~\ref{sec:norms} by introducing
+norms used to control the evolution of the coordinates $(I, K)$ and showing
+that $K^+_0$ satisfies the inductive assumption required by
+Theorem~\ref{thm:step-mr-fv}. In Section~\ref{sec:flow}, we discuss a general
+version of this theorem for a parameter $K_0$ that is independent of the
+coupling constants. This theorem is then applied with $K_0 = K^+_0$ by solving
+a set of implicit equations in Section~\ref{sec:nu0z0c}.
+
+Throughout this chapter, we take $n \ge 1$, drop $n$ from the notation, and
+denote fields by $\varphi$. The $n = 0$ case is dealt with in \cite{BSW-saw-sa}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -7,30 +19,24 @@
 \section{Initial coordinates for the renormalisation group}
 \label{sec:K0bd}
 
-Norms used to control the evolution of the coordinates $(I, K)$ are introduced
-in Section~\ref{sec:norms}, and it is shown in
-Sections~\ref{sec:K0bds}--\ref{sec:KWcal} that $K_0$ satisfies norm estimates
-that permit the results of \cite{BS-rg-step,BBS-rg-flow} to be applied.
-The initial coordinate $K_0$
-depends on the coupling constants $(g_0, \gamma_0, \nu_0, z_0)$
-of \eqref{e:gg0}, and regularity of $K_0$ as a function of these variables
-is established in Section~\ref{sec:Ksmooth}.
+We establish norm estimates on $K^{\pm}_0$ in Sections~\ref{sec:norms}--\ref{sec:KWcal}.
+The initial coordinate $K^{\pm}_0$ depends on the coupling constants
+$(g_0, \gamma_0, \nu_0, z_0)$ of \eqref{e:gg0} and regularity of $K_0$ as a
+function of these variables is shown in Section~\ref{sec:Ksmooth}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Norms}
 \label{sec:norms}
 
-\commentbw{Do this for $n \ge 1$.}
-
-We need several properties of the $T_\phi$ semi-norm,
-whose proofs can be found in \cite{BS-rg-norm}.
-First, there is the important \emph{product property}
-\cite[Proposition~\ref{norm-prop:prod}]{BS-rg-norm}
-\begin{equation}
-\label{e:prod}
-\|F G\|_{T_\phi} \leq \|F\|_{T_\phi} \|G\|_{T_\phi}.
-\end{equation}
+We need several properties of the $T_\phi$ semi-norm, whose proofs can be found in
+\cite{BS-rg-norm}. We have already mentioned the product property in \eqref{e:prod}.
+% First, there is the important \emph{product property}
+% \cite[Proposition~\ref{norm-prop:prod}]{BS-rg-norm}
+% \begin{equation}
+% \label{e:prod}
+% \|F G\|_{T_\phi} \leq \|F\|_{T_\phi} \|G\|_{T_\phi}.
+% \end{equation}
 An immediate consequence is that $\|e^{-F}\|_{T_\phi} \leq e^{\|F\|_{T_\phi}}$.
 This is improved in \cite[Proposition~\ref{norm-prop:eK}]{BS-rg-norm},
 which states that (recall that $F_\varnothing$ denotes the $0$-degree part of $F$)
