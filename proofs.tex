@@ -1,19 +1,23 @@
 \chapter{Analysis of critical behaviour}
 
+In this chapter, we complete the proof of Theorem~\ref{thm:mr}.
+Throughout this chapter, we initialize the renormalisation group
+with the critical parameters of Theorem~\ref{thm:rhatflow}.
+For simplicity, we drop the parameter $n$ from the notation.
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{The susceptibility}
 
-We initialize the renormalisation group with the critical parameters of
-Theorem~\ref{thm:rhatflow}. Then for any $N$, the representation
-\eqref{e:IcircKnew} at scale $j = N$ becomes
+By Theorem~\ref{thm:rhatflow}, for any $N$ there exist
+$(V_N, K_N) \in \domRG_N$ such that \eqref{e:IcircKnew} becomes
 \begin{equation}
 \label{e:ZNINKN}
 Z_N = e^{\zeta_N} (I_N(\Lambda) + K_N(\Lambda))
 \end{equation}
-with $(V_N, K_N) \in \domRG_N$; in particular, using
-\eqref{e:Vnormdef}, \eqref{e:Wbilinbd}, and \eqref{e:T0dom},
+at scale $j = N$. In particular, \eqref{e:DVdef}--\eqref{e:domRG},
+\eqref{e:Vnormdef}, \eqref{e:Wbilinbd}, and \eqref{e:T0dom} imply that
 \begin{align}
 \label{e:unu-bd}
 u_N |\Lambda_N| = O(1),
@@ -25,8 +29,7 @@ u_N |\Lambda_N| = O(1),
 	&\qquad
 \|K_N\|_{T_0(\ell_N)} \le O(\chicCov_N g_N^3).
 \end{align}
-Now \eqref{e:ZNINKN} and \eqref{e:chibarm} together with the definitions of $I_N$ and $V_N$
-imply that
+Now by \eqref{e:ZNINKN} and \eqref{e:chibarm} together with the definitions of $I_N$ and $V_N$,
 \begin{equation}
 \hat\chi_N(m^2, \gcc_0, \gamma_0, \nu_0^c, z_0^c)
 	=
@@ -59,7 +62,7 @@ We wish to conclude the proof of Theorem~\ref{thm:mr}(ii) using \eqref{e:chi-m-h
 and \eqref{e:chichibar}. The latter states that
 \begin{equation}
 \label{e:chichihat}
-\chi_N(\gcc_0, \gamma, \nu)
+\chi_N(\gcc, \gamma, \nu)
 	=
 (1 + z_0) \hat\chi_N(m^2, \gcc_0, \gamma_0, \nu_0, z_0),
 \end{equation}
@@ -81,11 +84,11 @@ the renormalisation group with the critical parameters
 z_0   = \hat z_0^c(m^2, \gcc_0, \gamma_0).
 \end{equation}
 
-Given $\gcc_0,\gamma,\nu$,
+Given $\gcc,\gamma,\nu$,
 the relations \eqref{e:gg0-re} leave free two of the variables
 $(m^2, \gcc_0, \gamma_0, \nu_0, z_0)$.
 More generally, if any three of the variables
-$(\gcc_0, \gamma, \nu, m^2, \gcc_0, \gamma_0, \nu_0, z_0)$
+$(\gcc, \gamma, \nu, m^2, \gcc_0, \gamma_0, \nu_0, z_0)$
 are fixed, then two of the remaining variables are free.
 In the following two propositions, which together form an extension of
 \cite[Proposition~\ref{log-prop:changevariables}]{BBS-saw4-log},
@@ -100,8 +103,6 @@ we fix three variables and show that the addition of the constraints
 allows us to uniquely specify the two remaining variables.
 For this, we make use of the following version of the
 implicit function theorem, which we prove in Appendix~\ref{sec:IFT}.
-
-\todo{The following need to be simplified to $\gamma_0 \ge 0$.}
 
 \begin{prop}
 \label{prop:IFT}
@@ -134,7 +135,7 @@ in which the three fixed variables are $(m^2, \gcc_0, \gamma)$.
 There exist $\delta_* > 0$,
 a continuous positive-definite function $r_* : [0, \delta_*] \to [0, \infty)$,
 and continuous functions $(\nu^*, \gcc_0^*, \gamma_0^*, \nu_0^*, z_0^*)$
-defined for $(m^2, \gcc_0, \gamma) \in D(\delta_*, r_*)$, such that
+defined for $(m^2, \gcc, \gamma) \in D(\delta_*, r_*)$, such that
 \eqref{e:gg0-re} and \eqref{e:crit-constraint} hold with $\nu = \nu^*$ and
 $(\gcc_0, \gamma_0, \nu_0, z_0) = (\gcc^*_0, \gamma^*_0, \nu^*_0, z^*_0)$.
 Moreover,
@@ -162,8 +163,8 @@ the remaining bounds in
 \eqref{e:gznustarbd}
 follow using \eqref{e:hat-est}.
 
-We first solve the third equation of \eqref{e:gg0-re}, and then solve the first equation
-of \eqref{e:gg0-re}.
+We first solve the third equation of \eqref{e:gg0-re},
+and then solve the first equation of \eqref{e:gg0-re}.
 To this end, we begin by defining
 \begin{equation}
 f_1(m^2, \gcc_0, \gamma, \gamma_0)
@@ -200,22 +201,22 @@ Moreover, $\gamma^{(1)}_0$ is $C^1$ in $(\gcc_0, \gamma)$.
 
 Next, we define
 \begin{equation}
-f_2(m^2, \gcc_0, \gamma, \gcc_0)
+f_2(m^2, \gcc, \gamma, \gcc_0)
 	=
-\gcc_0 - (\gcc_0 - \gamma) (1 + \hat z_0^c(m^2, \gcc_0, \gamma^{(1)}_0(m^2, \gcc_0, \gamma)))^2
+\gcc_0 - (\gcc - \gamma) (1 + \hat z_0^c(m^2, \gcc_0, \gamma^{(1)}_0(m^2, \gcc, \gamma)))^2
 \end{equation}
-for $(m^2, \gcc_0, \gamma) \in D(\delta, r^{(1)})$ and $\gcc_0 \in [0, \delta_*]$,
+for $(m^2, \gcc_0, \gamma) \in D(\delta, r^{(1)})$ and $\gcc \in [0, \delta_*]$,
 where $\delta_* > 0$ will be made sufficiently small below.
-Then $f_2(m^2, \gcc_0, \gamma, \gcc_0) = 0$ is solved by
-$(\gamma, \gcc_0) = (0, \gcc_0^*(m^2, \gcc_0, 0))$,
-where $\gcc_0^*(m^2, \gcc_0, 0)$ was constructed in \cite[\eqref{log-e:ccstar2}]{BBS-saw4-log}.
-By \cite[\eqref{log-e:gznustarbd}]{BBS-saw4-log}, $\gcc_0^* = \gcc_0 + O(\gcc_0^2)$,
-so we may restrict the domain of $f_2$ so that $|\gcc_0| \le 2 \gcc_0$.
+Then $f_2(m^2, \gcc, \gamma, \gcc_0) = 0$ is solved by
+$(\gamma, \gcc_0) = (0, \gcc_0^*(m^2, \gcc, 0))$,
+where $\gcc_0^*(m^2, \gcc, 0)$ was constructed in \cite[\eqref{log-e:ccstar2}]{BBS-saw4-log}.
+By \cite[\eqref{log-e:gznustarbd}]{BBS-saw4-log}, $\gcc_0^* = \gcc + O(\gcc^2)$,
+so we may restrict the domain of $f_2$ so that $|\gcc_0| \le 2 \gcc$.
 Moreover,
 \begin{equation}
 \ddp{f_2}{\gcc_0}
 	=
-1 - 2 (\gcc_0 - \gamma) (1 + \hat z_0^c(m^2, \gcc_0, \gamma^{(1)}_0))
+1 - 2 (\gcc - \gamma) (1 + \hat z_0^c(m^2, \gcc_0, \gamma^{(1)}_0))
 \left( \ddp{\hat z_0^c}{\gcc_0} + \ddp{\hat z_0^c}{\gamma_0} \ddp{\gamma^{(1)}_0}{\gcc_0} \right).
 \end{equation}
 Differentiating both sides of
@@ -234,29 +235,32 @@ and solving for $\ddp{\gamma^{(1)}_0}{\gcc_0}$, gives
 where $\hat z_0^c$ and its derivatives are evaluated at $(m^2, \gcc_0, \gamma^{(1)}_0)$.
 Thus, $\ddp{\gamma^{(1)}_0}{\gcc_0} = 0$ when $\gamma = 0$.
 It follows that $\partial f_2/\partial \gcc_0$
-is well-defined when $(\gamma, \gcc_0) = (0, \gcc_0^*(m^2, \gcc_0, 0))$ and equals
+is well-defined when $(\gamma, \gcc_0) = (0, \gcc_0^*(m^2, \gcc, 0))$ and equals
 \begin{equation}
-1 - 2 \gcc_0 (1 + \hat z_0^c(m^2, \gcc_0^*, 0)) \ddp{\hat z_0^c}{\gcc_0}(m^2, \gcc_0, 0, \gcc_0^*),
+1 - 2 \gcc (1 + \hat z_0^c(m^2, \gcc_0^*, 0)) \ddp{\hat z_0^c}{\gcc_0}(m^2, \gcc_0^*, 0),
 \end{equation}
+% THIS WAS A TYPO IN SAW-SA
 which is positive when $\delta_*$ is small, by \eqref{e:hat-est}.
 Thus, by Proposition~\ref{prop:IFT}
-(with $w = m^2$, $x = \gcc_0$, $y = \gamma$, $z = \gcc_0$ and $r_1 = r^{(1)}$, $r_2(\gcc_0) = 2\gcc_0$),
-there exists a function $\gcc_0^*(m^2, \gcc_0, \gamma) \in C^{0,1,\pm}(D(\delta_*, r^{(2)}))$
+(with $w = m^2$, $x = \gcc$, $y = \gamma$, $z = \gcc_0$ and $r_1 = r^{(1)}$, $r_2(\gcc) = 2\gcc$),
+there exists a function $\gcc_0^*(m^2, \gcc, \gamma) \in C^{0,1,\pm}(D(\delta_*, r^{(2)}))$
 (for some continuous positive-definite function $r^{(2)}$ on $[0, \delta_*]$)
-such that $f_2(m^2, \gcc_0, \gamma, \gcc_0^*) = 0$.
+such that $f_2(m^2, \gcc, \gamma, \gcc_0^*) = 0$.
 
 By the fact that $\gcc_0^*$ solves $f_2 = 0$,
 \begin{equation}
-\gcc_0^* = (\gcc_0 - \gamma) + O((\gcc_0 - \gamma)^2).
+\gcc_0^* = (\gcc - \gamma) + O((\gcc - \gamma)^2).
 \end{equation}
 Since $|\gamma| \le r^{(2)}(\gcc_0)$ and $r^{(2)}(\gcc_0)$ can be taken
 as small as desired, this implies the first estimate in \eqref{e:gznustarbd}.
 Thus, by taking $r_*$ sufficiently small, if $|\gamma| \le r_*(\gcc_0)$, then
-$|\gamma| \le r^{(2)}(\gcc_0^*(m^2, \gcc_0, \gamma))$.
-Thus, for $\gcc_0 < \delta_*$ and $|\gamma| \leq r_*(\gcc_0)$,
+$|\gamma| \le r^{(2)}(\gcc_0^*(m^2, \gcc, \gamma))$.
+Thus, for $\gcc < \delta_*$ and $|\gamma| \leq r_*(\gcc)$,
 we can define
 \begin{equation}
-\gamma_0^*(m^2, \gcc_0, \gamma) = \gamma^{(1)}_0(m^2, \gcc_0^*(m^2, \gcc_0, \gamma), \gamma),
+\gamma_0^*(m^2, \gcc, \gamma)
+	=
+\gamma^{(1)}_0(m^2, \gcc_0^*(m^2, \gcc, \gamma), \gamma),
 \end{equation}
 which completes the proof.
 \end{proof}
@@ -266,16 +270,16 @@ identify the critical point $\nu_c$, as follows.
 By \eqref{e:chi-m-hat}, \eqref{e:chichihat}, Proposition~\ref{prop:finvol}, and Proposition~\ref{prop:changevariables1},
 \begin{equation}
 \label{e:chistar}
-\chi(\gcc, \gamma, \nu^*) = \frac{1 + z_0^*}{m^2} = \frac{1 + O(\gcc_0)}{m^2}.
+\chi(\gcc, \gamma, \nu^*) = \frac{1 + z_0^*}{m^2} = \frac{1 + O(\gcc)}{m^2}.
 \end{equation}
 Thus, with $\nu = \nu^*$, we see that $\chi < \infty$ when $m^2 > 0$, and
 $\chi = \infty$ when $m^2 = 0$.
 By \eqref{e:nuc-def}, this implies that
 \begin{equation}
 \label{e:nustarbd}
-\nu_c(\gcc_0, \gamma) = \nu^*(0, \gcc_0, \gamma) = O(\gcc_0),
+\nu_c(\gcc, \gamma) = \nu^*(0, \gcc, \gamma) = O(\gcc),
 	\quad
-\nu_c(\gcc_0, \gamma) < \nu^*(m^2, \gcc_0, \gamma)
+\nu_c(\gcc, \gamma) < \nu^*(m^2, \gcc, \gamma)
 	\quad
 (m^2 > 0).
 \end{equation}
@@ -285,7 +289,7 @@ It follows that
 \end{equation}
 which is a fact that cannot be concluded immediately from the definition \refeq{nuc-def}.
 
-In \eqref{e:chistar}, $\chi$ is evaluated at $\nu^* = \nu^*(m^2, \gcc_0, \gamma)$.
+In \eqref{e:chistar}, $\chi$ is evaluated at $\nu^* = \nu^*(m^2, \gcc, \gamma)$.
 However, in the setting of Theorem~\ref{thm:mr},
 we need to evaluate $\chi$ at a \emph{given} value of $\nu$
 and then take $\nu \downarrow \nu_c$.
@@ -296,13 +300,13 @@ right-continuously as $\nu\downarrow\nu_c$.
 The following proposition carries out this construction.
 In the following, the functions $\tilde m^2, \tilde \gcc_0$ should not be
 confused with the parameter $\mgen^2, \ggen_0$ that appeared previously
-in the $\Wcal_j$ norms.
+in the $\Wcal_j$ norms (these norms are not used in this chapter).
 
 \begin{prop}
 \label{prop:changevariables2}
 Write $\nu = \nu_c + \varepsilon$.
 There exist functions $\tilde m^2, \tilde \gcc_0, \tilde\gamma_0, \tilde\nu_0, \tilde z_0$
-of $(\varepsilon, \gcc_0, \gamma) \in D(\delta_*, r_*)$
+of $(\varepsilon, \gcc, \gamma) \in D(\delta_*, r_*)$
 (all right-continuous as $\varepsilon\downarrow 0$)
 such that \eqref{e:gg0-re} and \eqref{e:crit-constraint} hold with
 \begin{equation}
@@ -311,17 +315,17 @@ such that \eqref{e:gg0-re} and \eqref{e:crit-constraint} hold with
 Moreover,
 \begin{gather}
 \label{e:mtildebd}
-\tilde m^2(0, \gcc_0, \gamma) = 0,
+\tilde m^2(0, \gcc, \gamma) = 0,
 		\qquad
-\tilde m^2(\varepsilon, \gcc_0, \gamma) > 0
+\tilde m^2(\varepsilon, \gcc, \gamma) > 0
 		\quad
 (\varepsilon > 0). \\
 \label{e:gznutildebd}
-\tilde \gcc_0 = \gcc_0 + O(\gcc_0^2),
+\tilde \gcc_0 = \gcc + O(\gcc^2),
 		\quad
-\tilde \nu_0 = O(\gcc_0),
+\tilde \nu_0 = O(\gcc),
 		\quad
-\tilde z_0 = O(\gcc_0).
+\tilde z_0 = O(\gcc).
 \end{gather}
 \end{prop}
 
@@ -333,24 +337,24 @@ Define
 \label{e:mtildef}
 \tilde m^2
 		=
-\tilde m^2 (\varepsilon,\gcc_0,\gamma)
+\tilde m^2 (\varepsilon,\gcc,\gamma)
 		=
-\inf \{m^2 > 0 : \nu^*(m^2, \gcc_0, \gamma) = \nu_c(\gcc_0, \gamma) + \varepsilon \},
+\inf \{m^2 > 0 : \nu^*(m^2, \gcc, \gamma) = \nu_c(\gcc, \gamma) + \varepsilon \},
 \end{equation}
-on $D(\delta_*, r_*)$.
-By continuity of $\nu^*$,
-the infimum is attained and
+on $D(\delta_*, r_*)$. By continuity of $\nu^*$, the infimum is attained and
 \begin{equation}
-\nu_c(\gcc_0, \gamma) + \varepsilon = \nu^*(\tilde m^2(\varepsilon, \gcc_0, \gamma), \gcc_0, \gamma).
+\nu_c(\gcc, \gamma) + \varepsilon
+	=
+\nu^*(\tilde m^2(\varepsilon, \gcc, \gamma), \gcc, \gamma).
 \end{equation}
 From the above expression, continuity of $\nu^*$, and \eqref{e:nustarbd},
 it follows that $\tilde m^2$ is right-continuous as $\varepsilon\downarrow 0$.
 It is immediate that \eqref{e:mtildebd} holds.
-Also, the functions of $(\varepsilon,\gcc_0,\gamma)$ defined by
+Also, the functions of $(\varepsilon,\gcc,\gamma)$ defined by
 \begin{align}
-&\tilde\nu_0 = \nu_0^*(\tilde m^2, \gcc_0, \gamma), \quad
-\tilde z_0 = z_0^*(\tilde m^2, \gcc_0, \gamma), \\
-&\tilde \gcc_0 = (\gcc_0 - \gamma) (1 + \tilde z_0)^2 ,\quad
+&\tilde\nu_0 = \nu_0^*(\tilde m^2, \gcc, \gamma), \quad
+\tilde z_0 = z_0^*(\tilde m^2, \gcc, \gamma), \\
+&\tilde \gcc_0 = (\gcc - \gamma) (1 + \tilde z_0)^2 ,\quad
 \tilde\gamma_0 = \frac{1}{4d} \gamma (1 + \tilde z_0)^2
 \end{align}
 are right-continuous as $\varepsilon \downarrow 0$ and satisfy \eqref{e:gg0-re}.
@@ -359,16 +363,18 @@ and \eqref{e:gznustarbd}, and the proof is complete.
 \end{proof}
 
 \subsection{Conclusion of the argument}
+\label{sec:suscept-conc}
 
-By \eqref{e:chi-m-hat}, \eqref{e:chichihat}, Proposition~\ref{prop:finvol},
-and Proposition~\ref{prop:changevariables2}
+By Proposition~\ref{prop:finvol}, \eqref{e:chichihat}, \eqref{e:chi-m-hat},
+and Proposition~\ref{prop:changevariables2},
 \begin{equation}
-\chi(\gcc_0, \gamma, \nu)
+\label{e:chi-renorm}
+\chi(\gcc, \gamma, \nu)
 	=
 \frac{1 + \tilde z_0}{\tilde m^2}.
 \end{equation}
 By a careful analysis of the derivatives of the renormalisation group flow with
-respect to the initial condition $\nu_0$, we can additionally show that
+respect to the initial condition $\nu_0$, it can be shown that
 \begin{equation}
 \label{e:chiprime-m-hat}
 \ddp{\hat\chi}{\nu_0} \left(m^2,\gcc_0, \gamma_0,\hat\nu_0^c, \hat z_0^c \right)
@@ -377,18 +383,45 @@ respect to the initial condition $\nu_0$, we can additionally show that
 	\quad
 \text{as $(m^2,\gcc_0,\gamma_0) \to (0,\gcc_0^*,\gamma_0^*)$},
 \end{equation}
-where $c$ is a continuous function
-and the \emph{bubble diagram} $\bubble_{m^2}$ is
+where $c$ is a continuous function and the \emph{bubble diagram} $\bubble_{m^2}$ is
 is asymptotic to $(2\pi^2)^{-1} \log m^{-2}$, as $m^2 \downarrow 0$, when $d = 4$.
+This was shown for $\gamma_0 = 0$ in \cite[Section~\ref{sec:pfmr}]{BBS-saw4-log}.
+The proof for $\gamma_0 \ne 0$ is almost entirely a direct adaptation of the proof
+found there using the critical parameters $\hat\nu_0^c, \hat z_0^c$ constructed
+in Theorem~\ref{thm:rhatflow} rather than their $\gamma_0 = 0$ analogues.
+
+Besides this, there is only a single other aspect of the proof found in \cite{BBS-saw4-log}
+that must be modified when $\gamma_0 = 0$: This is the verification of the third bound
+in the base case ($j = 0$) of the inductive hypothesis \cite[\eqref{log-e:induct1}]{BBS-saw4-log}.
+This will be done in Section~\ref{sec:Ksmooth} (see Remark~\ref{rk:DK-base-case}),
+thereby concluding the proof of \eqref{e:chiprime-m-hat}.
+
 By exactly the same argument as in \cite[Section~\ref{log-sec:pfsuscept}]{BBS-saw4-log},
-\eqref{e:chi-m-hat}, and \eqref{e:chiprime-m-hat} allow us to obtain
+\eqref{e:chi-renorm} and \eqref{e:chiprime-m-hat} allow us to obtain
 a differential relation between $\ddp{\chi}{\nu}$ and $\chi$,
 whose solution yields Theorem~\ref{thm:mr}(ii).
+
+\begin{proof}[Sketch of proof of Theorem~\ref{thm:mr}(ii)]
+\todo{I could sketch this.}
+\end{proof}
+
+\todo{It is a consequence of the above that}
+\begin{equation}
+\label{e:mass-epsilon-asympt}
+\tilde m^2
+	\sim
+\tilde A_{g,n}^{-1} \varepsilon (\log \varepsilon^{-1})^{-\frac{n + 2}{n + 8}}
+	\quad
+\text{as $\varepsilon \downarrow 0$}.
+\end{equation}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{The two-point function}
+
+Our analysis of the two-point function and finite-order correlation length is
+based on the following proposition.
 
 \begin{prop}
 \label{prop:R}
@@ -399,12 +432,14 @@ Fix any $s \geq 0$.
 For $L$ sufficiently large and for $g > 0$ sufficiently small (depending on $s$),
 \begin{equation}
 \label{e:Gab-to-sum-Rqj}
-\frac{1}{1+z_0} G_x(g, \gamma, \nu; n) = (1 + O(\gbar_{j_x})) G_x(0, 0, m^2) + R_x
+\frac{1}{1+\tilde z_0} G_x(g, \gamma, \nu)
+	=
+(1 + O(\gbar_{j_x})) G_x(0, 0, \tilde m^2) + R_x(\tilde m^2)
 \end{equation}
 and the remainder $R_x$ satisfies the bound
 \begin{equation}
 \label{e:Rab-bound}
-|R_{x}|
+|R_{x}(m^2)|
 	\le
 \frac{O(\gbar_{j_{x}}) }{|x|^2}
 	\times
@@ -418,42 +453,49 @@ with the  constant depending on $L$ and $s$.
 
 \begin{proof}
 % [Proof of Proposition~\ref{prop:R} (assuming Theorem~\ref{thm:step-mr-fv})]
+Let $D_{\sigma_0}$ and $D_{\sigma_x}$ denote differentiation with respect to
+$\sigma_0$ and $\sigma_x$, respectively, evaluated at $0$ field.
 By \eqref{e:generating-fn}, \eqref{e:ZNINKN}, and \eqref{e:IcircKnew},
 \begin{equation}
 \lbeq{GK}
-\frac{1}{1+z_0} G_{x,N}(g, \nu)
+\frac{1}{1+\tilde z_0} G_{x,N}(g,\gamma,\nu)
 	=
 \frac{1}{2} (q_{0,N} + q_{x,N})
 	+
 \frac{D^2_{\sigma_0\sigma_x}K_{N}}{1 + K_{N}}
 	-
-\frac{\left(D_{\sigma_0}K_{N}\right) \left(D_{\sigma_x}K_{N}\right)}{(1 + K_{N})^2}
+\frac{\left(D_{\sigma_0}K_{N}\right) \left(D_{\sigma_x}K_{N}\right)}{(1 + K_{N})^2},
 \end{equation}
-(with derivatives taken at $\sigma_0=\sigma_x=0$ on the right-hand side).
-By \eqref{e:WKbd} and Lemma~\ref{lem:deriv-norm-bds}, the last two terms of
-\refeq{GK} vanish as $N \to \infty$, and
+where the quantities on the right-hand side are evaluated at
+$(\tilde m^2, \tilde g_0, \tilde\gamma_0, \tilde\nu_0, \tilde z_0)$.
+By \eqref{e:WKbd} and Lemma~\ref{lem:deriv-norm-bds}, the last two terms
+vanish as $N \to \infty$ leaving
 \begin{equation}
-\frac{1}{1+z^c_0} G_x(g, \nu; n) = \frac{1}{2} (q_{0,\infty} + q_{x,\infty}),
+\frac{1}{1+\tilde z_0} G_x(g, \gamma, \nu) = \frac{1}{2} (q_{0,\infty} + q_{x,\infty}).
 \end{equation}
-where the $q_{u,\infty}$ are evaluated at the renormalized mass $m^2$.
 
 Now it is a straightforward computation using \eqref{e:lampt}--\eqref{e:deltanuw1}
 and \eqref{e:Rplusdef} to show that
 \begin{equation}
 \label{e:q}
-q_{u,\infty}(m^2)
-= \lambda_{\pp, j_\qq} \lambda_{\qq, j_\qq}  G_x(0, m^2) + \sum_{i = j_\qq}^\infty R^{q_u}_i,
-\quad u = 0, x,
+q_{u,\infty}
+	=
+\lambda_{\pp, j_\qq} \lambda_{\qq, j_\qq}  G_x(0, 0, \tilde m^2)
+	+
+\sum_{i = j_\qq}^\infty R^{q_u}_i,
+\quad u = 0, x
 \end{equation}
-where $R^{q_u}_i$ is the coefficient of $\1_{y=u}\sigma_0\sigma_x$ (recall \refeq{Vy})
-in $R_{+,i}$.
+where $R^{q_u}_i$ is the coefficient of $\1_{y=u}\sigma_0\sigma_x$
+(recall \refeq{Vy}) in $R_{+,i}$.
 Moreover, as in \cite[\eqref{phi4-e:lam-star}]{ST-phi4} and \cite[Corollary~\ref{phi4-cor:vx}]{ST-phi4},
 \begin{equation}
 \lambda_{u,j_\qq} = 1 + O(\chicCov_{j_\qq} \gbar_{j_\qq}).
 \end{equation}
 It follows that
 \begin{equation}
-\frac{1}{1+z_0} G_x(g, \nu; n) = (1 + O(\gbar_{j_x})) G_x(0, m^2) + R_x,
+\frac{1}{1+\tilde z_0} G_x(g, \gamma, \nu)
+	=
+(1 + O(\gbar_{j_x})) G_x(0, \tilde m^2) + R_x,
 \end{equation}
 with
 \begin{equation}
@@ -470,8 +512,8 @@ of the $\Vcal$ norm,
 \le O(\ell_{\sigma,i}^{-2}\chicCov_i\gbar_i^{3}).
 \end{align}
 We insert the definition of $\ell_{\sigma,j}$ from \refeq{elldef-zz} into \refeq{vq-new}.
-\todo{We also use $\ggen_j^{-2} = O(\gbar_j^{-2})$, $\chicCov_i \le 1$, $\ell_0^2 \le O(1)$,
-as well as $\gbar_{j} \leq O(\gbar_{j_{x}})$ for $j \geq j_x$.}
+We also use $\ggen_j^{-2} = O(\gbar_j^{-2})$, $\chicCov_i \le 1$, $\ell_0^2 \le O(1)$,
+as well as $\gbar_{j} \leq O(\gbar_{j_{x}})$ for $j \geq j_x$.
 The definitions of
 the coalescence scale $j_x$ and the mass scale $j_m$ imply that  $L^{-2j_x} \le O(|x|^{-2})$
 and $L^{ -  (j_{x} - j_m)_+} \le O((m|x|)^{-1})$.
@@ -494,19 +536,27 @@ This gives the desired estimate \eqref{e:Rab-bound}.
 \end{proof}
 
 A version of this result with $s = 0$ and $\gamma = 0$ was obtained in \cite{BBS-saw4,ST-phi4}.
-This version is sufficient for studying the \emph{critical} two-point function.
+This version is sufficient for studying the \emph{critical} two-point function with $\gamma = 0$.
 With the extension to $\gamma \ne 0$, we can complete the proof of the first part of
 Theorem~\ref{thm:mr}.
 
 \begin{proof}[Proof of Theorem~\ref{thm:mr}(i)]
-Indeed, with $\nu_c = 0$ (hence $m^2 = 0$), we have $R_x = O(\gbar_{j_x}) G_x(0, 0, 0; n)$,
-so
+% With $\nu_c = 0$ (hence $m^2 = 0$),  			% ???
+% With $s = 0$, we have $R_x = O(\gbar_{j_x}) G_x(0, 0, 0)$, so
+We apply Proposition~\ref{prop:R} with $s = 0$ to get
 \begin{equation}
-\frac{1}{1 + z_0} G_x(g, \gamma, \nu; n)
+\frac{1}{1 + \tilde z_0} G_x(g, \gamma, \nu)
 	=
-(1 + O(\gbar_{j_x})) G_x(0, 0, m^2; n).
+(1 + O(\gbar_{j_x})) G_x(0, 0, \tilde m^2) + R_x(\tilde m^2).
 \end{equation}
-The result follows from \eqref{e:gjxgjmbd}.
+By Proposition~\ref{prop:changevariables2}, $\tilde m^2 = 0$
+when $\nu = \nu_c$. Since $R_x(0) = O(\gbar_{j_x}) G_x(0, 0, 0)$,
+\begin{equation}
+\frac{1}{1 + \tilde z_0} G_x(g, \gamma, \nu_c)
+	=
+(1 + O(\gbar_{j_x})) G_x(0, 0, 0)
+\end{equation}
+and the result follows from \eqref{e:gjxgjmbd}.
 \end{proof}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -514,8 +564,8 @@ The result follows from \eqref{e:gjxgjmbd}.
 
 \section{Finite-order correlation length}
 
-An elementary ingredient in the proof of Theorem~\ref{thm:mr} is the following result for
-the $g=0$ case, which is independent of $n\ge 0$.
+An elementary ingredient in the proof of Theorem~\ref{thm:mr}(iii) is the following result
+for the $g=0$ case, which is independent of $n\ge 0$.
 For simplicity, we restrict attention to dimensions $d>2$, as only $d=4$ is used here.
 A proof is provided in Appendix~\ref{app:free-moments}.
 
@@ -525,34 +575,13 @@ For all dimensions $d>2$ and all $p>0$,
 as $m^2 \downarrow 0$,
 \begin{equation}
 \label{e:Gab-free-moment-estimate}
-\sum_{x\in\Zd} |x|^p G_{x}(0, m^2)
+\sum_{x\in\Zd} |x|^p G_{x}(0, 0, m^2)
 =
 {\sf c}_p^p m^{-(p + 2)} (1 + O(m)).
 \end{equation}
-In particular, $\xi_p(0,\varepsilon) = {\sf c}_p \varepsilon^{-1/2}
+In particular, $\xi_p(0,0,\varepsilon) = {\sf c}_p \varepsilon^{-1/2}
 (1+O(\varepsilon^{1/2}))$ as $\varepsilon \downarrow 0$.
 \end{prop}
-
-% Before proving Proposition~\ref{prop:R}, we
-% prove Theorem~\ref{thm:mr} assuming Proposition~\ref{prop:R}.
-In the following proof, we use the important relation that
-\begin{equation}
-\label{e:mass-epsilon-asympt}
-m^2
-	\sim
-\tilde A_{g,n}^{-1} \varepsilon (\log \varepsilon^{-1})^{-\frac{n + 2}{n + 8}}
-	\quad
-\text{as $\varepsilon \downarrow 0$},
-\end{equation}
-which is proved in \cite[\eqref{phi4-log-e:masymp}]{BBS-phi4-log} for $n\geq 1$
-and \cite[\eqref{log-e:m-mu}]{BBS-saw4-log} for $n=0$.
-% In particular, the dependence of $m^2$ on $\varepsilon$
-% encompasses the logarithmic correction for the susceptibility since
-% \begin{equation}\label{e:susceptibility-mass-identity}
-% \chi(g,\nu; n) = \frac{1 + z_0}{m^2},
-% \end{equation}
-% according to \cite[\eqref{phi4-log-e:chim2}]{BBS-phi4-log} for $n\geq 1$
-% and \cite[\eqref{log-e:chi-mtil0}]{BBS-saw4-log} for $n=0$.
 
 \begin{proof}[Proof of Theorem~\ref{thm:mr}]
 We multiply \eqref{e:Gab-to-sum-Rqj} by $|x|^p$, sum over $x \in \Z^4$,
@@ -560,56 +589,56 @@ and use \eqref{e:chistar}
 % \eqref{e:susceptibility-mass-identity},
 to obtain
 \begin{align}
-\xi_p^p(g,\nu)
-&=
-\sum_{x \in \Z^4} |x|^p \frac{G_{x}(g, \nu)}{\chi(g, \nu)}
-= m^2 \sum_{x \in \Z^4} |x|^p \Big(G_{x}(0, m^2) + r_{x}(g,m^2) \Big),
+\xi_p^p(g,\gamma,\nu)
+	&=
+\sum_{x \in \Z^4} |x|^p \frac{G_{x}(g, \gamma, \nu)}{\chi(g, \gamma, \nu)}
+	=
+\tilde m^2 \sum_{x \in \Z^4} |x|^p \Big(G_{x}(0, 0, m^2) + r_{x}(\tilde m^2) \Big),
 \end{align}
 with
 \begin{equation}
 \lbeq{rx}
-    r_x = O(\gbar_{j_x})  G_x(0, m^2) + R_{x}.
+    r_x(m^2) = O(\gbar_{j_x})  G_x(0, 0, m^2) + R_{x}(m^2).
 \end{equation}
 By
 Proposition~\ref{prop:Gab-free-moment-estimate},
-this gives (as $m^2 \downarrow 0$)
+this gives (as $\tilde m^2 \downarrow 0$)
 \begin{align}
 \lbeq{ximasy}
-\xi_p^p(g,\nu)
-    & \sim
-    {\sf c}_p^p m^{-p} +
-    m^2 \sum_{x \in \Z^4} |x|^p  r_{x}(g,m^2).
+\xi_p^p(g,\gamma,\nu)
+	& \sim
+{\sf c}_p^p \tilde m^{-p} +
+\tilde m^2 \sum_{x \in \Z^4} |x|^p r_{x}(\tilde m^2).
 \end{align}
 By \eqref{e:mass-epsilon-asympt}, it suffices to prove that
 the first term on the right-hand side of \refeq{ximasy} is dominant.
 
-For the term $O(\gbar_{j_x}) G_x(0, m^2)$ in \refeq{rx},
+For the term $O(\gbar_{j_x}) G_x(0, 0, m^2)$ in \refeq{rx},
 we apply \eqref{e:gjxgjmbd} to obtain
 \begin{align}
 \lbeq{easyerror}
-    &\sum_{x \in \Z^4} \gbar_{j_x} |x|^p G_x(0, m^2)
-    \nnb & \quad \le
-    \sum_{x :  0<  j_x \le j_m} \frac{c |x|^p}{\log |x|} G_x(0, m^2)
-    +
-    \frac{c}{\log m^{-1}} \sum_{x : j_x >j_m}  |x|^p G_x(0, m^2).
+&\sum_{x \in \Z^4} \gbar_{j_x} |x|^p G_x(0, 0, \tilde m^2)
+	\nnb & \quad \le
+\sum_{x : 0 < j_x \le j_{\tilde m}} \frac{c |x|^p}{\log |x|} G_x(0, 0, \tilde m^2)
+	+
+\frac{c}{\log \tilde m^{-1}} \sum_{x : j_x >j_{\tilde m}}  |x|^p G_x(0, 0, \tilde m^2).
 \end{align}
 In the first term,
-we use $G_x(0, m^2) \le G_x(0, 0) \le O(|x|^{-2})$.  The restriction
-$j_x \le j_m$ ensures that $|x| \le O(m^{-1})$.
+we use $G_x(0, 0, m^2) \le G_x(0, 0, 0) \le O(|x|^{-2})$.
+The restriction $j_x \le j_{\tilde m}$ ensures that $|x| \le O(\tilde m^{-1})$.
 Therefore the first term is bounded above by a multiple of
-$(m^{-1})^{d+p-2}(\log m^{-1})^{-1}$, which suffices.
-For the term with $j_x > j_m$, we extend the sum to $x \in \Z^4$
+$(\tilde m^{-1})^{d+p-2}(\log \tilde m^{-1})^{-1}$, which suffices.
+For the term with $j_x > j_{\tilde m}$, we extend the sum to $x \in \Z^4$
 and apply Proposition~\ref{prop:Gab-free-moment-estimate}
 to obtain a bound of the same form as for the first term.
 
-Fix any $s>\frac 12 (p+2)$.
 For the term $R_x$ of \eqref{e:rx}, we use Proposition~\ref{prop:R}
 to see that
 \begin{equation}\label{e:rab-bound-scales-bis}
-|R_x(g, m^2)|
-=
+|R_x(\tilde m^2)|
+	=
 O(\gbar_{j_x})
-L^{-2j_x - 2s (j_x - j_m)_+}.
+L^{-2j_x - 2s (j_x - j_{\tilde m})_+}.
 \end{equation}
 We divide $\Z^4$ into shells $S_1 = \{x : |x| < \frac 12 L\}$ and, for $j \ge 2$,
 $S_j = \{x : \frac 12 L^{j-1} \le |x| < \frac 12 L^{j}\}$.
@@ -620,32 +649,28 @@ Note that $j_x$ is the unique scale so that
     x \in S_{j_x +1}
    .
 \end{equation}
-By \eqref{e:rab-bound-scales-bis} and \refeq{Phi-def-jc},
+By \eqref{e:rab-bound-scales-bis} with $s>\frac 12 (p+2)$ and \refeq{Phi-def-jc},
 \begin{equation} \label{e:xpr-shells}
 \begin{aligned}
-    \sum_{x\in\Z^4} |x|^p |R_{x}(g,m^2)|
-    &= \sum_{j = 1}^\infty\sum_{x\in S_j}   |x|^p |R_{x}(g,m^2)|
-    \\
-    &= \sum_{j = 1}^\infty
-    L^{4j + pj - 2j - 2s (j - j_m)_+} O(\gbar_{j})
-    ,
+\sum_{x\in\Z^4} |x|^p |R_{x}(\tilde m^2)|
+	&= \sum_{j = 1}^\infty\sum_{x\in S_j}   |x|^p |R_{x}(\tilde m^2)| \\
+    &= \sum_{j = 1}^\infty L^{4j + pj - 2j - 2s (j - j_{\tilde m})_+} O(\gbar_{j}),
 \end{aligned}
 \end{equation}
 with an $L$-dependent constant.
 By Lemma~\ref{lem:mass-scale-sum} below (with $a=p+2$ and $b=1$),
 we obtain
 \begin{equation}\label{e:xpr-mbound}
-    m^2 \sum_{x\in\Z^4} |x|^p |R_{x}(g,m^2)|
-    = O\big( m^{-p}(\log m^{-1})^{-1}\big).
+\tilde m^2 \sum_{x\in\Z^4} |x|^p |R_{x}(\tilde m^2)|
+	=
+O\big(\tilde m^{-p}(\log \tilde m^{-1})^{-1}\big).
 \end{equation}
 The first term on the right-hand side of \refeq{ximasy} therefore dominates,
 and the proof is complete.
 \end{proof}
 
-The estimate used to obtain \eqref{e:xpr-mbound}
-is given by the following lemma,
-which is stated more generally for use
-in the proof of Proposition~\ref{prop:Gab-free-moment-estimate}.
+The estimate used to obtain \eqref{e:xpr-mbound} is given by the following lemma,
+which is stated more generally for use in the proof of Proposition~\ref{prop:Gab-free-moment-estimate}.
 
 \begin{lemma} \label{lem:mass-scale-sum}
 Let $L>1$, $2s> a > 0$, $b \geq 0$, and let $\gbar_0>0$ be sufficiently small.

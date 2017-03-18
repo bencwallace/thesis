@@ -1,4 +1,5 @@
 \chapter{Critical initial conditions}
+\label{sec:flow}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -19,6 +20,8 @@ is established in Section~\ref{sec:Ksmooth}.
 
 \subsection{Norms}
 \label{sec:norms}
+
+\commentbw{Do this for $n \ge 1$.}
 
 We need several properties of the $T_\phi$ semi-norm,
 whose proofs can be found in \cite{BS-rg-norm}.
@@ -727,6 +730,16 @@ i.e., $F$ is the right-derivative of $K$ in $\gamma_0$ at $\gamma_0 = 0$.
 Left-continuity is handled similarly.
 \end{proof}
 
+\begin{rk}
+\label{rk:DK-base-case}
+The bound \eqref{e:ddpK} verifies the condition
+\begin{equation}
+\|\partial K_0/\partial\nu_0\|_{\Wcal_0} \le O(g_0^3)
+\end{equation}
+required in the proof of \cite[Lemma~\ref{log-lem:gzmuprime}]{BBS-saw4-log}
+(see \cite[\eqref{log-e:induct1}]{BBS-saw4-log}) and needed in Section~\ref{sec:suscept-conc}.
+\end{rk}
+
 \section{Renormalisation group flow}
 \label{sec:flow}
 
@@ -986,14 +999,3 @@ $V_\pt$,
 % (see \eqref{e:Vflow}),
 which is independent of $\gamma_0$.
 \end{proof}
-
-\begin{rk}
-We have invoked \eqref{e:ddpK} above in order to satisfy the condition
-\begin{equation}
-\|\partial K_0/\partial\nu_0\|_{\Wcal_0} \le O(g_0^3)
-\end{equation}
-required in the proof of \cite[Lemma~\ref{log-lem:gzmuprime}]{BBS-saw4-log}
-(see \cite[\eqref{log-e:induct1}]{BBS-saw4-log}). This condition holds trivially
-when $K_0$ does not depend on $\nu_0$
-% as in \eqref{e:chi-m}--\eqref{e:chiprime-m}.
-\end{rk}

@@ -1107,8 +1107,11 @@ In \cite[Section~\ref{step-sec:Knorms}]{BS-rg-step},
 a sequence of norms $\|\cdot\|_{\Wcal_j} = \|\cdot\|_{\Wcal_j(\mgen^2, \ggen_j, \Lambda)}$
 parameterised by $(\mgen^2, \ggen_j)$ is defined on $\Kcal_j$.
 These are defined in terms of the $T_\phi(\h_j)$ norms with parameters $\h_j = \ell_j, h_j$.
-We note here only the fact that the $\Wcal_j(\Lambda)$ norm dominates the $T_0(\ell_j)$ norm
-in the following sense:
+In order to make use of the improved norm parameters with $s > 0$,
+we must modify the definition of $\Wcal_j$ when $j$ is above the mass scale.
+This will be discussed in Chapter~\ref{sec:RGstep}.
+We note here only the fact that (for any $s \ge 0$) the $\Wcal_j(\Lambda)$
+norm dominates the $T_0(\ell_j)$ norm in the following sense:
 \begin{equation}
 \label{e:T0dom}
 \|F(\Lambda)\|_{T_0(\ell_j)} \le \|F\|_{\Wcal_j}.
@@ -1150,7 +1153,7 @@ is denoted by $R_+$:
 \end{equation}
 % The following theorem is applied with $\alpha =4M$ as a convenient choice.
 
-\commentbw{Add mass domain}
+\commentbw{Add mass domain. It's possible I don't need this inf-vol stuff.}
 
 \begin{theorem}
 \label{thm:step-mr-fv}
@@ -1193,6 +1196,11 @@ apply to these bounds as well, but we do not state them here as we will
 not make direct use of these bounds\footnote{These derivative bounds are
 indirectly used to prove Theorem~\ref{thm:rhatflow}.}.
 
+Note that the maps $R_+$ and $K_+$ are \emph{independent} of $s$.
+The proof of Theorem~\ref{thm:step-mr-fv} involves showing that the
+inductive estimates \eqref{e:RKplus} hold for any $s$. In some cases,
+we will make use of these estimates both with $s > 0$ and $s = 0$.
+
 The proof of Theorem~\ref{thm:step-mr-fv} is identical to the proof of
 \cite[Theorem~\ref{phi4-thm:step-mr-fv}]{ST-phi4} \todo{(if $n \ge 1$)},
 via a version of
@@ -1200,9 +1208,11 @@ via a version of
 uses the norm parameters \eqref{e:elldef-zz} with $s > 0$.
 The proof of the latter results with these new norm parameters is an
 adaptation of the proof of the $s = 0$ case contained in \cite{BS-rg-IE,BS-rg-step}.
-Some steps in this proof continue to hold unchanged whereas others must
-be changed. A detailed verification that the proof holds for $s > 0$
-is carried out in Chapter~\ref{sec:RGstep}. % \ref{sec:Rpf2} below.
+Some steps in this proof continue to hold unchanged whereas others require
+some modification. As mentioned above, a major change that is required is
+a new definition of $\Wcal_j$ above the mass scale. A detailed verification
+that the proof holds for $s > 0$ is carried out in Chapter~\ref{sec:RGstep}.
+% \ref{sec:Rpf2} below.
 
 Theorem~\ref{thm:step-mr-fv} expresses a contractive property of the map $K_+$,
 as it takes $K$ in a ball whose radius involves $\alpha=4M$ at scale $j$ to
@@ -1242,10 +1252,10 @@ which lies in the domain $\domRG_j$ and obeys the estimates \refeq{RKplus}
 \section{Renormalisation group flow}
 % mainly from saw-sa
 
-Suppose $\delta > 0$ and suppose $r : [0, \delta] \to [0, \infty)$
-is a continuous positive-definite\footnote{Note that our usage of this term is
-different from that in the theory of quadratic forms.} function; the latter
-means that $r(x) > 0$ if $x > 0$ and $r(0) = 0$.
+Let $\delta > 0$ and suppose $r : [0, \delta] \to [0, \infty)$
+is a continuous \emph{positive-definite}\footnote{Note that our usage of this term is
+different from that in the theory of quadratic forms.} function; by this we
+mean that $r(x) > 0$ if $x > 0$ and $r(0) = 0$.
 We define
 \begin{equation}
 \lbeq{Ddef}
@@ -1253,7 +1263,8 @@ D(\delta, r)
 	=
 \{ (w, x, y) \in [0, \delta]^2 \times (-\delta, \delta) : |y| \leq r(x) \}
 \end{equation}
-and we let $C^{0,1,\pm}(D(\delta, r))$ denote the space of continuous functions on $D(\delta, r)$
+and we let $C^{0,1,\pm}(D(\delta, r))$ denote the space of continuous functions
+$f = f(w, x, y)$ on $D(\delta, r)$
 that are $C^1$ in $(x, y)$ away from $y = 0$, $C^1$ in $x$ everywhere,
 and have left- and right-derivatives in $y$ at $y = 0$.
 In our applications, we take $w = m^2$, $x = g_0$ or $\gcc$,
@@ -1282,5 +1293,14 @@ These functions satisfy the bounds
 \hat z_0^c = O(g_0)
 \end{equation}
 uniformly in $(m^2, \gamma_0)$.
-Moreover, the second-order evolution equation for $V_j$ is independent of $\gamma_0$.
+% Moreover, the second-order evolution equation for $V_j$ is independent of $\gamma_0$.
 \end{theorem}
+
+A version of this theorem with $\gamma_0 = 0$ (and $s = 0$) was proved in
+\cite[Theorem~\ref{log-prop:KjNbd}]{BBS-saw4-log}. This result is based on the
+main result of \cite{BBS-rg-flow}, which allows some generality in the choice
+of $K_0$. We will discuss the proof of the extension to $\gamma_0 \ne 0$ in
+Chapter~\ref{sec:flow}.
+
+\commentbw{Define infinite sequence of couplign constants. Mention that different
+versions of $g$ can be interchanged.}
