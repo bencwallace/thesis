@@ -7,8 +7,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Introduction}
-
 Classical thermodynamics deals with the properties of bulk matter. Thus, it seeks
 to answer questions regarding the properties of matter that are only well-defined
 in terms of large collections of interacting particles. A familiar example of
@@ -553,23 +551,32 @@ $\Omega$ with mean $0$ and \emph{covariance} $C$ is defined by the Hamiltonian
 \begin{equation}
 H_C(\varphi) = \frac{1}{2} \varphi \cdot C^{-1} \varphi.
 \end{equation}
-Setting $\beta = 1$ again, the partition function $Z_C$ can be computed explicitly,
-giving
+Setting $\beta = 1$ again, the partition function $Z_C$ can be computed explicitly
+and the Gibbs measure takes the form
 \begin{equation}
-Z_C
-  =
-\frac{1}{\sqrt{\det(2\pi C)}}.
+\label{e:gauss-density}
+\frac{d\varphi}{\sqrt{\det(2\pi C)}}
+e^{-\tfrac12 \varphi \cdot A \varphi}.
 \end{equation}
-The correlations can also be computed explictly (this is sometimes known as
-\emph{Wick's theorem}). In particular, the two-point function is the covariance:
+\emph{Wick's theorem} gives an expression for the correlations. When $n = 1$,
+if $x_1, \ldots, x_{2p} \in \Lambda$, then
+% \emph{Wick's theorem}). In particular, the two-point function is the covariance:
 \begin{equation}
 \label{e:wick}
-\int \varphi_a \cdot \varphi_b \; d\mu(\varphi) = C_{ab}.
+% \int \varphi_a \cdot \varphi_b \; d\mu(\varphi) = C_{ab}.
+\int d\mu_C(\varphi) \prod_{i=1}^{2p} \varphi_{x_i}
+	=
+\sum_\pi \prod_{ij\in\pi} C_{x_ix_j}
 \end{equation}
+where the sum is over all pairings $\pi$ of $\{1,\ldots,2p\}$.
+Correlations for $n > 1$ can then be computed using the fact that we have defined
+Gaussian fields to have independent Gaussian components.
 
 An important case is the \emph{massive Gaussian free field} on $\graph$,
 which is the $\gcc = 0$ case of the $|\varphi|^4$ model (with $\nu$ necessarily positive).
 Thus, the the covariance is equal to the massive Green function $C = (-\lap + \nu)^{-1}$.
+In particular, the only non-zero contributions to the sum in \eqref{e:wick}
+come from pairings $\pi$ consisting of edges in $X$.
 \end{example}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -812,6 +819,9 @@ These and other relations are all believed to be manifestations of the existence
 a universal \emph{scaling limit} for the $|\varphi|^4$ model and other models in its
 \emph{universality class}. That is, any spin system in this class, when appropriately
 rescaled, is expected to converge in distribution to a unique continuum random field.
+\todo{For instance, the analogue of the conjectured scaling relation for the critical
+two-point function of such a scaling limit would follow from scale-invariance of this
+limit.}
 In this sense, the study of critical behaviour involves a set of far-reaching
 generalizations of the central limit theorem.
 
@@ -949,6 +959,7 @@ logarithmic corrections to scaling.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{The renormalisation group}
+\label{sec:rg-intro}
 
 In \cite{Kada66}, Leo Kadanoff considered a coarse-graining procedure for
 studying the Ising model in which disjoint
@@ -961,9 +972,8 @@ At the critical point, $\xi = \infty$ this transformation
 $T$ can be iterated indefinitely resulting in a dynamical system on a space
 of models: the one-parameter semigroup $(T^j)_{j\in\Z_+}$ is known as the
 \emph{renormalisation group}\footnote{The name
-renormalisation \emph{group} is more sensible in the context of quantum field
-theory where the scale can be arbitrarily small or large, resulting in a
-one-parameter group $(T^j)_{j\in\Z}$.}. This was basis for Ken Wilson's
+renormalisation \emph{group} is attributed by Wilson in \cite{Wils71I}
+to the work of Gell-Mann and Low \cite{GML54}.}. This was basis for Ken Wilson's
 generalizations of Wilson's idea in \cite{Wils71I,Wils71II}.
 
 The coarse-graining procedure of Kadanoff can be viewed as an approximate
@@ -997,6 +1007,10 @@ fixed point ceases to be hyperbolic and as $d$ is lowered, the fixed point split
 into a stable fixed point and an unstable one (this is an example of a saddle-node
 bifurcation). The unstable fixed point corresponds to Gaussian behaviour (this is
 why the critical exponents are different for $g = 0$ and $g > 0$ when $d < 4$).
+
+\begin{example}
+CLT: Koralov-Sinai, Li-Sinai. See also Jona-Lasinio I think.
+\end{example}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1063,7 +1077,6 @@ c(\graph) = \lim_{n\to\infty} n^{-1} \log c_n.
 Note that, by the trivial bounds $1 \le c_n \le d_0^n$ for $n \ge 1$, $c(\graph) \in [0, d_0]$.
 % Roughly speaking, this means that $c_n \approx c(\graph)^n$ for large $n$.
 By definition, the susceptibility has radius of convergence $c(\graph)^{-1}$.
-Since $c_n \ge 0$ for all $n$, the susceptibility diverges at $c(\graph)^{-1}$.
 % \begin{figure}[!htb]
 % \centering
 % \caption{A trapped self-avoiding walk}
