@@ -1106,23 +1106,23 @@ in particular, $\ggen_0(\mgen^2, \ggen_0) = \ggen_0$.
 In \cite[Section~\ref{step-sec:Knorms}]{BS-rg-step},
 a sequence of norms $\|\cdot\|_{\Wcal_j} = \|\cdot\|_{\Wcal_j(\mgen^2, \ggen_j, \Lambda)}$
 parameterised by $(\mgen^2, \ggen_j)$ is defined on $\Kcal_j$.
-We note here only the fact that the $\Wcal_j$ norm dominates the $T_0(\ell_j)$ norm:
+These are defined in terms of the $T_\phi(\h_j)$ norms with parameters $\h_j = \ell_j, h_j$.
+We note here only the fact that the $\Wcal_j(\Lambda)$ norm dominates the $T_0(\ell_j)$ norm
+in the following sense:
 \begin{equation}
 \label{e:T0dom}
 \|F(\Lambda)\|_{T_0(\ell_j)} \le \|F\|_{\Wcal_j}.
 \end{equation}
-We denote the ball of radius $r$ in the normed space $\Wcal_j$ by $B_{\Wcal_j}(r)$.
+We let $\Wcal_j = \Wcal_j(\volume)$ denote the space of $K\in\Kcal_j(\volume)$ with
+finite $\Wcal_j$ norm and
+denote the ball of radius $r$ in the normed space $\Wcal_j$ by $B_{\Wcal_j}(r)$.
 
 In \cite[\eqref{log-e:mass-scale}--\eqref{log-e:chidef}]{BBS-saw4-log},
 a function $\chicCov_j = \chicCov_j(m^2)$ (denoted $\chi_j$ in \cite{BBS-saw4-log})
 is defined in such a way that $\chicCov_j$ decays exponentially
-when $j$ is sufficiently large depending on $m$.
-We write $\chicCovgen_j = \chicCov_j(\mgen^2)$.
-Given constants $\alpha > 0$ and $C_\DV > 0$,
-we define the (finite-volume)
+when $j$ is sufficiently large depending on $m$. We write $\chicCovgen_j = \chicCov_j(\mgen^2)$.
+Given constants $\alpha > 0$ and $C_\DV > 0$, we define the (finite-volume)
 renormalisation group domains
-% $\domRG_j \subset \R^3 \oplus \Wcal_j$ by
-% Given $C_\DV>0$ and $\alpha>0$, we define the domains
 \begin{align}
 \label{e:DVdef}
 \DV_j
@@ -1131,32 +1131,26 @@ renormalisation group domains
 	g> C_{\DV}^{-1} \ggen_j  , \;  \|V\|_{\Vcal} < C_{\DV} \ggen_j \}, \\
 \label{e:domRG}
 \domRG_j
-	&=
-\DV_j \times B_{\Wcal_j}(\alpha \chicCovgen_j \ggen_j^3).
+	&= \domRG_j(\volume)
+	= \DV_j \times B_{\Wcal_j}(\alpha \chicCovgen_j \ggen_j^3).
 \end{align}
-% In particular, if $(V_j, K_j) \in \domRG_j$, then Lemma~\ref{lem:deriv-norm-bds}
-% and \eqref{e:T0dom} imply that
-% \begin{equation}
-% \label{e:VKbds}
-% \|V_j\|_{\Vcal} \le O(\ggen_j),
-% 	\quad
-% |D^2 K_{j,\varnothing}(0; \1, \1)|
-% 	\le
-% \ell_j^{-2} |K_{j,\varnothing}(0)|
-% 	\le
-% \ell_j^{-2} O(\chicCovgen_j \ggen_j^3).
-% \end{equation}
+The domain $\DV_j$ is independent of the volume $\volume$ while $\domRG_j$
+depends on $\volume$ through $\Wcal_j$.
 
-At scale $j$, the maps $V_+,K_+$ act on the domain $\domRG_j$
-and map into $\Vcal_{j+1}^{(1)},\Kcal_{j+1}$, respectively.
+In the statement of the following theorem, we fix the scale $j$ and
+consider maps $V_+ = V_{j+1}$ and $K_+ = K_{j+1}$ that act on the domain
+$\domRG_j$ and map into $\Vcal_{j+1}^{(1)}$, $\Kcal_{j+1}$, respectively.
+We will drop the scale $j$ from the notation for objects at scale $j$
+and replace $j + 1$ with $+$.
 The deviation of the map $V_+$ from the perturbative map $\Vpt$
-% (mentioned above \refeq{qpt})
 is denoted by $R_+$:
 \begin{equation}
 \label{e:Rplusdef}
     R_+(V,K) = V_+(V,K) -\Vpt^{(1)}(V).
 \end{equation}
-The following theorem is applied with $\alpha =4M$ as a convenient choice.
+% The following theorem is applied with $\alpha =4M$ as a convenient choice.
+
+\commentbw{Add mass domain}
 
 \begin{theorem}
 \label{thm:step-mr-fv}
@@ -1174,8 +1168,9 @@ R_+:\domRG %\times \Igen_+(\mgen^2)
 K_+:\domRG %\times \Igen_+(\mgen^2)
 \to \Wcal_{+}%(\sgen_+)
 \end{equation}
-define $(U,K)\mapsto (V_+,K_+)$ obeying \eqref{e:IcircKdu},
-and satisfy the estimates
+define $(U,K)\mapsto (V_+,K_+)$ obeying \eqref{e:IcircKdu}
+when $\volume = \Lambda$.
+Moreover, for any $\volume$, these maps satisfy the estimates
 \begin{equation}
 \label{e:RKplus}
 \|R_+\|_{\Vcal}
@@ -1189,15 +1184,25 @@ M\chigen_+ \ggen_+^{3}
 \end{equation}
 \end{theorem}
 
+With $s = 0$ in the choice of weights $\ell_j$ and $\ell_{\sigma,j}$,
+this theorem was the main achievement of \cite{BS-rg-step}. With $s > 0$
+arbitrary, the bounds \eqref{e:RKplus} are greatly improved beyond the
+mass scale. The statement in \cite{BS-rg-step} with $s = 0$ contains
+bounds on the derivatives of the maps $R_+$ and $K_+$. Our improvements
+apply to these bounds as well, but we do not state them here as we will
+not make direct use of these bounds\footnote{These derivative bounds are
+indirectly used to prove Theorem~\ref{thm:rhatflow}.}.
+
 The proof of Theorem~\ref{thm:step-mr-fv} is identical to the proof of
-\cite[Theorem~\ref{phi4-thm:step-mr-fv}]{ST-phi4}, via a version of
+\cite[Theorem~\ref{phi4-thm:step-mr-fv}]{ST-phi4} \todo{(if $n \ge 1$)},
+via a version of
 \cite[Theorems~\ref{step-thm:mr-R}--\ref{step-thm:mr}]{BS-rg-step} that
 uses the norm parameters \eqref{e:elldef-zz} with $s > 0$.
-The proof of the latter results with these new norm parameters amounts to
-checking that the proof of the $s = 0$ case contained in \cite{BS-rg-IE,BS-rg-step}
-continues to hold with $s > 0$. A verification of this fact is carried
-out in Section~\REF % \ref{sec:Rpf2}
-below.
+The proof of the latter results with these new norm parameters is an
+adaptation of the proof of the $s = 0$ case contained in \cite{BS-rg-IE,BS-rg-step}.
+Some steps in this proof continue to hold unchanged whereas others must
+be changed. A detailed verification that the proof holds for $s > 0$
+is carried out in Chapter~\ref{sec:RGstep}. % \ref{sec:Rpf2} below.
 
 Theorem~\ref{thm:step-mr-fv} expresses a contractive property of the map $K_+$,
 as it takes $K$ in a ball whose radius involves $\alpha=4M$ at scale $j$ to
@@ -1209,31 +1214,32 @@ Theorem~\ref{thm:rhatflow}
 % (for $n \ge 1$)
 to prove that, for $m^2$ and $g_0$ sufficiently small, there exist
 \emph{critical} initial conditions
-$\nu_0 = \nu_0^c(m^2, g_0)$ and $z_0 = z_0^c(m^2, g_0)$ such that
+$\nu_0 = \nu_0^c(m^2, g_0, \gamma_0; n)$ and $z_0 = z_0^c(m^2, g_0,\gamma_0; n)$
+such that for any $N$,
 iteration of the maps $(V_+,K_+)$ defines a sequence $(V_j^{(0)}, K_j)$
 which lies in the domain $\domRG_j$ and obeys the estimates \refeq{RKplus}
 \emph{for all} $j = 1, \ldots, N$.
-This construction of critical initial conditions uses the $s=0$ version
-of \refeq{elldef-zz}.
+% This construction of critical initial conditions uses the $s=0$ version
+% of \refeq{elldef-zz}.
 
-The case with observable fields included is handled in \cite{ST-phi4}.
-Because we have increased $\ell_{\sigma,j}$ beyond the mass scale, the
-estimates on $q_0,q_x$ given by the bound on $R_+$ in \refeq{RKplus} are
-significantly improved compared to their versions with $s=0$ in \cite{ST-phi4}.
-As is discussed in detail in  \cite[Section~\ref{phi4-sec:pfmr1}]{ST-phi4},
-$V_j^{(0)}$ remains in the domain $\domRG_j$ for all $j$
-(also concerning $\lambda_{0,j}, \lambda_{x,j}$).
-Moreover,
-$\lambda_{0,j}, \lambda_{x,j},q_{0,j},q_{x,j}$, are independent of the volume parameter $N$ and
-so can be extended to infinite sequences, and the following limits exist:
-\begin{equation}
-q_{u,\infty} = \lim_{j\to\infty} q_{u,j}, \quad u = 0, x.
-\end{equation}
+% The case with observable fields included is handled in \cite{ST-phi4}.
+% Because we have increased $\ell_{\sigma,j}$ beyond the mass scale, the
+% estimates on $q_0,q_x$ given by the bound on $R_+$ in \refeq{RKplus} are
+% significantly improved compared to their versions with $s=0$ in \cite{ST-phi4}.
+% As is discussed in detail in  \cite[Section~\ref{phi4-sec:pfmr1}]{ST-phi4},
+% $V_j^{(0)}$ remains in the domain $\domRG_j$ for all $j$
+% (also concerning $\lambda_{0,j}, \lambda_{x,j}$).
+% Moreover,
+% $\lambda_{0,j}, \lambda_{x,j},q_{0,j},q_{x,j}$, are independent of the volume parameter $N$ and
+% so can be extended to infinite sequences, and the following limits exist:
+% \begin{equation}
+% q_{u,\infty} = \lim_{j\to\infty} q_{u,j}, \quad u = 0, x.
+% \end{equation}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Main theorem}
+\section{Renormalisation group flow}
 % mainly from saw-sa
 
 Suppose $\delta > 0$ and suppose $r : [0, \delta] \to [0, \infty)$
