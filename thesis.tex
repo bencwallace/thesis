@@ -40,6 +40,7 @@
 \newcommand{\titlename}{{Renormalisation group analysis of self-interacting walks and spin systems}}
 \input{macros}
 \input{extramacros}
+% \renewcommand{\commentbw}[1]{}			% Uncomment to hide comments
 
 % check ubcsample.tex for other potentially useful packages to include
 
@@ -105,13 +106,13 @@
 \input{rg}					% setup and statement of main flow result
 
 %% Chapter 3 %%
-\input{proofs}				% proof of main result
+% \input{proofs}				% proof of main result
 
 %% Chapter 4 %%
-% \input{step}				% improved bounds on rg-step from clp
+\input{step}				% improved bounds on rg-step from clp
 
 %% Chapter 5 %%
-% \input{flow}				% critical parameters from saw-sa
+\input{flow}				% critical parameters from saw-sa
 
 %% Chapter 6 %%
 % \input{conclusion}
@@ -136,9 +137,9 @@
 %%%% If you only have one appendix, please uncomment the following line.
 % \renewcommand{\appendicesname}{Appendix}
 
-\appendix 					% Start appendices
+% \appendix 					% Start appendices
 % \input{walksbg}
-\input{freeclp}
+% \input{freeclp}
 % \input{ift}
 
 \end{document}

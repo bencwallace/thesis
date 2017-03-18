@@ -1,15 +1,19 @@
-\chapter{Renormalisation group step}
+\chapter{The renormalisation group step}
 \label{sec:RGstep}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{The basic idea}
+\section{The basic mechanism}
 
 \todo{The main problem is to get the inductive estimates on $(V, K)$.
 We cannot prove bounds that are ``too good''. Thus, the weights must
 accurately reflect the size of the covariance and of large fields.
-The following shows why this is the case.}
+The following shows why this is the case. Also discuss the large field
+problem here.}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Improved norm}
 \label{sec:Rpf1}
@@ -177,7 +181,6 @@ $\ell_0^2 \ge c_0 \ellconst^{-1}$.
 
 \subsection{New choice of norm beyond the mass scale}
 \label{sec:newnorm}
-
 
 As in \cite[(\ref{IE-e:PhiXdef})]{BS-rg-IE}, we use the localised version
 of \eqref{e:phinorm}, defined for subsets
@@ -402,3 +405,512 @@ beyond $j_m$, to keep the product $hh_{\sigma}$ bounded for stability
 below). But if we do this, we lose the lower bound required on $\epsilon_{g\tau^2}$
 required for stability in the $h$-norm (see \cite[\eqref{IE-e:epVbardefz-app}]{BS-rg-IE}).
 \end{rk}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Proof of Theorem~\ref{thm:step-mr-fv}}
+\label{sec:Rpf2}
+
+In this section, we show that
+Theorem~\ref{thm:step-mr-fv}
+holds,
+thereby completing the proof of Proposition~\ref{prop:R}.
+The key steps in
+the proof of the $s = 0$ case of Theorem~\ref{thm:step-mr-fv}
+are contained in \cite{BS-rg-IE,BS-rg-step}.
+% To do so, we make use of the renormalisation group flow $(V_j,K_j)$
+% constructed in \cite{BS-rg-step,BBS-rg-flow,BBS-saw4-log} and used
+% in \cite{BBS-saw4-log,BBS-phi4-log,BBS-saw4,ST-phi4}.
+% This includes the flow of the observable coupling constants $q_0, q_x$, which include a non-perturbative contribution from the remainder terms \eqref{e:Rabdef}, defined here in the same way as in \cite{ST-phi4}.
+% The estimates on the renormalisation group flow and remainder terms provided in those papers
+% are consequences of the estimates proved in \cite{BS-rg-IE,BS-rg-step}
+% with norm parameter $\ell_{\sigma,j}^\oldrm$.
+Our main objective in this section is to show that the results in \cite{BS-rg-IE,BS-rg-step}
+continue to hold with the new norm parameters $\ell_j,\ell_{\sigma,j}$.
+To this end, we may and do use the fact that the estimates of \cite{BS-rg-IE} have already been
+established with the old norm parameters.
+
+In the following,
+we indicate the changes in the analysis of
+\cite{BS-rg-IE,BS-rg-step} that arise due to the new choice of norm parameters \refeq{elldef}
+beyond the mass scale, and due to the reduction from two norm pairs to one.
+This requires repeated reference to previous papers.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Norm parameter ratios}
+\label{sec:norm-parameter-ratios}
+
+The analysis of \cite{BS-rg-IE} assumes that the norm parameters $\h_j,\h_{\sigma,j}$,
+for $\h = \ell$ or $\h = h$,
+satisfy the estimates \cite[\eqref{IE-e:h-assumptions}]{BS-rg-IE}; these assert that
+\begin{align}
+\label{e:h-assumptions-IE}
+    \h_j \ge \ell_{j},
+    \quad\quad
+    \frac{\h_{j+1}}{\h_j}
+    &\le 2 L^{-1},
+    \quad\quad
+    \frac{\h_{\sigma,j+1}}{\h_{\sigma,j}}
+    \le
+    {\rm const}\,
+    \begin{cases}
+     L  & (j < j_{x})
+     \\
+     1 & (j \ge j_{x}).
+     \end{cases}
+\end{align}
+We do not change $\h_j$ or $\h_{\sigma,j}$ for $j$ below the mass scale, so there
+can be no difficulty until above the mass scale.  Above the mass scale, the parameters
+$h_j,h_{\sigma,j}$ are eliminated, and requirements involving them become vacuous.
+Thus, for \refeq{h-assumptions-IE}, we need only verify the second and third
+inequalities for the case $\h=\ell$.
+By definition,
+\begin{equation}\label{e:h-assumptions}
+\frac{\ell_{j+1}}{\ell_j} = L^{-(1 + s \1_{j \geq j_m})},
+\qquad
+\frac{\ell_{\sigma, j+1}}{\ell_{\sigma,j}} = \frac{\ggen_{j+1}}{\ggen_j}
+\times
+\begin{cases} L^{1 + s \1_{j \geq j_m}} & (j < j_x) \\ 2 & (j \geq j_x). \end{cases}
+\end{equation}
+According to \cite[\eqref{IE-e:gbarmono}]{BS-rg-IE},
+$\frac 12 \ggen_{j+1} \le \ggen_j \le 2 \ggen_{j+1}$.
+Thus, the second estimate of \eqref{e:h-assumptions-IE}
+is satisfied (the ratio being improved when $j\ge j_m$),
+while the third is \emph{not} when $s >0$ and $j_m < j_x$.
+This potentially dangerous third
+estimate in \refeq{h-assumptions-IE} is used to prove the scale monotonicity lemma
+\cite[Lemma \ref{IE-lem:Imono}]{BS-rg-IE}, as well
+as the crucial contraction.
+We discuss
+\cite[Lemma \ref{IE-lem:Imono}]{BS-rg-IE} next, and return to the crucial contraction
+in Section~\ref{sec:cc} below.
+
+\paragraph{\cite[Lemma \ref{IE-lem:Imono}]{BS-rg-IE}}
+There is actually no problem with the scale monotonicity lemma.
+Indeed, for the case $\alpha =ab$ of the proof of
+\cite[Lemma \ref{IE-lem:Imono}]{BS-rg-IE}, the hypothesis that
+$\pi_{0x}F=0$ for $j<j_{x}$ ensures that this case only relies on the dangerous
+estimate for $j \ge j_x$ where the danger is absent in \refeq{h-assumptions}.
+For the cases $\alpha=a$ and $\alpha =b$ of the proof of
+\cite[Lemma \ref{IE-lem:Imono}]{BS-rg-IE}, what is
+important is the inequality
+$\ell_{\sigma,j+1}\ell_{j+1} \le {\rm const}\, \ell_{\sigma,j}\ell_{j}$, which
+continues to hold with
+\refeq{elldef} for all scales $j$, both above and below the mass scale, since
+the products in this inequality are the same for the new and the old choices of $\ell$.
+So \cite[Lemma \ref{IE-lem:Imono}]{BS-rg-IE} continues to hold with the choice
+\refeq{elldef}.
+In addition,
+\begin{equation}
+\label{e:norm-change}
+\|F\|_{T_\varphi(\ell_j)} \leq  \|F\|_{T_\varphi(\ell^\oldrm_j)}.
+\end{equation}
+This strengthened special case of the first inequality of
+\cite[\eqref{IE-e:scale-change}]{BS-rg-IE} (strengthened due to the constant
+$1$ on the right-hand side of \refeq{norm-change} compared to
+the generic constant in \cite[\eqref{IE-e:scale-change}]{BS-rg-IE})
+can be seen from an examination of the proof of the $\alpha =a,b$ case of
+\cite[Lemma \ref{IE-lem:Imono}]{BS-rg-IE}, together with the observation that
+$\ell_{\sigma,j}\ell_{j} = \ell_{\sigma,j}^{\rm old} \ell_j^{\rm old}$ by definition.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Stability domains}
+\label{sec:stability1}
+
+The stability domain $\DV_j$ is defined in \cite[\eqref{IE-e:DV1-bis}]{BS-rg-IE}.
+We modify $\DV_j$ only for the coupling constant $q$,
+by replacing $r_q$ in
+\cite[\eqref{IE-e:h-coupling-def-1-bis}]{BS-rg-IE} by
+\begin{equation}
+\lbeq{newrq}
+L^{2j_x + 2 s (j_x - j_m)_+} 2^{2(j-j_x)} r_{q,j} =
+\begin{cases}
+  0 & j < j_x \\
+  C_{\DV}  & j \ge j_x.
+\end{cases}
+\end{equation}
+
+\paragraph{\cite[Proposition~\ref{IE-prop:monobd}]{BS-rg-IE}}
+With \refeq{newrq}, \cite[Proposition~\ref{IE-prop:monobd}]{BS-rg-IE}
+as it pertains to $\h=\ell$ (omitting all reference to $\h=h$) continues to hold beyond
+the mass scale by the same proof.
+In particular, with the smaller choice for the domain of $q$,
+\cite[\eqref{IE-e:qhsig}]{BS-rg-IE} holds with the larger $s$-dependent $\ell_{\sigma,j}$.
+
+\medskip
+Note that we do not need to change the domain of $\lambda$.
+This is because the bound \cite[\eqref{IE-e:hsigh}]{BS-rg-IE}
+continues to hold with the new norm parameters. Indeed, while $\ell_j$
+and $\ell_{\sigma,j}$ have been modified, their product $\ell_j \ell_{\sigma,j}$
+has not.
+This guarantees that the $T_0$ semi-norm
+$\|\sigma\bar\varphi_a\|_{T_0} = \ell_\sigma \ell$ remains identical to what it was
+with the old norm parameters, and therefore there is no new stability requirement
+arising from this.
+
+The choice \refeq{newrq} places a more stringent requirement on the domain
+than does the $s=0$ version.  To see that this requirement is actually met
+by the renormalisation group flow,
+we note a minor improvement to the proof of \cite[Lemma~\ref{step-lem:K7a}(ii)]{BS-rg-step},
+where the bound $|\delta q| \leq c L^{-2j}$ is used to show that $v(X)$
+(defined there) satisfies
+\begin{equation}
+\lbeq{vXbd}
+\|v(X)\| \leq c L^{-2j} (\ell_{\sigma,j}^\oldrm)^2 \leq c'.
+\end{equation}
+Here the factor $L^{-2j}$ arises
+as a bound on the covariance $C_{j+1;00}$ in the perturbative flow
+\cite[\eqref{pt-e:qpt2}]{BS-rg-IE} of $q$ and it can therefore be improved to $L^{-2j-2s(j - j_m)_+}$
+by Lemma~\ref{lem:Cbd}.
+Thus also with $\ell^\oldrm, \ell_{\sigma}^{\rm old}$ replaced by $\ell,\ell_{\sigma}$,
+the required bound $\|v(X)\| \leq c'$ remains valid.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Extension of stability analysis}
+\label{sec:stability2}
+
+In this and the next section,
+we verify that the results of \cite[Section~\ref{IE-sec:IE}]{BS-rg-IE}
+remain valid with $\ell^\oldrm$ replaced by $\ell$.
+In this section, we deal with the results whose proofs need only minor
+modification.
+
+First, we note that the supporting results of \cite[Section~\ref{IE-sec:W}]{BS-rg-IE} hold with the new norms.
+Indeed,
+it is immediate from \eqref{e:norm-change} that analogues of
+\cite[Proposition~\ref{IE-prop:Wnorms}]{BS-rg-IE} and
+\cite[Lemmas~\ref{IE-lem:epdV}, \ref{IE-lem:W-logwish}--\ref{IE-lem:Wbil}]{BS-rg-IE} hold with the new $\ell_j$.
+Moreover, \cite[Lemma~\ref{IE-lem:Fpibd-bis}]{BS-rg-IE} and \cite[Proposition~\ref{IE-prop:Wbounds}]{BS-rg-IE} hold
+for general values of the parameters $\h_j$ (which are implicit in the $T_{0,j}$-norm).
+We discuss \cite[Proposition~\ref{IE-prop:1-LTdefXY}]{BS-rg-IE}
+in Section~\ref{sec:cc} below,
+and the remaining results of \cite[Section~\ref{IE-sec:W}]{BS-rg-IE} do not make use of norms.
+
+\paragraph{\cite[Proposition~\ref{IE-prop:Iupper}]{BS-rg-IE}}
+With $\h = \ell$, \cite[\eqref{IE-e:Iupper-a}]{BS-rg-IE} continues to hold with the same proof;
+in fact the proof does not depend on the explicit choice of $\h$.
+We do not need \cite[\eqref{IE-e:Iupper-b}]{BS-rg-IE} as it is only applied with $\h = h$.
+
+\paragraph{\cite[Proposition~\ref{IE-prop:Istab}]{BS-rg-IE}}
+The only change to the proof is for the case $j_* = j + 1$.
+To get \cite[\eqref{IE-e:IF}]{BS-rg-IE},
+we proceed as previously in the case $\h=h$ but applying Lemma~\ref{lem:mart}
+rather than \cite[Lemma~\ref{IE-lem:mart}]{BS-rg-IE} following \cite[(5.22)]{BS-rg-IE}.
+In the same way, we get \cite[\eqref{IE-e:Iass}]{BS-rg-IE} and the remaining parts of
+the proposition follow without changes to the proof.
+
+\paragraph{\cite[Proposition~\ref{IE-prop:Ianalytic1:5}]{BS-rg-IE}}
+Again the only required change in the proof is the use of
+Lemma~\ref{lem:mart} in the case $j_* = j + 1$,
+for which as previously we use Lemma~\ref{lem:mart} instead of \cite[Lemma~\ref{IE-lem:mart}]{BS-rg-IE}.
+
+\paragraph{\cite[Proposition~\ref{IE-prop:JCK-app-1}]{BS-rg-IE}}
+No changes need to be made to the proof.
+In fact, it is necessary \emph{not} to use the $\h = \ell$ case
+of the estimate \cite[(5.32)]{BS-rg-IE}. Instead, the
+$\h = \ell^\oldrm$ case of this estimate should be used for $g_Q$.
+This is possible since the renormalisation
+group map, and in particular the coupling constants, are independent of the choice of norm.
+
+\paragraph{\cite[Proposition~\ref{IE-prop:hldg}]{BS-rg-IE}}
+Using \refeq{norm-change}, we see that the proof
+continues to hold
+above the mass scale.
+The only change to the proof is that in the application of
+\cite[Proposition~\ref{IE-prop:Istab}]{BS-rg-IE}, $j$ should be replaced by
+$j + 1$ in \cite[\eqref{IE-e:IF}]{BS-rg-IE} with $j_* = j + 1$ (corresponding
+to the $G_{j+1}$ norm). This yields \cite[\eqref{IE-e:2Lprimeh1}]{BS-rg-IE}
+with a $G_{j+1}$ norm on the left-hand side.
+
+\paragraph{\cite[Proposition~\ref{IE-prop:h}]{BS-rg-IE}}
+A version of \cite[Lemma~\ref{IE-lem:dIipV}]{BS-rg-IE} with the new $\ell$
+continues to hold. This lemma makes use of $\hat\ell$,
+which superficially depends on the choice of $\ell$ in its definition
+\cite[\eqref{IE-e:ellhatdef}]{BS-rg-IE}. However, brief scrutiny of
+\cite[\eqref{IE-e:ellhatdef}]{BS-rg-IE} reveals that
+the apparent dependence on $\ell$ actually cancels and there is in fact no dependence.
+Similarly,
+\cite[Lemma~\ref{IE-lem:epdV}]{BS-rg-IE} continues to hold without
+any changes to its proof.
+The proof of \cite[Proposition~\ref{IE-prop:h}]{BS-rg-IE} then applies without change.
+
+\paragraph{\cite[Proposition~\ref{IE-prop:ip}]{BS-rg-IE}}
+With the new choice of $\ell$ (and $\Gcal = G$),
+\cite[Lemma~\ref{IE-lem:dIip}]{BS-rg-IE} continues to hold with no changes to its proof.
+Thus, by \cite[\eqref{IE-e:scale-change}]{BS-rg-IE}
+and \cite[Lemma~\ref{IE-lem:dIip}]{BS-rg-IE},
+\begin{align}
+  \label{e:integration-property-pf}
+     &\|\Ex_{j+1} \delta I^X \theta F(Y) \|_{T_{\varphi,j+1}(\ell_{j+1})}
+     \nnb
+     &\quad \leq
+     \|\Ex_{j+1} \delta I^X \theta F(Y) \|_{T_{\varphi,j}(\ell_{j})} \nnb
+     &\quad \leq
+     \Econst^{|X|_j+|Y|_j}
+     (C_{\delta V} \epdV)^{|X|_j}
+     \| F(Y) \|_{G_j(\ell_{j})}
+    G_j(X\cup Y,\varphi)^5
+    .
+\end{align}
+By Lemma~\ref{lem:mart}, $G_j(X\cup Y,\varphi)^5 \le G_{j+1}(X\cup Y,\varphi)$.
+Now we divide both sides by
+$G_{j+1}(X \cup Y, \varphi)$ and take the supremum over $\varphi$ to complete the proof.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Extension of the crucial contraction}
+\label{sec:cc}
+
+The proof of the ``crucial contraction''
+\cite[Proposition \ref{IE-prop:cl}]{BS-rg-IE}
+makes use of the  third estimate in
+\eqref{e:h-assumptions-IE}, which is now violated above the mass scale
+due to our new choice of $\ell_j$.
+On the other hand, the second estimate of \eqref{e:h-assumptions-IE} is
+improved by the new choice and compensates for the degraded third estimate,
+as we explain in this section.
+
+Below the mass scale, we continue to use the crucial contraction as stated in
+\cite[Proposition \ref{IE-prop:cl}]{BS-rg-IE} in terms of two norm pairs.
+Next, we state a version of the crucial contraction for use above the mass
+scale using the new norm pair \eqref{e:npmass}.
+The statement uses the notation of \cite{BS-rg-IE} (which we do not redefine here),
+with the exception that now we have replaced $a$ by $0$, $b$ by $x$, and $j_{ab}$ by $j_x$
+for consistency with our present notation.
+Throughout this section, we
+sometimes write the dimension as $d$ for emphasis, although we only consider $d=4$.
+
+\begin{prop}[{Improvement of \cite[Proposition \ref{IE-prop:cl}]{BS-rg-IE}}]
+\label{prop:cl} Let $j_m \leq j<N$ and $V\in \DV_j$.  Let $X \in \Scal_j$ and
+$U = \overline X$.  Let $F(X) \in \Ncal(X^\Box)$ be such that
+$\pi_\alpha F(X) =0$ when $X(\alpha)=\varnothing$, and such that
+$\pi_{0x}F(X)=0$ unless $j \ge j_x$.
+{There is a constant $C$ (independent of $L$) such that}
+\begin{align}
+    \label{e:contraction3z-new}
+    \|\Ipttil^{U\setminus X} \Ex_{C_{j+1}} \theta F (X) \|_{{G_{j+1}(\ell_{j+1})}}
+    &
+    \leq C \Big(
+    ( L^{-d -1} +  L^{-1}\1_{X \cap \{0,x\} \not = \varnothing} )
+    \kappa_F
+    + \kappa_{\LT F}
+    \Big)
+    ,
+\end{align}
+with $\kappa_F=\|F (X)\|_{{G_{j}(\ell_{j})}}$ and
+$\kappa_{\LT F} =\|\Ipttil^X \LT_X \Ipttil^{-X} F(X) \|_{{G_{j}(\ell_{j})}}$.
+\end{prop}
+
+An ingredient in the proof of Proposition~\ref{prop:cl} is
+\cite[Lemma~\ref{loc-lem:phij}]{BS-rg-loc}, which is the $s=0$ version of
+the following lemma.  For simplicity, we state only the conclusion of the lemma,
+and the notation and hypotheses are those in
+\cite[Lemma~\ref{loc-lem:phij}]{BS-rg-loc}, except now we use the
+$s$-dependent norm parameters
+$\h_j=\ell_j$ of \refeq{elldef} ($h_j$ is not needed above the mass scale, and
+the $s=0$ case applies below the mass scale).
+
+\begin{lemma}[{Improvement of \cite[Lemma~\ref{loc-lem:phij}]{BS-rg-loc}}]
+\label{lem:phiij-improved}
+With the same hypotheses and notation as in \cite[Lemma~\ref{loc-lem:phij}]{BS-rg-loc},
+\begin{equation}
+\lbeq{gbd-improved}
+\|g\|_{\tilde{\Phi} (X)}
+\leq
+\bar C_3
+L^{- (1 + s \1_{j \geq j_m}) d_+'}  \|g\|_{\tilde{\Phi}' (X_+)}.
+\end{equation}
+\end{lemma}
+
+
+\begin{proof}
+The proof of \cite[Lemma~\ref{loc-lem:phij}]{BS-rg-loc}
+is based on the assumption  $\ell_{j+1}/\ell_j \leq  cL^{-1}$
+(we take $[\varphi_i]=1$; the parameters $\ell_{\sigma,j}$ are not used).
+For our new values of $\ell$, the stronger assumption
+$\ell_{j+1}/\ell_j \leq L^{-1 - s \1_{j \geq j_m}}$ holds.
+The unique change to the proof occurs in the transition from
+\cite[\eqref{loc-e:gTay1}]{BS-rg-loc} to
+\cite[\eqref{loc-e:rhognew}]{BS-rg-loc}, where the ratio
+$\ell_{j+1}/\ell_j$ is used.
+With the new ratio, \cite[\eqref{loc-e:rhognew}]{BS-rg-loc} becomes
+\begin{align}
+\label{e:rhognew-improved}
+    \|r\|_{\Phi (X)}
+    & \le
+    \sup_{z \in {\mathbf X}_+}
+    (cK\ell'^{-1})^z
+    \sup_{|\beta|_\infty \le p_\Phi}
+    L^{-(p(z) + p(z) s \1_{{j\geq j_m}} +|\beta|_1)}
+    | \nabla_{R'}^\beta  r_{z}  |.
+\end{align}
+Here $r = h - \Tay_a h$, where $h$ is an arbitrary test function and $a$ is the largest
+point which is lexicographically no larger than any point in $X$.
+The test function $h$ depends on sequences of points $(x_1, \dots, x_p)$,
+and $\Tay_a h$ is a discrete version of Taylor's approximation which approximates $h$ by a
+discrete Taylor polynomial localised at point $a$ in each argument (see \cite{BS-rg-loc} for details).
+By definition, for the empty sequence $\varnothing$, $(\Tay_a h)_\varnothing = h_\varnothing$,
+and thus
+$r_\varnothing = 0$.
+
+It follows that we can take $p(z) \geq 1$ in the supremum over $z \in \mathbf{X}_+$ in \eqref{e:rhognew-improved}. Thus,
+\begin{align}
+    \|r\|_{\Phi (X)}
+    & \le
+    L^{-s \1_{{j\geq j_m}}}
+    \sup_{z \in {\mathbf X}_+}
+    (cK\ell'^{-1})^z
+    \sup_{|\beta|_\infty \le p_\Phi}
+    L^{-(p(z) +|\beta|_1)}
+    | \nabla_{R'}^\beta  r_{z}  |.
+\end{align}
+The quantity
+\begin{align}
+\label{e:rhognew}
+    \sup_{z \in {\mathbf X}_+}
+    (cK\ell'^{-1})^z
+    \sup_{|\beta|_\infty \le p_\Phi}
+    L^{-(p(z) +|\beta|_1)}
+    | \nabla_{R'}^\beta  r_{z}  |
+\end{align}
+is identical to the right-hand side of \cite[\eqref{loc-e:rhognew}]{BS-rg-loc} when $[\varphi_i] = 1$. In \cite{BS-rg-loc}, it is shown that this quantity can be bounded by a constant times
+\begin{align}
+    L^{-d_{+}'}
+    \|h\|_{\Phi'( X_+)}.
+\end{align}
+Thus,
+\begin{equation}
+    \|r\|_{\Phi (X)}
+    \leq \bar C_3
+    L^{-s \1_{{j\geq j_m}}}
+    L^{-d_{+}'}
+    \|h\|_{\Phi'( X_+)}.
+\end{equation}
+With this improvement to \cite[\eqref{loc-e:rhognew}]{BS-rg-loc} in the proof of
+\cite[Lemma~\ref{loc-lem:phij}]{BS-rg-loc}, the conclusion of
+\cite[Lemma~\ref{loc-lem:phij}]{BS-rg-loc} is improved to \refeq{gbd-improved}.
+\end{proof}
+
+Roughly speaking, the $L$-dependent factor in \eqref{e:gbd-improved} implements the dimensional gain
+for irrelevant directions in a renormalisation group step, when passing from one scale to the next.
+In other words, we may regard the dimension of the field as improving from $1$ below the
+mass scale to $1+s$ above the mass scale.
+The $s=0$ version of Lemma~\ref{lem:phiij-improved} is adapted to the scaling at the critical point, where $m^2=0$.
+In the noncritical case $m^2>0$, the dimensional gain improves greatly for $j>j_m$,
+as apparent from \eqref{e:scaling-estimate}, and is
+captured more accurately by the general-$s$ version of \eqref{e:gbd-improved}.
+
+As a consequence of the former improvement we have the following two further improvements.
+From now on, we always assume $\h=\ell$ and $j>j_m$, as this is the only case relevant for
+the improvement of \cite[Proposition~\ref{IE-prop:cl}]{BS-rg-IE}.
+
+\paragraph{\cite[Proposition~\ref{loc-prop:1-LTdefXY}]{BS-rg-loc}}
+The improvement in Lemma~\ref{lem:phiij-improved} propagates to
+\cite[Proposition~\ref{loc-prop:1-LTdefXY}]{BS-rg-loc}, which now holds
+as stated except with
+$\gamma_{\alpha,\beta}$
+improved to
+\begin{equation}
+\label{e:cgamobs}
+    \gamma_{\alpha,\beta}
+        =
+    \left(
+    L^{-(d_\alpha' + s \1_{j \geq j_m})} +  L^{-(A+1)}
+    \right)
+    \left( \frac{\ell_{\sigma,j+1}}{\ell_{\sigma,j}} \right)^{|\alpha \cup \beta|}
+    .
+\end{equation}
+The right-hand side can be estimated as follows.
+By \eqref{e:h-assumptions},
+\begin{equation}
+\frac{\ell_{\sigma,j+1}}{\ell_{\sigma,j}} \leq
+4
+  \begin{cases}
+  L^{1 + s \1_{{j \geq j_m}}} & j < j_x \\
+  1 & j \geq j_x,
+  \end{cases}
+\end{equation}
+and hence
+\begin{equation}
+\label{e:cgamobs-L}
+    \gamma_{\alpha,\beta}
+    \le C''
+    \left(
+    L^{-(d_\alpha' + s \1_{j \geq j_m})} +  L^{-(A+1)}
+    \right)
+    \times
+    \begin{cases}
+    L^{(1 + s \1_{{j \geq j_m}})(|\alpha \cup \beta|)} & j < j_x \\
+    1 & j \geq j_x.
+    \end{cases}
+\end{equation}
+
+\paragraph{\cite[Proposition~\ref{IE-prop:1-LTdefXY}]{BS-rg-IE}}
+As we explain next, using \refeq{cgamobs} and
+identical notation to that defined in and around
+\cite[Proposition~\ref{IE-prop:1-LTdefXY}]{BS-rg-IE},
+the proposition holds as stated also for
+the improved norms, provided we take
+$A \ge 5+s$.
+For this, what is required is to show that under the hypotheses of
+\cite[Proposition~\ref{IE-prop:1-LTdefXY}]{BS-rg-IE},
+the $\gamma_{\alpha,\beta}$ that arise in its proof obey
+\begin{equation}
+\lbeq{gamalphbet}
+\gamma_{\alpha,\beta} \leq C
+  \begin{cases}
+  L^{-5} & |\alpha\cup\beta| = 0 \\
+  L^{-1}  & |\alpha\cup\beta| = 1, 2.
+  \end{cases}
+\end{equation}
+For $|\alpha\cup\beta| = 0$,
+the first term of \refeq{cgamobs-L} obeys the bound of \refeq{gamalphbet},
+since $d_\varnothing'=d+1$.
+For the remaining cases, $d_\alpha'=2$ for $j < j_x$ and $d_\alpha'=1$ for $j \ge j_x$.
+For $|\alpha\cup\beta| = 2$, the assumption that $F_1,F_2,F_1F_2$ have no component
+in $\Ncal_{0x}$ unless $j \geq j_x$ means that we are in the case with no
+growth due the ratio $\ell_{\sigma,j+1}/\ell_{\sigma,j}$ in \refeq{cgamobs-L},
+and its first term again obeys the bound
+\refeq{gamalphbet} with room to spare.
+Finally, when $|\alpha\cup\beta| = 1$,
+the first term of \refeq{cgamobs-L} also obeys the estimate
+\refeq{gamalphbet}, and again with room to spare.
+Concerning the second term of \refeq{cgamobs-L}, given
+our choice of $A$ and the fact that we need only consider the growing factor in
+\refeq{cgamobs-L} for $|\alpha\cup\beta|=1$, it suffices to observe that
+\begin{equation}
+L^{-(A + 1)}
+L^{1 + s \1_{j \geq j_m}} \leq L^{- 5}.
+\end{equation}
+This completes the proof of the improved version of
+\cite[Proposition~\ref{IE-prop:1-LTdefXY}]{BS-rg-IE}.
+
+\begin{proof}[Proof of Proposition~\ref{prop:cl}]
+We complete the proof of Proposition~\ref{prop:cl} by modifying the proof of
+\cite[Proposition~\ref{IE-prop:cl}]{BS-rg-IE} above the mass scale.
+The estimate \cite[\eqref{IE-e:Lkpfii-1zbis}]{BS-rg-IE}
+follows from \cite[Proposition~\ref{IE-prop:ip}]{BS-rg-IE}
+as an estimate in terms of the modified norm pair \eqref{e:npmass},
+for which \cite[Proposition~\ref{IE-prop:ip}]{BS-rg-IE} was verified in Section~\ref{sec:stability2}.
+The bound \cite[\eqref{IE-e:cl-1}]{BS-rg-IE} with improved $\gamma$ is obtained by applying the improved
+version of \cite[Proposition~\ref{IE-prop:1-LTdefXY}]{BS-rg-IE}. In the remainder
+of the proof of \cite[Proposition~\ref{IE-prop:cl}]{BS-rg-IE}, we specialise each
+occurrence of $\Gcal$ to the case $\Gcal = G$ and we conclude by obtaining an
+analogue of \cite[\eqref{IE-e:FXbdKzzz}]{BS-rg-IE} with $\tilde G$ replaced by
+$G$ by applying Lemma~\ref{lem:mart} rather than \cite[Lemma~\ref{IE-lem:mart}]{BS-rg-IE}.
+
+An additional detail is that it is required that we choose the parameter defining the space $\Ncal$ to
+obey $p_\Ncal >A$.
+Since we have changed $A$ (depending on $s$), we must make a corresponding change to $p_\Ncal$. This does not pose problems
+(beyond the previously discussed requirement that $g$ needs to be chosen small depending on $p$),
+as this parameter may be
+fixed to be an arbitrary and sufficiently large integer
+(see \cite[Section~\ref{phi4-sec:pNcal}]{ST-phi4} where this point is addressed
+in a different context).  Similarly, the value of $A$ is immaterial and can be
+any fixed number in the proof of
+\cite[Proposition \ref{IE-prop:cl}]{BS-rg-IE}.
+\end{proof}
