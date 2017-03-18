@@ -69,6 +69,8 @@ This is known as the $n \to 0$ ``limit''.
 % This section based on saw-sa
 \label{sec:intrep}
 
+\todo{Discuss complex Gaussian integral}
+
 It is not clear how to make rigorous the $n\to0$ limit of De Gennes. Parisi and
 Sourlas and, independently, McKane, discovered an alternative approach to the
 predictions of De Gennes. They argued that the weakly
@@ -165,6 +167,11 @@ where
 \label{e:action}
 S_A = \sum_{x\in\Lambda} \Big(\phi_x (A\bar\phi)_x + \psi_x (A \bar\psi)_x\Big).
 \end{equation}
+{The super-expectation has the remarkable self-normalization property that}
+\begin{equation}
+\label{e:self-normal}
+\int e^{-S_A} = 1.
+\end{equation}
 
 Finally, for $F = f(\phi, \bar\phi) \psi^{\vec y}$,
 we let
@@ -210,7 +217,7 @@ We define the differential forms:
 	&=
 \sum_{|e|=1} (\nabla^e \tau)_x^2.
 \end{align}
-Let
+Recall \eqref{e:Udef-pos} and define
 \begin{equation}
 \label{e:Vdef2}
 V_{\gcc,\gamma,\nu,N}
