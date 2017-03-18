@@ -141,9 +141,9 @@ If $0 \le \gamma_0 \le \ggen_0$, then
 (with constants that may depend on $L$)
 \begin{equation}
 \lbeq{K0bds}
-\|K^\pm_{0,x}\|_{G_0} = O(|\gamma_0|),
+\|K^\pm_{0,x}\|_{G_0} = O(\gamma_0),
 \quad
-\|K^\pm_{0,x}\|_{\tilde G_0} = O(|\gamma_0|/g_0).
+\|K^\pm_{0,x}\|_{\tilde G_0} = O(\gamma_0/g_0).
 \end{equation}
 \end{prop}
 
@@ -152,10 +152,10 @@ The form of the estimates \refeq{K0bds} can be anticipated from the definition o
 $K_0^\pm$.
 % in \refeq{Kpm}.
 The upper bound arises from the small size of
-$e^{-|\gamma_0|U_x^\pm}-1$.  For small fields, hence small $U_x^\pm$, this is of order $|\gamma_0|$,
+$e^{-\gamma_0U_x^\pm}-1$.  For small fields, hence small $U_x^\pm$, this is of order $\gamma_0$,
 as reflected by the $G_0$ norm estimate of \eqref{e:K0bds}.
 For large fields, namely fields of size $|\varphi| \approx \ggen_{0}^{-1/4}$, the difference
-$e^{-|\gamma_0|U_x^\pm}-1$ is roughly of size $|\gamma_0|\,|\varphi|^4 \approx |\gamma_0|/\ggen_0$.
+$e^{-\gamma_0U_x^\pm}-1$ is roughly of size $\gamma_0\,|\varphi|^4 \approx \gamma_0/\ggen_0$.
 This effect is measured by the $\tilde G_0$ norm.
 
 Before proving the proposition, we
@@ -169,8 +169,8 @@ where, by the fundamental theorem of calculus,
 \begin{align}
     I^\pm_{0,x} &= e^{-V^\pm_{0,x}} \\
     J^\pm_x
-    &= e^{-|\gamma_0|U^\pm_x} - 1
-    = - \int_0^{1} |\gamma_0| U^\pm_x e^{-t |\gamma_0| U^\pm_x} \; dt.
+    &= e^{-\gamma_0U^\pm_x} - 1
+    = - \int_0^{1} \gamma_0 U^\pm_x e^{-t \gamma_0 U^\pm_x} \; dt.
 \label{e:J}
 \end{align}
 % As in \eqref{e:Kpm}, the $+$ versions of \eqref{e:KIJ}--\eqref{e:J} hold
@@ -316,19 +316,19 @@ regulator norms in \refeq{regdef}--\refeq{reg0},
 it suffices to prove that, under the hypothesis on $\gamma_0$,
 \begin{equation}
 \label{e:K0bd}
-  \|K^\pm_{0,x}\|_{T_\varphi(\h_0)} = O(|\gamma_0| \h_0^4)
+  \|K^\pm_{0,x}\|_{T_\varphi(\h_0)} = O(\gamma_0 \h_0^4)
   \begin{cases}
   e^{\|\varphi\|_{\Phi_x}^2} & (\h_0=\ell_0)
   \\
   e^{\frac{{\sf t}}{2} \|\varphi\|_{\tilde\Phi}} & (\h_0=h_0).
   \end{cases}
 \end{equation}
-For $t \in [0,1]$, let $\tilde I^\pm_x(t) = e^{-t |\gamma_0| U^\pm_x}$.
+For $t \in [0,1]$, let $\tilde I^\pm_x(t) = e^{-t \gamma_0 U^\pm_x}$.
 By \eqref{e:KIJ}, \eqref{e:J}, and the product property,
 \begin{align}
 \label{e:K0x-est}
     \|K^\pm_{0,x}\|_{T_\varphi(\h_0)}
-    & \le |\gamma_0| \|I^\pm_{0,x} U^\pm_x\|_{T_\varphi(\h_0)}
+    & \le \gamma_0 \|I^\pm_{0,x} U^\pm_x\|_{T_\varphi(\h_0)}
     \sup_{t\in [0, 1]} \|\tilde I^\pm_{x}(t)\|_{T_\varphi(\h_0)}.
 \end{align}
 By \refeq{Iupper} and Lemma~\ref{lem:FFnull-loc},
@@ -345,43 +345,40 @@ O(\h_0^4)
     & \h_0 = h_0.
 \end{cases}
 \end{equation}
-The constant in $O(|\gamma_0| \h_0^4)$ may depend on $c_1$,
+The constant in $O(\gamma_0 \h_0^4)$ may depend on $c_1$,
 but this is unimportant.
 Also, by \eqref{e:Itilbd},
 \begin{equation}
 \sup_{t\in[0,1]} \|\tilde I_{x}^\pm(t) \|_{T_\varphi(\h_0)}
   \le
-e^{\tilde C |\gamma_0| \h_0^4 (1+\|\varphi\|^2_{\Phi_x(\h_0)})}.
+e^{\tilde C \gamma_0 \h_0^4 (1+\|\varphi\|^2_{\Phi_x(\h_0)})}.
 \end{equation}
 
 Thus, for $\h_0=\ell_0$,
 the total exponent in our estimate for the right-hand side of \refeq{K0x-est}
 is
 \begin{equation}
-    \tilde C |\gamma_0| \ell_0^4
-       +(c_3 g_0 + \tilde C |\gamma_0| \ell_0^4) \|\varphi\|^2_{\Phi_x(\ell_0)}
+    \tilde C \gamma_0 \ell_0^4
+       +(c_3 g_0 + \tilde C \gamma_0 \ell_0^4) \|\varphi\|^2_{\Phi_x(\ell_0)}
      .
 \end{equation}
 This gives the $\h_0=\ell_0$ version of \refeq{K0bd} provided that
-$g_0$ is small and $|\gamma_0|$ is small depending on $L$.
+$g_0$ is small and $\gamma_0$ is small depending on $L$.
 
 For $\h_0=h_0$, the total exponent in our estimate for the right-hand side of \refeq{K0x-est}
 is
 \begin{equation}
-    \tilde C |\gamma_0| k_0^4 \ggen_0^{-1}
-        + (\tilde C |\gamma_0| k_0^4 \ggen_0^{-1} - c_1 k_0^4) \|\varphi\|^2_{\Phi_x(h_0)}
+    \tilde C \gamma_0 k_0^4 \ggen_0^{-1}
+        + (\tilde C \gamma_0 k_0^4 \ggen_0^{-1} - c_1 k_0^4) \|\varphi\|^2_{\Phi_x(h_0)}
         + c_2 k_0^4 \|\varphi\|^2_{\tilde\Phi_x(\ell_0)}.
 \end{equation}
 This gives the $\h_0=h_0$ version of \refeq{K0bd} provided that
-$|\gamma_0| \le \ggen_0$, $c_1\ge \tilde C$, and $c_2 k_0^4 \le {\sf t}/2$.
+$\gamma_0 \le \ggen_0$, $c_1\ge \tilde C$, and $c_2 k_0^4 \le {\sf t}/2$.
 
-All the provisos are satisfied
-if we choose
-$c_1 \ge \tilde C$,
-$k_0$ small depending on $c_1$
+All the provisos are satisfied if we choose
+$c_1 \ge \tilde C$, $k_0$ small depending on $c_1$
 and $\ggen_0$ small.
 \end{proof}
-
 
 \begin{rk}
 By a small modification to the proof of Proposition~\ref{prop:K0bd},
@@ -389,7 +386,7 @@ it can be shown that if $M_x \in \Ncal(x^\square)$ is a monomial of
 degree $r \le p_\Ncal -4$ (so that $M_xU_x^\pm$ has degree at most $p_\Ncal$), then
 \begin{equation}
 \label{e:K0bd-gen}
-\|M_x K^\pm_{0,x}\|_{\Gcal_0} = O(|\gamma_0| \h_0^{4+r}).
+\|M_x K^\pm_{0,x}\|_{\Gcal_0} = O(\gamma_0 \h_0^{4+r}).
 \end{equation}
 \end{rk}
 
@@ -398,27 +395,28 @@ degree $r \le p_\Ncal -4$ (so that $M_xU_x^\pm$ has degree at most $p_\Ncal$), t
 \subsection{Unified bound on \texorpdfstring{$K_0$}{K0}}
 \label{sec:KWcal}
 
-The results of \cite{BS-rg-step,BBS-rg-flow} are formulated in a sequence of spaces $\Wcal_j$ that
-enable the combination of small-field and large-field estimates into a single norm estimate.
-In this section, we recast the result of Proposition~\ref{prop:K0bd} to see that $K_0^\pm$
-fits into this formulation.
+% The results of \cite{BS-rg-step,BBS-rg-flow} are formulated in a sequence of spaces $\Wcal_j$ that
+% enable the combination of small-field and large-field estimates into a single norm estimate.
+% In this section, we recast the result of Proposition~\ref{prop:K0bd} to see that $K_0^\pm$
+% fits into this formulation.
 
-We restrict attention in this section to the $\Wcal_0$ norm,
-whose definition is recalled below.
-This requires several preliminaries.
-Let $\Pcal_0 = \Pcal_0(\Lambda)$ denote the collection of subsets of vertices in $\Lambda$.
-We refer to the elements of $\Pcal_0$ as \emph{polymers}.
-We call a nonempty polymer $X\in \Pcal_0$ \emph{connected}
-if for any $x, x' \in X$, there is a sequence
-$x = x_0, \ldots, x_n = x' \in X$ such that
-$|x_{i+1} - x_i|_\infty = 1$ for $i = 0, \ldots, n - 1$.
-Let $\Ccal_0$ denote the set of connected polymers.
-The \emph{small set neighbourhood} $X^\Box$ of $X\in\Pcal_0$ is defined by
-\begin{equation}
-    X^\Box =
-    \{y \in \Lambda : \exists x \in \Lambda \; \text{such that}\; |y-x|_\infty \le 2^d\}.
-\end{equation}
-We extend the definitions of the regulators $\Gcal_0 = G_0, \tilde G_0^{\sf t}$,
+% We restrict attention in this section to the $\Wcal_0$ norm, whose definition is recalled below.
+We begin by recalling the definition of the $\Wcal_0$ norm from \cite{BS-rg-step}.
+% This requires several preliminaries.
+% Let $\Pcal_0 = \Pcal_0(\Lambda)$ denote the collection of subsets of vertices in $\Lambda$.
+% We refer to the elements of $\Pcal_0$ as \emph{polymers}.
+% We call a nonempty polymer $X\in \Pcal_0$ \emph{connected}
+% if for any $x, x' \in X$, there is a sequence
+% $x = x_0, \ldots, x_n = x' \in X$ such that
+% $|x_{i+1} - x_i|_\infty = 1$ for $i = 0, \ldots, n - 1$.
+% Let $\Ccal_0$ denote the set of connected polymers.
+% The \emph{small set neighbourhood} $X^\Box$ of $X\in\Pcal_0$ is defined by
+% \begin{equation}
+%     X^\Box =
+%     \{y \in \Lambda : \exists x \in \Lambda \; \text{such that}\; |y-x|_\infty \le 2^d\}.
+% \end{equation}
+First,
+we extend the definitions of the regulators $\Gcal_0 = G_0, \tilde G_0^{\sf t}$,
 defined in \refeq{regdef}, by setting
 \begin{equation} \label{e:Gcalprod}
 \Gcal_0(X, \varphi) = \prod_{x\in X} \Gcal_0(x, \varphi),
@@ -431,10 +429,14 @@ and extend the definitions \refeq{reg0} to define norms, for $F \in \Ncal(X^\Box
     \|F\|_{\tilde{G}^{\sf t}_0} = \sup_{\varphi\in(\R^n)^\Lambda} \frac{\|F\|_{T_\varphi(h_0)}}{\tilde{G}^{\sf t}_0(X,\varphi)}
     .
 \end{equation}
-It follows from the product property of the $T_\varphi$ norm that these norms obey the product property
+It follows from the product property of the $T_\varphi$ seminorm that these norms obey
+the following version of the product property:
 \begin{equation}
-    \|F_1F_2\|_{\Gcal_0} \le   \|F_1\|_{\Gcal_0} \|F_2\|_{\Gcal_0}
-    \quad \text{for $F_i\in \Ncal(X_i^\Box)$ with $X_1 \cap X_2=\varnothing$.}
+\|F_1F_2\|_{\Gcal_0} \le   \|F_1\|_{\Gcal_0} \|F_2\|_{\Gcal_0}
+	% \quad
+\text{ for }
+	% \quad
+F_i\in \Ncal(X_i^\Box)  \text{ with } X_1 \cap X_2=\varnothing.
 \end{equation}
 
 Given a map $K: \Pcal_0 \to \Ncal$ with the property that $K(X) \in \Ncal(X^\Box)$
@@ -460,7 +462,7 @@ with
     \end{cases}
 \end{equation}
 Here $a$ is a small constant;  its value is discussed below \cite[\eqref{step-e:T0dom}]{BS-rg-step}.
-The $\Wcal_0$ norm is then defined by
+The $\Wcal_0 = \Wcal_0(\ggen_0, \volume)$ norm is then defined by
 \begin{align}
 \label{e:9Kcalnorm}
 \|K\|_{\Wcal_0}
@@ -472,93 +474,93 @@ The $\Wcal_0$ norm is then defined by
   \|K \|_{\Fcal_0(\tilde{G})}
   \Big\}.
 \end{align}
-Since this definition depends on $\ggen_0$ and the
-volume $\Lambda$, we sometimes write $\Wcal_0 = \Wcal_0(\ggen_0, \Lambda)$.
-The following proposition uses Proposition~\ref{prop:K0bd} to obtain a bound on the $\Wcal_0$ norm
-of the map $K_0^\pm : \Pcal_0 \to \Ncal$ defined by
-\begin{equation}
-    K_0^\pm(X) = \prod_{x \in X} K_{0,x}^\pm \qquad (X \in \Pcal_0)
-    .
-\end{equation}
+% Since this definition depends on $\ggen_0$ and the
+% volume $\Lambda$, we sometimes write $\Wcal_0 = \Wcal_0(\ggen_0, \Lambda)$.
+% The following proposition uses Proposition~\ref{prop:K0bd} to obtain a bound on the $\Wcal_0$ norm
+% of the map $K_0^\pm : \Pcal_0 \to \Ncal$ defined by
+% \begin{equation}
+%     K_0^\pm(X) = \prod_{x \in X} K_{0,x}^\pm \qquad (X \in \Pcal_0)
+%     .
+% \end{equation}
 
 \begin{prop}
 \label{prop:KWcal}
 If $V_0^\pm \in \DV_0$ with $\ggen_0$ sufficiently small
-(depending on $L$), and if $|\gamma_0| \le O(\ggen_0^{1+a'})$
+(depending on $L$), and if $\gamma_0 \le O(\ggen_0^{1+a'})$
 for some $a' >a$,
-then $\|K_0^\pm\|_{\Wcal_0} \le O(|\gamma_0|)$,
+then $\|K_0^\pm\|_{\Wcal_0} \le O(\gamma_0)$,
 where all constants may depend on $L$.
 \end{prop}
 
 \begin{proof}
-Let $X$ be a connected polymer in $\Pcal_0$.
+Let $X \in \Ccal_0$.
 By the product property and Proposition~\ref{prop:K0bd},
 \begin{align}
 \lbeq{K0prod}
-    \|K_0^\pm(X)\|_{\Gcal_0} \le (c|\gamma_0|\h_0^4)^{|X|}
+    \|K_0^\pm(X)\|_{\Gcal_0} \le (c\gamma_0\h_0^4)^{|X|}
     &=
-    (c|\gamma_0|\h_0^4)^{|X|\wedge 2^d} (c|\gamma_0|\h_0^4)^{(|X|-2^d)_+}.
+    (c\gamma_0\h_0^4)^{|X|\wedge 2^d} (c\gamma_0\h_0^4)^{(|X|-2^d)_+}.
 \end{align}
 For $\Gcal_0=G_0$, we use $\h_0=\ell_0$,
-$(c|\gamma_0|\h_0^4)^{|X|\wedge 2^d}\le O(|\gamma_0|)$, and
+$(c\gamma_0\h_0^4)^{|X|\wedge 2^d}\le O(\gamma_0)$, and
 \begin{equation}
-    (c|\gamma_0|\h_0^4)^{(|X|-2^d)_+} \le (c' \ggen_0)^{(1+a')(|X|-2^d)_+} \le \ggen_0^{f_0(a,X)}.
+    (c\gamma_0\h_0^4)^{(|X|-2^d)_+} \le (c' \ggen_0)^{(1+a')(|X|-2^d)_+} \le \ggen_0^{f_0(a,X)}.
 \end{equation}
 For $\Gcal_0=\tilde G_0$, we use $\h_0=h_0 = O(\ggen_0^{-1/4})$ and, since $a'>a$,
 \begin{equation}
-    (c|\gamma_0|\h_0^4)^{(|X|-2^d)_+} \le (c' \ggen_0)^{a'(|X|-2^d)_+} \le \ggen_0^{f_0(a,X)}.
+    (c\gamma_0\h_0^4)^{(|X|-2^d)_+} \le (c' \ggen_0)^{a'(|X|-2^d)_+} \le \ggen_0^{f_0(a,X)}.
 \end{equation}
-Since $|\gamma_0| \le \ggen_0$, it follows from \refeq{K0prod} that
+Since $\gamma_0 \le \ggen_0$, it follows from \refeq{K0prod} that
 \begin{equation}
     \ggen_0^{9/4}   \|K_0^\pm \|_{\Fcal_0(\tilde{G})}
     \le
-    \ggen_0^{9/4}O(|\gamma_0| \ggen_0^{-1})
-    \le |\gamma_0|,
+    \ggen_0^{9/4}O(\gamma_0 \ggen_0^{-1})
+    \le \gamma_0,
 \end{equation}
 and the proof is complete.
 \end{proof}
 
-The above discussion is based on norms in the setting of the torus $\Lambda$.
-As in \cite{BS-rg-step}, a version on the infinite lattice $\Zd$ is also required.
-This can be done in exactly the same manner,
-by defining
-the polymers $\Pcal_0 = \Pcal_0(\Zd)$
-to be the collection
-of subsets of $\Zd$, with $K_0^\pm(X)$ defined for subsets of $\Zd$ by
-$\prod_{x \in X} K_{0,x}^\pm$.
-The $\Wcal_0 = \Wcal_0(\ggen_0, \Zd)$ norm (in infinite volume)
-can be defined analogously to \eqref{e:9Kcalnorm}.
-The hypotheses and conclusion of Proposition~\ref{prop:KWcal} remain the same
-in the setting of $\Zd$.
+% The above discussion is based on norms in the setting of the torus $\Lambda$.
+% As in \cite{BS-rg-step}, a version on the infinite lattice $\Zd$ is also required.
+% This can be done in exactly the same manner,
+% by defining
+% the polymers $\Pcal_0 = \Pcal_0(\Zd)$
+% to be the collection
+% of subsets of $\Zd$, with $K_0^\pm(X)$ defined for subsets of $\Zd$ by
+% $\prod_{x \in X} K_{0,x}^\pm$.
+% The $\Wcal_0 = \Wcal_0(\ggen_0, \Zd)$ norm (in infinite volume)
+% can be defined analogously to \eqref{e:9Kcalnorm}.
+% The hypotheses and conclusion of Proposition~\ref{prop:KWcal} remain the same
+% in the setting of $\Zd$.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Smoothness of \texorpdfstring{$K_0$}{K0}}
 \label{sec:Ksmooth}
 
-Let $\Ccal_0(\Z^d) \subset \Pcal_0(\Z^d)$ be the set of connected polymers.
-By definition, a connected polymer is nonempty.
-Given $\ggen_0>0$, let
-$\Wcal^*_0(\ggen_0, \Zd)$ denote the space of maps
-$F :\Ccal_0(\Zd) \to \Ncal$,
-with $F(X) \in \Ncal(X^\Box)$ and $\|F\|_{\Wcal_0(\ggen_0, \Zd)} < \infty$.
-Addition in this space is defined by $(F_1+F_2)(X)=F_1(X)+F_2(X)$.
-We extend any $F :\Ccal_0(\Zd) \to \Ncal$ to $F :\Pcal_0(\Zd) \to \Ncal$
-by taking $F(X) = \prod_{Y} F(Y)$ where the product is over the connected components $Y$ of $X$.
+% Let $\Ccal_0(\Z^d) \subset \Pcal_0(\Z^d)$ be the set of connected polymers.
+% By definition, a connected polymer is nonempty.
+% Given $\ggen_0>0$, let
+% $\Wcal^*_0(\ggen_0, \Zd)$ denote the space of maps
+% $F :\Ccal_0(\Zd) \to \Ncal$,
+% with $F(X) \in \Ncal(X^\Box)$ and $\|F\|_{\Wcal_0(\ggen_0, \Zd)} < \infty$.
+% Addition in this space is defined by $(F_1+F_2)(X)=F_1(X)+F_2(X)$.
+% We extend any $F :\Ccal_0(\Zd) \to \Ncal$ to $F :\Pcal_0(\Zd) \to \Ncal$
+% by taking $F(X) = \prod_{Y} F(Y)$ where the product is over the connected components $Y$ of $X$.
 
-Given any map $F : D \to \Wcal^*_0(\ggen_0, \Zd)$ for $D \subset \R$ an open interval,
-write $F_X, F^\varphi_X : D \to \Ncal(X^\square)$ for the
-maps defined by partial evaluation of $F$ at $X$ and at
-$(X, \varphi)$, respectively. We say $F^\varphi_X$ is $C^k$
-if all of its coefficients in the decomposition \eqref{e:FinNcal}
-are $C^k$ as functions $D \to \R$.
+Given any map $F : D \to \Wcal_0(\ggen_0, \Zd)$ for $D \subset \R$ an open interval,
+let us write $F_X : D \to \Ncal(X^\square)$ and $F^\varphi_X : D \to (\R^n)^\Lambda$ for the maps
+defined by partial evaluation of $F$ at $X$ and at $(X, \varphi)$, respectively.
+% We say $F^\varphi_X$ is $C^k$ if all of its coefficients in the decomposition
+% \eqref{e:FinNcal} are $C^k$ as functions $D \to \R$.
 
 \begin{lemma}
 \label{lem:smoothness}
-Let $D \subset \R$ be open and $F : D \to \Wcal^*_0(\ggen_0, \Zd)$ be a map.
+Let $D \subset \R$ be open and $F : D \to \Wcal_0(\ggen_0, \Zd)$ be a map.
 Suppose that $F^\varphi_X$ is $C^2$ for all $X \in \Ccal_0$
 and $\varphi \in \C^\Lambda$, and define 
-$F^{(i)} : D \to \Wcal^*_0(\ggen_0, \Zd)$ by $(F^{(i)}(t))^\varphi_X = (F^\varphi_X)^{(i)}(t)$ for $i = 1, 2$,
+$F^{(i)} : D \to \Wcal_0(\ggen_0, \Zd)$ by
+$(F^{(i)}(t))^\varphi_X = (F^\varphi_X)^{(i)}(t)$ for $i = 1, 2$,
 where the right-hand side denotes the (component-wise) $i^{\rm th}$
 derivative of $F^\varphi_X$.
 If $\|F^{(i)}(t)\|_{\Wcal_0} < \infty$ for $i = 1, 2$ and $t \in D$, then 
@@ -596,21 +598,21 @@ O(|s|),
 which suffices.
 \end{proof}
 
-Consider the map
+Let us view $K^{\pm}_0$ as a map
 \begin{equation}
-(g_0, \gamma_0, \nu_0, z_0) \mapsto K_0 \in \Wcal^*_0(\ggen_0, \Zd)
+(g_0, \gamma_0, \nu_0, z_0) \mapsto K^\pm_0 \in \Wcal_0(\ggen_0, \Zd).
 \end{equation}
-defined by
-\begin{equation}
-\label{e:K0def}
-K_0(g_0, \gamma_0, \nu_0, z_0) =
-\begin{cases}
-K^+_0(g_0, \gamma_0, \nu_0, z_0)
-  & (\gamma_0 \geq 0) \\
-K^-_0(g_0, \gamma_0, \nu_0, z_0)
-  & (\gamma_0 < 0),
-\end{cases}
-\end{equation}
+% defined by
+% \begin{equation}
+% \label{e:K0def}
+% K_0(g_0, \gamma_0, \nu_0, z_0) =
+% \begin{cases}
+% K^+_0(g_0, \gamma_0, \nu_0, z_0)
+%   & (\gamma_0 \geq 0) \\
+% K^-_0(g_0, \gamma_0, \nu_0, z_0)
+%   & (\gamma_0 < 0),
+% \end{cases}
+% \end{equation}
 for $(g_0, \gamma_0, \nu_0, z_0)$ satisfying the hypotheses
 of Proposition~\ref{prop:KWcal}.
 The map $K_0$ is in fact analytic away from $\gamma_0 = 0$.
@@ -619,24 +621,24 @@ However, we only prove the following, which is what we need later.
 \begin{prop}
 \label{prop:Ksmooth}
 Suppose that $V_0^\pm \in \DV_0$, with $\ggen_0$ sufficiently small
-(depending on $L$) and $|\gamma_0| \le O(\ggen_0^{1+a'})$
+(depending on $L$) and $\gamma_0 \le O(\ggen_0^{1+a'})$
 for some $a' >a$.
-The map $K_0(g_0, \gamma_0, \nu_0, z_0)$ is jointly continuous
+The map $K^+_0(g_0, \gamma_0, \nu_0, z_0)$ is jointly continuous
 in its four variables, is
 $C^1$ in $(g_0, \nu_0, z_0)$,
 and (when $\gamma_0 \ne 0$) is $C^1$ in $(g_0, \gamma_0, \nu_0, z_0)$,
 with partial derivatives with respect to $t = g_0$, $\nu_0$, and $z_0$ satisfying
 \begin{equation}
 \label{e:ddpK}
-\|\partial K_0 / \partial t\|_{\Wcal_0} = O(|\gamma_0| \h_0^8).
+\|\partial K^+_0 / \partial t\|_{\Wcal_0} = O(\gamma_0 \h_0^8).
 \end{equation}
-Moreover, $K_0$
+Moreover, $K^+_0$
 is left- and right-differentiable in $\gamma_0$ at $\gamma_0 = 0$.
 \end{prop}
 
 \begin{proof}
 Let $t$ denote any one of the coupling constants $g_0, \gamma_0, \nu_0$ or $z_0$.
-We drop the subscript $0$, and let $K(t)$ denote $K_0$ viewed as a function of $t$,
+We drop the subscript $0$ and superscript $+$, and let $K(t)$ denote $K^+_0$ viewed as a function of $t$,
 with the remaining coupling constants fixed. Then $K^\varphi_X$ is smooth for any $\varphi, X$.
 If $t$ is $g_0, \nu_0$ or $z_0$, then
 \begin{align}
@@ -648,14 +650,17 @@ The maximal degree of $M_x$ is $4$, so
 \eqref{e:K0bd-gen} implies that
 \begin{equation}
 \label{e:Kprime-bd1}
-\|K'_x\|_{\Gcal_0} \le O(|\gamma_0| \h_0^{8}),
+\|K'_x\|_{\Gcal_0} \le O(\gamma_0 \h_0^{8}),
   \quad
-\|K''_x\|_{\Gcal_0} \le O(|\gamma_0| \h_0^{12}).
+\|K''_x\|_{\Gcal_0} \le O(\gamma_0 \h_0^{12}).
 \end{equation}
 
-For $t$ denoting $\gamma_0$,
-we restrict attention to $\gamma_0 > 0$, and write $U = U^+$
-and $V_0 = V^+_0$ (the case $\gamma_0 < 0$ is similar). Then
+For $t$ denoting $\gamma_0$, we
+% restrict attention to $\gamma_0 > 0$, and
+write $U = U^+$
+and $V_0 = V^+_0$.
+% (the case $\gamma_0 < 0$ is similar).
+Then
 \begin{equation}
 \label{e:dKdgamma0}
 (K^\varphi_x)'  = -U_x(\varphi) e^{-V_x(\varphi) - \gamma_0 U_x(\varphi)}, \quad
@@ -680,7 +685,7 @@ Thus, by the product property, \eqref{e:Kprime-bd1}, and Proposition~\ref{prop:K
 \begin{equation}
 \|K'_X\|_{\Gcal_0}
   \le
-O(|X|) |\gamma_0| \h_0^8 (|\gamma_0| \h_0^4)^{|X|-1}.
+O(|X|) \gamma_0 \h_0^8 (\gamma_0 \h_0^4)^{|X|-1}.
 \end{equation}
 when differentiating with respect to $g_0$, $\nu_0$, or $z_0$.
 The bound \eqref{e:ddpK} then follows from the hypothesis on $\gamma_0$.
@@ -688,20 +693,20 @@ Similarly, using \eqref{e:Kprime-bd2},
 \begin{equation}
 \|K'_X\|_{\Gcal_0}
   \le
-O(|X|) \h_0^4 (|\gamma_0| \h_0^4)^{|X|-1}
+O(|X|) \h_0^4 (\gamma_0 \h_0^4)^{|X|-1}
 \end{equation}
 when differentiating with respect to $\gamma_0$ away from $\gamma_0 = 0$.
 In both cases, we have
 \begin{equation}
 \|K''_X\|_{\Gcal_0}
   \le
-O(|X|^2) \h_0^8 (|\gamma_0| \h_0^4)^{(|X|-2) \wedge 0}.
+O(|X|^2) \h_0^8 (\gamma_0 \h_0^4)^{(|X|-2) \wedge 0}.
 \end{equation}
 Thus, by Lemma~\ref{lem:smoothness}, $K$ is $C^1$ in any of its variables.
 Therefore, $K$ is $C^1$ in $(g_0, \nu_0, z_0)$ on the whole domain and in all the variables when $\gamma_0 \ne 0$.
 
 To show right-continuity in $\gamma_0$ at $\gamma_0 = 0$,
-fix $(g_0, \nu_0, z_0)$ and define $F \in \Wcal^*_0$ by
+fix $(g_0, \nu_0, z_0)$ and define $F \in \Wcal_0$ by
 \begin{equation}
 F(X) =
 \begin{cases}
@@ -746,14 +751,17 @@ Left-continuity is handled similarly.
 \label{rk:DK-base-case}
 The bound \eqref{e:ddpK} verifies the condition
 \begin{equation}
-\|\partial K_0/\partial\nu_0\|_{\Wcal_0} \le O(g_0^3)
+\|\partial K^+_0/\partial\nu_0\|_{\Wcal_0} \le O(g_0^3)
 \end{equation}
 required in the proof of \cite[Lemma~\ref{log-lem:gzmuprime}]{BBS-saw4-log}
-(see \cite[\eqref{log-e:induct1}]{BBS-saw4-log}) and needed in Section~\ref{sec:suscept-conc}.
+(see \cite[\eqref{log-e:induct1}]{BBS-saw4-log}),
+which is in turn needed in Section~\ref{sec:suscept-conc}.
 \end{rk}
 
 \section{Renormalisation group flow}
 \label{sec:flow}
+
+\commentbw{Remark on new domain.}
 
 The following theorem is an extension of \cite[Proposition~\ref{log-prop:flow-flow}]{BBS-saw4-log}
 to non-trivial $K_0$. Such an extension is possible,
@@ -773,6 +781,8 @@ We refer to any such family as a $\Lambda$-family.
 As discussed in \cite[Definition~\ref{step-defn:KZd}]{BS-rg-step},
 any $\Lambda$-family
 induces an infinite-volume error coordinate $K_{0,\Zd} \in \Kcal_0(\Zd)$ in a natural way.
+
+\commentbw{Add definition of $\Lambda$-family.}
 
 \begin{theorem}
 \label{thm:flow-flow}
@@ -870,7 +880,7 @@ the finite-volume coordinates $K^\pm_{0,\Lambda}$ form a $\Lambda$-family.
 
 Moreover,
 by Proposition~\ref{prop:KWcal}, if
-$|\gamma_0|$ is sufficiently small (depending on $g_0$; we now take $\ggen_0=g_0$)
+$\gamma_0$ is sufficiently small (depending on $g_0$; we now take $\ggen_0=g_0$)
 then $K_0 = K^\pm_0$ satisfies the bound required by Theorem~\ref{thm:flow-flow}.
 However, we cannot apply the theorem immediately with this choice
 of $K_0$,
@@ -993,7 +1003,7 @@ O(g_0)
 \end{equation}
 The supremum above is bounded by a constant and so
 the first estimate of \eqref{e:hat-est-re} for $\gamma_0 \geq 0$
-follows from the fact that $|\gamma_0| \leq \hat r(g_0)$
+follows from the fact that $\gamma_0 \leq \hat r(g_0)$
 (since $\hat r(g_0)$ can be taken as small as desired).
 The case $\gamma_0 < 0$ and the second estimate follow similarly.
 \end{proof}
