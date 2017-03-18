@@ -123,6 +123,7 @@ these definitions here:
 % \end{equation}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Reformulation of the problem}
 
@@ -487,7 +488,11 @@ $(\R^n)^\Lambda$ if $n \ge 1$. For convenience,
 we will simply write $\|\cdot\|_{T_\phi(\h_j)}$ with the scale $j$ implied by the
 choice of parameter $\h_j$. The precise definitions are given below.
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \subsection{Test functions}
+
+\commentbw{This is for $n = 0$. For $n \ge 1$, see around \cite[(2.25)]{BBS-phi4-log}}
 
 Recall the notation introduced in Section~\ref{sec:forms}.
 A \emph{test function} $g$ is defined to be a function $(\vec x, \vec y) \mapsto g_{\vec x,\vec y}$,
@@ -535,7 +540,10 @@ corresponding $\alpha, \beta$ with $|\alpha|_1 + |\beta|_1 \leq p_\Phi$,
 \h_j^{|\vec x| + |\vec y|} L^{-j (|\alpha|_1 + |\beta|_1)} \|g\|_{\Phi_j}.
 \end{equation}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \subsection{The \texorpdfstring{$T_\phi$}{Tphi} seminorm}
+\label{sec:Tphi}
 
 If $n = 0$, then for any $F \in \Ncal^\varnothing$, there are
 \emph{unique} functions $F_{\vec y}$ of $(\phi, \bar\phi)$
@@ -611,6 +619,8 @@ is that the power series expansion of the product of two functions is the produc
 respective power series. This is why the $T_\phi$ seminorm was defined in terms of the pairing
 \eqref{e:pairing}.
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \subsection{Norm parameters}
 
 Control of the $T_\phi$ seminorm is needed for all values of
@@ -684,7 +694,9 @@ discussed in \REF.
 
 It is useful to restrict our attention to field functionals $F \in \Ncal$ that
 obey certain symmetry conditions preserved by Gaussian expectation (and which
-are obeyed by the bulk part of $V_0$). \todo{Define these.}
+are obeyed by the bulk part of $V_0$).
+
+\commentbw{Define symmetries}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -914,8 +926,6 @@ for $j \le j_m$ and $x_j \approx x_{j_m}$ for $j > j_m$. The relations \eqref{e:
 follow easily if $g_j$ behaves in a similar way.
 \end{rk}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 \subsubsection{The flow of \texorpdfstring{$\lambda$ and $q$}{lambda and q}}
 
 It was shown in \cite[\eqref{pt-e:lambdapt2}--\eqref{pt-e:qpt2}]{BBS-rg-pt} (for $n = 0$)
@@ -947,7 +957,6 @@ w^{(1)}_j = \sum_{x\in\Lambda} \sum_{i=1}^j C_{i;0x}.
 Note that $q_\pt = q$ for $j + 1 < j_x$.
 % \todo{It's strange that $w$ appears in the flow of $\lambda$ when $\Vpt$ only
 % depends on $C$.}
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1051,6 +1060,12 @@ $K \in \CKspace_j$ with the following additional property:
 Component factorization: If $X \in \Pcal_j$, then $K(X) = \prod_{Y\in{\rm Comp}(X)} K(Y)$.
 \end{itemize}
 \end{defn}
+
+Addition in $\CKspace_j$ is defined by $(F_1 + F_2)(X) = F_1(X) + F_2(X)$.
+We extend any $F \in \CKspace_j$ to $\Kspace_j$ by defining
+$F(X) = \prod_{Y\in{\rm Comp}(X)} F(Y)$.
+
+\subsubsection{Initial coordinates}
 
 \commentbw{Consider using $V$ for bulk and $U$ for bulk plus observables. In saw-sa,
 $V^+$ is used extensively for bulk. Need to check that $U$ is not too important in clp.}
@@ -1300,7 +1315,7 @@ A version of this theorem with $\gamma_0 = 0$ (and $s = 0$) was proved in
 \cite[Theorem~\ref{log-prop:KjNbd}]{BBS-saw4-log}. This result is based on the
 main result of \cite{BBS-rg-flow}, which allows some generality in the choice
 of $K_0$. We will discuss the proof of the extension to $\gamma_0 \ne 0$ in
-Chapter~\ref{sec:flow}.
+Chapter~\ref{sec:RGflow}.
 
 \commentbw{Define infinite sequence of couplign constants. Mention that different
 versions of $g$ can be interchanged.}
