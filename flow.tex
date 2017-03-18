@@ -29,86 +29,92 @@ function of these variables is shown in Section~\ref{sec:Ksmooth}.
 \subsection{Norms}
 \label{sec:norms}
 
-We need several properties of the $T_\phi$ semi-norm, whose proofs can be found in
+Since we are working with functions $F$ of a boson field $\varphi\in(\R^n)^\Lambda$, we have
+$F_{\vec x, \vec y} = 0$ whenever $\vec y \ne \varnothing$. Thus, \eqref{e:pairing}
+becomes
+\begin{equation}
+\label{e:pairing-re}
+\langle F, g \rangle_\varphi
+	=
+\sum_{|\vec x| \le p_\Ncal} \frac{1}{|\vec x|!} F_{\vec x}(\varphi) g_{\vec x}.
+\end{equation}
+
+We need several more properties of the $T_\varphi$ semi-norm, whose proofs can be found in
 \cite{BS-rg-norm}. We have already mentioned the product property in \eqref{e:prod}.
 % First, there is the important \emph{product property}
 % \cite[Proposition~\ref{norm-prop:prod}]{BS-rg-norm}
 % \begin{equation}
 % \label{e:prod}
-% \|F G\|_{T_\phi} \leq \|F\|_{T_\phi} \|G\|_{T_\phi}.
+% \|F G\|_{T_\varphi} \leq \|F\|_{T_\varphi} \|G\|_{T_\varphi}.
 % \end{equation}
-An immediate consequence is that $\|e^{-F}\|_{T_\phi} \leq e^{\|F\|_{T_\phi}}$.
+An immediate consequence is that $\|e^{-F}\|_{T_\varphi} \leq e^{\|F\|_{T_\varphi}}$.
 This is improved in \cite[Proposition~\ref{norm-prop:eK}]{BS-rg-norm},
-which states that (recall that $F_\varnothing$ denotes the $0$-degree part of $F$)
+which states that
 \begin{equation}
 \label{e:eK}
-\|e^{-F}\|_{T_\phi} \leq e^{-2 {\rm Re} F_\varnothing(\phi) + \|F\|_{T_\phi}}.
+\|e^{-F}\|_{T_\varphi} \leq e^{-2 F(\varphi) + \|F\|_{T_\varphi}}.
 \end{equation}
 
-Each of the two choices $\varphi = \phi, \bar\phi$
-can be viewed as a test function supported on sequences with
-$|\vec x| = 1$ and $|\vec y| = 0$
-and satisfying $\varphi_{\bar x} = \bar\varphi_x$.
-In particular, $\|\phi\|_\Phi$ is defined as the norm of a test function.
+A field $\varphi$ can be viewed as a test function supported on sequences with
+$|\vec x| = 1$ and $|\vec y| = 0$.
+In particular, $\|\varphi\|_\Phi$ is defined as the norm of a test function.
 We use \cite[Proposition~\ref{norm-prop:T0K}]{BS-rg-norm},
-which states that if $F \in \Ncal$ is a polynomial in $\phi,\phib,\psi,\psib$ of
+which states that if $F \in \Ncal$ is a polynomial in $\varphi$ of
 total degree $A \leq p_\Ncal$, then
 \begin{equation}
 \label{e:T0K}
-\|F\|_{T_\phi} \leq \|F\|_{T_0} (1 + \|\phi\|_\Phi)^A.
+\|F\|_{T_\varphi} \leq \|F\|_{T_0} (1 + \|\varphi\|_\Phi)^A.
 \end{equation}
 
-We write $x^\Box = \{y: |y-x|_\infty \le 2^d-1\}$,
-where $|x|_\infty = \max\{|x_i| : 1 \le i \le d\}$
-(this is the scale-0 version
-of \cite[\eqref{IE-e:ssn}]{BS-rg-IE} for a single point).
-The $\Phi_x \equiv \Phi(x^\square)$ norm of $\phi \in \C^\Lambda$ is defined by
+Let $x^\square$ denote the small set neighbourhood of a singleton $\{x\}$.
+% $x^\Box = \{y: |y-x|_\infty \le 2^d-1\}$, where $|x|_\infty = \max\{|x_i| : 1 \le i \le d\}$
+% (this is the scale-0 version
+% of \cite[\eqref{IE-e:ssn}]{BS-rg-IE} for a single point).
+The $\Phi_x \equiv \Phi(x^\square)$ norm of $\varphi \in (\R^n)^\Lambda$ is defined by
 \begin{equation}
-\|\phi\|_{\Phi_x}
+\|\varphi\|_{\Phi_x}
   =
 \inf
 \left\{
-  \|\phi - f\|_\Phi : f \in \C^\Lambda \text{ such that } f_y = 0 \;\forall y \in x^\square
+  \|\varphi - f\|_\Phi : f \in (\R^n)^\Lambda \text{ such that } f_y = 0 \;\forall y \in x^\square
 \right\}
 .
 \end{equation}
 By taking the infimum in \eqref{e:T0K} over all possible
-re-definitions of $\phi_y$ for $y \notin x^\square$, we get
+re-definitions of $\varphi_y$ for $y \notin x^\square$, we get
 \begin{equation}
 \label{e:T0Kx}
-\|F\|_{T_\phi}
+\|F\|_{T_\varphi}
   \leq
-\|F\|_{T_0} (1 + \|\phi\|_{\Phi_x})^A
+\|F\|_{T_0} (1 + \|\varphi\|_{\Phi_x})^A
 \end{equation}
 when $F \in \Ncal(x^\square)$.
 
 We need two choices of the parameter $\h_0$ (for both choices, $\h_0 \ge 1$):
-either $\h_0 = \ell_0$, an $L$-dependent constant;
+either $\h_0 = \ell_0$ as in \eqref{e:elldef-zz}, which may depend on $L$;
 or $\h_0 = h_0 = k_0 \ggen_0^{-1/4}$, where $k_0$ is a small constant and
-$\ggen_0$ is a constant which must be chosen small depending on $L$.
-Some discussion of these constants occurs in the
-proof of Proposition~\ref{prop:K0bd}.
-In \cite{BS-rg-IE}, two \emph{regulators} are defined.
-At scale $0$, these are given by
+$\ggen_0$ is defined in \REF and must be chosen small depending on $L$.
+% Some discussion of these constants occurs in the proof of Proposition~\ref{prop:K0bd}.
+In \cite{BS-rg-IE}, two \emph{regulators} are defined. At scale $0$, these are given by
 \begin{equation}
 \lbeq{regdef}
-G_0(x, \phi)
-  = e^{\|\phi\|^2_{\Phi_x(\ell_0)}},
+G_0(x, \varphi)
+  = e^{\|\varphi\|^2_{\Phi_x(\ell_0)}},
   \qquad
-\tilde G_0(x, \phi)
+\tilde G_0(x, \varphi)
   =
-e^{\frac{1}{2} \|\phi\|^2_{\tilde\Phi_x(\ell_0)}}.
+e^{\frac{1}{2} \|\varphi\|^2_{\tilde\Phi_x(\ell_0)}}.
 \end{equation}
 The $\tilde \Phi_x$ norm in the definition of $\tilde G_0$,
 is defined in \cite[\eqref{IE-e:Phitilnorm}]{BS-rg-IE};
 it is a modification of the $\Phi_x$ norm that is invariant under shifts by
-linear test functions.  Its specific properties do not play a direct role  in this paper.
+linear test functions.  Its specific properties do not play a direct role here.
 Two regulator norms are defined for $F \in \Ncal(x^\square)$ by
 \begin{equation}
 \lbeq{reg0}
-    \|F\|_{G_0} = \sup_{\phi\in\C^\Lambda} \frac{\|F\|_{T_\phi(\ell_0)}}{G_0(x,\phi)}
+    \|F\|_{G_0} = \sup_{\varphi\in(\R^n)^\Lambda} \frac{\|F\|_{T_\varphi(\ell_0)}}{G_0(x,\varphi)}
     , \quad
-    \|F\|_{\tilde{G}^{\sf t}_0} = \sup_{\phi\in\C^\Lambda} \frac{\|F\|_{T_\phi(h_0)}}{\tilde{G}^{\sf t}_0(x,\phi)}
+    \|F\|_{\tilde{G}^{\sf t}_0} = \sup_{\varphi\in(\R^n)^\Lambda} \frac{\|F\|_{T_\varphi(h_0)}}{\tilde{G}^{\sf t}_0(x,\varphi)}
     ,
 \end{equation}
 where ${\sf t} \in (0, 1]$ is a constant power.
@@ -118,30 +124,27 @@ where ${\sf t} \in (0, 1]$ is a constant power.
 \subsection{Bounds on \texorpdfstring{$K_0$}{K0}}
 \label{sec:K0bds}
 
-\todo{Do this with $n \ge 1$.}
-
 The main estimate on $K^\pm_{0,x}$ is given by the following proposition.
-Consistent with \cite[\eqref{IE-e:DV1-bis}]{BS-rg-IE}, we
-fix a large constant $C_\DV$ and define
-\begin{equation}
-\label{e:DV0}
-    \DV_0 = \DV_0(\ggen_0) = \{(g,\nu,z) \in \R^3 : C_{\DV}^{-1}\ggen_0 < g < C_{\DV}\ggen_0,
-    \; |\nu|,|z| < C_{\DV}\ggen_0\}.
-\end{equation}
+Recall that $\DV_j$ was defined in \eqref{e:DVdef}.
+% Consistent with \cite[\eqref{IE-e:DV1-bis}]{BS-rg-IE}, we
+% fix a large constant $C_\DV$ and define
+% \begin{equation}
+% \label{e:DV0}
+%     \DV_0 = \DV_0(\ggen_0) = \{(g,\nu,z) \in \R^3 : C_{\DV}^{-1}\ggen_0 < g < C_{\DV}\ggen_0,
+%     \; |\nu|,|z| < C_{\DV}\ggen_0\}.
+% \end{equation}
 
 \begin{prop}
 \label{prop:K0bd}
 Suppose that $V^\pm_0 \in \DV_0$, with $\ggen_0$ sufficiently small.
-If $|\gamma_0| \leq  \ggen_0$, then
+If $0 \le \gamma_0 \le \ggen_0$, then
 (with constants that may depend on $L$)
 \begin{equation}
 \lbeq{K0bds}
 \|K^\pm_{0,x}\|_{G_0} = O(|\gamma_0|),
 \quad
-\|K^\pm_{0,x}\|_{\tilde G_0} = O(|\gamma_0|/g_0),
+\|K^\pm_{0,x}\|_{\tilde G_0} = O(|\gamma_0|/g_0).
 \end{equation}
-where the bounds on $K^+$ and $K^-$ hold for $\gamma_0 \geq 0$
-and $\gamma_0 < 0$, respectively.
 \end{prop}
 
 
@@ -151,8 +154,8 @@ $K_0^\pm$.
 The upper bound arises from the small size of
 $e^{-|\gamma_0|U_x^\pm}-1$.  For small fields, hence small $U_x^\pm$, this is of order $|\gamma_0|$,
 as reflected by the $G_0$ norm estimate of \eqref{e:K0bds}.
-For large fields, namely fields of size $|\phi| \approx \ggen_{0}^{-1/4}$, the difference
-$e^{-|\gamma_0|U_x^\pm}-1$ is roughly of size $|\gamma_0|\,|\phi|^4 \approx |\gamma_0|/\ggen_0$.
+For large fields, namely fields of size $|\varphi| \approx \ggen_{0}^{-1/4}$, the difference
+$e^{-|\gamma_0|U_x^\pm}-1$ is roughly of size $|\gamma_0|\,|\varphi|^4 \approx |\gamma_0|/\ggen_0$.
 This effect is measured by the $\tilde G_0$ norm.
 
 Before proving the proposition, we
@@ -173,6 +176,8 @@ where, by the fundamental theorem of calculus,
 % As in \eqref{e:Kpm}, the $+$ versions of \eqref{e:KIJ}--\eqref{e:J} hold
 % only for $\gamma_0 \geq 0$ and the $-$ versions only for $\gamma_0 < 0$.
 
+\commentbw{State stability estimates in previous chapter?}
+
 Let $F \in \Ncal(x^\square)$ be a polynomial of degree at most $p_\Ncal$.
 Then the stability estimates \cite[\eqref{IE-e:Iupper-a}--\eqref{IE-e:Iupper-b}]{BS-rg-IE}
 imply that there exists $c_3 > 0$ and, for any $c_1 \geq 0$,
@@ -180,13 +185,13 @@ there exist positive constants $C, c_2$ such that
 if $V_0^\pm \in \DV_0$ then
 \begin{equation}
 \label{e:Iupper}
-\|I^\pm_{0,x} F\|_{T_\phi(\h_0)}
+\|I^\pm_{0,x} F\|_{T_\varphi(\h_0)}
   \leq
 C \|F\|_{T_0(\h_0)}
 \begin{cases}
-  e^{c_3 g_0 \left(1 + \|\phi\|^2_{\Phi_x(\ell_0)}\right)}
+  e^{c_3 g_0 \left(1 + \|\varphi\|^2_{\Phi_x(\ell_0)}\right)}
     & \h_0 = \ell_0 \\
-  e^{-c_1 k_0^4 \|\phi\|^2_{\Phi_x(h_0)}} e^{c_2 k_0^4 \|\phi\|^2_{\tilde\Phi_x(\ell_0)}}
+  e^{-c_1 k_0^4 \|\varphi\|^2_{\Phi_x(h_0)}} e^{c_2 k_0^4 \|\varphi\|^2_{\tilde\Phi_x(\ell_0)}}
     & \h_0 = h_0.
 \end{cases}
 \end{equation}
@@ -198,64 +203,65 @@ The next lemma is an ingredient for this.
 There is a universal constant $\tilde C$ such that
 \begin{equation}
 \label{e:FFnull}
-\|U^\pm_x\|_{T_\phi(\h_0)}
+\|U^\pm_x\|_{T_\varphi(\h_0)}
   \leq
-2 U^\pm_{\varnothing,x} + \tilde C \h_0^4 (1 + \|\phi\|^2_{\Phi_x(\h_0)}),
+2 U^\pm_x + \tilde C \h_0^4 (1 + \|\varphi\|^2_{\Phi_x(\h_0)}),
 \end{equation}
-where $U^\pm_\varnothing$ is the 0-degree part of $U^\pm$.
+where $U^\pm$ is the 0-degree part of $U^\pm$.
 \end{lemma}
 
 \begin{proof}
 Let
 \begin{equation}
-M^+ = M^+_e = (\nabla^e \tau_x)^2,
-\quad
-M^- = M^-_e = 2 \tau_x \tau_{x+e},
+M^+ = M^+_e = (\nabla^e \tau_x)^2
+% \quad
+% M^- = M^-_e = 2 \tau_x \tau_{x+e},
 \end{equation}
 so that $U^\pm_x = \sum_{e\in\Ucal} M^\pm_e$.
 It suffices to prove \eqref{e:FFnull} with $U^\pm_x$ replaced by $M^\pm$
-(on both sides of the equation).
+on both sides.
 In addition, we can replace the $\Phi_x$ norm by the $\Phi$ norm;
 the bound with the $\Phi_x$ norm then follows in the same way that \eqref{e:T0Kx} is a consequence of \eqref{e:T0K},
 since $M^\pm \in \Ncal(x^\Box)$.
 
-By definition of $\tau_x$,
-\begin{equation}
-M^\pm = M^\pm_{\varnothing} + R^\pm,
-\end{equation}
-where
-\begin{alignat}{2}
-&M^+_{\varnothing} = (\nabla^e |\phi_x|^2)^2,
-  \quad
-&&R^+ = 2 (\nabla^e |\phi_x|^2) \nabla^e (\psi_x\psib_x),
-  \\
-&M^-_\varnothing = 2 |\phi_x|^2 |\phi_{x+e}|^2,
-  \quad
-&&R^- = 2 (|\phi_x|^2 \psi_{x+e}\bar\psi_{x+e}
-+ \psi_x\bar\psi_x |\phi_{x+e}|^2 + \psi_x\bar\psi_x\psi_{x+e}\bar\psi_{x+e}).
-\end{alignat}
-Thus, $\|M^\pm\|_{T_\phi} \leq \|M^\pm_{\varnothing}\|_{T_\phi} + \|R^\pm\|_{T_\phi}$.
-A straightforward computation shows that
-\begin{equation}
-\label{e:Rpm-bound}
-\|R^\pm\|_{T_\phi} = O(\h_0^4 (1 + \|\phi\|_\Phi)^2).
-\end{equation}
+% By definition of $\tau_x$,
+% \begin{equation}
+% M^\pm = M^\pm + R^\pm,
+% \end{equation}
+% where
+% \begin{alignat}{2}
+% &M^+ = (\nabla^e |\varphi_x|^2)^2,
+  % \quad
+% &&R^+ = 2 (\nabla^e |\varphi_x|^2) \nabla^e (\psi_x\psib_x),
+%   \\
+% &M^- = 2 |\varphi_x|^2 |\varphi_{x+e}|^2,
+%   \quad
+% &&R^- = 2 (|\varphi_x|^2 \psi_{x+e}\bar\psi_{x+e}
+% + \psi_x\bar\psi_x |\varphi_{x+e}|^2 + \psi_x\bar\psi_x\psi_{x+e}\bar\psi_{x+e}).
+% \end{alignat}
+% Thus, $\|M^\pm\|_{T_\varphi} \leq \|M^\pm\|_{T_\varphi} + \|R^\pm\|_{T_\varphi}$.
+% A straightforward computation shows that
+% \begin{equation}
+% \label{e:Rpm-bound}
+% \|R^\pm\|_{T_\varphi} = O(\h_0^4 (1 + \|\varphi\|_\Phi)^2).
+% \end{equation}
 
-By definition of the $T_\phi$ semi-norm,
+By definition of the $T_\varphi$ semi-norm,
 \begin{equation}
 \label{e:nabla-phi-sq-bd}
-\|\nabla^e |\phi_x|^2\|_{T_\phi}
+\|\nabla^e |\varphi_x|^2\|_{T_\varphi}
   \le
-\nabla^e |\phi_x|^2 + 2 \h_0 (|\phi_x| + |\phi_{x+e}|) + 2 \h_0^2.
+\nabla^e |\varphi_x|^2 + 2 \h_0 (|\varphi_x| + |\varphi_{x+e}|) + 2 \h_0^2.
 \end{equation}
-Together with \eqref{e:Rpm-bound}, the product property,
+% Together with \eqref{e:Rpm-bound},
+With the product property
 and \eqref{e:testfcnbd}, this implies that
 \begin{equation}
-\|M^+\|_{T_\phi}
+\|M^+\|_{T_\varphi}
   \le
-M^+_\varnothing
-  + 2 |\nabla^e |\phi_x|^2| (2 \h_0 (|\phi_x| + |\phi_{x+e}|))
-  + O(\h_0^4) (1 + \|\phi\|^2_\Phi).
+M^+
+  + 2 |\nabla^e |\varphi_x|^2| (2 \h_0 (|\varphi_x| + |\varphi_{x+e}|))
+  + O(\h_0^4) (1 + \|\varphi\|^2_\Phi).
 \end{equation}
 By the inequality
 \begin{equation}
@@ -264,44 +270,44 @@ By the inequality
 \end{equation}
 and another application of \eqref{e:testfcnbd},
 \begin{equation}
-2 |\nabla^e |\phi_x|^2| (2 \h_0 (|\phi_x| + |\phi_{x+e}|))
+2 |\nabla^e |\varphi_x|^2| (2 \h_0 (|\varphi_x| + |\varphi_{x+e}|))
   \le
-M^+_\varnothing + O(\h_0^2 \|\phi\|^2_\Phi),
+M^+ + O(\h_0^2 \|\varphi\|^2_\Phi),
 \end{equation}
 and the bound on $M^+$ follows.
 
-For the bound on $M^-$, we use the identity
-\begin{equation}
-\label{e:taunorm}
-\|\tau_x\|_{T_\phi}
-  =
-(|\phi_x| + \h_0)^2 + \h_0^2
-\end{equation}
-from \cite[\eqref{norm-e:taunorm}]{BS-rg-norm}.
-By the product property and \eqref{e:testfcnbd}, this implies that
-\begin{equation}
-\|M^-\|_{T_\phi}
-  \le
-2 |\phi_x|^2 |\phi_{x+e}|^2
-  +
-2 (|\phi_x| |\phi_{x+e}|) (2 \h_0 (|\phi_{x+e}| + |\phi_x|))
-  +
-O(\h_0^4) (1 + \|\phi\|^2_\Phi).
-\end{equation}
-Another application of \eqref{e:young-ineq} and \eqref{e:testfcnbd} gives
-\begin{equation}
-2 (|\phi_x| |\phi_{x+e}|) (2 \h_0 (|\phi_{x+e}| + |\phi_x|))
-  \le
-|\phi_x|^2 |\phi_{x+e}|^2 + O(\h_0^2 \|\phi\|^2_\Phi),
-\end{equation}
-and the proof is complete.
+% For the bound on $M^-$, we use the identity
+% \begin{equation}
+% \label{e:taunorm}
+% \|\tau_x\|_{T_\varphi}
+%   =
+% (|\varphi_x| + \h_0)^2 + \h_0^2
+% \end{equation}
+% from \cite[\eqref{norm-e:taunorm}]{BS-rg-norm}.
+% By the product property and \eqref{e:testfcnbd}, this implies that
+% \begin{equation}
+% \|M^-\|_{T_\varphi}
+%   \le
+% 2 |\varphi_x|^2 |\varphi_{x+e}|^2
+%   +
+% 2 (|\varphi_x| |\varphi_{x+e}|) (2 \h_0 (|\varphi_{x+e}| + |\varphi_x|))
+%   +
+% O(\h_0^4) (1 + \|\varphi\|^2_\Phi).
+% \end{equation}
+% Another application of \eqref{e:young-ineq} and \eqref{e:testfcnbd} gives
+% \begin{equation}
+% 2 (|\varphi_x| |\varphi_{x+e}|) (2 \h_0 (|\varphi_{x+e}| + |\varphi_x|))
+%   \le
+% |\varphi_x|^2 |\varphi_{x+e}|^2 + O(\h_0^2 \|\varphi\|^2_\Phi),
+% \end{equation}
+% and the proof is complete.
 \end{proof}
 
 An immediate consequence of Lemma~\ref{lem:FFnull-loc}, using \eqref{e:eK},
 is that for any $s \ge 0$,
 \begin{equation}
 \label{e:Itilbd}
-\|e^{-s U^\pm_x}\|_{T_\phi(\h_0)} \leq e^{\tilde C s \h_0^4 (1 + \|\phi\|^2_{\Phi_x(\h_0)})}.
+\|e^{-s U^\pm_x}\|_{T_\varphi(\h_0)} \leq e^{\tilde C s \h_0^4 (1 + \|\varphi\|^2_{\Phi_x(\h_0)})}.
 \end{equation}
 
 \begin{proof}[Proof of Proposition~\ref{prop:K0bd}]
@@ -310,32 +316,32 @@ regulator norms in \refeq{regdef}--\refeq{reg0},
 it suffices to prove that, under the hypothesis on $\gamma_0$,
 \begin{equation}
 \label{e:K0bd}
-  \|K^\pm_{0,x}\|_{T_\phi(\h_0)} = O(|\gamma_0| \h_0^4)
+  \|K^\pm_{0,x}\|_{T_\varphi(\h_0)} = O(|\gamma_0| \h_0^4)
   \begin{cases}
-  e^{\|\phi\|_{\Phi_x}^2} & (\h_0=\ell_0)
+  e^{\|\varphi\|_{\Phi_x}^2} & (\h_0=\ell_0)
   \\
-  e^{\frac{{\sf t}}{2} \|\phi\|_{\tilde\Phi}} & (\h_0=h_0).
+  e^{\frac{{\sf t}}{2} \|\varphi\|_{\tilde\Phi}} & (\h_0=h_0).
   \end{cases}
 \end{equation}
 For $t \in [0,1]$, let $\tilde I^\pm_x(t) = e^{-t |\gamma_0| U^\pm_x}$.
 By \eqref{e:KIJ}, \eqref{e:J}, and the product property,
 \begin{align}
 \label{e:K0x-est}
-    \|K^\pm_{0,x}\|_{T_\phi(\h_0)}
-    & \le |\gamma_0| \|I^\pm_{0,x} U^\pm_x\|_{T_\phi(\h_0)}
-    \sup_{t\in [0, 1]} \|\tilde I^\pm_{x}(t)\|_{T_\phi(\h_0)}.
+    \|K^\pm_{0,x}\|_{T_\varphi(\h_0)}
+    & \le |\gamma_0| \|I^\pm_{0,x} U^\pm_x\|_{T_\varphi(\h_0)}
+    \sup_{t\in [0, 1]} \|\tilde I^\pm_{x}(t)\|_{T_\varphi(\h_0)}.
 \end{align}
 By \refeq{Iupper} and Lemma~\ref{lem:FFnull-loc},
 there exists $c_3 > 0$, and, for any $c_1 \geq 0$ there exists $c_2 > 0$, such that
 \begin{equation}
 \label{e:Iupper-bis}
-\|I^\pm_{0,x} U^\pm_x\|_{T_\phi(\h_0)}
+\|I^\pm_{0,x} U^\pm_x\|_{T_\varphi(\h_0)}
   \leq
 O(\h_0^4)
 \begin{cases}
-  e^{c_3 g_0  \|\phi\|^2_{\Phi_x(\ell_0)}}
+  e^{c_3 g_0  \|\varphi\|^2_{\Phi_x(\ell_0)}}
     & \h_0 = \ell_0 \\
-  e^{-c_1 k_0^4 \|\phi\|^2_{\Phi_x(h_0)}} e^{c_2 k_0^4 \|\phi\|^2_{\tilde\Phi_x(\ell_0)}}
+  e^{-c_1 k_0^4 \|\varphi\|^2_{\Phi_x(h_0)}} e^{c_2 k_0^4 \|\varphi\|^2_{\tilde\Phi_x(\ell_0)}}
     & \h_0 = h_0.
 \end{cases}
 \end{equation}
@@ -343,9 +349,9 @@ The constant in $O(|\gamma_0| \h_0^4)$ may depend on $c_1$,
 but this is unimportant.
 Also, by \eqref{e:Itilbd},
 \begin{equation}
-\sup_{t\in[0,1]} \|\tilde I_{x}^\pm(t) \|_{T_\phi(\h_0)}
+\sup_{t\in[0,1]} \|\tilde I_{x}^\pm(t) \|_{T_\varphi(\h_0)}
   \le
-e^{\tilde C |\gamma_0| \h_0^4 (1+\|\phi\|^2_{\Phi_x(\h_0)})}.
+e^{\tilde C |\gamma_0| \h_0^4 (1+\|\varphi\|^2_{\Phi_x(\h_0)})}.
 \end{equation}
 
 Thus, for $\h_0=\ell_0$,
@@ -353,7 +359,7 @@ the total exponent in our estimate for the right-hand side of \refeq{K0x-est}
 is
 \begin{equation}
     \tilde C |\gamma_0| \ell_0^4
-       +(c_3 g_0 + \tilde C |\gamma_0| \ell_0^4) \|\phi\|^2_{\Phi_x(\ell_0)}
+       +(c_3 g_0 + \tilde C |\gamma_0| \ell_0^4) \|\varphi\|^2_{\Phi_x(\ell_0)}
      .
 \end{equation}
 This gives the $\h_0=\ell_0$ version of \refeq{K0bd} provided that
@@ -363,8 +369,8 @@ For $\h_0=h_0$, the total exponent in our estimate for the right-hand side of \r
 is
 \begin{equation}
     \tilde C |\gamma_0| k_0^4 \ggen_0^{-1}
-        + (\tilde C |\gamma_0| k_0^4 \ggen_0^{-1} - c_1 k_0^4) \|\phi\|^2_{\Phi_x(h_0)}
-        + c_2 k_0^4 \|\phi\|^2_{\tilde\Phi_x(\ell_0)}.
+        + (\tilde C |\gamma_0| k_0^4 \ggen_0^{-1} - c_1 k_0^4) \|\varphi\|^2_{\Phi_x(h_0)}
+        + c_2 k_0^4 \|\varphi\|^2_{\tilde\Phi_x(\ell_0)}.
 \end{equation}
 This gives the $\h_0=h_0$ version of \refeq{K0bd} provided that
 $|\gamma_0| \le \ggen_0$, $c_1\ge \tilde C$, and $c_2 k_0^4 \le {\sf t}/2$.
@@ -415,17 +421,17 @@ The \emph{small set neighbourhood} $X^\Box$ of $X\in\Pcal_0$ is defined by
 We extend the definitions of the regulators $\Gcal_0 = G_0, \tilde G_0^{\sf t}$,
 defined in \refeq{regdef}, by setting
 \begin{equation} \label{e:Gcalprod}
-\Gcal_0(X, \phi) = \prod_{x\in X} \Gcal_0(x, \phi),
+\Gcal_0(X, \varphi) = \prod_{x\in X} \Gcal_0(x, \varphi),
 \end{equation}
 and extend the definitions \refeq{reg0} to define norms, for $F \in \Ncal(X^\Box)$, by
 \begin{equation}
 \lbeq{reg0X}
-    \|F\|_{G_0} = \sup_{\phi\in\C^\Lambda} \frac{\|F\|_{T_\phi(\ell_0)}}{G_0(X,\phi)}
+    \|F\|_{G_0} = \sup_{\varphi\in(\R^n)^\Lambda} \frac{\|F\|_{T_\varphi(\ell_0)}}{G_0(X,\varphi)}
     , \quad
-    \|F\|_{\tilde{G}^{\sf t}_0} = \sup_{\phi\in\C^\Lambda} \frac{\|F\|_{T_\phi(h_0)}}{\tilde{G}^{\sf t}_0(X,\phi)}
+    \|F\|_{\tilde{G}^{\sf t}_0} = \sup_{\varphi\in(\R^n)^\Lambda} \frac{\|F\|_{T_\varphi(h_0)}}{\tilde{G}^{\sf t}_0(X,\varphi)}
     .
 \end{equation}
-It follows from the product property of the $T_\phi$ norm that these norms obey the product property
+It follows from the product property of the $T_\varphi$ norm that these norms obey the product property
 \begin{equation}
     \|F_1F_2\|_{\Gcal_0} \le   \|F_1\|_{\Gcal_0} \|F_2\|_{\Gcal_0}
     \quad \text{for $F_i\in \Ncal(X_i^\Box)$ with $X_1 \cap X_2=\varnothing$.}
@@ -541,20 +547,20 @@ We extend any $F :\Ccal_0(\Zd) \to \Ncal$ to $F :\Pcal_0(\Zd) \to \Ncal$
 by taking $F(X) = \prod_{Y} F(Y)$ where the product is over the connected components $Y$ of $X$.
 
 Given any map $F : D \to \Wcal^*_0(\ggen_0, \Zd)$ for $D \subset \R$ an open interval,
-write $F_X, F^\phi_X : D \to \Ncal(X^\square)$ for the
+write $F_X, F^\varphi_X : D \to \Ncal(X^\square)$ for the
 maps defined by partial evaluation of $F$ at $X$ and at
-$(X, \phi)$, respectively. We say $F^\phi_X$ is $C^k$
+$(X, \varphi)$, respectively. We say $F^\varphi_X$ is $C^k$
 if all of its coefficients in the decomposition \eqref{e:FinNcal}
 are $C^k$ as functions $D \to \R$.
 
 \begin{lemma}
 \label{lem:smoothness}
 Let $D \subset \R$ be open and $F : D \to \Wcal^*_0(\ggen_0, \Zd)$ be a map.
-Suppose that $F^\phi_X$ is $C^2$ for all $X \in \Ccal_0$
-and $\phi \in \C^\Lambda$, and define 
-$F^{(i)} : D \to \Wcal^*_0(\ggen_0, \Zd)$ by $(F^{(i)}(t))^\phi_X = (F^\phi_X)^{(i)}(t)$ for $i = 1, 2$,
+Suppose that $F^\varphi_X$ is $C^2$ for all $X \in \Ccal_0$
+and $\varphi \in \C^\Lambda$, and define 
+$F^{(i)} : D \to \Wcal^*_0(\ggen_0, \Zd)$ by $(F^{(i)}(t))^\varphi_X = (F^\varphi_X)^{(i)}(t)$ for $i = 1, 2$,
 where the right-hand side denotes the (component-wise) $i^{\rm th}$
-derivative of $F^\phi_X$.
+derivative of $F^\varphi_X$.
 If $\|F^{(i)}(t)\|_{\Wcal_0} < \infty$ for $i = 1, 2$ and $t \in D$, then 
 $F^{(1)}$ is the derivative of $F$.
 \end{lemma}
@@ -562,11 +568,11 @@ $F^{(1)}$ is the derivative of $F$.
 \begin{proof}
 For $t, t + s \in D$, define $R(t, s) \in \Wcal_0$ by
 \begin{equation}
-R^\phi_X(t, s) = F^\phi_X(t + s) - F^\phi_X(t) - s (F^\phi_X)'(t).
+R^\varphi_X(t, s) = F^\varphi_X(t + s) - F^\varphi_X(t) - s (F^\varphi_X)'(t).
 \end{equation}
-By Taylor's theorem, for any $\phi$ and $X$,
+By Taylor's theorem, for any $\varphi$ and $X$,
 \begin{equation}
-R^\phi_X(t, s) = s^2 \int_0^1 (F^\phi_X)''(t + u s) (1 - u) \; du,
+R^\varphi_X(t, s) = s^2 \int_0^1 (F^\varphi_X)''(t + u s) (1 - u) \; du,
 \end{equation}
 where the integral is taken component-wise.
 It follows
@@ -577,7 +583,7 @@ that
   \le O(|s|^2),
 \end{equation}
 so $F$ is differentiable 
-and its derivative satisfies $(F')^\phi_X = (F^\phi_X)'$.
+and its derivative satisfies $(F')^\varphi_X = (F^\varphi_X)'$.
 Continuity of $F'$ follows similarly, since, by the
 fundamental theorem of calculus,
 \begin{equation}
@@ -631,11 +637,11 @@ is left- and right-differentiable in $\gamma_0$ at $\gamma_0 = 0$.
 \begin{proof}
 Let $t$ denote any one of the coupling constants $g_0, \gamma_0, \nu_0$ or $z_0$.
 We drop the subscript $0$, and let $K(t)$ denote $K_0$ viewed as a function of $t$,
-with the remaining coupling constants fixed. Then $K^\phi_X$ is smooth for any $\phi, X$.
+with the remaining coupling constants fixed. Then $K^\varphi_X$ is smooth for any $\varphi, X$.
 If $t$ is $g_0, \nu_0$ or $z_0$, then
 \begin{align}
-(K^\phi_x)'  &= -M_x(\phi) K^\phi_x, \quad
-(K^\phi_x)'' = M_x^2(\phi) K^\phi_x,
+(K^\varphi_x)'  &= -M_x(\varphi) K^\varphi_x, \quad
+(K^\varphi_x)'' = M_x^2(\varphi) K^\varphi_x,
 \end{align}
 where $M_x$ is $\tau_x^2, \tau_x$ or $\tau_{\Delta,x}$, respectively.
 The maximal degree of $M_x$ is $4$, so
@@ -652,8 +658,8 @@ we restrict attention to $\gamma_0 > 0$, and write $U = U^+$
 and $V_0 = V^+_0$ (the case $\gamma_0 < 0$ is similar). Then
 \begin{equation}
 \label{e:dKdgamma0}
-(K^\phi_x)'  = -U_x(\phi) e^{-V_x(\phi) - \gamma_0 U_x(\phi)}, \quad
-(K^\phi_x)'' = U_x^2(\phi) e^{-V_x(\phi) - \gamma_0 U_x(\phi)},
+(K^\varphi_x)'  = -U_x(\varphi) e^{-V_x(\varphi) - \gamma_0 U_x(\varphi)}, \quad
+(K^\varphi_x)'' = U_x^2(\varphi) e^{-V_x(\varphi) - \gamma_0 U_x(\varphi)},
 \end{equation}
 and \eqref{e:Iupper} and \eqref{e:Itilbd} imply that
 \begin{equation}
@@ -667,8 +673,8 @@ By definition, $K_X = \prod_{x \in X} K_x$, so, for derivatives with respect to 
 of the four variables (with $\gamma_0 \neq 0$ when differentiating with respect to $\gamma_0$),
 \begin{equation}
 \label{e:KXprime}
-(K^\phi_X)'  = \sum_{x \in X} (K^\phi_x)' K^\phi_{X \setminus x}, \quad
-(K^\phi_X)'' = \sum_{x \in X} ((K^\phi_x)'' K^\phi_{X \setminus x} + (K^\phi_x)' (K^\phi_{X \setminus x})').
+(K^\varphi_X)'  = \sum_{x \in X} (K^\varphi_x)' K^\varphi_{X \setminus x}, \quad
+(K^\varphi_X)'' = \sum_{x \in X} ((K^\varphi_x)'' K^\varphi_{X \setminus x} + (K^\varphi_x)' (K^\varphi_{X \setminus x})').
 \end{equation}
 Thus, by the product property, \eqref{e:Kprime-bd1}, and Proposition~\ref{prop:K0bd},
 \begin{equation}
