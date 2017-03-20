@@ -1,16 +1,138 @@
 \chapter{The renormalisation group step}
 \label{sec:RGstep}
 
+The main purpose of this chapter is to prove that Theorem~\ref{thm:step-mr-fv}
+holds with arbitrary $s$ in the definitions \eqref{e:elldef-zz} of the weights
+$\ell, \ell_\sigma$. The proof of this fact requires involves numerous changes
+to results in \cite{BS-rg-loc,BS-rg-IE,BS-rg-step}.
+Consequently, the arguments presented here will not be completely self-contained;
+for instance, we will not detail the construction of the renormalisation group
+map, which makes up the bulk of \cite{BS-rg-step}.
+
+For this reason, we begin in Section~\ref{sec:rgmech} with an informal overview
+of some of the key ideas used in these papers. We will sometimes state supporting
+results used to prove Theorem~\ref{thm:step-mr-fv} although we will not make direct
+use of them in this thesis.
+
+In Section~\ref{sec:Rpf1}, we define new norms above the mass scale and  prove
+that they satisfy two key hypotheses required by results in \cite{BS-rg-IE}.
+The remaining modifications needed to prove Theorem~\ref{thm:step-mr-fv} are
+given in Section~\ref{sec:Rpf2}.
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{The basic mechanism}
+\label{sec:rgmech}
 
 \todo{The main problem is to get the inductive estimates on $(V, K)$.
 We cannot prove bounds that are ``too good''. Thus, the weights must
 accurately reflect the size of the covariance and of large fields.
 The following shows why this is the case. Also discuss the large field
 problem here.}
+
+For this discussion, let us set $\sigma_0 = \sigma_x = 0$ and $n = 0$.
+Thus, we can drop the coupling constants $\lambda, q, u$ from the notation.
+In this setting, our goal, given $(V, K)$, is to construct $(V_+, K_+)$
+such that, with $I = I(V)$ and $I_+ = I(V_+)$,
+\begin{equation}
+\label{e:IcircKsimp}
+\Ex_+ \theta (I \circ K)(\Lambda) = (I_+ \circ K_+)(\Lambda)
+\end{equation}
+with $K \mapsto K_+$ contractive in some sense; this is needed not only to
+control the error produced by $K$ in the computation of critical exponents
+(e.g.\ recall the use of Lemma~\ref{lem:deriv-norm-bds} in Section~\ref{sec:chi-G-xi})
+but also so that the map
+$(V, K) \mapsto (V_+, K_+)$ can be iterated an arbitrary number of times as in
+Theorem~\ref{thm:rhatflow}. The algebraic problem \eqref{e:IcircKsimp} admits
+a multitude of solutions and the main difficulty is the construction of a
+solution that admits appropriate bounds.
+
+\subsection{Simplified renormalisation group step}
+
+A possible definition of the map $(V, K) \mapsto V_+$ is suggested by perturbation
+theory, as discussed in Section~\ref{sec:pt}. For now, let us suppose this is
+the correct definition and set $\Ipt = I(\Vpt)$. Then we can define $K_+$ in terms
+of $\Ipt$ such that \eqref{e:IcircKsimp} holds as follows.
+
+For $B\in\Bcal$, let $\delta I(B) = \theta I(B) - \Ipt(B)$ and extend this to $X\in\Pcal$
+by block-factorization. Then \todo{by associativity of $\circ$ and the binomial
+formula},
+\begin{align}
+(I \circ K)(\Lambda)
+	&= \sum_{X\in\Pcal} (\Ipt + \delta I)^{\Lambda \setminus X} K(X) \\
+	&= [(\Ipt \circ \delta I) \circ K](\Lambda) \\
+	&= [\Ipt \circ (\delta I \circ K)](\Lambda).
+\end{align}
+Note that the fluctuation fields at scale $j$ have been integrated out in the
+definition of $\Vpt$. Thus,
+\begin{equation}
+\Ex_+ \theta(I \circ K)(\Lambda) = [\Ipt \circ \tilde K](\Lambda)
+\end{equation}
+with
+\begin{equation}
+\tilde K = \Ex_+ (\delta I \circ \theta K).
+\end{equation}
+This has the form \eqref{e:IcircKsimp} but with the circle product on the right-hand
+side at the wrong scale. This is remedied by a simple resummation:
+\begin{align}
+\Ex_+ \theta (I \circ K)(\Lambda)
+	= \sum_{Y\in\Pcal} \Ipt(\Lambda \setminus Y) \tilde K(Y)
+	= \sum_{X\in\Pcal_+} \Ipt^{\Lambda \setminus X} K_+(X)
+	= (\Ipt \circ K_+)(\Lambda)
+\end{align}
+where
+\begin{equation}
+\label{e:Kplus3}
+K_+(X) = \sum_{Y \in \bar\Pcal(X)} \Ipt^{X \setminus Y} \tilde K(Y).
+\end{equation}
+Here, $\bar\Pcal(X)$ is the collection of polymers $Y\in\Pcal(X)$ such that
+$X$ is the smallest polymer in $\Pcal_+$ containing $Y$.
+
+\subsection{Main contributions to \texorpdfstring{$K_+$}{K+}}
+
+By expanding the circle product in the definition of $\tilde K$, we can write
+\begin{equation}
+K_+(X) = \Ipt^X [h(X) + k(X) + R(X)]
+\end{equation}
+where (letting $\bar\Ccal(X) = \Ccal\cap\bar\Pcal(X)$)
+\begin{align}
+h(X)	&= \sum_{Y\in\bar\Pcal(X)} \Ipt^{-Y} \Ex_+ \delta I(Y) \\
+k(X)	&= \sum_{Y\in\bar\Ccal(X)} \Ipt^{-Y} \Ex_+ \theta K(Y)
+\end{align}
+and $R$ is the remainder. If $\delta I$ and $K$ are sufficiently small (in an
+appropriate sense), then it is reasonable to view the terms $h$ and $k$ as
+first-order contributions to $K_+$. Note that the sum defining $k$ is restricted
+to connected polymers as component-factorization of $K$ should imply that terms
+involving $K$ on disconnected polymers will be of higher order in this sense.
+
+\commentbw{First look at bound on $h$. Easy to see that $\delta I$ is
+$O(\delta V)$ (discuss cumulant expansion earlier on). Bounding $\delta V$
+requires bound on covariance (straightforward computation). This motivates
+the covariance bound needed and proved in the next section. Not surprisingly,
+the bound on the covariance comes up all over the place.}
+
+\commentbw{Next discuss $k$.
+Even if $K = 0$, $K_+$ will contain a $\delta I$, so extraction is
+needed. This is done using $\Loc$ and the crucial contraction.}
+
+\commentbw{There are also stability bounds, which we require bound on regulator;
+this is discussed in detail in rg-IE. I should probably at least briefly explain
+this here since the change of regulator norm is such a fundamental part of this
+method.}
+
+Our main task then is bound $h$ and $k$. However, we immediately encounter the
+following problem. Suppose that for some block $B\in\Bcal$,
+\begin{equation}
+K(B) = g^3 \sum_{x\in B} \varphi_x^6.
+\end{equation}
+Our heuristics suggest that $\varphi_x^6$ is ``irrelevant'', so it's potential
+appearance in $K$ may not come as a great surprise. But the integration of such
+$K(B)$ will contain a term
+\begin{equation}
+\binom{6}{2} g^3 \sum_{x\in B} \varphi_x^4 C_{00},
+\end{equation}
+which is a marginal term.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -181,6 +303,10 @@ $\ell_0^2 \ge c_0 \ellconst^{-1}$.
 
 \subsection{New choice of norm beyond the mass scale}
 \label{sec:newnorm}
+
+\commentbw{Motivating example: for any $\varphi$, there is a function that is
+not integrable with respect to the Gaussian measure but whose $T_\varphi$
+norm vanishes.}
 
 As in \cite[(\ref{IE-e:PhiXdef})]{BS-rg-IE}, we use the localised version
 of \eqref{e:phinorm}, defined for subsets

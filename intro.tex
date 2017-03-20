@@ -1068,11 +1068,12 @@ c(\graph) = \lim_{n\to\infty} n^{-1} \log c_n.
 Note that, by the trivial bounds $1 \le c_n \le d_0^n$ for $n \ge 1$, $c(\graph) \in [0, d_0]$.
 % Roughly speaking, this means that $c_n \approx c(\graph)^n$ for large $n$.
 By definition, the susceptibility has radius of convergence $c(\graph)^{-1}$.
-% \begin{figure}[!htb]
-% \centering
-% \caption{A trapped self-avoiding walk}
-% \includegraphics{trapped}
-% \end{figure}
+\begin{figure}[!htb]
+\label{fig:trap}
+\centering
+\caption{A trapped self-avoiding walk}
+\includegraphics{trapped}
+\end{figure}
 \end{example}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1101,6 +1102,8 @@ we consider the measures of the form
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Weakly self-avoiding walk with self-attraction}
+
+\commentbw{Add MCMC figure}
 
 Define the \emph{local time} up to time $T$ of $\omega \in \cwalks$ at
 $x \in \vertices$ by
