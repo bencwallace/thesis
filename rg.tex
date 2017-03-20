@@ -1,5 +1,7 @@
 \chapter{Renormalisation group method}
 
+\renewcommand{\pm}{+}					% only consider \gamma \ge 0
+
 In this chapter, we outline the renormalisation group method of Bauerschmidt,
 Brydges, and Slade developed in the series of papers
 \cite{BS-rg-norm,BS-rg-loc,BBS-rg-pt,BS-rg-IE,BS-rg-step} and
@@ -108,23 +110,23 @@ observable fields ($\sigma$), and fermionic fields ($\psi$, $\psib$).
 For any $y\in\Lambda$, we define the polynomials
 \begin{equation}
 \label{e:V0def}
-V^+_{0,y}
+\Vp^+_{0,y}
 	=
 g_0\tau_y^2 + \nu_0 \tau_y + z_0 \tau_{\Delta,y}
 - f_0 \1_{y=x}
 - f_x \1_{y=x},
 	\quad
-U^+_x
+U^+_y
 	=
-|\nabla \tau_x|^2
+|\nabla \tau_y|^2
 \end{equation}
 where
 \begin{equation}
 f_u =
 \begin{cases}
-\phib_0 \sigma_0,			& n = 0, u = 0 \\
-\phi_x \bar\sigma_x,		& n = 0, u = x \\
-\varphi_u \cdot {\sf h},	& n \ge 1.
+\phib_0 \sigma_0,		& n = 0, u = 0 \\
+\phi_x \bar\sigma_x,	& n = 0, u = x \\
+\varphi^1_u,			& n \ge 1.
 \end{cases}
 \end{equation}
 These are examples of local polynomials, which are polynomials
@@ -138,7 +140,7 @@ V(X) = \sum_{y\in X} V_y.
 Let
 \begin{equation}
 \label{e:Z0def}
-Z_0 = \prod_{x\in \Lambda} e^{-(V^+_{0,x} + \gamma_0 U^+_x)}
+Z_0 = \prod_{x\in \Lambda} e^{-(\Vp^+_{0,x} + \gamma_0 U^+_x)}
 \end{equation}
 and
 \begin{equation}
@@ -588,7 +590,7 @@ respective power series. This is why the $T_\phi$ seminorm was defined in terms 
 
 Control of the $T_\phi$ seminorm is needed for all values of
 $\phi$ in order to control the Gaussian expectation in \eqref{e:rgmapZ}.
-This will be discussed further in \REF.
+This will be discussed further in Section~\REF.
 
 For now, we turn our attention to the special case of the $T_0$ seminorm. Recalling
 \eqref{e:exp-conv}, it is natural to choose the parameters $\h_j$ so that the value
@@ -709,7 +711,7 @@ is the \emph{scaling dimension}. Based on this observation, we define the
 \end{equation}
 Note here that we have neglected the rapid decay of fields above the mass scale.
 
-By \REF, $\varphi$ is approximately constant on blocks of side $L^j$. In a sense,
+By \eqref{e:scaling-estimate}, $\varphi$ is approximately constant on blocks of side $L^j$. In a sense,
 the fields on a block act as a unit and this contributes to a volume factor $L^{jd}$.
 This leads us to compare the dimension of a monomial with the dimension $d$ of the
 lattice. We say that $M_x$ is \emph{relevant} if $[M_x] < d$, \emph{marginal} if
@@ -737,19 +739,21 @@ by defining
 	& n \ge 1.
 \end{cases}
 \end{equation}
-When $n = 0$, it can be shown that the only marginal and relevant local monomials (up to constant
-factors) that are Euclidean invariant and supersymmetric are given by
-\begin{equation}
-\tau_x,	\quad \tau_x^2, \quad \tau_{\Delta,x}, \quad \tau_{\nabla\nabla,x}.
-\end{equation}
-When $n \ge 1$, these are monomials are Euclidean invariant and $O(n)$-invariant
-and there is an additional local monomial with these properties: the constant $1$.
 
-We define $\Vcal$ to be the space \emph{local polynomials} (sums of local monomials)
-$V_y$ of the form
+\commentbw{Define symmetries.}
+
+When $n = 0$, it can be shown that the only marginal and relevant local monomials
+that are Euclidean invariant and supersymmetric are constant multiples of
+\begin{equation}
+1, \quad \tau_x, \quad \tau_x^2, \quad \tau_{\Delta,x}, \quad \tau_{\nabla\nabla,x}.
+\end{equation}
+When $n \ge 1$, these are monomials that are Euclidean invariant and $O(n)$-invariant.
+
+We define $\Vcalc$ to be the space \emph{local polynomials} (sums of local monomials)
+$\Vc_y$ of the form
 \begin{align}
 \lbeq{Vy}
-V_y
+\Vc_y
 	&=
 g \tau_y^2 + \nu \tau_y + z \tau_{\Delta,y} + y \tau_{\nabla\nabla,y} + u
 	\nnb&\quad
@@ -758,28 +762,29 @@ g \tau_y^2 + \nu \tau_y + z \tau_{\Delta,y} + y \tau_{\nabla\nabla,y} + u
 	\nnb&\quad
 - \textstyle{\frac 12} (\1_{y=\pp} q_\pp + \1_{y=\qq}q_\qq )\sigma_\pp\sigma_\qq.
 \end{align}
-Given $X \subset \Lambda$, we also define
+Given $X \subset \Lambda$, we let
 \begin{equation}
 \label{e:Vcalesig}
-\Vcal(X) = \{V(X) : V \in \Vcal \},
+\Vcalc(X) = \{\Vc(X) : \Vc \in \Vcalc \},
 \end{equation}
-where $V(X)$ is defined as in \eqref{e:VX}.
-We also make use of the subspaces $\Vcal^{(1)} \subseteq \Vcal$ consisting
+where $\Vc(X)$ is defined as in \eqref{e:VX}.
+We also make use of the subspaces $\Vcalc^{(1)} \subseteq \Vcalc$ consisting
 of polynomials with $y = 0$, as well as the subspace
-$\Vcal^{(0)} \subseteq \Vcal^{(1)}$ of polynomials with
+$\Vcalp \subseteq \Vcalc^{(1)}$ of polynomials with
 $u = y =   q_\pp=q_\qq = 0$.
-For $V \in \Vcal$, we define maps $V \mapsto V^{(1)} \in \Vcal^{(1)}$
-and $V \mapsto V^{(0)} \in \Vcal^{(0)}$. Both maps replace
+We will usually denote an element of $\Vcalp$ as $\Vp$.
+For $\Vc \in \Vcalc$, we define maps $\Vc \mapsto \Vc^{(1)} \in \Vcalc^{(1)}$
+and $\Vc \mapsto \Vc^{(0)} \in \Vcalp$. Both maps replace
 $z\tau_{\Delta}+y\tau_{\nabla\nabla}$ by
 $(z+y)\tau_{\Delta}$, and the latter
 additionally sets
 $u = q_\pp = q_\qq = 0$.
 
-We define the $\Vcal = \Vcal_j$ norm by
+We define the $\Vcalc = \Vcalc_j$ norm by
 \begin{equation}
 \label{e:Vnormdef}
 \begin{aligned}
-\|V\|_{\Vcal} &=
+\|\Vc\|_{\Vcalc} &=
 \max\Big\{
 |g|, L^{2j}|\nu|, |z|, |y|,  L^{4j}|u|,
 \ell_j\ell_{\sigma,j}(|\lambda_\pp|\vee|\lambda_\qq|),\;
@@ -789,11 +794,11 @@ We define the $\Vcal = \Vcal_j$ norm by
 \Big\}
 \end{aligned}
 \end{equation}
-on $V \in \Vcal$, which depends on the parameters $\ell_j$ and $\ell_{\sigma,j}$.
-The $\Vcal = \Vcal_j$ norm is equivalent to the $T_0(\ell_j)$ seminorm on $\Vcal(B)$
+on $\Vc \in \Vcalc$, which depends on the parameters $\ell_j$ and $\ell_{\sigma,j}$.
+The $\Vcalc = \Vcalc_j$ norm is equivalent to the $T_0(\ell_j)$ seminorm on $\Vcalc(B)$
 when $|B| = L^{jd}$:
 \begin{equation}
-\|V\|_\Vcal \asymp \|V(B)\|_{T_0(\ell_j)} = L^{jd} \|V_y\|_{T_0(\ell_j)}.
+\|\Vc\|_\Vcalc \asymp \|\Vc(B)\|_{T_0(\ell_j)} = L^{jd} \|\Vc_y\|_{T_0(\ell_j)}.
 \end{equation}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -801,24 +806,34 @@ when $|B| = L^{jd}$:
 \subsection{Perturbative flow}
 \label{sec:pt}
 
-\todo{Discuss the cumulant expansion.}
+\commentbw{Work on motivating $\Vpt$ and $I$}
 
-In \cite{BBS-rg-pt}, a map $\Vpt : \Vcal\to\Vcal$
-is defined so as to maintain the approximation form
+In \cite{BBS-rg-pt}, a map $\Vpt : \Vcalp\to\Vcalc$
+is defined so as to maintain the approximate form
 \begin{equation}
-Z_j \approx e^{-V_j} (1 + O(V_j^2)).
+Z_j \approx e^{-\Vc_j} (1 + O(\Vp_j^2)).
 \end{equation}
 Precisely, $\Vpt$ depends on a covariance $C$ and satisfies
 \begin{equation}
-\Ex_C\theta e^{-V(\Lambda)} (1 + W(V))
+\Ex_C\theta e^{-V(\Lambda)} (1 + W(\Vp))
 	=
-e^{-\Vpt(\Lambda)} (1 + W(\Vpt)) + O(V^3),
+e^{-\Vpt(\Lambda)} (1 + W(\Vpt^{(0)})) + O(\Vp^3),
 \end{equation}
-where $W = W(V)$ is an explicit polynomial that is quadratic in $V$; see
+where $W = W(V)$ is an explicit polynomial that is quadratic in $V\in\Vcalp$; see
 \cite[\eqref{pt-e:WLTF}]{BBS-rg-pt} for its definitin, which also depends on $C$.
 \todo{Explain $O(V^3)$.}
 
-In practice, we set $C = C_{j+1}$ and obtain a sequence $\Vpt = V_{\mathrm{pt},j+1}$
+To motivate the definition of $\Vpt$, note that, by the \emph{cumulant expansion},
+\begin{equation}
+\Ex_C \theta e^{-V}
+	\approx
+e^{-\Ex_C \theta V + \tfrac12 \Ex_C (\theta V; \theta V)}.
+\end{equation}
+The polynomial in the exponent on the right-hand side is not local.
+In Section~\REF, we will discuss an operator $\Loc_x$ for approximating a non-local
+polynomial by a local polynomial in $\Vcal$ at $x$. 
+
+In practice, we set $C = C_{j+1}$ and obtain a sequence $\Vpt = \Vc_{\mathrm{pt},j+1}$
 of maps and $W_j$ of polynomials. By \cite[\eqref{IE-e:W-logwish}]{BS-rg-IE},
 \todo{(check this)},
 \begin{equation}
@@ -829,14 +844,14 @@ O(\chicCov_j) \|V\|_\Vcal^2,
 \end{equation}
 where $\chicCov_j$ is a parameter that decays exponentially above the mass scale
 and will be discussed in Section~\ref{sec:step}.
-The maps $V \mapsto \Vpt$
+The maps $\Vp \mapsto \Vpt$
 generate a sequence of couplings constants that we refer to as the
 \emph{perturbative flow}. The equations defining this flow can be
 computed exactly by way of Feynman diagrams.
 
 \subsubsection{The flow of \texorpdfstring{$g$}{g}}
 
-Following an approximate change of coordinates with $O(V^3)$ errors, the perturbative
+Following an approximate change of coordinates with $O(\Vp^3)$ errors, the perturbative
 flow of $g$ takes the form
 \begin{equation}
 \label{e:gbar}
@@ -953,7 +968,8 @@ we define the \emph{circle product} $F \circ G : \Pcal_j(\Lambda) \to \Ncal$ by
 \begin{equation}
 (F \circ G)(X) = \sum_{Y\in\Pcal_j(X)} F(X \setminus Y) G(Y).
 \end{equation}
-We track $Z_j$ using \emph{renormalisation group coordinates} $\zeta_j \in \R$,
+We track $Z_j$ using \emph{renormalisation group coordinates}
+$u_j, q_{0,j}, q_{x,j} \in \R$,
 $I_j, K_j : \Pcal_j \to \Ncal$, defined such that
 \begin{equation}
 \label{e:IcircKnew}
@@ -963,13 +979,13 @@ $I_j, K_j : \Pcal_j \to \Ncal$, defined such that
 	+ \textstyle{\frac 12} (q_{\pp,j} + q_{\qq,j}) \sigma_\pp\sigma_\qq
 	.
 \end{equation}
-The coordinate $I_j = I_j(U, \cdot)$ is defined by
+The coordinate $I_j = I_j(\Vp, \cdot)$ is defined by
 \begin{equation}
-I_j(U, X)
+I_j(\Vp, X)
 	=
-\prod_{B \in \Bcal_j(X)} e^{-U(B)} (1 + W_j(B, U)), \quad X \in \Pcal_j,
+\prod_{B \in \Bcal_j(X)} e^{-\Vp(B)} (1 + W_j(B, \Vp)), \quad X \in \Pcal_j,
 	\quad
-U \in \Vcal^{(0)}.
+\Vp \in \Vcalp.
 \end{equation}
 
 Before defining the space in which $K_j$ lies, we need the following notions:
@@ -996,8 +1012,6 @@ Two polymers $X, Y$ \emph{do not touch} if $\min(|x - y|_\infty : x \in X, y \in
 We let ${\rm Comp}(X)$ denote the set of maximal connected components that do not touch
 in $X$.
 \end{itemize}
-
-\commentbw{Define symmetries and determine what are the right symmetries for $n > 1$.}
 
 \begin{defn}
 For $j \le N(\volume)$, let $\CKspace_j = \CKspace_j(\volume)$ denote the complex
@@ -1028,41 +1042,40 @@ Addition in $\CKspace_j$ is defined by $(F_1 + F_2)(X) = F_1(X) + F_2(X)$.
 We extend any $F \in \CKspace_j$ to $\Kspace_j$ by defining
 $F(X) = \prod_{Y\in{\rm Comp}(X)} F(Y)$.
 
-\subsubsection{Initial coordinates}
+\subsection{Initial coordinates}
 
-\commentbw{Consider using $V$ for bulk and $U$ for bulk plus observables. In saw-sa,
-$V^+$ is used extensively for bulk. Need to check that $U$ is not too important in clp.}
-
-At scale $j = 0$, we are given $V^+_0$ as defined in \eqref{e:V0def}
+At scale $j = 0$, we are given $\Vp^+_0$ as defined in \eqref{e:V0def}
 and we set $\zeta_0 = 0$. In particular,
 the initial values of $u$, $q_0$, $q_x$ are zero, and the initial values of $\lambda_0$, $\lambda_x$
 are $1$. By definition, $W_0 = 0$.
 For $X \subset \Lambda$, we define
 \begin{equation}
 \label{e:IK0def}
-I_0^+(X) = I_0(V^+_0, X) = \prod_{x\in X} e^{-V^+_{0,x}},
+I_0^+(X) = I_0(\Vp^+_0, X) = \prod_{x\in X} e^{-\Vp^+_{0,x}},
 	\qquad
 K_0^+(X) = \prod_{x \in X} I_{0,x}^+ (e^{-\gamma_0 U^{+}_{x}} - 1).
 \end{equation}
 It is straightforward to verify that $K_0 \in \Kcal_0$.
 With these choices, $Z_0$ (recall \refeq{Z0def})
-takes the form \eqref{e:IcircKnew}, and we seek $(\zeta_j, V_j, K_j)$ such that
-this continues to hold as the scale advances.
+takes the form \eqref{e:IcircKnew}, and we seek
+$(u_j, q_{0,j}, q_{x,j}, \Vp_j, K_j)$ such that this continues to hold as the scale advances.
 
-Equivalently, given $(V_j, K_j)$, we must define $(\delta\zeta_{j+1}, V_{j+1}, K_{j+1})$ so that
+Equivalently, given $(\Vp_j, K_j)$, we must define
+$(\delta u_{j+1}, \delta q_{0,j+1}, \delta q_{x,j+1}, V_{j+1}, K_{j+1})$ so that
 \begin{equation} \label{e:IcircKdu}
 	\Ex_{j+1}\theta(I_j \circ K_j)(\Lambda)
 	=
-	e^{-\delta \zeta_{j+1}}(I_{j+1} \circ K_{j+1})(\Lambda),
+	e^{-\delta \zeta_{j+1}}(I_{j+1} \circ K_{j+1})(\Lambda).
 \end{equation}
-where $\delta\zeta_{j+1} = \zeta_{j+1} - \zeta_j$.
 Moreover, we need $K_j$ to contract as the scale advances, under an appropriate norm.
-The construction of (scale-dependent) maps $V_+$ and $K_+$ such that
+The construction of (scale-dependent) maps $\Vc_+$ and $K_+$ such that
 \eqref{e:IcircKdu} holds with
 \begin{equation}
-(\delta\zeta_{j+1}, V_{j+1}) = V_+(V_j, K_j),
+(\delta u_{j+1}, \delta q_{0,j+1}, \delta q_{x,j+1}, \Vp_{j+1})
+	=
+\Vc_+(\Vp_j, K_j),
 	\quad
-K_{j+1} =  K_+(V_j, K_j)
+K_{j+1} =  K_+(\Vp_j, K_j)
 \end{equation}
 is the main accomplishment of \cite{BS-rg-step}.
 
@@ -1108,8 +1121,8 @@ renormalisation group domains
 \label{e:DVdef}
 \DV_j
 	&=
-\{ V\in \Vcal^{(0)} :
-	g> C_{\DV}^{-1} \ggen_j  , \;  \|V\|_{\Vcal} < C_{\DV} \ggen_j \}, \\
+\{ \Vp\in \Vcalp :
+	g > C_{\DV}^{-1} \ggen_j, \; \|\Vp\|_{\Vcalc} < C_{\DV} \ggen_j \}, \\
 \label{e:domRG}
 \domRG_j
 	&= \domRG_j(\volume)
@@ -1119,15 +1132,15 @@ The domain $\DV_j$ is independent of the volume $\volume$ while $\domRG_j$
 depends on $\volume$ through $\Wcal_j$.
 
 In the statement of the following theorem, we fix the scale $j$ and
-consider maps $V_+ = V_{j+1}$ and $K_+ = K_{j+1}$ that act on the domain
-$\domRG_j$ and map into $\Vcal_{j+1}^{(1)}$, $\Kcal_{j+1}$, respectively.
+consider maps $\Vc_+ = \Vc_{j+1}$ and $K_+ = K_{j+1}$ that act on the domain
+$\domRG_j$ and map into $\Vcalc_{j+1}^{(1)}$, $\Kcal_{j+1}$, respectively.
 We will drop the scale $j$ from the notation for objects at scale $j$
 and replace $j + 1$ with $+$.
-The deviation of the map $V_+$ from the perturbative map $\Vpt$
+The deviation of the map $\Vc_+$ from the perturbative map $\Vpt$
 is denoted by $R_+$:
 \begin{equation}
 \label{e:Rplusdef}
-    R_+(V,K) = V_+(V,K) -\Vpt^{(1)}(V).
+    R_+(\Vp,K) = \Vc_+(\Vp,K) -\Vpt^{(1)}(\Vp).
 \end{equation}
 % The following theorem is applied with $\alpha =4M$ as a convenient choice.
 
@@ -1149,7 +1162,7 @@ R_+:\domRG %\times \Igen_+(\mgen^2)
 K_+:\domRG %\times \Igen_+(\mgen^2)
 \to \Wcal_{+}%(\sgen_+)
 \end{equation}
-define $(U,K)\mapsto (V_+,K_+)$ obeying \eqref{e:IcircKdu}
+define $(\Vp,K)\mapsto (\Vc_+,K_+)$ obeying \eqref{e:IcircKdu}
 when $\volume = \Lambda$.
 Moreover, for any $\volume$, these maps satisfy the estimates
 \begin{equation}
@@ -1204,7 +1217,7 @@ to prove that, for $m^2$ and $g_0$ sufficiently small, there exist
 \emph{critical} initial conditions
 $\nu_0 = \nu_0^c(m^2, g_0, \gamma_0; n)$ and $z_0 = z_0^c(m^2, g_0,\gamma_0; n)$
 such that for any $N$,
-iteration of the maps $(V_+,K_+)$ defines a sequence $(V_j^{(0)}, K_j)$
+iteration of the maps $(\Vc_+,K_+)$ defines a sequence $(\Vp_j, K_j)$
 which lies in the domain $\domRG_j$ and obeys the estimates \refeq{RKplus}
 \emph{for all} $j = 1, \ldots, N$.
 % This construction of critical initial conditions uses the $s=0$ version
@@ -1248,21 +1261,31 @@ and have left- and right-derivatives in $y$ at $y = 0$.
 In our applications, we take $w = m^2$, $x = g_0$ or $\gcc$,
 and $y = \gamma_0$ or $\gamma$.
 
+\commentbw{Define bulk domain}
+
 \begin{theorem}
 \label{thm:rhatflow}
 There exists a domain $D(\delta, \hat r)$ (with $\delta > 0$ and $\hat r$
 positive-definite) and functions $\hat\nu_0^c, \hat z_0^c \in C^{0,1,\pm}(D(\delta, \hat r))$
 such that for any $(m^2, g_0, \gamma_0) \in D(\delta, \hat r)$
 with $g_0 > 0$ and $m^2 \in [\delta L^{-2 (N - 1)}, \delta)$, the following holds:
-if $(V_0, K_0) = (V^+_0, K^+_0)$ with $(\nu_0, z_0) = (\hat\nu_0^c, \hat z_0^c)$,
-% and $\sigma_0 = \sigma_x = 0$,
-then for any $N \in \N$,
-there exists a sequence $(V_j, K_j) \in \domRG_j(m^2, g_0, \Lambda)$ such that
+if $(\Vc_0, K_0) = (\Vp^+_0, K^+_0)$ with $(\nu_0, z_0) = (\hat\nu_0^c, \hat z_0^c)$,
+and $\lambda_0 = q_0 = 0$,
+then for any $N \in \N$, there exists a sequence $(\Vp_j, K_j) \in \domRG^\varnothing_j$ such that
 \begin{equation}
-	\label{e:VjKjDj-hat}
-	(V_{j+1},K_{j+1}) = (V_{j+1}(V_j, K_j), K_{j+1}(V_j, K_j)) \text{ for all } j < N
+\label{e:VjKjDj-hat}
+(\Vc_{j+1},K_{j+1})
+	=
+(\Vc_{j+1}(\Vp_j, K_j), K_{j+1}(\Vp_j, K_j)) \text{ for all } j < N
 \end{equation}
-and \eqref{e:IcircKnew} is satisfied.
+and \eqref{e:IcircKdu} is satisfied.
+Moreover, with $\Vc_j = (\delta u_j, \delta q_j, \Vp_j)$, we have
+$(\Vp_j, K_j) \in \domRG_j(m^2, g_0, \Lambda)$ such that...
+% \begin{equation}
+% 	\label{e:VjKjDj-hat}
+% 	(\Vp_{j+1},K_{j+1}) = (\Vp_{j+1}(\Vp_j, K_j), K_{j+1}(\Vp_j, K_j)) \text{ for all } j < N
+% \end{equation}
+% and \eqref{e:IcircKnew} is satisfied.
 These functions satisfy the bounds
 \begin{equation}
 \label{e:hat-est}
@@ -1273,6 +1296,8 @@ These functions satisfy the bounds
 uniformly in $(m^2, \gamma_0)$.
 % Moreover, the second-order evolution equation for $V_j$ is independent of $\gamma_0$.
 \end{theorem}
+
+\commentbw{Need statements about control of the observable part.}
 
 A version of this theorem with $\gamma_0 = 0$ (and $s = 0$) was proved in
 \cite[Theorem~\ref{log-prop:KjNbd}]{BBS-saw4-log}. This result is based on the
