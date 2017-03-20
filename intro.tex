@@ -41,12 +41,12 @@ these two phases \emph{vanishes}; if $T_c = T_c(P)$ is the boiling point of wate
 at pressure $P$, then the point $(T_c, P_c)$ is known as the \emph{critical point}
 for water.
 
-% \begin{figure}
-% \centering
-% \label{fig:liquid-vapour}
-% \includegraphics{liquid_vapour}
-% \caption{The phase diagram of $\rm H_2 O$}
-% \end{figure}
+\begin{figure}
+\centering
+\label{fig:liquid-vapour}
+\includegraphics{liquid_vapour}
+\caption{The phase diagram of $\rm H_2 O$}
+\end{figure}
 
 Since statistical mechanics deals with extremely large, complicated systems of
 interacting particles, only simplified models of real materials can usually be
@@ -74,109 +74,103 @@ incomplete.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Asymptotics}
+\label{sec:asymp}
 
-Before we introduce the formal structure of statistical mechanics, we make a
-few remarks concerning some of the general mathematical principles underlying
-it. We begin with some notation.
+Before discussing the formal structure of statistical mechanics, we make some
+general remarks on notation and approaches to the study of asymptotics.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Asymptotic notation}
 
+\commentbw{Define $\asymp$ and maybe mention $\approx$}
+
 Let $F$ and $G$ be a functions on a subset of the real line or the integers.
-We write
-\begin{equation}
-F(x) \sim G(x),
-	\quad
-x \to a
-\end{equation}
-if
-\begin{equation}
-\lim_{x\to a} \frac{F(x)}{G(x)} = 1.
-\end{equation}
-Here $a$ is allowed to be $\pm\infty$. We write
+For $a\in[-\infty,\infty]$, we write
+\begin{alignat}{2}
+F(x) &\sim G(x), &&\qquad x \to a \\
+F(x) &= o(G(x)), &&\qquad x \to a
+\end{alignat}
+if, respectively,
+\begin{align}
+&\lim_{x\to a} \frac{F(x)}{G(x)} = 1 \\
+&\lim_{x\to a} \frac{F(x)}{G(x)} = 0.
+\end{align}
+We also write
 \begin{equation}
 F(x) = O(G(x))
 	\text{ or }
 F(x) \le O(G(x)),
-	\quad
+	\qquad
 x \to a
 \end{equation}
-if there is a neighbourhood $N$ of $a$ and a constant $C > 0$ such that
+if there is a neighbourhood $N$ of $a$ (in the extended real line)
+and a constant $C > 0$ such that
 \begin{equation}
-F(x) \le C G(x)
-\end{equation}
-whenever $x \in N$. Again, $a$ can be $\pm\infty$ and a neighbourhood
-of $\pm\infty$ is defined in the sense of the extended real line.
-Similarly, we write
-\begin{equation}
-F(x) = o(G(x)),
-	\quad
-x \to a
-\end{equation}
-if
-\begin{equation}
-\lim_{x\to a} \frac{F(x)}{G(x)} = 0.
+F(x) \le C G(x) \quad x \in N.
 \end{equation}
 
-\subsection{The generating function}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Generating function}
 
 The \emph{generating function} of a sequence $a_n$ is defined by
 \begin{equation}
-f(z) = \sum_{n=0}^\infty a_n z^n.
+g(z) = \sum_{n=0}^\infty a_n z^n.
 \end{equation}
-If the function $f$ is well understood, then the coefficients $a_n$ can be
-recovered via
+If the function $g$ is well understood, then the coefficients $a_n$ can be
+recovered as
 \begin{equation}
-a_n = \frac{1}{n!} f^{(n)}(0).
+a_n = \frac{1}{n!} g^{(n)}(0).
 \end{equation}
 This is known as the method of generating functions.
 
-In many cases, $f$ cannot be computed exactly. Nevertheless, there is a close
+In many cases, $g$ cannot be computed exactly. Nevertheless, there is a close
 relationship between the asymptotics of the sequence $a_n$
-as $n\to\infty$ and the function $f(z)$ near its dominant singularities, i.e.\
+as $n\to\infty$ and the function $g(z)$ near its dominant singularities, i.e.\
 its singularities closest to the origin.
 
 For instance, if $a_n \sim r^{-n} n^\alpha$, then the root test implies that
 the generating function $f$ has radius of convergence $r$ and it can be shown
-(\todo{\REF, see Madras-Slade}) that $f(z) \sim (r - z)^{-\alpha-1}$ as
+(\todo{\REF, see Madras-Slade}) that $g(z) \sim (r - z)^{-\alpha-1}$ as
 $z \uparrow r$ (\todo{what about the constant?}). This is an
 example of an \emph{Abelian theorem}. The converse does not always hold; a
 theorem providing conditions under which the converse is true is known as a
 \emph{Tauberian theorem}, and is generally harder to prove than its Abelian
 counterpart. \todo{State Tauberian theorem.}
 
-% Let $X$ be a random variable and write $\Ex$ for expectation.
-% The generating function $f_X$ of the sequence $a_n = \tfrac{1}{n!} \Ex(X^n)$ is the
-% \emph{moment-generating function} of $X$. However, it is often
-% more convenient to work with the \emph{cumulant generating function} $\log f_X$.
-% Let $X$ be a discrete random variable in $\Z_+$ with $\Pr(X = n) = p_n$. The
-% generating function $f_X$ of $p_n$ is known as the probability generating function.
+\commentbw{Incomplete}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{The Laplace transform}
 
-Given a sequence $a_T$ parameterized by $T \in \R$, the generating function is
-not well-defined. Instead, it is useful to consider the \emph{Laplace transform}
+The \emph{Laplace transform} of a function $f(T)$ for $T \in \R$ is
 \begin{equation}
 \label{e:laplace-transform-def}
-F(\nu) = \int a_T e^{-\nu T} \; dT.
+G(\nu) = \int f(T) e^{-\nu T} \; dT.
 \end{equation}
-Once again, there is a relationship between the asymptotics of $a_T$ as $T\to\infty$
-and of $F(\nu)$ as $\nu$ approaches its nearest singularity.
+Once again, there is a relationship between the asymptotics of $f(T)$ as $T\to\infty$
+and of $G(\nu)$ as $\nu$ approaches its nearest singularity.
+For instance, we have the following (see \cite[Chapter V]{Widd41}).
 
 \begin{theorem}
 Suppose that there exist $\nu_0$ such that
-the function $F(\nu)$ defined by \eqref{e:laplace-transform-def} converges for
+the function $G(\nu)$ defined by \eqref{e:laplace-transform-def} converges for
 $\nu > \nu_0$. If there exist $A$ and $\alpha \ge 0$ such that
 \begin{equation}
-a_T \sim \frac{A}{\Gamma(\alpha + 1)} T^\alpha,
+f(T) \sim \frac{A}{\Gamma(\alpha + 1)} T^\alpha,
 \end{equation}
 then
 \begin{equation}
-F(\nu) \sim A \nu_0 (\nu - \nu_0)^{-(\alpha+1)}.
+G(\nu) \sim A \nu_0 (\nu - \nu_0)^{-(\alpha+1)}.
 \end{equation}
-Moreover, the converse holds if $a_T$ is increasing.
+Moreover, the converse holds if $f(T)$ is increasing.
 \end{theorem}
 
-The converse is a case of Karamata's theorem; see \cite[Chapter V]{Widd41}.
+When $f$ is not monotonic, it may still be possible to recover its asymptotic
+behaviour from $G$ by inverting the Laplace transform. However, control over
+$G$ for $\nu$ in a sector of the complex plane is required in this case.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -185,7 +179,6 @@ The converse is a case of Karamata's theorem; see \cite[Chapter V]{Widd41}.
 
 Let $(\Omega, \lambda)$ be a measure space. We view $\lambda$ as some ``natural''
 measure on $\Omega$.
-
 The dynamics of a physical system with state space $\Omega$
 is often determined by a function $H$ on $\Omega$, known as the \emph{Hamiltonian}.
 In statistical mechanics, the systems of concern consist of an extraordinarily
@@ -195,8 +188,8 @@ system.
 
 A common simplifying assumption is that after a long time has passed, the system
 under consideration will settle into a state of \emph{thermal equilibrium}, meaning
-that there is no net flow of heat with its surroundings. In this case, the temperature
-of the system is constant and we denote by $\beta$ the \emph{inverse temperature}.
+that there is no net flow of heat between the system and its surroundings. Thus,
+the temperature is constant and we denote by $\beta$ the \emph{inverse temperature}.
 The \emph{Gibbs measure} for a system with Hamiltonian $H$ at inverse temperature
 $\beta$ is the probability measure on $\Omega$ given by
 \begin{equation}
@@ -209,30 +202,29 @@ Z = \int e^{-\beta H} \; d\lambda
 \end{equation}
 is known as the \emph{partition function}.
 
-An elegant approach to the derivation of this measure was provided by Jaynes
-\cite{Jaynes57}: amongst all probability measures $\tilde\mu$ on $\Omega$ absolutely
+A simple approach to the derivation of this measure was suggested by Jaynes \cite{Jaynes57}:
+amongst all probability measures $\mu$ on $\Omega$ absolutely
 continuous with respect to $\lambda$, the Gibbs measure maximizes the \emph{entropy}
 \begin{equation}
 \label{e:entropy-def}
-h(\tilde\mu) = -\int \log \frac{d\tilde\mu}{d\lambda} \; d\mu
+h(\mu) = -\int \log \frac{d\mu}{d\lambda} \; d\mu
 \end{equation}
 with respect to $\lambda$, subject to the fixed average energy constraint
 \begin{equation}
-\int H \; d\tilde\mu = E.
+\int H \; d\mu = E.
 \end{equation}
-This can be shown using the method of Lagrange multipliers; the parameter
-$\beta = \beta(E)$ arises as a Lagrange multiplier.
+This can be shown using the method of Lagrange multipliers
+(the parameter $\beta = \beta(E)$ arises as a Lagrange multiplier).
 
-The \emph{free energy} of the system with Hamiltonian $H$ is given by
+The \emph{free energy} is defined by
 \begin{equation}
 F_\beta = -\frac{1}{\beta} \log Z_\beta.
 \end{equation}
-A computation of the entropy \eqref{e:entropy-def} of the Gibbs measure
-$\mu_\beta$ with inverse temperature $\beta = \beta(E)$ shows that
+A computation of the entropy of $\mu_\beta$ with $\beta = \beta(E)$ shows that
 \begin{equation}
-F_\beta = E - \frac{1}{\beta} h_\lambda(\mu_\beta).
+F_\beta = E - \frac{1}{\beta} h(\mu_\beta)
 \end{equation}
-This is the well-known thermodynamic relation between the free energy $F_\beta$,
+which is the well-known thermodynamic relation between free energy $F_\beta$,
 internal energy $E$, temperature $1/\beta$, and entropy $h_\lambda(\mu_\beta)$.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -240,7 +232,7 @@ internal energy $E$, temperature $1/\beta$, and entropy $h_\lambda(\mu_\beta)$.
 
 \section{Graphs}
 
-Graphs are a useful setting for the definitions of spatially-extended systems of
+Graphs are a useful setting for the definition of spatially-extended systems of
 particles.
 
 An \emph{undirected graph} or simply a \emph{graph} is a pair $\graph = (\vertices, \edges)$,
@@ -250,12 +242,12 @@ is a set of \emph{vertices} and $\edges$ is a set of
 $\{ x, y \} \in \edges$.
 For simplicity, we will assume that $\vertices$ is countable annd that there are no
 \emph{self-loops} $\{ x \} \in \edges$.
-We will also assume that $\graph$ is \emph{(vertex-)transitive}: that is, for all pairs
+We will also assume that $\graph$ is \emph{(vertex-)transitive} meaning that for all pairs
 of distinct
 vertices $a, b \in \vertices$, there exists a mapping $f : \vertices \to \vertices$
 such that $x \sim y$ if and only if $f(x) \sim f(y)$.
-We fix a vertex $0\in\vertices$; the assumption of transitivity implies
-that the particular choice of $0$ is immaterial.
+We fix a vertex $0\in\vertices$ whose precise choice is immaterial due to
+transitivity.
 
 \begin{example}\mbox{}\\
 \smallskip\noindent
@@ -265,10 +257,11 @@ $x\sim y$ if $|x - y| = 1$. In particular, $X = \Zd$ is transitive.
 \smallskip\noindent
 (ii) Let $L > 1$ be an integer. For $N \ge 0$, let
 \begin{equation}
-\Lambda_N = \Zd/L^N\Zd.
+\label{e:Lambda-torus}
+\Lambda = \Lambda_N = \Zd/L^N\Zd.
 \end{equation}
-We call $\Lambda_N$ the \emph{discrete $d$-dimensional torus} of side $L^N$.
-We view $\Lambda_N$ as a graph with $\vertices = \Lambda_N$ and $x \sim y$
+We call $\Lambda$ the (discrete) $d$-dimensional \emph{torus} of side $L^N$.
+We view $\Lambda$ as a graph with $\vertices = \Lambda$ and $x \sim y$
 if $|x - y| = 1$ modulo $L^N$.
 \end{example}
 
@@ -276,17 +269,19 @@ if $|x - y| = 1$ modulo $L^N$.
 
 \subsection{Functions on graphs}
 
-Let us denote the components of a function $\varphi : \vertices \to \R^n$ by
+Let us denote the components of an element $\varphi \in (\R^n)^\vertices$ by
 $\varphi^i_x \in \R$ for $x \in \vertices$ and $i = 1, \ldots, n$.
-The Euclidean inner product and norm on the space $(\R^n)^\vertices$ of such functions
+The Euclidean inner product and norm on $(\R^n)^\vertices$
 are defined by
 \begin{align}
 \varphi\cdot\tilde\varphi
 	&= \sum_{x\in\vertices} \varphi_x \cdot \tilde\varphi_y
   		= \sum_{i=1}^n \sum_{x\in\vertices} \varphi^i_x \tilde\varphi^i_x \\
-	&=|\varphi|^2 = \varphi \cdot \varphi.
+|\varphi|^2
+	&= \varphi \cdot \varphi.
 \end{align}
-A $\vertices\times\vertices$ matrix $M = (M_{xy})_{x,y\in\vertices}$ acts on $\varphi$ via
+A $\vertices\times\vertices$ matrix $M = (M_{xy})_{x,y\in\vertices}$ acts on $\varphi$
+component-wise:
 \begin{equation}
 (M \varphi)_x = \sum_{y\in\vertices} M_{xy} \varphi_y.
 \end{equation}
@@ -297,18 +292,18 @@ A $\vertices\times\vertices$ matrix $M = (M_{xy})_{x,y\in\vertices}$ acts on $\v
 
 Let us say that a $\vertices\times\vertices$ matrix $M$ is \emph{indexed by} $\edges$
 if $M_{xy} = 0$ if and only if $x \not\sim y$.
-Let $\jay$ be a matrix indexed by $\edges$.
-Throughout this thesis, we will assume that the $\jay$ has nonnegative entries;
-thus, $\jay_{xy} \ge 0$ with equality if and only if $x\not\sim y$.
+
+Throughout this chapter, we let $\jay$ be a matrix indexed by $\edges$ with nonnegative entries.
+% Thus, $\jay_{xy} \ge 0$ with equality if and only if $x\not\sim y$.
 The pair $(\graph, \jay)$ is an example of a \emph{weighted} graph.
 We will usually denote this weighted graph simply as $\graph$, with $\jay$
 implicit.
 
-Let $\diag$ be a diagonal $\vertices\times\vertices$ matrix with diagonal entries
+Let $\diag$ be the diagonal $\vertices\times\vertices$ matrix with diagonal entries
 \begin{equation}
 d_x = \diag_{xx} = \sum_{y \sim x} J_{xy}.
 \end{equation}
-We say that $\graph$ is $d_0$-regular if $d_x = d_y$ for all $x, y$.
+We say that $\graph$ is \emph{$d_0$-regular} if $d_x = d_y$ for all $x, y$.
 
 The \emph{(massless) graph Laplacian} on $\graph$ is defined by
 \begin{equation}
@@ -331,8 +326,8 @@ so $-\lap$ is positive-semidefinite.
 
 \begin{example}
 An important case is when $\jay$ has $\{0, 1 \}$-valued entries.
-In this case, $d_x$ is the \emph{degree} of $x$ in $\graph$ and we denote $\lap$ by
-$\Delta$, which has entries given by
+In this case, $d_x$ is the \emph{degree} of $x$ in $\graph$ and
+% we denote $\lap$ by $\Delta$, which has entries given by
 \begin{equation}
 \label{e:Deltaxy}
 -\Delta_{xy} = d_x \1_{x=y} - \1_{x \sim y}.
@@ -353,8 +348,8 @@ Z = (m^2 + D)^{-1} D,
   \quad
 P = D^{-1} J.
 \end{align}
-Let $z_x$ denote the diagonal elements of $Z$. The \emph{Green function} for
-of the graph $\graph$ is the kernel of $(-\lap + m^2)^{-1}$, given by
+Let $z_x$ denote the diagonal elements of $Z$. The \emph{Green function}
+of $\graph$ is the kernel of $(-\lap + m^2)^{-1}$, given by
 \begin{equation}
 \label{e:greendef}
 C(x, y)
@@ -362,30 +357,52 @@ C(x, y)
 (m^2 + d_x)^{-1} \sum_{n=0}^\infty z_x^n P^n_{xy}.
 \end{equation}
 
+\commentbw{Translation invariant case: $C(x) = C(0, x)$}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Spin systems}
 
-\subsection{The Ising model}
+The Ising model on $\Zd$ was introduced by Willhelm Lenz \REF. Lenz
+suggested it as
+a problem for his student Ernst Ising, who determined in 1924 \cite{Ising25} that there is no
+phase transition when $d = 1$.
+In 1936, Rudolf Peierls \cite{Peierls36} demonstrated that a phase
+transition occurs for $d > 1$ and in 1944, Onsager \cite{Onsager44} provided an exact calculation
+of the free energy in infinite volume with $h = 0$.
 
-Suppose that $|\vertices| < \infty$.
-The \emph{Ising model} on $\graph$ is defined by the Gibbs measure on $\Omega = \{ \pm 1 \}^\vertices$
-with Hamiltonian
+\commentbw{Heisenberg model; general spin systems; subtlety of $n = 2$}
+
+For more information on spin systems, we refer to \cite{Georgii11} and \todo{Friedli-Velenik}.
+
+\commentbw{Maybe remove the following.}
+
+The classical \emph{Ising model} on $\graph$ is defined by the Gibbs measure on
+$\Omega = \{ \pm 1 \}^\vertices$ with Hamiltonian
 \begin{equation}
+\label{e:ham-ising}
 H_h(\sigma)
 	=
 -\frac{1}{2} \sum_{x \sim y} \sigma_x \sigma_y - h \sum_{x\in\vertices} \sigma_x,
 \end{equation}
-where $h \in \R$ is known as the \emph{external field}.
-The first term encourages spins to \emph{align}: an edge $\{ x, y \}$ makes
+where $h \in \R$ is known as the \emph{external field}. When $\vertices$ is
+infinite, this is not well-defined but the Ising model can nevertheless be
+defined by a suitable limiting procedure. We will return to this issue in
+Section~\REF. For now, we suppose that
+\begin{equation}
+|\vertices| < \infty.
+\end{equation}
+The first term in \eqref{e:ham-ising} encourages spins to \emph{align}: an edge
+$\{ x, y \}$ makes
 a negative contribution to the total energy (so a positive contribution to
 the probability of a configuration) when $\sigma_x = \sigma_y$.
 For a similar reason, the second term encourages spins to adopt the same sign as $h$.
 
 Let $\langle\cdot\rangle_{\beta,h}$ denote the expectation with respect to
 this Gibbs measure and let $Z_{\beta,h}$ be the partition function.
-The \emph{magnetization} is defined by
+A fundamental quantity for the identification of a phase transition is the
+\emph{magnetization}, defined by
 \begin{equation}
 \langle \sigma_0 \rangle_{\beta,h} = \frac{1}{Z_\beta} \sum_{\sigma\in\Omega} \sigma_0 e^{-\beta H(\sigma)}.
 \end{equation}
@@ -414,9 +431,9 @@ G_x(\beta, h)
 \end{equation}
 is the \emph{two-point function}.
 Thus, the susceptibility is positive and so the magnetization is increasing
-in $h$. When $h = 0$, the Gibbs measure is invariant under the spin flip
+in $h$. When $h = 0$, the Gibbs measure is invariant under the spin flip transformation
 $\sigma \mapsto -\sigma$, and so the magnetization is $0$. It follows that
-$\langle \sigma_0 \rangle_{\beta,h} > 0$ if and only if $h > 0$.
+$\langle \sigma_0 \rangle_{\beta,h} \ge 0$ if and only if $h \ge 0$.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -427,8 +444,9 @@ An $n$-component \emph{field} or \emph{spin configuration} on $\vertices$
 with spins in $S \subset \R^n$ is an element of $\Omega = S^\vertices$.
 % A \emph{spin system} is a probability measure $d\mu$ on $\Omega$.
 Suppose that $S$ is equipped with a measure $d\lambda^0$.
-Given a Hamiltonian $H : \Omega \to \R$, we define the measure
+Given a Hamiltonian $H : \Omega \to \R$, we define the probability measure
 \begin{equation}
+\label{e:gibbs-spin}
 d\mu_\beta(\varphi)
   =
 \frac{1}{Z_\beta} e^{-\beta H(\varphi)} d\lambda(\varphi)
@@ -438,18 +456,8 @@ on $\Omega$, where
 d\lambda(\varphi) = \prod_{x\in\vertices} d\lambda^0(\varphi_x).
 \end{equation}
 We denote the expectation with respect to this measure by $\langle\cdot\rangle_\beta$.
-% However, there are some problems with this definition when $\vertices$ is infinite.
-% For one, $d\lambda$ may not be well-defined (for instance if
-% $S = \R$ and $d\lambda^0$ is Lebesgue measure). Another issue is that it may be
-% difficult to define a reasonable choice of $H$ on the infinite product space
-% $\Omega$.
-% 
-% For this reason, we temporarily restrict our attention to finite graphs:
-% \begin{equation}
-% |\vertices| < \infty.
-% \end{equation}
-% Then the Gibbs measure $\mu = \mu_\beta$ is well-defined and we will denote the
-% expectation with respect to this measure by $\langle \cdot \rangle_\mu$.
+
+
 
 Following our discussion of the Ising model, we define the two-point function
 and susceptibility by
@@ -584,7 +592,7 @@ come from pairings $\pi$ consisting of edges in $X$.
 \subsection{Spin systems in infinite volume}
 
 The presence of a phase transition in a physical system is signalled by an abrupt
-change in an observable quantity with respect to a parameter;
+change in an observable quantity with respect to a parameter.
 We make a broad distinction between
 \emph{first-order} phase transitions in which the free energy has discontinuous first
 derivative (with respect to an external field $h$) and \emph{continuous} phase transitions,
@@ -594,11 +602,9 @@ The systems we have defined above all
 have smooth free energy since the Hamiltonians are smooth functions. The reason we cannot
 detect a phase transition in these systems is that they have been defined on finite volumes.
 This is also the reason that, as we have observered in \REF, the magnetization of the Ising
-model in a finite volume is $0$ in the absence of a magnetic field, despite physical evidence
-that a ferromagnet can sustain a non-zero magnetization on its own (the magnetization can
-be expressed as a derivative of the free energy).
-Thus, in order to study phase transitions, we are forced to consider
-spin systems on infinite graphs.
+model in a finite volume is $0$ in the absence of a magnetic field, despite the fact that
+this is not true of a real ferromagnet. Thus, in order to study phase transitions, we are
+forced to consider spin systems on infinite graphs.
 
 A systematic approach to this problem was developed in the work of Dobrushin \cite{Dobrushin68}
 and Lanford and Ruelle \cite{LR69}. A comprehensive reference to this subject is \cite{Georgii11}
@@ -609,77 +615,54 @@ from which the Hamiltonian is to be defined; for instance, for the Ising model,
 the Hamiltonian is a sum of contributions of the form $J_{xy} \sigma_x \sigma_y$ whenever
 $x \sim y$. Given such a potential, a Hamiltonian can be defined on any
 finite subgraph of $\graph$ and a probability measure on $\Omega$ is said to be a Gibbs
-measure whenever its finite-volume conditional measures are of the form \eqref{e:gibbs}.
+measure or Gibbs state whenever its finite-volume conditional measures are of the form \eqref{e:gibbs-spin}.
 This is somewhat in the spirit of Kolmogorov's consistency conditions with the importance
 difference that the resulting collection $\gibbs_\beta$ of Gibbs states at inverse temperature
 $\beta$ need not consist of only a single element. This is significant due to the interpretation
-of distinct elements of $\gibbs_\beta$ as corresponding to different phases of the system under
-consideration.
+of distinct elements of $\gibbs_\beta$ as corresponding to different phases.
 
 For many systems of interest there is a critical inverse temperature $\beta_c$ such that
 $|\gibbs_\beta| > 1$ if and only if $\beta > \beta_c$. The region $\beta > \beta_c$ is typically
 associated with first-order phase transitions whereas continuous phase transitions usually occur
 at the critical point $\beta_c$.
-In this thesis, our interest lies in the behaviour of spin systems at $\beta = \beta_c$ and in the
-high-temperature approach to criticality given by $\beta \uparrow \beta_c$.
-Thus, we need not concern ourselves with subtleties concerning the approach to infinite volume.
 
-In fact, we will avoid the entire issue of existence and uniqueness of infinite-volume Gibbs
-measures (which is not well understood for multi-component spin systems with unbounded spins
-such as the $n$-component $|\varphi|^4$ model) by defining the observable quantities in infinite
-volume as limits of their finite-volume counterparts.
-
-% A natural approach to defining such systems is a procedure known as the
-% \emph{infinite-volume limit}, which we describe here. For any
-% finite subgraph $\Lambda \subset \graph$, let $H_\Lambda$ be the Hamiltonian
-% of one of the above spin systems on $\Lambda$ and let $\mu_\Lambda$ be the
-% corresponding Gibbs measure (which we can view as a measure on the full state
-% space $\Omega = S^\vertices$).
-% Now let $\Lambda_N \subset \graph$ be a sequence of subgraphs that exhaust
-% $\graph$, i.e.\ $\Lambda_N \uparrow \graph$. If the limits
-% \begin{equation}
-% \lim_{N\to\infty} \int f \; d\mu_{\Lambda_N}
-% \end{equation}
-% exist for a sufficiently rich class of functions $f$ (such as all bounded continuous functions), then they define a measure $\mu$ on $\Omega$ (with $\mu(f)$ the above limit), which we call a \emph{Gibbs state} or
-% \emph{infinite-volume Gibbs measure} on $\Omega$.
-
-% We remark that there is a more general approach to the study of spin systems in infinite volume developed by Dobrushin, Lanford, and Ruelle. We do not detail their approach here, but merely mention that, for the examples above, this approach involves defining a Gibbs measure for the collection
-% $H = (H_\Lambda)$ of Hamiltonians directly as a measure on $\Omega$ satisfying a system of constraints on its conditionals measures. This is somewhat in the spirit of Kolmogorov's consistency conditions with the importance difference that the resulting collection $\gibbs_\beta(H)$ of Gibbs states at inverse temperature
-% $\beta$ need not consist of only a single element. This is significant due to the interpretation of distinct elements of $\gibbs(H)$ as corresponding to different phases of the system under consideration.
-
-% For many models, including the $O(n)$ and $n$-component $|\varphi|^4$ models on $\Zd$ with $d > 2$, it is known that there exists a critical inverse temperature $\beta_c < \infty$ such that
-% $|\gibbs_\beta(H)| = 1$ if and only if $\beta \le \beta_c$ (\REF). In this thesis, our main concern is with the behaviour at $\beta_c$ and as
-% $\beta \uparrow \beta_c$. Thus, we need not concern ourselves with the precise nature of the infinite-volume limit.
+We will avoid the issue of existence and uniqueness of infinite-volume Gibbs
+measures
+% (which is not well understood for multi-component spin systems with unbounded spins
+% such as the $n$-component $|\varphi|^4$ model)
+by defining observable quantities of interest (e.g.\ the two-point function) in infinite
+volume as limits of their finite-volume counterparts. These limits can alternatively be
+described as expectations with respect to infinite-volume Gibbs measures when the latter
+exist. Moreover, our focus is on the behaviour of spin systems at or above the critical
+point. Thus, we need not concern ourselves with issues related to non-uniqueness of Gibbs
+states.
 
 \subsubsection{Translation-invariant systems}
 
 Our interest will be in translation-invariant systems on $\Zd$, for which a particular
-approach to infinite volume is especially convenient. We begin by letting
-\begin{equation}
-\Lambda_N = \Zd/L^N\Zd
-\end{equation}
-be the discrete torus of side $L^N$, where $L \ge 2$. is an integer. We view $\Lambda_N$
+approach to infinite volume is especially convenient. We begin by letting $\Lambda$
+be the discrete torus as in \eqref{e:Lambda-torus}. We view $\Lambda_N$
 as a subset of $\Zd$ approximately centered at the origin (say as
 $[-\frac12 L^N+1,\frac12 L^N]^d \cap \Z^d$ if $L^N$ is even
 and as $[-\frac12 (L^N-1), \frac12 (L^N-1)]^d \cap \Z^d$ if $L^N$ is odd). This allows us to preserve
 translation-invariance of the models that concern us when defining them in finite volume.
 
-In particular, we study a generalization of the $|\varphi|^4$ model whose Hamiltonian
+In particular, we will study a generalization of the $|\varphi|^4$ model whose Hamiltonian
 on $\Lambda_N$ is given by
 \begin{equation}
 \label{e:Vdef1}
 V_{\gcc,\gamma,\nu,N}(\varphi)
 	=
 \sum_{x\in\Lambda_N}
-\Big(
-	\tfrac{1}{4} (\gcc - \gamma) |\varphi_x|^4
+\left(
+	\frac{1}{4} (\gcc - \gamma) |\varphi_x|^4
 		+
-	\tfrac{1}{2} \nu |\varphi_x|^2
+	\frac{1}{2} \nu |\varphi_x|^2
 		+
-	\tfrac{1}{2} \varphi_x \cdot (-\Delta \varphi)_x
+	\frac{1}{2} \varphi_x \cdot (-\Delta \varphi)_x
 		+
-	\tfrac{1}{4 d} \gamma (\nabla |\phi_x|^2)^2
-\Big),
+	\frac{1}{4 d} \gamma (\nabla |\phi_x|^2)^2
+\right),
 \end{equation}
 where
 \begin{equation}
@@ -687,9 +670,10 @@ where
 	=
 \sum_{|e|=1} (\nabla^e |\phi_x|^2)^2.
 \end{equation}
-Note that we recover \eqref{e:phi4-Ham} when $\gamma = 0$ and $\graph = \Lambda_N$.
 The expectation with respect to the corresponding Gibbs measure will
 be denoted $\langle\cdot\rangle_{\gcc,\gamma,\nu,N}$.
+We recover \eqref{e:phi4-Ham} when $\gamma = 0$ and $\graph = \Lambda_N$.
+
 We define the infinite-volume two-point function for this model by
 \begin{equation}
 \label{e:two-point-function-phi4}
@@ -717,32 +701,36 @@ The susceptibility is defined by
 Many systems exhibit singular behaviour at or near the critical temperature in
 the form of power law scaling of various observable quantities. This is known as
 \emph{critical behaviour}. For concreteness, let us discuss the $|\varphi|^4$ model
-on $\Zd$ with $d > 1$ and with $J_{xy} \in \{ 0, 1 \}$. Thus, $\lap = \Delta$.
+on $\Zd$ with $d > 1$ and with $J_{xy} \in \{ 0, 1 \}$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{The critical point}
 
-Since adjust $\beta$ for the $|\varphi|^4$ model is equivalent to rescaling the
+Since adjusting $\beta$ for the $|\varphi|^4$ model is equivalent to rescaling the
 parameters $g$ and $\nu$, we fix $\beta = 1$ and vary $\nu$ instead.
-The \emph{critical point} is defined by
+For concreteness, we define the \emph{critical point} by
 \begin{equation}
-\nu_c = \nu_c(\gcc, \gamma, n) = \inf \{ \nu : \chi(g, \gamma, \nu; n) < \infty \}.
+\label{}
+\nu_c = \nu_c(\gcc, \gamma; n) = \inf \{ \nu : \chi(g, \gamma, \nu; n) < \infty \}.
 \end{equation}
 Since the susceptibility can be written as the second derivative of the free energy
 with respect to an external field, there is a continuous phase transition at $\nu_c$.
 By \eqref{e:susceptibility-def}, it is
 reasonable to expect rapid (i.e.\ summable) decay of $G_x(g, \gamma, \nu; n)$ in $|x|$ for
-$\nu > \nu_c$ and much slower decay at $\nu = \nu_c$. In fact, the two-point function
-is expected to decay exponentially above $\nu_c$ and sub-exponentially at $\nu_c$.
+$\nu > \nu_c$ and much slower decay at $\nu = \nu_c$.
 
+In fact, the two-point function is expected to decay exponentially above $\nu_c$.
 The \emph{correlation length} $\xi$ is defined to be the reciprocal of the exponential
 rate of decay of the two-point function; concretely, we let
 \begin{equation}
 \xi(g, \gamma, \nu; n) = \limsup_{k\to\infty} \frac{-k}{\log G_{ke}(g, \gamma, \nu; n)},
 \end{equation}
-where $e \in \Zd$ is a unit vector. Roughly speaking, the correlation length acts as
+where $e \in \Zd$ is a unit vector whose choice is irrelevant by \todo{Euclidean invariance}
+of this model.
+Roughly speaking, the correlation length acts as
 a ``macroscopic length scale'' of the model; it is a measure of the largest scale at
-which spins are strongly correlated.
-Based on the above discussion, we expect $\xi$
+which spins are very strongly correlated. Based on the above discussion, we expect $\xi$
 to diverge as $\nu\downarrow\nu_c$. This divergence is one of the
 key features of critical behaviour and is indicative of strong correlations at all
 scales. A related quantity is the \emph{correlation length of order $p$}, defined by
@@ -777,12 +765,15 @@ It follows then from the definition that
 \end{equation}
 \end{rk}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \subsection{Critical exponents}
 
 For simplicity, let us drop $\gcc$, $\gamma$, and $n$ from the notation.
 It is predicted that there exist constants $\eta$, $\gammabar$, and $\nubar$
 (unrelated to $\gamma$ and $\nu$), known as \emph{critical exponents}, such that
 \begin{align}
+\label{e:Gpred}
 G_x(\nu_c)
 	&\sim
 C_1 |x|^{-(d - 2 + \eta)},
@@ -798,6 +789,7 @@ C_2 (\nu - \nu_c)^{-\gammabar},
 C_3 (\nu - \nu_c)^{-\nubar},
 	\qquad
 \nu\downarrow\nu_c \\
+\label{e:xippred}
 \xi_p(\nu)
 	&\sim
 C_4 (\nu - \nu_c)^{-\nubar},
@@ -884,7 +876,7 @@ and $\eta = 0$, respectively.
 
 \subsection{The effect of dimension}
 
-\subsubsection{Dimensions $d = 2, 3$}
+\subsubsection{Dimensions $d = 2$}
 
 In $d = 2$, the $O(n)$ model and $|\varphi|^4$ model are not expected to possess
 a phase transition for $n > 2$. For $n = 2$, the behaviour is quite subtle so
@@ -932,8 +924,11 @@ it is predicted that $\gammabar = 56/32$, $\nubar = 1$, and $\eta = 1/4$.
 % on the dimension and $n$. In fact, they are expected to equal the exponents of
 % the corresponding non-interacting model, the Gaussian free field.
 
+\subsubsection{Dimension $d=3$}
+
 Three-dimensional models are very poorly understood and only numerical approximations
-are available for their critical exponents.
+are available for their critical exponents. In fact, even basic facts regarding the
+qualitative behaviour of many spin systems is unknown.
 
 \subsubsection{Dimensions $d > 4$}
 
@@ -1226,14 +1221,44 @@ In particular,
 
 \subsection{Predicted behaviour}
 
-\todo{State expected critical behaviour.}
+The two-point function, susceptibility, and correlations lengths of the
+self-avoiding walk and WSAW-SA (with $\gamma$ small) on $\Zd$ are all expected
+to scale according to analogues of \eqref{e:Gpred}--\eqref{e:xippred}. The
+critical exponents $\gammabar, \nubar, \eta$ are expected to be universal; in
+particular, they should only depend on $d$.
 
-\todo{
-For walks, it is expected that
+The discussion in Section~\ref{sec:asymp} suggests then that
 \begin{align}
 c_T                       &\sim C_5 e^{-\nu_c T} T^{-\gammabar}, \\
 \langle |X_T|^2 \rangle   &\sim C_6 T^{-\nubar}.
 \end{align}
-\todo{Motivate the above with an example somewhere.}}
+
+In $d = 2$, the predicted values of the critical exponents are
+\begin{equation}
+\nubar = 3/4, \quad \gammabar = 43/32, \quad \eta = 5/24.
+\end{equation}
+In \cite{LSW04}, it was shown that the scaling limit of self-avoiding walk,
+if it exists and is conformally invariant, must be $\SLE_{8/3}$.
+
+In $d = 3$, again very little is known. Only numerical approximations for
+the critical exponents are available.
+
+The upper-critical dimensions for these models is $d = 4$ and the mean-field
+exponents are the same as for models in the Ising universality class, namely
+$\gammabar=1, \nubar = 1/2, \eta = 0$. In other words, self-avoiding walk
+scales like simple random walk in dimensions above $4$.
+
+In $d > 4$, mean-field behaviour for the discrete-time WSAW was first proved
+in \cite{BS85} using the lace expansion, which was introduced in the same paper.
+By vastly extending this method, Hara and Slade \REF were able to apply it to the
+self-avoiding walk in $d > 4$.
+
+As discussed in Section~\ref{sec:rg-intro}, Bauerschmidt, Brydges, and Slade have
+recently made great strides in the case $d = 4$ using a renormalisation group method.
+One of the novelties of this method, besides its applicability to multi-component
+spin systems, is that it can be used to study the WSAW via an integral representation
+we will discuss in Section~\ref{sec:intrep}. This method was first applied to walks
+in \cite{BBS-saw4-log,BBS-saw4}, where the susceptibility and two-point function were
+studied.
 
 \todo{Discuss phase diagram for WSAW-SA}

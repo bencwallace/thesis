@@ -1,7 +1,29 @@
 \section{Main results}
 
-The main result is stated below.
-\todo{Discuss existence of $\nu_c$}
+For any integer $n \ge 1$, let $G_x(g, \gamma, \nu; n)$
+denote the two-point point function for the version of the $|\varphi|^4$ model
+as defined by \eqref{e:two-point-function-phi4}.
+We let $G_x(g, \gamma, \nu; 0)$ denote the two-point function of the WSAW-SA,
+defined in \eqref{e:Gsa}; this notation will be explained in Section~\ref{sec:spin-walk}.
+We employ similar conventions for the susceptibility, correlation length of order $p$,
+and critical point, which we denote by
+$\chi(g, \gamma, \nu; n), \xi_p(g, \gamma, \nu; n), \nu_c(g, \gamma, \nu; n)$, respectively.
+When $n = 0$, these correspond to the WSAW-SA, whereas for $n \ge 1$ they correspond to the
+Ising model. In either case, they are defined by
+\begin{align}
+\label{e:chilim}
+\chi(\gcc, \gamma, \nu; n)
+	&= \lim_{N\to\infty} \chi_N(\gcc, \gamma, \nu; n) \\
+\label{e:chiNdef}
+\chi_N(\gcc, \gamma, \nu; n)
+	&= \sum_{x\in\Lambda_N} G_{x,N}(\gcc, \gamma, \nu; n). \\
+\label{e:clp}
+\xi_p(g, \gamma, \nu; n)
+	&= \left(\frac{\sum_{x\in\Zd} |x|^p G_x(g, \gamma, \nu; n)}{\chi(g, \gamma, \nu; n)}\right)^{1/p} \\
+\label{e:nuc-def}
+\nu_c
+	= \nu_c(\gcc, \gamma; n) &= \inf \{ \nu : \chi(g, \gamma, \nu; n) < \infty \}.
+\end{align}
 
 \begin{theorem}
 \label{thm:mr}
@@ -60,4 +82,4 @@ The $\gamma = 0$ cases of (i) and (ii) were proved by Bauerschmidt, Brydges, and
 Slade. The $n > 0$ case with $\gamma \ne 0$ is a new result in this thesis. We
 will only discuss the proof of the $\gamma \ge 0$ case, which is of primary
 interest. The proof of the $\gamma < 0$ case with $n = 0$ can be found in
-\cite{BSW-saw-sa} and the extension to $n > 0$ is straightforward.
+\cite{BSW-saw-sa} and the extension to $n \ge 1$ is straightforward.
