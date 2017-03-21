@@ -1,6 +1,8 @@
 \chapter{The renormalisation group step}
 \label{sec:RGstep}
 
+\renewcommand{\Vpt}{\Vp_\pt}
+
 The main purpose of this chapter is to prove that Theorem~\ref{thm:step-mr-fv}
 holds with arbitrary $s$ in the definitions \eqref{e:elldef-zz} of the weights
 $\ell, \ell_\sigma$. The proof of this fact requires involves numerous changes
@@ -22,19 +24,12 @@ given in Section~\ref{sec:Rpf2}.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{The basic mechanism}
+\section{Simplified renormalisation group step}
 \label{sec:rgmech}
 
-\commentbw{The main problem is to get the inductive estimates on $(V, K)$.
-We cannot prove bounds that are ``too good''. Thus, the weights must
-accurately reflect the size of the covariance and of large fields.
-The following shows why this is the case. Also discuss the large field
-problem here.}
-
-For this discussion, let us set $\sigma_0 = \sigma_x = 0$ and $n = 0$.
-Thus, we can drop the coupling constants $\lambda, q, u$ from the notation.
-In this setting, our goal, given $(V, K)$, is to construct $(V_+, K_+)$
-such that, with $I = I(V)$ and $I_+ = I(V_+)$,
+For this discussion, let us drop $\lambda, q, u$ from the notation and write
+$\Vc = \Vp$. In this setting, our goal, given $(\Vp, K)$, is to construct
+$(\Vp_+, K_+)$ such that, with $I = I(\Vp)$ and $I_+ = I(\Vp_+)$,
 \begin{equation}
 \label{e:IcircKsimp}
 \Ex_+ \theta (I \circ K)(\Lambda) = (I_+ \circ K_+)(\Lambda)
@@ -43,14 +38,12 @@ with $K \mapsto K_+$ contractive in some sense; this is needed not only to
 control the error produced by $K$ in the computation of critical exponents
 (e.g.\ recall the use of Lemma~\ref{lem:deriv-norm-bds} in Section~\ref{sec:chi-G-xi})
 but also so that the map
-$(V, K) \mapsto (V_+, K_+)$ can be iterated an arbitrary number of times as in
+$(\Vp, K) \mapsto (\Vp_+, K_+)$ can be iterated an arbitrary number of times as in
 Theorem~\ref{thm:rhatflow}. The algebraic problem \eqref{e:IcircKsimp} admits
 a multitude of solutions and the main difficulty is the construction of a
 solution that admits appropriate bounds.
 
-\subsection{Simplified renormalisation group step}
-
-A possible definition of the map $(V, K) \mapsto V_+$ is suggested by perturbation
+A possible definition of the map $(\Vp, K) \mapsto \Vp_+$ is suggested by perturbation
 theory, as discussed in Section~\ref{sec:pt}. For now, let us suppose this is
 the correct definition and set $\Ipt = I(\Vpt)$. Then we can define $K_+$ in terms
 of $\Ipt$ such that \eqref{e:IcircKsimp} holds as follows.
@@ -88,6 +81,8 @@ K_+(X) = \sum_{Y \in \bar\Pcal(X)} \Ipt^{X \setminus Y} \tilde K(Y).
 Here, $\bar\Pcal(X)$ is the collection of polymers $Y\in\Pcal(X)$ such that
 $X$ is the smallest polymer in $\Pcal_+$ containing $Y$.
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \subsection{Main contributions to \texorpdfstring{$K_+$}{K+}}
 
 By expanding the circle product in the definition of $\tilde K$, we can write
@@ -104,34 +99,68 @@ appropriate sense), then it is reasonable to view the terms $h$ and $k$ as
 first-order contributions to $K_+$. Note that the sum defining $k$ is restricted
 to connected polymers as component-factorization of $K$ should imply that terms
 involving $K$ on disconnected polymers will be of higher order in this sense.
+Our main task then is to bound $h$ and $k$.
 
-\commentbw{First look at bound on $h$. Easy to see that $\delta I$ is
-$O(\delta V)$ (discuss cumulant expansion earlier on). Bounding $\delta V$
-requires bound on covariance (straightforward computation). This motivates
-the covariance bound needed and proved in the next section. Not surprisingly,
-the bound on the covariance comes up all over the place.}
+\subsubsection{Perturbative contribution and covariance bound}
 
-\commentbw{Next discuss $k$.
-Even if $K = 0$, $K_+$ will contain a $\delta I$, so extraction is
-needed. This is done using $\Loc$ and the crucial contraction.}
-
-\commentbw{There are also stability bounds, which we require bound on regulator;
-this is discussed in detail in rg-IE. I should probably at least briefly explain
-this here since the change of regulator norm is such a fundamental part of this
-method.}
-
-Our main task then is bound $h$ and $k$. However, we immediately encounter the
-following problem. Suppose that for some block $B\in\Bcal$,
+By the definition \eqref{e:Idef} of $I$, we should have $\delta I = O(\delta\Vp^3)$
+where $\delta\Vp = \theta\Vp - \Vpt$. Bounding $\delta I(B)$ for $B\in\Bcal$
+in the $T_0(\ell)$ norm thus leads us to consider
 \begin{equation}
-K(B) = g^3 \sum_{x\in B} \varphi_x^6.
+\|\delta\Vp(B)\|_{T_0(\ell)}
+	\le
+\|\theta\Vp(B) - \Vp(B)\|_{T_0(\ell)} + \|\Vp(B) - \Vpt(B)\|_{T_0(\ell)}.
 \end{equation}
-Our heuristics suggest that $\varphi_x^6$ is ``irrelevant'', so it's potential
-appearance in $K$ may not come as a great surprise. But the integration of such
-$K(B)$ will contain a term
+By \eqref{e:Vpt-def}, $\Vpt - \Vp = (\Ex \theta\Vp - \Vp) - P(\Vp)$.
+Considering just a single quartic term in $\Vp$, we have
 \begin{equation}
-\binom{6}{2} g^3 \sum_{x\in B} \varphi_x^4 C_{00},
+\varphi_x^4 - \Ex \theta\varphi_x^4
+	=
+6 C_{00} \varphi_x^2 + 3 C_{00}^2
 \end{equation}
-which is a marginal term.
+and we are led to consider $T_0(\ell)$ norm estimates on the covariance. More generally,
+such estimates are fundamental to the control of the Gaussian expectation. They
+are based on Proposition~\ref{prop:Cdecomp} but are only possible when a reasonable
+choice is made for the weights $\ell, \ell_\sigma$. Our main bound on the covariance
+will be stated in Section~\ref{sec:Cbds}.
+
+\subsubsection{Extraction and contraction}
+
+The term $k$ is the contribution to $K_+$ that is linear in $K$. Thus, its
+control is essential to obtaining the contractivity estimate \eqref{e:DKkappa}.
+
+In the simple case that $K = 0$, we will have $K_+ = \Ipt h$. By the previous
+discussion, we expect that $\Ipt h = O(\delta\Vp^3)$, so may contain relevant
+and marginal terms as well as non-local irrelevant terms. The size and number
+of such terms will cause $K$ to grow under the action of the renormalisation
+group unless they are dealt with properly. For instance, integration of
+$\sum_{x\in B} \varphi_x^6$ yields
+\begin{equation}
+\binom{6}{2} \sum_{x\in B} \varphi_x^4 C_{00},
+\end{equation}
+which is marginal.
+
+This situation is not unlike what was discussed in Section~\ref{sec:pt}, where
+integration of $e^{-\Vp}$ yielded a non-local term that was split into a local
+part $P$ and a remainder $W$ using the operator $\Loc_x$ constructed in
+\cite{BBS-rg-pt}. This same operator is used in \cite{BS-rg-step} to \emph{extract}
+a marginal/relevant part from $K$ prior to integration.
+
+Thus, the true definition of the renormalisation group map constructed in
+\cite{BS-rg-step} involves several more steps than \eqref{e:Kplus3}. In fact,
+the definition of the map $(\Vp, K) \mapsto (\Vp_+, K_+)$ is a composition of
+$6$ maps, called Maps 1--6. In Maps 1--2, the operator $\Loc$ is used to perform
+extraction prior to Map 3, which implements the idea of \eqref{e:Kplus3}.
+
+In order to maintain the form \eqref{e:IcircKsimp}, the extraction step in Maps 1--2
+must make
+a corresponding adjustment to $\Vp$. This adjustment ultimately results in a
+map $\Vp \mapsto \Vp_+$, which is a small perturbation of $\Vp$, as expressed
+by the first bound of \eqref{e:RKplus} (recall \eqref{e:Rplusdef}).
+
+The final bound on $k$ that is responsible for contractivity of $K_+$ is a result
+of the \emph{crucial contraction}. In Section~\ref{sec:cc}, we prove that the
+crucial contraction continues to hold when $s > 1$.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -139,10 +168,10 @@ which is a marginal term.
 \section{Improved norm}
 \label{sec:Rpf1}
 
-The proof of Theorem~\ref{thm:step-mr-fv} is based on the observation that
-it is possible to use the parameters \refeq{elldef-zz}
-in the norm used in \cite{BS-rg-IE}, instead of the $s=0$ version used
-previously.  In this section, we first
+% The proof of Theorem~\ref{thm:step-mr-fv} is based on the observation that
+% it is possible to use the parameters \refeq{elldef-zz} in the norm used in
+% \cite{BS-rg-IE}, instead of the $s=0$ version used previously.
+In this section, we first
 state improved covariance estimates, thereby indicating why it is possible
 to improve the norm.
 This leads to a discussion of simplified norm pairs beyond the mass
@@ -157,9 +186,9 @@ $n=0$.
 \subsection{Covariance bounds}
 \label{sec:Cbds}
 
-The estimate in \cite{ST-phi4} which yields the $s = 0$ case of \refeq{Rab-bound}
-uses the norms defined in \cite{BS-rg-IE}.
-One of these norms is the $\Phi_j(\ell_j)$ norm defined by
+% The estimate in \cite{ST-phi4} which yields the $s = 0$ case of \refeq{Rab-bound}
+% uses the norms defined in \cite{BS-rg-IE}.
+Recall from Section~\ref{sec:Ncal} that the $\Phi_j(\ell_j)$ norm defined by
 \begin{equation}
 \lbeq{phinorm}
 \|\varphi\|_{\Phi_j(\ell_j)}
@@ -170,9 +199,9 @@ One of these norms is the $\Phi_j(\ell_j)$ norm defined by
 L^{j|\alpha|_1}
 |\nabla^{\alpha} \varphi_x|,
 \end{equation}
-which depends on the parameter $\ell_j$,
-and on the maximal number of discrete derivatives $p_\Phi$
-(fixed to be at least $4$ in \cite{BS-rg-IE}).
+% which depends on the parameter $\ell_j$,
+% and on the maximal number of discrete derivatives $p_\Phi$
+% (fixed to be at least $4$ in \cite{BS-rg-IE}).
 As in \refeq{elldef-zz}, we now define
 \begin{align}
 \label{e:elldef}
@@ -192,9 +221,8 @@ new choice \refeq{elldef} of $\ell_j$ and $\ell_{\sigma,j}$, we write
     (\ell_{j \wedge j_{x}}^{\rm old})^{-1}2^{(j - j_{x})_+}\ggen_j.
 \end{equation}
 
-In the more general terminology and notation of \cite{BS-rg-norm,BS-rg-IE},
-we may regard a covariance $C_j$
-in the decomposition \eqref{e:NCj}
+% In the more general terminology and notation of \cite{BS-rg-norm,BS-rg-IE},
+We may regard a covariance $C_j$ in the decomposition \eqref{e:NCj}
 as a test function depending on
 two arguments $x,y$, and with this identification its $\Phi_j(\ell_j)$
 norm is
@@ -221,11 +249,11 @@ remains true with the stronger
 choice of norm parameter $\ell_j$ that permits arbitrary $s \ge 0$.
 %The sequence $\chicCov_j$ in the lemma is called $\chi_j$ in \cite{BS-rg-IE}, but here we use
 %a different symbol to avoid confusion with the susceptibility.
-In its statement, the bounded sequence $\chicCov_j$ decays exponentially after the
-mass scale and may be taken to be equal to
-$2^{-(j-j_m)_+}$; its details are given
-in \cite[Section~\ref{IE-sec:frp}]{BS-rg-IE} (where it is called $\chi_j$ rather
-than $\chicCov_j$).
+% In its statement, the bounded sequence $\chicCov_j$ decays exponentially after the
+% mass scale and may be taken to be equal to
+% $2^{-(j-j_m)_+}$; its details are given
+% in \cite[Section~\ref{IE-sec:frp}]{BS-rg-IE} (where it is called $\chi_j$ rather
+% than $\chicCov_j$).
 
 \begin{lemma}
 [{Extension of \cite[\eqref{IE-e:CLbd}]{BS-rg-IE}}]
@@ -278,13 +306,8 @@ $\ell_0^2 \ge c_0 \ellconst^{-1}$.
 \subsection{New choice of norm beyond the mass scale}
 \label{sec:newnorm}
 
-\commentbw{Motivating example: for any $\varphi$, there is a function that is
-not integrable with respect to the Gaussian measure but whose $T_\varphi$
-norm vanishes.}
-
 As in \cite[(\ref{IE-e:PhiXdef})]{BS-rg-IE}, we use the localised version
-of \eqref{e:phinorm}, defined for subsets
-$X \subset \Lambda$  by
+of \eqref{e:phinorm}, defined for subsets $X \subset \Lambda$  by
 \begin{align}
 \label{e:PhiXdef}
     \|\varphi\|_{\Phi_j(X)}
@@ -293,18 +316,16 @@ $X \subset \Lambda$  by
     \text{$f \in \C^\Lambda$ such that $f_{x} = 0$
     $\forall x\in X$}\}.
 \end{align}
-A \emph{small set} is defined to be a
-connected polymer $X \in \Pcal_j$ consisting of at most $2^d$ blocks
-(the specific number
-$2^d$ plays no direct role here),
-and $\Scal_j \subset \Pcal_j$ denotes the set of small sets.
-The \emph{small set neighbourhood} of $X \subset \Lambda $ is
-the enlargement of $X$ defined by
-$
-    X^{\Box}
-=
-    \bigcup_{Y\in \Scal_{j}:X\cap Y \not =\varnothing } Y$.
-
+% A \emph{small set} is defined to be a connected polymer $X \in \Pcal_j$
+% consisting of at most $2^d$ blocks (the specific number $2^d$ plays no
+% direct role here),
+% and $\Scal_j \subset \Pcal_j$ denotes the set of small sets.
+% The \emph{small set neighbourhood} of $X \subset \Lambda $ is
+% the enlargement of $X$ defined by
+% $
+%     X^{\Box}
+% =
+%     \bigcup_{Y\in \Scal_{j}:X\cap Y \not =\varnothing } Y$.
 Given $X \subset \Lambda$ and $\varphi \in (\R^n)^{\Lambda}$,
 we recall from \cite[\eqref{IE-e:GPhidef}]{BS-rg-IE}
 that the
@@ -338,8 +359,8 @@ precise definition.
 The two regulators serve as weights in the \emph{regulator norms} of
 \cite[Definition~\ref{IE-def:Gnorms}]{BS-rg-IE}.
 The regulator norms are defined,  with $\gamma \in (0,1]$ and
-for $F$ in the space $\Ncal(X^\Box)$ of functionals
-of the field (see \cite[\eqref{norm-e:NXdef}]{BS-rg-norm}), by
+for $F \in \Ncal(X^\Box)$ by
+% in the space $\Ncal(X^\Box)$ of functionals of the field (see \cite[\eqref{norm-e:NXdef}]{BS-rg-norm}),
 \begin{align}
 \label{e:Gnormdef1}
     \| F\|_{G_j(\ell_j)}
@@ -383,7 +404,7 @@ or
     \quad \text{and} \quad
     \|F\|_{j+1} = \|F\|_{\tilde{G}_{j+1}^{\Gtilp}(h_{j+1})}.
 \end{equation}
-We will show that, \emph{above the mass scale} $j_m$ (see \eqref{e:jmdef}), the results of \cite{BS-rg-IE} hold  with
+We will show that, above the mass scale $j_m$, the results of \cite{BS-rg-IE} hold with
 both norm pairs in \eqref{e:np1} and \eqref{e:np2} replaced by the single new norm pair
 \begin{equation}
 \label{e:npmass}
@@ -391,20 +412,7 @@ both norm pairs in \eqref{e:np1} and \eqref{e:np2} replaced by the single new no
     \quad \text{and} \quad
     \|F\|_{j+1} = \|F\|_{G_{j+1}(\ell_{j+1})},
 \end{equation}
-with the improved $\ell_j$ of \eqref{e:elldef} with $s>0$ fixed as large as desired.
-
-The space $\Ncal$ containing the functionals $F$ appearing above requires control on
-up to $p_\Ncal$ derivatives of $F$ with respect to the field $\varphi$,
-where $p_\Ncal$ is a parameter of the $T_\varphi$-norm.
-In the proof of Proposition~\REF % \ref{prop:cl}
-below, we must choose $p_\Ncal$ to be large depending on $p$,
-in order to analyse the correlation length
-of order $p$.  The renormalisation group analysis is predicated on fixed (but arbitrary)
-$p_\Ncal$, so it can proceed with this modification.  However,
-we do not prove that constants are uniform in $p_\Ncal$,
-and in particular we do not prove that the required smallness of $g$ in
-Theorem~\ref{thm:mr} is uniform in the choice of $p_\Ncal$.
-Thus we do not have a result for \emph{all} $p>0$ for any fixed $g$.
+with the improved $\ell_j$ of \eqref{e:elldef} with $s > 1$ fixed as large as desired.
 
 
 The use of two norm pairs adds intricacy to \cite{BS-rg-IE,BS-rg-step}.
@@ -501,7 +509,7 @@ to increase $h_{\sigma}$
 beyond the mass scale  (since $\ell_{\sigma}$ has been increased).
 This forces a compensating decrease in $h$
 beyond $j_m$, to keep the product $hh_{\sigma}$ bounded for stability
-(as in Section~\REF % \ref{sec:stability1}
+(as in Section~\ref{sec:stability1}
 below). But if we do this, we lose the lower bound required on $\epsilon_{g\tau^2}$
 required for stability in the $h$-norm (see \cite[\eqref{IE-e:epVbardefz-app}]{BS-rg-IE}).
 \end{rk}
@@ -512,10 +520,8 @@ required for stability in the $h$-norm (see \cite[\eqref{IE-e:epVbardefz-app}]{B
 \section{Proof of Theorem~\ref{thm:step-mr-fv}}
 \label{sec:Rpf2}
 
-In this section, we show that
-Theorem~\ref{thm:step-mr-fv}
-holds,
-thereby completing the proof of Proposition~\ref{prop:R}.
+In this section, we show that Theorem~\ref{thm:step-mr-fv}
+holds, thereby completing the proof of Proposition~\ref{prop:R}.
 The key steps in
 the proof of the $s = 0$ case of Theorem~\ref{thm:step-mr-fv}
 are contained in \cite{BS-rg-IE,BS-rg-step}.
@@ -578,7 +584,7 @@ According to \cite[\eqref{IE-e:gbarmono}]{BS-rg-IE},
 $\frac 12 \ggen_{j+1} \le \ggen_j \le 2 \ggen_{j+1}$.
 Thus, the second estimate of \eqref{e:h-assumptions-IE}
 is satisfied (the ratio being improved when $j\ge j_m$),
-while the third is \emph{not} when $s >0$ and $j_m < j_x$.
+while the third is \emph{not} when $s > 1$ and $j_m < j_x$.
 This potentially dangerous third
 estimate in \refeq{h-assumptions-IE} is used to prove the scale monotonicity lemma
 \cite[Lemma \ref{IE-lem:Imono}]{BS-rg-IE}, as well
@@ -620,10 +626,10 @@ $\ell_{\sigma,j}\ell_{j} = \ell_{\sigma,j}^{\rm old} \ell_j^{\rm old}$ by defini
 \subsection{Stability domains}
 \label{sec:stability1}
 
-The stability domain $\DV_j$ is defined in \cite[\eqref{IE-e:DV1-bis}]{BS-rg-IE}.
-We modify $\DV_j$ only for the coupling constant $q$,
-by replacing $r_q$ in
-\cite[\eqref{IE-e:h-coupling-def-1-bis}]{BS-rg-IE} by
+In \cite[\eqref{IE-e:DV1-bis}]{BS-rg-IE}, an extension of the domain \eqref{e:DVdef}
+is defined. By some abuse of notation, we will also denote this extended domain by
+$\DV_j$. We modify $\DV_j$ only for the coupling constant $q$, by replacing $r_q$
+in \cite[\eqref{IE-e:h-coupling-def-1-bis}]{BS-rg-IE} by
 \begin{equation}
 \lbeq{newrq}
 L^{2j_x + 2 s (j_x - j_m)_+} 2^{2(j-j_x)} r_{q,j} =
@@ -774,15 +780,29 @@ On the other hand, the second estimate of \eqref{e:h-assumptions-IE} is
 improved by the new choice and compensates for the degraded third estimate,
 as we explain in this section.
 
+The space $\Ncal$ containing the functionals $F$ appearing above requires control on
+up to $p_\Ncal$ derivatives of $F$ with respect to the field $\varphi$,
+where $p_\Ncal$ is a parameter of the $T_\varphi$-norm.
+In the proof of Proposition~\ref{prop:cl}, we must choose $p_\Ncal$ to be large
+depending on $p$, in order to analyse the correlation length
+of order $p$.  The renormalisation group analysis is predicated on fixed (but arbitrary)
+$p_\Ncal$, so it can proceed with this modification.  However,
+we do not prove that constants are uniform in $p_\Ncal$,
+and in particular we do not prove that the required smallness of $g$ in
+Theorem~\ref{thm:mr}(iii) is uniform in the choice of $p_\Ncal$.
+Thus we do not have a result for \emph{all} $p>0$ for any fixed $g$.
+
 Below the mass scale, we continue to use the crucial contraction as stated in
 \cite[Proposition \ref{IE-prop:cl}]{BS-rg-IE} in terms of two norm pairs.
 Next, we state a version of the crucial contraction for use above the mass
 scale using the new norm pair \eqref{e:npmass}.
-The statement uses the notation of \cite{BS-rg-IE} (which we do not redefine here),
-with the exception that now we have replaced $a$ by $0$, $b$ by $x$, and $j_{ab}$ by $j_x$
-for consistency with our present notation.
+% The statement uses the notation of \cite{BS-rg-IE} (which we do not redefine here),
+% with the exception that now we have replaced $a$ by $0$, $b$ by $x$, and $j_{ab}$ by $j_x$
+% for consistency with our present notation.
 Throughout this section, we
 sometimes write the dimension as $d$ for emphasis, although we only consider $d=4$.
+
+\commentbw{Some missing notation.}
 
 \begin{prop}[{Improvement of \cite[Proposition \ref{IE-prop:cl}]{BS-rg-IE}}]
 \label{prop:cl} Let $j_m \leq j<N$ and $V\in \DV_j$.  Let $X \in \Scal_j$ and

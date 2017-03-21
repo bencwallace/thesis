@@ -604,7 +604,7 @@ seminorm was defined in terms of the pairing \eqref{e:pairing}.
 
 Control of the $T_\phi$ seminorm is needed for all values of
 $\phi$ in order to control the Gaussian expectation in \eqref{e:rgmapZ}.
-This will be discussed further in Section~\REF.
+This will be discussed further in Section~\ref{sec:newnorm}.
 
 For now, we turn our attention to the special case of the $T_0$ seminorm. Recalling
 \eqref{e:exp-conv}, it is natural to choose the weights $\h_j$ so that
@@ -618,9 +618,9 @@ Wick's theorem for such fields.
 On the other hand, by definition of the $T_0$ seminorm,
 \begin{equation}
 \label{e:gauss-moments}
-\|\varphi_x^{2p}\|_{T_0(\h_j)} \asymp \h_j^p.
+\|\varphi_x^{2p}\|_{T_0(\h_j)} \asymp \h_j^{2p}.
 \end{equation}
-This suggests defining $\h_j$ so that $|C_{j+1;00}| \le O(\h_j)$.
+This suggests defining $\h_j$ so that $|C_{j+1;00}| \le O(\h^2_j)$.
 % Bounds on the covariance were stated in \eqref{e:scaling-estimate}.
 % For instance, with $k = 0$, these become
 % \begin{equation}
@@ -645,7 +645,7 @@ where $j_m$ is the \emph{mass scale}, defined by
 \label{e:jmdef}
 j_m	= \lfloor\log_{L} m^{-1}\rfloor.
 \end{equation}
-Based on this, we define the following weights:
+Based on this, when $d = 4$, we define the following weights:
 \begin{align}
 \label{e:elldef-zz}
 \ell_j &= \ell_0 L^{-j - s (j - j_m)_+}, \quad
@@ -659,17 +659,18 @@ where
 j_x = \max\{0,\lfloor \log_{L} (2 |x|)\rfloor\}
 \end{equation}
 is the \emph{coalescence scale}
-and the sequence $\ggen_j = \ggen_j(m^2,g_0)$ will be discussed in Section~\ref{sec:step}.
+and the sequence $\ggen_j = \ggen_j(m^2,g_0)$ will be discussed
+in Section~\ref{sec:pt}.
 % For now, we remark only that it is bounded above and below by constant multiples of
 % the sequence $\gbar$ defined in
 % \eqref{e:gbar}, by \cite[Lemma~\ref{log-lem:gbarmcomp}]{BBS-saw4-log}.
-We will discuss the origin of the definition \refeq{elldef-zz} in detail
-in Section~\ref{sec:Rpf1}.
+The origin of the definition of $\ell_{\sigma,j}$ is discussed in
+\cite[Remark~\ref{IE-rk:hsigmot}]{BS-rg-IE}.
 
 We will set $\h_j = \ell_j$ to estimate ``small'' fields. These are fields which
 are assumed not to deviate too much from their expected value. A different norm
 parameter $\h_j = h_j$ will be used to control ``large'' fields.
-This will be discussed in \REF.
+This will be discussed in Section~\ref{sec:newnorm}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -809,6 +810,14 @@ We have omitted $\tau_{\nabla\nabla}$ as summation by parts gives
 \sum_{x\in\Lambda} \tau_{\nabla\nabla,x} = \sum_{x\in\Lambda} \tau_{\Delta,x}.
 \end{equation}
 
+\begin{rk}
+\label{rk:noconst}
+When $n = 0$, we can also omit $u$ since constant terms are not produce by the 
+Gaussian super-expectation. For example, $\Ex_C\theta \tau_x$ has constant part
+$0$ by \eqref{e:wick-complex2} and \eqref{e:wick-fermion2}. More generally,
+this is a consequence of supersymmetry (see \cite{BBS-rg-pt}).
+\end{rk}
+
 We define $\Vcalc$ to be the space of all polynomials of the form $\Vc_y$.
 Given $X \subset \Lambda$, we let
 \begin{equation}
@@ -885,12 +894,18 @@ a map\footnote{In \cite{BBS-rg-pt}, $\Vpt$ is defined on a
 larger space including $\tau_{\nabla\nabla}$. Here, following \eqref{e:nabla-delta},
 we define $\Vpt$ by composing that map with the map that replaces
 $z \tau_\Delta + y \tau_{\nabla\nabla}$ by $(z + y) \tau_\Delta$.}
-$\Vpt : \Vcalp\to\Vcalc$ is defined so as to maintain the approximate form
+$\Vpt : \Vcalp\to\Vcalc$ of the form
+\begin{equation}
+\label{e:Vpt-def}
+\Vpt(\Vp) = \Ex_C\theta\Vp - P(\Vp)
+\end{equation}
+is defined so as to maintain the approximation
 \begin{equation}
 \label{e:Zapprox}
-Z_j \approx e^{-\Vc_j} (1 + W_j^2),
+Z_j \approx e^{-\Vc_j(\Lambda)} (1 + W_j),
 \end{equation}
-where $W_j$ is an explicit polynomial that is second-order in $V_j$;
+where $P(\Vp)$ is a local polynomial and $W_j = W_j(\Vp)$ is non-local.
+Both are explicitly defined and second-order in $V_j$;
 in fact, by \cite[\eqref{IE-e:W-logwish}]{BS-rg-IE},
 \begin{equation}
 \label{e:Wbilinbd}
@@ -975,6 +990,17 @@ for $j \le j_m$ and $x_j \approx x_{j_m}$ for $j > j_m$. The relations \eqref{e:
 follow easily if $g_j$ behaves in a similar way.
 \end{rk}
 
+Following \cite[\eqref{log-e:ggendef}]{BBS-saw4-log}, we define the parameter
+$\ggen_j$ in \eqref{e:elldef-zz} as a function of two variables $(\mgen^2, \ggen_0)$ by
+\begin{equation}
+\label{e:ggendef}
+\ggen_j(\mgen^2,\ggen_0)
+	=
+\gbar_j(0,\ggen_0) \1_{j \le j_{\mgen}} + \gbar_{j_{\mgen}}(0,\ggen_0) \1_{j > j_{\mgen}}.
+\end{equation}
+These parameters play an important role in Section~\ref{sec:step} and in the proof of
+Theorem~\ref{thm:rhatflow} (see Section~\ref{sec:flow}.
+
 \subsubsection{The flow of \texorpdfstring{$\lambda$ and $q$}{lambda and q}}
 
 It was shown in \cite[\eqref{pt-e:lambdapt2}--\eqref{pt-e:qpt2}]{BBS-rg-pt} (for $n = 0$)
@@ -1058,6 +1084,7 @@ $I_j, K_j : \Pcal_j \to \Ncal$, defined such that
 \end{equation}
 The coordinate $I_j = I_j(\Vp, \cdot)$ is defined by
 \begin{equation}
+\label{e:Idef}
 I_j(\Vp, X)
 	=
 \prod_{B \in \Bcal_j(X)} e^{-\Vp(B)} (1 + W_j(B, \Vp)), \quad X \in \Pcal_j,
@@ -1177,7 +1204,7 @@ In \cite[Section~\ref{step-sec:Knorms}]{BS-rg-step},
 a sequence of norms $\|\cdot\|_{\Wcal_j} = \|\cdot\|_{\Wcal_j(\mgen^2, \ggen_j, \Lambda)}$
 parameterised by $(\mgen^2, \ggen_j)$ is defined on $\Kcal_j$.
 These are defined in terms of the $T_\phi(\h_j)$ norms with parameters $\h_j = \ell_j, h_j$.
-In order to make use of the improved norm parameters with $s > 0$,
+In order to make use of the improved norm parameters with $s > 1$,
 we must modify the definition of $\Wcal_j$ when $j$ is above the mass scale.
 This will be discussed in Chapter~\ref{sec:RGstep}.
 We note here only the fact that (for any $s \ge 0$) the $\Wcal_j(\Lambda)$
@@ -1238,7 +1265,7 @@ where $\Iint_j = [0, \delta]$ if $j < N$ and $\Iint_N = [\delta L^{-2 (N - 1)}, 
 
 \begin{theorem}
 \label{thm:step-mr-fv}
-Let $d = 4$ and let $n \ge 0$. Fix $s > 0$. Let $C_\DV$ and $L$
+Let $d = 4$ and let $n \ge 0$. Fix $s > 1$. Let $C_\DV$ and $L$
 be sufficiently large. There exist $M>0$, $\delta >0$,
 and $\kappa = O(L^{-1})$											% added
 such that for $\ggen \in (0,\delta)$
@@ -1274,7 +1301,7 @@ obeying \eqref{e:IcircKdu}.
 \end{theorem}
 
 With $s = 0$ in the choice of weights $\ell_j$ and $\ell_{\sigma,j}$,
-this theorem was the main achievement of \cite{BS-rg-step}. With $s > 0$
+this theorem was the main achievement of \cite{BS-rg-step}. With $s > 1$
 arbitrary, the bounds \eqref{e:RKplus} are greatly improved beyond the
 mass scale. The statement in \cite{BS-rg-step} with $s = 0$ contains
 bounds on the derivatives of the maps $R_+$ and $K_+$. Our improvements
@@ -1285,7 +1312,7 @@ indirectly used to prove Theorem~\ref{thm:rhatflow}.}.
 Note that the maps $R_+$ and $K_+$ are \emph{independent} of $s$.
 The proof of Theorem~\ref{thm:step-mr-fv} involves showing that the
 inductive estimates \eqref{e:RKplus} hold for any $s$. In some cases,
-we will make use of these estimates both with $s > 0$ and $s = 0$.
+we will make use of these estimates both with $s > 1$ and $s = 0$.
 
 \commentbw{I don't like the next paragraph.}
 
@@ -1298,7 +1325,7 @@ and is unchanged in the present context.}
 Some steps in this proof continue to hold unchanged whereas others require
 some modification. As mentioned above, a major change that is required is
 a new definition of $\Wcal_j$ above the mass scale. A detailed verification
-that the proof holds for $s > 0$ is carried out in Chapter~\ref{sec:RGstep}.
+that the proof holds for $s > 1$ is carried out in Chapter~\ref{sec:RGstep}.
 
 Theorem~\ref{thm:step-mr-fv} expresses a contractive property of the map $K_+$
 through \eqref{e:DKkappa}.
@@ -1341,7 +1368,7 @@ main result is the basis for the proof of this proposition. The result, which we
 state as Theorem~\ref{thm:rhatflow}, is the
 construction of critical initial conditions $\hat\nu_0^c, \hat z_0^c$ that now
 depend on $\gamma_0$ as well as $(m^2, g_0)$. Thus, this theorem is an extension
-to $s > 0$ and $\gamma_0 \ne 0$ of \cite[Proposition~\ref{log-prop:flow-flow}]{BBS-saw4-log}.
+to $s > 1$ and $\gamma_0 \ne 0$ of \cite[Proposition~\ref{log-prop:flow-flow}]{BBS-saw4-log}.
 
 Let $\delta > 0$ and suppose $r : [0, \delta] \to [0, \infty)$
 is a continuous \emph{positive-definite}\footnote{Note that our usage of this term is
