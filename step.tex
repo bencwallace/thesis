@@ -25,7 +25,7 @@ given in Section~\ref{sec:Rpf2}.
 \section{The basic mechanism}
 \label{sec:rgmech}
 
-\todo{The main problem is to get the inductive estimates on $(V, K)$.
+\commentbw{The main problem is to get the inductive estimates on $(V, K)$.
 We cannot prove bounds that are ``too good''. Thus, the weights must
 accurately reflect the size of the covariance and of large fields.
 The following shows why this is the case. Also discuss the large field
@@ -56,8 +56,7 @@ the correct definition and set $\Ipt = I(\Vpt)$. Then we can define $K_+$ in ter
 of $\Ipt$ such that \eqref{e:IcircKsimp} holds as follows.
 
 For $B\in\Bcal$, let $\delta I(B) = \theta I(B) - \Ipt(B)$ and extend this to $X\in\Pcal$
-by block-factorization. Then \todo{by associativity of $\circ$ and the binomial
-formula},
+by imposing block-factorization. Then by associativity of the circle product,
 \begin{align}
 (I \circ K)(\Lambda)
 	&= \sum_{X\in\Pcal} (\Ipt + \delta I)^{\Lambda \setminus X} K(X) \\
@@ -239,31 +238,6 @@ so that
 \end{equation}
 \end{lemma}
 
-
-
-The proof of Lemma~\ref{lem:Cbd} uses an estimate from
-\cite[Proposition~\ref{pt-prop:Cdecomp}]{BBS-rg-pt}, which we repeat here as
-the following proposition.
-
-\begin{prop}[{Restatement of \cite[Proposition~\ref{pt-prop:Cdecomp}(a)]{BBS-rg-pt}}]
-\label{prop:Cdecomp}
-  Let $d >2$, $L\geq 2$, $j \ge 1$, $\bar m^2 >0$.
-  For multi-indices $\alpha,\beta$ with
-  $\ell^1$ norms $|\alpha|_1,|\beta|_1$ at most
-  some fixed value $p$,
-  and for any $k$, and for $m^2 \in [0,\bar m^2]$,
-  \begin{equation}
-    \label{e:scaling-estimate}
-    |\nabla_x^\alpha \nabla_y^\beta C_{j;x,y}|
-    \leq c(1+m^2L^{2(j-1)})^{-k}
-    L^{-(j-1)(d-2 +|\alpha|_1+|\beta|_1)},
-  \end{equation}
-  where $c=c(p,k,\bar m^2)$ is independent of $m^2,j,L$.
-  The same bound holds for $C_{N,N}$ if
-  $m^2L^{2(N-1)} \ge \varepsilon$ for some $\varepsilon >0$,
-  with $c$ depending on $\varepsilon$ but independent of $N$.
-\end{prop}
-
 \begin{proof}[Proof of Lemma~\ref{lem:Cbd}]
 For $d=4$, insertion of \refeq{scaling-estimate} into \refeq{Phinorm} gives
 \begin{equation}
@@ -281,11 +255,11 @@ for an $L$-dependent constant $c_L$ (whose value may now change from line to lin
 The estimate \cite[\eqref{IE-e:CLbd}]{BS-rg-IE}
 is wasteful in that it does not make any use of the factor
 $(1+m^2L^{2(j-1)})^{-k}$ in \refeq{Phinorm2} beyond extraction of the factor $\chicCov_j$.
-To improve this, we now allow arbitrary $s$, and fix the arbitrary parameter $k$ to be $k=s+1$
-in \refeq{Phinorm2} so that
-\begin{equation} \label{e:mass-decay}
-(1 + m^2 L^{2j})^{-k} \le c_L L^{-2(s+1)(j - j_m)_+}.
-\end{equation}
+% To improve this, we now allow arbitrary $s$, and fix the arbitrary parameter $k$ to be $k=s+1$
+% in \refeq{Phinorm2} so that
+% \begin{equation} \label{e:mass-decay}
+% (1 + m^2 L^{2j})^{-k} \le c_L L^{-2(s+1)(j - j_m)_+}.
+% \end{equation}
 We insert \refeq{mass-decay} and the definition $\ell_j=\ell_0 L^{-j-s(j-j_m)_+}$ from
 \refeq{elldef} into
 \eqref{e:Phinorm2}, to conclude that there exists $c_0 = c_0(s, L)$ such that

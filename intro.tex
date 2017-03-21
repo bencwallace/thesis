@@ -109,10 +109,11 @@ and a constant $C > 0$ such that
 \begin{equation}
 F(x) \le C G(x) \quad x \in N.
 \end{equation}
+We will often use $C, C', C_1$, etc.\ to denote some generic constant.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{Generating function}
+\subsection{Generating function and Laplace transform}
 
 The \emph{generating function} of a sequence $a_n$ is defined by
 \begin{equation}
@@ -128,30 +129,24 @@ This is known as the method of generating functions.
 In many cases, $g$ cannot be computed exactly. Nevertheless, there is a close
 relationship between the asymptotics of the sequence $a_n$
 as $n\to\infty$ and the function $g(z)$ near its dominant singularities, i.e.\
-its singularities closest to the origin.
+its singularities closest to the origin (see \cite{FS09}).
 
 For instance, if $a_n \sim r^{-n} n^\alpha$, then the root test implies that
 the generating function $f$ has radius of convergence $r$ and it can be shown
-(\todo{\REF, see Madras-Slade}) that $g(z) \sim (r - z)^{-\alpha-1}$ as
-$z \uparrow r$ (\todo{what about the constant?}). This is an
+that $g(z) \sim C (r - z)^{-\alpha-1}$ as $z \uparrow r$.		% See Madras-Slade
+This is an
 example of an \emph{Abelian theorem}. The converse does not always hold; a
 theorem providing conditions under which the converse is true is known as a
 \emph{Tauberian theorem}, and is generally harder to prove than its Abelian
-counterpart. \todo{State Tauberian theorem.}
+counterpart.
 
-\commentbw{Incomplete}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\subsection{The Laplace transform}
-
-The \emph{Laplace transform} of a function $f(T)$ for $T \in \R$ is
+Likewise, the asymptotics of a function $f(T)$ as $T\to\infty$ can sometimes
+be recovered from the behaviour of its \emph{Laplace transform}
 \begin{equation}
 \label{e:laplace-transform-def}
-G(\nu) = \int f(T) e^{-\nu T} \; dT.
+G(\nu) = \int f(T) e^{-\nu T} \; dT
 \end{equation}
-Once again, there is a relationship between the asymptotics of $f(T)$ as $T\to\infty$
-and of $G(\nu)$ as $\nu$ approaches its nearest singularity.
+near $\nu_0 \coloneqq \inf \{ \nu : G(\nu) < \infty \}$.
 For instance, we have the following (see \cite[Chapter V]{Widd41}).
 
 \begin{theorem}
@@ -251,13 +246,8 @@ vertices $a, b \in \vertices$, there exists an automorphism $f$ with $f(a) = b$.
 We fix a vertex $0\in\vertices$ whose precise choice is immaterial due to
 transitivity.
 
-\begin{example}\mbox{}\\
-\smallskip\noindent
-(i) We view any set $X \subset \Zd$ as a graph with $\vertices = X$ and
-$x\sim y$ if $|x - y| = 1$. In particular, $X = \Zd$ is transitive.
-
-\smallskip\noindent
-(ii) Let $L > 1$ be an integer. For $N \ge 0$, let
+\begin{example}
+Let $L > 1$ be an integer. For $N \ge 0$, let
 \begin{equation}
 \label{e:Lambda-torus}
 \Lambda = \Lambda_N = \Zd/L^N\Zd.
@@ -378,7 +368,8 @@ of the free energy in infinite volume with $h = 0$.
 
 For more information on spin systems, we refer to \cite{Georgii11} and \todo{Friedli-Velenik}.
 
-\commentbw{Maybe remove the following.}
+\commentbw{Maybe remove the following. Either that or talk about something interesting,
+like spontaneous magnetization.}
 
 The classical \emph{Ising model} on $\graph$ is defined by the Gibbs measure on
 $\Omega = \{ \pm 1 \}^\vertices$ with Hamiltonian
@@ -728,8 +719,8 @@ rate of decay of the two-point function; concretely, we let
 \begin{equation}
 \xi(g, \gamma, \nu; n) = \limsup_{k\to\infty} \frac{-k}{\log G_{ke}(g, \gamma, \nu; n)},
 \end{equation}
-where $e \in \Zd$ is a unit vector whose choice is irrelevant by \todo{Euclidean invariance}
-of this model.
+where $e \in \Zd$ is a unit vector whose choice is irrelevant by invariance of this model
+under lattice rotations.
 Roughly speaking, the correlation length acts as
 a ``macroscopic length scale'' of the model; it is a measure of the largest scale at
 which spins are very strongly correlated. Based on the above discussion, we expect $\xi$
@@ -813,9 +804,6 @@ These and other relations are all believed to be manifestations of the existence
 a universal \emph{scaling limit} for the $|\varphi|^4$ model and other models in its
 \emph{universality class}. That is, any spin system in this class, when appropriately
 rescaled, is expected to converge in distribution to a unique continuum random field.
-\todo{For instance, the analogue of the conjectured scaling relation for the critical
-two-point function of such a scaling limit would follow from scale-invariance of this
-limit.}
 In this sense, the study of critical behaviour involves a set of far-reaching
 generalizations of the central limit theorem.
 
@@ -847,6 +835,8 @@ Thus, for $m^2 > 0$,
 This diverges linearly at $z = 1$ (corresponding to $m^2 = 0$),
 so $\nu_c(0, 0; n) = 0$ and $\gammabar = 1$.
 
+\commentbw{Following needs work}
+
 For $d > 2$, the simple random walk is transient. Thus, letting $E_x$ denote the expectation
 of $X$ conditioned so that $X_0 = x$,
 \begin{equation}
@@ -876,7 +866,7 @@ and $\eta = 0$, respectively.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{The effect of dimension}
+\subsection{Dimension dependence}
 
 \subsubsection{Dimensions $d = 2$}
 
@@ -929,8 +919,8 @@ it is predicted that $\gammabar = 56/32$, $\nubar = 1$, and $\eta = 1/4$.
 \subsubsection{Dimension $d=3$}
 
 Three-dimensional models are very poorly understood and only numerical approximations
-are available for their critical exponents. In fact, even basic facts regarding the
-qualitative behaviour of many spin systems is unknown.
+are available for their critical exponents. In fact, it was only recently proved
+that the Ising model's spontaneous magnetization vanishes in three dimensions \cite{ADS15}.
 
 \subsubsection{Dimensions $d > 4$}
 
@@ -941,6 +931,8 @@ $\nubar = 1/2$, and $\eta = 0$. For $n = 1$ and $2$ it is known that $\eta = 0$
 for the \emph{continuum limit} of these models \cite{Aiz82,Fro82}.
 This phenomenon is known as \emph{mean-field behaviour} and dimension $4$ is
 called the \emph{upper-critical dimension} for this class of models.
+
+\commentbw{Aizenmann, Fr\"{o}hlich, etc.}
 
 \subsubsection{Dimension $d = 4$}
 
@@ -963,33 +955,34 @@ studying the Ising model in which disjoint
 blocks in $\Zd$ of side $L \ll \xi$ are replaced by single spins. He argued
 that spins inside such blocks are so strongly correlated that the model
 obtained by making this replacement should behave approximately like an Ising
-model with new (renormalized) couplings.
+model with new (``renormalized'') couplings.
 
 At the critical point, $\xi = \infty$ this transformation
 $T$ can be iterated indefinitely resulting in a dynamical system on a space
 of models: the one-parameter semigroup $(T^j)_{j\in\Z_+}$ is known as the
 \emph{renormalisation group}\footnote{The name
 renormalisation \emph{group} is attributed by Wilson in \cite{Wils71I}
-to the work of Gell-Mann and Low \cite{GML54}.}. This was basis for Ken Wilson's
-generalizations of Wilson's idea in \cite{Wils71I,Wils71II}.
+to the work of Gell-Mann and Low \cite{GML54}.}. This was the basis for Ken Wilson's
+generalizations of Kadanoff's idea in \cite{Wils71I,Wils71II}.
 
 The coarse-graining procedure of Kadanoff can be viewed as an approximate
 method for computing integrals with respect to a Boltzmann weight $e^{-\beta H}$
 by successively integrating out fluctuations that are ``small'' in the sense
-that they are spatially localized. An alternative approach, suggested by
-Wilson, is to successively integrate out fluctuations that are localized in
-momentum (i.e.\ Fourier) space. \todo{Explain this further. Introduce momentum
-space covariance decomposition. Define effective theory.}
+that they are localized in space. In Wilson's approach fluctuations are instead
+localized in momentum (i.e.\ Fourier) space. Both approaches can be thought of
+as corresponding to different types of covariance decompositions (see \cite{BCGNOPS78}).
 
-Although Wilson did not follow the same coarse-graining procedure as Kadanoff,
-his method nevertheless resulted in a dynamical system as above on a space of
-models that acts by appropriately integrating out small fluctuations. At the
-critical, he argued that this should not affect the long-range behaviour of
-the model. Consequently, critical models lying in the same orbit should have
-the same universality class. That is, they should possess the same critical
-exponents and scaling limit; moreover, this scaling limit, which results from
-integrating out all microscopic fluctuations, should arise as a fixed point
-of the renormalisation group transformation.
+Wilson's method results in a dynamical system as described above on a space of
+models that acts by appropriately integrating out small fluctuations, followed
+by a rescaling step used to make this system autonomous (i.e.\ independent of
+the ``scale'' $j$). He argued that the flow of this dynamical system would
+leave the long-range behaviour of models invariant. Consequently, critical models
+lying in the same orbit would belong to
+the same universality class. Thus, such models should possess the same critical
+exponents and scaling limit. Moreover, this scaling limit should be invariant
+under the action of the renormalisation group, i.e.\ it should arise as a fixed
+point of this dynamical system. Therefore, the set of points that flow towards it
+form its stable manifold.
 
 In addition to these rather broad statements regarding the nature of universality
 and scaling limits, Wilson demonstrated that critical exponents could be computed
@@ -997,17 +990,36 @@ by a careful analysis of the asymptotics of the renormalisation group near its
 fixed points. He claimed that such an analysis could be performed by approximating
 this infinite-dimensional dynamical system by a \emph{finite-dimensonal} system.
 
-Gaussian behaviour above the upper-critical dimension was explained by the
-existence of a unique hyperbolic fixed point in dimensions $4$ and up: the Gaussian
-fixed point. In dimension $4$, a bifurcation occurs: when $d = 4$, the Gaussian
-fixed point ceases to be hyperbolic and as $d$ is lowered, the fixed point splits
-into a stable fixed point and an unstable one (this is an example of a saddle-node
-bifurcation). The unstable fixed point corresponds to Gaussian behaviour (this is
-why the critical exponents are different for $g = 0$ and $g > 0$ when $d < 4$).
+By analyzing this finite-dimensional approximation, Wilson determined that there
+is a unique hyperbolic fixed point in dimensions $d > 4$ corresponding to the Gaussian
+free field and mean-field behaviour. As the dimension is lowered below $4$, a saddle
+node bifurcation occurs in which the Gaussian fixed point splits into two fixed points:
+One corresponds to Gaussian behaviour but is unstable. The other is hyperbolic and
+corresponds to anomalous scaling behaviour; it is sometimes known as the
+\emph{Wilson-Fisher} fixed point. At the bifurcation point $d = 4$, there is only
+one (Gaussian) fixed point and logarithmic corrects to mean-field scaling arise
+from the fact that this fixed point is not hyperbolic.
 
 \begin{example}
 CLT: Koralov-Sinai, Li-Sinai. See also Jona-Lasinio I think.
 \end{example}
+
+There are many difficulties in making Wilson's ideas rigorous and many approaches
+have been tried. A rigorous block-spin renormalisation group in the spirit of Kadanoff's
+ideas was formulated in \cite{GK85}. There is the phase-cell expansion used in
+constructive quantum field theory \cite{GJ87}.
+
+In this thesis, we will discuss extensions and applications of a new method
+developed by Bauerschmidt, Brydges, and Slade \REF which is based on the
+finite-range covariance decomposition of \cite{Baue13a} and has precedents going back to
+\cite{BY90}. Renormalisation group analysis based on a finite-range decomposition
+in the continuum was first used in \cite{MS00} based on a suggestion of Brydges.
+In \cite{BGM04}, covariance decompositions on the lattice were constructed
+and an implementation of the renormalisation group based on these decompositions
+is described in \cite{Bryd09}.
+% These notes discuss the renormalisation group
+% on the Euclidean lattice as well as on a \emph{hierarchical} lattice, where
+% the analysis is much simpler.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1035,8 +1047,8 @@ A discrete-time walk $\omega$ is said to be \emph{self-avoiding} if
 $\omega_i \ne \omega_j$
 for all $i \ne j$. Let $\Scal_n \subset \dwalks_n$ denote the set of $n$-step
 self-avoiding walks starting at $0$.
-The \emph{self-avoiding walk} is a model of a linear polymer introduced by
-Flory \REF and defined by the weights $w(\omega) = \1_{\omega\in\Scal_n}$.
+The \emph{self-avoiding walk} is a model of a linear polymer
+defined by the weights $w(\omega) = \1_{\omega\in\Scal_n}$.
 
 Equivalently, we equip $\Scal_n$ with the uniform measure $\mu_n$ for each $n$.
 These measures do not form a consistent family due to the possibility of ``traps''. That is, the equality
@@ -1223,6 +1235,8 @@ In particular,
 
 \subsection{Predicted behaviour}
 
+\commentbw{Cite Flory}
+
 The two-point function, susceptibility, and correlations lengths of the
 self-avoiding walk and WSAW-SA (with $\gamma$ small) on $\Zd$ are all expected
 to scale according to analogues of \eqref{e:Gpred}--\eqref{e:xippred}. The
@@ -1253,7 +1267,7 @@ scales like simple random walk in dimensions above $4$.
 In $d > 4$, mean-field behaviour for the discrete-time WSAW was first proved
 in \cite{BS85} using the lace expansion, which was introduced in the same paper.
 By vastly extending this method, Hara and Slade \REF were able to apply it to the
-self-avoiding walk in $d > 4$.
+self-avoiding walk in $d > 4$ (see also Madras-Slade \REF).
 
 As discussed in Section~\ref{sec:rg-intro}, Bauerschmidt, Brydges, and Slade have
 recently made great strides in the case $d = 4$ using a renormalisation group method.
@@ -1263,4 +1277,4 @@ we will discuss in Section~\ref{sec:intrep}. This method was first applied to wa
 in \cite{BBS-saw4-log,BBS-saw4}, where the susceptibility and two-point function were
 studied.
 
-\todo{Discuss phase diagram for WSAW-SA}
+\commentbw{WSAW-SA phase diagram and known results (as in saw-sa)}

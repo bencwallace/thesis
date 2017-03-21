@@ -16,7 +16,7 @@ to $\gamma_0 \ne 0$ in Theorem~\ref{thm:rhatflow}.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Unified notation}
+\section{Notation}
 
 To unify our treatment of the two models,
 we define the forms $\tau_x, \tau_{\Delta,x}, |\nabla\tau_x|^2$ according
@@ -237,7 +237,7 @@ G_{x,N}(\gcc,\gamma,\nu)
 \right)}
 \bar\phi_a \phi_b.
 \end{equation}
-\todo{(Note here that there is no Jacobian factor due to the change of variables in $\psi, \psib$.)}
+Note here that there is no Jacobian factor due to the change of variables in $\psi, \psib$.
 For any $m^2 \in\R$, it follows that
 \begin{equation}
 \lbeq{GNint}
@@ -611,8 +611,10 @@ For now, we turn our attention to the special case of the $T_0$ seminorm. Recall
 $\Ex_{C_{j+1}} F$ is of order $\|F\|_{T_0(\h_j)}$.
 By Wick's theorem \eqref{e:wick}, for a $1$-component field $\varphi$,
 \begin{equation}
-\Ex_{C_{j+1}} \varphi_x^{2p} = (2p - 1)!! C_{j+1;00}^p.
+\Ex_{C_{j+1}} \varphi_x^{2p} = (2p - 1)!! C_{j+1;00}^p
 \end{equation}
+and similar statements hold for complex and fermionic fields by the analogues of
+Wick's theorem for such fields.
 On the other hand, by definition of the $T_0$ seminorm,
 \begin{equation}
 \label{e:gauss-moments}
@@ -705,7 +707,7 @@ orthogonal matrices $T$.
 
 \section{Perturbative coordinate}
 
-As mentioned in Section~\ref{rg-intro}, one of Wilson's key insights was that the renormalisation
+As mentioned in Section~\ref{sec:rg-intro}, one of Wilson's key insights was that the renormalisation
 group could be well-approximated by a finite-dimensional dynamical system. In this
 section, we reformulate Wilson's insights in terms of the covariance decomposition
 and define a subspace on which this finite-dimensional system will evolve.
@@ -851,41 +853,45 @@ when $|B| = L^{jd}$:
 \subsection{Perturbative flow}
 \label{sec:pt}
 
-\commentbw{Work on motivating $\Vpt$ and $I$}
-
-In \cite{BBS-rg-pt}, a
-map\footnote{In \cite{BBS-rg-pt}, $\Vpt$ is defined on a larger space including
-$\tau_{\nabla\nabla}$. Here, following \eqref{e:nabla-delta}, we define $\Vpt$ by composing that
-map with the map that replaces $z \tau_\Delta + y \tau_{\nabla\nabla}$ by
-$(z + y) \tau_\Delta$.}
-$\Vpt : \Vcalp\to\Vcalc$
-is defined so as to maintain the approximate form
+Here we discuss how to maintain the form $Z_j \approx e^{-\Vp_j(\Lambda)}$ to
+second order with $\Vp_j\in\Vcalp$. The basic idea begins with the \emph{cumulant
+expansion}
 \begin{equation}
-Z_j \approx e^{-\Vc_j} (1 + O(\Vp_j^2)).
-\end{equation}
-Precisely, $\Vpt$ depends on a covariance $C$ and satisfies
-\begin{equation}
-\Ex_C\theta e^{-V(\Lambda)} (1 + W(\Vp))
-	=
-e^{-\Vpt(\Lambda)} (1 + W(\Vpt^{(0)})) + O(\Vp^3),
-\end{equation}
-where $W = W(V)$ is an explicit polynomial that is quadratic in $V\in\Vcalp$; see
-\cite[\eqref{pt-e:WLTF}]{BBS-rg-pt} for its definitin, which also depends on $C$.
-\todo{Explain $O(V^3)$.}
-
-To motivate the definition of $\Vpt$, note that, by the \emph{cumulant expansion},
-\begin{equation}
-\Ex_C \theta e^{-V}
+\Ex_C \theta e^{-\Vp(\Lambda)}
 	\approx
-e^{-\Ex_C \theta V + \tfrac12 \Ex_C (\theta V; \theta V)}.
+e^{-\Ex_C \theta \Vp(\Lambda) + \scriptstyle{\frac12} \Ex_C (\theta \Vp(\Lambda); \theta \Vp(\Lambda))}.
 \end{equation}
-The polynomial in the exponent on the right-hand side is not local.
-In Section~\REF, we will discuss an operator $\Loc_x$ for approximating a non-local
-polynomial by a local polynomial in $\Vcal$ at $x$.
+In \cite{BS-rg-loc} an operator $\Loc_x$ is defined so that $\Loc_x F$ is an
+approximation of $F$ by a local polynomial at $x$. We make the split
+\begin{equation}
+\frac12 \Ex_C (\theta \Vp_x; \theta \Vp(\Lambda))
+	=
+\frac12 \Loc_x \Ex_C (\theta \Vp_x; \theta \Vp(\Lambda))
+	+
+\frac12 (1 - \Loc_x) \Ex_C (\theta \Vp_x; \theta \Vp(\Lambda))
+\end{equation}
+With $\Vp(\Lambda) = \sum_{x\in\Lambda}$ and $e^F \approx 1 + F$, we get
+\begin{equation}
+\Ex_C \theta e^{-\Vp(\Lambda)}
+	\approx
+e^{-\Ex_C \theta \Vp(\Lambda)
+	+
+\scriptstyle{\frac12} \Loc_x \Ex_C (\theta \Vp_x; \theta \Vp(\Lambda))}
+\Big(1 + \tfrac12 (1 - \Loc_x) \Ex_C (\theta \Vp_x; \theta \Vp(\Lambda))\Big).
+\end{equation}
 
-In practice, we set $C = C_{j+1}$ and obtain a sequence $\Vpt = \Vc_{\mathrm{pt},j+1}$
-of maps and $W_j$ of polynomials. By \cite[\eqref{IE-e:W-logwish}]{BS-rg-IE},
-\todo{(check this)},
+Based on this idea, in \cite{BBS-rg-pt}
+a map\footnote{In \cite{BBS-rg-pt}, $\Vpt$ is defined on a
+larger space including $\tau_{\nabla\nabla}$. Here, following \eqref{e:nabla-delta},
+we define $\Vpt$ by composing that map with the map that replaces
+$z \tau_\Delta + y \tau_{\nabla\nabla}$ by $(z + y) \tau_\Delta$.}
+$\Vpt : \Vcalp\to\Vcalc$ is defined so as to maintain the approximate form
+\begin{equation}
+\label{e:Zapprox}
+Z_j \approx e^{-\Vc_j} (1 + W_j^2),
+\end{equation}
+where $W_j$ is an explicit polynomial that is second-order in $V_j$;
+in fact, by \cite[\eqref{IE-e:W-logwish}]{BS-rg-IE},
 \begin{equation}
 \label{e:Wbilinbd}
 \|W_j\|_{T_0(\ell_j)}
@@ -893,16 +899,31 @@ of maps and $W_j$ of polynomials. By \cite[\eqref{IE-e:W-logwish}]{BS-rg-IE},
 O(\chicCov_j) \|V\|_\Vcal^2,
 \end{equation}
 where $\chicCov_j$ is a parameter that decays exponentially above the mass scale
-and will be discussed in Section~\ref{sec:step}.
-The maps $\Vp \mapsto \Vpt$
-generate a sequence of couplings constants that we refer to as the
-\emph{perturbative flow}. The equations defining this flow can be
-computed exactly by way of Feynman diagrams.
+and will be discussed in Section~\ref{sec:step}. We will elaborate on the  meaning
+of \eqref{e:Zapprox} in Section~\ref{sec:rgcoord}.
+
+% Precisely, $\Vpt$ depends on a covariance $C$ and satisfies
+% \begin{equation}
+% \Ex_C\theta e^{-V(\Lambda)} (1 + W(\Vp))
+% 	=
+% e^{-\Vpt(\Lambda)} (1 + W(\Vpt^{(0)})) + O(\Vp^3),
+% \end{equation}
+% where $W = W(V)$ is an explicit polynomial that is quadratic in $V\in\Vcalp$; see
+% \cite[\eqref{pt-e:WLTF}]{BBS-rg-pt} for its definitin, which also depends on $C$.
+% \todo{Explain $O(V^3)$.}
+
+The map $\Vpt$ depends on the covariance $C$ and
+in practice we set $C = C_{j+1}$ and obtain a sequence $\Vpt = \Vc_{\mathrm{pt},j+1}$.
+By successively iterating these maps, we generate a sequence of coupling constants that
+we refer to as the \emph{perturbative flow}. The equations defining this flow can be
+computed exactly by way of Feynman diagrams or with a computer program \cite{BBS-rg-ptsoft}.
+In \cite{BBS-rg-pt}, these flow equations are summarized and it is shown that a change of
+variables can be used to triangularize the resulting system of equations up to third-order
+errors. Below, we summarize these transformed flow equations for $g$, $\lambda$, and $q$.
 
 \subsubsection{The flow of \texorpdfstring{$g$}{g}}
 
-Following an approximate change of coordinates with $O(\Vp^3)$ errors, the perturbative
-flow of $g$ takes the form
+The (transformed) perturbative flow of $g$ takes the form
 \begin{equation}
 \label{e:gbar}
 \gbar_{j+1}
@@ -983,8 +1004,6 @@ where
 w^{(1)}_j = \sum_{x\in\Lambda} \sum_{i=1}^j C_{i;0x}.
 \end{equation}
 Note that $q_\pt = q$ for $j + 1 < j_x$.
-% \todo{It's strange that $w$ appears in the flow of $\lambda$ when $\Vpt$ only
-% depends on $C$.}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1018,6 +1037,14 @@ we define the \emph{circle product} $F \circ G : \Pcal_j(\Lambda) \to \Ncal$ by
 \begin{equation}
 (F \circ G)(X) = \sum_{Y\in\Pcal_j(X)} F(X \setminus Y) G(Y).
 \end{equation}
+The circle product is commutative, associative, and has the identity element
+\begin{equation}
+\1_\varnothing(X) =
+\begin{cases}
+1,	& X = \varnothing \\
+0,	& X \ne \varnothing
+\end{cases}.
+\end{equation}
 We track $Z_j$ using \emph{renormalisation group coordinates}
 $u_j, q_{0,j}, q_{x,j} \in \R$,
 $I_j, K_j : \Pcal_j \to \Ncal$, defined such that
@@ -1035,8 +1062,10 @@ I_j(\Vp, X)
 	=
 \prod_{B \in \Bcal_j(X)} e^{-\Vp(B)} (1 + W_j(B, \Vp)), \quad X \in \Pcal_j,
 	\quad
-\Vp \in \Vcalp.
+\Vp \in \Vcalp
 \end{equation}
+and is said to satisfy the \emph{block-factorization} property.
+This gives a rigorous implementation of \eqref{e:Zapprox}.
 
 Before defining the space in which $K_j$ lies, we need the following notions:
 \begin{itemize}
@@ -1258,27 +1287,24 @@ The proof of Theorem~\ref{thm:step-mr-fv} involves showing that the
 inductive estimates \eqref{e:RKplus} hold for any $s$. In some cases,
 we will make use of these estimates both with $s > 0$ and $s = 0$.
 
-The proof of Theorem~\ref{thm:step-mr-fv} is identical to the proof of
-\cite[Theorem~\ref{phi4-thm:step-mr-fv}]{ST-phi4} \todo{(if $n \ge 1$)},
-via a version of
-\cite[Theorems~\ref{step-thm:mr-R}--\ref{step-thm:mr}]{BS-rg-step} that
-uses the norm parameters \eqref{e:elldef-zz} with $s > 0$.
-The proof of the latter results with these new norm parameters is an
-adaptation of the proof of the $s = 0$ case contained in \cite{BS-rg-IE,BS-rg-step}.
+\commentbw{I don't like the next paragraph.}
+
+The proof of Theorem~\ref{thm:step-mr-fv} is an adaptation of the proof
+of the $s = 0$ case contained
+in\footnote{For $n \ge 1$, there is an additional step to deal with observables.
+This is dealt with in the proof of \cite[Theorem~\ref{phi4-thm:step-mr-fv}]{ST-phi4}
+and is unchanged in the present context.}
+\cite{BS-rg-IE,BS-rg-step}.
 Some steps in this proof continue to hold unchanged whereas others require
 some modification. As mentioned above, a major change that is required is
 a new definition of $\Wcal_j$ above the mass scale. A detailed verification
 that the proof holds for $s > 0$ is carried out in Chapter~\ref{sec:RGstep}.
-% \ref{sec:Rpf2} below.
 
-Theorem~\ref{thm:step-mr-fv} expresses a contractive property of the map $K_+$,
-as it takes $K$ in a ball whose radius involves $\alpha=4M$ at scale $j$ to
-an image which lies in a ball whose radius involves the smaller number $M$
-at scale $j+1$.  The fact that $K_+$ is a contraction is used in
-Theorem~\ref{thm:rhatflow}
-% \cite[Proposition~\ref{log-prop:KjNbd}]{BBS-saw4-log} (for $n=0$) and
-% \cite[Theorem~\ref{phi4-log-thm:flow-flow}]{BBS-phi4-log}
-% (for $n \ge 1$)
+Theorem~\ref{thm:step-mr-fv} expresses a contractive property of the map $K_+$
+through \eqref{e:DKkappa}.
+% as it takes $K$ in a ball whose radius involves $\alpha=4M$ at scale $j$ to
+% an image which lies in a ball whose radius involves the smaller number $M$ at scale $j+1$.
+The fact that $K_+$ is a contraction is used, in Theorem~\ref{thm:rhatflow},
 to prove that, for $m^2$ and $g_0$ sufficiently small, there exist
 \emph{critical} initial conditions
 $\nu_0 = \nu_0^c(m^2, g_0, \gamma_0; n)$ and $z_0 = z_0^c(m^2, g_0,\gamma_0; n)$
@@ -1286,22 +1312,8 @@ such that for any $N$,
 iteration of the maps $(\Vc_+,K_+)$ defines a sequence $(\Vp_j, K_j)$
 which lies in the domain $\domRG_j$ and obeys the estimates \refeq{RKplus}
 \emph{for all} $j = 1, \ldots, N$.
-% This construction of critical initial conditions uses the $s=0$ version
-% of \refeq{elldef-zz}.
-
-% The case with observable fields included is handled in \cite{ST-phi4}.
-% Because we have increased $\ell_{\sigma,j}$ beyond the mass scale, the
-% estimates on $q_0,q_x$ given by the bound on $R_+$ in \refeq{RKplus} are
-% significantly improved compared to their versions with $s=0$ in \cite{ST-phi4}.
-% As is discussed in detail in  \cite[Section~\ref{phi4-sec:pfmr1}]{ST-phi4},
-% $V_j^{(0)}$ remains in the domain $\domRG_j$ for all $j$
-% (also concerning $\lambda_{0,j}, \lambda_{x,j}$).
-% Moreover,
-% $\lambda_{0,j}, \lambda_{x,j},q_{0,j},q_{x,j}$, are independent of the volume parameter $N$ and
-% so can be extended to infinite sequences, and the following limits exist:
-% \begin{equation}
-% q_{u,\infty} = \lim_{j\to\infty} q_{u,j}, \quad u = 0, x.
-% \end{equation}
+This construction of critical initial conditions uses the $s=0$ version
+of \refeq{elldef-zz}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1374,6 +1386,3 @@ Moreover, the sequence $\Vc_j, j = 1, \ldots, N$ is independent of the volume $\
 uniformly in $(m^2, \gamma_0)$.
 % Moreover, the second-order evolution equation for $V_j$ is independent of $\gamma_0$.
 \end{theorem}
-
-\commentbw{Define infinite sequence of couplign constants. Mention that different
-versions of $g$ can be interchanged.}

@@ -16,7 +16,7 @@ interpretation as an expectation with respect to the random walk whose steps
 are weighted by the entries of $M$.
 
 This idea can be extended to obtain relationships between certain models of
-interacting walks and spin systems.
+interacting walks and spin systems (see \cite{FFS92}).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -74,10 +74,6 @@ This is known as the $n \to 0$ ``limit''.
 % This section based on saw-sa
 \label{sec:intrep}
 
-\commentbw{Discuss complex Gaussian integral and
-some properties of fermionic integral (Wick's theorem, self-normalization,
-change of variables)}
-
 It is not clear how to make rigorous the $n\to0$ limit of De Gennes. Parisi and
 Sourlas \cite{PS80} and, independently, McKane \cite{McKa80}, discovered an
 alternative approach to the predictions of De Gennes. They argued that the weakly
@@ -122,6 +118,7 @@ The order in which the product over $x\in\Lambda$ is taken does not matter
 since the $d\phib_x d\phi_x$ commute. The complex Gaussian satisfies a
 version of Wick's theorem. In particular,
 \begin{equation}
+\label{e:wick-complex2}
 \int \phib_x \phi_y \; d\mu_C(\phi, \phib) = C_{xy}.
 \end{equation}
 \end{example}
@@ -153,8 +150,8 @@ F_{\vec y} (\phi, \bar\phi)
 \psi^{\vec y}
 \end{equation}
 where the sum is over finite sequences $\vec y$ over $\Lambda\sqcup\bar\Lambda$,
-and $\psi^{\vec y} = \psi_{y_1} \ldots \psi_{y_p}$ when $\vec y = (y_1, \ldots, y_p)$.
-When $\vec y = \varnothing$ is the empty sequence,
+and $\psi^{\vec y} = \psi_{y_1} \ldots \psi_{y_p}$ (in some canonical order) when
+$\vec y = (y_1, \ldots, y_p)$. When $\vec y = \varnothing$ is the empty sequence,
 $F_\varnothing$ denotes the $0$-degree (bosonic) part of $F$.
 
 In order to apply the results of \cite{BBS-saw4-log,BBS-saw4,BSTW-clp}, we require
@@ -180,17 +177,12 @@ f(F) = \sum_\alpha \frac{1}{\alpha!} f^{(\alpha)}(F_\varnothing) (F - F_\varnoth
 The summation terminates as a finite sum,
 since $\psi_x^2 = \bar\psi_x^2 = 0$ due to the anti-commut\-ative product.
 
-We define the integral
-$\int F$
-of a differential form $F$ in the usual way
-as the Riemann integral of its top-degree part
-(which may be regarded as a function
+We define the integral $\int F$ of a differential form $F$ in the usual way
+as the Riemann integral of its top-degree part (which may be regarded as a function
 of the boson field).
-In particular, given a positive-definite
-$\Lambda \times \Lambda$ symmetric matrix $C$
-with inverse $A = C^{-1}$,
-we define the \emph{Gaussian expectation}
-(or \emph{super-expectation}) of $F$ by
+In particular, given a positive-definite symmetric
+$\Lambda \times \Lambda$ matrix $C$ with inverse $A = C^{-1}$,
+we define the \emph{Gaussian expectation} (or \emph{super-expectation}) of $F$ by
 \begin{equation}
 \lbeq{ExCF}
 \Ex_C F = \int e^{-S_A} F,
@@ -200,7 +192,7 @@ where
 \label{e:action}
 S_A = \sum_{x\in\Lambda} \Big(\phi_x (A\bar\phi)_x + \psi_x (A \bar\psi)_x\Big).
 \end{equation}
-{The super-expectation has the remarkable self-normalization property that}
+The super-expectation possesses the following self-normalization property:
 \begin{equation}
 \label{e:self-normal}
 \int e^{-S_A} = 1.
@@ -208,6 +200,11 @@ S_A = \sum_{x\in\Lambda} \Big(\phi_x (A\bar\phi)_x + \psi_x (A \bar\psi)_x\Big).
 Moreover, if $F$ is a degree-$0$ form, then
 \begin{equation}
 \Ex_C F = \int F \; d\mu_C.
+\end{equation}
+There is also a version of Wick's theorem for fermions. In particular,
+\begin{equation}
+\label{e:wick-fermion2}
+\int e^{-S_A} \psi_x \psib_x = C_{xx}.
 \end{equation}
 
 For $F = f(\phi, \bar\phi) \psi^{\vec y}$, we let
@@ -296,12 +293,12 @@ As before, we identify the vertices of $\Lambda_N$ with nested subsets of $\Zd$,
 centred at the origin (approximately if $L$ is even),
 with $\Lambda_{N+1}$ paved by $L^d$ translates of $\Lambda_N$.
 % We can thus define $\partial \Lambda_N$ to be the inner vertex boundary of $\Lambda_N$.
-We denote the expectation of $X^{L^N}$ started from $a \in \Lambda_N$ by $E^{\Lambda_N}_a$
+We denote the expectation of $X^{L^N}$ started from $0 \in \Lambda_N$ by $E^{\Lambda_N}_0$
 and define
 \begin{align}
 \label{e:cN}
 c_{N,T}(x)
-    &= E^{\Lambda_N}_a \left( e^{-U_{\gcc,\gamma,T}} \1_{X(T)=b} \right)
+    &= E^{\Lambda_N}_0 \left( e^{-U_{\gcc,\gamma,T}} \1_{X(T)=b} \right)
     \quad (x \in \Lambda_N), \\
 c_{N,T}
     &= E^{\Lambda_N}_0 \left( e^{-U_{\gcc,\gamma,T}} \right).

@@ -2,6 +2,45 @@
 \label{app:free-moments}
 % from clp
 
+In this appendix we prove Proposition~\ref{prop:Gab-free-moment-estimate}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Main result}
+
+\begin{prop}\label{prop:Gab-free-moment-estimate-bis}
+Let ${\sf c}_p$ be the constant defined by \eqref{e:cpdef}.
+For all dimensions $d>2$ and all $p>0$,
+as $m^2 \downarrow 0$,
+\begin{equation}
+\label{e:Gab-free-moment-estimate-bis}
+\sum_{x\in\Zd} |x|^p G_{x}(0, m^2)
+=
+{\sf c}_p^p m^{-(p + 2)} (1 + O(m)).
+\end{equation}
+In particular, $\xi_p(0,\varepsilon) = {\sf c}_p \varepsilon^{-1/2}
+(1+O(\varepsilon^{1/2}))$ as $\varepsilon \downarrow 0$.
+\end{prop}
+
+The last sentence in the the proposition follows immediately from
+\refeq{Gab-free-moment-estimate-bis} and the fact that $\chi(0,m^2)=m^{-2}$,
+so it suffices to prove \refeq{Gab-free-moment-estimate-bis}.
+
+The case $p = 2$ of \refeq{Gab-free-moment-estimate-bis}
+can be obtained easily from the identity
+\begin{equation}
+\sum_{x\in\Zd} |x|^2 G_x(0, m^2) = -\Delta_\Rd \hat{G}(0),
+\end{equation}
+where $\hat G$ is the Fourier transform of $G$.
+Higher even moments could in principle
+be computed by further differentiating $\hat G$.
+We adopt a different approach
+for general $p>0$,
+based on the finite range decomposition of $(-\Delta_{\Zd}+m^2)^{-1}$
+given in \cite{BGM04,Baue13a}.
+This finite range decomposition also provides the basis for the renormalisation group method.
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -44,43 +83,6 @@ By the Lipschitz condition on $f$, each summand on the right-hand side is bounde
 by a $O(\epsilon)$. By the support assumption on $f$, there are at most
 $O(t^d/\epsilon)$ such summands and the result follows.
 \end{proof}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\section{Main result}
-
-\begin{prop}\label{prop:Gab-free-moment-estimate-bis}
-Let ${\sf c}_p$ be the constant defined by \eqref{e:cpdef}.
-For all dimensions $d>2$ and all $p>0$,
-as $m^2 \downarrow 0$,
-\begin{equation}
-\label{e:Gab-free-moment-estimate-bis}
-\sum_{x\in\Zd} |x|^p G_{x}(0, m^2)
-=
-{\sf c}_p^p m^{-(p + 2)} (1 + O(m)).
-\end{equation}
-In particular, $\xi_p(0,\varepsilon) = {\sf c}_p \varepsilon^{-1/2}
-(1+O(\varepsilon^{1/2}))$ as $\varepsilon \downarrow 0$.
-\end{prop}
-
-The last sentence in the the proposition follows immediately from
-\refeq{Gab-free-moment-estimate-bis} and the fact that $\chi(0,m^2)=m^{-2}$,
-so it suffices to prove \refeq{Gab-free-moment-estimate-bis}.
-
-The case $p = 2$ of \refeq{Gab-free-moment-estimate-bis}
-can be obtained easily from the identity
-\begin{equation}
-\sum_{x\in\Zd} |x|^2 G_x(0, m^2) = -\Delta_\Rd \hat{G}(0),
-\end{equation}
-where $\hat G$ is the Fourier transform of $G$.
-Higher even moments could in principle
-be computed by further differentiating $\hat G$.
-We adopt a different approach
-for general $p>0$,
-based on the finite range decomposition of $(-\Delta_{\Zd}+m^2)^{-1}$
-given in \cite{BGM04,Baue13a}.
-This finite range decomposition also provides the basis for the renormalisation group method.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
