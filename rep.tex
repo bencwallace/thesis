@@ -79,39 +79,66 @@ some properties of fermionic integral (Wick's theorem, self-normalization,
 change of variables)}
 
 It is not clear how to make rigorous the $n\to0$ limit of De Gennes. Parisi and
-Sourlas and, independently, McKane, discovered an alternative approach to the
-predictions of De Gennes. They argued that the weakly
-self-avoiding walk \todo{two-point function} could be represented as the two-point
-function for a version of the $|\varphi|^4$ model involving both boson and fermion
-fields. The formal appearance of $n = 0$ quantities was then explained as a
+Sourlas \cite{PS80} and, independently, McKane \cite{McKa80}, discovered an
+alternative approach to the predictions of De Gennes. They argued that the weakly
+self-avoiding walk two-point function could be represented as the two-point
+function for a \emph{supersymmetric} version of the $|\varphi|^4$ model, involving
+boson and fermion fields (we discuss these below).
+The formal appearance of $n = 0$ quantities was then explained as a
 consequence of a symmetry between the bosons and fermions known as \emph{supersymmetry}.
 
 In this section we describe an integral representation of the of WSAW-SA, which
 is a special case of a result of Brydges, Imbrie, and Slade \cite{BIS09}.
-We restrict out attention to the graph $\Lambda = \Lambda_N = \Zd/L^N\Zd$.
-We begin by introducing the notions of bosons and fermion fields on $\Lambda$.
+We restrict out attention to the discrete torus $\Lambda$.
 
 \subsubsection{Boson and fermion fields}
 \label{sec:forms}
 
-We fix $N$ and write $\Lambda = \Lambda_N$.
-Given complex variables $\phi_x, \bar\phi_x$
-(the boson field) for $x \in \Lambda$,
-we define the differentials (the fermion field)
+Let $\phi_x, \bar\phi_x$ denote complex variables indexed by $x\in\Lambda$.
+We refer to $(\phi, \phib)$ as a \emph{boson} field. Let $u_x, v_x$ denote
+the real and imaginary parts of $\phi_x$ and define the differentials
+$d\phi_x = du_x + i dv_x$ and likewise for $d\phib_x$.
+We multiply differential forms
+in the usual way via the wedge product $\wedge$ but drop this in our notation;
+in particular,
+\begin{equation}
+d\phib_x d\phi_x = 2 i du_x dv_x.
+\end{equation}
+
+\begin{example}
+Let $C$ be a positive-definite symmetric $\Lambda\times\Lambda$ matrix. The
+\emph{complex Gaussian measure} with covariance $C$ is the probability measure
+on $\R^{2\Lambda}$ given by
+\begin{equation}
+d\mu_C(\phi, \phib)
+	=
+\frac{d\phib d\phi}{\det(2\pi i C)} e^{-\phi \cdot A \phib}
+\end{equation}
+where $A = C^{-1}$ and
+\begin{equation}
+d\phib d\phi \coloneqq \prod_{x\in\Lambda} d\phib_x d\phi_x
+\end{equation}
+The order in which the product over $x\in\Lambda$ is taken does not matter
+since the $d\phib_x d\phi_x$ commute. The complex Gaussian satisfies a
+version of Wick's theorem. In particular,
+\begin{equation}
+\int \phib_x \phi_y \; d\mu_C(\phi, \phib) = C_{xy}.
+\end{equation}
+\end{example}
+
+Let
 \begin{equation}
 \psi_x = \frac{1}{\sqrt{2\pi i}} d\phi_x,
 \quad
 \bar\psi_x = \frac{1}{\sqrt{2\pi i}} d\bar\phi_x,
 \end{equation}
-where we fix a choice of complex square root.
-The fermion fields are multiplied with each other
-via the anti-commutative wedge product,
-though we suppress this in our notation.
-
+where we fix a choice of complex square root. We refer to $(\psi_x, \psib_x)_{x\in\Lambda}$
+as a \emph{fermion} field.
 A differential form that is the
 product of a function of $(\phi, \bar\phi)$
-with $p$ differentials is said to have degree $p$.
+with $p$ differentials is said to have \emph{degree} $p$.
 A sum of forms of even degree is said to be \emph{even}.
+
 We introduce a copy $\bar\Lambda$ of $\Lambda$
 and we denote the copy of $X \subset \Lambda$ by $\bar X \subset \bar\Lambda$.
 We also denote the copy of $x \in \Lambda$
@@ -135,13 +162,12 @@ smoothness of the coefficients $F_{\vec y}$ of $F$.  For Theorem~\ref{thm:mr}(i,
 we need these coefficients to be $C^{10}$, and for Theorem~\ref{thm:mr}(iii) we require
 a $p$-dependent number of derivatives for the analysis of $\xi_p$, as discussed in \cite{BSTW-clp}.
 In either case, we let $p_\Ncal$ denote the desired degree of smoothness.
+We will discuss this further in Section~\ref{sec:newnorm}.
 
 We let $\Ncal^\varnothing$ be the algebra of even forms with sufficiently smooth coefficients
 and we let $\Ncal^\varnothing(X) \subset \Ncal^\varnothing$ be the sub-algebra of even forms only depending on fields
 in $X$. Thus, for $F \in \Ncal^\varnothing(X)$, the sum in \eqref{e:FinNcal} runs over sequences $\vec y$
 over $X \sqcup \bar X$.
-Note that $\Ncal^\varnothing = \Ncal^\varnothing(\Lambda)$.
-
 
 Now let $F = (F_j)_{j \in J}$ be a finite collection of even forms
 indexed by a set $J$
@@ -179,9 +205,12 @@ S_A = \sum_{x\in\Lambda} \Big(\phi_x (A\bar\phi)_x + \psi_x (A \bar\psi)_x\Big).
 \label{e:self-normal}
 \int e^{-S_A} = 1.
 \end{equation}
+Moreover, if $F$ is a degree-$0$ form, then
+\begin{equation}
+\Ex_C F = \int F \; d\mu_C.
+\end{equation}
 
-Finally, for $F = f(\phi, \bar\phi) \psi^{\vec y}$,
-we let
+For $F = f(\phi, \bar\phi) \psi^{\vec y}$, we let
 \begin{equation}
 \theta F = f(\phi + \xi, \bar\phi + \bar\xi) (\psi + \eta)^{\vec y},
 \end{equation}
@@ -199,9 +228,6 @@ An integral representation formula applying to general local time functionals
 is given in \cite{BEI92,BIS09}; see also \cite[Appendix~A]{ST-phi4}.
 We state the result we need in the proposition below.
 
-Let $\Delta$ denote the Laplacian on $\Lambda$,
-i.e.\ $\Delta_{xy}$ is given by the right-hand side of
-\eqref{e:Deltaxy} for $x, y \in \Lambda$.
 We define the differential forms:
 \begin{align}
 \label{e:taudef}
@@ -310,10 +336,3 @@ and
 \end{prop}
 
 The proof is in the appendix.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\section{Outline of remaining chapters}
-
-\commentbw{Outline the remainder}

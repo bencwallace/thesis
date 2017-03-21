@@ -113,8 +113,8 @@ For any $y\in\Lambda$, we define the polynomials
 \Vp^+_{0,y}
 	=
 g_0\tau_y^2 + \nu_0 \tau_y + z_0 \tau_{\Delta,y}
-- f_0 \1_{y=x}
-- f_x \1_{y=x},
+- f_0 \sigma_0 \1_{y=x}
+- f_x \sigma_x \1_{y=x},
 	\quad
 U^+_y
 	=
@@ -122,11 +122,12 @@ U^+_y
 \end{equation}
 where
 \begin{equation}
+\label{e:obs-couple}
 f_u =
 \begin{cases}
-\phib_0 \sigma_0,		& n = 0, u = 0 \\
-\phi_x \bar\sigma_x,	& n = 0, u = x \\
-\varphi^1_u,			& n \ge 1.
+\phib_0,		& n = 0, u = 0 \\
+\phi_x,			& n = 0, u = x \\
+\varphi^1_u,	& n \ge 1.
 \end{cases}
 \end{equation}
 These are examples of local polynomials, which are polynomials
@@ -204,7 +205,7 @@ D^2_{\sigma_0\sigma_x}
 and
 \begin{equation}
 \label{e:chichibar}
-\chi_N\left(\gcc,\gamma,\nu\right)
+\chi_N\left(\gcc,\gamma,\nu; n\right)
 	=
 (1+z_0)\hat\chi_N(m^2, g_0, \gamma_0, \nu_0, z_0; n),
 \end{equation}
@@ -324,11 +325,12 @@ C_{j;xy} = 0 \text{ if } |x - y| \ge \tfrac12 L^j.
 \end{equation}
 Thus, $\zeta$ is a Gaussian field with covariance $C_j$, then $\zeta_x$ is independent
 of $\zeta_y$ whenever $|x - y| \ge \tfrac12 L^j$. In particular,
+if $F_x, F_y$ are functions of the fields in $x, y$, respectively, then
 \begin{equation}
 \label{e:uncorr}
-\Ex_{C_{j+1}} (\zeta_x \zeta_y) = (\Ex_{C_{j+1}} \zeta_x) (\Ex_{C_{j+1}} \zeta_y).
+\Ex_{C_{j+1}} (F_x F_y) = (\Ex_{C_{j+1}} F_x) (\Ex_{C_{j+1}} F_y).
 \end{equation}
-In addition, we have the covariance bounds (this is a restatement of
+In addition, we have the following covariance bounds (this is a restatement of
 \cite[Proposition~\ref{pt-prop:Cdecomp}(a)]{BBS-rg-pt}).
 
 \begin{prop}
@@ -350,38 +352,27 @@ In addition, we have the covariance bounds (this is a restatement of
   with $c$ depending on $\varepsilon$ but independent of $N$.
 \end{prop}
 
-\todo{These bounds show that the $C_j$ form a multiscale decomposition,
-in the sense that $C_{j+1} = O(L^{-1} C_j)$. Moreover, they are approximately
-constant on blocks in the sense that $\nabla C_j = O(L^{-1} C_j)$.}
+% By Proposition~\ref{prop:Cdecomp}, the decomposition \eqref{e:NCj} is a multiscale decomposition,
+% in the sense that $C_{j+1} = O(L^{-1} C_j)$. Moreover, the covariances are approximately
+% constant on blocks in the sense that $\nabla C_j = O(L^{-1} C_j)$.
 
 It is a basic property  of the Gaussian distribution that a sum of independent Gaussian random
 variables with covariances
 $C'$ and $C''$ is itself Gaussian with covariance $C' + C''$. It follows that for any
-bosonic field $F$,
+boson field $F$,
 \begin{equation}
 \Ex_{C'+C''}\theta F = \Ex_{C'}\theta \circ \Ex_{C''}\theta F.
 \end{equation}
-When $C' = s C_0$ and $C'' = t C_0$ for some covariance $C_0$ and $s, t > 0$,
-this is essentially a restatement of the semigroup property of the Gaussian kernel.
-
-The property \label{e:semigroup-property} extends to any sufficiently smooth form $F$;
-see \cite{BS-rg-norm} for a proof. It follows that
+% When $C' = s C_0$ and $C'' = t C_0$ for some covariance $C_0$ and $s, t > 0$,
+% this is essentially a restatement of the semigroup property of the heat kernel.
+This extends to any sufficiently smooth form $F$ (see \cite{BS-rg-norm}).
+It follows that
 \begin{equation}
 \label{e:prog-int}
-(\Ex_C \theta F)(\varphi)
-	=
-(\Ex_{C_N}\theta \circ \Ex_{C_{N-1}}\theta \circ \ldots \circ \Ex_{C_1}\theta F)
-(\varphi).
-\end{equation}
-Thus,
-\begin{equation}
-% \label{e:ZNdef}
-Z_N
-% = \Ex_C \theta Z_0
-	=
+Z_N =
 \Ex_{C_N}\theta \circ \Ex_{C_{N-1}}\theta \circ \ldots \circ \Ex_{C_1}\theta Z_0.
 \end{equation}
-We refer to the \emph{renormalisation group map} $Z_j \mapsto Z_{j+1}$ by
+We define the \emph{renormalisation group map} $Z_j \mapsto Z_{j+1}$ by
 \begin{equation}
 \label{e:rgmapZ}
 Z_{j+1} = \Ex_{C_{j+1}} \theta Z_j, \quad j < N.
@@ -404,7 +395,7 @@ We have scaled out the factor $1 + z_0$
 in the change of variables performed in the proof of Proposition~\ref{prop:intrep}.
 This factor plays a similar role to the standard deviation $\sigma$ in the central
 limit theorem: rather than a unique fixed point, there is a one-parameter family
-of fixed points trivially related to each other by scaling.
+of fixed points.
 \end{rk}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -421,12 +412,13 @@ Let $\Ncal^\varnothing$ be defined as in Section~\ref{sec:intrep} if $n = 0$ and
 \label{e:Ncaldef}
 \Ncal^\varnothing
 	= \Ncal^\varnothing(\Lambda)
-	= C^{p_\Ncal}((\R^n)^\Lambda,\R).
+	= C^{p_\Ncal}((\R^n)^\Lambda,\R)
 \end{equation}
 if $n \ge 1$. Recall that $p_\Ncal$ is the smoothness parameter discussed in
-Section~\ref{sec:intrep}. In Section~\ref{sec:newnorm},
-we explain that $p_\Ncal$ must be chosen in a way that depends on the
-parameter $p$ in Theorem~\ref{thm:mr}(iii).
+Section~\ref{sec:intrep}.
+% In Section~\ref{sec:newnorm},
+% we explain that $p_\Ncal$ must be chosen in a way that depends on the
+% parameter $p$ in Theorem~\ref{thm:mr}(iii).
 
 We extend $\Ncal^\varnothing$ to a space $\Ncal$
 that includes functions of the observable fields $\sigma_0$ and $\sigma_x$.
@@ -457,7 +449,8 @@ choice of parameter $\h_j$. The precise definitions are given below.
 
 \subsection{Test functions}
 
-\commentbw{This is for $n = 0$. For $n \ge 1$, see around \cite[(2.25)]{BBS-phi4-log}}
+We define the $T_\phi$ seminorm for $n = 0$. The case $n \ge 1$ involves only
+minor changes, which we describe in Remark~\ref{rk:Tphi-n}.
 
 Recall the notation introduced in Section~\ref{sec:forms}.
 A \emph{test function} $g$ is defined to be a function $(\vec x, \vec y) \mapsto g_{\vec x,\vec y}$,
@@ -534,10 +527,29 @@ g_{\vec x,\vec y}.
 Let $B(\Phi)$ denote the unit $\Phi$-ball in the space of test functions. Then the
 $T_\phi = T_\phi(\h_j)$ semi-norm on $\Ncal^\varnothing$ is defined by
 \begin{equation}
+\label{e:Tphi-def}
 \|F\|_{T_\phi} = \sup_{g\in B(\Phi_j)} |\langle F, g \rangle_\phi|.
 \end{equation}
-The definition for $n \ge 1$ is analogous.
-% The $T_\phi$ norm is defined in greater generality in \cite{BS-rg-norm}.
+
+\begin{rk}
+\label{rk:Tphi-n}
+If $n \ge 1$, a test function is a function $g$ on sequences over $\Lambda\times\{1,\ldots,n\}$.
+For any such sequence $\vec x = ((x_1, i_1), \ldots, (x_m, i_m))$, we write $|\vec x| = m$
+and set
+\begin{equation}
+F_{\vec x}
+	=
+\ddp{^m F}{\varphi^{i_1}_{x_1} \ldots \partial\varphi^{i_m}_{x_m}}
+\end{equation}
+and
+\begin{equation}
+\langle F, g \rangle_\varphi
+	=
+\sum_{\vec x} \frac{1}{|\vec x|!} F_{\vec x}(\varphi) g_{\vec x}.
+\end{equation}
+Then the $T_\varphi$ seminorm can be defined as in \eqref{e:Tphi-def}.
+\end{rk}
+
 To extend the $T_\phi$ seminorm to $\Ncal$, we make use of an additional sequence
 of parameters $\h_{\sigma,j}$. For any $F \in \Ncal$ of the form \eqref{e:obs-decomp},
 we let
@@ -579,10 +591,12 @@ which is essential to fully take advantage of the factorization property \eqref{
 If $F, G \in \Ncal$, then $\|F G\|_{T_\phi} \le \|F\|_{T_\phi} \|G\|_{T_\phi}$.
 \end{prop}
 
-The key to the proof, which is given in \cite[Proposition~\ref{norm-prop:prod}]{BS-rg-norm},
-is that the power series expansion of the product of two functions is the product of their
-respective power series. This is why the $T_\phi$ seminorm was defined in terms of the pairing
-\eqref{e:pairing}.
+\begin{rk}
+This follows essentially from the fact that
+the series expansion of the product of two functions is the product of their
+respective series expansions (see \cite{BS-rg-norm}). This is why the $T_\phi$
+seminorm was defined in terms of the pairing \eqref{e:pairing}.
+\end{rk}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -593,28 +607,29 @@ $\phi$ in order to control the Gaussian expectation in \eqref{e:rgmapZ}.
 This will be discussed further in Section~\REF.
 
 For now, we turn our attention to the special case of the $T_0$ seminorm. Recalling
-\eqref{e:exp-conv}, it is natural to choose the parameters $\h_j$ so that the value
-of $\|F\|_{T_0(\h_j)}$ reflects the size of the Gaussian expectation $\Ex_{C_{j+1}} F$.
+\eqref{e:exp-conv}, it is natural to choose the weights $\h_j$ so that
+$\Ex_{C_{j+1}} F$ is of order $\|F\|_{T_0(\h_j)}$.
 By Wick's theorem \eqref{e:wick}, for a $1$-component field $\varphi$,
 \begin{equation}
-\Ex_{C_{j+1}} \phi_x^{2p} = (2p - 1)!! C_{j+1;00}^p.
+\Ex_{C_{j+1}} \varphi_x^{2p} = (2p - 1)!! C_{j+1;00}^p.
 \end{equation}
 On the other hand, by definition of the $T_0$ seminorm,
 \begin{equation}
 \label{e:gauss-moments}
 \|\varphi_x^{2p}\|_{T_0(\h_j)} \asymp \h_j^p.
 \end{equation}
-This suggests taking defining $\h_j$ so that $|C_{j+1;00}| \le O(\h_j)$.
-Bounds on the covariance were stated in \eqref{e:scaling-estimate}.
-For instance, with $k = 0$, these become
-\begin{equation}
-\label{e:massless-cov-bd}
-|C_{j;xy}| \le O(L^{-j (d - 2)}).
-\end{equation}
+This suggests defining $\h_j$ so that $|C_{j+1;00}| \le O(\h_j)$.
+% Bounds on the covariance were stated in \eqref{e:scaling-estimate}.
+% For instance, with $k = 0$, these become
+% \begin{equation}
+% \label{e:massless-cov-bd}
+% |C_{j;xy}| \le O(L^{-j (d - 2)}).
+% \end{equation}
 
-The key to our analysis of the correlation length is that we make use of the
-full $k$-dependence of the bounds in \eqref{e:scaling-estimate}. With $k = s + 1$,
-this estimate together with the elementary bound
+The key to our analysis of the correlation length is that we make a choice of norm
+weights that takes full advantage of the
+$k$-dependence in the covariance bounds \eqref{e:scaling-estimate}.
+With $k = s + 1$, this estimate together with the elementary bound
 \begin{equation}
 \label{e:mass-decay}
 (1 + m^2 L^{2j})^{-k} \le c_L L^{-2(s+1)(j - j_m)_+}
@@ -628,7 +643,7 @@ where $j_m$ is the \emph{mass scale}, defined by
 \label{e:jmdef}
 j_m	= \lfloor\log_{L} m^{-1}\rfloor.
 \end{equation}
-Based on this discussion, we define $\ell_j$ as follows:
+Based on this, we define the following weights:
 \begin{align}
 \label{e:elldef-zz}
 \ell_j &= \ell_0 L^{-j - s (j - j_m)_+}, \quad
@@ -641,6 +656,7 @@ where
 \label{e:jxdef}
 j_x = \max\{0,\lfloor \log_{L} (2 |x|)\rfloor\}
 \end{equation}
+is the \emph{coalescence scale}
 and the sequence $\ggen_j = \ggen_j(m^2,g_0)$ will be discussed in Section~\ref{sec:step}.
 % For now, we remark only that it is bounded above and below by constant multiples of
 % the sequence $\gbar$ defined in
@@ -650,8 +666,8 @@ in Section~\ref{sec:Rpf1}.
 
 We will set $\h_j = \ell_j$ to estimate ``small'' fields. These are fields which
 are assumed not to deviate too much from their expected value. A different norm
-parameter $\h_j = h_j$ will be used to control ``large'' fields. This will be
-discussed in \REF.
+parameter $\h_j = h_j$ will be used to control ``large'' fields.
+This will be discussed in \REF.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -659,9 +675,30 @@ discussed in \REF.
 
 It is useful to restrict our attention to field functionals $F \in \Ncal$ that
 obey certain symmetry conditions preserved by Gaussian expectation (and which
-are obeyed by the bulk part of $V_0$).
+are obeyed by $V_0$).
 
-\commentbw{Define symmetries}
+We let any automorphism $E$ of $\Lambda$ act on $\Ncal$ by $EF(\varphi) = F(E\varphi)$.
+We say that $F\in\Ncal$ is \emph{Euclidean invariant} if $EF = F$ for all such automorphisms.
+
+Let $n = 0$.
+Define the \emph{supersymmetry generator}
+\begin{equation}
+Q = (2\pi i)^{1/2} \sum_{x\in\Lambda}
+\left(
+	\psi_x \ddp{}{\phi_x} + \psib_x \ddp{}{\phib_x}
+		-
+	\phi_x \ddp{}{\psi_x} + \phib_x \ddp{}{\psib_x}.
+\right)
+\end{equation}
+A form $F \in \Ncal$ is said to be \emph{supersymmetric} if $Q F = 0$.
+Such a form is said to be \emph{gauge invariant} if it is invariant under the
+\emph{gauge flow} $(q, \bar q) \mapsto (e^{-2\pi it} q, 2^{2\pi it} \bar q)$
+for $q = \phi_x, \psi_x$ and all $x\in\Lambda$.
+
+Let $n \ge 1$.
+An $n \times n$ matrix $T$ acts on $\Ncal$ via $T F(\varphi) = F(T \varphi)$.
+We say that $F\in\Ncal$ is \emph{$O(n)$ invariant} if $TF = F$ for all
+orthogonal matrices $T$.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -740,44 +777,52 @@ by defining
 \end{cases}
 \end{equation}
 
-\commentbw{Define symmetries.}
-
 When $n = 0$, it can be shown that the only marginal and relevant local monomials
 that are Euclidean invariant and supersymmetric are constant multiples of
 \begin{equation}
 1, \quad \tau_x, \quad \tau_x^2, \quad \tau_{\Delta,x}, \quad \tau_{\nabla\nabla,x}.
 \end{equation}
-When $n \ge 1$, these are monomials that are Euclidean invariant and $O(n)$-invariant.
+When $n \ge 1$, these are the only marginal and relevant monomials that are Euclidean
+invariant and $O(n)$-invariant (see \cite{BBS-rg-pt}).
 
-We define $\Vcalc$ to be the space \emph{local polynomials} (sums of local monomials)
-$\Vc_y$ of the form
+The marginal and relevant contributions to the evolution of the renormalisation group
+will be tracked by a \emph{local polynomial} (a sum of local monomials) of the form
+$\sum_{x\in\Lambda} \Vc_y$, where (recall \eqref{e:obs-couple})
 \begin{align}
 \lbeq{Vy}
 \Vc_y
 	&=
-g \tau_y^2 + \nu \tau_y + z \tau_{\Delta,y} + y \tau_{\nabla\nabla,y} + u
-	\nnb&\quad
-- \1_{y=\pp}\lambda_{\pp}(\varphi_{\pp} \cdot {\sf h})\sigma_\pp
-- \1_{y=\qq}\lambda_{\qq}(\varphi_{\qq} \cdot {\sf h})\sigma_\qq
-	\nnb&\quad
-- \textstyle{\frac 12} (\1_{y=\pp} q_\pp + \1_{y=\qq}q_\qq )\sigma_\pp\sigma_\qq.
+g \tau_y^2 + \nu \tau_y + z \tau_{\Delta,y}
+	% + y \tau_{\nabla\nabla,y}
+	+ u
+		\nnb&\quad
+	- \1_{y=\pp}\lambda_{\pp} f_0 \sigma_0
+	- \1_{y=\qq}\lambda_{\qq} f_x \sigma_x
+		\nnb&\quad
+	- \textstyle{\frac 12} (\1_{y=\pp} q_\pp + \1_{y=\qq}q_\qq )\sigma_\pp\sigma_\qq.
 \end{align}
+We have omitted $\tau_{\nabla\nabla}$ as summation by parts gives
+\begin{equation}
+\label{e:nabla-delta}
+\sum_{x\in\Lambda} \tau_{\nabla\nabla,x} = \sum_{x\in\Lambda} \tau_{\Delta,x}.
+\end{equation}
+
+We define $\Vcalc$ to be the space of all polynomials of the form $\Vc_y$.
 Given $X \subset \Lambda$, we let
 \begin{equation}
 \label{e:Vcalesig}
 \Vcalc(X) = \{\Vc(X) : \Vc \in \Vcalc \},
 \end{equation}
 where $\Vc(X)$ is defined as in \eqref{e:VX}.
-We also make use of the subspaces $\Vcalc^{(1)} \subseteq \Vcalc$ consisting
-of polynomials with $y = 0$, as well as the subspace
-$\Vcalp \subseteq \Vcalc^{(1)}$ of polynomials with
-$u = y =   q_\pp=q_\qq = 0$.
+We also make use of the % subspaces $\Vcalc^{(1)} \subseteq \Vcalc$ consisting
+% of polynomials with $y = 0$, as well as the
+subspace $\Vcalp$ of polynomials with
+$u = y = q_\pp=q_\qq = 0$.
 We will usually denote an element of $\Vcalp$ as $\Vp$.
-For $\Vc \in \Vcalc$, we define maps $\Vc \mapsto \Vc^{(1)} \in \Vcalc^{(1)}$
-and $\Vc \mapsto \Vc^{(0)} \in \Vcalp$. Both maps replace
-$z\tau_{\Delta}+y\tau_{\nabla\nabla}$ by
-$(z+y)\tau_{\Delta}$, and the latter
-additionally sets
+For $\Vc \in \Vcalc$, we define % maps $\Vc \mapsto \Vc^{(1)} \in \Vcalc^{(1)}$ and
+the map $\Vc \mapsto \Vc^{(0)} \in \Vcalp$, which sets
+% Both maps replace $z\tau_{\Delta}+y\tau_{\nabla\nabla}$
+% by $(z+y)\tau_{\Delta}$, and the latter additionally
 $u = q_\pp = q_\qq = 0$.
 
 We define the $\Vcalc = \Vcalc_j$ norm by
@@ -808,7 +853,12 @@ when $|B| = L^{jd}$:
 
 \commentbw{Work on motivating $\Vpt$ and $I$}
 
-In \cite{BBS-rg-pt}, a map $\Vpt : \Vcalp\to\Vcalc$
+In \cite{BBS-rg-pt}, a
+map\footnote{In \cite{BBS-rg-pt}, $\Vpt$ is defined on a larger space including
+$\tau_{\nabla\nabla}$. Here, following \eqref{e:nabla-delta}, we define $\Vpt$ by composing that
+map with the map that replaces $z \tau_\Delta + y \tau_{\nabla\nabla}$ by
+$(z + y) \tau_\Delta$.}
+$\Vpt : \Vcalp\to\Vcalc$
 is defined so as to maintain the approximate form
 \begin{equation}
 Z_j \approx e^{-\Vc_j} (1 + O(\Vp_j^2)).
@@ -831,7 +881,7 @@ e^{-\Ex_C \theta V + \tfrac12 \Ex_C (\theta V; \theta V)}.
 \end{equation}
 The polynomial in the exponent on the right-hand side is not local.
 In Section~\REF, we will discuss an operator $\Loc_x$ for approximating a non-local
-polynomial by a local polynomial in $\Vcal$ at $x$. 
+polynomial by a local polynomial in $\Vcal$ at $x$.
 
 In practice, we set $C = C_{j+1}$ and obtain a sequence $\Vpt = \Vc_{\mathrm{pt},j+1}$
 of maps and $W_j$ of polynomials. By \cite[\eqref{IE-e:W-logwish}]{BS-rg-IE},
@@ -1133,38 +1183,48 @@ depends on $\volume$ through $\Wcal_j$.
 
 In the statement of the following theorem, we fix the scale $j$ and
 consider maps $\Vc_+ = \Vc_{j+1}$ and $K_+ = K_{j+1}$ that act on the domain
-$\domRG_j$ and map into $\Vcalc_{j+1}^{(1)}$, $\Kcal_{j+1}$, respectively.
+$\domRG_j$ and map into $\Vcalc_{j+1}$, $\Kcal_{j+1}$, respectively.
 We will drop the scale $j$ from the notation for objects at scale $j$
 and replace $j + 1$ with $+$.
 The deviation of the map $\Vc_+$ from the perturbative map $\Vpt$
 is denoted by $R_+$:
 \begin{equation}
 \label{e:Rplusdef}
-    R_+(\Vp,K) = \Vc_+(\Vp,K) -\Vpt^{(1)}(\Vp).
+    R_+(\Vp,K) = \Vc_+(\Vp,K) -\Vpt(\Vp).
 \end{equation}
-% The following theorem is applied with $\alpha =4M$ as a convenient choice.
 
-\commentbw{Add mass domain. It's possible I don't need this inf-vol stuff.}
+The renormalisation group map depends also on the mass $m^2$ through its
+dependence on the covariance $C_{j+1}$.
+We let $\Igen_j(\mgen^2)$ be the neighbourhood of $\mgen^2$ defined by
+\begin{equation}
+\lbeq{Itilint}
+    \Igen_j = \Igen_j(\mgen^2) =
+    \begin{cases}
+    [\frac 12 \mgen^2, 2 \mgen^2] \cap \Iint_j & (\mgen^2 \neq 0)
+    \\
+    [0,L^{-2(j-1)}] \cap \Iint_j & (\mgen^2 =0)
+    \end{cases},
+\end{equation}
+where $\Iint_j = [0, \delta]$ if $j < N$ and $\Iint_N = [\delta L^{-2 (N - 1)}, \delta]$.
 
 \begin{theorem}
 \label{thm:step-mr-fv}
-Let $d = 4$ and let $n \ge 0$. Fix $s > 0$.
-Let $C_\DV$ and $L$ be sufficiently large.
-There exist $M>0$ and $\delta >0$ such that
-for $\ggen \in (0,\delta)$, % and $\mgen^2 \in \Iint_+$,
-and with the domain
-$\domRG$ defined using any $\DVa> M$, the maps
+Let $d = 4$ and let $n \ge 0$. Fix $s > 0$. Let $C_\DV$ and $L$
+be sufficiently large. There exist $M>0$, $\delta >0$,
+and $\kappa = O(L^{-1})$											% added
+such that for $\ggen \in (0,\delta)$
+and $\mgen^2 \in \Iint_+$,											% added
+and with the domain $\domRG$ defined using any $\DVa> M$, the maps
 \begin{equation}
 \label{e:RKplusmaps}
-R_+:\domRG %\times \Igen_+(\mgen^2)
-\to \Vcal^{(1)},
-\quad
-K_+:\domRG %\times \Igen_+(\mgen^2)
-\to \Wcal_{+}%(\sgen_+)
+R_+:\domRG \times \Igen_+ % (\mgen^2)
+	\to \Vcal,
+		\quad
+K_+:\domRG \times \Igen_+ % (\mgen^2)
+	\to \Wcal_{+}%(\sgen_+)
 \end{equation}
-define $(\Vp,K)\mapsto (\Vc_+,K_+)$ obeying \eqref{e:IcircKdu}
-when $\volume = \Lambda$.
-Moreover, for any $\volume$, these maps satisfy the estimates
+are analytic in $(V, K)$											% added
+and satisfy the estimates
 \begin{equation}
 \label{e:RKplus}
 \|R_+\|_{\Vcal}
@@ -1174,8 +1234,14 @@ M\chigen_+\ggen_+^{3}
 \|K_+\|_{\Wcal_+}
 \le
 M\chigen_+ \ggen_+^{3}
-.
 \end{equation}
+and
+\begin{equation}
+\label{e:DKkappa}
+\|D_K K_+\|_{L(\Wcal,\Wcal_+)} \le \kappa.
+\end{equation}
+When $\volume = \Lambda$, these maps define $(\Vp,K)\mapsto (\Vc_+,K_+)$
+obeying \eqref{e:IcircKdu}.
 \end{theorem}
 
 With $s = 0$ in the choice of weights $\ell_j$ and $\ell_{\sigma,j}$,
@@ -1243,6 +1309,28 @@ which lies in the domain $\domRG_j$ and obeys the estimates \refeq{RKplus}
 \section{Renormalisation group flow}
 % mainly from saw-sa
 
+Theorem~\ref{thm:step-mr-fv} allows us to perform a single renormalisation group
+step. In \cite[Proposition~\ref{log-prop:flow-flow}]{BBS-saw4-log} it was shown
+that there exist \emph{critical} initial conditions
+$\nu_0^c, z_0^c$ depending on $(m^2, g_0)$ such that this map can be iterated
+indefinitely, i.e.\ for $j = 1, \ldots, N$ and any $N$. This results in a
+sequence $(\Vc_j, K_j)$ generated by the renormalisation group map, hence
+whose elements lie in the domains $\domRG_j$. This was proved with $s = 0$,
+but the sequence itself is independent of $s$ and continues to exist in our
+setting. However, Theorem~\ref{thm:step-mr-fv} shows that this sequence satisfies
+improved estimates. Thus, there is no difficulty in extending
+\cite[Proposition~\ref{log-prop:flow-flow}]{BBS-saw4-log} to the $s$-dependent
+domains used here.
+
+However, \cite{BBS-saw4-log} studied the WSAW ($\gamma = 0$). In order to study
+the WSAW-SA, we extend \cite[Proposition~\ref{log-prop:flow-flow}]{BBS-saw4-log}
+by taking advantage of the additional generality in \cite{BBS-rg-flow}, whose
+main result is the basis for the proof of this proposition. The result, which we
+state as Theorem~\ref{thm:rhatflow}, is the
+construction of critical initial conditions $\hat\nu_0^c, \hat z_0^c$ that now
+depend on $\gamma_0$ as well as $(m^2, g_0)$. Thus, this theorem is an extension
+to $s > 0$ and $\gamma_0 \ne 0$ of \cite[Proposition~\ref{log-prop:flow-flow}]{BBS-saw4-log}.
+
 Let $\delta > 0$ and suppose $r : [0, \delta] \to [0, \infty)$
 is a continuous \emph{positive-definite}\footnote{Note that our usage of this term is
 different from that in the theory of quadratic forms.} function; by this we
@@ -1261,8 +1349,6 @@ and have left- and right-derivatives in $y$ at $y = 0$.
 In our applications, we take $w = m^2$, $x = g_0$ or $\gcc$,
 and $y = \gamma_0$ or $\gamma$.
 
-\commentbw{Define bulk domain}
-
 \begin{theorem}
 \label{thm:rhatflow}
 There exists a domain $D(\delta, \hat r)$ (with $\delta > 0$ and $\hat r$
@@ -1270,8 +1356,7 @@ positive-definite) and functions $\hat\nu_0^c, \hat z_0^c \in C^{0,1,\pm}(D(\del
 such that for any $(m^2, g_0, \gamma_0) \in D(\delta, \hat r)$
 with $g_0 > 0$ and $m^2 \in [\delta L^{-2 (N - 1)}, \delta)$, the following holds:
 if $(\Vc_0, K_0) = (\Vp^+_0, K^+_0)$ with $(\nu_0, z_0) = (\hat\nu_0^c, \hat z_0^c)$,
-and $\lambda_0 = q_0 = 0$,
-then for any $N \in \N$, there exists a sequence $(\Vp_j, K_j) \in \domRG^\varnothing_j$ such that
+then for any $N \in \N$, there exists a sequence $(\Vc_j, K_j) \in \domRG_j$ such that
 \begin{equation}
 \label{e:VjKjDj-hat}
 (\Vc_{j+1},K_{j+1})
@@ -1279,14 +1364,7 @@ then for any $N \in \N$, there exists a sequence $(\Vp_j, K_j) \in \domRG^\varno
 (\Vc_{j+1}(\Vp_j, K_j), K_{j+1}(\Vp_j, K_j)) \text{ for all } j < N
 \end{equation}
 and \eqref{e:IcircKdu} is satisfied.
-Moreover, with $\Vc_j = (\delta u_j, \delta q_j, \Vp_j)$, we have
-$(\Vp_j, K_j) \in \domRG_j(m^2, g_0, \Lambda)$ such that...
-% \begin{equation}
-% 	\label{e:VjKjDj-hat}
-% 	(\Vp_{j+1},K_{j+1}) = (\Vp_{j+1}(\Vp_j, K_j), K_{j+1}(\Vp_j, K_j)) \text{ for all } j < N
-% \end{equation}
-% and \eqref{e:IcircKnew} is satisfied.
-These functions satisfy the bounds
+Moreover, the sequence $\Vc_j, j = 1, \ldots, N$ is independent of the volume $\Lambda$ and
 \begin{equation}
 \label{e:hat-est}
 \hat\nu_0^c = O(g_0),
@@ -1296,14 +1374,6 @@ These functions satisfy the bounds
 uniformly in $(m^2, \gamma_0)$.
 % Moreover, the second-order evolution equation for $V_j$ is independent of $\gamma_0$.
 \end{theorem}
-
-\commentbw{Need statements about control of the observable part.}
-
-A version of this theorem with $\gamma_0 = 0$ (and $s = 0$) was proved in
-\cite[Theorem~\ref{log-prop:KjNbd}]{BBS-saw4-log}. This result is based on the
-main result of \cite{BBS-rg-flow}, which allows some generality in the choice
-of $K_0$. We will discuss the proof of the extension to $\gamma_0 \ne 0$ in
-Chapter~\ref{sec:RGflow}.
 
 \commentbw{Define infinite sequence of couplign constants. Mention that different
 versions of $g$ can be interchanged.}

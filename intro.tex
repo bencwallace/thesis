@@ -242,10 +242,12 @@ is a set of \emph{vertices} and $\edges$ is a set of
 $\{ x, y \} \in \edges$.
 For simplicity, we will assume that $\vertices$ is countable annd that there are no
 \emph{self-loops} $\{ x \} \in \edges$.
-We will also assume that $\graph$ is \emph{(vertex-)transitive} meaning that for all pairs
+
+A graph \emph{automorphism} is a function $f : \vertices\to\vertices$ such that
+$x \sim y$ if and only if $f(x) \sim f(y)$.
+We will assume that $\graph$ is \emph{(vertex-)transitive} meaning that for all pairs
 of distinct
-vertices $a, b \in \vertices$, there exists a mapping $f : \vertices \to \vertices$
-such that $x \sim y$ if and only if $f(x) \sim f(y)$.
+vertices $a, b \in \vertices$, there exists an automorphism $f$ with $f(a) = b$.
 We fix a vertex $0\in\vertices$ whose precise choice is immaterial due to
 transitivity.
 
