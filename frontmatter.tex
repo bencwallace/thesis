@@ -12,29 +12,80 @@
 %%% Dedication (Optional)                                       \\
 
 \maketitle                      %% Mandatory
-\begin{abstract}                %% Mandatory -  maximum 350 words
-Abstract
+
+\begin{abstract}                %% Mandatory
+The abstract:
+is a concise and accurate summary of the thesis
+should state the problem, the methods of investigation, and the general conclusions
+must not contain tables, graphs or illustrations
+must not exceed 350 words
+should contain keywords that will facilitate automated information retrieval
+must be the only abstract in the thesis
+350 words is the maximum allowed by online bibliographic listings; anything beyond 350
+words will be arbitrarily cut off. The abstract in your thesis and the one you enter online
+at final submission must be identical.
+Please do not put a list of keywords with your abstract.
 \end{abstract}
 
-\chapter{Preface} % Manditory if any of the conditions are met
+\chapter{Preface}
 
-You must include a preface if any part of your research was partly or
-wholly published in articles, was part of a collaboration, or required
-the approval of UBC Research Ethics Boards.
-
-The Preface must include the following:
-
+Chapter~\ref{sec:intro} is a general introduction to the subject matter of this thesis.
+With the exception of Section~\ref{sec:mr}, we claim no originality in this chapter.
+Section~\ref{sec:mr} states the main results of this thesis, which combine the results
+of the following:
 \begin{itemize}
-\item A statement indicating the relative contributions of all
-  collaborators and co-authors of publications (if any), emphasizing
-  details of your contribution, and stating the proportion of research
-  and writing conducted by you.
-\item A list of any publications arising from work presented in the
-  dissertation, and the chapter(s) in which the work is located.
-\item The name of the particular UBC Research Ethics Board, and the
-  Certificate Number(s) of the Ethics Certificate(s) obtained, if
-  ethics approval was required for the research.
+\item
+the article \cite{BSTW-clp}, written jointly with
+Roland Bauerschmidt, Gordon Slade, and Alexandre Tomberg and
+published in \textit{Annales Henri Poincar\'{e}};
+and
+
+\item
+the article \cite{BSW-saw-sa}, written jointly with
+Roland Bauerschmidt and Gordon Slade and which has been accepted for publication
+in \textit{Journal of Statistical Physics}.
 \end{itemize}
+Section~\ref{sec:intrep} is part of \cite{BSW-saw-sa}.
+Chapters~\ref{sec:rg}--\ref{sec:RGflow} are based on \cite{BSTW-clp,BSW-saw-sa}:
+\begin{itemize}
+\item
+Chapter~\ref{sec:rg} includes part of \cite{BSTW-clp,BSW-saw-sa},
+and discusses the general theory developed in
+\cite{BS-rg-norm,BS-rg-loc,BBS-rg-pt,BS-rg-IE,BS-rg-step}
+and applied and extended in
+\cite{BBS-saw4-log,BBS-saw4,ST-phi4};
+
+\item
+Chapter~\ref{sec:chi-G-xi} includes part of \cite{BSTW-clp,BSW-saw-sa},
+and Section~\ref{sec:suscept} includes an additional discussion regarding an argument
+of \cite{BBS-saw4-log};
+
+\item
+Chapter~\ref{sec:RGstep} includes part of \cite{BSTW-clp}, and
+Section~\ref{sec:rgmech} includes an additional discussion regarding some of the ideas in
+\cite{BS-rg-step}; and
+
+\item
+Chapter~\ref{sec:RGflow} includes part of \cite{BSW-saw-sa}.
+\end{itemize}
+
+
+% The Preface must include a statement indicating the student's contribution to the following:
+
+% Identification and design of the research program,
+% Performance of the various parts of the research, and
+% Analysis of the research data.
+% Certain additional elements may also be required, as specified below.
+
+% If any of the work presented in the thesis has led to any publications or submissions, all of these must be listed in the Preface. Bibliographic details should include the title of the article and the name of the publisher (if the article has been accepted or published), and the chapter(s) of the thesis in which the associated work is located.
+% If the work includes publications or material submitted for publication, the statement described above must detail the relative contributions of all collaborators and co-authors (including supervisors and members of the supervisory committee) and state the proportion of research and writing conducted by the student. For further details, see “Including Published Material in a Thesis or Dissertation”.
+% If the work includes other scholarly artifacts (such as film and other audio, visual, and graphic representations, and application-oriented documents such as policy briefs, curricula, business plans, computer and web tools, pages, and applications, etc.), all of these must be listed in the Preface (with bibliographical information, if applicable).
+% If ethics approval was required for the research, the Preface must name the responsible UBC Research Ethics Board, and report the project title(s) and the Certificate Number(s) of the Ethics Certificate(s) applicable to the project.
+% In a thesis where the research was not subject to ethics review, produced no publications, and was designed, carried out, and analyzed by the student alone, the text of the Preface may be very brief. Samples are available on this website and in the University Library's online repository of accepted theses.
+
+% The content of the Preface must be verified by the student's supervisor, whose endorsement must appear on the final Thesis/Dissertation Approval form.
+
+% Acknowledgements, introductory material, and a list of publications do not belong in the Preface. Please put them respectively in the Acknowledgements section, the first section of the thesis, and the appendices.
 
 % %%% Sections and subsections etc. in the Preface should in general
 % %%% not be listed in the table of contents, so use the starred form
@@ -57,17 +108,23 @@ The Preface must include the following:
 % of contents, so we have used the starred form: \verb|\section*{Example}|.
 
 \tableofcontents                %% Mandatory
-% \listoftables                   %% Mandatory if thesis has tables
+
+% \listoftables                 %% Mandatory if thesis has tables
+
 \listoffigures                  %% Mandatory if thesis has figures
+
 % \listof{Program}{List of Programs} %% Optional
+
 %% Any other lists should come here, i.e.
 %% Abbreviation schemes, definitions, lists of formulae, list of
 %% schemes, glossary, list of symbols etc.
 
+% LIST OF SYMBOLS GOES HERE
+
 \chapter{Acknowledgements}      %% Optional
 Acknowledge: Gord, David, Roland, Alex, etc.
 
-\chapter{Dedication} %% Optional
+% \chapter{Dedication} %% Optional
 % Dedication...
 
 % Any other unusual prefactory material should come here before the
