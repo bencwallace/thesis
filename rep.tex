@@ -15,27 +15,55 @@ When the entries of $M$ are non-negative, such a sum acquires a probabilistic
 interpretation as an expectation with respect to the random walk whose steps
 are weighted by the entries of $M$.
 
-This idea can be extended to obtain relationships between certain models of
-interacting walks and spin systems (see \cite{FFS92}).
+It was discovered by Symanzik \cite{Syma69} that certain spin systems could be
+represented as models of interacting walks in a background of interacting loops.
+Symanzik used this insight to study quantum field theories in terms of walks.
+
+In the other direction, one can consider studying walks by looking for corresponding
+spin systems. In \cite{Genn72}, De Gennes argued that the self-avoiding walk
+corresponds to an $n \to 0$ ``limit'' of the $O(n)$ spin model. Since $n$ is
+the number of components of the spins, the $O(n)$ model is only well-defined
+for $n$ a positive integer and it is not clear how to make sense of such a limit.
+
+Parisi and Sourlas \cite{PS80} and, independently, McKane \cite{McKa80}, discovered
+an alternative approach to the predictions of De Gennes. They argued that the weakly
+self-avoiding walk two-point function could be represented as the two-point function
+for a \emph{supersymmetric} version of the $|\varphi|^4$ model, involving boson and
+fermion fields (we discuss these below). The formal appearance of $n = 0$ quantities
+was then explained as a consequence of a symmetry between the bosons and fermions known
+as \emph{supersymmetry}.
+
+In Section~\ref{sec:ntozero}, we provide a brief description of the heuristic
+relation between spin systems and self-avoiding walk. Then in Section~\ref{sec:intrep},
+we describe the rigorous representation of WSAW-SA as a supersymmetric field
+theory.
+
+An excellent reference on the connections between random walks and spin systems
+as well as their applications can be found in \cite{FFS92}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{High-temperature expansion of the \texorpdfstring{$O(n)$}{O(n)} model}
+\subsection{The \texorpdfstring{$n\to0$}{n approaches 0} limit}
+\label{sec:ntozero}
 
-\commentbw{See also Ron Peled's notes on this. Maybe restrict to hexagonal lattice.}
+The heuristic relation between self-avoiding and spin systems is most easily treated
+on graphs of degree $3$, so we restrict our attention to this case.
 
-The high-temperature expansion of a spin system is based on the expansion of the
+The \emph{high-temperature expansion} of a spin system is based on the expansion of the
 Boltzmann weight $e^{\beta H}$ around $\beta = 0$.
-For the $O(n)$ spin model, an uncontrolled high-temperature expansion yields
+For the $O(n)$ spin model, an uncontrolled approximation of this expansion yields
 \begin{align}
 Z 	&= \int d\lambda(\sigma) \prod_{xy\in\edges} e^{\beta \sigma_x \cdot \sigma_y} \\
 	&\approx \int d\lambda(\sigma) \prod_{xy\in\edges} (1 + \beta \sigma_x \cdot \sigma_y) \\
 	&= \sum_{E \subset \edges} \beta^{|E|} \int d\lambda(\sigma) \prod_{xy \in E} \sigma_x \cdot \sigma_y
 \end{align}
 By reflection-invariance of the sphere measure, the last integral above is non-zero
-if and only if every vertex in the product over $E$ appears an even number of times;
-thus, the sum over subsets of $\edges$ can be replaced by a sum over collections of
-loops (walks from a vertex to itself) in $\graph$.
+if and only if every vertex in the product over $E$ appears an even number of times.
+On a graph of degree $3$, this is only possible if $E$ consists of mutually avoiding
+(i.e.\ disjoint) self-avoiding
+loops (i.e.\ walks from a vertex to itself that are self-avoiding everywhere except this
+vertex). Thus, the sum over subsets of $\edges$ can be replaced by a sum over collections of
+such loops.
 
 A similar expansion can be performed for the numerator in the definition of the
 two-point function, yielding:
@@ -47,26 +75,14 @@ two-point function, yielding:
 \prod_{xy\in E} \sigma_x \cdot \sigma_y.
 \end{equation}
 Once again, every vertex must appear twice on the right-hand side. This time,
-there are additional non-zero contributions from subsets $E$ of edges containg
-a path from $a$ to $b$. For instance, if $a \sim b$, there is a non-zero
-contribution from $E = \{ \{ a, b \} \}$.
+non-zero contributions come from subsets $E$ containing mutually avoiding self-avoiding
+loops together with a self-avoiding walk from $a$ to $b$ that is also disjoint from these
+loops. As a very simple example, if $a \sim b$, then there is a non-zero contribution from
+$E = \{ \{ a, b \} \}$.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\commentbw{Non-zero contributions vanish for loops when $n = 0$}
 
-\subsection{The \texorpdfstring{$n\to0$}{n approaches 0} limit}
-
-\commentbw{Maybe just do degree $3$ graphs and then refer to Madras-Slade}
-
-A more careful analysis of the high-temperature expansion of the $O(n)$ model
-above will reveal the $n$-dependence of the non-zero contributions to the
-partition function and two-point function. When the spins are restricted to
-the sphere of radius of $\sqrt n$, it can be shown that formally setting $n = 0$
-results in $Z = 1$ and the two-point function receives contributions only from
-self-avoiding walks from $a$ to $b$. See \cite[Section 2.3]{MS93} for details.
-
-Based on this idea, De Gennes predicted the critical exponents of the self-avoiding
-walk by setting $n = 0$ in the predicted exponents for the $O(n)$ spin model.
-This is known as the $n \to 0$ ``limit''.
+\commentbw{Refer to Madras-Slade \cite[Section 2.3]{MS93} for more general}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -74,18 +90,9 @@ This is known as the $n \to 0$ ``limit''.
 % This section based on saw-sa
 \label{sec:intrep}
 
-It is not clear how to make rigorous the $n\to0$ limit of De Gennes. Parisi and
-Sourlas \cite{PS80} and, independently, McKane \cite{McKa80}, discovered an
-alternative approach to the predictions of De Gennes. They argued that the weakly
-self-avoiding walk two-point function could be represented as the two-point
-function for a \emph{supersymmetric} version of the $|\varphi|^4$ model, involving
-boson and fermion fields (we discuss these below).
-The formal appearance of $n = 0$ quantities was then explained as a
-consequence of a symmetry between the bosons and fermions known as \emph{supersymmetry}.
-
-In this section we describe an integral representation of the of WSAW-SA, which
-is a special case of a result of Brydges, Imbrie, and Slade \cite{BIS09}.
-We restrict out attention to the discrete torus $\Lambda$.
+In this section we describe an integral representation of the of WSAW-SA, which is a special
+case of a result of Brydges, Imbrie, and Slade \cite{BIS09}. We restrict out attention to the
+discrete torus $\Lambda$.
 
 \subsubsection{Boson and fermion fields}
 \label{sec:forms}
