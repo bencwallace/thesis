@@ -601,7 +601,8 @@ seminorm was defined in terms of the pairing \eqref{e:pairing}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{Norm parameters}
+\subsection{Norm weights}
+\label{sec:weights}
 
 Control of the $T_\phi$ seminorm is needed for all values of
 $\phi$ in order to control the Gaussian expectation in \eqref{e:rgmapZ}.
@@ -730,6 +731,7 @@ and define a subspace on which this finite-dimensional system will evolve.
 We call $M_x \in \Ncal$ a local monomial if it is a monomial in $\varphi_x$ and
 its (discrete) gradients, i.e.\ if $M_x$ has the form
 \begin{equation}
+\label{e:field-mon}
 M_x = (\nabla^{\alpha_1} \varphi_x) \ldots (\nabla^{\alpha_p} \varphi_x).
 \end{equation}
 The $T_0$ seminorm of a local monomial $M_x$ essentially
@@ -748,6 +750,7 @@ where $|\alpha| = |\alpha_1| + \cdots + |\alpha_p|$ and
 is the \emph{scaling dimension}. Based on this observation, we define the
 \emph{dimension} of $M_x$ by
 \begin{equation}
+\label{e:mon-dim}
 [M_x] = |\alpha| + p [\varphi].
 \end{equation}
 Note here that we have neglected the rapid decay of fields above the mass scale.
@@ -1062,6 +1065,7 @@ when the volume $\volume$ is implicit.
 Given maps $F, G : \Pcal_j(\Lambda) \to \Ncal$ (sometimes called \emph{polymer activities}),
 we define the \emph{circle product} $F \circ G : \Pcal_j(\Lambda) \to \Ncal$ by
 \begin{equation}
+\label{e:circ}
 (F \circ G)(X) = \sum_{Y\in\Pcal_j(X)} F(X \setminus Y) G(Y).
 \end{equation}
 The circle product is commutative, associative, and has the identity element
@@ -1414,3 +1418,22 @@ Moreover, the sequence $\Vc_j, j = 1, \ldots, N$ is independent of the volume $\
 uniformly in $(m^2, \gamma_0)$.
 % Moreover, the second-order evolution equation for $V_j$ is independent of $\gamma_0$.
 \end{theorem}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Historical remarks}
+
+Expansions such as \eqref{e:circ} go back to the work of Gruber and Kunz \cite{GK71}.
+The use of such expansions together with carefully weighted norms to achieve
+rigorous control of the renormalisation group map goes back to \cite{BY90}.
+Although the notion of a covariance decomposition was implicit in Wilson's
+work, its utility in the context of the renormalisation group was first clearly
+articulated in
+\cite{BCGNOPS78}. Renormalisation group analysis based on a \emph{finite-range}
+decomposition was first used in \cite{MS00} based on a suggestion of Brydges.
+In \cite{BGM04}, covariance decompositions on the lattice were constructed.
+The notes \cite{Bryd09} describe an implementation of the renormalisation group
+based on the decomposition of \cite{BGM04}; these notes discuss models on the
+Euclidean lattice as well as on a \emph{hierarchical lattice}, which was introduced
+by Dyson \cite{Dyso69}. A version of the weakly self-avoiding walk on the hierarchical
+lattice was defined and studied by a renormalisation group method in \cite{BEI92,BI03c,BI03d}.
