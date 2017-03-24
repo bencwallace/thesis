@@ -8,39 +8,51 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Classical thermodynamics deals with the properties of bulk matter. Thus, it seeks
-to answer questions regarding the properties of matter that are only well-defined
-in terms of large collections of interacting particles. A familiar example of
-such a property is density, which is usually defined as the mass of a substance
-per unit volume. In order for this to truly be a property of the substance under
-consideration (and not of a particular sample), this substance must contain a
-sufficiently large number of particles that the ratio defining the density
-no longer depends (up to empirical error) on the amount of substance. This is
-what is meant by bulk matter.
+Thermodynamics originated as the study of heat and its transformation into other
+forms of energy, but can more generally be described as the field of study that
+is concerned with the properties of bulk matter. In a sense, it seeks
+answers to questions regarding those properties of matter that are only well-defined
+in terms of large collections of particles. Two familiar examples of
+such properties are density and temperature. Density is usually defined as the mass
+of a substance per unit volume at a certain temperature. This makes it an
+\emph{intensive} quantity: the density (viewed as a function of temperature) is
+a property of the substance itself and not the amount of substance present.
 
-More generally, such properties of matter are necessarily averages of properties
-of many interacting particles. This is the basic idea of statistical mechanics,
-as observed by Boltzmann and Gibbs. In its modern formulation, these averages
-are seen as arising from a probability measure over possible particle configurations
-and different measures are understood to correspond to different \emph{phases}
-of matter. In this sense, the phases of matter are a primary object of study
-of statistical mechanics and it is not surprising that some of the most interesting
-questions deal with phase \emph{transitions}.
+There is a small caveat that should be added to this definition: the mass per unit
+volume of a sample of a substance will only become independent
+of the volume once this volume is sufficiently large. Thus, it does not make sense
+to ask for the density of a sample of hydrogen consisting of a single atom although
+it is sensible to speak of the density of hydrogen. In this sense, density is not
+only a true property of the substance, but in fact a \emph{macroscopic} property
+(as opposed to, e.g.\ the atomic number of hydrogen) and thermodynamics is the
+study of macroscopic properties.
 
-There are different kinds of phase transitions. The familiar example of boiling
-water is signalled by an abrupt drop in density. From an idealized mathematical
-point of view, there is a discontinuity in the density as a function of temperature;
-phase transitions of this kind are said to be of first order.
+The notion that there are even is such a notion as a macroscopic quantity of a
+substance leads to a number of simple questions. For instance, if these quantities
+are indeed properties of the substance itself, then it should be possible to 
+derive them from the microscopic properties of the substance's constituent particles;
+yet above, we have resorted to discussing ``large'' quantities of substance in order
+to make sense of density. In fact, this leads us to another natural question: what
+constitutes a sample sufficiently large to be considered bulk matter and why should
+certain measurements of a sample stabilize when the sample is sufficiently large?
 
-In this example,
-we have tacitly assumed that the water is being boiled under normal atmospheric
-pressure. At higher pressure, the boiling point of water increases; moreover,
-the difference in density between the liquid and gaseous phases \emph{decreases}.
-Once the pressure reaches a critical value $P_c$ (see Figure~\ref{fig:liquid-vapour}),
-the density difference between
-these two phases \emph{vanishes}; if $T_c = T_c(P)$ is the boiling point of water
-at pressure $P$, then the point $(T_c, P_c)$ is known as the \emph{critical point}
-for water.
+A natural response to this last question is that some sort of law of large numbers
+is at work. Although the behaviour of a system of particles is not random, it may
+be that it is sufficiently complex that it is reasonable to view it as such.
+This is the basic idea of statistical mechanics: to leverage the complexity of
+large systems of particles in order to explain the apparent simplicity of bulk
+matter as arising from a kind the kind of self-averaging that pervades probability
+theory. From this point of view, macroscopic quantities are types of averages that
+arise from some probability distribution.
+
+A striking aspect of bulk matter that we have not yet discussed pertains to the
+existence of different \emph{phases} of matter and the nature of \emph{phase transitions}.
+The familiar example of boiling water is signalled by an abrupt drop in density by a factor
+of around $1/1000$ at normal atmospheric pressure. Now the temperature at which water
+boils varies as a function of temperature $T_c = T_c(P)$; see Figure~\ref{fig:liquid-vapour}.
+For any fixed $P$, there is a drop in density as the temperature is increased past
+$T_c(P)$. However, as $P$ is increased, this density difference decreases and there is
+a \emph{critical point} $(T_c(P_c), P_c)$ at which this difference vanishes.
 
 \begin{figure}
 \centering
@@ -52,24 +64,45 @@ for water.
 Since statistical mechanics deals with extremely large, complicated systems of
 interacting particles, only simplified models of real materials can usually be
 studied in detail. These models often serve as a good way to obtain a
-\emph{qualitative} understanding of the phases and phase transitions; however,
-the simplifications inherent in their definitions means they are usually not
-suitable for making quantitative predictions.
+\emph{qualitative} understanding of the phases of matter and phase transitions;
+however, the simplifications inherent in their definitions means they are usually
+not suitable for making quantitative predictions.
 
 A remarkable phenomenon, known as \emph{universality}, is that this is no longer
-entirely true at the critical point. At criticality, many observable quantities
-behave in a way that is independent of the fine details of the model under
-consideration. Thus, the \emph{quantitative} properties of real materials can in
-principle be predicted exactly by studying models whose only resemblance to these
-materials is in their very coarse properties, such as their symmetries.
+entirely true at the critical point. At criticality, many quantities behave in a
+way that is independent of the fine details of the model under consideration. Thus,
+some of the \emph{quantitative} properties of real materials can in principle be
+predicted exactly by studying models whose only resemblance to these materials is
+in their very coarse properties, such as their symmetries.
 
 In the 1970's, Ken Wilson gave an explanation of universality in terms of an
 abstract dynamical system on a space of models, known as the \emph{renormalisation
-group}. Wilson won the Nobel Prize for his discovery and his method has become
-a standard way amongst physicists to understand critical phenomena.
+group}. This idea, which was enormously successful, led to his Nobel prize and has
+become a standard way of understanding critical phenomena in physics.
 
-Nevertheless, a rigorous understanding of the renormalisation group is still
-incomplete.
+Nevertheless, a mathematically rigorous understanding of the renormalisation group
+remains incomplete. Although there have been several rigorous implementations of
+Wilson's ideas, they tend to be highly technical and restricted to somewhat special
+classes of models. The main purpose of this thesis is to discuss extensions to an
+approach of Bauerschmidt, Brydges, and Slade that have been used to study the
+critical behaviour of a generalized $|\varphi|^4$ model and a model of weakly
+self-avoiding walk with contact self-attraction (WSAW-SA).
+
+We begin in Section~\ref{sec:asymp} with some general background on asymptotic
+notation and the method of generating functions and Laplace transforms. In
+Sectin~\ref{sec:gibbs}, we briefly introduce the basic formalism of equilibrium
+statistical mechanics. The models we study are defined on graphs, which we
+introduce in Section~\ref{sec:graphs}. We define spin systems and, in particular,
+the $|\varphi|^4$ model in Section~\ref{sec:spins}. Critical behaviour and
+the renormalisation group is probably most easily explained in the context of such
+systems, and we do so in Section~\ref{sec:crit}. In Section~\ref{sec:walks},
+we introduce the WSAW-SA and discuss its critical behaviour. This gives us all
+the necessary definitions to be able to state our main results in Section~\ref{sec:mr}.
+Before proceeding to a discussion of the method of proof in the remaining chapters,
+we discuss the close relationship between models of walks and spin systems in
+Section~\ref{sec:spin-walk}; in particular, we state a rigorous representation
+of the WSAW-SA in terms of a spin system related to the $|\varphi|^4$ model
+that allows us to unify our treatment of both models.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -83,8 +116,6 @@ general remarks on notation and approaches to the study of asymptotics.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Asymptotic notation}
-
-\commentbw{Define $\asymp$ and maybe mention $\approx$}
 
 Let $F$ and $G$ be a functions on a subset of the real line or the integers.
 For $a\in[-\infty,\infty]$, we write
@@ -105,12 +136,18 @@ F(x) \le O(G(x)),
 	\qquad
 x \to a
 \end{equation}
-if there is a neighbourhood $N$ of $a$ (in the extended real line)
-and a constant $C > 0$ such that
+if there is a constant $C \ge 0$ such that $F(x) \le C G(x)$ for all
+$x$ in some neighbourhood of $a$. Lastly, we write
 \begin{equation}
-F(x) \le C G(x) \quad x \in N.
+F(x) \asymp G(x),
+	\qquad
+x \to a
 \end{equation}
-We will often use $C, C', C_1$, etc.\ to denote some generic constant.
+if $F(x) = O(G(x))$ and $G(x) = O(F(x))$ both as $x\to a$ but possibly with
+different constants. We will sometimes write $F(x) \approx G(x)$ in heuristic
+arguments where the hope is that a rigorous argument might replace $\approx$
+by $\asymp$ or $\sim$.
+% We will often use $C, C', C_1, c$, etc.\ to denote a generic constant.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -172,6 +209,7 @@ $G$ for $\nu$ in a sector of the complex plane is required in this case.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Gibbs measure}
+\label{sec:gibbs}
 
 Let $(\Omega, \lambda)$ be a measure space. We view $\lambda$ as some ``natural''
 measure on $\Omega$.
@@ -227,6 +265,7 @@ internal energy $E$, temperature $1/\beta$, and entropy $h_\lambda(\mu_\beta)$.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Graphs}
+\label{sec:graphs}
 
 Graphs are a useful setting for the definition of spatially-extended systems of
 particles.
@@ -356,6 +395,7 @@ C(x, y)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Spin systems}
+\label{sec:spins}
 
 The Ising model on $\Zd$ was introduced by Willhelm Lenz \REF. Lenz
 suggested it as
@@ -574,6 +614,8 @@ where the sum is over all pairings $\pi$ of $\{1,\ldots,2p\}$.
 Correlations for $n > 1$ can then be computed using the fact that we have defined
 Gaussian fields to have independent Gaussian components.
 
+\commentbw{Check this}
+
 An important case is the \emph{massive Gaussian free field} on $\graph$,
 which is the $\gcc = 0$ case of the $|\varphi|^4$ model (with $\nu$ necessarily positive).
 Thus, the the covariance is equal to the massive Green function $C = (-\lap + \nu)^{-1}$.
@@ -691,6 +733,7 @@ The susceptibility is defined by
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Critical behaviour and universality}
+\label{sec:crit}
 
 Many systems exhibit singular behaviour at or near the critical temperature in
 the form of power law scaling of various observable quantities. This is known as
@@ -705,7 +748,7 @@ Since adjusting $\beta$ for the $|\varphi|^4$ model is equivalent to rescaling t
 parameters $g$ and $\nu$, we fix $\beta = 1$ and vary $\nu$ instead.
 For concreteness, we define the \emph{critical point} by
 \begin{equation}
-\label{}
+% \label{}
 \nu_c = \nu_c(\gcc, \gamma; n) = \inf \{ \nu : \chi(g, \gamma, \nu; n) < \infty \}.
 \end{equation}
 Since the susceptibility can be written as the second derivative of the free energy
@@ -993,8 +1036,8 @@ this infinite-dimensional dynamical system by a \emph{finite-dimensonal} system.
 
 By analyzing this finite-dimensional approximation, Wilson determined that there
 is a unique hyperbolic fixed point in dimensions $d > 4$ corresponding to the Gaussian
-free field and mean-field behaviour. As the dimension is lowered below $4$, a saddle
-node bifurcation occurs in which the Gaussian fixed point splits into two fixed points:
+free field and mean-field behaviour. As the dimension is lowered below $4$, a
+bifurcation occurs in which the Gaussian fixed point splits into two fixed points:
 One corresponds to Gaussian behaviour but is unstable. The other is hyperbolic and
 corresponds to anomalous scaling behaviour; it is sometimes known as the
 \emph{Wilson-Fisher} fixed point. At the bifurcation point $d = 4$, there is only
@@ -1013,11 +1056,8 @@ constructive quantum field theory \cite{GJ87}.
 In this thesis, we will discuss extensions and applications of a new method
 developed by Bauerschmidt, Brydges, and Slade \REF which is based on the
 finite-range covariance decomposition of \cite{Baue13a} and has precedents going back to
-\cite{BY90}. Renormalisation group analysis based on a finite-range decomposition
-in the continuum was first used in \cite{MS00} based on a suggestion of Brydges.
-In \cite{BGM04}, covariance decompositions on the lattice were constructed
-and an implementation of the renormalisation group based on these decompositions
-is described in \cite{Bryd09}.
+\cite{BY90}.
+\commentbw{Incomplete}
 % These notes discuss the renormalisation group
 % on the Euclidean lattice as well as on a \emph{hierarchical} lattice, where
 % the analysis is much simpler.
@@ -1026,6 +1066,7 @@ is described in \cite{Bryd09}.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Walks}
+\label{sec:walks}
 
 \subsection{Discrete-time walks}
 
