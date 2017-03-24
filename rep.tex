@@ -18,14 +18,17 @@ are weighted by the entries of $M$.
 It was discovered by Symanzik \cite{Syma69} that certain spin systems could be
 represented as models of interacting walks in a background of interacting loops.
 Symanzik used this insight to study quantum field theories in terms of walks.
+Such representations were also studied, e.g.\ in \cite{BFS82,Dynk83}. A comprehensive
+reference is \cite{FFS92}.
 
-In the other direction, one can consider studying walks by looking for corresponding
+In the opposite direction, one can consider studying walks by looking for corresponding
 spin systems. In \cite{Genn72}, De Gennes argued that the self-avoiding walk
-corresponds to an $n \to 0$ ``limit'' of the $O(n)$ spin model. Since $n$ is
+corresponds to an $n \to 0$ ``limit'' of the $O(n)$ spin model and used this
+to predict the values of its critical exponents. Since $n$ is
 the number of components of the spins, the $O(n)$ model is only well-defined
 for $n$ a positive integer and it is not clear how to make sense of such a limit.
 
-Parisi and Sourlas \cite{PS80} and, independently, McKane \cite{McKa80}, discovered
+Parisi and Sourlas \cite{PS80} and McKane \cite{McKa80} discovered
 an alternative approach to the predictions of De Gennes. They argued that the weakly
 self-avoiding walk two-point function could be represented as the two-point function
 for a \emph{supersymmetric} version of the $|\varphi|^4$ model, involving boson and
@@ -37,9 +40,6 @@ In Section~\ref{sec:ntozero}, we provide a brief description of the heuristic
 relation between spin systems and self-avoiding walk. Then in Section~\ref{sec:intrep},
 we describe the rigorous representation of WSAW-SA as a supersymmetric field
 theory.
-
-An excellent reference on the connections between random walks and spin systems
-as well as their applications can be found in \cite{FFS92}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -90,9 +90,11 @@ $E = \{ \{ a, b \} \}$.
 % This section based on saw-sa
 \label{sec:intrep}
 
-In this section we describe an integral representation of the of WSAW-SA, which is a special
-case of a result of Brydges, Imbrie, and Slade \cite{BIS09}. We restrict out attention to the
-discrete torus $\Lambda$.
+In this section we describe an integral representation of the of WSAW-SA, which
+is a special case of a result of Brydges, Imbrie, and Slade \cite{BIS09}. We
+restrict out attention to the discrete torus $\Lambda$. We begin with the necessary
+background on Grassmann integration, introduced in \cite{Bere66}. However, we
+follow the treatment given in \cite{BIS09}.
 
 \subsubsection{Boson and fermion fields}
 \label{sec:forms}
@@ -321,6 +323,7 @@ G_{x,N}(\gcc,\gamma,\nu)
     &=
 \int_0^\infty c_{N,T} e^{-\nu T} \; dT.
 \end{align}
+The proof of the following proposition is given in Appendix~\ref{sec:walksbg}.
 
 \begin{prop}
 \label{prop:finvol}
@@ -338,5 +341,3 @@ and
 \lim_{N\to\infty}\chi_N(\gcc,\gamma,\nu) =   \chi(\gcc,\gamma,\nu).
 \end{equation}
 \end{prop}
-
-The proof is in the appendix.

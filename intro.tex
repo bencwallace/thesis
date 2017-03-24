@@ -153,25 +153,25 @@ by $\asymp$ or $\sim$.
 
 \subsection{Generating function and Laplace transform}
 
-The \emph{generating function} of a sequence $a_n$ is defined by
+The \emph{generating function} of a sequence $a_n$ is the function $g(z)$ defined
+by the power series with coefficients $a_n$:
 \begin{equation}
 g(z) = \sum_{n=0}^\infty a_n z^n.
 \end{equation}
-If the function $g$ is well understood, then the coefficients $a_n$ can be
-recovered as
+If the function $g$ is sufficiently well understood, then the coefficients $a_n$
+can be recovered by differentiation:
 \begin{equation}
 a_n = \frac{1}{n!} g^{(n)}(0).
 \end{equation}
-This is known as the method of generating functions.
+This is known as the method of generating functions \cite{Wilf06}.
 
 In many cases, $g$ cannot be computed exactly. Nevertheless, there is a close
 relationship between the asymptotics of the sequence $a_n$
 as $n\to\infty$ and the function $g(z)$ near its dominant singularities, i.e.\
-its singularities closest to the origin (see \cite{FS09}).
-
+its singularities closest to the origin \cite{FS09}.
 For instance, if $a_n \sim r^{-n} n^\alpha$, then the root test implies that
-the generating function $f$ has radius of convergence $r$ and it can be shown
-that $g(z) \sim C (r - z)^{-\alpha-1}$ as $z \uparrow r$.		% See Madras-Slade
+the generating function $f$ has radius of convergence $r$. If, moreover, $a_n \ge 0$,
+then $g(z) \sim C (r - z)^{-\alpha-1}$ as $z \uparrow r$.		% See Madras-Slade
 This is an
 example of an \emph{Abelian theorem}. The converse does not always hold; a
 theorem providing conditions under which the converse is true is known as a
@@ -185,46 +185,71 @@ be recovered from the behaviour of its \emph{Laplace transform}
 G(\nu) = \int f(T) e^{-\nu T} \; dT
 \end{equation}
 near $\nu_0 \coloneqq \inf \{ \nu : G(\nu) < \infty \}$.
-For instance, we have the following (see \cite[Chapter V]{Widd41}).
+There are Abelian and Tauberian theorems for the Laplace transform analogous
+to those for generating functions \cite{Widd41}. For instance,
+$f(T) \sim A T^\alpha$ \todo{implies that} $G(\nu) \sim A' (\nu - \nu_0)^{-(\alpha+1)}$
+as $\nu\downarrow\nu_0$. The converse holds when $f$ is monotonic.
+% When this is not the case, one can attempt to recover the asymptotics of $f$ by
+% inverting the Laplace transform.
 
-\begin{theorem}
-Suppose that there exist $\nu_0$ such that
-the function $G(\nu)$ defined by \eqref{e:laplace-transform-def} converges for
-$\nu > \nu_0$. If there exist $A$ and $\alpha \ge 0$ such that
-\begin{equation}
-f(T) \sim \frac{A}{\Gamma(\alpha + 1)} T^\alpha,
-\end{equation}
-then
-\begin{equation}
-G(\nu) \sim A \nu_0 (\nu - \nu_0)^{-(\alpha+1)}.
-\end{equation}
-Moreover, the converse holds if $f(T)$ is increasing.
-\end{theorem}
 
-When $f$ is not monotonic, it may still be possible to recover its asymptotic
-behaviour from $G$ by inverting the Laplace transform. However, control over
-$G$ for $\nu$ in a sector of the complex plane is required in this case.
+
+% For instance, we have the following (see \cite[Chapter V]{Widd41}).
+% 
+% \begin{theorem}
+% Suppose that there exist $\nu_0$ such that
+% the function $G(\nu)$ defined by \eqref{e:laplace-transform-def} converges for
+% $\nu > \nu_0$. If there exist $A$ and $\alpha \ge 0$ such that
+% \begin{equation}
+% f(T) \sim \frac{A}{\Gamma(\alpha + 1)} T^\alpha,
+% \end{equation}
+% then
+% \begin{equation}
+% G(\nu) \sim A \nu_0 (\nu - \nu_0)^{-(\alpha+1)}.
+% \end{equation}
+% Moreover, the converse holds if $f(T)$ is increasing.
+% \end{theorem}
+% 
+% When $f$ is not monotonic, it may still be possible to recover its asymptotic
+% behaviour from $G$ by inverting the Laplace transform. However, control over
+% $G$ for $\nu$ in a sector of the complex plane is required in this case.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Gibbs measure}
+\section{Equilibrium statistical mechanics}
 \label{sec:gibbs}
 
 Let $(\Omega, \lambda)$ be a measure space. We view $\lambda$ as some ``natural''
-measure on $\Omega$.
-The dynamics of a physical system with state space $\Omega$
-is often determined by a function $H$ on $\Omega$, known as the \emph{Hamiltonian}.
-In statistical mechanics, the systems of concern consist of an extraordinarily
-large number of particles; typically, the state space $\Omega$ is very
-high-dimensional and it is infeasible to study the exact dynamics of such a
-system.
+measure on $\Omega$. The dynamics of a physical system with state space $\Omega$
+are often determined by a function $H$ on $\Omega$, known as the \emph{Hamiltonian}.
+Typically, $H(\omega)$ represents the total energy of the system in state $\omega$;
+it thus reasonable to assume that $H$ is bounded below\footnote{It is convenient
+to allow negative values of $H$ and ultimately will not affect the quantities we
+define in terms of $H$}.
+
+\begin{example}
+\label{ex:hamilton}
+The canonical example is a system of $n$ point particles in a domain $U \subset \R^3$,
+for which $\Omega = (U \times \R^3)^n$ and $\lambda$ is Lebesgue measure on $\Omega$.
+A state $\omega\in\Omega$ consists of the positions $q_i \in U$ and momenta $p_i \in \R^3$
+of the $n$ particles. The Hamiltonian is typically smooth and the dynamics of such a system
+are determined by Hamilton's equations
+\begin{align}
+\dd{q}{t} 	&= \nabla_p H \\
+-\dd{p}{t} 	&= \nabla_q H.
+\end{align}
+\end{example}
+
+In statistical mechanics, the systems of concern consist of an extraordinarily large number
+of particles ($n$ large in the previous example); typically, the state space $\Omega$ is very
+high-dimensional and it is infeasible to study the exact dynamics of such a system.
 
 A common simplifying assumption is that after a long time has passed, the system
 under consideration will settle into a state of \emph{thermal equilibrium}, meaning
 that there is no net flow of heat between the system and its surroundings. Thus,
 the temperature is constant and we denote by $\beta$ the \emph{inverse temperature}.
-The \emph{Gibbs measure} for a system with Hamiltonian $H$ at inverse temperature
+The \emph{Gibbs measure} \cite{Gibbs60} for a system with Hamiltonian $H$ at inverse temperature
 $\beta$ is the probability measure on $\Omega$ given by
 \begin{equation}
 \label{e:gibbs-def}
@@ -256,10 +281,9 @@ F_\beta = -\frac{1}{\beta} \log Z_\beta.
 \end{equation}
 A computation of the entropy of $\mu_\beta$ with $\beta = \beta(E)$ shows that
 \begin{equation}
-F_\beta = E - \frac{1}{\beta} h(\mu_\beta)
+F_\beta = E - \frac{1}{\beta} h(\mu_\beta),
 \end{equation}
-which is the well-known thermodynamic relation between free energy $F_\beta$,
-internal energy $E$, temperature $1/\beta$, and entropy $h_\lambda(\mu_\beta)$.
+which recovers the definition of Helmholtz free energy in thermodynamics.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -293,8 +317,8 @@ Let $L > 1$ be an integer. For $N \ge 0$, let
 \Lambda = \Lambda_N = \Zd/L^N\Zd.
 \end{equation}
 We call $\Lambda$ the (discrete) $d$-dimensional \emph{torus} of side $L^N$.
-We view $\Lambda$ as a graph with $\vertices = \Lambda$ and $x \sim y$
-if $|x - y| = 1$ modulo $L^N$.
+We view $\Lambda$ as a graph with $\vertices = \Lambda$ and $x \sim y$ if
+$x$ and $y$ are nearest neighbours. This graph is clearly transitive.
 \end{example}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -384,12 +408,10 @@ Let $z_x$ denote the diagonal elements of $Z$. The \emph{Green function}
 of $\graph$ is the kernel of $(-\lap + m^2)^{-1}$, given by
 \begin{equation}
 \label{e:greendef}
-C(x, y)
+C_{xy}
   =
 (m^2 + d_x)^{-1} \sum_{n=0}^\infty z_x^n P^n_{xy}.
 \end{equation}
-
-\commentbw{Translation invariant case: $C(x) = C(0, x)$}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -397,13 +419,15 @@ C(x, y)
 \section{Spin systems}
 \label{sec:spins}
 
-The Ising model on $\Zd$ was introduced by Willhelm Lenz \REF. Lenz
-suggested it as
-a problem for his student Ernst Ising, who determined in 1924 \cite{Ising25} that there is no
-phase transition when $d = 1$.
-In 1936, Rudolf Peierls \cite{Peierls36} demonstrated that a phase
-transition occurs for $d > 1$ and in 1944, Onsager \cite{Onsager44} provided an exact calculation
-of the free energy in infinite volume with $h = 0$.
+\commentbw{New approach: increasing complexity. Consider Hamiltonians that are
+polynomials of even degree etc. Get $O(n)$ model at the end by limit.}
+
+The Ising model on $\Zd$ was introduced by Willhelm Lenz \cite{Lenz42}. Lenz
+suggested it as a problem for his student Ernst Ising, who determined in 1924
+\cite{Ising25} that there is no phase transition when $d = 1$. In 1936, Rudolf
+Peierls \cite{Peierls36} demonstrated that a phase transition occurs for $d > 1$
+and in 1944, Onsager \cite{Onsager44} provided an exact calculation of the free
+energy in $d = 2$ with $h = 0$.
 
 \commentbw{Heisenberg model; general spin systems; subtlety of $n = 2$}
 
@@ -600,21 +624,18 @@ and the Gibbs measure takes the form
 \frac{d\varphi}{\sqrt{\det(2\pi C)}}
 e^{-\tfrac12 \varphi \cdot A \varphi}.
 \end{equation}
-\emph{Wick's theorem} gives an expression for the correlations. When $n = 1$,
+\emph{Wick's theorem} gives an expression for the correlations:
 if $x_1, \ldots, x_{2p} \in \Lambda$, then
 % \emph{Wick's theorem}). In particular, the two-point function is the covariance:
 \begin{equation}
 \label{e:wick}
 % \int \varphi_a \cdot \varphi_b \; d\mu(\varphi) = C_{ab}.
-\int d\mu_C(\varphi) \prod_{i=1}^{2p} \varphi_{x_i}
+\int d\mu_C(\varphi) \prod_{k=1}^{2p} \varphi^i_{x_k}
 	=
-\sum_\pi \prod_{ij\in\pi} C_{x_ix_j}
+\sum_\pi \prod_{kl\in\pi} C_{x_kx_l}
 \end{equation}
-where the sum is over all pairings $\pi$ of $\{1,\ldots,2p\}$.
-Correlations for $n > 1$ can then be computed using the fact that we have defined
-Gaussian fields to have independent Gaussian components.
-
-\commentbw{Check this}
+where the sum is over all pairings $\pi$ of $\{1,\ldots,2p\}$ (i.e.\ partitions of
+this set into $2$-element subsets).
 
 An important case is the \emph{massive Gaussian free field} on $\graph$,
 which is the $\gcc = 0$ case of the $|\varphi|^4$ model (with $\nu$ necessarily positive).
@@ -852,6 +873,8 @@ In this sense, the study of critical behaviour involves a set of far-reaching
 generalizations of the central limit theorem.
 
 \begin{example}[The Gaussian free field]
+\commentbw{Maybe give this example in section on spin systems}
+
 \label{ex:gff-asymp}
 On $\Zd$, \eqref{e:greendef} and \eqref{e:wick} imply that
 \begin{equation}
@@ -964,7 +987,8 @@ it is predicted that $\gammabar = 56/32$, $\nubar = 1$, and $\eta = 1/4$.
 
 Three-dimensional models are very poorly understood and only numerical approximations
 are available for their critical exponents. In fact, it was only recently proved
-that the Ising model's spontaneous magnetization vanishes in three dimensions \cite{ADS15}.
+that the Ising model's \todo{spontaneous magnetization} was shown to vanish continuously at
+the critical point in three dimensions \cite{ADS15}.
 
 \subsubsection{Dimensions $d > 4$}
 
@@ -976,7 +1000,7 @@ for the \emph{continuum limit} of these models \cite{Aiz82,Fro82}.
 This phenomenon is known as \emph{mean-field behaviour} and dimension $4$ is
 called the \emph{upper-critical dimension} for this class of models.
 
-\commentbw{Aizenmann, Fr\"{o}hlich, etc.}
+\commentbw{Aizenmann, Fr\"{o}hlich, FMRS, etc.}
 
 \subsubsection{Dimension $d = 4$}
 
@@ -1040,24 +1064,21 @@ free field and mean-field behaviour. As the dimension is lowered below $4$, a
 bifurcation occurs in which the Gaussian fixed point splits into two fixed points:
 One corresponds to Gaussian behaviour but is unstable. The other is hyperbolic and
 corresponds to anomalous scaling behaviour; it is sometimes known as the
-\emph{Wilson-Fisher} fixed point. At the bifurcation point $d = 4$, there is only
-one (Gaussian) fixed point and logarithmic corrects to mean-field scaling arise
+\emph{Wilson-Fisher} fixed point \cite{WF72}. At the bifurcation point $d = 4$, there is only
+one (Gaussian) fixed point and logarithmic corrections to mean-field scaling arise
 from the fact that this fixed point is not hyperbolic.
 
 \begin{example}
-CLT: Koralov-Sinai, Li-Sinai. See also Jona-Lasinio I think.
+\commentbw{CLT: Koralov-Sinai, Li-Sinai. See also Jona-Lasinio I think.}
 \end{example}
+
+\commentbw{Do something about the following paragraph}
 
 There are many difficulties in making Wilson's ideas rigorous and many approaches
 have been tried. A rigorous block-spin renormalisation group in the spirit of Kadanoff's
 ideas was formulated in \cite{GK85}. There is the phase-cell expansion used in
 constructive quantum field theory \cite{GJ87}.
 
-In this thesis, we will discuss extensions and applications of a new method
-developed by Bauerschmidt, Brydges, and Slade \REF which is based on the
-finite-range covariance decomposition of \cite{Baue13a} and has precedents going back to
-\cite{BY90}.
-\commentbw{Incomplete}
 % These notes discuss the renormalisation group
 % on the Euclidean lattice as well as on a \emph{hierarchical} lattice, where
 % the analysis is much simpler.
@@ -1065,8 +1086,11 @@ finite-range covariance decomposition of \cite{Baue13a} and has precedents going
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Walks}
+\section{Self-interacting walks}
 \label{sec:walks}
+
+\commentbw{Motivate historically using SAW. Then just do WSAW-SA with WSAW as
+an easier version of SAW.}
 
 \subsection{Discrete-time walks}
 
