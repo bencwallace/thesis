@@ -91,7 +91,9 @@ K_+(X) = \Ipt^X [h(X) + k(X) + R(X)]
 \end{equation}
 where (letting $\bar\Ccal(X) = \Ccal\cap\bar\Pcal(X)$)
 \begin{align}
+\label{e:hpt}
 h(X)	&= \sum_{Y\in\bar\Pcal(X)} \Ipt^{-Y} \Ex_+ \delta I(Y) \\
+\label{e:k}
 k(X)	&= \sum_{Y\in\bar\Ccal(X)} \Ipt^{-Y} \Ex_+ \theta K(Y)
 \end{align}
 and $R$ is the remainder. If $\delta I$ and $K$ are sufficiently small (in an
@@ -103,42 +105,58 @@ Our main task then is to bound $h$ and $k$.
 
 \subsubsection{Perturbative contribution and covariance bound}
 
-By the definition \eqref{e:Idef} of $I$, we should have $\delta I = O(\delta\Vp^3)$
-where $\delta\Vp = \theta\Vp - \Vpt$. Bounding $\delta I(B)$ for $B\in\Bcal$
-in the $T_0(\ell)$ norm thus leads us to consider
+By the definition \eqref{e:Idef} of $I$, we expect that $\delta I = O(\delta\Vp^3)$
+where $\delta\Vp = \theta\Vp - \Vpt$. Indeed, a version of this statement is true
+by \cite[Proposition~\ref{IE-prop:ip}]{BS-rg-IE}.
+Thus, in order bound the contrinution $h$ defined in \eqref{e:h}, we must consider
+the size of $\delta\Vp$. By definition,
 \begin{equation}
 \|\delta\Vp(B)\|_{T_0(\ell)}
 	\le
 \|\theta\Vp(B) - \Vp(B)\|_{T_0(\ell)} + \|\Vp(B) - \Vpt(B)\|_{T_0(\ell)}.
 \end{equation}
-By \eqref{e:Vpt-def}, $\Vpt - \Vp = (\Ex \theta\Vp - \Vp) - P(\Vp)$.
-Considering just a single quartic term in $\Vp$, we have
+By \eqref{e:Vpt-def}, $\Vpt - \Vp = (\Ex \theta\Vp - \Vp) - P(\Vp)$ and
+the first term on the right-hand side can be bounded term-by-term. For
+instance, the difference between a single quartic term and its expectation
+is given by
 \begin{equation}
 \varphi_x^4 - \Ex \theta\varphi_x^4
 	=
-6 C_{00} \varphi_x^2 + 3 C_{00}^2
+6 C_{00} \varphi_x^2 + 3 C_{00}^2.
 \end{equation}
-and we are led to consider $T_0(\ell)$ norm estimates on the covariance. More generally,
-such estimates are fundamental to the control of the Gaussian expectation. They
-are based on Proposition~\ref{prop:Cdecomp} but are only possible when a reasonable
-choice is made for the weights $\ell, \ell_\sigma$. Our main bound on the covariance
+Covariance terms such as those above occur at higher-order and can be
+estimated using Proposition~\ref{prop:Cdecomp}.
+
+The method of \cite{BS-rg-IE} is more flexible, however, and does not require
+the precise bounds in \eqref{e:scaling-estimate}. Rather, necessary bounds on
+the covariance and its derivatives are encoded in the hypothesis
+\cite[\eqref{IE-e:CLbd}]{BS-rg-IE} on the $\Phi(\ell)$
+norm estimate of the covariance. This constraint naturally ensures that the $T_0(\ell)$
+norm estimates properly reflects the size of the expectation of a field as discussed
+in Section~\ref{sec:weights}.
+Our main bound on the covariance, which extends \cite[\eqref{IE-e:CLbd}]{BS-rg-IE},
 will be stated in Section~\ref{sec:Cbds}.
+
+\begin{rk}
+The generality provided by predicating the results of \cite{BS-rg-IE} on a
+norm estimate on the covariance is very useful, e.g.\ as in \cite{Slad17}.
+\end{rk}
 
 \subsubsection{Extraction and contraction}
 
-The term $k$ is the contribution to $K_+$ that is linear in $K$. Thus, its
+The term $k$ in \eqref{e:k} is the contribution to $K_+$ that is linear in $K$. Thus, its
 control is essential to obtaining the contractivity estimate \eqref{e:DKkappa}.
 
-In the simple case that $K = 0$, we will have $K_+ = \Ipt h$. By the previous
-discussion, we expect that $\Ipt h = O(\delta\Vp^3)$, so may contain relevant
-and marginal terms as well as non-local irrelevant terms. The size and number
-of such terms will cause $K$ to grow under the action of the renormalisation
-group unless they are dealt with properly. For instance, integration of
-$\sum_{x\in B} \varphi_x^6$ yields
-\begin{equation}
-\binom{6}{2} \sum_{x\in B} \varphi_x^4 C_{00},
-\end{equation}
-which is marginal.
+In the simple case that $K = 0$, we will have $K_+ = \Ipt h$, which is a Taylor
+remainder that contains terms at all orders in the fields. Thus, it includes
+relevant and marginal terms as well as non-local irrelevant terms.
+% For instance, integration of of the irrelevant term $\sum_{x\in B} \varphi_x^6$ yields
+% \begin{equation}
+% \binom{6}{2} \sum_{x\in B} \varphi_x^4 C_{00},
+% \end{equation}
+% which is marginal.
+The size and number of such terms will prevent $K$ from shrinking under the action
+of the renormalisation group unless they are somehow dealt with.
 
 This situation is not unlike what was discussed in Section~\ref{sec:pt}, where
 integration of $e^{-\Vp}$ yielded a non-local term that was split into a local
@@ -150,17 +168,23 @@ Thus, the true definition of the renormalisation group map constructed in
 \cite{BS-rg-step} involves several more steps than \eqref{e:Kplus3}. In fact,
 the definition of the map $(\Vp, K) \mapsto (\Vp_+, K_+)$ is a composition of
 $6$ maps, called Maps 1--6. In Maps 1--2, the operator $\Loc$ is used to perform
-extraction prior to Map 3, which implements the idea of \eqref{e:Kplus3}.
+extraction. Map 3 then implements the expectation and change of scale in
+\eqref{e:Kplus3}.
 
+Since a sufficiently large portion of the marginal and relevant terms have been
+extracted, the expectation now successfully causes $K$ to shrink as it should
+based on the heuristics of Section~\ref{sec:dimensional}. The fact that irrelevant
+terms shrink under expectation and change of scale is formally captured by
+\cite[Proposition~\ref{IE-prop:cl}]{BS-rg-IE}, which we refer to as the
+\emph{crucial contraction}. In Section~\ref{sec:cc}, we prove that the
+crucial contraction continues to hold when $s > 1$.
+
+\begin{rk}
 In order to maintain the form \eqref{e:IcircKsimp}, the extraction step in Maps 1--2
-must make
-a corresponding adjustment to $\Vp$. This adjustment ultimately results in a
+must make a corresponding adjustment to $\Vp$. This adjustment ultimately results in a
 map $\Vp \mapsto \Vp_+$, which is a small perturbation of $\Vp$, as expressed
 by the first bound of \eqref{e:RKplus} (recall \eqref{e:Rplusdef}).
-
-The final bound on $k$ that is responsible for contractivity of $K_+$ is a result
-of the \emph{crucial contraction}. In Section~\ref{sec:cc}, we prove that the
-crucial contraction continues to hold when $s > 1$.
+\end{rk}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -306,6 +330,8 @@ $\ell_0^2 \ge c_0 \ellconst^{-1}$.
 \subsection{New choice of norm beyond the mass scale}
 \label{sec:newnorm}
 
+
+
 As in \cite[(\ref{IE-e:PhiXdef})]{BS-rg-IE}, we use the localised version
 of \eqref{e:phinorm}, defined for subsets $X \subset \Lambda$  by
 \begin{align}
@@ -352,10 +378,10 @@ The \emph{large-field regulator} is defined in \cite[\eqref{IE-e:9Gdef}]{BS-rg-I
     \right)
     .
 \end{align}
-The $\tilde\Phi_j$ norm appearing on the right-hand side of \refeq{9Gdef} is
-similar to the $\Phi_j$ norm, with the important difference that it is insensitive to
-shifts by linear test functions; see \cite[\eqref{IE-e:Phitilnorm}]{BS-rg-IE} for the
-precise definition.
+The $\tilde\Phi_j$ norm appearing on the right-hand side of \refeq{9Gdef} will be defined
+in Section~\ref{sec:cc}.
+% similar to the $\Phi_j$ norm, with the important difference that it is insensitive to
+% shifts by linear test functions; see \cite[\eqref{IE-e:Phitilnorm}]{BS-rg-IE} for the precise definition.
 The two regulators serve as weights in the \emph{regulator norms} of
 \cite[Definition~\ref{IE-def:Gnorms}]{BS-rg-IE}.
 The regulator norms are defined,  with $\gamma \in (0,1]$ and
@@ -780,6 +806,91 @@ On the other hand, the second estimate of \eqref{e:h-assumptions-IE} is
 improved by the new choice and compensates for the degraded third estimate,
 as we explain in this section.
 
+\subsubsection{The operator $\Loc$}
+
+The space $\Phi$ of test functions and the space $\Ncal$ of field functionals
+are dual to one another via the pairing \eqref{e:pairing}. By exploting this,
+in \cite{BS-rg-IE}, the operator $\Loc$ is defined as a kind of adjoint to
+an operator $\Tay_a$, which replaces test functions by a lattice Taylor expansion
+at $a\in\Lambda$.
+Non-constant polynomials are not well-defined on the whole torus $\Lambda$, but
+such a Taylor expansion can nevertheless be defined for test functions supported
+on sequences whose components lie in a sufficiently ``small'' subset of $\Lambda$.
+These are referred to in \cite{BS-rg-IE} as \emph{coordinate patches}. By definition,
+they are nonempty and any element of the set $\Scal$ of small sets is a coordinate
+patch (in this thesis, we are ultimately only concerned with the case of small sets).
+
+Suppose we fix a coordinate patch $\Lambda' \subset \Lambda$. By definition, it
+can be identified with a rectangle in $\Zd$.
+% Via this identification,
+Then given a local monomial $M$ of the form \eqref{e:field-mon},
+we define $p_M\in\Phi$ by
+\begin{equation}
+\label{e:lattice-mon}
+% p(\vec x) = \prod_{k=1}^m x_k^{\alpha_k}
+p_M(x_1, \ldots, x_p)
+	=
+x_1^{\alpha_1} \ldots x_p^{\alpha_p},
+	\qquad
+x_1, \ldots, x_p \in \Lambda'
+\end{equation}
+% when $x_1, \ldots, x_m \in \Lambda'$ and we set $p(\vec x) = 0$ otherwise;
+and set $p_M(\vec x) = 0$ if $|\vec x| \ne p$ or if the lattice points in $\vec x$
+do not all lie in $\Lambda'$. Following \eqref{e:mon-dim},
+we define the \emph{dimension} of such a monomial to be the dimension of $M$,
+i.e.\ $m [\varphi] + |\alpha|$.
+We let $d_+ \ge 0$ and let $\Pi = \Pi[\Lambda']$ denote the span of the monomials
+of this form with dimension at most $d_+$. For $X \subset \Lambda'$, we can also define
+$\Pi(X) = \Pi[\Lambda'](X)$ as the subset of $\Pi$ consisting of test functions
+supported on sequences over $X$.
+
+For $a\in\Lambda'$, in \cite{BS-rg-loc} an operator $\Tay_a : \Phi \to \Pi$ is defined
+by a lattice analogue of Taylor expansion; although the monomials $p_M$ form an obvious
+basis with respect to which this expansion can be defined, a different basis is used in
+\cite{BS-rg-loc}. The operator $\Tay_a g$ satisfies lattice analogues of the usual properties
+of Taylor polynomials. We will not discuss this in further detail as we will only use the fact
+that $\Tay_a g \in \Pi$ here.
+
+\begin{rk}
+\label{rk:TayX}
+By expansion in a basis of $\Pi(X)$, one can also defne a lattice Taylor expansion map
+$\Phi \to \Pi(X)$. We will also denote this map by $\Tay_a$.
+\end{rk}
+
+The following, which is a restatement of \cite[Proposition~\ref{loc-prop:LTsymexists}]{BS-rg-IE},
+defines $\Loc_X F$ as the unique element of $\Vcalp(X)$ that agrees with $F$ to
+order $d_+$ in an appropriate sense.
+
+\begin{prop}
+\label{prop:LTsymexists}
+Let $X\subset\Lambda$ be a coordinate patch and let $F\in\Ncal(X)$.
+Then there is a unique polynomial $\Vp\in\Vcalp$ such that
+\begin{equation}
+\langle F, g \rangle_0 = \langle \Vp(X), g \rangle_0
+\end{equation}
+for all $g\in\Pi$. We write $\Loc_X F = \Vp(X)$.
+\end{prop}
+
+Define the seminorm
+\begin{equation}
+\label{e:Phitilde}
+\|g\|_{\tilde\Phi(X)} = \inf\{ \|g - f\|_\Phi : f\in\Pi(X) \}
+\end{equation}
+on $\Phi$ (this is used in the definition of the large-field
+regulator \eqref{e:9Gdef}).
+We will need the following lemma, which is a restatement of
+\cite[Lemma~\ref{loc-lem:testfndecomp}]{BS-rg-loc}.
+
+\begin{lemma}
+\label{lem:testfndecomp}
+Let $X$ be a coordinate patch and let $g\in\Phi$.
+There exists $f\in\Pi(X)$ such that, with $h = g - f$, we have
+$\|g\|_{\tilde\Phi(X)} \le \|h\|_\Phi \le (1 + \epsilon) \|g\|_{\tilde\Phi(X)}$
+and $\|f\|_\Phi \le (2 + \epsilon) \|g\|_\Phi$.
+\end{lemma}
+
+\subsubsection{Proof of the crucial contraction}
+
 The space $\Ncal$ containing the functionals $F$ appearing above requires control on
 up to $p_\Ncal$ derivatives of $F$ with respect to the field $\varphi$,
 where $p_\Ncal$ is a parameter of the $T_\varphi$-norm.
@@ -828,11 +939,24 @@ $\kappa_{\LT F} =\|\Ipttil^X \LT_X \Ipttil^{-X} F(X) \|_{{G_{j}(\ell_{j})}}$.
 An ingredient in the proof of Proposition~\ref{prop:cl} is
 \cite[Lemma~\ref{loc-lem:phij}]{BS-rg-loc}, which is the $s=0$ version of
 the following lemma.  For simplicity, we state only the conclusion of the lemma,
-and the notation and hypotheses are those in
+\todo{and the notation and hypotheses are those in}
 \cite[Lemma~\ref{loc-lem:phij}]{BS-rg-loc}, except now we use the
 $s$-dependent norm parameters
 $\h_j=\ell_j$ of \refeq{elldef} ($h_j$ is not needed above the mass scale, and
 the $s=0$ case applies below the mass scale).
+
+The proof of Lemma~\ref{loc-lem:phij} with $s = 0$
+is based on the assumption  $\ell_{j+1}/\ell_j \leq  cL^{-1}$.
+(we take $[\varphi_i]=1$; the parameters $\ell_{\sigma,j}$ are not used).
+For our new values of $\ell$, the stronger assumption
+$\ell_{j+1}/\ell_j \leq L^{-1 - s \1_{j \geq j_m}}$ holds.
+The unique change to the proof occurs in the transition from
+\cite[\eqref{loc-e:gTay1}]{BS-rg-loc} to
+\cite[\eqref{loc-e:rhognew}]{BS-rg-loc}, where the ratio
+$\ell_{j+1}/\ell_j$ is used.
+
+\commentbw{Notation: $\Phi'$, $\tilde\Phi'$, $d'_+$, $X_+$, $z$, $p(z)$, $\mathbf{X}_+$,
+$R, R'$, $\nabla_R$, etc.}
 
 \begin{lemma}[{Improvement of \cite[Lemma~\ref{loc-lem:phij}]{BS-rg-loc}}]
 \label{lem:phiij-improved}
@@ -848,15 +972,27 @@ L^{- (1 + s \1_{j \geq j_m}) d_+'}  \|g\|_{\tilde{\Phi}' (X_+)}.
 
 
 \begin{proof}
-The proof of \cite[Lemma~\ref{loc-lem:phij}]{BS-rg-loc}
-is based on the assumption  $\ell_{j+1}/\ell_j \leq  cL^{-1}$
-(we take $[\varphi_i]=1$; the parameters $\ell_{\sigma,j}$ are not used).
-For our new values of $\ell$, the stronger assumption
-$\ell_{j+1}/\ell_j \leq L^{-1 - s \1_{j \geq j_m}}$ holds.
-The unique change to the proof occurs in the transition from
-\cite[\eqref{loc-e:gTay1}]{BS-rg-loc} to
-\cite[\eqref{loc-e:rhognew}]{BS-rg-loc}, where the ratio
-$\ell_{j+1}/\ell_j$ is used.
+Let $f\in\Pi(X)$ and $h\in\Phi$ be as in Lemma~\ref{lem:testfndecomp}.
+Thus, $g = f + h$ and so, with $\Tay_a : \Phi \to \Pi(X)$ as in Remark~\ref{rk:TayX},
+we have $g - (h - \Tay_a h) = f + \Tay_a h \in \Pi(X)$.
+By definition of the $\tilde\Phi(X)$ seminorm,
+\begin{equation}
+\|g\|_{\tilde\Phi(X)}
+	=
+\|h - \Tay_a h\|_{\tilde\Phi(X)}
+	\le
+\|h - \Tay_a h\|_{\Phi(X)}.
+\end{equation}
+By the bound on $h$ (from Lemma~\ref{lem:testfndecomp}), it suffices to
+show that
+\begin{equation}
+\|h - \Tay_a h\|_{\Phi(X)}
+	\le
+\frac12 \bar C_3 L^{-(1 + s \1_{j \ge j_m}) d'_+} \|g\|_{\tilde\Phi'(X_+)}.
+\end{equation}
+
+\commentbw{Incomplete}
+
 With the new ratio, \cite[\eqref{loc-e:rhognew}]{BS-rg-loc} becomes
 \begin{align}
 \label{e:rhognew-improved}
@@ -877,7 +1013,8 @@ By definition, for the empty sequence $\varnothing$, $(\Tay_a h)_\varnothing = h
 and thus
 $r_\varnothing = 0$.
 
-It follows that we can take $p(z) \geq 1$ in the supremum over $z \in \mathbf{X}_+$ in \eqref{e:rhognew-improved}. Thus,
+It follows that we can take $p(z) \geq 1$ in the supremum over $z \in \mathbf{X}_+$ in
+\eqref{e:rhognew-improved}. Thus,
 \begin{align}
     \|r\|_{\Phi (X)}
     & \le
