@@ -186,9 +186,9 @@ G(\nu) = \int f(T) e^{-\nu T} \; dT
 \end{equation}
 near $\nu_0 \coloneqq \inf \{ \nu : G(\nu) < \infty \}$.
 There are Abelian and Tauberian theorems for the Laplace transform analogous
-to those for generating functions \cite{Widd41}. For instance,
-$f(T) \sim A T^\alpha$ \todo{implies that} $G(\nu) \sim A' (\nu - \nu_0)^{-(\alpha+1)}$
-as $\nu\downarrow\nu_0$. The converse holds when $f$ is monotonic.
+to those for generating functions. For instance,
+$f(T) \sim A T^\alpha$ implies that $G(\nu) \sim A' (\nu - \nu_0)^{-(\alpha+1)}$
+as $\nu\downarrow\nu_0$ and the converse holds when $f$ is monotonic (see \cite{Widd41}).
 % When this is not the case, one can attempt to recover the asymptotics of $f$ by
 % inverting the Laplace transform.
 
@@ -1131,7 +1131,8 @@ If $d > 4$, the critical exponents for the $O(n)$ and $|\varphi|^4$ models are
 predicted to become independent of $d$ and $n$ and to take on the values of the
 corresponding exponents for the Gaussian free field, i.e.\ $\gammabar = 1$,
 $\nubar = 1/2$, and $\eta = 0$. For $n = 1, 2$ it is known that $\eta = 0$
-for the \emph{continuum limit} of these models \cite{Aiz82,Fro82}.
+for the \emph{continuum limit} of these models \cite{Aiz82,Fro82} (see also
+\cite{Sakai07}).
 This phenomenon is known as \emph{mean-field behaviour} and dimension $4$ is
 called the \emph{upper-critical dimension} for this class of models.
 For lattice models, results are upcoming in \cite{BHH17}.
@@ -1268,7 +1269,7 @@ These measures do not form a consistent family due to the possibility of ``traps
 \end{equation}
 does not hold for all $\omega\in\dwalks$ (the sum here is over all self-avoiding walks extending $\omega$).
 For instance, consider the self-avoiding walk $\omega\in\dwalks_7$
-on $\Zd$ in Figure~\REF. % \ref{fig:trap}.
+on $\Zd$ in Figure~\ref{fig:trap}.
 This walk has positive probability under $\mu_7$ but,
 since there are no self-avoiding walks extending $\omega$, the sum on the 
 right-hand side above is $0$.
@@ -1280,7 +1281,7 @@ not clear how to express $c_{n+1}$ (the number of $(n+1)$-step self-avoiding wal
 in terms of $c_n$.
 
 Nevertheless, we know that the sequence $c_n$ is sub-multiplicative: $c_{m+n} \le c_m c_n$.
-Thus, Fekete's lemma \REF implies that the existence of the \emph{connective constant}
+Thus, Fekete's lemma implies that the existence of the \emph{connective constant}
 $c(\graph)$ of $\graph$, defined by
 \begin{equation}
 c(\graph) = \lim_{n\to\infty} n^{-1} \log c_n.
