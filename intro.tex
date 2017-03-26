@@ -292,6 +292,100 @@ F_\beta = E - \frac{1}{\beta} h(\mu_\beta),
 \end{equation}
 which recovers the definition of Helmholtz free energy in thermodynamics.
 
+\subsection{Relation to quantum theory}
+
+Here we briefly describe the relationship between equilibrium statistical
+mechanics and quantum field theory. Our presentation is heuristic and involves
+manipulations of a priori ill-defined objects. A rigorous development of these
+ideas goes back to \cite{Syma69,Nelson73,OS73,OS75}; references on this topic
+include \cite{Simon05} (for quantum mechanics) and \cite{GJ87} (for quantum
+field theory).
+
+Let $H(x, p)$ be the Hamiltonian \eqref{e:total-energy} (we have written $x$
+instead of $q$). In quantum mechanics, the state space is replaced by a Hilbert
+space of functions over $\R^{6n}$, say $L^2 = L^2(\R^{3n})$;
+the position $x_j$ is replaced by the \emph{position operator} $\hat x_j$ given by
+multiplication by $x_j$; and the momentum $p_j$ is replaced by the \emph{momentum
+operator} $\hat p_j = -i \hbar \partial/\partial x_j$ (we ignore details regarding
+the domains of these operators). The resulting operator $\hat H = H(\hat x, \hat p)$
+on $L^2$ determines the evolution of the \emph{wave function} $\psi\in L^2$ via
+the Schr\"{o}dinger equation
+\begin{equation}
+\dd{\psi}{t} = \frac{1}{i\hbar} \hat H \psi
+\end{equation}
+whose solution with initial condition $\psi(0)$ is given by
+$\psi(t) = e^{-it\hat H/\hbar} \psi(0)$.
+
+Suppose that the solution operator is an integral operator with kernel $K_t$,
+i.e.\
+\begin{equation}
+e^{-it\hat H/\hbar} f = \int K_t(\cdot, y) f(y) \; dy.
+\end{equation}
+The Feynman path integral formulation to quantum mechanics involves writing
+the kernel as
+\begin{equation}
+K_t(a, b)
+	=
+\int_{\cwalks_t(a, b)} e^{i \int_0^t L(x(s), \dot x(s)) \; ds} \; \Dcal x,
+\end{equation}
+where $\cwalks_t(a, b)$ is a space of paths $[0, t] \to \R^{3n}$ from
+$a$ to $b$ equipped with a ``Lebesgue measure'' $\Dcal x$ and
+\begin{equation}
+L(x, \dot x) = \frac{1}{2} m |\dot x|^2 - U(x)
+\end{equation}
+is the \emph{Lagrangian} of the classical system we started with.
+As such, the integral representation of $K_t$ is ill-defined;
+for instance, the measure $\Dcal x$ on paths does not exist. However, let us
+not concern ourselves with this for now.
+
+Suppose that $\psi$ can be analytically continued to a region of the complex
+plane containing the imaginary axis. Then we might hope the function
+$t \mapsto \psi(-it)$ has solution operator with kernel of the form
+\begin{equation}
+K_{-it} = \int_{\cwalks_{-it}(a, b)} e^{i \int_0^{-it} L(x(s), \dot x(s)) \; ds} \; \Dcal x.
+\end{equation}
+By the change of variables $s = -iu$,
+\begin{equation}
+i \int_0^{-it} L(x(s), \dot x(s)) \; ds
+	=
+\int_0^t L(\tilde x(u), i \dot{\tilde x}(u)) \; du
+	=
+-\int_0^t H(\tilde x(u), m \dot{\tilde x}(u)) \; du
+\end{equation}
+with $\tilde x(t) = x(-it)$. Thus, by the fictive change of variables in which
+$\cwalks_{it}(a, b)$ is replaced by $\cwalks_t(a, b)$, we get
+\begin{equation}
+K_{-it} = \int_{\cwalks_t(a, b)} e^{-\int_0^t H(x(u), m\dot x(u)) \; du} \; \Dcal x
+\end{equation}
+This procedure is known as a \emph{Wick rotation}.
+
+The analogue of this idea in quantum field theory involves replacing integration
+over paths with integration over fields $\varphi$, which are functions on $\Rd$.
+The corresponding ``measures'' of the form $e^{-\int H(\varphi)} \Dcal\varphi$
+should be compared with the Gibbs measures \eqref{e:gibbs-def}. Although $H$
+has been replaced by the \emph{integral} $\int H$, we will later show that natural
+choices for the Hamiltonian in a Gibbs measure are given by \emph{sums} over
+spaces of fields on discrete approximations to $\Rd$ (graphs).
+
+\begin{rk}
+In fact, this is not as unreasonable as it may appear. The function
+$\tilde\psi(t) = \psi(-i t)$, if well-defined, should solve
+\begin{equation}
+\dd{\tilde\psi}{t} = -\frac{1}{\hbar} \hat H \tilde\psi.
+\end{equation}
+When $U = 0$, we have $H(x, p) = \frac{1}{2m} |p|^2$ and $\hat H = -\Delta$
+is the Laplacian on $\R^{3n}$, so this is just the heat equation.
+
+On the other hand, the expression for $K_{-it}$ is an integral over some
+space of paths weighted by $e^{-H}$ with $H$ a positive-definite quadratic form;
+this is a formal Gaussian integral. And indeed it is a standard fact that
+solutions to the heat equation can be expressed as expectations with respect to
+Brownian motion. More generally, when $U \ne 0$, differential equations of this
+form (for appropriate
+$\hat H$) can be expressed in terms of expectations with respect to the solutions
+to certain stochastic differential equations (this is the Feynman-Kac formula).
+\end{rk}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -448,8 +542,16 @@ by the Gibbs measure
 \begin{equation}
 \label{e:gibbs-spin}
 d\mu_\beta(\varphi)
-  =
-\frac{1}{Z_\beta} e^{-\beta H(\varphi)} d\lambda(\varphi).
+	=
+\frac{1}{Z_\beta} e^{-\beta H(\varphi)} \; d\lambda(\varphi).
+\end{equation}
+We sometimes add an \emph{external field} $h \in \R$ by considering the measure
+\begin{equation}
+\label{e:gibbs-spin-ext}
+d\mu_{\beta,h}(\varphi)
+	=
+\frac{1}{Z_{\beta,h}}
+e^{-\beta (H(\varphi) - h \sum_{x\in\vertices} \varphi_x)} \; d\lambda(\varphi).
 \end{equation}
 We will mainly be concerned with \emph{ferromagnetic} spin systems, for which the
 Hamiltonian has the form
@@ -684,12 +786,12 @@ It can be shown that (for $d > 1$) the susceptibility diverges at $\beta_c$.
 
 \subsection{Spin systems in infinite volume}
 
-The presence of a phase transition in a physical system is signalled by an abrupt
-change in an observable quantity with respect to a parameter.
-We make a broad distinction between
-\emph{first-order} phase transitions in which the free energy has discontinuous first
-derivative (with respect to an external field $h$) and \emph{continuous} phase transitions,
-in which the free energy is differentiable but non-analytic.
+The presence of a phase transition in a physical system is signalled by an
+abrupt change in an observable quantity with respect to a parameter. We make a
+broad distinction between \emph{first-order} phase transitions in which the
+free energy has discontinuous first derivative with respect to an external
+field $h$ (recall \eqref{e:gibbs-spin-ext}) and \emph{continuous} phase
+transitions, in which the free energy is differentiable but non-analytic.
 
 The systems we have defined above all
 have smooth free energy since the Hamiltonians are smooth functions. The reason we cannot
