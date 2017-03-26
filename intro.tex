@@ -368,6 +368,7 @@ choices for the Hamiltonian in a Gibbs measure are given by \emph{sums} over
 spaces of fields on discrete approximations to $\Rd$ (graphs).
 
 \begin{rk}
+\commentbw{Add equation references}
 In fact, this is not as unreasonable as it may appear. The function
 $\tilde\psi(t) = \psi(-i t)$, if well-defined, should solve
 \begin{equation}
@@ -894,6 +895,9 @@ The susceptibility is defined by
 \section{Critical behaviour and universality}
 \label{sec:crit}
 
+\commentbw{Mention somewhere that analogues of susceptibility, etc.\ can be defined
+for $O(n)$}
+
 Many systems exhibit singular behaviour at or near the critical temperature in
 the form of power law scaling of various observable quantities. This is known as
 \emph{critical behaviour}. For concreteness, we will discuss the generalized
@@ -918,6 +922,7 @@ In fact, the two-point function is expected to decay exponentially above $\nu_c$
 The \emph{correlation length} $\xi$ is defined to be the reciprocal of the exponential
 rate of decay of the two-point function; concretely, we let
 \begin{equation}
+\label{e:cl-spins}
 \xi(g, \gamma, \nu; n) = \limsup_{k\to\infty} \frac{-k}{\log G_{ke}(g, \gamma, \nu; n)},
 \end{equation}
 where $e \in \Zd$ is a unit vector whose choice is irrelevant by invariance of this model
@@ -1144,7 +1149,7 @@ power law with mean-field critical exponents and multiplicative logarithmic
 corrections. An exception is the two-point function, which is expected to undergo
 mean-field scaling ($\eta = 0$); this has been establishes in the continuum limit
 in \cite{FMRS87} and \cite{GK85}. Logarithmic corrections to scaling for the
-correlation length of the $1$-component model were identified in \cite{HT87}.
+correlation length of the $1$-component model were identified in \cite{Hara87,HT87}.
 
 Recently, Bauerschmidt, Brydges, and Slade have developed a renormalisation group
 method for studying the $n$-component $|\varphi|^4$ model in $4$ dimensions; this
@@ -1235,130 +1240,161 @@ will discuss further in Section~\ref{sec:rg}.
 \section{Self-interacting walks}
 \label{sec:walks}
 
-\commentbw{Motivate historically using SAW. Then just do WSAW-SA with WSAW as
-an easier version of SAW.}
+% \subsection{Discrete-time walks}
 
-\subsection{Discrete-time walks}
+% Let $[n] = \{0,\ldots,n\}$ and call a function $\omega : [n]\to\vertices$
+% a \emph{discrete-time walk of length $n$} if $\omega_i \sim \omega_{i+1}$ for all
+% $i\in[n-1]$.
+% A model of discrete-time walks can be defined by an assigning of weights
+% $w_n : \dwalks_n \to \R$ for each $n \in \Z_+$, where $\Wcal_n$ is the
+% collection of discrete-time walks $\omega$ of length $n$ with $\omega_0 = 0$.
+% When these weights are nonnegative and summable, this is equivalent to
+% equipping each $\Wcal_n$ with a probability measure; such \emph{probabilistic}
+% models of walks are often closely related to ferromagnetic spin systems,
+% as we will discuss in Section~\REF.
 
-Let $[n] = \{0,\ldots,n\}$ and call a function $\omega : [n]\to\vertices$
-a \emph{discrete-time walk of length $n$} if $\omega_i \sim \omega_{i+1}$ for all
-$i\in[n-1]$.
-A model of discrete-time walks can be defined by an assigning of weights
-$w_n : \dwalks_n \to \R$ for each $n \in \Z_+$, where $\Wcal_n$ is the
-collection of discrete-time walks $\omega$ of length $n$ with $\omega_0 = 0$.
-When these weights are nonnegative and summable, this is equivalent to
-equipping each $\Wcal_n$ with a probability measure; such \emph{probabilistic}
-models of walks are often closely related to ferromagnetic spin systems,
-as we will discuss in Section~\REF.
+% In this thesis, we focus on continuous-time walks, which we define in the next
+% section. Before proceeding, however, we discuss the following important example.
 
-In this thesis, we focus on continuous-time walks, which we define in the next
-section. Before proceeding, however, we discuss the following important example.
+We begin with section with the following simple example.
 
 \begin{example}[Self-avoiding walk]
-A discrete-time walk $\omega$ is said to be \emph{self-avoiding} if
-$\omega_i \ne \omega_j$
-for all $i \ne j$. Let $\Scal_n \subset \dwalks_n$ denote the set of $n$-step
-self-avoiding walks starting at $0$.
-The \emph{self-avoiding walk} is a model of a linear polymer
-defined by the weights $w(\omega) = \1_{\omega\in\Scal_n}$.
+Let $\omega : \{0,\ldots,n\} \to \vertices$ be a \emph{discrete-time walk}
+of length $n$ on $\graph$ meaning that $\omega_i \sim \omega_{i+1}$ for all $i$. Let us
+denote by $\dwalks_n$ the collection of such walks and set $\dwalks = \bigcup_n \dwalks_n$.
+We say that $\omega$ is \emph{self-avoiding} if $\omega_i \ne \omega_j$
+for all $i \ne j$. Let $\Scal_n$ denote the collection of $n$-step
+self-avoiding walks with $\omega_0 = 0$. We equip $\Scal_n$ with the uniform
+measure for each $n$. This gives us a simple model of a linear polymer.
+% defined by the weights $w(\omega) = \1_{\omega\in\Scal_n}$.
 
-Equivalently, we equip $\Scal_n$ with the uniform measure $\mu_n$ for each $n$.
-These measures do not form a consistent family due to the possibility of ``traps''. That is, the equality
+% Equivalently, we equip $\Scal_n$ with the uniform measure $\mu_n$ for each $n$.
+The uniform measures do not form a consistent family due to the possibility of ``traps''.
+That is, the equality
 \begin{equation}
-\mu_{|\omega|}(\omega) = \sum_{\tilde\omega \supset \omega} \mu_{|\tilde\omega|}(\tilde\omega)
+\mu_{|\omega|}(\omega) = \sum_{\bar\omega \supset \omega} \mu_{|\bar\omega|}(\bar\omega)
 \end{equation}
 does not hold for all $\omega\in\dwalks$ (the sum here is over all self-avoiding walks extending $\omega$).
 For instance, consider the self-avoiding walk $\omega\in\dwalks_7$
-on $\Zd$ in Figure~\ref{fig:trap}.
-This walk has positive probability under $\mu_7$ but,
+on $\Zd$ in Figure~\ref{fig:trap}. This walk has positive probability under $\mu_7$ but,
 since there are no self-avoiding walks extending $\omega$, the sum on the 
 right-hand side above is $0$.
 
-As a result, there is no straightforward way to apply the methods of stochastic processes
-to study the self-avoiding walk. The existence of traps also contributes to the
-combinatorial difficulty of studying self-avoiding walk; for instance, it is
-not clear how to express $c_{n+1}$ (the number of $(n+1)$-step self-avoiding walks)
-in terms of $c_n$.
-
-Nevertheless, we know that the sequence $c_n$ is sub-multiplicative: $c_{m+n} \le c_m c_n$.
-Thus, Fekete's lemma implies that the existence of the \emph{connective constant}
-$c(\graph)$ of $\graph$, defined by
-\begin{equation}
-c(\graph) = \lim_{n\to\infty} n^{-1} \log c_n.
-\end{equation}
-Note that, by the trivial bounds $1 \le c_n \le d_0^n$ for $n \ge 1$, $c(\graph) \in [0, d_0]$.
-% Roughly speaking, this means that $c_n \approx c(\graph)^n$ for large $n$.
-By definition, the susceptibility has radius of convergence $c(\graph)^{-1}$.
 \begin{figure}[!htb]
 \label{fig:trap}
 \centering
 \caption{A trapped self-avoiding walk}
-\includegraphics{trapped}
+\includegraphics{trapped_compact}
 \end{figure}
+
+As a result, there is no straightforward way to apply the usual methods of stochastic processes
+to study the self-avoiding walk. The existence of traps also contributes to the
+combinatorial difficulty of this model; for instance, if $c_n = |\Scal_n|$, then it is
+not clear how to express $c_{n+1}$ as a simple function of $c_n$.
+
+We do know, however, that the sequence $c_n$ is sub-multiplicative: $c_{m+n} \le c_m c_n$.
+This follows from the fact that a self-avoiding walk can be split into two self-avoiding
+walks at any point along it, but the concatenation of two self-avoiding walks is not
+necessarily self-avoiding. Thus, $\log c_n$ is subadditive and
+Fekete's lemma for subadditive sequences implies the existence of the limit
+\begin{equation}
+c(\graph) = \lim_{n\to\infty} n^{-1} \log c_n.
+\end{equation}
+We call $c(\graph)$ the \emph{connective constant} of $\graph$.
+% Note that, by the trivial bounds $1 \le c_n \le d_0^n$ for $n \ge 1$, $c(\graph) \in [0, d_0]$.
+By definition, $c(\graph)$ is the exponential growth rate of $c_n$.
+% $c_n \approx c(\graph)^n$ for large $n$.
+% By definition, the susceptibility has radius of convergence $c(\graph)^{-1}$.
 \end{example}
+
+More general models of walks can be defined via measures on $\dwalks_n$. In fact,
+it is sometimes more convenient to discuss models walks parameterized by an
+interval $[0, T]$. In both cases, we can conveniently define Gibbs measures
+directly in infinite-volume with respect to the base measure induced by simple
+random walk. Instead of discussing general models, we will proceed directly to
+the model of interest in this thesis.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{Continuous-time walks}
+% \subsection{Continuous-time walks}
 
-Let $\omega : [0, T] \to \vertices$ be a right-continuous function and define
-$\tau_n = \tau_n(\omega)$ inductively by setting $\tau_0 = 0$ and
-\begin{equation}
-\tau_{n+1} = \inf (t > \tau_n : \omega_t \ne \omega_{\tau_n}).
-\end{equation}
-Call $\omega$ a \emph{continuous-time walk of length $T$} if $\{ \tau_n \}$
-has no cluster points and $\omega_{\tau_i} \sim \omega_{\tau_{i+1}}$ for all $i$.
-Let $\cwalks_T$ denote the space of continuous-time walks $\omega$ of length $T$
-with $\omega_0 = 0$.
-
-We can define general models of continuous-time walks in terms of measures on
-the $\cwalks_T$. Let us restrict our attention to models defined by Gibbs measures
-with base measure given by the continuous-time simple random walk on $\graph$.
-That is, given a Hamiltonian $H$ on $\cwalks = \bigcup_{T \ge 0} \cwalks_T$,
-we consider the measures of the form
-\begin{equation}
-\mu_{\beta,H}(A) = E_0 (e^{-\beta H} \1_A)
-\end{equation}
+% Let $\omega : [0, T] \to \vertices$ be a right-continuous function and define
+% $\tau_n = \tau_n(\omega)$ inductively by setting $\tau_0 = 0$ and
+% \begin{equation}
+% \tau_{n+1} = \inf (t > \tau_n : \omega_t \ne \omega_{\tau_n}).
+% \end{equation}
+% Call $\omega$ a \emph{continuous-time walk of length $T$} if $\{ \tau_n \}$
+% has no cluster points and $\omega_{\tau_i} \sim \omega_{\tau_{i+1}}$ for all $i$.
+% Let $\cwalks_T$ denote the collection of continuous-time walks $\omega$ of length $T$
+% with $\omega_0 = 0$. Let $E_0$ denote the expectation with respect to a continuous-time
+% simple random walk on $\graph$ conditioned to start at $0$. This is the $\vertices$-valued
+% Markov process $X$ with generator $-\lap$. In other words,
+% \begin{equation}
+% \Pr(X_t = y \mid X_0 = x) = (e^{-t \lap})_{xy}.
+% \end{equation}
+% Given a Hamiltonian $H$ on $\cwalks = \bigcup_{T \ge 0} \cwalks_T$,
+% we can consider the Gibbs measures
+% \begin{equation}
+% \label{e:gibbs-walks}
+% \mu_{\beta,T}(A) = \frac{1}{c_T} E_0 (e^{-\beta H} \1_A),
+% 	\qquad
+% c_T = E_0 (e^{-\beta H}).
+% \end{equation}
+% % We also have a \emph{grand ensemble} on all of $\cwalks$ defined by
+% % \begin{equation}
+% % \mu_\beta(A) = \frac{1}{\chi(\beta, \nu)} E_0 (e^{-\beta H - \nu |\omega|} \1_A)
+% % \end{equation}
+% % where $\nu\in\R$ is a parameter and $|\omega|$ is the length of $\omega$. The
+% % partition function
+% % \begin{equation}
+% % \chi(\beta, \nu) = E_0 (e^{-\beta H - \nu |\omega|})
+% % \end{equation}
+% % is referred to as the \emph{susceptibility}.
+% Rather than continuing to discuss such models in generality, we will proceed directly to
+% our example of primary interest.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Weakly self-avoiding walk with self-attraction}
 
-\begin{figure}
-\centering
-\label{fig:saw-sa}
-\includegraphics{saw-sa-black-small.png}
-\caption{Monte Carlo simulation of discrete-time weakly self-avoiding walk with 100 steps}
-\end{figure}
-
+Let $X$ denote the continuous-time simple random walk on $\graph$ conditioned
+to start at $0$. This is the $\vertices$-valued Markov process $X$ with generator
+$-\lap$. In other words,
+\begin{equation}
+\Pr(X_t = y \mid X_0 = x) = (e^{-t \lap})_{xy}.
+\end{equation}
 Define the \emph{local time} up to time $T$ of $\omega \in \cwalks$ at
 $x \in \vertices$ by
 \begin{equation}
 \label{e:LTx-def}
 \lt^x_T(\omega) = \int_0^T \1_{\omega(S)=x} \; dS.
 \end{equation}
-In the discrete-time case, $\lt^x_n$ is the number of times $\omega$ visits $x$
-and is bounded by $n$. In the continuous-time case, $\lt^x_T$ is almost surely
-finite for the continuous-time simple random walk.
-
+Note that $\lt^x_T$ is almost surely finite.
+% In the discrete-time case, $\lt^x_n$ is the number of times $\omega$ visits $x$
+% and is bounded by $n$.
+% In the continuous-time case, $\lt^x_T$ is almost surely
+% finite for the continuous-time simple random walk.
 We define the \emph{intersection local time}
 \begin{equation}
 \label{e:ITdef}
-I_T(\omega) = \sum_{x\in\vertices} (\lt^x_T)^2
-  =
+I_T(\omega)
+	=
 \int_0^T \!\! \int_0^T \1_{\omega(S_1)=\omega(S_2)} \; dS_1 dS_2
+	=
+\sum_{x\in\vertices} (\lt^x_T)^2
 \end{equation}
 and the \emph{contact self-attraction}
 \begin{equation}
 \label{e:CTdef}
 C_T(\omega)
 	=
-\sum_{x \in \vertices} \sum_{y \sim x} \lt_T^x(\omega) \lt_T^y(\omega)
-	=
 \int_0^T ds \int_0^T dt \; \1_{\omega_s \sim \omega_t}
+	=
+\sum_{x \in \vertices} \sum_{y \sim x} \lt_T^x(\omega) \lt_T^y(\omega)
 \end{equation}
 up to time $T$.
 % Recall that we have set the inverse temperature equal to $1$.
+
 Given a parameter $\gcc > 0$, and $\gamma \in \R$, let
 \begin{equation}
 \label{e:Udef-neg}
@@ -1369,21 +1405,32 @@ U_{\gcc,\gamma}(f)
 \sum_{x\in\vertices} \sum_{y \sim x} f_x f_y
 \end{equation}
 for $f : \vertices \to \R$.
-The \emph{weakly self-avoiding walk with self-attraction} (WSAW-SA) is defined via the Hamiltonian
+The \emph{weakly self-avoiding walk with self-attraction} (WSAW-SA) is defined
+via the Hamiltonian
 \begin{equation}
 \label{e:V}
 U_{\gcc,\gamma,T}
 	= U_{\gcc,\gamma} \circ L_T
-	= \gcc I_T - \frac{\gamma}{2 d} C_T.
+	= \gcc I_T - \frac{\gamma}{2 d} C_T
 \end{equation}
-Thus,
+which induces a Gibbs measure with respect to the measure of $X$.
+We will refer to the case $\gamma = 0$ as the \emph{weakly self-avoiding walk} (WSAW).
+
+\begin{figure}[!htb]
+\centering
+\label{fig:domb-joyce}
+\includegraphics{domb-joyce-black-small.png}
+\caption{Monte Carlo simulation of discrete-time weakly self-avoiding walk with 100 steps}
+\end{figure}
+
+We let
 \begin{equation}
 \label{e:c}
     c_T = E_a\left(e^{-U_{\gcc,\gamma,T}}\right),
     \quad
-    c_T(x) = E_0\left(e^{-U_{\gcc,\gamma,T}}\1_{X_T = x}\right)
+    c_T(x) = E_0\left(e^{-U_{\gcc,\gamma,T}}\1_{X_T = x}\right).
 \end{equation}
-and the two-point function and susceptibility are given by
+The \emph{two-point function} and \emph{susceptibility} are defined by
 \begin{align}
 \lbeq{Gsa}
 G_x(\gcc,\gamma,\nu)
@@ -1397,23 +1444,38 @@ and
 	=
 \int_0^\infty c_T e^{-\nu T} \; dT
 	=
-\sum_{x\in\Zd} G_x(\gcc,\gamma,\nu)
+\sum_{x\in\Zd} G_x(\gcc,\gamma,\nu),
 \end{equation}
-There is also a version of the correlation length of order $p$:
-\begin{equation}
+which is more-or-less consistent with \eqref{e:susceptibility-def} (we will
+establish an exact analogue of \eqref{e:susceptibility-def} in Proposition~\ref{prop:finvol}).
+The relationship
+between the two-point function for this model and for spin systems will be
+discussed in Section~\ref{sec:intrep}. We also have a version of the
+the \emph{correlation length of order $p$}
+\begin{align}
 \label{e:clp-wsawsa}
-\xi_p(\gcc, \gamma, \nu; 0)
-	=
-\left(\frac{\sum_{x\in\Zd} |x|^p G_x(g, \gamma, \nu; 0)}{\chi(g, \gamma, \nu; 0)}\right)^{1/p}.
-\end{equation}
+\xi_p(\gcc, \gamma, \nu)
+	&=
+\left(\frac{\sum_{x\in\Zd} |x|^p G_x(g, \gamma, \nu)}{\chi(g, \gamma, \nu)}\right)^{1/p}.
+\end{align}
+On $\Zd$, a version of the correlation length can be defined exactly as in \eqref{e:cl-spins}.
 
-In the case $\gamma = 0$, the discrete-time version of this model is known as
-the \emph{Domb-Joyce model}. In continuous-time, it is the
-\emph{continuous-time weakly self-avoiding walk} (WSAW).
+The discrete-time version of the WSAW-SA is straightforward to define in terms of
+discrete-time simple random walk; when
+$\gamma = 0$, it is known as the \emph{Domb-Joyce model} or \emph{discrete-time
+weakly self-avoiding walk}. A sample of the Domb-Joyce model with 100 steps is shown
+in Figure~\ref{fig:domb-joyce}. The SAW can be recovered as an
+appropriate limit of the Domb-Joyce model or the continuous-time WSAW \cite{BDS12}.
 
 \subsubsection{Alternative representation}
 
-For $f : \Zd \to \R$,
+For $f : \Zd \to \R$, let 
+\begin{equation}
+|\nabla f_x|^2 = \sum_{|e|=1} |\nabla^e f_x|^2,
+	\qquad
+|\nabla f|^2 = \sum_{x\in\Zd} |\nabla f_x|^2.
+\end{equation}
+Then
 \begin{equation}
 \label{e:sbp}
 \sum_{x\in\Zd}   f_x \Delta_{\Zd} f_x
@@ -1452,39 +1514,80 @@ In particular,
 
 \subsection{Predicted behaviour}
 
-\commentbw{Cite Flory}
+We can view the susceptibility \eqref{e:suscept-def} as the partition function
+for a measure on walks of \emph{any} length (sometimes called a \emph{grand
+ensemble}). When $\nu$ reaches the critical point
+\begin{equation}
+\nu_c = \nu_c(\gcc, \gamma) = \inf\{ \nu : \chi(\gcc,\gamma,\nu) < \infty \},
+\end{equation}
+we expect the susceptibility to diverge, which is indicative of a phase transition.
+In fact, it is not clear how to show that $\chi(\gcc,\gamma,\nu_c) = \infty$ in
+general, although this can be established for $\gamma = 0$
+(see \cite[Lemma~\ref{log-lem:csub}]{BBS-saw4-log}). For $\gamma$
+sufficiently small, this divergence will be part of our main result.
 
 The two-point function, susceptibility, and correlations lengths of the
-self-avoiding walk and WSAW-SA (with $\gamma$ small) on $\Zd$ are all expected
-to scale according to analogues of \eqref{e:Gpred}--\eqref{e:xippred}. The
-critical exponents $\gammabar, \nubar, \eta$ are expected to be universal; in
-particular, they should only depend on $d$.
-
-The discussion in Section~\ref{sec:asymp} suggests then that
+self-avoiding walk and (discrete- or continuous-time) WSAW-SA (with $\gamma$ small
+depending on $\gcc$) on $\Zd$ are all expected
+to scale according to analogues of \eqref{e:Gpred}--\eqref{e:xippred}.
+The discussion in Section~\ref{sec:asymp} suggests that
 \begin{align}
 c_T                       &\sim C_5 e^{-\nu_c T} T^{-\gammabar}, \\
 \langle |X_T|^2 \rangle   &\sim C_6 T^{-\nubar}.
 \end{align}
+The critical exponents $\gammabar, \nubar, \eta$ are expected to be universal;
+in particular, they should only depend on $d$ in this context.
+
+Below we discuss some of the predicted and known values of the critical exponents.
+We begin with a discussion of the exponents for $\gamma$ small before turning our
+attention to the case of large $\gamma$. A more detailed reference is \cite{MS93}.
+The values
+of $\nubar$ were first predicted\footnote{Flory's for $d = 3$ is no longer generally
+accepted} by the chemist Paul Flory \cite{Flor49}, who
+later won the 1974 Nobel Prize in Chemistry for his work on polymers.
+
+\subsubsection{Dimension $d = 1$}
+
+For the SAW, dimension $1$ is trivial: the only self-avoiding walks are straight
+lines. This is not the case for the WSAW, see e.g.\ the survey \cite{HK01}.
+
+\subsubsection{Dimension $d = 2$}
 
 In $d = 2$, the predicted values of the critical exponents are
 \begin{equation}
 \nubar = 3/4, \quad \gammabar = 43/32, \quad \eta = 5/24.
 \end{equation}
-In \cite{LSW04}, it was shown that the scaling limit of self-avoiding walk,
-if it exists and is conformally invariant, must be $\SLE_{8/3}$.
+It was shown in \cite{LSW04} that the scaling limit of SAW, if it exists and
+is conformally invariant, is given by $\SLE_{8/3}$, which is consistent with
+the predicted exponents given above.
+
+It is not immediately clear how to make sense of the supercritical regime
+($\nu < \nu_c$ for WSAW-SA).
+However, the authors of \cite{LSW04} considered SAW on a discretized bounded
+planar domain. They showed that the scaling limit of supercritical
+SAW conditioned to start and end on the boundary of the domain is space-filling
+(their results extend to all dimensions).
+
+\subsubsection{Dimension $d = 3$}
 
 In $d = 3$, again very little is known. Only numerical approximations for
 the critical exponents are available.
 
+\subsubsection{Dimension $d > 4$}
+
 The upper-critical dimensions for these models is $d = 4$ and the mean-field
 exponents are the same as for models in the Ising universality class, namely
 $\gammabar=1, \nubar = 1/2, \eta = 0$. In other words, self-avoiding walk
-scales like simple random walk in dimensions above $4$.
+is expected to scale like simple random walk in dimensions above $4$.
 
-In $d > 4$, mean-field behaviour for the discrete-time WSAW was first proved
-in \cite{BS85} using the lace expansion, which was introduced in the same paper.
-By vastly extending this method, Hara and Slade \REF were able to apply it to the
-self-avoiding walk in $d > 4$ (see also Madras-Slade \REF).
+In $d > 4$, Brydges and Spencer \cite{BS85} showed that $\nubar = 1/2$ for the
+discrete-time WSAW using the lace expansion, which was introduced in the same paper.
+By vastly extending this method, Slade \cite{Slad88} showed that the scaling limit
+of SAW is Brownian motion and Hara and Slade \cite{HS92a,HS92b} showed that
+$\gamma = 1$, $\nubar = 1/2$ (for the mean-squared displacement, correlation length,
+and correlation length of order $2$), and $\eta = 0$.
+
+\subsubsection{Dimension $d = 4$}
 
 As discussed in Section~\ref{sec:rg-intro}, Bauerschmidt, Brydges, and Slade have
 recently made great strides in the case $d = 4$ using a renormalisation group method.
@@ -1493,5 +1596,7 @@ spin systems, is that it can be used to study the WSAW via an integral represent
 we will discuss in Section~\ref{sec:intrep}. This method was first applied to walks
 in \cite{BBS-saw4-log,BBS-saw4}, where the susceptibility and two-point function were
 studied.
+
+\subsubsection{Large $\gamma$}
 
 \commentbw{WSAW-SA phase diagram and known results (as in saw-sa)}
