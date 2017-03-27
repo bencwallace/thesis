@@ -67,6 +67,46 @@ we see that the last term vanishes as $N\to\infty$ leaving
 	=
 \frac{1}{m^2}.
 \end{equation}
+In order to identify the asymptotics of $m^2$ above as $\nu$ approaches the
+critical point, we differentiate $\hat\chi$ with respect to $\nu_0$. We will
+denote by $F'$ the derivative of $F$ with respect to $\nu_0$. Evaluating
+$\hat\chi'_N$ at $(m^2, g_0, \gamma_0, \nu_0^c, z_0^c)$, we can take the
+limit $N\to\infty$. By a careful analysis of the derivatives of the renormalisation
+group flow with respect to $\nu_0$ (as in \cite[Section~\ref{log-sec:pfmr}]{BBS-saw4-log}
+for $\gamma = 0$), we get
+\begin{equation}
+\label{e:chiprime-m-hat}
+\hat\chi'(m^2, g_0, \gamma_0, \nu_0^c, z_0^c)
+	=
+-\frac{\nu_N'}{m^4}
+	\sim
+-\frac{1}{m^4} \frac{c(\hat\gcc_0, \gamma_0)}{(\hat\gcc_0\bubble_{m^2})^{1/4}}
+	\quad
+\text{as $(m^2,\gcc_0,\gamma_0) \to (0,\hat\gcc_0,\hat\gamma_0)$},
+\end{equation}
+% By a careful analysis of the derivatives of the renormalisation group flow with
+% respect to the initial condition $\nu_0$, it can be shown that
+% \begin{equation}
+% \label{e:chiprime-m-hat}
+% \ddp{\hat\chi}{\nu_0} \left(m^2,\gcc_0, \gamma_0,\hat\nu_0^c, \hat z_0^c \right)
+% 	\sim
+% -\frac{1}{m^4} \frac{c(\gcc_0^*, \gamma_0)}{(\gcc_0^*\bubble_{m^2})^{1/4}}
+% 	\quad
+% \text{as $(m^2,\gcc_0,\gamma_0) \to (0,\gcc_0^*,\gamma_0^*)$},
+% \end{equation}
+where $c$ is a continuous function and the \emph{bubble diagram} $\bubble_{m^2}$ is
+is asymptotic to $(2\pi^2)^{-1} \log m^{-2}$, as $m^2 \downarrow 0$, when $d = 4$.
+% The proof for $\gamma_0 \ne 0$ is almost entirely a direct adaptation of the proof
+% found there using the critical parameters $\hat\nu_0^c, \hat z_0^c$ constructed
+% in Theorem~\ref{thm:rhatflow} rather than their $\gamma_0 = 0$ analogues.
+
+\begin{rk}
+There is one aspect of the proof found in \cite{BBS-saw4-log}
+that must be modified when $\gamma_0 = 0$: This is the verification of the third bound
+in the base case ($j = 0$) of the inductive hypothesis \cite[\eqref{log-e:induct1}]{BBS-saw4-log}.
+This will be done in Section~\ref{sec:Ksmooth} (see Remark~\ref{rk:DK-base-case}),
+thereby concluding the proof of \eqref{e:chiprime-m-hat}.
+\end{rk}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -382,6 +422,8 @@ and \eqref{e:gznustarbd}, and the proof is complete.
 \subsection{Conclusion of the argument}
 \label{sec:suscept-conc}
 
+We sketch the remainder of the argument, which follows as in
+\cite[Section~\ref{log-sec:chvar}]{BBS-saw4-log}.
 By Proposition~\ref{prop:finvol}, \eqref{e:chichihat}, \eqref{e:chi-m-hat},
 and Proposition~\ref{prop:changevariables2},
 \begin{equation}
@@ -390,37 +432,40 @@ and Proposition~\ref{prop:changevariables2},
 	=
 \frac{1 + \tilde z_0}{\tilde m^2}.
 \end{equation}
-By a careful analysis of the derivatives of the renormalisation group flow with
-respect to the initial condition $\nu_0$, it can be shown that
+Similarly, from \eqref{e:chiprime-m-hat} (using \eqref{e:chi-renorm}), we get
 \begin{equation}
-\label{e:chiprime-m-hat}
-\ddp{\hat\chi}{\nu_0} \left(m^2,\gcc_0, \gamma_0,\hat\nu_0^c, \hat z_0^c \right)
+\label{e:diff-reln}
+\chi(g, \gamma, \nu)
 	\sim
--\frac{1}{m^4} \frac{c(\gcc_0^*, \gamma_0)}{(\gcc_0^*\bubble_{m^2})^{1/4}}
-	\quad
-\text{as $(m^2,\gcc_0,\gamma_0) \to (0,\gcc_0^*,\gamma_0^*)$},
+-\chi^2(g, \gamma, \nu)
+\frac{c_0(g, \gamma)}{(\tilde g_0 {\sf B}_{\tilde m^2})^{\frac{n+2}{n+8}}}
 \end{equation}
-where $c$ is a continuous function and the \emph{bubble diagram} $\bubble_{m^2}$ is
-is asymptotic to $(2\pi^2)^{-1} \log m^{-2}$, as $m^2 \downarrow 0$, when $d = 4$.
-This was shown for $\gamma_0 = 0$ in \cite[Section~\ref{log-sec:pfmr}]{BBS-saw4-log}.
-The proof for $\gamma_0 \ne 0$ is almost entirely a direct adaptation of the proof
-found there using the critical parameters $\hat\nu_0^c, \hat z_0^c$ constructed
-in Theorem~\ref{thm:rhatflow} rather than their $\gamma_0 = 0$ analogues.
-
-Besides this, there is only a single other aspect of the proof found in \cite{BBS-saw4-log}
-that must be modified when $\gamma_0 = 0$: This is the verification of the third bound
-in the base case ($j = 0$) of the inductive hypothesis \cite[\eqref{log-e:induct1}]{BBS-saw4-log}.
-This will be done in Section~\ref{sec:Ksmooth} (see Remark~\ref{rk:DK-base-case}),
-thereby concluding the proof of \eqref{e:chiprime-m-hat}.
-
+with
+$c_0(g, \gamma) = \lim_{\varepsilon\downarrow0} c(\tilde g_0, \tilde\gamma_0)$.
+% By a careful analysis of the derivatives of the renormalisation group flow with
+% respect to the initial condition $\nu_0$, it can be shown that
+% \begin{equation}
+% \label{e:chiprime-m-hat}
+% \ddp{\hat\chi}{\nu_0} \left(m^2,\gcc_0, \gamma_0,\hat\nu_0^c, \hat z_0^c \right)
+% 	\sim
+% -\frac{1}{m^4} \frac{c(\gcc_0^*, \gamma_0)}{(\gcc_0^*\bubble_{m^2})^{1/4}}
+% 	\quad
+% \text{as $(m^2,\gcc_0,\gamma_0) \to (0,\gcc_0^*,\gamma_0^*)$},
+% \end{equation}
+% where $c$ is a continuous function and the \emph{bubble diagram} $\bubble_{m^2}$ is
+% is asymptotic to $(2\pi^2)^{-1} \log m^{-2}$, as $m^2 \downarrow 0$, when $d = 4$.
+% This was shown for $\gamma_0 = 0$ in \cite[Section~\ref{log-sec:pfmr}]{BBS-saw4-log}.
+% The proof for $\gamma_0 \ne 0$ is almost entirely a direct adaptation of the proof
+% found there using the critical parameters $\hat\nu_0^c, \hat z_0^c$ constructed
+% in Theorem~\ref{thm:rhatflow} rather than their $\gamma_0 = 0$ analogues.
 By exactly the same argument as in \cite[Section~\ref{log-sec:pfsuscept}]{BBS-saw4-log},
-\eqref{e:chi-renorm} and \eqref{e:chiprime-m-hat} allow us to obtain
-a differential relation between $\ddp{\chi}{\nu}$ and $\chi$,
-whose solution yields Theorem~\ref{thm:mr}(ii).
+the differential relation \eqref{e:diff-reln}
+% \eqref{e:chi-renorm} and \eqref{e:chiprime-m-hat} allow us to obtain
+% a differential relation between $\ddp{\chi}{\nu}$ and $\chi$,
+can be solved, yielding Theorem~\ref{thm:mr}(ii).
 
-\commentbw{Sketch proof.}
-
-\todo{It is a consequence of the above that}
+\begin{rk}
+It is a consequence of \eqref{e:chieps-asympt} and \eqref{e:chi-renorm} that
 \begin{equation}
 \label{e:mass-epsilon-asympt}
 \tilde m^2
@@ -429,6 +474,7 @@ whose solution yields Theorem~\ref{thm:mr}(ii).
 	\quad
 \text{as $\varepsilon \downarrow 0$}.
 \end{equation}
+\end{rk}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
