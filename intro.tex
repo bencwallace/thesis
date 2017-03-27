@@ -8,27 +8,32 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Thermodynamics originated as the study of heat and its transformation into other
+Thermodynamics originated as the study of heat and its transformations into other
 forms of energy, but can more generally be described as the field of study that
-is concerned with the properties of bulk matter. In a sense, it seeks
-answers to questions regarding those properties of matter that are only well-defined
+is concerned with the properties of bulk matter. That is, it seeks to
+answer questions regarding those properties of matter that are only well-defined
 in terms of large collections of particles. Two familiar examples of
 such properties are density and temperature. Density is usually defined as the mass
-of a substance per unit volume at a certain temperature. This makes it an
-\emph{intensive} quantity: the density (viewed as a function of temperature) is
-a property of the substance itself and not the amount of substance present.
+of a substance per unit volume at a certain temperature. Such a quantity is
+sometimes said to be \emph{intensive}: it is a property of the substance itself,
+not the amount of substance present.
 
 There is a small caveat that should be added to this definition: the mass per unit
-volume of a sample of a substance will only become independent
-of the volume once this volume is sufficiently large. Thus, it does not make sense
-to ask for the density of a sample of hydrogen consisting of a single atom although
-it is sensible to speak of the density of hydrogen. In this sense, density is not
-only a true property of the substance, but in fact a \emph{macroscopic} property
-(as opposed to, e.g.\ the atomic number of hydrogen) and thermodynamics is the
-study of macroscopic properties.
+volume of a sample of a substance will only become independent of the volume once
+this volume is sufficiently large. This makes density not only a property of the
+substance, but in fact a \emph{macroscopic} property (as opposed to, e.g.\ the
+atomic number of a substance). To say that thermodynamics is the study of bulk
+matter amounts to saying that it deals in macroscopic quantities.
+% Thus, it does not make sense to ask for the density of a sample of hydrogen consisting
+% of a single atom although it is sensible to speak of the density of hydrogen.
+% In this sense, density is not
+% only a true property of the substance, but in fact a \emph{macroscopic} property
+% (as opposed to, e.g.\ the atomic number of hydrogen) and thermodynamics is the
+% study of macroscopic properties.
 
-The notion that there are even is such a notion as a macroscopic quantity of a
-substance leads to a number of simple questions. For instance, if these quantities
+The fact that there even is such a notion as a macroscopic quantity
+% of a substance
+raises a number of simple questions. For instance, if these quantities
 are indeed properties of the substance itself, then it should be possible to 
 derive them from the microscopic properties of the substance's constituent particles;
 yet above, we have resorted to discussing ``large'' quantities of substance in order
@@ -45,14 +50,24 @@ matter as arising from a kind the kind of self-averaging that pervades probabili
 theory. From this point of view, macroscopic quantities are types of averages that
 arise from some probability distribution.
 
-A striking aspect of bulk matter that we have not yet discussed pertains to the
-existence of different \emph{phases} of matter and the nature of \emph{phase transitions}.
-The familiar example of boiling water is signalled by an abrupt drop in density by a factor
-of around $1/1000$ at normal atmospheric pressure. Now the temperature at which water
-boils varies as a function of temperature $T_c = T_c(P)$; see Figure~\ref{fig:liquid-vapour}.
-For any fixed $P$, there is a drop in density as the temperature is increased past
-$T_c(P)$. However, as $P$ is increased, this density difference decreases and there is
-a \emph{critical point} $(T_c(P_c), P_c)$ at which this difference vanishes.
+A striking aspect of bulk matter is the
+% that we have not yet discussed pertains to the
+existence of different \emph{phases} of matter, which correspond to radically different
+macroscopic behaviour. For instance, steam and water have very different densities despite
+both being $\mathrm{H_2O}$. Of course, steam exists at much higher temperatures than water
+and density, as we said above, is a function of temperature. However, one would not be
+able to predict the density of steam by measuring the temperature-dependence of the
+density of water.
+
+% and the nature of \emph{phase transitions}.
+In fact, the boiling of water is signalled by an abrupt drop in density by a factor
+of around $1/1000$ at normal atmospheric pressure. The temperature at which water
+boils varies as a function of pressure $T_c = T_c(P)$ and a \emph{phase transition}
+is said to occur when the pressure or temperature are varied in such a way as to
+cross the graph of this function; see Figure~\ref{fig:liquid-vapour}.
+% Moreover, for any fixed $P$ there is a drop in density as the temperature is increased past $T_c(P)$.
+Moreover, as $P$ is increased, the density difference along this curve decreases and
+there is a \emph{critical point} $(T_c(P_c), P_c)$ at which this difference vanishes.
 
 \begin{figure}
 \centering
@@ -63,42 +78,47 @@ a \emph{critical point} $(T_c(P_c), P_c)$ at which this difference vanishes.
 
 Since statistical mechanics deals with extremely large, complicated systems of
 interacting particles, only simplified models of real materials can usually be
-studied in detail. These models often serve as a good way to obtain a
-\emph{qualitative} understanding of the phases of matter and phase transitions;
-however, the simplifications inherent in their definitions means they are usually
-not suitable for making quantitative predictions.
+studied in detail. Such models are useful for building a
+\emph{qualitative} understanding of the phases of matter and phase transitions.
+However, the simplifications inherent in their definitions mean that they are
+usually not suitable for making quantitative predictions.
 
 A remarkable phenomenon, known as \emph{universality}, is that this is no longer
 entirely true at the critical point. At criticality, many quantities behave in a
 way that is independent of the fine details of the model under consideration. Thus,
 some of the \emph{quantitative} properties of real materials can in principle be
 predicted exactly by studying models whose only resemblance to these materials is
-in their very coarse properties, such as their symmetries.
+in their very coarse properties.
 
-In the 1970's, Ken Wilson gave an explanation of universality in terms of an
-abstract dynamical system on a space of models, known as the \emph{renormalisation
-group}. This idea, which was enormously successful, led to his 1982 Nobel Prize and has
-become a standard way of understanding critical phenomena in physics.
+In the 1970's Ken Wilson, inspired by ideas in quantum field theory, gave an
+explanation of universality in terms of an
+abstract dynamical system on a space of models known as the \emph{renormalisation
+group}. This idea was enormously successful and led to his 1982 Nobel Prize. In fact,
+the renormalisation group has become a standard way of understanding critical phenomena
+amongst physicists.
 
 Nevertheless, a mathematically rigorous understanding of the renormalisation group
 remains incomplete. Although there have been several rigorous implementations of
 Wilson's ideas, they tend to be highly technical and restricted to somewhat special
-classes of models. The main purpose of this thesis is to discuss extensions to an
+classes of models. The main purpose of this thesis is to discuss extensions of an
 approach of Bauerschmidt, Brydges, and Slade that have been used to study the
 critical behaviour of a generalized $|\varphi|^4$ model and a model of weakly
-self-avoiding walk with contact self-attraction (WSAW-SA).
+self-avoiding walk with contact self-attraction (WSAW-SA). We will introduce these
+models and our main results in the present chapter and discuss the proofs in the
+remainder of the thesis.
 
 We begin in Section~\ref{sec:asymp} with some general background on asymptotic
 notation and the method of generating functions and Laplace transforms. In
-Sectin~\ref{sec:gibbs}, we briefly introduce the basic formalism of equilibrium
-statistical mechanics. The models we study are defined on graphs, which we
-introduce in Section~\ref{sec:graphs}. We define spin systems and, in particular,
-the $|\varphi|^4$ model in Section~\ref{sec:spins}. Critical behaviour and
+Sectin~\ref{sec:gibbs}, we briefly introduce some of the basic ideas of equilibrium
+statistical physics. The models we study are defined on graphs, which we
+discuss in Section~\ref{sec:graphs}. We define spin systems, in particular
+the $|\varphi|^4$ model, in Section~\ref{sec:spins}. Critical behaviour and
 the renormalisation group is probably most easily explained in the context of such
-systems, and we do so in Section~\ref{sec:crit}. In Section~\ref{sec:walks},
+systems, and we give an informal description of these ideas in Section~\ref{sec:crit}.
+In Section~\ref{sec:walks},
 we introduce the WSAW-SA and discuss its critical behaviour. This gives us all
-the necessary definitions to be able to state our main results in Section~\ref{sec:mr}.
-Before proceeding to a discussion of the method of proof in the remaining chapters,
+the necessary definitions to state our main results in Section~\ref{sec:mr}.
+Before proceeding to the method of proof,
 we discuss the close relationship between models of walks and spin systems in
 Section~\ref{sec:spin-walk}; in particular, we state a rigorous representation
 of the WSAW-SA in terms of a spin system related to the $|\varphi|^4$ model
@@ -110,8 +130,7 @@ that allows us to unify our treatment of both models.
 \section{Asymptotics}
 \label{sec:asymp}
 
-Before discussing the formal structure of statistical mechanics, we make some
-general remarks on notation and approaches to the study of asymptotics.
+We briefly describe some useful background on asymptotics.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -137,14 +156,15 @@ F(x) \le O(G(x)),
 x \to a
 \end{equation}
 if there is a constant $C \ge 0$ such that $F(x) \le C G(x)$ for all
-$x$ in some neighbourhood of $a$. Lastly, we write
+$x$ in some neighbourhood of $a$ (in the extended real line). Lastly, we write
 \begin{equation}
 F(x) \asymp G(x),
 	\qquad
 x \to a
 \end{equation}
-if $F(x) = O(G(x))$ and $G(x) = O(F(x))$ both as $x\to a$ but possibly with
-different constants. We will sometimes write $F(x) \approx G(x)$ in heuristic
+if $F(x) = O(G(x))$ and $G(x) = O(F(x))$ as $x\to a$, possibly with
+different constants for the two inequalities. We will sometimes write
+$F(x) \approx G(x)$ in heuristic
 arguments where the hope is that a rigorous argument might replace $\approx$
 by $\asymp$ or $\sim$.
 % We will often use $C, C', C_1, c$, etc.\ to denote a generic constant.
@@ -158,7 +178,7 @@ by the power series with coefficients $a_n$:
 \begin{equation}
 g(z) = \sum_{n=0}^\infty a_n z^n.
 \end{equation}
-If the function $g$ is sufficiently well understood, then the coefficients $a_n$
+If the function $g$ is sufficiently well understood, then the coefficients
 can be recovered by differentiation:
 \begin{equation}
 a_n = \frac{1}{n!} g^{(n)}(0).
@@ -171,7 +191,7 @@ as $n\to\infty$ and the function $g(z)$ near its dominant singularities, i.e.\
 its singularities closest to the origin \cite{FS09}.
 For instance, if $a_n \sim r^{-n} n^\alpha$, then the root test implies that
 the generating function $f$ has radius of convergence $r$. If, moreover, $a_n \ge 0$,
-then $g(z) \sim C (r - z)^{-\alpha-1}$ as $z \uparrow r$.		% See Madras-Slade
+then $g(z) \sim C (r - z)^{-(\alpha+1)}$ as $z \uparrow r$.		% See Madras-Slade
 This is an
 example of an \emph{Abelian theorem}. The converse does not always hold; a
 theorem providing conditions under which the converse is true is known as a
@@ -188,7 +208,7 @@ near $\nu_0 \coloneqq \inf \{ \nu : G(\nu) < \infty \}$.
 There are Abelian and Tauberian theorems for the Laplace transform analogous
 to those for generating functions. For instance,
 $f(T) \sim A T^\alpha$ implies that $G(\nu) \sim A' (\nu - \nu_0)^{-(\alpha+1)}$
-as $\nu\downarrow\nu_0$ and the converse holds when $f$ is monotonic (see \cite{Widd41}).
+as $\nu\downarrow\nu_0$ and the converse holds when $f$ is monotone (see \cite{Widd41}).
 % When this is not the case, one can attempt to recover the asymptotics of $f$ by
 % inverting the Laplace transform.
 
@@ -224,17 +244,16 @@ Let $(\Omega, \lambda)$ be a measure space. We view $\lambda$ as some ``natural'
 measure on $\Omega$. The dynamics of a physical system with state space $\Omega$
 are often determined by a function $H$ on $\Omega$, known as the \emph{Hamiltonian}.
 Typically, $H(\omega)$ represents the total energy of the system in state $\omega$;
-it thus reasonable to assume that $H$ is bounded below\footnote{It is convenient
-to allow negative values of $H$ and ultimately will not affect the quantities we
-define in terms of $H$}.
+it is thus reasonable to assume that $H$ is bounded below\footnote{It is convenient
+to allow $H$ to take on negative values.}.
 
 \begin{example}
 \label{ex:hamilton}
 The canonical example is a system of $n$ point particles in a domain $U \subset \R^3$,
 for which $\Omega = (U \times \R^3)^n$ and $\lambda$ is Lebesgue measure on $\Omega$.
 A state $\omega\in\Omega$ consists of the positions $q_i \in U$ and momenta $p_i \in \R^3$
-of the $n$ particles. The Hamiltonian is smooth and the dynamics of such a system
-are determined by Hamilton's equations
+of the $n$ particles. The Hamiltonian is usually smooth and the dynamics are determined
+by Hamilton's equations
 \begin{align}
 \dd{q}{t} 	&= \nabla_p H \\
 -\dd{p}{t} 	&= \nabla_q H.
@@ -248,7 +267,7 @@ The first term is the usual definition of kinetic energy and the second term, wh
 depends only on $q$, is a potential energy function.
 \end{example}
 
-In statistical mechanics, the systems of concern consist of an extraordinarily large number
+In statistical mechanics, the systems of concern consist of a very large number
 of particles ($n$ large in the previous example); typically, the state space $\Omega$ is very
 high-dimensional and it is infeasible to study the exact dynamics of such a system.
 
@@ -279,8 +298,8 @@ with respect to $\lambda$, subject to the fixed average energy constraint
 \begin{equation}
 \int H \; d\mu = E.
 \end{equation}
-This can be shown using the method of Lagrange multipliers
-(the parameter $\beta = \beta(E)$ arises as a Lagrange multiplier).
+This can be shown using the method of Lagrange multipliers;
+the parameter $\beta = \beta(E)$ arises as a Lagrange multiplier.
 
 The \emph{free energy} is defined by
 \begin{equation}
@@ -290,20 +309,20 @@ A computation of the entropy of $\mu_\beta$ with $\beta = \beta(E)$ shows that
 \begin{equation}
 F_\beta = E - \frac{1}{\beta} h(\mu_\beta),
 \end{equation}
-which recovers the definition of Helmholtz free energy in thermodynamics.
+which recovers the usual definition of Helmholtz free energy in thermodynamics.
 
 \subsection{Relation to quantum theory}
 
-Here we briefly describe the relationship between equilibrium statistical
+Let us briefly describe the relationship between equilibrium statistical
 mechanics and quantum field theory. Our presentation is heuristic and involves
 manipulations of a priori ill-defined objects. A rigorous development of these
-ideas goes back to \cite{Syma69,Nelson73,OS73,OS75}; references on this topic
-include \cite{Simon05} (for quantum mechanics) and \cite{GJ87} (for quantum
+ideas goes back to \cite{Syma69,Nelson73,OS73,OS75}; useful references are
+\cite{Simon05} (for quantum mechanics) and \cite{GJ87} (for quantum
 field theory).
 
 Let $H(x, p)$ be the Hamiltonian \eqref{e:total-energy} (we have written $x$
 instead of $q$). In quantum mechanics, the state space is replaced by a Hilbert
-space of functions over $\R^{6n}$, say $L^2 = L^2(\R^{3n})$;
+space of functions over $\R^{6n}$, usually $L^2 = L^2(\R^{3n})$;
 the position $x_j$ is replaced by the \emph{position operator} $\hat x_j$ given by
 multiplication by $x_j$; and the momentum $p_j$ is replaced by the \emph{momentum
 operator} $\hat p_j = -i \hbar \partial/\partial x_j$ (we ignore details regarding
@@ -311,7 +330,7 @@ the domains of these operators). The resulting operator $\hat H = H(\hat x, \hat
 on $L^2$ determines the evolution of the \emph{wave function} $\psi\in L^2$ via
 the Schr\"{o}dinger equation
 \begin{equation}
-\dd{\psi}{t} = \frac{1}{i\hbar} \hat H \psi
+\dd{\psi}{t} = -\frac{i}{\hbar} \hat H \psi
 \end{equation}
 whose solution with initial condition $\psi(0)$ is given by
 $\psi(t) = e^{-it\hat H/\hbar} \psi(0)$.
@@ -321,12 +340,12 @@ i.e.\
 \begin{equation}
 e^{-it\hat H/\hbar} f = \int K_t(\cdot, y) f(y) \; dy.
 \end{equation}
-The Feynman path integral formulation to quantum mechanics involves writing
+The Feynman path integral formulation of quantum mechanics involves writing
 the kernel as
 \begin{equation}
 K_t(a, b)
 	=
-\int_{\cwalks_t(a, b)} e^{i \int_0^t L(x(s), \dot x(s)) \; ds} \; \Dcal x,
+\int_{\cwalks_t(a, b)} e^{(i/\hbar) \int_0^t L(x(s), \dot x(s)) \; ds} \; \Dcal x,
 \end{equation}
 where $\cwalks_t(a, b)$ is a space of paths $[0, t] \to \R^{3n}$ from
 $a$ to $b$ equipped with a ``Lebesgue measure'' $\Dcal x$ and
@@ -336,55 +355,64 @@ L(x, \dot x) = \frac{1}{2} m |\dot x|^2 - U(x)
 is the \emph{Lagrangian} of the classical system we started with.
 As such, the integral representation of $K_t$ is ill-defined;
 for instance, the measure $\Dcal x$ on paths does not exist. However, let us
-not concern ourselves with this for now.
+not concern ourselves with this.
 
 Suppose that $\psi$ can be analytically continued to a region of the complex
-plane containing the imaginary axis. Then we might hope the function
+plane containing the positive imaginary axis. Then we might hope the function
 $t \mapsto \psi(-it)$ has solution operator with kernel of the form
 \begin{equation}
-K_{-it} = \int_{\cwalks_{-it}(a, b)} e^{i \int_0^{-it} L(x(s), \dot x(s)) \; ds} \; \Dcal x.
+K_{-it}(a, b)
+	=
+\int_{\cwalks_{-it}(a, b)} e^{(i/\hbar) \int_0^{-it} L(x(s), \dot x(s)) \; ds} \; \Dcal x.
 \end{equation}
 By the change of variables $s = -iu$,
 \begin{equation}
-i \int_0^{-it} L(x(s), \dot x(s)) \; ds
+(i/\hbar) \int_0^{-it} L(x(s), \dot x(s)) \; ds
 	=
-\int_0^t L(\tilde x(u), i \dot{\tilde x}(u)) \; du
+(1/\hbar) \int_0^t L(\tilde x(u), i \dot{\tilde x}(u)) \; du
 	=
--\int_0^t H(\tilde x(u), m \dot{\tilde x}(u)) \; du
+-(1/\hbar) \int_0^t H(\tilde x(u), m \dot{\tilde x}(u)) \; du
 \end{equation}
 with $\tilde x(t) = x(-it)$. Thus, by the fictive change of variables in which
 $\cwalks_{it}(a, b)$ is replaced by $\cwalks_t(a, b)$, we get
 \begin{equation}
-K_{-it} = \int_{\cwalks_t(a, b)} e^{-\int_0^t H(x(u), m\dot x(u)) \; du} \; \Dcal x
+\label{e:heat-kernel-fake}
+K_{-it}(a, b)
+	=
+\int_{\cwalks_t(a, b)} e^{-(1/\hbar) \int_0^t H(x(u), m\dot x(u)) \; du} \; \Dcal x
 \end{equation}
 This procedure is known as a \emph{Wick rotation}.
 
 The analogue of this idea in quantum field theory involves replacing integration
 over paths with integration over fields $\varphi$, which are functions on $\Rd$.
-The corresponding ``measures'' of the form $e^{-\int H(\varphi)} \Dcal\varphi$
-should be compared with the Gibbs measures \eqref{e:gibbs-def}. Although $H$
-has been replaced by the \emph{integral} $\int H$, we will later show that natural
+The corresponding ``measures'' of the form $e^{-(1/\hbar)\int H} \Dcal\varphi$
+should be compared with the Gibbs measures \eqref{e:gibbs-def} with $\hbar$ playing
+the role of temperature. Although $H$
+has been replaced by the \emph{integral} $\int H$, we will discuss how natural
 choices for the Hamiltonian in a Gibbs measure are given by \emph{sums} over
 spaces of fields on discrete approximations to $\Rd$ (graphs).
 
 \begin{rk}
-\commentbw{Add equation references}
-In fact, this is not as unreasonable as it may appear. The function
-$\tilde\psi(t) = \psi(-i t)$, if well-defined, should solve
+In fact, it turns out that \eqref{e:heat-kernel-fake} is not too unreasonable.
+For simplicity, let us take $\hbar = 1$ and $m = 1/2$.
+Then we would expect $\tilde\psi$ to solve
 \begin{equation}
-\dd{\tilde\psi}{t} = -\frac{1}{\hbar} \hat H \tilde\psi.
+\label{e:linear-pde}
+\dd{\tilde\psi}{t} = -\hat H \tilde\psi.
+% -\frac{1}{\hbar} \hat H \tilde\psi.
 \end{equation}
-When $U = 0$, we have $H(x, p) = \frac{1}{2m} |p|^2$ and $\hat H = -\Delta$
-is the Laplacian on $\R^{3n}$, so this is just the heat equation.
+When $U = 0$, we have $H(x, p) = |p|^2$, so $\hat H = -\Delta_{\R^{3n}}$
+is the Laplacian on $\R^{3n}$ and \eqref{e:linear-pde} is the heat equation.
+On the other hand, $\int_0^t H$ is a positive-definite quadratic form, so
+\eqref{e:heat-kernel-fake} is formally a Gaussian integral. This is consistent
+with the well-known fact that a solution $\tilde\psi$ of the heat equation
+on a domain can (under appropriate conditions) be written as
+$\tilde\psi(t, x) = \Ex(\tilde\psi(0, B_t) \mid B_0 = x)$,
+where $B_t$ is a Brownian motion.
 
-On the other hand, the expression for $K_{-it}$ is an integral over some
-space of paths weighted by $e^{-H}$ with $H$ a positive-definite quadratic form;
-this is a formal Gaussian integral. And indeed it is a standard fact that
-solutions to the heat equation can be expressed as expectations with respect to
-Brownian motion. More generally, when $U \ne 0$, differential equations of this
-form (for appropriate
-$\hat H$) can be expressed in terms of expectations with respect to the solutions
-to certain stochastic differential equations (this is the Feynman-Kac formula).
+More generally, for appropriate choices of $U \ne 0$, differential equations of
+the form \eqref{e:linear-pde} (for appropriate $\hat H$) can be expressed in terms
+solutions to stochastic differential equations (this is the Feynman-Kac formula).
 \end{rk}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1133,8 +1161,9 @@ If $d > 4$, the critical exponents for the $O(n)$ and $|\varphi|^4$ models are
 predicted to become independent of $d$ and $n$ and to take on the values of the
 corresponding exponents for the Gaussian free field, i.e.\ $\gammabar = 1$,
 $\nubar = 1/2$, and $\eta = 0$. For $n = 1, 2$ it is known that $\eta = 0$
-for the \emph{continuum limit} of these models \cite{Aiz82,Fro82} (see also
-\cite{Sakai07}).
+for the \emph{continuum limit} of these models \cite{Aiz82,Fro82} if it exists.
+Sakai proved that $\eta = 0$ for the Ising model \cite{Sakai07} and the $1$-component
+discrete $|\varphi|^4$ model \cite{Sakai15}.
 This phenomenon is known as \emph{mean-field behaviour} and dimension $4$ is
 called the \emph{upper-critical dimension} for this class of models.
 For lattice models, results are upcoming in \cite{BHH17}.
