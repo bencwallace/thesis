@@ -223,6 +223,15 @@ Recall from Section~\ref{sec:Ncal} that the $\Phi_j(\ell_j)$ norm defined by
 L^{j|\alpha|_1}
 |\nabla^{\alpha} \varphi_x|,
 \end{equation}
+Since we are working with functions $F$ of a boson field $\varphi\in(\R^n)^\Lambda$, we have
+$F_{\vec x, \vec y} = 0$ whenever $\vec y \ne \varnothing$. Thus, \eqref{e:pairing}
+becomes
+\begin{equation}
+\label{e:pairing-re}
+\langle F, g \rangle_\varphi
+	=
+\sum_{|\vec x| \le p_\Ncal} \frac{1}{|\vec x|!} F_{\vec x}(\varphi) g_{\vec x}.
+\end{equation}
 % which depends on the parameter $\ell_j$,
 % and on the maximal number of discrete derivatives $p_\Phi$
 % (fixed to be at least $4$ in \cite{BS-rg-IE}).
@@ -330,8 +339,9 @@ $\ell_0^2 \ge c_0 \ellconst^{-1}$.
 \subsection{New choice of norm beyond the mass scale}
 \label{sec:newnorm}
 
-
-
+A field $\varphi$ can be viewed as a test function supported on sequences with
+$|\vec x| = 1$ and $|\vec y| = 0$.
+In particular, $\|\varphi\|_\Phi$ is defined as the norm of a test function.
 As in \cite[(\ref{IE-e:PhiXdef})]{BS-rg-IE}, we use the localised version
 of \eqref{e:phinorm}, defined for subsets $X \subset \Lambda$  by
 \begin{align}
@@ -342,6 +352,7 @@ of \eqref{e:phinorm}, defined for subsets $X \subset \Lambda$  by
     \text{$f \in \C^\Lambda$ such that $f_{x} = 0$
     $\forall x\in X$}\}.
 \end{align}
+A similar definition is given for general test functions.
 % A \emph{small set} is defined to be a connected polymer $X \in \Pcal_j$
 % consisting of at most $2^d$ blocks (the specific number $2^d$ plays no
 % direct role here),
@@ -384,7 +395,7 @@ in Section~\ref{sec:cc}.
 % shifts by linear test functions; see \cite[\eqref{IE-e:Phitilnorm}]{BS-rg-IE} for the precise definition.
 The two regulators serve as weights in the \emph{regulator norms} of
 \cite[Definition~\ref{IE-def:Gnorms}]{BS-rg-IE}.
-The regulator norms are defined,  with $\gamma \in (0,1]$ and
+The regulator norms are defined,  with ${\sf t} \in (0,1]$ and
 for $F \in \Ncal(X^\Box)$ by
 % in the space $\Ncal(X^\Box)$ of functionals of the field (see \cite[\eqref{norm-e:NXdef}]{BS-rg-norm}),
 \begin{align}
@@ -893,7 +904,7 @@ and $\|f\|_\Phi \le (2 + \epsilon) \|g\|_\Phi$.
 
 The space $\Ncal$ containing the functionals $F$ appearing above requires control on
 up to $p_\Ncal$ derivatives of $F$ with respect to the field $\varphi$,
-where $p_\Ncal$ is a parameter of the $T_\varphi$-norm.
+where $p_\Ncal$ is a parameter of the $T_\varphi$-seminorm.
 In the proof of Proposition~\ref{prop:cl}, we must choose $p_\Ncal$ to be large
 depending on $p$, in order to analyse the correlation length
 of order $p$.  The renormalisation group analysis is predicated on fixed (but arbitrary)
@@ -955,8 +966,12 @@ The unique change to the proof occurs in the transition from
 \cite[\eqref{loc-e:rhognew}]{BS-rg-loc}, where the ratio
 $\ell_{j+1}/\ell_j$ is used.
 
-\commentbw{Notation: $\Phi'$, $\tilde\Phi'$, $d'_+$, $X_+$, $z$, $p(z)$, $\mathbf{X}_+$,
-$R, R'$, $\nabla_R$, etc.}
+In the following, we let $\Phi = \Phi_j(\h_j)$ norm and let $\Phi' = \Phi_{j+1}(\h_{j+1})$.
+We employ similar conventions for $\Phi(X)$ and $\tilde\Phi(X)$. The constant $d_+'$
+is defined in \cite[\eqref{loc-e:dplusprimedef}]{BS-rg-loc} and in this context becomes
+$d_+' = d_+ + 1$. The enlargement $X_+$ of a polymer $X\in\Pcal_j$ is defined by replacing
+each block $B\in\Bcal_j(X)$ by a cube of twice the side length of $B$ (minus $1$ if $L^j$
+is odd) that is centered at $B$.
 
 \begin{lemma}[{Improvement of \cite[Lemma~\ref{loc-lem:phij}]{BS-rg-loc}}]
 \label{lem:phiij-improved}
@@ -972,9 +987,11 @@ L^{- (1 + s \1_{j \geq j_m}) d_+'}  \|g\|_{\tilde{\Phi}' (X_+)}.
 
 
 \begin{proof}
+Assume without loss of generality that $X$ is connected.
 Let $f\in\Pi(X)$ and $h\in\Phi$ be as in Lemma~\ref{lem:testfndecomp}.
-Thus, $g = f + h$ and so, with $\Tay_a : \Phi \to \Pi(X)$ as in Remark~\ref{rk:TayX},
-we have $g - (h - \Tay_a h) = f + \Tay_a h \in \Pi(X)$.
+Thus, $g = f + h$ and so (with $\Tay_a : \Phi \to \Pi(X)$ as in Remark~\ref{rk:TayX})
+we have $g - (h - \Tay_a h) = f + \Tay_a h \in \Pi(X)$, where $a$ is the largest
+point which is lexicographically no larger than any point in $X$.
 By definition of the $\tilde\Phi(X)$ seminorm,
 \begin{equation}
 \|g\|_{\tilde\Phi(X)}
@@ -991,65 +1008,86 @@ show that
 \frac12 \bar C_3 L^{-(1 + s \1_{j \ge j_m}) d'_+} \|g\|_{\tilde\Phi'(X_+)}.
 \end{equation}
 
-\commentbw{Incomplete}
+To this end, let $r = h - \Tay_a h$. By \cite[Lemma~\ref{loc-lem:gX}]{BS-rg-loc}
+with $t = 1/2$, there exists $K > 1$ such that
+\begin{equation}
+\|r\|_{\Phi(X)}
+	\le
+\sup_{\vec x \in \bf{X}_+}
+	(K \ell_j^{-1})^{\vec x}
+\sup_{|\beta|_\infty \le p_\Phi}
+	L^{j |\beta|_1} |\nabla^\beta r_{\vec x}|
+\end{equation}
+where $A^{\vec x} = A^{|\vec x|}$ and $\bf{X}_+$ is the set of sequences whose
+components lie in $X_+$. In other words, we can estimate the $\Phi(X)$
+norm of $r$ in terms of the values of $r$ and its derivatives in the enlargement
+$X_+$ of $X$.
 
-With the new ratio, \cite[\eqref{loc-e:rhognew}]{BS-rg-loc} becomes
+With the new ratio \eqref{e:h-assumptions},
+% \cite[\eqref{loc-e:rhognew}]{BS-rg-loc}
+we can rewrite this as
 \begin{align}
 \label{e:rhognew-improved}
-    \|r\|_{\Phi (X)}
-    & \le
-    \sup_{z \in {\mathbf X}_+}
-    (cK\ell'^{-1})^z
-    \sup_{|\beta|_\infty \le p_\Phi}
-    L^{-(p(z) + p(z) s \1_{{j\geq j_m}} +|\beta|_1)}
-    | \nabla_{R'}^\beta  r_{z}  |.
+\|r\|_{\Phi (X)}
+	& \le
+\sup_{{\vec x} \in {\mathbf X}_+}
+	(K\ell_{j+1}^{-1})^{\vec x}
+\sup_{|\beta|_\infty \le p_\Phi}
+	L^{-(|{\vec x}| + |{\vec x}| s \1_{{j\geq j_m}} +|\beta|_1)}
+	L^{(j+1) |\beta|_1}
+	| \nabla^\beta  r_{{\vec x}}  |,
 \end{align}
-Here $r = h - \Tay_a h$, where $h$ is an arbitrary test function and $a$ is the largest
-point which is lexicographically no larger than any point in $X$.
-The test function $h$ depends on sequences of points $(x_1, \dots, x_p)$,
-and $\Tay_a h$ is a discrete version of Taylor's approximation which approximates $h$ by a
-discrete Taylor polynomial localised at point $a$ in each argument (see \cite{BS-rg-loc} for details).
-By definition, for the empty sequence $\varnothing$, $(\Tay_a h)_\varnothing = h_\varnothing$,
-and thus
-$r_\varnothing = 0$.
+replacing \cite[\eqref{loc-e:rhognew}]{BS-rg-loc}.
+% Here $r = h - \Tay_a h$, where $h$ is an arbitrary test function and $a$ is the largest
+% point which is lexicographically no larger than any point in $X$.
+% The test function $h$ depends on sequences of points $(x_1, \dots, x_p)$,
+% and $\Tay_a h$ is a discrete version of Taylor's approximation which approximates $h$ by a
+% discrete Taylor polynomial localised at point $a$ in each argument (see \cite{BS-rg-loc} for details).
 
-It follows that we can take $p(z) \geq 1$ in the supremum over $z \in \mathbf{X}_+$ in
+By definition, for the empty sequence $\varnothing$, $(\Tay_a h)_\varnothing = h_\varnothing$,
+and thus $r_\varnothing = 0$.
+It follows that we can take $|\vec x| \geq 1$ in the supremum over ${\vec x} \in \mathbf{X}_+$ in
 \eqref{e:rhognew-improved}. Thus,
 \begin{align}
     \|r\|_{\Phi (X)}
     & \le
     L^{-s \1_{{j\geq j_m}}}
-    \sup_{z \in {\mathbf X}_+}
-    (cK\ell'^{-1})^z
+    \sup_{{\vec x} \in {\mathbf X}_+}
+    (K\ell_{j+1}^{-1})^{\vec x}
     \sup_{|\beta|_\infty \le p_\Phi}
-    L^{-(p(z) +|\beta|_1)}
-    | \nabla_{R'}^\beta  r_{z}  |.
+    L^{-(|\vec x| +|\beta|_1)}
+    L^{(j+1) |\beta|_1}
+    | \nabla^\beta  r_{{\vec x}}  |.
 \end{align}
 The quantity
 \begin{align}
 \label{e:rhognew}
-    \sup_{z \in {\mathbf X}_+}
-    (cK\ell'^{-1})^z
+    \sup_{{\vec x} \in {\mathbf X}_+}
+    (K\ell_{j+1}^{-1})^{\vec x}
     \sup_{|\beta|_\infty \le p_\Phi}
-    L^{-(p(z) +|\beta|_1)}
-    | \nabla_{R'}^\beta  r_{z}  |
+    L^{-(|\vec x| +|\beta|_1)}
+    L^{(j+1) |\beta|_1}
+    | \nabla^\beta  r_{{\vec x}}  |
 \end{align}
-is identical to the right-hand side of \cite[\eqref{loc-e:rhognew}]{BS-rg-loc} when $[\varphi_i] = 1$. In \cite{BS-rg-loc}, it is shown that this quantity can be bounded by a constant times
+is identical to the right-hand side of \cite[\eqref{loc-e:rhognew}]{BS-rg-loc}
+when $[\varphi_i] = 1$ and is bounded in the same way. Namely, it is shown in
+\cite{BS-rg-loc} that this quantity can be bounded by a constant times
 \begin{align}
     L^{-d_{+}'}
     \|h\|_{\Phi'( X_+)}.
 \end{align}
-Thus,
-\begin{equation}
-    \|r\|_{\Phi (X)}
-    \leq \bar C_3
-    L^{-s \1_{{j\geq j_m}}}
-    L^{-d_{+}'}
-    \|h\|_{\Phi'( X_+)}.
-\end{equation}
-With this improvement to \cite[\eqref{loc-e:rhognew}]{BS-rg-loc} in the proof of
-\cite[Lemma~\ref{loc-lem:phij}]{BS-rg-loc}, the conclusion of
-\cite[Lemma~\ref{loc-lem:phij}]{BS-rg-loc} is improved to \refeq{gbd-improved}.
+% Thus,
+% \begin{equation}
+%     \|r\|_{\Phi (X)}
+%     \leq \bar C_3
+%     L^{-s \1_{{j\geq j_m}}}
+%     L^{-d_{+}'}
+%     \|h\|_{\Phi'( X_+)}.
+% \end{equation}
+% The result follows from the fact that $\|h\|_{\Phi'(X_+)} \le 2 \|g\|_{\tilde\Phi'(X_+)}$.
+% With this improvement to \cite[\eqref{loc-e:rhognew}]{BS-rg-loc} in the proof of
+% \cite[Lemma~\ref{loc-lem:phij}]{BS-rg-loc}, the conclusion of
+% \cite[Lemma~\ref{loc-lem:phij}]{BS-rg-loc} is improved to \refeq{gbd-improved}.
 \end{proof}
 
 Roughly speaking, the $L$-dependent factor in \eqref{e:gbd-improved} implements the dimensional gain

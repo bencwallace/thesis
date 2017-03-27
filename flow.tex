@@ -1,12 +1,12 @@
 \chapter{Critical initial conditions}
 \label{sec:RGflow}
 
-\commentbw{Set $s = 0$ and restrict attention to bulk}
+\renewcommand{\pm}{+}
 
-In this chapter, we prove Theorem~\ref{thm:rhatflow}. We begin in
-Section~\ref{sec:norms} by introducing
-norms used to control the evolution of the coordinates $(I, K)$ and showing
-that $K^+_0$ satisfies the inductive assumption required by
+In this chapter, we prove Theorem~\ref{thm:rhatflow}.
+We begin in Section~\ref{sec:norms} by
+% introducing norms used to control the evolution of the coordinates $(I, K)$ and
+showing that $K^+_0$ satisfies the inductive assumption required by
 Theorem~\ref{thm:step-mr-fv}. In Section~\ref{sec:flow}, we discuss a general
 version of this theorem for a parameter $K_0$ that is independent of the
 coupling constants. This theorem is then applied with $K_0 = K^+_0$ by solving
@@ -14,6 +14,12 @@ a set of implicit equations in Section~\ref{sec:nu0z0c}.
 
 Throughout this chapter, we take $n \ge 1$, drop $n$ from the notation, and
 denote fields by $\varphi$. The $n = 0$ case is dealt with in \cite{BSW-saw-sa}.
+We also deal only with the bulk flow (so we set $\sigma_0 = \sigma_x = 0$).
+The construction of the observable follows as in \cite{ST-phi4} (with the same
+critical initial conditions) once the bulk flow has been constructed.
+% Also, we set $s = 0$ and $\sigma_0 = \sigma_x$ and deal only with the bulk flow;
+% as discussed in Section~\REF, the observable flow can then be constructed as in
+% \cite{ST-phi4} and the improved bounds with $s > 1$ are immediate.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -31,18 +37,16 @@ function of these variables is shown in Section~\ref{sec:Ksmooth}.
 \subsection{Norms}
 \label{sec:norms}
 
-\commentbw{Move some of this to previous chapter}
-
-Since we are working with functions $F$ of a boson field $\varphi\in(\R^n)^\Lambda$, we have
-$F_{\vec x, \vec y} = 0$ whenever $\vec y \ne \varnothing$. Thus, \eqref{e:pairing}
-becomes
-\begin{equation}
-\label{e:pairing-re}
-\langle F, g \rangle_\varphi
-	=
-\sum_{|\vec x| \le p_\Ncal} \frac{1}{|\vec x|!} F_{\vec x}(\varphi) g_{\vec x}.
-\end{equation}
-
+% Since we are working with functions $F$ of a boson field $\varphi\in(\R^n)^\Lambda$, we have
+% $F_{\vec x, \vec y} = 0$ whenever $\vec y \ne \varnothing$. Thus, \eqref{e:pairing}
+% becomes
+% \begin{equation}
+% \label{e:pairing-re}
+% \langle F, g \rangle_\varphi
+% 	=
+% \sum_{|\vec x| \le p_\Ncal} \frac{1}{|\vec x|!} F_{\vec x}(\varphi) g_{\vec x}.
+% \end{equation}
+We continue to use the norms defined in Section~\ref{sec:Ncal} and Section~\ref{sec:Rpf1}.
 We need several more properties of the $T_\varphi$ semi-norm, whose proofs can be found in
 \cite{BS-rg-norm}. We have already mentioned the product property in Proposition~\ref{prop:prod}.
 % First, there is the important \emph{product property}
@@ -59,9 +63,6 @@ which states that
 \|e^{-F}\|_{T_\varphi} \leq e^{-2 F(\varphi) + \|F\|_{T_\varphi}}.
 \end{equation}
 
-A field $\varphi$ can be viewed as a test function supported on sequences with
-$|\vec x| = 1$ and $|\vec y| = 0$.
-In particular, $\|\varphi\|_\Phi$ is defined as the norm of a test function.
 We use \cite[Proposition~\ref{norm-prop:T0K}]{BS-rg-norm},
 which states that if $F \in \Ncal$ is a polynomial in $\varphi$ of
 total degree $A \leq p_\Ncal$, then
@@ -69,21 +70,22 @@ total degree $A \leq p_\Ncal$, then
 \label{e:T0K}
 \|F\|_{T_\varphi} \leq \|F\|_{T_0} (1 + \|\varphi\|_\Phi)^A.
 \end{equation}
-
-Let $x^\square$ denote the small set neighbourhood of a singleton $\{x\}$.
+Let $x^\square$ denote the small set neighbourhood of a singleton $\{x\}$
 % $x^\Box = \{y: |y-x|_\infty \le 2^d-1\}$, where $|x|_\infty = \max\{|x_i| : 1 \le i \le d\}$
 % (this is the scale-0 version
 % of \cite[\eqref{IE-e:ssn}]{BS-rg-IE} for a single point).
-The $\Phi_x \equiv \Phi(x^\square)$ norm of $\varphi \in (\R^n)^\Lambda$ is defined by
-\begin{equation}
-\|\varphi\|_{\Phi_x}
-  =
-\inf
-\left\{
-  \|\varphi - f\|_\Phi : f \in (\R^n)^\Lambda \text{ such that } f_y = 0 \;\forall y \in x^\square
-\right\}
-.
-\end{equation}
+and recall that
+the $\Phi_x \equiv \Phi(x^\square)$ norm of $\varphi \in (\R^n)^\Lambda$ was defined
+in \eqref{e:PhiXdef}.
+% \begin{equation}
+% \|\varphi\|_{\Phi_x}
+%   =
+% \inf
+% \left\{
+%   \|\varphi - f\|_\Phi : f \in (\R^n)^\Lambda \text{ such that } f_y = 0 \;\forall y \in x^\square
+% \right\}
+% .
+% \end{equation}
 By taking the infimum in \eqref{e:T0K} over all possible
 re-definitions of $\varphi_y$ for $y \notin x^\square$, we get
 \begin{equation}
@@ -94,41 +96,39 @@ re-definitions of $\varphi_y$ for $y \notin x^\square$, we get
 \end{equation}
 when $F \in \Ncal(x^\square)$.
 
-We need two choices of the parameter $\h_0$ (for both choices, $\h_0 \ge 1$):
-either $\h_0 = \ell_0$ as in \eqref{e:elldef-zz}, which may depend on $L$;
-or $\h_0 = h_0 = k_0 \ggen_0^{-1/4}$, where $k_0$ is a small constant and
-$\ggen_0$ must be chosen small depending on $L$.
-% Some discussion of these constants occurs in the proof of Proposition~\ref{prop:K0bd}.
-In \cite{BS-rg-IE}, two \emph{regulators} are defined. At scale $0$, these are given by
-\begin{equation}
-\lbeq{regdef}
-G_0(x, \varphi)
-  = e^{\|\varphi\|^2_{\Phi_x(\ell_0)}},
-  \qquad
-\tilde G_0(x, \varphi)
-  =
-e^{\frac{1}{2} \|\varphi\|^2_{\tilde\Phi_x(\ell_0)}}.
-\end{equation}
-The $\tilde \Phi_x$ norm in the definition of $\tilde G_0$,
-is defined in \cite[\eqref{IE-e:Phitilnorm}]{BS-rg-IE};
-it is a modification of the $\Phi_x$ norm that is invariant under shifts by
-linear test functions.  Its specific properties do not play a direct role here.
-Two regulator norms are defined for $F \in \Ncal(x^\square)$ by
-\begin{equation}
-\lbeq{reg0}
-    \|F\|_{G_0} = \sup_{\varphi\in(\R^n)^\Lambda} \frac{\|F\|_{T_\varphi(\ell_0)}}{G_0(x,\varphi)}
-    , \quad
-    \|F\|_{\tilde{G}^{\sf t}_0} = \sup_{\varphi\in(\R^n)^\Lambda} \frac{\|F\|_{T_\varphi(h_0)}}{\tilde{G}^{\sf t}_0(x,\varphi)}
-    ,
-\end{equation}
-where ${\sf t} \in (0, 1]$ is a constant power.
+% We need two choices of the parameter $\h_0$ (for both choices, $\h_0 \ge 1$):
+% either $\h_0 = \ell_0$ as in \eqref{e:elldef-zz}, which may depend on $L$;
+% or $\h_0 = h_0 = k_0 \ggen_0^{-1/4}$, where $k_0$ is a small constant and
+% $\ggen_0$ must be chosen small depending on $L$.
+% % Some discussion of these constants occurs in the proof of Proposition~\ref{prop:K0bd}.
+% In \cite{BS-rg-IE}, two \emph{regulators} are defined. At scale $0$, these are given by
+% \begin{equation}
+% \lbeq{regdef}
+% G_0(x, \varphi)
+%   = e^{\|\varphi\|^2_{\Phi_x(\ell_0)}},
+%   \qquad
+% \tilde G_0(x, \varphi)
+%   =
+% e^{\frac{1}{2} \|\varphi\|^2_{\tilde\Phi_x(\ell_0)}}.
+% \end{equation}
+% The $\tilde \Phi_x$ norm in the definition of $\tilde G_0$,
+% is defined in \cite[\eqref{IE-e:Phitilnorm}]{BS-rg-IE};
+% it is a modification of the $\Phi_x$ norm that is invariant under shifts by
+% linear test functions.  Its specific properties do not play a direct role here.
+% Two regulator norms are defined for $F \in \Ncal(x^\square)$ by
+% \begin{equation}
+% \lbeq{reg0}
+%     \|F\|_{G_0} = \sup_{\varphi\in(\R^n)^\Lambda} \frac{\|F\|_{T_\varphi(\ell_0)}}{G_0(x,\varphi)}
+%     , \quad
+%     \|F\|_{\tilde{G}^{\sf t}_0} = \sup_{\varphi\in(\R^n)^\Lambda} \frac{\|F\|_{T_\varphi(h_0)}}{\tilde{G}^{\sf t}_0(x,\varphi)}
+%     ,
+% \end{equation}
+% where ${\sf t} \in (0, 1]$ is a constant power.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Bounds on \texorpdfstring{$K_0$}{K0}}
 \label{sec:K0bds}
-
-\commentbw{Bound the observable part.}
 
 The main estimate on $K^\pm_{0,x}$ is given by the following proposition.
 Recall that $\DV_j$ was defined in \eqref{e:DVdef}.
@@ -164,8 +164,7 @@ For large fields, namely fields of size $|\varphi| \approx \ggen_{0}^{-1/4}$, th
 $e^{-\gamma_0U_x^\pm}-1$ is roughly of size $\gamma_0\,|\varphi|^4 \approx \gamma_0/\ggen_0$.
 This effect is measured by the $\tilde G_0$ norm.
 
-Before proving the proposition, we
-write
+Before proving the proposition, we write
 % \refeq{Kpm} for a singleton as
 \begin{equation}
 K^\pm_{0,x} = I^\pm_{0,x} J^\pm_x
@@ -181,8 +180,6 @@ where, by the fundamental theorem of calculus,
 \end{align}
 % As in \eqref{e:Kpm}, the $+$ versions of \eqref{e:KIJ}--\eqref{e:J} hold
 % only for $\gamma_0 \geq 0$ and the $-$ versions only for $\gamma_0 < 0$.
-
-\commentbw{State stability estimates in previous chapter?}
 
 Let $F \in \Ncal(x^\square)$ be a polynomial of degree at most $p_\Ncal$.
 Then the stability estimates \cite[\eqref{IE-e:Iupper-a}--\eqref{IE-e:Iupper-b}]{BS-rg-IE}
@@ -767,13 +764,11 @@ which is in turn needed in Section~\ref{sec:suscept-conc}.
 \section{Renormalisation group flow}
 \label{sec:flow}
 
-\commentbw{Remark on new domain.}
-
 The following theorem is an extension of \cite[Proposition~\ref{log-prop:flow-flow}]{BBS-saw4-log}
-to non-trivial $K_0$ and with the new domains $\domRG_j$ defined in terms of the weights
-\eqref{e:elldef-zz}. The extension to the new domains is immediate given Theorem~\ref{thm:step-mr-fv}.
-
-The further extension to non-trivial $K_0$ is possible,
+to non-trivial $K_0$.
+% and with the new domains $\domRG_j$ defined in terms of the weights
+% \eqref{e:elldef-zz}. The extension to the new domains is immediate given Theorem~\ref{thm:step-mr-fv}.
+This extension is possible
 with only minor modifications to the proof of the $K_0 = \1_\varnothing$ case,
 due to the generality allowed by the main result of \cite{BBS-rg-flow}.
 
