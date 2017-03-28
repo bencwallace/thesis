@@ -19,26 +19,6 @@ to $\gamma_0 \ne 0$ in Theorem~\ref{thm:rhatflow}.
 
 \section{Notation}
 
-\commentbw{Put this somewhere}
-
-In either case, they are given by
-\begin{align}
-\label{e:chilim}
-\chi(\gcc, \gamma, \nu; n)
-	&= \lim_{N\to\infty} \chi_N(\gcc, \gamma, \nu; n) \\
-\label{e:chiNdef}
-\chi_N(\gcc, \gamma, \nu; n)
-	&= \sum_{x\in\Lambda_N} G_{x,N}(\gcc, \gamma, \nu; n). \\
-\label{e:clp}
-\xi_p(g, \gamma, \nu; n)
-	&= \left(\frac{\sum_{x\in\Zd} |x|^p G_x(g, \gamma, \nu; n)}{\chi(g, \gamma, \nu; n)}\right)^{1/p} \\
-\label{e:nuc-def}
-\nu_c
-	= \nu_c(\gcc, \gamma; n) &= \inf \{ \nu : \chi(g, \gamma, \nu; n) < \infty \}.
-\end{align}
-
-\commentbw{Break}
-
 To unify our treatment of the two models,
 we define the forms $\tau_x, \tau_{\Delta,x}, |\nabla\tau_x|^2$ according
 to \eqref{e:taudef}--\eqref{e:nablatau} if $n = 0$ and
@@ -51,7 +31,6 @@ to \eqref{e:taudef}--\eqref{e:nablatau} if $n = 0$ and
 |\nabla\tau_x|^2 = \sum_{|e|=1} (\nabla^e |\phi_x|^2)^2
 \end{equation}
 if $n \ge 1$.
-
 Then by \eqref{e:Vdef1}, \eqref{e:Udef-pos}, and \eqref{e:Vdef2},
 % $V_{g,\gamma,\nu,N} \in \Ncal^\varnothing$ is given by
 \begin{equation}
@@ -83,7 +62,8 @@ if $n \ge 1$. In either case, if $A = -\Delta + m^2$, then
 S_A = \sum_{x\in\Lambda} (\tau_{\Delta,x} + m^2 \tau_x).
 \end{equation}
 Thus, if $\Ex_C \theta$ is the super-expectation \eqref{e:ExCF} for $n = 0$
-and Gaussian integration over $(\R^n)^\Lambda$ if $n \ge 1$ (recall \eqref{e:gauss-density}),
+and Gaussian integration over $(\R^n)^\Lambda$ if $n \ge 1$,
+% (recall \eqref{e:gauss-density}),
 then for $\nu > 0$,
 \begin{equation}
 \label{e:phi4-gauss}
@@ -107,13 +87,32 @@ G_{x,N}(g, \gamma, \nu; n)
 \langle \varphi_0 \cdot \varphi_x \rangle_{g,\gamma,\nu,N}  & n \ge 1.
 \end{cases}
 \end{equation}
+By Proposition~\ref{prop:finvol}, for any integer $n \ge 0$,
+\begin{align}
+\label{e:chilim}
+\chi(\gcc, \gamma, \nu; n)
+	&= \lim_{N\to\infty} \chi_N(\gcc, \gamma, \nu; n) \\
+\label{e:chiNdef}
+\chi_N(\gcc, \gamma, \nu; n)
+	&= \sum_{x\in\Lambda_N} G_{x,N}(\gcc, \gamma, \nu; n). \\
+\label{e:clp}
+\xi_p(g, \gamma, \nu; n)
+	&= \left(\frac{\sum_{x\in\Zd} |x|^p G_x(g, \gamma, \nu; n)}{\chi(g, \gamma, \nu; n)}\right)^{1/p} \\
+\label{e:nuc-def}
+\nu_c
+	= \nu_c(\gcc, \gamma; n) &= \inf \{ \nu : \chi(g, \gamma, \nu; n) < \infty \}.
+\end{align}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Reformulation of the problem}
 
-Given $m^2>0$ and $z_0 >-1$, let
+In preparation for our application of the renormalisation group, we write the
+two-point function and susceptibility in terms of appropriate perturbations of
+Gaussian measures.
+
+Given $m^2>0$ and $z_0 > -1$, let
 \begin{equation}
 \label{e:gg0}
 g_0 = (\gcc - \gamma) (1 + z_0)^2,
@@ -122,11 +121,23 @@ g_0 = (\gcc - \gamma) (1 + z_0)^2,
 	\quad
 \gamma_0 = \frac{1}{4d} \gamma (1 + z_0)^2.
 \end{equation}
-We fix the two points $0,x\in \Lambda$
+We discuss the role of $(m^2, z_0)$ some more in Remark~\ref{rk:crit-params}.
+% \begin{rk}
+% The parameters $(m^2, z_0)$ are arbitrary for now, but a careful choice of
+% parameters must be made in order to study the stable manifold of the
+% renormalisation group. We will construct such parameters for $\gamma_0 \ne 0$
+% as perturbations of their $\gamma_0 = 0$ counterparts in Section~\ref{sec:nuztilde}.
+% \end{rk}
+
+We fix two points $0,x\in \Lambda$
 and introduce \emph{observable fields} $\sigmaa, \sigmab \in \R$.
-In summary, we distinguish between the following kinds of fields:
-real ($\varphi$) and complex ($\phi$, $\phib$) bosonic fields,
-observable fields ($\sigma$), and fermionic fields ($\psi$, $\psib$).
+We distinguish these from the \emph{bulk} fields $\varphi$, $\phi$,
+$\phib$, $\psi$, $\psib$. We also make a distinction between bosonic
+fields $\varphi$, $\phi$, $\phib$, $\sigma$, and fermionic fields
+$\psi$, $\psib$.
+% We now distinguish between the following kinds of fields:
+% real bosonic ($\varphi$), complex bosonic ($\phi$, $\phib$),
+% observable bosonic ($\sigma$), and fermionic ($\psi$, $\psib$).
 
 For any $y\in\Lambda$, we define the polynomials
 \begin{equation}
@@ -169,22 +180,21 @@ and
 \label{e:ZNdef}
 Z_N = \Ex_C \theta Z_0
 \end{equation}
-where the covariance is given by $C = (-\Delta + m^2)^{-1}$.
-In particular,
+where the covariance is given by $C = (-\Delta + m^2)^{-1}$
+as in \eqref{e:phi4-gauss}. In particular,
 \begin{equation}
 \label{e:exp-conv}
 \Ex_C Z_0 = Z_{N,\varnothing}(0).
 \end{equation}
-Recall here that $Z_{N,\varnothing}$ denotes the $0$-degree part of $Z_N$;
-this is a function of the bosonic fields, which we have set to $0$ on the
-right-hand side.
+Recall here that $Z_{N,\varnothing}$ denotes the $0$-degree part of $Z_N$
+(when $n \ge 1$, $Z_{N,\varnothing} = Z_N$).
+This is a function of the bulk bosonic fields, which we have set to $0$ on the
+right-hand side of \eqref{e:exp-conv}.
 
 Recall that the Gaussian convolution operator $\Ex_C\theta$ was defined in
-Section~\ref{sec:forms}; recall also from this section that $Z_{N,\varnothing}$
-denotes the $0$-degree part of $Z_N$ (when $n \ge 1$, $Z_{N,\varnothing} = Z_N$).
-When $n = 0$, this is a function of the fields $(\phi, \bar\phi)$ and when $n \ge 1$
-it is a function of $\varphi$. We define a test function $\1: \Lambda_N \to \R$ by
-$\1_y=1$ for all $y$. If $F$ is a sufficiently smooth form, let
+Section~\ref{sec:forms}. We define a test function $\1: \Lambda_N \to \R$ by
+$\1_y=1$ for all $y$. If $F$ is a sufficiently smooth function (a $0$-degree form),
+let
 % and write $D^2 Z_{N,\varnothing}(0; \1, \1)$ for the directional derivative of
 % $Z_{N,\varnothing}$ evaluated with all fields equal to $0$ and
 % % at $(\phi, \bar\phi) = (0, 0)$,
@@ -199,8 +209,9 @@ F(s \1 + t\1), & n \ge 1
 \end{cases}
 \end{equation}
 where the derivative is evaluated with all fields (bulk and observable) and $s, t$ set to $0$.
-We will also denote by $D^2_{\sigma_0\sigma_x} F(0)$ denote the second partial derivative
-with respect to $\sigma_0$ and $\sigma_x$ evaluated with all fields $0$.
+We will also denote by $D^2_{\sigma_0\sigma_x} F(0)$ the second partial derivative of $F(0)$
+(which depends only the observable fields)
+with respect to $\sigma_0$ and $\sigma_x$ evaluated at $\sigma_0 = \sigma_x = 0$.
 
 \begin{prop}
 \label{prop:intrep}
@@ -242,9 +253,10 @@ with
 \end{prop}
 
 \begin{proof}
-We prove the case $n = 0$ and drop the parameter $n$ from the notation; note that
+We prove the case $n = 0$ and drop the parameter $n$ from the notation. Note that by
+\eqref{e:tau-iso},
 $Z_N(0)\big|_{\sigma_0=\sigma_x=0} = 1$ in this case. The proof for $n \ge 1$ is similar
-and involves only ordinary integration with to real boson fields.
+and involves only ordinary integration with respect to real boson fields.
 
 We make the change of variables $\phi_x \mapsto (1 + z_0)^{1/2} \phi_x$
 and likewise for $\bar\phi_x, \psi_x, \bar\psi_x$ in \eqref{e:Grep-pos-bis}, and obtain
@@ -258,7 +270,8 @@ G_{x,N}(\gcc,\gamma,\nu)
 \right)}
 \bar\phi_a \phi_b.
 \end{equation}
-Note here that there is no Jacobian factor due to the change of variables in $\psi, \psib$.
+Note here that the Jacobian factor is automatically accounted for by the change of variables
+in the fermionic fields.
 For any $m^2 \in\R$, it follows that
 \begin{equation}
 \lbeq{GNint}
@@ -277,7 +290,7 @@ G_{x,N}(g, \gamma, \nu)
 (1 + z_0) \Ex_C (Z_0 \phib_0 \phi_x)
 \end{equation}
 % and \eqref{e:GNint} is a Gaussian expectation
-by \eqref{e:phi4-gauss}
+by \eqref{e:phi4-gauss}.
 % By symmetry of the matrix $\Delta$, \refeq{action} gives
 % \begin{equation}
 % \label{e:SAtauDelta}
@@ -286,7 +299,8 @@ by \eqref{e:phi4-gauss}
 % \sum_{x\in\Lambda} \left( \tau_{\Delta,x}
 % + m^2  \tau_x \right).
 % \end{equation}
-and \eqref{e:generating-fn} follows.
+The identity \eqref{e:generating-fn} follows by the standard procedure of writing
+the moments of an integral as a derivative of a moment-generating function.
 
 Summation of \eqref{e:G-gauss} over $x\in \Lambda_N$ gives the formula
 $\chi_N(\gcc,\gamma,\nu) = (1+z_0)\sum_{x\in \Lambda} \Ex_C (Z_0\phib_0\phi_x)$.
@@ -338,15 +352,15 @@ C = C_1 + \cdots + C_{N-1} + C_{N,N}
 constructed in \cite{Baue13a}; a similar decomposition was also constructed in \cite{BGM04}.
 The covariances $C_1, \ldots, C_{N-1}$ are independent of the volume $\Lambda_N$. The final
 covariance $C_{N,N}$ \emph{does} depend on the volume; so, for instance, $C_{N,N} \ne C_{N,N+1}$.
-Nevertheless, we will often write $C_N \coloneqq C_{N,N}$ for simplicity when the volume is implicit.
+Nevertheless, we will often write $C_N \coloneqq C_{N,N}$ when the volume is implicit.
 
 The covariances $C_j$ have the following important \emph{finite-range property}:
 \begin{equation}
 C_{j;xy} = 0 \text{ if } |x - y| \ge \tfrac12 L^j.
 \end{equation}
-Thus, $\zeta$ is a Gaussian field with covariance $C_j$, then $\zeta_x$ is independent
+Thus, if $\zeta$ is a Gaussian field with covariance $C_j$, then $\zeta_x$ is independent
 of $\zeta_y$ whenever $|x - y| \ge \tfrac12 L^j$. In particular,
-if $F_x, F_y$ are functions of the fields in $x, y$, respectively, then
+if $F_x, F_y$ are functions of the fields at $x, y$, respectively, then
 \begin{equation}
 \label{e:uncorr}
 \Ex_{C_{j+1}} (F_x F_y) = (\Ex_{C_{j+1}} F_x) (\Ex_{C_{j+1}} F_y).
@@ -360,7 +374,7 @@ In addition, we have the following covariance bounds (this is a restatement of
   For multi-indices $\alpha,\beta$ with
   $\ell^1$ norms $|\alpha|_1,|\beta|_1$ at most
   some fixed value $p$,
-  and for any $k$, and for $m^2 \in [0,\bar m^2]$,
+  for any $k$, and for $m^2 \in [0,\bar m^2]$,
   \begin{equation}
     \label{e:scaling-estimate}
     |\nabla_x^\alpha \nabla_y^\beta C_{j;x,y}|
@@ -400,6 +414,7 @@ Z_{j+1} = \Ex_{C_{j+1}} \theta Z_j, \quad j < N.
 \end{equation}
 
 \begin{rk}
+\label{rk:crit-params}
 This is truly a ($j$-dependent) map and not just a fixed sequence of field
 functionals.  Indeed, recall that the initial condition $Z_0$ is not fixed:
 it depends on the two free parameters $m^2$ and $z_0$. We think of the family
@@ -417,6 +432,9 @@ in the change of variables performed in the proof of Proposition~\ref{prop:intre
 This factor plays a similar role to the standard deviation $\sigma$ in the central
 limit theorem: rather than a unique fixed point, there is a one-parameter family
 of fixed points.
+
+The construction of the critical parameters for $\gamma_0 \ne 0$ will be carried
+out in Section~\ref{sec:nuztilde} and is a key step in the proof of Theorem~\ref{thm:mr}.
 \end{rk}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -456,22 +474,22 @@ F_\alpha \in \Ncal^\varnothing.
 \end{equation}
 There are natural projections $\pi_\alpha : \Ncal \to \Ncal_\alpha$ with
 $\alpha = \varnothing, a, b, ab$ such that $\pi_\alpha F = F_\alpha$.
-For $X \subset \Lambda$, we let $\Ncal(X)$ denote the subset of $\Ncal$ consisting
+For $X \subset \Lambda$, we let $\Ncal(X)$ denote the subspace of $\Ncal$ consisting
 of field functionals that only depend on fields in $X$.
 
 In order to control the evolution of $Z_j$ on $\Ncal$, we make use of a family
-$\|\cdot\|_{T_{\phi,j}(\h_j)}$ of scale-dependent dependent seminorms depending on a
+$\|\cdot\|_{T_{\phi,j}(\h_j)}$ of scale-dependent seminorms defined in terms of a
 sequence of weights $\h_j > 0$; the field $\phi$ lies in $\C^\Lambda$ if $n = 0$ and
 $(\R^n)^\Lambda$ if $n \ge 1$. For convenience,
 we will simply write $\|\cdot\|_{T_\phi(\h_j)}$ with the scale $j$ implied by the
-choice of parameter $\h_j$. The precise definitions are given below.
+choice of parameter $\h_j$.
+
+We given the precise definitions below for $n = 0$. The case $n \ge 1$ involves only
+minor changes, which we describe in Remark~\ref{rk:Tphi-n}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Test functions}
-
-We define the $T_\phi$ seminorm for $n = 0$. The case $n \ge 1$ involves only
-minor changes, which we describe in Remark~\ref{rk:Tphi-n}.
 
 Recall the notation introduced in Section~\ref{sec:forms}.
 A \emph{test function} $g$ is defined to be a function $(\vec x, \vec y) \mapsto g_{\vec x,\vec y}$,
@@ -534,7 +552,7 @@ Given a sequence $\vec{x}$ with $|\vec{x}| = m$, we define
 \begin{equation}
 F_{\vec x, \vec y} = \ddp{^m F_{\vec y}}{\phi_{x_1} \ldots \partial\phi_{x_m}}.
 \end{equation}
-We define a $\phi$-dependent pairing of elements of $\Ncal$ with test functions, by
+We define a $\phi$-dependent pairing of elements of $\Ncal$ with test functions by
 \begin{equation}
 \label{e:pairing}
 \langle F, g \rangle_\phi
@@ -605,7 +623,8 @@ and
 \end{lemma}
 
 An essential property of the $T_\phi$ seminorm is the following \emph{product property},
-which is essential to fully take advantage of the factorization property \eqref{e:uncorr}.
+which is essential to fully take advantage the factorization property \eqref{e:uncorr}
+that follows from the finite-range property of the covariance decomposition.
 
 \begin{prop}
 \label{prop:prod}
@@ -615,8 +634,8 @@ If $F, G \in \Ncal$, then $\|F G\|_{T_\phi} \le \|F\|_{T_\phi} \|G\|_{T_\phi}$.
 \begin{rk}
 This follows essentially from the fact that
 the series expansion of the product of two functions is the product of their
-respective series expansions (see \cite{BS-rg-norm}). This is why the $T_\phi$
-seminorm was defined in terms of the pairing \eqref{e:pairing}.
+respective series expansions (see \cite{BS-rg-norm}). This is part of the reason
+the $T_\phi$ seminorm was defined in terms of the pairing \eqref{e:pairing}.
 \end{rk}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -625,7 +644,8 @@ seminorm was defined in terms of the pairing \eqref{e:pairing}.
 \label{sec:weights}
 
 Control of the $T_\phi$ seminorm is needed for all values of
-$\phi$ in order to control the Gaussian expectation in \eqref{e:rgmapZ}.
+$\phi$ in order to obtain control of the convolution \eqref{e:rgmapZ} sufficient
+for iteration of the renormalisation group map.
 This will be discussed further in Section~\ref{sec:newnorm}.
 
 For now, we turn our attention to the special case of the $T_0$ seminorm. Recalling
@@ -700,13 +720,13 @@ This will be discussed in Section~\ref{sec:newnorm}.
 
 It is useful to restrict our attention to field functionals $F \in \Ncal$ that
 obey certain symmetry conditions preserved by Gaussian expectation (and which
-are obeyed by $V_0$).
+are obeyed by $V^+_0$).
 
 We let any automorphism $E$ of $\Lambda$ act on $\Ncal$ by $EF(\varphi) = F(E\varphi)$.
 We say that $F\in\Ncal$ is \emph{Euclidean invariant} if $EF = F$ for all such automorphisms.
 
-Let $n = 0$.
-Define the \emph{supersymmetry generator}
+If $n = 0$,
+we define the \emph{supersymmetry generator}
 \begin{equation}
 Q = (2\pi i)^{1/2} \sum_{x\in\Lambda}
 \left(
@@ -720,8 +740,9 @@ Such a form is said to be \emph{gauge invariant} if it is invariant under the
 \emph{gauge flow} $(q, \bar q) \mapsto (e^{-2\pi it} q, 2^{2\pi it} \bar q)$
 for $q = \phi_x, \psi_x$ and all $x\in\Lambda$.
 
-Let $n \ge 1$.
-An $n \times n$ matrix $T$ acts on $\Ncal$ via $T F(\varphi) = F(T \varphi)$.
+If $n \ge 1$, we let
+an $n \times n$ matrix $T$ act on $\Ncal$ by $T F(\varphi) = F(T \varphi)$,
+where $(T\varphi)_x = T(\varphi_x)$.
 We say that $F\in\Ncal$ is \emph{$O(n)$ invariant} if $TF = F$ for all
 orthogonal matrices $T$.
 
@@ -748,26 +769,26 @@ and define a subspace on which this finite-dimensional system will evolve.
 % \begin{equation}
 % [\varphi] = \frac{d - 2}{2}.
 % \end{equation}
-We call $M_x \in \Ncal$ a local monomial if it is a monomial in $\varphi_x$ and
-its (discrete) gradients, i.e.\ if $M_x$ has the form
+We call $M_x \in \Ncal$ a local monomial if it is a monomial in $\varphi_x$ and its
+(discrete) gradients. For intance, for a $1$-component field, such $M_x$ has the form
 \begin{equation}
 \label{e:field-mon}
 M_x = (\nabla^{\alpha_1} \varphi_x) \ldots (\nabla^{\alpha_p} \varphi_x).
 \end{equation}
 The $T_0$ seminorm of a local monomial $M_x$ essentially
-just counts the number of fields and derivatives in $M_x$. For instance, let
-$\varphi$ be a $1$-component Gaussian field with covariance $C_j$. Then for $M_x$
+just counts the number of fields and derivatives in $M_x$. For instance, for $M_x$
 as above,
 \begin{equation}
 \|M_x\|_{T_0(\ell_j)}
 	=
-O(L^{-j (|\alpha| + p [\varphi])})
+O\big(L^{-j (|\alpha| + p [\varphi])}\big)
 \end{equation}
 where $|\alpha| = |\alpha_1| + \cdots + |\alpha_p|$ and
 \begin{equation}
 [\varphi] = \frac{d - 2}{2}
 \end{equation}
-is the \emph{scaling dimension}. Based on this observation, we define the
+is the \emph{scaling dimension} of the field.
+Based on this observation, we define the
 \emph{dimension} of $M_x$ by
 \begin{equation}
 \label{e:mon-dim}
@@ -776,7 +797,7 @@ is the \emph{scaling dimension}. Based on this observation, we define the
 Note here that we have neglected the rapid decay of fields above the mass scale.
 
 By \eqref{e:scaling-estimate}, $\varphi$ is approximately constant on blocks of side $L^j$. In a sense,
-the fields on a block act as a unit and this contributes to a volume factor $L^{jd}$.
+the fields on a block $B$ act as a unit and this contributes to a volume factor $|B| = L^{jd}$.
 This leads us to compare the dimension of a monomial with the dimension $d$ of the
 lattice. We say that $M_x$ is \emph{relevant} if $[M_x] < d$, \emph{marginal} if
 $[M_x] = d$, and \emph{irrelevant} if $[M_x] > d$.
@@ -814,7 +835,7 @@ invariant and $O(n)$-invariant (see \cite{BBS-rg-pt}).
 
 The marginal and relevant contributions to the evolution of the renormalisation group
 will be tracked by a \emph{local polynomial} (a sum of local monomials) of the form
-$\sum_{x\in\Lambda} \Vc_y$, where (recall \eqref{e:obs-couple})
+$\sum_{y\in\Lambda} \Vc_y$, where (recall \eqref{e:obs-couple})
 \begin{align}
 \lbeq{Vy}
 \Vc_y
@@ -836,10 +857,10 @@ We have omitted $\tau_{\nabla\nabla}$ as \eqref{e:sbp-gen} gives
 
 \begin{rk}
 \label{rk:noconst}
-When $n = 0$, we can also omit $u$ since constant terms are not produce by the 
+When $n = 0$, we can also omit $u$ since constant terms are not produced by the 
 Gaussian super-expectation. For example, $\Ex_C\theta \tau_x$ has constant part
 $0$ by \eqref{e:wick-complex2} and \eqref{e:wick-fermion2}. More generally,
-this is a consequence of supersymmetry (see \cite{BBS-rg-pt}).
+this is a consequence of the supersymmetry identity \eqref{e:tau-iso}.
 \end{rk}
 
 We define $\Vcalc$ to be the space of all polynomials of the form $\Vc_y$.
@@ -866,7 +887,7 @@ We define the $\Vcalc = \Vcalc_j$ norm by
 \begin{aligned}
 \|\Vc\|_{\Vcalc} &=
 \max\Big\{
-|g|, L^{2j}|\nu|, |z|, |y|,  L^{4j}|u|,
+|g|, L^{2j}|\nu|, |z|, L^{4j}|u|,
 \ell_j\ell_{\sigma,j}(|\lambda_\pp|\vee|\lambda_\qq|),\;
 %\\
 %& \qquad\qquad\qquad
@@ -892,29 +913,36 @@ expansion}
 \begin{equation}
 \Ex_C \theta e^{-\Vp(\Lambda)}
 	\approx
-e^{-\Ex_C \theta \Vp(\Lambda) + \scriptstyle{\frac12} \Ex_C (\theta \Vp(\Lambda); \theta \Vp(\Lambda))}.
+e^{-\Ex_C \theta \Vp(\Lambda) + \scriptstyle{\frac12} \Ex_C (\theta \Vp(\Lambda); \theta \Vp(\Lambda))},
 \end{equation}
+where
+\begin{equation}
+\Ex_C (F; G) = \Ex_C (FG) - (\Ex_C F) (\Ex_C G)
+\end{equation}
+is the \emph{truncated expectation}.
 In \cite{BS-rg-loc} an operator $\Loc_x$ is defined so that $\Loc_x F$ is an
 approximation of $F$ by a local polynomial at $x$. We make the split
 \begin{equation}
-\frac12 \Ex_C (\theta \Vp_x; \theta \Vp(\Lambda))
+\frac12 \Ex_C (\theta \Vp(\Lambda); \theta \Vp(\Lambda))
 	=
-\frac12 \Loc_x \Ex_C (\theta \Vp_x; \theta \Vp(\Lambda))
+\frac12 \Loc_x \Ex_C (\theta \Vp(\Lambda); \theta \Vp(\Lambda))
 	+
-\frac12 (1 - \Loc_x) \Ex_C (\theta \Vp_x; \theta \Vp(\Lambda))
+\frac12 (1 - \Loc_x) \Ex_C (\theta \Vp(\Lambda); \theta \Vp(\Lambda))
 \end{equation}
-With $\Vp(\Lambda) = \sum_{x\in\Lambda}$ and $e^F \approx 1 + F$, we get
+With
+% $\Vp(\Lambda) = \sum_{x\in\Lambda}$
+$e^F \approx 1 + F$, we get
 \begin{equation}
 \Ex_C \theta e^{-\Vp(\Lambda)}
 	\approx
 e^{-\Ex_C \theta \Vp(\Lambda)
 	+
-\scriptstyle{\frac12} \Loc_x \Ex_C (\theta \Vp_x; \theta \Vp(\Lambda))}
-\Big(1 + \tfrac12 (1 - \Loc_x) \Ex_C (\theta \Vp_x; \theta \Vp(\Lambda))\Big).
+\scriptstyle{\frac12} \Loc_x \Ex_C (\theta \Vp(\Lambda); \theta \Vp(\Lambda))}
+\Big(1 + \tfrac12 (1 - \Loc_x) \Ex_C (\theta \Vp(\Lambda); \theta \Vp(\Lambda))\Big).
 \end{equation}
 
 Based on this idea, in \cite{BBS-rg-pt}
-a map\footnote{In \cite{BBS-rg-pt}, $\Vpt$ is defined on a
+a map\footnote{In \cite{BBS-rg-pt}, $\Vpt$ maps into a
 larger space including $\tau_{\nabla\nabla}$. Here, following \eqref{e:nabla-delta},
 we define $\Vpt$ by composing that map with the map that replaces
 $z \tau_\Delta + y \tau_{\nabla\nabla}$ by $(z + y) \tau_\Delta$.}
@@ -982,7 +1010,10 @@ which is the $\ell_2(\Zd)$ norm of the Green function $C$ (this is
 the expected number of intersections of two independent, killed simple
 random walks).
 
-The recursion \eqref{e:gbar} was analyzed in \cite{BBS-rg-pt}. It was shown in
+\commentbw{Refer to discussion of bubble diagram in intro.}
+
+The recursion \eqref{e:gbar} was analyzed in \cite{BBS-rg-flow} and the
+results of this were used to show in
 \cite[Proposition~\ref{log-prop:approximate-flow}]{BBS-saw4-log}
 that
 \begin{equation}
@@ -1000,18 +1031,20 @@ O((\log |x|)^{-1}) \;\; \text{for $j_x \leq j_m$.}
 A heuristic argument is as follows: Using Proposition~\ref{prop:Cdecomp}, it is
 straightforward to show that
 \begin{equation}
-\beta_j = O(L^{-j (d - 4)}).
+\beta_j = O(L^{-j (d - 4) - s (j - j_m)_+}).
 \end{equation}
 Thus, a crude approximation to the flow of $\gbar$ is the recursion
 \begin{equation}
-x_{j+1} = x_j - c \1_{j \le j_m} x_j^2,
+y_{j+1} = y_j - c \1_{j \le j_m} y_j^2,
 	\quad
 c > 0.
 \end{equation}
-Comparing this to the differential equation $\dot x = - c x^2$, which has solutions
-of the form $x(t) = (C + c t)^{-1}$, it is reasonable to expect that $x_j \approx (c j)^{-1}$
-for $j \le j_m$ and $x_j \approx x_{j_m}$ for $j > j_m$. The relations \eqref{e:gjxgjmbd}
-follow easily if $g_j$ behaves in a similar way.
+Comparing this to the differential equation $\dot y = - c y^2$, which has solutions
+of the form $y(t) = (C + c t)^{-1}$, it is reasonable to expect that $y_j \approx (c j)^{-1}$
+for $j \le j_m$. By definition, $y_j = y_{j_m}$ for $j > j_m$. Thus,
+$y_j \approx (c \log m^{-1})^{-1}$ for $j \ge j_m$. A similar argument can be used
+to study $y_{j_x}$.
+% The relations \eqref{e:gjxgjmbd} follow easily if $g_j$ behaves in a similar way.
 \end{rk}
 
 Following \cite[\eqref{log-e:ggendef}]{BBS-saw4-log}, we define the parameter
@@ -1023,7 +1056,7 @@ $\ggen_j$ in \eqref{e:elldef-zz} as a function of two variables $(\mgen^2, \ggen
 \gbar_j(0,\ggen_0) \1_{j \le j_{\mgen}} + \gbar_{j_{\mgen}}(0,\ggen_0) \1_{j > j_{\mgen}}.
 \end{equation}
 These parameters play an important role in Section~\ref{sec:step} and in the proof of
-Theorem~\ref{thm:rhatflow} (see Section~\ref{sec:flow}.
+Theorem~\ref{thm:rhatflow}.
 
 \subsubsection{The flow of \texorpdfstring{$\lambda$ and $q$}{lambda and q}}
 
@@ -1145,8 +1178,8 @@ in $X$.
 \end{itemize}
 
 \begin{defn}
-For $j \le N(\volume)$, let $\CKspace_j = \CKspace_j(\volume)$ denote the complex
-vector space of maps $K : \C_j(\volume) \to \Ncal(\volume)$ satisfying the following
+For $j \le N(\volume)$, let $\CKspace_j = \CKspace_j(\volume)$ denote the real
+vector space of maps $K : \Ccal_j(\volume) \to \Ncal(\volume)$ satisfying the following
 properties:
 \begin{itemize}
 \item
@@ -1161,7 +1194,7 @@ Symmetry: (i) $K$ is Euclidean invariant and, if $n = 0$, $K$ is gauge-invariant
 or $O(n)$ invariant if $n \ge 1$;
 and (iii) $\pi_\varnothing K$ is Euclidean covariant.
 \end{itemize}
-We let $\Kspace_j = \Kspace_j(\volume)$ denote the complex vector space of functions
+We let $\Kspace_j = \Kspace_j(\volume)$ denote the real vector space of functions
 $K \in \CKspace_j$ with the following additional property:
 \begin{itemize}
 \item
@@ -1217,14 +1250,14 @@ is the main accomplishment of \cite{BS-rg-step}.
 % from saw-sa and clp
 \label{sec:step}
 
-For fixed $(\mgen^2, \ggen_0) \in [0, \delta) \times (0, \delta)$,
-we define a sequence $\ggen_j = \ggen_j(\mgen^2, \ggen_0)$ by
-\begin{equation} \label{e:ggendef}
-  \ggen_j(m^2,g_0) =
-  \gbar_j(0,g_0) \1_{j \le j_m} + \gbar_{j_m}(0,g_0) \1_{j > j_m},
-\end{equation}
-where $\gbar_j = \gbar_j(m^2, g_0)$ is the sequence discussed in Section~\ref{sec:pt};
-in particular, $\ggen_0(\mgen^2, \ggen_0) = \ggen_0$.
+% For fixed $(\mgen^2, \ggen_0) \in [0, \delta) \times (0, \delta)$,
+% we define a sequence $\ggen_j = \ggen_j(\mgen^2, \ggen_0)$ by
+% \begin{equation} \label{e:ggendef}
+%   \ggen_j(m^2,g_0) =
+%   \gbar_j(0,g_0) \1_{j \le j_m} + \gbar_{j_m}(0,g_0) \1_{j > j_m},
+% \end{equation}
+% where $\gbar_j = \gbar_j(m^2, g_0)$ is the sequence discussed in Section~\ref{sec:pt};
+% in particular, $\ggen_0(\mgen^2, \ggen_0) = \ggen_0$.
 In \cite[Section~\ref{step-sec:Knorms}]{BS-rg-step},
 a sequence of norms $\|\cdot\|_{\Wcal_j} = \|\cdot\|_{\Wcal_j(\mgen^2, \ggen_j, \Lambda)}$
 parameterised by $(\mgen^2, \ggen_j)$ is defined on $\Kcal_j$.
@@ -1232,7 +1265,7 @@ These are defined in terms of the $T_\phi(\h_j)$ norms with parameters $\h_j = \
 In order to make use of the improved norm parameters with $s > 1$,
 we must modify the definition of $\Wcal_j$ when $j$ is above the mass scale.
 This will be discussed in Chapter~\ref{sec:RGstep}.
-We note here only the fact that (for any $s \ge 0$) the $\Wcal_j(\Lambda)$
+We note here only the fact that the $\Wcal_j(\Lambda)$
 norm dominates the $T_0(\ell_j)$ norm in the following sense:
 \begin{equation}
 \label{e:T0dom}
@@ -1264,7 +1297,7 @@ depends on $\volume$ through $\Wcal_j$.
 
 In the statement of the following theorem, we fix the scale $j$ and
 consider maps $\Vc_+ = \Vc_{j+1}$ and $K_+ = K_{j+1}$ that act on the domain
-$\domRG_j$ and map into $\Vcalc_{j+1}$, $\Kcal_{j+1}$, respectively.
+$\domRG_j$ and map into $\Vcalc$, $\Kcal_{j+1}$, respectively.
 We will drop the scale $j$ from the notation for objects at scale $j$
 and replace $j + 1$ with $+$.
 The deviation of the map $\Vc_+$ from the perturbative map $\Vpt$
@@ -1299,7 +1332,7 @@ and with the domain $\domRG$ defined using any $\DVa> M$, the maps
 \begin{equation}
 \label{e:RKplusmaps}
 R_+:\domRG \times \Igen_+ % (\mgen^2)
-	\to \Vcal,
+	\to \Ucal,
 		\quad
 K_+:\domRG \times \Igen_+ % (\mgen^2)
 	\to \Wcal_{+}%(\sgen_+)
@@ -1308,12 +1341,12 @@ are analytic in $(V, K)$											% added
 and satisfy the estimates
 \begin{equation}
 \label{e:RKplus}
-\|R_+\|_{\Vcal}
-\le
-M\chigen_+\ggen_+^{3}
-, \qquad
+\|R_+\|_{\Ucal}
+	\le
+M\chigen_+\ggen_+^{3},
+	\qquad
 \|K_+\|_{\Wcal_+}
-\le
+	\le
 M\chigen_+ \ggen_+^{3}
 \end{equation}
 and
@@ -1326,21 +1359,20 @@ obeying \eqref{e:IcircKdu}.
 \end{theorem}
 
 With $s = 0$ in the choice of weights $\ell_j$ and $\ell_{\sigma,j}$,
-this theorem was the main achievement of \cite{BS-rg-step}. With $s > 1$
-arbitrary, the bounds \eqref{e:RKplus} are greatly improved beyond the
-mass scale. The statement in \cite{BS-rg-step} with $s = 0$ contains
+this theorem was the main achievement of \cite{BS-rg-step}.
+The statement in \cite{BS-rg-step} with $s = 0$ additionally contains
 bounds on the derivatives of the maps $R_+$ and $K_+$. Our improvements
 apply to these bounds as well, but we do not state them here as we will
-not make direct use of these bounds\footnote{These derivative bounds are
-indirectly used to prove Theorem~\ref{thm:rhatflow}.}.
+not make direct use of these bounds.
+One of the main novelties in this thesis is the case $s > 1$,
+for which the bounds on the observables derived from \eqref{e:RKplus}
+are greatly improved beyond the mass scale.
 
-Note that the maps $R_+$ and $K_+$ are \emph{independent} of $s$.
+Note that the maps $R_+$ and $K_+$ themselves are \emph{independent} of $s$.
 The proof of Theorem~\ref{thm:step-mr-fv} involves showing that the
 inductive estimates \eqref{e:RKplus} hold for any $s$. In some cases,
 we will make use of these estimates both with $s > 1$ and $s = 0$.
-
-The proof of Theorem~\ref{thm:step-mr-fv} is an adaptation of the proof
-of the $s = 0$ case contained
+The proof for $s > 1$ is an adaptation of the proof of the $s = 0$ case contained
 in\footnote{For $n \ge 1$, there is an additional step to deal with observables.
 This is dealt with in the proof of \cite[Theorem~\ref{phi4-thm:step-mr-fv}]{ST-phi4}
 and is unchanged in the present context.}
@@ -1350,21 +1382,6 @@ some modification. As mentioned above, a major change that is required is
 a new definition of $\Wcal_j$ above the mass scale. A detailed verification
 that the proof holds for $s > 1$ is carried out in Chapter~\ref{sec:RGstep}.
 
-Theorem~\ref{thm:step-mr-fv} expresses a contractive property of the map $K_+$
-through \eqref{e:DKkappa}.
-% as it takes $K$ in a ball whose radius involves $\alpha=4M$ at scale $j$ to
-% an image which lies in a ball whose radius involves the smaller number $M$ at scale $j+1$.
-The fact that $K_+$ is a contraction is used, in Theorem~\ref{thm:rhatflow},
-to prove that, for $m^2$ and $g_0$ sufficiently small, there exist
-\emph{critical} initial conditions
-$\nu_0 = \nu_0^c(m^2, g_0, \gamma_0; n)$ and $z_0 = z_0^c(m^2, g_0,\gamma_0; n)$
-such that for any $N$,
-iteration of the maps $(\Vc_+,K_+)$ defines a sequence $(\Vp_j, K_j)$
-which lies in the domain $\domRG_j$ and obeys the estimates \refeq{RKplus}
-\emph{for all} $j = 1, \ldots, N$.
-This construction of critical initial conditions uses the $s=0$ version
-of \refeq{elldef-zz}.
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -1372,11 +1389,24 @@ of \refeq{elldef-zz}.
 % mainly from saw-sa
 
 Theorem~\ref{thm:step-mr-fv} allows us to perform a single renormalisation group
-step. In \cite[Proposition~\ref{log-prop:flow-flow}]{BBS-saw4-log} it was shown
-that there exist \emph{critical} initial conditions
-$\nu_0^c, z_0^c$ depending on $(m^2, g_0)$ such that this map can be iterated
-indefinitely, i.e.\ for $j = 1, \ldots, N$ and any $N$. This results in a
-sequence $(\Vc_j, K_j)$ generated by the renormalisation group map, hence
+step. The estimate \eqref{e:DKkappa} expresses a contractive property of the map
+$K_+$. The fact that $K_+$ is a contraction is used, in Theorem~\ref{thm:rhatflow},
+to prove that, for $m^2$ and $g_0$ sufficiently small, there exist
+\emph{critical} initial conditions
+$\nu_0 = \nu_0^c(m^2, g_0, \gamma_0; n)$ and $z_0 = z_0^c(m^2, g_0,\gamma_0; n)$
+such that for any $N$,
+iteration of the maps $(\Vc_+,K_+)$ defines a sequence $(\Vp_j, K_j)$
+which lies in the domain $\domRG_j$ and obeys the estimates \refeq{RKplus}
+\emph{for all} $j = 1, \ldots, N$.
+% This construction of critical initial conditions makes use of the $s=0$ version
+% of \refeq{elldef-zz}. However, the resulting sequence is independent of $s$
+% and can therefore be bounded with any $s$.
+
+In \cite[Proposition~\ref{log-prop:flow-flow}]{BBS-saw4-log} it was shown
+that for $\gamma_0 = 0$ there exist \emph{critical} initial conditions
+$\nu_0^c, z_0^c$ depending on $(m^2, g_0)$ such that the renormalisation group
+map can be iterated indefinitely. This
+results in a sequence $(\Vc_j, K_j)$ generated by the renormalisation group map, hence
 whose elements lie in the domains $\domRG_j$. This was proved with $s = 0$,
 but the sequence itself is independent of $s$ and continues to exist in our
 setting. However, Theorem~\ref{thm:step-mr-fv} shows that this sequence satisfies
@@ -1394,9 +1424,10 @@ depend on $\gamma_0$ as well as $(m^2, g_0)$. Thus, this theorem is an extension
 to $s > 1$ and $\gamma_0 \ne 0$ of \cite[Proposition~\ref{log-prop:flow-flow}]{BBS-saw4-log}.
 
 Let $\delta > 0$ and suppose $r : [0, \delta] \to [0, \infty)$
-is a continuous \emph{positive-definite}\footnote{Note that our usage of this term is
-different from that in the theory of quadratic forms.} function; by this we
-mean that $r(x) > 0$ if $x > 0$ and $r(0) = 0$.
+is a continuous \emph{positive-definite} function; by this we
+mean\footnote{Note that our usage of this term is
+different from that in the theory of quadratic forms.}
+that $r(x) > 0$ if $x > 0$ and $r(0) = 0$.
 We define
 \begin{equation}
 \lbeq{Ddef}
@@ -1407,7 +1438,7 @@ D(\delta, r)
 and we let $C^{0,1,\pm}(D(\delta, r))$ denote the space of continuous functions
 $f = f(w, x, y)$ on $D(\delta, r)$
 that are $C^1$ in $(x, y)$ away from $y = 0$, $C^1$ in $x$ everywhere,
-and have left- and right-derivatives in $y$ at $y = 0$.
+and whose right-derivative in $y$ at $y = 0$ exists.
 In our applications, we take $w = m^2$, $x = g_0$ or $\gcc$,
 and $y = \gamma_0$ or $\gamma$.
 
@@ -1439,7 +1470,7 @@ uniformly in $(m^2, \gamma_0)$.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{Historical remarks}
+\section{Final remarks}
 
 The notion of a polymer used in Section~\ref{sec:rgcoord} was introduced in
 \cite{GK71}. The use of expansions of the form \eqref{e:circ} together with
