@@ -21,8 +21,8 @@ matrix, then
 \begin{equation}
 M^n_{ab} = \sum_{x_1,\ldots,x_n\in\vertices} M_{ax_1} M_{x_1x_2} \ldots M_{x_nb}.
 \end{equation}
-When $M$ is indexed by edges (i.e.\ when $M_{xy} = 0$ for $x \not\sim y$), the
-above sum can be replaced by a sum over $n$-step walks from $a$ to $b$ on $\graph$.
+When $M$ is indexed by $\edges$, the
+sum above can be replaced by a sum over $n$-step walks from $a$ to $b$ on $\graph$.
 When the entries of $M$ are non-negative, such a sum acquires a probabilistic
 interpretation as an expectation with respect to the random walk whose steps
 are weighted by the entries of $M$.
@@ -103,16 +103,17 @@ to be scaled by $\sqrt n$}
 % This section based on saw-sa
 \label{sec:intrep}
 
-In this section we describe an integral representation of the of WSAW-SA, which
-is a special case of a result of Brydges, Imbrie, and Slade \cite{BIS09}. We
-restrict out attention to the discrete torus $\Lambda$. We begin with the necessary
+In this section we describe an integral representation of the of WSAW-SA
+% which is a special case of a result of Brydges, Imbrie, and Slade \cite{BIS09}.
+% We restrict out attention to
+on the discrete torus $\Lambda$. We begin with the necessary
 background on Grassmann integration, introduced in \cite{Bere66}. However, we
-follow the treatment given in \cite{BIS09}.
+follow the treatment of \cite{BIS09}.
 
 \subsubsection{Boson and fermion fields}
 \label{sec:forms}
 
-Let $\phi_x, \bar\phi_x$ denote complex variables indexed by $x\in\Lambda$.
+Let $\phi_x$, $\bar\phi_x$ denote complex variables indexed by $x\in\Lambda$.
 We refer to $(\phi, \phib)$ as a \emph{boson} field. Let $u_x, v_x$ denote
 the real and imaginary parts of $\phi_x$ and define the differentials
 $d\phi_x = du_x + i dv_x$ and likewise for $d\phib_x$.
@@ -172,8 +173,10 @@ F_{\vec y} (\phi, \bar\phi)
 \psi^{\vec y}
 \end{equation}
 where the sum is over finite sequences $\vec y$ over $\Lambda\sqcup\bar\Lambda$,
-and $\psi^{\vec y} = \psi_{y_1} \ldots \psi_{y_p}$ (in some canonical order) when
-$\vec y = (y_1, \ldots, y_p)$. When $\vec y = \varnothing$ is the empty sequence,
+and $\psi^{\vec y} = \psi_{y_1} \ldots \psi_{y_p}$
+% (in some canonical order)
+when $\vec y = (y_1, \ldots, y_p)$. Here, we take the sequences to be ordered in
+some canonical fashion. When $\vec y = \varnothing$ is the empty sequence,
 $F_\varnothing$ denotes the $0$-degree (bosonic) part of $F$.
 
 In order to apply the results of \cite{BBS-saw4-log,BBS-saw4,BSTW-clp}, we require
@@ -197,7 +200,9 @@ $f(F)$ by its Taylor expansion about $F_\varnothing$:
 f(F) = \sum_\alpha \frac{1}{\alpha!} f^{(\alpha)}(F_\varnothing) (F - F_\varnothing)^\alpha.
 \end{equation}
 The summation terminates as a finite sum,
-since $\psi_x^2 = \bar\psi_x^2 = 0$ due to the anti-commut\-ative product.
+since $\psi_x^2 = \bar\psi_x^2 = 0$
+by anti-commutativity.
+% due to the anti-commut\-ative product.
 
 We define the integral $\int F$ of a differential form $F$ in the usual way
 as the Riemann integral of its top-degree part (which may be regarded as a function
@@ -244,8 +249,9 @@ to $(\xi, \bar\xi, \eta, \bar\eta)$, with $\phi,\phib,\psi,\psib$ held fixed.
 \label{sec:Gintrep}
 
 An integral representation formula applying to general local time functionals
-is given in \cite{BEI92,BIS09}; see also \cite[Appendix~A]{ST-phi4}.
-We state the result we need in the proposition below.
+is given in \cite{BEI92,BIS09}. We state the result we need in the proposition below.
+A direct proof can be obtained by a small modification to the proof in
+\cite[Appendix~A]{ST-phi4}.
 
 We define the differential forms:
 \begin{align}
@@ -290,7 +296,7 @@ U_{\gcc,\gamma}(\tau)
 Let $d > 0$ and $\gcc > 0$. For $\gamma < \gcc$ and $\nu \in \R$,
 \begin{align}
 \label{e:Grep-pos-bis}
-G_{x,N}(\gcc, \gamma, \nu)
+G_{x,N}(\gcc, \gamma, \nu; 0)
 	&=
 \int e^{-V_{\gcc,\gamma,\nu,N}} \phib_0 \phi_x.
 % \int e^{-U_{\gcc,\gamma,\nu,N}} \bar\phi_a \phi_b.
@@ -320,19 +326,19 @@ and define
 \begin{align}
 \label{e:cN}
 c_{N,T}(x)
-    &= E^{\Lambda_N}_0 \left( e^{-U_{\gcc,\gamma,T}} \1_{X(T)=b} \right)
-    \quad (x \in \Lambda_N), \\
+    &= E^{\Lambda_N}_0 \left( e^{-U_{\gcc,\gamma,T}} \1_{X(T)=b} \right),
+    \quad x \in \Lambda_N \\
 c_{N,T}
     &= E^{\Lambda_N}_0 \left( e^{-U_{\gcc,\gamma,T}} \right).
 \end{align}
 The finite-volume two-point function and susceptibility
 are defined by
 \begin{align}
-G_{x,N}(\gcc,\gamma,\nu)
+G_{x,N}(\gcc,\gamma,\nu; 0)
     &=
 \int_0^\infty c_{N,T}(x) e^{-\nu T} \; dT, \\
 \label{e:chiNdef-pre}
-\chi_N(\gcc, \gamma, \nu)
+\chi_N(\gcc, \gamma, \nu; 0)
     &=
 \int_0^\infty c_{N,T} e^{-\nu T} \; dT.
 \end{align}
@@ -344,13 +350,13 @@ Let $d >0$, $\gcc >0$ and $\gamma < \gcc$. For all $\nu \in \R$,
 \begin{equation}
 \label{e:Givlc}
 \lim_{N \to \infty}
-G_{x,N}(\gcc,\gamma,\nu)
+G_{x,N}(\gcc,\gamma,\nu; 0)
 =
-G_x(\gcc,\gamma,\nu)
+G_x(\gcc,\gamma,\nu; 0)
 \end{equation}
 and
 \begin{equation}
 \label{e:chilim-pre}
-\lim_{N\to\infty}\chi_N(\gcc,\gamma,\nu) =   \chi(\gcc,\gamma,\nu).
+\lim_{N\to\infty}\chi_N(\gcc,\gamma,\nu; 0) =   \chi(\gcc,\gamma,\nu; 0).
 \end{equation}
 \end{prop}

@@ -19,6 +19,26 @@ to $\gamma_0 \ne 0$ in Theorem~\ref{thm:rhatflow}.
 
 \section{Notation}
 
+\commentbw{Put this somewhere}
+
+In either case, they are given by
+\begin{align}
+\label{e:chilim}
+\chi(\gcc, \gamma, \nu; n)
+	&= \lim_{N\to\infty} \chi_N(\gcc, \gamma, \nu; n) \\
+\label{e:chiNdef}
+\chi_N(\gcc, \gamma, \nu; n)
+	&= \sum_{x\in\Lambda_N} G_{x,N}(\gcc, \gamma, \nu; n). \\
+\label{e:clp}
+\xi_p(g, \gamma, \nu; n)
+	&= \left(\frac{\sum_{x\in\Zd} |x|^p G_x(g, \gamma, \nu; n)}{\chi(g, \gamma, \nu; n)}\right)^{1/p} \\
+\label{e:nuc-def}
+\nu_c
+	= \nu_c(\gcc, \gamma; n) &= \inf \{ \nu : \chi(g, \gamma, \nu; n) < \infty \}.
+\end{align}
+
+\commentbw{Break}
+
 To unify our treatment of the two models,
 we define the forms $\tau_x, \tau_{\Delta,x}, |\nabla\tau_x|^2$ according
 to \eqref{e:taudef}--\eqref{e:nablatau} if $n = 0$ and

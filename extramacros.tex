@@ -5,16 +5,18 @@
 % Graphs
 \newcommand{\edges}{\Ecal}
 \newcommand{\graph}{\Gcal}
-\newcommand{\hex}{\mathbb{H}}
 \newcommand{\vertices}{\Vcal}
+
+\newcommand{\hex}{\mathbb{H}}
+\newcommand{\torus}{\mathbb{T}}
 
 \newcommand{\generator}{Q}				% Markov chain generator
 \newcommand{\diag}{D}					% diagonal matrix
-\newcommand{\interval}{\Ical}
 \newcommand{\jay}{J}					% adjacency matrix
 \newcommand{\lap}{\Delta}				% graph Laplacian
 
 % Gibbs measure
+\newcommand{\entropy}{\mathscr{S}}
 \newcommand{\fugacity}{\zeta}
 \newcommand{\GFF}{\textsc{gff}}
 \newcommand{\gibbs}{\mathscr{G}}
@@ -27,12 +29,9 @@
 \renewcommand{\Vpt}{\Vc_\pt}
 
 % Misc
-\newcommand{\cwalks}{\Wcal}				% continuous-time walks
-\newcommand{\dwalks}{\widehat\Wcal}		% discrete-time walks
 \newcommand{\normal}{\mathscr{N}}		% normal distribution
 \newcommand{\SLE}{{\rm SLE}}
 \newcommand{\todo}[1]{#1}
-\newcommand{\torus}{\mathbb{T}}
 
 \renewcommand{\Gtilp}{{\sf t}}
 
@@ -42,6 +41,13 @@
 \DeclareMathOperator*{\argmax}{argmax}
 \let\Pr\relax
 \DeclareMathOperator{\Pr}{\mathbb{P}}
+
+% Walks
+\newcommand{\interval}{\Ical}
+\newcommand{\cwalks}{\Wcal}				% continuous-time walks
+\newcommand{\dwalks}{\widehat\Wcal}		% discrete-time walks
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % clp
 \renewcommand{\chicCov}{\vartheta}

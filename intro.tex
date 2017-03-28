@@ -292,26 +292,28 @@ amongst all probability measures $\mu$ on $\Omega$ absolutely
 continuous with respect to $\lambda$, the Gibbs measure maximizes the \emph{entropy}
 \begin{equation}
 \label{e:entropy-def}
-h(\mu) = -\int \log \frac{d\mu}{d\lambda} \; d\mu
+\entropy(\mu) = -\int \log \frac{d\mu}{d\lambda} \; d\mu
 \end{equation}
 with respect to $\lambda$, subject to the fixed average energy constraint
 \begin{equation}
+\label{e:fix-avg-energy}
 \int H \; d\mu = E.
 \end{equation}
 This can be shown using the method of Lagrange multipliers;
 the parameter $\beta = \beta(E)$ arises as a Lagrange multiplier.
 
-The \emph{free energy} is defined by
-\begin{equation}
-F_\beta = -\frac{1}{\beta} \log Z_\beta.
-\end{equation}
-A computation of the entropy of $\mu_\beta$ with $\beta = \beta(E)$ shows that
-\begin{equation}
-F_\beta = E - \frac{1}{\beta} h(\mu_\beta),
-\end{equation}
-which recovers the usual definition of Helmholtz free energy in thermodynamics.
+% The \emph{free energy} is defined by
+% \begin{equation}
+% F_\beta = -\frac{1}{\beta} \log Z_\beta.
+% \end{equation}
+% A computation of the entropy of $\mu_\beta$ with $\beta = \beta(E)$ shows that
+% \begin{equation}
+% F_\beta = E - \frac{1}{\beta} \entropy(\mu_\beta),
+% \end{equation}
+% which recovers the usual definition of Helmholtz free energy in thermodynamics.
 
 \subsection{Relation to quantum theory}
+\label{sec:quantum}
 
 Let us briefly describe the relationship between equilibrium statistical
 mechanics and quantum field theory. Our presentation is heuristic and involves
@@ -602,8 +604,12 @@ for spins to \emph{align} in ferromagnetic systems.
 Below we discuss some common examples of spin systems.
 In many cases, we discuss Hamiltonians that depend on one or more parameters
 for which adjusting the inverse temperature $\beta$ is equivalent to rescaling
-these prameters. In these cases, we will fix $\beta = 1$ without loss of
-generality.
+these prameters. In these cases, we will fix
+\begin{equation}
+\label{e:beta-one}
+\beta = 1
+\end{equation}
+without loss of generality.
 
 \subsubsection{Gaussian measures}
 
@@ -737,106 +743,145 @@ proposed the quantum version of his model (see \cite{Brush67} for a discussion o
 Ironically, it turns out that the classical version of his model does not possess a phase
 transition in both $d = 1$ and $d = 2$; and, moreover, in 1936
 Rudolf Peierls \cite{Peierls36} put forth an argument for the existence of a phase transition
-in the Ising model if $d > 2$. Peierl's argument was made rigorous in \cite{Griffiths64},
+in the Ising model if $d > 1$. Peierl's argument was made rigorous in \cite{Griffiths64},
 but even before that Onsager \cite{Onsager44} provided an exact computation of the
-free free energy in $d = 2$, which uncontrovertibly demonstrated the existence of a
+free energy in $d = 2$, which uncontrovertibly demonstrated the existence of a
 phase transition in two dimensions.
 The general $O(n)$ model was first studied in \cite{Stanley68}.
 % In 1944, Onsager \cite{Onsager44} provided an exact calculation of the free
 % energy in $d = 2$ with $h = 0$.
 \end{rk}
 
-\subsection{Discussion}
-
-\commentbw{When are these things known to be true? Maybe scrap this}
+\subsection{Phase transition in the Ising model}
 
 In this section we discuss the phase transition for the Ising model on $\Zd$ with $d > 1$.
+A good reference is \cite{FV17}.
 
-Let $B_N = [-N, N]^d \cap \Zd$ and let $\partial V = \partial B_N$ be the external
-vertex boundary of $B_N$. For each $x\in\partial\vertices$, let $b_x \in \{-1, 0, 1\}$
-be a choice of \emph{boundary condition}
-% let $h \in \R$ be an \emph{external field},
-and consider the Hamiltonian
+% Let $\graph = B_N = [-N, N]^d \cap \Zd$
+Let $\graph = \Lambda_N$
+% and let $\partial V = \partial B_N$ be the external vertex boundary of $B_N$.
+% For each $x\in\partial\vertices$, let $b_x \in \{-1, 0, 1\}$ be a choice of \emph{boundary condition}
+and consider the Hamiltonian for the Ising model with an external field $h\in\R$:
 \begin{equation}
-H(\varphi)
+H^{(N)}_h(\varphi)
 	=
 -\frac12 \sum_{x \sim y} \varphi_x \varphi_y
-- h \sum_{x\in\vertices} \varphi_x
-- \sum_{x\in\vertices} \varphi_x b_x
+- h \sum_{x\in\vertices} \varphi_x,
+% - \sum_{x\in\vertices} \varphi_x b_x
+	\qquad
+\varphi\in\{\pm1\}^\vertices.
 \end{equation}
-on $\{\pm1\}^{B_N}$. This is a small generalization of the Hamiltonian \eqref{e:on-model}
-for the Ising model ($n = 1$) on $B_N$ with $\jay_{xy} = \1_{x\sim y}$.
-\commentbw{Get rid of boundary conditions}
-
-For now, let us employ \emph{free} boundary conditions $b \equiv 0$ (we will discuss
-other boundary conditions in Section~\ref{sec:dimension}).
+% This is a small generalization of the Hamiltonian \eqref{e:on-model}
+% for the Ising model ($n = 1$) on $\vertices$ with $\jay_{xy} = \1_{x\sim y}$.
+% 
+% For now, let us employ \emph{free} boundary conditions $b \equiv 0$ (we will discuss
+% other boundary conditions in Section~\ref{sec:dimension}).
 Let $\langle\cdot\rangle^{(N)}_{\beta,h}$ denote the expectation with respect to
-this Gibbs measure and let $Z_{\beta,h}$ be the partition function.
-A fundamental quantity for the detection of a phase transition in the Ising model is the
-\emph{magnetization} $\langle \varphi_0 \rangle^{(N)}_{\beta,h}$.
-Note that when $h = 0$, we have $\langle \varphi_0 \rangle^{(N)}_{\beta,0} = 0$
-by invariance of the Gibbs measure under the spin flip transformation $\varphi \mapsto -\varphi$.
-
-In order to detect a phase transition, we must take the \emph{infinite-volume limit}
+the corresponding Gibbs measure and let $Z^{(N)}_{\beta,h}$ be the partition function.
+% A fundamental quantity for the detection of a phase transition in the Ising model is the
+The \emph{free energy} is defined in finite volume by
 \begin{equation}
-\langle \varphi_0 \rangle_{\beta,h}
+F^{(N)}_{\beta,h}
 	=
-\lim_{N\to\infty} \langle \varphi_0 \rangle^{(N)}_{\beta,h}.
+-\frac{1}{\beta |\vertices|} \log Z^{(N)}_{\beta,h}.
 \end{equation}
-It can be shown that this limit exists. Moreover, if $d > 1$, then there is a
-\emph{critical point} $\beta_c > 0$ such that for for $\beta > \beta_c$, the
-\emph{spontaneous magnetization}
+Notice that with $h = 0$ a computation of the entropy $\entropy(\mu_{\beta,0})$
+with $\beta = \beta(E)$ (as in \eqref{e:fix-avg-energy}) shows that
 \begin{equation}
-M^+(\beta) = \lim_{h\downarrow0} \langle \varphi_0 \rangle_{\beta,h}
+F^{(N)}_{\beta,0} = E - \frac{1}{\beta} \entropy(\mu_{\beta,0}),
 \end{equation}
-is strictly positive. Similarly, we can $M^-(\beta)$ by taking the limit
-$h\uparrow0$ and observe that $M^-(\beta) < 0$. Thus, the magnetization is
-discontinuous as a function of the external field (this is analogous the the
-apparent discontinuity of the density of boiling water). On the other hand,
-when $\beta \le \beta_c$, we have $M^+(\beta) = M^-(\beta) = 0$. In fact,
-$M^\pm(\beta) \to 0$ as $\beta\downarrow\beta_c$.
+which recovers the usual definition of Helmholtz free energy in thermodynamics.
 
-At the critical point $\beta_c$, the Ising model becomes extremely
-sensitive to changes in $\beta$ or $h$. This can be seen by studying the magnetic
-\emph{susceptibility}, defined by
+The \emph{magnetization} is given in finite volume by
 \begin{equation}
-\chi(\beta, h)
+M^{(N)}_{\beta,h}
 	=
-\frac{1}{\beta} \dd{}{h} \langle \varphi_0 \rangle_{\beta,h}.
+\frac{1}{|\vertices|} \sum_{x\in \vertices} \langle \varphi_x \rangle^{(N)}_{\beta,h}.
 \end{equation}
-A computation shows that
+Notice that
 \begin{equation}
-\chi(\beta, h) = \sum_{x\in\vertices} G_x(\beta, h),
+M^{(N)}_{\beta,h}
+	=
+-\ddp{}{h} F^{(N)}_{\beta,h}.
+\end{equation}
+When $h = 0$, the Gibbs measure is invariant under the spin-flip transformation
+$\varphi \mapsto -\varphi$ and it follows that $M^{(N)}_{\beta,0} = 0$ for all $\beta$.
+
+In order to study the dependence of the magnetization on $h$, we define the
+\emph{magnetic susceptibility}
+\begin{equation}
+\chi^{(N)}(\beta, h)
+	=
+\frac{1}{\beta} \ddp{}{h} M^{(N)}_{\beta,h}.
+\end{equation}
+By translation-invariance,
+\begin{equation}
+\label{e:Ising-suscept}
+\chi^{(N)}(\beta, h)
+	=
+\frac{1}{\beta^2}
+\sum_{x\in\vertices} G^{(N)}_x(\beta, h),
 \end{equation}
 where
 \begin{equation}
-G_x(\beta, h)
+\label{e:Ising-2pt}
+G^{(N)}_x(\beta, h)
 	=
 \langle \varphi_0 \varphi_x \rangle_{\beta,h}
 	-
-\langle \varphi_0 \rangle_{\beta,h} \langle \varphi_x \rangle_{\beta,h}
+\langle\varphi_0\rangle_{\beta,h} \langle\varphi_x\rangle_{\beta,h}.
 \end{equation}
-is the correlation between $\varphi_0$ and $\varphi_x$, known as the \emph{two-point function}.
-It can be shown that (for $d > 1$) the susceptibility diverges at $\beta_c$.
+These are all analytic functions.
+In order to detect a phase transition, we must take the infinite-volume limit $N\to\infty$.
+
+The infinite-volume free energy, magnetization, susceptibility, and two-point function
+are defined as the $N\to\infty$ limits of their finite-volume counterparts; we denote them by
+$F_{\beta,h}$, $M_{\beta,h}$, $\chi(\beta, h)$, and $G_x(\beta, h)$.
+Let
+\begin{equation}
+M^\pm_{\beta} = \lim_{h\to0^\pm} M_{\beta,h}.
+\end{equation}
+Then when $\beta$ is sufficiently large, there is a non-zero \emph{spontaneous magnetization},
+meaning that
+\begin{equation}
+M^-_\beta < 0 < M^+_\beta.
+\end{equation}
+That is, the magnetization is \emph{discontinuous} at $h = 0$. Equivalently, the free energy
+is not differentiable\footnote{There is an interchange of limit and derivative implicit in
+this statement, but it can be justified.} at that point. The \emph{critical point} for the
+Ising model is the inverse temperature
+\begin{equation}
+\beta_c = \sup\{\beta > 0 : M^+_\beta = 0 \}.
+\end{equation}
+At the critical point, the magnetization is expected to be continuous but non-differentiable.
+This is equivalent to the free energy being once- but not twice-differentiable.
+It is predicted that the
+susceptibility diverges as the critical point is approached, which corresponds to slow decay
+of the two-point function. We will discuss this in more detail in Section~\ref{sec:crit}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Spin systems in infinite volume}
 
-The presence of a phase transition in a physical system is signalled by an
-abrupt change in an observable quantity with respect to a parameter. We make a
-broad distinction between \emph{first-order} phase transitions in which the
+% The presence of a phase transition in a physical system is signalled by an
+% abrupt change in an observable quantity with respect to a parameter.
+A broad distinction can be made between \emph{first-order} phase transitions
+in which the
 free energy has discontinuous first derivative with respect to an external
 field $h$ (recall \eqref{e:gibbs-spin-ext}) and \emph{continuous} phase
 transitions, in which the free energy is differentiable but non-analytic.
+As discussed above, the infinite-volume limit of the free energy must be taken
+in order for a phase transition to manifest.
 
-The systems we have defined above all
-have smooth free energy since the Hamiltonians are smooth functions. The reason we cannot
-detect a phase transition in these systems is that they have been defined on finite volumes.
-This is also the reason that the magnetization of the Ising
-model in a finite volume is $0$ in the absence of a magnetic field, despite the fact that
-this is not true of a real ferromagnet. Thus, in order to study phase transitions, we are
-forced to consider spin systems on infinite graphs.
+\commentbw{Say something or get rid of this.}
+
+% The systems we have defined above all
+% have smooth free energy since the Hamiltonians are smooth functions. The reason we cannot
+% detect a phase transition in these systems is that they have been defined on finite volumes.
+% This is also the reason that the magnetization of the Ising
+% model in a finite volume is $0$ in the absence of a magnetic field, despite the fact that
+% this is not true of a real ferromagnet. Thus, in order to study phase transitions, we are
+% forced to consider spin systems on infinite graphs.
 
 A systematic approach to this problem was developed in the work of Dobrushin \cite{Dobrushin68}
 and Lanford and Ruelle \cite{LR69}. A comprehensive reference to this subject is \cite{Georgii11}
@@ -860,8 +905,6 @@ at the critical point $\beta_c$.
 
 We will avoid the issue of existence and uniqueness of infinite-volume Gibbs
 measures
-% (which is not well understood for multi-component spin systems with unbounded spins
-% such as the $n$-component $|\varphi|^4$ model)
 by defining observable quantities of interest (e.g.\ the two-point function) in infinite
 volume as limits of their finite-volume counterparts. These limits can alternatively be
 described as expectations with respect to infinite-volume Gibbs measures when the latter
@@ -879,7 +922,6 @@ $[-\frac12 L^N+1,\frac12 L^N]^d \cap \Z^d$ if $L^N$ is even
 and as $[-\frac12 (L^N-1), \frac12 (L^N-1)]^d \cap \Z^d$ if $L^N$ is odd). This allows us to preserve
 translation-invariance of the models that concern us when defining them in finite volume.
 
-\commentbw{Define discrete gradients}
 In particular, we will study a generalization of the $|\varphi|^4$ model whose Hamiltonian
 on $\Lambda_N$ is given by
 \begin{equation}
@@ -901,13 +943,18 @@ where
 \begin{equation}
 (\nabla |\phi_x|^2)^2
 	=
-\sum_{|e|=1} (\nabla^e |\phi_x|^2)^2.
+\sum_{|e|=1} (\nabla^e |\phi_x|^2)^2
+\end{equation}
+and the discrete gradient is defined by
+\begin{equation}
+\nabla^e f_x = f_{x+e} - f_x.
 \end{equation}
 The expectation with respect to the corresponding Gibbs measure will
 be denoted $\langle\cdot\rangle_{\gcc,\gamma,\nu,N}$.
 We recover \eqref{e:phi4-Ham} when $\gamma = 0$ and $\graph = \Lambda_N$.
 
-We define the infinite-volume two-point function for this model by
+Following \eqref{e:Ising-suscept} and \eqref{e:Ising-2pt}, we define the
+two-point function and susceptibility by
 \begin{equation}
 \label{e:two-point-function-phi4}
 G_{x, N}(g,\gamma,\nu; n)
@@ -916,15 +963,22 @@ G_{x, N}(g,\gamma,\nu; n)
 	\quad
 G_x(g,\gamma,\nu; n)
 	=
-\lim_{N \to \infty} G_{x, N}(g,\gamma,\nu; n).
+\lim_{N \to \infty} G_{x, N}(g,\gamma,\nu; n)
 \end{equation}
-The susceptibility is defined by
+and
 \begin{equation}
 \label{e:susceptibility-def}
 \chi(\gcc, \gamma, \nu; n)
 	=
 \lim_{N\to\infty} \sum_{x\in\Lambda_N} G_{x,N}(\gcc, \gamma, \nu; n).
 \end{equation}
+
+\begin{rk}
+We will be interested in the approach to the critical point from high temperature,
+so we have omitted the term
+$\langle \varphi_0 \rangle_{g,\gamma,\nu,N} \cdot \langle \varphi_x \rangle_{g,\gamma,\nu,N}$
+which vanishes in this regime.
+\end{rk}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -935,12 +989,16 @@ The susceptibility is defined by
 Many systems exhibit singular behaviour at or near the critical temperature in
 the form of power law scaling of various observable quantities. This is known as
 \emph{critical behaviour}. For concreteness, we will discuss the generalized
-$|\varphi|^4$ model on $\Zd$ given by \eqref{e:Vdef1} with $d > 1$ and with $J_{xy} = \1_{x\sim y}$.
+$|\varphi|^4$ model on $\Zd$ given by \eqref{e:Vdef1}
+% with $d > 1$ and
+with $J_{xy} = \1_{x\sim y}$.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{The critical point}
 
+We follow the convention \eqref{e:beta-one} of setting $\beta = 1$ and seek a
+phase transition for $|\varphi|^4$ model when the parameter $\nu$ is varied.
 We define the \emph{critical point} by
 \begin{equation}
 % \label{}
@@ -1001,7 +1059,7 @@ It follows then from the definition that
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{Critical exponents}
+\subsection{Critical behaviour}
 
 For simplicity, let us drop $\gcc$, $\gamma$, and $n$ from the notation.
 It is predicted that there exist constants $\eta$, $\gammabar$, and $\nubar$
@@ -1028,13 +1086,12 @@ C_3 (\nu - \nu_c)^{-\nubar},
 	&\sim
 C_4 (\nu - \nu_c)^{-\nubar},
 	\qquad
-\nu\downarrow\nu_c.
+\nu\downarrow\nu_c
 \end{align}
-where $a \sim b$ means that $\lim (a/b) = 1$ and $C_i$ for $i = 1,2,3,4$
-are constants that may depend on $g$ and $n$ (and $p$ when $i = 4$).
-The critical exponents are expected to be \emph{universal} in the sense that they
-only depend on ``large-scale properties'' of the model such as its symmetries and
-the global geometry of the underlying graph. In particular,
+where the $C_i$ are constants that may depend on $g$ and $n$ (and $p$ when $i = 4$).
+The critical exponents, on the other hand, are expected to be \emph{universal} in the
+sense that they only depend on ``large-scale properties'' of the model such as its
+symmetries and the global geometry of the underlying graph. In particular,
 for the $n$-component $|\varphi|^4$ model on $\Zd$, these exponents should only
 depend on $n$ and $d$ and be independent of $g$ and $\gamma$ when $g > 0$ and $\gamma$
 is sufficiently small (depending on $g$). In fact,
@@ -1045,8 +1102,8 @@ These and other relations are all believed to be manifestations of the existence
 a universal \emph{scaling limit} for the $|\varphi|^4$ model and other models in its
 \emph{universality class}. That is, any spin system in this class, when appropriately
 rescaled, is expected to converge in distribution to a unique continuum random field.
-In this sense, the study of critical behaviour involves a set of far-reaching
-generalizations of the central limit theorem.
+In this sense, the study of critical behaviour involves far-reaching generalizations
+of the central limit theorem.
 
 \begin{example}[The Gaussian free field]
 \label{ex:gff-asymp}
@@ -1054,7 +1111,7 @@ On $\Zd$, \eqref{e:greendef} and \eqref{e:wick} imply that
 \begin{equation}
 G_x(0, 0, m^2; n)
 	=
-(m^2 + 2 d)^{-1} \sum_{n=0}^\infty z^n P^n_{xy},
+(m^2 + 2 d)^{-1} \sum_{n=0}^\infty z^n P^n_{0x},
 \end{equation}
 where $z = 2 d / (m^2 + 2 d)$ and $P = (2 d)^{-1} J$
 is the transition matrix for the simple random walk $X$ on $\Zd$.
@@ -1064,15 +1121,14 @@ Thus, for $m^2 > 0$,
   % =
 % \sum_{x\in\vertices} (-\Delta + m^2)^{-1}_{0x}
   =
-\sum_{n=0}^\infty z^n \sum_{x\in\Zd} P^n_{0x}
-  =
-\sum_{n=0}^\infty z^n
+(m^2 + 2 d)^{-1} \sum_{n=0}^\infty z^n
   =
 (1 - z)^{-1}.
 \end{equation}
-This diverges linearly at $z = 1$ (corresponding to $m^2 = 0$),
-so $\nu_c(0, 0; n) = 0$ and the corresponding critical exponent is
-$\gammabar = 1$. It can also be shown that $\nubar = 1/2$ and $\eta = 0$ for this model.
+It follows that $\nu_c(0, 0; n) = 0$ and the $\gammabar = 1$ for this model.
+It can also be shown that $\nubar = 1/2$ and $\eta = 0$ in this case
+(e.g.\ see \cite{Lawl85} for $\eta$). In Appendix~\ref{sec:freeclp}, we give a new
+proof that $\nubar = 1/2$ for $\xi_p(0, 0, m^2; n)$.
 % For $d > 2$, the simple random walk is transient. Thus, letting $E_x$ denote the expectation
 % of $X$ conditioned so that $X_0 = x$,
 % \begin{equation}
@@ -1092,20 +1148,22 @@ $\gammabar = 1$. It can also be shown that $\nubar = 1/2$ and $\eta = 0$ for thi
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{Dimension dependence}
+\subsection{Critical exponents}
 \label{sec:dimension}
+
+As mentioned above, the critical exponents are generally expected to depend on
+$d$ and $n$. Below we discuss some of the conjectured values and known results.
 
 \subsubsection{Dimension $d = 1$}
 
-In $d = 1$, nearest-neighbour models typically do not have a phase transition.
-However, phase transitions are typically expected for sufficiently long-range models,
-see e.g.\ \cite{Dyso69}.
+In $d = 1$, nearest-neighbour models typically do not possess a phase transition.
+However, phase transitions may occur for sufficiently long-range models \cite{Dyso69}.
 
 \subsubsection{Dimensions $d = 2$}
 
 In $d = 2$, the Mermin-Wagner theorem \cite{MW66} implies that the $O(n)$ model does
-not possess a first-order phase transition for $n > 2$. When $n = 2$, it is
-expected that there is a \emph{Kosterlitz-Thouless} phase transition \cite{KT73}
+not possess a first-order phase transition for $n > 2$. The case $n = 2$ is expected
+to possess a \emph{Kosterlitz-Thouless} phase transition \cite{KT73}
 (Kosterlitz and Thouless, together with Duncan Haldane, were awarded
 the 2016 Nobel Prize in Physics for this and related ideas). Rigorous results relating
 to this kind of phase transition include \cite{FS81,Falc12,Falc13}.
@@ -1113,9 +1171,8 @@ For $n = 1$, there is a phase transition; in fact, Onsager \cite{Onsager44} gave
 exact formula for the free energy of the Ising model.
 
 The $1$-component planar models are expected to possess \emph{conformally invariant}
-scaling limits. As a consequence of the conformal symmetries expected to be possessed
-by the scaling limits of planar models, their critical exponents are expected to take
-on rational values; in particular, it is predicted that $\gammabar = 56/32$, $\nubar = 1$,
+scaling limits. As a consequence of these conformal symmetries,
+the predicted critical exponents are the rational numbers $\gammabar = 56/32$, $\nubar = 1$,
 and $\eta = 1/4$. Recent years have shown rapid progress in this direction, stimulated
 by the identification by Schramm \cite{Schramm00} of a $1$-parameter family of
 conformally invariant random planar curves now known as the \emph{Schramm-Loewner
@@ -1161,7 +1218,7 @@ an appropriate scaling limit.
 
 Three-dimensional models are very poorly understood and only numerical approximations
 are available for their critical exponents. In fact, it was only recently proved
-that the Ising model's \todo{spontaneous magnetization} was shown to vanish continuously at
+that the Ising model's spontaneous magnetization vanishes continuously at
 the critical point in three dimensions \cite{ADS15}.
 
 \subsubsection{Dimensions $d > 4$}
@@ -1169,30 +1226,34 @@ the critical point in three dimensions \cite{ADS15}.
 If $d > 4$, the critical exponents for the $O(n)$ and $|\varphi|^4$ models are
 predicted to become independent of $d$ and $n$ and to take on the values of the
 corresponding exponents for the Gaussian free field, i.e.\ $\gammabar = 1$,
-$\nubar = 1/2$, and $\eta = 0$. For $n = 1, 2$ it is known that $\eta = 0$
-for the \emph{continuum limit} of these models \cite{Aiz82,Fro82} if it exists.
-Sakai proved that $\eta = 0$ for the Ising model \cite{Sakai07} and the $1$-component
-discrete $|\varphi|^4$ model \cite{Sakai15}.
+$\nubar = 1/2$, and $\eta = 0$.
 This phenomenon is known as \emph{mean-field behaviour} and dimension $4$ is
 called the \emph{upper-critical dimension} for this class of models.
-For lattice models, results are upcoming in \cite{BHH17}.
+For $n = 1, 2$ it is known that $\eta = 0$
+for the \emph{continuum limit} of these models \cite{Aiz82,Fro82} if it exists.
+On the lattice, Sakai proved that $\eta = 0$ for the Ising model \cite{Sakai07}
+and the $1$-component $|\varphi|^4$ model \cite{Sakai15}.
+Extensions to $n = 1, 2$ are upcoming in \cite{BHH17}.
 
 \subsubsection{Dimension $d = 4$}
 
-\commentbw{Mention that this is the primary case of interest in QFT.}
+Dimension $4$ is the case of primary interest in quantum field theory, where one
+dimension plays the role of time (this becomes a spatial dimension after a Wick
+rotation as in Section~\ref{sec:quantum}).
+It is predicted in dimension $4$ that a number of observables possess multiplicative
+logarithmic corrections to mean-field sclaing. An exception is the two-point function,
+which is expected to undergo
+mean-field scaling ($\eta = 0$); this was shown for the $1$-component $|\varphi|^4$
+model in \cite{GK85} and \cite{FMRS87}. Logarithmic corrections to scaling of the
+susceptibility and correlation length of the $1$-component model were identified in
+\cite{Hara87,HT87}.
 
-It is predicted in dimension $4$ that a number of observables scale according to a
-power law with mean-field critical exponents and multiplicative logarithmic
-corrections. An exception is the two-point function, which is expected to undergo
-mean-field scaling ($\eta = 0$); this has been establishes in the continuum limit
-in \cite{FMRS87} and \cite{GK85}. Logarithmic corrections to scaling for the
-correlation length of the $1$-component model were identified in \cite{Hara87,HT87}.
-
-Recently, Bauerschmidt, Brydges, and Slade have developed a renormalisation group
+Recently, Bauerschmidt, Brydges, and Slade \cite{BS-rg-norm,BS-rg-loc,BBS-rg-pt,BS-rg-IE,BS-rg-step}
+have developed a renormalisation group
 method for studying the $n$-component $|\varphi|^4$ model in $4$ dimensions; this
 method works for any $n$ and, in a certain sense, extends to models of
 self-interacting walks, interpreted as $n = 0$ (more on this in
-Sections~\ref{sec:walks}--\ref{sec:intrep}).
+Sections~\ref{sec:walks}--\ref{sec:spin-walk}).
 In particular, they identified logarithmic corrections to scaling of the susceptiblity
 and specific heat \cite{BBS-phi4-log}. Using an extension of this method, Slade and
 Tomberg computed asymptotics for critical correlation functions in \cite{ST-phi4};
@@ -1228,11 +1289,11 @@ that they are localized in space. In Wilson's approach fluctuations are instead
 localized in Fourier space. Both approaches can be thought of
 as corresponding to different types of covariance decompositions (see \cite{BCGNOPS78}).
 
-Wilson's method results in a dynamical system as described above on a space of
+Wilson's method results in a dynamical system on a space of
 models that acts by appropriately integrating out small fluctuations, followed
 by a rescaling step used to make this system autonomous (i.e.\ independent of
-the ``scale'' $j$). He argued that the flow of this dynamical system would
-leave the long-range behaviour of models invariant. Consequently, critical models
+the ``scale'' $j$). He argued that the action of this dynamical system would
+leave the long-range behaviour of the models invariant. Consequently, critical models
 lying in the same orbit would belong to
 the same universality class. Thus, such models should possess the same critical
 exponents and scaling limit. Moreover, this scaling limit should be invariant
@@ -1249,8 +1310,8 @@ this infinite-dimensional dynamical system by a \emph{finite-dimensonal} system.
 By analyzing this finite-dimensional approximation, Wilson determined that there
 is a unique hyperbolic fixed point in dimensions $d > 4$ corresponding to the Gaussian
 free field and mean-field behaviour. As the dimension is lowered below $4$, a
-bifurcation occurs in which the Gaussian fixed point splits into two fixed points:
-One corresponds to Gaussian behaviour but is unstable. The other is hyperbolic and
+bifurcation occurs in which the Gaussian fixed point splits into two fixed points.
+One of these corresponds to Gaussian behaviour but is unstable. The other is hyperbolic and
 corresponds to anomalous scaling behaviour; it is sometimes known as the
 \emph{Wilson-Fisher} fixed point \cite{WF72}. At the bifurcation point $d = 4$, there is only
 one (Gaussian) fixed point and logarithmic corrections to mean-field scaling arise
@@ -1293,11 +1354,11 @@ will discuss further in Section~\ref{sec:rg}.
 % In this thesis, we focus on continuous-time walks, which we define in the next
 % section. Before proceeding, however, we discuss the following important example.
 
-We begin with section with the following simple example.
+We begin this section with the following simple example.
 
 \begin{example}[Self-avoiding walk]
 Let $\omega : \{0,\ldots,n\} \to \vertices$ be a \emph{discrete-time walk}
-of length $n$ on $\graph$ meaning that $\omega_i \sim \omega_{i+1}$ for all $i$. Let us
+of length $n$ on $\graph$, meaning that $\omega_i \sim \omega_{i+1}$ for all $i$. Let us
 denote by $\dwalks_n$ the collection of such walks and set $\dwalks = \bigcup_n \dwalks_n$.
 We say that $\omega$ is \emph{self-avoiding} if $\omega_i \ne \omega_j$
 for all $i \ne j$. Let $\Scal_n$ denote the collection of $n$-step
@@ -1309,19 +1370,20 @@ measure for each $n$. This gives us a simple model of a linear polymer.
 The uniform measures do not form a consistent family due to the possibility of ``traps''.
 That is, the equality
 \begin{equation}
+\label{e:consistent-fam}
 \mu_{|\omega|}(\omega) = \sum_{\bar\omega \supset \omega} \mu_{|\bar\omega|}(\bar\omega)
 \end{equation}
 does not hold for all $\omega\in\dwalks$ (the sum here is over all self-avoiding walks extending $\omega$).
 For instance, consider the self-avoiding walk $\omega\in\dwalks_7$
 on $\Zd$ in Figure~\ref{fig:trap}. This walk has positive probability under $\mu_7$ but,
 since there are no self-avoiding walks extending $\omega$, the sum on the 
-right-hand side above is $0$.
+right-hand side of \eqref{e:consistent-fam} is $0$.
 
 \begin{figure}[!htb]
 \label{fig:trap}
 \centering
-\caption{A trapped self-avoiding walk}
 \includegraphics{trapped_compact}
+\caption{A trapped self-avoiding walk}
 \end{figure}
 
 As a result, there is no straightforward way to apply the usual methods of stochastic processes
@@ -1345,7 +1407,7 @@ By definition, $c(\graph)$ is the exponential growth rate of $c_n$.
 \end{example}
 
 More general models of walks can be defined via measures on $\dwalks_n$. In fact,
-it is sometimes more convenient to discuss models walks parameterized by an
+it is sometimes more convenient to discuss models of walks parameterized by an
 interval $[0, T]$. In both cases, we can conveniently define Gibbs measures
 directly in infinite-volume with respect to the base measure induced by simple
 random walk. Instead of discussing general models, we will proceed directly to
@@ -1443,7 +1505,7 @@ U_{\gcc,\gamma}(f)
 \end{equation}
 for $f : \vertices \to \R$.
 The \emph{weakly self-avoiding walk with self-attraction} (WSAW-SA) is defined
-via the Hamiltonian
+by the Hamiltonian
 \begin{equation}
 \label{e:V}
 U_{\gcc,\gamma,T}
@@ -1463,11 +1525,12 @@ We will refer to the case $\gamma = 0$ as the \emph{weakly self-avoiding walk} (
 We let
 \begin{equation}
 \label{e:c}
-    c_T = E_a\left(e^{-U_{\gcc,\gamma,T}}\right),
-    \quad
-    c_T(x) = E_0\left(e^{-U_{\gcc,\gamma,T}}\1_{X_T = x}\right).
+c_T = E_0\left(e^{-U_{\gcc,\gamma,T}}\right),
+	\quad
+c_T(x) = E_0\left(e^{-U_{\gcc,\gamma,T}}\1_{X_T = x}\right).
 \end{equation}
-The \emph{two-point function} and \emph{susceptibility} are defined by
+The \emph{two-point function} and \emph{susceptibility} are defined
+as the Laplace transforms of these weights:
 \begin{align}
 \lbeq{Gsa}
 G_x(\gcc,\gamma,\nu)
@@ -1483,12 +1546,12 @@ and
 	=
 \sum_{x\in\Zd} G_x(\gcc,\gamma,\nu),
 \end{equation}
-which is more-or-less consistent with \eqref{e:susceptibility-def} (we will
-establish an exact analogue of \eqref{e:susceptibility-def} in Proposition~\ref{prop:finvol}).
-The relationship
-between the two-point function for this model and for spin systems will be
-discussed in Section~\ref{sec:intrep}. We also have a version of the
-the \emph{correlation length of order $p$}
+Note that \eqref{e:susceptibility-def} is more-or-less consistent with \eqref{e:susceptibility-def}
+We will establish an exact analogue of \eqref{e:susceptibility-def} in Proposition~\ref{prop:finvol}.
+The relationship between the two-point for walks and spin systems will be
+discussed in Section~\ref{sec:intrep}.
+
+We also have a version of the the \emph{correlation length of order $p$}:
 \begin{align}
 \label{e:clp-wsawsa}
 \xi_p(\gcc, \gamma, \nu)
@@ -1505,12 +1568,14 @@ Note that
 \end{equation}
 On $\Zd$, a version of the correlation length can be defined exactly as in \eqref{e:cl-spins}.
 
+\begin{rk}
 The discrete-time version of the WSAW-SA is straightforward to define in terms of
 discrete-time simple random walk; when
 $\gamma = 0$, it is known as the \emph{Domb-Joyce model} or \emph{discrete-time
 weakly self-avoiding walk}. A sample of the Domb-Joyce model with 100 steps is shown
 in Figure~\ref{fig:domb-joyce}. The SAW can be recovered as an
 appropriate limit of the Domb-Joyce model or the continuous-time WSAW \cite{BDS12}.
+\end{rk}
 
 \subsubsection{Alternative representation}
 
@@ -1523,8 +1588,8 @@ For $f : \Zd \to \R$, let
 Then by \eqref{e:sbp-gen}
 \begin{equation}
 \label{e:sbp}
-\sum_{x\in\Zd} f_x \Delta_{\Zd} f_x
-=
+\sum_{x\in\Zd} f_x \Delta f_x
+	=
 -\frac{1}{2} |\nabla f|^2.
 \end{equation}
 It follows that
@@ -1532,7 +1597,7 @@ It follows that
 \sum_{x\in\Zd} \sum_{e\in\Ucal} f_x f_{x+e}
 =
 2 d \sum_{x\in\Zd} f_x^2
-+ \sum_{x\in\Zd} f_x \Delta_{\Zd} f_x
++ \sum_{x\in\Zd} f_x \Delta f_x
 =
 2 d \sum_{x\in\Zd} f_x^2
 - \frac{1}{2} \sum_{x\in\Zd} |\nabla f_x|^2
@@ -1575,7 +1640,7 @@ The two-point function, susceptibility, and correlations lengths of the
 self-avoiding walk and (discrete- or continuous-time) WSAW-SA (with $\gamma$ small
 depending on $\gcc$) on $\Zd$ are all expected
 to scale according to analogues of \eqref{e:Gpred}--\eqref{e:xippred}.
-The discussion in Section~\ref{sec:asymp} suggests that
+Moreover, the discussion in Section~\ref{sec:asymp} suggests that
 \begin{align}
 c_T                       &\sim C_5 e^{-\nu_c T} T^{-\gammabar}, \\
 \langle |X_T|^2 \rangle   &\sim C_6 T^{-\nubar}.
@@ -1583,12 +1648,11 @@ c_T                       &\sim C_5 e^{-\nu_c T} T^{-\gammabar}, \\
 The critical exponents $\gammabar, \nubar, \eta$ are expected to be universal;
 in particular, they should only depend on $d$ in this context.
 
-Below we discuss some of the predicted and known values of the critical exponents.
-We begin with a discussion of the exponents for $\gamma$ small before turning our
-attention to the case of large $\gamma$. A more detailed reference is \cite{MS93}.
-The values
-of $\nubar$ were first predicted\footnote{Flory's for $d = 3$ is no longer generally
-accepted} by the chemist Paul Flory \cite{Flor49}, who
+% Below we discuss some of the predicted and known values of the critical exponents.
+Below, we discussion the predicted values of the exponents for $\gamma$ small before
+turning our attention to the case of large $\gamma$. A more detailed reference is
+\cite{MS93}. The values of $\nubar$ were first predicted\footnote{Flory's prediction
+for $d = 3$ is no longer generally accepted.} by the chemist Paul Flory \cite{Flor49}, who
 later won the 1974 Nobel Prize in Chemistry for his work on polymers.
 
 \subsubsection{Dimension $d = 1$}
@@ -1611,7 +1675,7 @@ It is not immediately clear how to make sense of the supercritical regime
 However, the authors of \cite{LSW04} considered SAW on a discretized bounded
 planar domain. They showed that the scaling limit of supercritical
 SAW conditioned to start and end on the boundary of the domain is space-filling
-(their results extend to all dimensions).
+(their results extend to all dimensions $d \ge 2$).
 
 \subsubsection{Dimension $d = 3$}
 
@@ -1622,7 +1686,7 @@ the critical exponents are available.
 
 The upper-critical dimensions for these models is $d = 4$ and the mean-field
 exponents are the same as for models in the Ising universality class, namely
-$\gammabar=1, \nubar = 1/2, \eta = 0$. In other words, self-avoiding walk
+$\gammabar=1$, $\nubar = 1/2$, $\eta = 0$. In other words, self-avoiding walk
 is expected to scale like simple random walk in dimensions above $4$.
 
 In $d > 4$, Brydges and Spencer \cite{BS85} showed that $\nubar = 1/2$ for the
@@ -1650,11 +1714,11 @@ studied.
 Let $d \ge 2$. The predicted behaviour of self-avoiding walk with attraction is discussed
 in \cite{Vand98}.
 When $\gamma$ reaches the $\theta$-curve in Figure~\REF, it is predicted
-that the values for $\nubar$ changes discontinuously to $\nubar_\theta = 4/7$ if $d = 2$
+that the value of $\nubar$ changes discontinuously to $\nubar_\theta = 4/7$ if $d = 2$
 and $\nubar_\theta = 1/2$ if $d \ge 3$. The predicted values for $\nubar$
 in the other regions of the phase diagram are shown in the figure. In particular, for
 $\gamma > \beta$, the WSAW-SA is expected to undergo a collapse transition ($\nubar = 0$).
 This has recently been shown for a model of prudent self-avoiding walk with self-attraction
 in \cite{PT16}.
 
-\commentbw{WSAW-SA phase diagram and known results (as in saw-sa)}
+\commentbw{Insert phase diagram}

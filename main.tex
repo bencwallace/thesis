@@ -3,34 +3,20 @@
 
 For any integer $n \ge 1$, let $G_x(g, \gamma, \nu; n)$
 denote the two-point point function for the version of the $|\varphi|^4$ model
-as defined by \eqref{e:two-point-function-phi4}.
+defined by \eqref{e:two-point-function-phi4}.
 We let $G_x(g, \gamma, \nu; 0)$ denote the two-point function of the WSAW-SA,
 defined in \eqref{e:Gsa}; this notation will be explained in Section~\ref{sec:spin-walk}.
 We employ similar conventions for the susceptibility, correlation length of order $p$,
 and critical point, which we denote by
-$\chi(g, \gamma, \nu; n), \xi_p(g, \gamma, \nu; n), \nu_c(g, \gamma, \nu; n)$, respectively.
+$\chi(g, \gamma, \nu; n)$, $\xi_p(g, \gamma, \nu; n)$, $\nu_c(g, \gamma, \nu; n)$, respectively,
+with $n \ge 0$ an integer.
 When $n = 0$, these correspond to the WSAW-SA, whereas for $n \ge 1$ they correspond to the
-Ising model. In either case, they are defined by
-\begin{align}
-\label{e:chilim}
-\chi(\gcc, \gamma, \nu; n)
-	&= \lim_{N\to\infty} \chi_N(\gcc, \gamma, \nu; n) \\
-\label{e:chiNdef}
-\chi_N(\gcc, \gamma, \nu; n)
-	&= \sum_{x\in\Lambda_N} G_{x,N}(\gcc, \gamma, \nu; n). \\
-\label{e:clp}
-\xi_p(g, \gamma, \nu; n)
-	&= \left(\frac{\sum_{x\in\Zd} |x|^p G_x(g, \gamma, \nu; n)}{\chi(g, \gamma, \nu; n)}\right)^{1/p} \\
-\label{e:nuc-def}
-\nu_c
-	= \nu_c(\gcc, \gamma; n) &= \inf \{ \nu : \chi(g, \gamma, \nu; n) < \infty \}.
-\end{align}
+Ising model. The following theorem is the main result of this thesis.
 
 \begin{theorem}
 \label{thm:mr}
 Let $d = 4$ and $n \ge 0$. For $L$ sufficiently large (depending on $n$),
-there exist $\gcc_* > 0$
-and a positive function $\gamma_* : (0, \gcc_*) \to \R$
+there exists $\gcc_* > 0$ and a positive function $\gamma_* : (0, \gcc_*) \to \R$
 such that whenever $0 < \gcc < \gcc_*$ and $|\gamma| < \gamma_*(\gcc)$,
 there are constants $A_{\gcc,\gamma,n}$ and $B_{\gcc,\gamma,n}$ such that the following hold:
 
@@ -40,11 +26,11 @@ The critical two-point function decays as
 \begin{equation}
 G_x(\gcc,\gamma,\nu_c; n)
     =
-A_{\gcc,\gamma} |x|^{-2} (1 + O((\log |x|)^{-1}))
+A_{\gcc,\gamma,n} |x|^{-2} \big(1 + O((\log |x|)^{-1})\big)
     \quad
 \text{as $|x|\to\infty$},
 \end{equation}
-with $A_{\gcc,\gamma} = (4 \pi)^{-2} (1 + O(\gcc))$ as $\gcc \downarrow 0$.
+with $A_{\gcc,\gamma,n} = (4 \pi)^{-2} (1 + O(\gcc))$ as $\gcc \downarrow 0$.
 
 \smallskip\noindent
 (ii)
@@ -61,7 +47,7 @@ as $\gcc \downarrow 0$.
 
 \smallskip\noindent
 (iii)
-For any $p >0$, if $L$ is chosen large and $\gcc_*$ small both depending on $p$,
+For any $p >0$, if $L$ is chosen large and $\gcc_*$ small (both depending on $p$),
 then the correlation length of order $p$ diverges as
 \begin{equation} \label{e:xieps-asympt}
 \xi_p(\gcc, \gamma, \nu_c + \varepsilon; n)
@@ -79,8 +65,11 @@ with
 \end{equation}
 \end{theorem}
 
-The $\gamma = 0$ cases of (i) and (ii) were proved by Bauerschmidt, Brydges, and
-Slade. The $n > 0$ case with $\gamma \ne 0$ is a new result in this thesis. We
+The $\gamma = 0$ cases of (i) and (ii) were proved by Bauerschmidt, Brydges,
+and Slade in \cite{BBS-saw4,BBS-saw4-log};
+in fact, the $n = 1$ case of their results were first obtained in
+\cite{Hara87,HT87,GK85,FMRS87}.
+The $n > 0$ case with $\gamma \ne 0$ is a new result in this thesis. We
 will only discuss the proof of the $\gamma \ge 0$ case, which is of primary
 interest. The proof of the $\gamma < 0$ case with $n = 0$ can be found in
 \cite{BSW-saw-sa} and the extension to $n \ge 1$ is straightforward.
