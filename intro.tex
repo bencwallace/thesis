@@ -336,7 +336,6 @@ whose solution with initial condition $\psi(0)$ is given by
 $\psi(t) = e^{-it\hat H/\hbar} \psi(0)$.
 
 Suppose that the solution operator is an integral operator with kernel $K_t$,
-i.e.\
 \begin{equation}
 e^{-it\hat H/\hbar} f = \int K_t(\cdot, y) f(y) \; dy.
 \end{equation}
@@ -394,14 +393,14 @@ spaces of fields on discrete approximations to $\Rd$ (graphs).
 
 \begin{rk}
 In fact, it turns out that \eqref{e:heat-kernel-fake} is not too unreasonable.
-For simplicity, let us take $\hbar = 1$ and $m = 1/2$.
+For simplicity, let us take $\hbar = 1$ and $m = 1$.
 Then we would expect $\tilde\psi$ to solve
 \begin{equation}
 \label{e:linear-pde}
 \dd{\tilde\psi}{t} = -\hat H \tilde\psi.
 % -\frac{1}{\hbar} \hat H \tilde\psi.
 \end{equation}
-When $U = 0$, we have $H(x, p) = |p|^2$, so $\hat H = -\Delta_{\R^{3n}}$
+When $U = 0$, we have $H(x, p) = |p|^2$, so $\hat H = -\tfrac12 \Delta_{\R^{3n}}$
 is the Laplacian on $\R^{3n}$ and \eqref{e:linear-pde} is the heat equation.
 On the other hand, $\int_0^t H$ is a positive-definite quadratic form, so
 \eqref{e:heat-kernel-fake} is formally a Gaussian integral. This is consistent
@@ -411,7 +410,7 @@ $\tilde\psi(t, x) = \Ex(\tilde\psi(0, B_t) \mid B_0 = x)$,
 where $B_t$ is a Brownian motion.
 
 More generally, for appropriate choices of $U \ne 0$, differential equations of
-the form \eqref{e:linear-pde} (for appropriate $\hat H$) can be expressed in terms
+the form \eqref{e:linear-pde} can be expressed in terms
 solutions to stochastic differential equations (this is the Feynman-Kac formula).
 \end{rk}
 
@@ -421,35 +420,23 @@ solutions to stochastic differential equations (this is the Feynman-Kac formula)
 \section{Graphs}
 \label{sec:graphs}
 
-Graphs are a useful setting for the definition of spatially-extended systems of
-particles.
+% Graphs are a useful setting for the definition of spatially-extended systems of particles.
 
 An \emph{undirected graph} or simply a \emph{graph} is a pair $\graph = (\vertices, \edges)$,
 where $\vertices$
 is a set of \emph{vertices} and $\edges$ is a set of
 \emph{edges} $\{ x, y \}$ with $x, y \in \vertices$; we will write $x \sim y$ if
 $\{ x, y \} \in \edges$.
-For simplicity, we will assume that $\vertices$ is countable annd that there are no
+For simplicity, we will assume that $\vertices$ is countable and that there are no
 \emph{self-loops} $\{ x \} \in \edges$.
 
 A graph \emph{automorphism} is a function $f : \vertices\to\vertices$ such that
 $x \sim y$ if and only if $f(x) \sim f(y)$.
-We will assume that $\graph$ is \emph{(vertex-)transitive} meaning that for all pairs
+We will assume that $\graph$ is \emph{transitive} meaning that for all pairs
 of distinct
 vertices $a, b \in \vertices$, there exists an automorphism $f$ with $f(a) = b$.
 We fix a vertex $0\in\vertices$ whose precise choice is immaterial due to
 transitivity.
-
-\begin{example}
-Let $L > 1$ be an integer. For $N \ge 0$, let
-\begin{equation}
-\label{e:Lambda-torus}
-\Lambda = \Lambda_N = \Zd/L^N\Zd.
-\end{equation}
-We call $\Lambda$ the (discrete) $d$-dimensional \emph{torus} of side $L^N$.
-We view $\Lambda$ as a graph with $\vertices = \Lambda$ and $x \sim y$ if
-$x$ and $y$ are nearest neighbours. This graph is clearly transitive.
-\end{example}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -478,8 +465,10 @@ component-wise:
 
 Let us say that a $\vertices\times\vertices$ matrix $M$ is \emph{indexed by} $\edges$
 if $M_{xy} = 0$ if and only if $x \not\sim y$.
-
-Throughout this chapter, we let $\jay$ be a matrix indexed by $\edges$ with nonnegative entries.
+Throughout this chapter, we let $\jay$ be a matrix indexed by $\edges$ with nonnegative entries:
+\begin{equation}
+\jay_{xy} \ge 0.
+\end{equation}
 % Thus, $\jay_{xy} \ge 0$ with equality if and only if $x\not\sim y$.
 The pair $(\graph, \jay)$ is an example of a \emph{weighted} graph.
 We will usually denote this weighted graph simply as $\graph$, with $\jay$
@@ -487,21 +476,22 @@ implicit.
 
 Let $\diag$ be the diagonal $\vertices\times\vertices$ matrix with diagonal entries
 \begin{equation}
-d_x = \diag_{xx} = \sum_{y \sim x} J_{xy}.
+d_x = \diag_{xx} = \sum_{y \sim x} J_{xy},
 \end{equation}
+where the sum is over all vertices $y$ adjacent to $x$.
 We say that $\graph$ is \emph{$d_0$-regular} if $d_x = d_y$ for all $x, y$.
 
-The \emph{(massless) graph Laplacian} on $\graph$ is defined by
+The \emph{graph Laplacian} on $\graph$ is defined by
 \begin{equation}
 -\lap = \diag - \jay.
 \end{equation}
-We also define the \emph{massive Laplacian} with squared \emph{mass} $m^2 > 0$
-by
+We also define the \emph{massive Laplacian} with squared \emph{mass} $m^2 > 0$ by
 \begin{equation}
 -\lap + m^2.
 \end{equation}
 Note that
 \begin{equation}
+\label{e:sbp-gen}
 \varphi \cdot (-\lap \varphi)
   =
 \frac{1}{2} \sum_{x,y\in\vertices} J_{xy} |\varphi_x - \varphi_y|^2
@@ -518,6 +508,17 @@ In this case, $d_x$ is the \emph{degree} of $x$ in $\graph$ and
 \label{e:Deltaxy}
 -\Delta_{xy} = d_x \1_{x=y} - \1_{x \sim y}.
 \end{equation}
+In particular, we will often work on the discrete $d$-dimensional \emph{torus}
+of side $L^N$, defined by
+\begin{equation}
+\label{e:Lambda-torus}
+\Lambda = \Lambda_N = \Zd/L^N\Zd
+\end{equation}
+for integers $L > 1$ and $N \ge 0$.
+We view $\Lambda$ as a graph with $\vertices = \Lambda$ and $x \sim y$ if
+$x$ and $y$ are nearest neighbours in $\Lambda$. This graph is clearly transitive
+and $d_x = 2d$.
+\commentbw{This is really two examples as such.}
 \end{example}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -549,24 +550,24 @@ C_{xy}
 \section{Spin systems}
 \label{sec:spins}
 
-We begin with a brief discussion of spin systems in finite volume. Excellent
-references on these topics include \cite{Georgii11} and \cite{FV17}.
-
-Suppose that $S \subset \R^n$ is equipped with a measure $d\lambda^0$, let
-$\Omega = S^\vertices$, and suppose that
+% We begin with a brief discussion of spin systems in finite volume.
+% Excellent references are \cite{Georgii11} and \cite{FV17}.
+Let us begin by discussing spin systems in \emph{finite} volume. That is, we
+let
 \begin{equation}
-|\vertices| < \infty
+|\vertices| < \infty.
 \end{equation}
-so that the product measure
+Suppose that $S \subset \R^n$ is equipped with a measure $d\lambda^0$, let
+$\Omega = S^\vertices$, and define the product measure
 \begin{equation}
 d\lambda(\varphi) = \prod_{x\in\vertices} d\lambda^0(\varphi_x)
 \end{equation}
-is well-defined on $\Omega$. We refer to the elements of $\Omega$ as \emph{fields}
+on $\Omega$. We refer to the elements of $\Omega$ as \emph{fields}
 or \emph{spin configurations} on $\vertices$ with spins in $S$.
 
 Let $H : \Omega \to \R$ be a function and suppose
 that $e^{-H}$ is integrable with respect to $d\lambda$.
-A \emph{spin system} with Hamiltonian $H : \Omega \to \R$ is given
+The \emph{spin system} with Hamiltonian $H : \Omega \to \R$ is given
 by the Gibbs measure
 \begin{equation}
 \label{e:gibbs-spin}
@@ -580,7 +581,7 @@ We sometimes add an \emph{external field} $h \in \R$ by considering the measure
 d\mu_{\beta,h}(\varphi)
 	=
 \frac{1}{Z_{\beta,h}}
-e^{-\beta (H(\varphi) - h \sum_{x\in\vertices} \varphi_x)} \; d\lambda(\varphi).
+e^{-\beta \big(H(\varphi) - h \sum_{x\in\vertices} \varphi_x\big)} \; d\lambda(\varphi).
 \end{equation}
 We will mainly be concerned with \emph{ferromagnetic} spin systems, for which the
 Hamiltonian has the form
@@ -606,13 +607,11 @@ generality.
 
 \subsubsection{Gaussian measures}
 
-If the Hamiltonian $H$ is constant, then the spins in the corresponding spin system
-are independent random variables. Here we discuss the most basic non-trivial example
-of a spin system.
-
 Suppose $S = \R^n$ and $\lambda^0$ is Lebesgue measure. Then the Hamiltonian
 $H$ must be bounded below for the Gibbs measure \eqref{e:gibbs-spin} to be
-well-defined. Essentially the simplest class of non-constant Hamiltonians
+well-defined. Essentially the simplest class of
+non-constant\footnote{The Gibbs measure with constant Hamiltonian is just the
+product measure.} Hamiltonians
 are positive-definite quadratic forms. These are given via a positive-definite
 symmetric $\vertices\times\vertices$ matrix $C$, called the \emph{covariance}
 matrix, and take the form
@@ -648,7 +647,7 @@ this set into $2$-element subsets).
 
 As in the previous example, let $S = \R^n$ and $\lambda^0$ be Lebesgue measure.
 The next step up in complexity is a quartic Hamiltonian. In particular, we have
-the Hamiltonian for the lattice $|\varphi|^4$ model or Ginzburg-Landau-Wilson model:
+the Hamiltonian for the \emph{lattice $|\varphi|^4$ model} or \emph{Ginzburg-Landau-Wilson model}:
 \begin{equation}
 \label{e:phi4-Ham}
 H_{\gcc,\nu}(\varphi)
@@ -664,26 +663,32 @@ H_{\gcc,\nu}(\varphi)
 \end{equation}
 where $\gcc > 0$ and $\nu\in\R$.
 The expression \eqref{e:phi4-Ham} should be compared with \eqref{e:total-energy}.
-With $p = m \dot q$ (the dot denotes the derivative with respect to time) in the latter
-expression, the kinetic energy takes the form
+With $p = m \dot q$ in the latter expression, the kinetic energy takes the form
 $\tfrac12 m |\dot q|^2$. The lattice analogue of this quantity in \eqref{e:phi4-Ham} is
 \begin{equation}
+\label{e:discrete-kinetic}
 \frac12 \sum_{x\in\vertices} \varphi_x \cdot (-\lap \varphi)_x
 	=
-\frac14 \sum_{x\in\vertices} \sum_{y\sim x} (\varphi_y - \varphi_x)^2.
+\frac14 \sum_{x\in\vertices} \sum_{y\sim x} (\varphi_y - \varphi_x)^2,
 \end{equation}
+where we have applied \eqref{e:sbp-gen} to get the right-hand side.
 
 \begin{example}[The GFF]
-A special case of the $|\varphi|^4$ model is the case $g = 0$ and $\nu > 0$.
-In this case,
+With $g = 0$ and $\nu > 0$,
 \begin{equation}
 H_{0,\nu}(\varphi) = H_C(\varphi),
-	\quad
+	\qquad
 C = (-\lap + \nu)^{-1}.
 \end{equation}
-This is the Hamiltonian for the Gaussian measure with covariance given by the massive
-Green function; the corresponding spin system is the discrete massive \emph{Gaussian free
-field} or \emph{GFF}.
+In other words, the $|\varphi|^4$ model becomes the Gaussian measure with covariance given
+by the massive Green function. The corresponding spin system is the discrete massive
+\emph{Gaussian free field} or \emph{GFF}.
+
+The continuum analog of this model with mass $0$
+(which can be defined for $d > 2$) is a simple example of a
+non-interacting\footnote{The corresponding classical model only involves the kinetic term
+\eqref{e:discrete-kinetic}.} quantum field theory. The $|\varphi|^4$ model was introduced
+in attempts to construct an \emph{interacting} theory.
 \end{example}
 
 \subsubsection{The $O(n)$ spin model}
@@ -696,7 +701,7 @@ H_{\gcc,\nu}(\varphi)
   =
 \sum_{x\in\vertices} U_{\gcc,\nu}(\varphi_x) - \frac{1}{2} \varphi \cdot \jay \varphi,
 \end{equation}
-where the single-spin \emph{potential} $U_{\gcc,\nu}$ is defined by
+where the \emph{single-spin potential} $U_{\gcc,\nu}$ is given by
 \begin{equation}
 U_{\gcc,\nu}(t)
 	=
@@ -707,8 +712,8 @@ U_{\gcc,\nu}(t)
 t \in \R^n.
 \end{equation}
 We can see from \eqref{e:phi4-split} that the $|\varphi|^4$ model is ferromagnetic.
-When $\nu + d_0 < 0$, the potential has the shape of a double well with roots at $0$
-and $\pm\sqrt{-2 (\nu + d_0) / \gcc}$.
+When $\nu + d_0 < 0$, the potential has the shape of a double well with roots at
+$t = 0$ and on the sphere $|t| = \pm\sqrt{-2 (\nu + d_0) / \gcc}$.
 Thus, as $\gcc\to\infty$ with $\nu = -(d_0 + \gcc/2)$, the Gibbs measure for the
 $|\varphi|^4$ model converges to the Gibbs measure with Hamiltonian
 \begin{equation}
@@ -723,16 +728,19 @@ famous \emph{Ising model}. The cases $n = 2$ and $n = 3$ are known as the
 \emph{XY model} and the \emph{classical Heisenberg model}.
 
 \begin{rk}
-The Ising model on $\Zd$ (defined by a suitable limiting procedure) was introduced
+The Ising model on $\Zd$ (defined by a limiting procedure) was introduced
 by Willhelm Lenz \cite{Lenz20}. Lenz
 suggested it as a problem for his student Ernst Ising, who determined in 1924
 \cite{Ising25} that there is no (non-trivial) phase transition when $d = 1$.
-In \cite{Heisenberg28}, Heisenberg, seeking a model that would possess a phase transition,
-proposed the quantum version of his model (see \cite{Brush67}).
+In \cite{Heisenberg28} Heisenberg, seeking a model that would possess a phase transition,
+proposed the quantum version of his model (see \cite{Brush67} for a discussion on this).
 Ironically, it turns out that the classical version of his model does not possess a phase
 transition in both $d = 1$ and $d = 2$; and, moreover, in 1936
 Rudolf Peierls \cite{Peierls36} put forth an argument for the existence of a phase transition
-in the Ising model if $d >2 2$, which was made rigorous in \cite{Griffiths64}.
+in the Ising model if $d > 2$. Peierl's argument was made rigorous in \cite{Griffiths64},
+but even before that Onsager \cite{Onsager44} provided an exact computation of the
+free free energy in $d = 2$, which uncontrovertibly demonstrated the existence of a
+phase transition in two dimensions.
 The general $O(n)$ model was first studied in \cite{Stanley68}.
 % In 1944, Onsager \cite{Onsager44} provided an exact calculation of the free
 % energy in $d = 2$ with $h = 0$.
@@ -742,11 +750,12 @@ The general $O(n)$ model was first studied in \cite{Stanley68}.
 
 \commentbw{When are these things known to be true? Maybe scrap this}
 
-In this section we discuss the phase transition for the Ising model for $d > 1$.
+In this section we discuss the phase transition for the Ising model on $\Zd$ with $d > 1$.
 
-Let $B_N = [-N, N]^d \cap \Zd$ and let $\partial V = \partial B_N$ be the
+Let $B_N = [-N, N]^d \cap \Zd$ and let $\partial V = \partial B_N$ be the external
 vertex boundary of $B_N$. For each $x\in\partial\vertices$, let $b_x \in \{-1, 0, 1\}$
-be a choice of \emph{boundary condition}, let $h \in \R$ be an \emph{external field},
+be a choice of \emph{boundary condition}
+% let $h \in \R$ be an \emph{external field},
 and consider the Hamiltonian
 \begin{equation}
 H(\varphi)
@@ -757,6 +766,7 @@ H(\varphi)
 \end{equation}
 on $\{\pm1\}^{B_N}$. This is a small generalization of the Hamiltonian \eqref{e:on-model}
 for the Ising model ($n = 1$) on $B_N$ with $\jay_{xy} = \1_{x\sim y}$.
+\commentbw{Get rid of boundary conditions}
 
 For now, let us employ \emph{free} boundary conditions $b \equiv 0$ (we will discuss
 other boundary conditions in Section~\ref{sec:dimension}).
@@ -802,11 +812,9 @@ where
 \begin{equation}
 G_x(\beta, h)
 	=
-\Big(
-	\langle \varphi_0 \varphi_x \rangle_{\beta,h}
-		-
-	\langle \varphi_0 \rangle_{\beta,h} \langle \varphi_x \rangle_{\beta,h}
-\Big)
+\langle \varphi_0 \varphi_x \rangle_{\beta,h}
+	-
+\langle \varphi_0 \rangle_{\beta,h} \langle \varphi_x \rangle_{\beta,h}
 \end{equation}
 is the correlation between $\varphi_0$ and $\varphi_x$, known as the \emph{two-point function}.
 It can be shown that (for $d > 1$) the susceptibility diverges at $\beta_c$.
@@ -871,6 +879,7 @@ $[-\frac12 L^N+1,\frac12 L^N]^d \cap \Z^d$ if $L^N$ is even
 and as $[-\frac12 (L^N-1), \frac12 (L^N-1)]^d \cap \Z^d$ if $L^N$ is odd). This allows us to preserve
 translation-invariance of the models that concern us when defining them in finite volume.
 
+\commentbw{Define discrete gradients}
 In particular, we will study a generalization of the $|\varphi|^4$ model whose Hamiltonian
 on $\Lambda_N$ is given by
 \begin{equation}
@@ -1169,6 +1178,8 @@ called the \emph{upper-critical dimension} for this class of models.
 For lattice models, results are upcoming in \cite{BHH17}.
 
 \subsubsection{Dimension $d = 4$}
+
+\commentbw{Mention that this is the primary case of interest in QFT.}
 
 It is predicted in dimension $4$ that a number of observables scale according to a
 power law with mean-field critical exponents and multiplicative logarithmic
@@ -1509,10 +1520,10 @@ For $f : \Zd \to \R$, let
 	\qquad
 |\nabla f|^2 = \sum_{x\in\Zd} |\nabla f_x|^2.
 \end{equation}
-Then
+Then by \eqref{e:sbp-gen}
 \begin{equation}
 \label{e:sbp}
-\sum_{x\in\Zd}   f_x \Delta_{\Zd} f_x
+\sum_{x\in\Zd} f_x \Delta_{\Zd} f_x
 =
 -\frac{1}{2} |\nabla f|^2.
 \end{equation}
