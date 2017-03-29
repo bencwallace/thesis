@@ -73,7 +73,7 @@ there is a \emph{critical point} $(T_c(P_c), P_c)$ at which this difference vani
 \centering
 \label{fig:liquid-vapour}
 \includegraphics{liquid_vapour}
-\caption{The phase diagram of $\rm H_2 O$}
+\caption[Phase diagram of $\rm H_2 O$]{The phase diagram of $\rm H_2 O$}
 \end{figure}
 
 Since statistical mechanics deals with extremely large, complicated systems of
@@ -487,6 +487,11 @@ The \emph{graph Laplacian} on $\graph$ is defined by
 \begin{equation}
 -\lap = \diag - \jay.
 \end{equation}
+An important case is when $\jay_{xy} = \1_{x\sim y}$, for which
+\begin{equation}
+\label{e:Deltaxy}
+-\Delta_{xy} = d_x \1_{x=y} - \1_{x \sim y}.
+\end{equation}
 We also define the \emph{massive Laplacian} with squared \emph{mass} $m^2 > 0$ by
 \begin{equation}
 -\lap + m^2.
@@ -503,14 +508,7 @@ Note that
 so $-\lap$ is positive-semidefinite.
 
 \begin{example}
-An important case is when $\jay_{xy} = \1_{x\sim y}$.
-In this case, $d_x$ is the \emph{degree} of $x$ in $\graph$ and
-% we denote $\lap$ by $\Delta$, which has entries given by
-\begin{equation}
-\label{e:Deltaxy}
--\Delta_{xy} = d_x \1_{x=y} - \1_{x \sim y}.
-\end{equation}
-In particular, we will often work on the discrete $d$-dimensional \emph{torus}
+We will often work on the discrete $d$-dimensional \emph{torus}
 of side $L^N$, defined by
 \begin{equation}
 \label{e:Lambda-torus}
@@ -520,7 +518,6 @@ for integers $L > 1$ and $N \ge 0$.
 We view $\Lambda$ as a graph with $\vertices = \Lambda$ and $x \sim y$ if
 $x$ and $y$ are nearest neighbours in $\Lambda$. This graph is clearly transitive
 and $d_x = 2d$.
-\commentbw{This is really two examples as such.}
 \end{example}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1111,7 +1108,7 @@ On $\Zd$, \eqref{e:greendef} and \eqref{e:wick} imply that
 \begin{equation}
 G_x(0, 0, m^2; n)
 	=
-(m^2 + 2 d)^{-1} \sum_{n=0}^\infty z^n P^n_{0x},
+(m^2 + 2 d)^{-1} \sum_{k=0}^\infty z^k P^k_{0x},
 \end{equation}
 where $z = 2 d / (m^2 + 2 d)$ and $P = (2 d)^{-1} J$
 is the transition matrix for the simple random walk $X$ on $\Zd$.
@@ -1121,11 +1118,11 @@ Thus, for $m^2 > 0$,
   % =
 % \sum_{x\in\vertices} (-\Delta + m^2)^{-1}_{0x}
   =
-(m^2 + 2 d)^{-1} \sum_{n=0}^\infty z^n
+(m^2 + 2 d)^{-1} \sum_{k=0}^\infty z^k
   =
-(1 - z)^{-1}.
+(m^2 + 2 d)^{-1} (1 - z)^{-1}.
 \end{equation}
-It follows that $\nu_c(0, 0; n) = 0$ and the $\gammabar = 1$ for this model.
+It follows that $\nu_c(0, 0; n) = 0$ and $\gammabar = 1$ for this model.
 It can also be shown that $\nubar = 1/2$ and $\eta = 0$ in this case
 (e.g.\ see \cite{Lawl85} for $\eta$). In Appendix~\ref{sec:freeclp}, we give a new
 proof that $\nubar = 1/2$ for $\xi_p(0, 0, m^2; n)$.
@@ -1354,7 +1351,7 @@ will discuss further in Section~\ref{sec:rg}.
 % In this thesis, we focus on continuous-time walks, which we define in the next
 % section. Before proceeding, however, we discuss the following important example.
 
-We begin this section with the following simple example.
+We begin with the following example.
 
 \begin{example}[Self-avoiding walk]
 Let $\omega : \{0,\ldots,n\} \to \vertices$ be a \emph{discrete-time walk}
@@ -1383,7 +1380,7 @@ right-hand side of \eqref{e:consistent-fam} is $0$.
 \label{fig:trap}
 \centering
 \includegraphics{trapped_compact}
-\caption{A trapped self-avoiding walk}
+\caption[Trapped SAW]{A trapped self-avoiding walk}
 \end{figure}
 
 As a result, there is no straightforward way to apply the usual methods of stochastic processes
@@ -1519,7 +1516,7 @@ We will refer to the case $\gamma = 0$ as the \emph{weakly self-avoiding walk} (
 \centering
 \label{fig:domb-joyce}
 \includegraphics{domb-joyce-black-small.png}
-\caption{Monte Carlo simulation of discrete-time WSAW with 100 steps}
+\caption[Discrete WSAW]{Monte Carlo simulation of discrete-time WSAW with 100 steps}
 \end{figure}
 
 We let
@@ -1698,6 +1695,45 @@ and correlation length of order $2$), and $\eta = 0$.
 
 Even above the upper-critical dimension, very little is known about WSAW-SA with
 $\gamma \ne 0$. Exceptions include \cite{HH17,Uelt02}.
+
+\begin{rk}
+We define the free \emph{bubble diagram} to be the $\ell^2(\Zd)$ norm of the massive
+Green function viewed as a function of one variable ($x \mapsto C_{0x}$). Thus, by
+\eqref{e:greendef},
+\begin{equation}
+\label{e:bubble-def}
+B_{m^2}
+	=
+\|C\|_{\ell^2(\Zd)}
+	=
+(m^2 + 2 d)^{-2} \sum_{m,n=0}^\infty z^{m+n} \Pr(X_m = Y_n),
+\end{equation}
+where $X$ and $Y$ are independent simple random walks started at $0$. Thus, $B_{m^2}$
+is proportional to the expected number of intersections between the traces of two
+such random walks \emph{killed} at rate $1 - z$. The upper-critical dimension can
+be ``guessed'' as follows. First, we make the convenient definitions
+\begin{equation}
+\label{e:bubble}
+{\sf B}_{m^2} = (n + 8) B_{m^2},
+	\quad
+{\sf b} = \frac{n + 8}{16\pi^2}.
+\end{equation}
+Then it is an exercise in Fourier analysis to show that
+\begin{equation}
+\label{e:bubble-log}
+{\sf B}_{m^2}
+	\sim
+\begin{cases}
+{\sf b} \log m^{-2},
+	&
+d = 4
+	\\
+{\sf B}_0,
+	&
+d > 4.
+\end{cases}
+\end{equation}
+\end{rk}
 
 \subsubsection{Dimension $d = 4$}
 

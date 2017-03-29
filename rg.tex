@@ -1001,19 +1001,27 @@ g_0
 \end{equation}
 where
 \begin{equation}
-\beta_j = (8 + n) \sum_{x\in\Zd} (w_{j+1;0x}^2 - w_{j;0x}^2),
+\beta_j = (n + 8) \sum_{x\in\Zd} (w_{j+1;0x}^2 - w_{j;0x}^2),
 	\quad
 w_j = \sum_{i=1}^j C_i.
 \end{equation}
-The sequence $\beta_j$ is closely related to the free bubble diagram,
-which is the $\ell_2(\Zd)$ norm of the Green function $C$ (this is
-the expected number of intersections of two independent, killed simple
-random walks).
-
-\commentbw{Refer to discussion of bubble diagram in intro.}
-
-The recursion \eqref{e:gbar} was analyzed in \cite{BBS-rg-flow} and the
-results of this were used to show in
+Using Proposition~\ref{prop:Cdecomp}, it is straightforward to show that
+\begin{equation}
+\label{e:beta-bd}
+\beta_j = O(L^{-j (d - 4) - s (j - j_m)_+}).
+\end{equation}
+The sequence $\beta_j$ is closely related to the free bubble diagram
+\eqref{e:bubble}. Indeed, $\sum_j \beta_j$ is a telescoping sum. By
+\eqref{e:beta-bd}, the coefficients decay sufficiently rapidly that
+\begin{equation}
+\sum_{j=1}^\infty \beta_j
+	=
+{\sf B}_{m^2}.
+\end{equation}
+The logarithmic divergence of the bubble diagram in \eqref{e:bubble-log} is
+reflected in the behaviour of $g$ and, ultimately, in the appearance of logarithmic
+corrections in Theorem~\ref{thm:mr}. Precisely, the results of \cite{BBS-rg-flow},
+were used to show in
 \cite[Proposition~\ref{log-prop:approximate-flow}]{BBS-saw4-log}
 that
 \begin{equation}
@@ -1028,12 +1036,8 @@ O((\log |x|)^{-1}) \;\; \text{for $j_x \leq j_m$.}
 \end{equation}
 
 \begin{rk}
-A heuristic argument is as follows: Using Proposition~\ref{prop:Cdecomp}, it is
-straightforward to show that
-\begin{equation}
-\beta_j = O(L^{-j (d - 4) - s (j - j_m)_+}).
-\end{equation}
-Thus, a crude approximation to the flow of $\gbar$ is the recursion
+A heuristic argument is as follows: By \eqref{e:beta-bd}, a crude approximation to
+the flow of $\gbar$ is the recursion
 \begin{equation}
 y_{j+1} = y_j - c \1_{j \le j_m} y_j^2,
 	\quad

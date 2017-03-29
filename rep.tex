@@ -219,7 +219,20 @@ where
 \label{e:action}
 S_A = \sum_{x\in\Lambda} \Big(\phi_x (A\bar\phi)_x + \psi_x (A \bar\psi)_x\Big).
 \end{equation}
-The super-expectation possesses the following self-normalization property:
+% Note that the computation of \eqref{e:ExCF} always reduces to an integral of the form
+% \begin{equation}
+% \int f(\phi, \phib) \psi^{\Lambda\sqcup\bar\Lambda},
+% \end{equation}
+% where $\psi^{\Lambda\sqcup\bar\Lambda}$ denotes the product of all the fermionic fields
+% in their canonical ordering. Thus, in order to make the change of variables
+% $\psi_x \mapsto a \psi_x$ for some $x$ we must simply scale the integral by the factor
+% $a^{-1}$. This is the opposite effect of a bosonic change of variables $\phi_x \mapsto a \phi_x$
+The super-expectation possesses the remarkable property that
+\begin{equation}
+\label{e:tau-iso}
+\int e^{-S_A} F(\tau) = F(0).
+\end{equation}
+In particular,
 \begin{equation}
 \label{e:self-normal}
 \int e^{-S_A} = 1.
