@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE ipe SYSTEM "ipe.dtd">
 <ipe version="70107" creator="Ipe 7.1.10">
-<info created="D:20170329011353" modified="D:20170329011353"/>
+<info created="D:20170329011353" modified="D:20170329011737"/>
 <ipestyle name="basic">
 <symbol name="arrow/arc(spx)">
 <path stroke="sym-stroke" fill="sym-stroke" pen="sym-pen">
@@ -284,5 +284,7 @@ h
 266.049 586.049 l
 </path>
 <text transformations="translations" pos="163.519 580.121" stroke="black" type="label" width="23.82" height="6.42" depth="0" valign="baseline">$\bar\nu=0$</text>
+<text matrix="1 0 0 1 -2.33695 -1.94746" transformations="translations" pos="371.478 440.623" stroke="black" type="label" width="5.109" height="4.297" depth="1.93" valign="baseline">$g$</text>
+<text transformations="translations" pos="111.297 631.864" stroke="black" type="label" width="5.711" height="4.297" depth="1.93" valign="baseline">$\gamma$</text>
 </page>
 </ipe>
