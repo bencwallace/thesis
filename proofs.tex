@@ -1,16 +1,28 @@
 \chapter{Analysis of critical behaviour}
 \label{sec:chi-G-xi}
 
-In this chapter, we complete the proof of Theorem~\ref{thm:mr}.
-Throughout this chapter, we initialize the renormalisation group
-with the critical parameters of Theorem~\ref{thm:rhatflow}.
-For simplicity, we drop the parameter $n$ from the notation.
-
-In order to employ Theorem~\ref{thm:rhatflow}, we fix
-$\nu_0 = \hat\nu_0^c(m^2, g_0, \gamma_0)$
-and $z_0 = \hat z_0^c(m^2, g_0, \gamma_0)$. Then Theorem~\ref{thm:rhatflow}
-defines an infinite sequence $(U_j, K_j) \in \domRG_j$. Throughout this
-section we define the coefficients of $U_j$ as
+In this chapter, we prove Theorem~\ref{thm:mr} using Theorem~\ref{thm:rhatflow}.
+For simplicity, we drop the parameter $n$ from the notation. In order to employ
+Theorem~\ref{thm:rhatflow}, we fix
+\begin{equation}
+\nu_0 = \hat\nu_0^c(m^2, g_0, \gamma_0),
+	\quad
+z_0 = \hat z_0^c(m^2, g_0, \gamma_0).
+\end{equation}
+Then Theorem~\ref{thm:rhatflow} defines a sequence
+\begin{equation}
+(U_j, K_j) \in \domRG_j,
+	\quad
+0 \le j \le N
+\end{equation}
+for any $N$. Moreover, $U_j$ is independent of the volume, so we actually have
+an \emph{infinite} sequence
+\begin{equation}
+U_j \in \DV_j
+	\quad
+j \ge 0.
+\end{equation}
+Throughout this section we write $U_j$ as
 \begin{equation}
 U_{j;x}
 	=
@@ -27,13 +39,19 @@ g_j \tau_y^2 + \nu_j \tau_y + z_j \tau_{\Delta,y} + u_j
 \section{The susceptibility}
 \label{sec:suscept}
 
-By Theorem~\ref{thm:rhatflow}, for any $N$ there exist
-$(V_N, K_N) \in \domRG_N$ such that \eqref{e:IcircKnew} becomes
+% By Theorem~\ref{thm:rhatflow}, for any $N$ there exist
+% $(V_N, K_N) \in \domRG_N$ such that \eqref{e:IcircKnew} becomes
+The proof of Theorem~\ref{thm:mr}(ii) involves some small changes to the proof
+of the $\gamma_0 = 0$ case in \cite{BBS-saw4-log}. Rather than specifying the
+individual changes that need to be made, here we sketch the complete argument.
+
+Since the only scale-$N$ blocks are the empty set and $\Lambda$, at scale $j = N$
+the representation \eqref{e:IcircKnew} becomes
 \begin{equation}
 \label{e:ZNINKN}
-Z_N = e^{\zeta_N} (I_N(\Lambda) + K_N(\Lambda))
+Z_N = e^{\zeta_N} (I_N(\Lambda) + K_N(\Lambda)).
 \end{equation}
-at scale $j = N$. In particular, \eqref{e:DVdef}--\eqref{e:domRG},
+In particular, \eqref{e:DVdef}--\eqref{e:domRG},
 \eqref{e:Vnormdef}, \eqref{e:Wbilinbd}, and \eqref{e:T0dom} imply that
 \begin{align}
 \label{e:unu-bd}
@@ -46,14 +64,18 @@ u_N |\Lambda_N| = O(1),
 	&\qquad
 \|K_N\|_{T_0(\ell_N)} \le O(\chicCov_N g_N^3).
 \end{align}
-Now by \eqref{e:ZNINKN} and \eqref{e:chibarm} together with the definitions of $I_N$ and $V_N$,
+Now by \eqref{e:ZNINKN} and \eqref{e:chibarm} together with the definitions of
+$I_N$ and $V_N$,
 \begin{equation}
+\label{e:chiNhat-approx}
 \hat\chi_N(m^2, \gcc_0, \gamma_0, \nu_0^c, z_0^c)
 	=
 \frac{1}{m^2}
 	+
 \frac{1}{m^4 |\Lambda|}
-\frac{-\nu_N |\Lambda| + D^2 W_N(0; \1, \1) + D^2 K_N(0; \1, \1)}{e^{u_N |\Lambda|} (1 + W_N(0) + K_N(0))}.
+\frac
+{-\nu_N |\Lambda| + D^2 W_N(0; \1, \1) + D^2 K_N(0; \1, \1)}
+{e^{u_N |\Lambda|} (1 + W_N(0) + K_N(0))}.
 \end{equation}
 Using Lemma~\ref{lem:deriv-norm-bds} with $s = 0$ (recall \eqref{e:elldef-zz}),
 we see that the last term vanishes as $N\to\infty$ leaving
@@ -67,33 +89,23 @@ we see that the last term vanishes as $N\to\infty$ leaving
 	=
 \frac{1}{m^2}.
 \end{equation}
-In order to identify the asymptotics of $m^2$ above as $\nu$ approaches the
-critical point, we differentiate $\hat\chi$ with respect to $\nu_0$. We will
-denote by $F'$ the derivative of $F$ with respect to $\nu_0$. Evaluating
-$\hat\chi'_N$ at $(m^2, g_0, \gamma_0, \nu_0^c, z_0^c)$, we can take the
-limit $N\to\infty$. By a careful analysis of the derivatives of the renormalisation
-group flow with respect to $\nu_0$ (as in \cite[Section~\ref{log-sec:pfmr}]{BBS-saw4-log}
-for $\gamma = 0$), we get
+In order to identify the asymptotics of $m^2$ as $\nu$ approaches the
+critical point, we will need information about the derivative of $\hat\chi$ with
+respect to $\nu_0$. Let us denote by $F'$ the derivative of a function $F$ with
+respect to $\nu_0$. By \eqref{e:chiNhat-approx}, the derivative $\hat\chi_N'$
+will contain a term $-\nu_N'/m^4$. An argument using Lemma~\ref{lem:deriv-norm-bds}
+shows that the remaining terms are of strictly higher order. Together with a careful
+analysis of the derivatives of the renormalisation group flow with respect to the initial
+condition $\nu_0$ (as in \cite[Section~\ref{log-sec:pfmr}]{BBS-saw4-log} for $\gamma = 0$),
+we get
 \begin{equation}
 \label{e:chiprime-m-hat}
 \hat\chi'(m^2, g_0, \gamma_0, \nu_0^c, z_0^c)
-	=
--\frac{\nu_N'}{m^4}
 	\sim
--\frac{1}{m^4} \frac{c(\hat\gcc_0, \gamma_0)}{(\hat\gcc_0\bubble_{m^2})^{1/4}}
+-\frac{1}{m^4} \frac{c(\hat\gcc_0, \gamma_0)}{(\hat\gcc_0\bubble_{m^2})^{(n+2)/(n+8)}}
 	\quad
 \text{as $(m^2,\gcc_0,\gamma_0) \to (0,\hat\gcc_0,\hat\gamma_0)$},
 \end{equation}
-% By a careful analysis of the derivatives of the renormalisation group flow with
-% respect to the initial condition $\nu_0$, it can be shown that
-% \begin{equation}
-% \label{e:chiprime-m-hat}
-% \ddp{\hat\chi}{\nu_0} \left(m^2,\gcc_0, \gamma_0,\hat\nu_0^c, \hat z_0^c \right)
-% 	\sim
-% -\frac{1}{m^4} \frac{c(\gcc_0^*, \gamma_0)}{(\gcc_0^*\bubble_{m^2})^{1/4}}
-% 	\quad
-% \text{as $(m^2,\gcc_0,\gamma_0) \to (0,\gcc_0^*,\gamma_0^*)$},
-% \end{equation}
 where $c$ is a continuous function. The bubble diagram $\bubble_{m^2}$ was defined
 in \eqref{e:bubble} and its logarithmic divergence as $m^2\downarrow0$ is ultimately
 the source of the logarithmic corrections in Theorem~\ref{thm:mr}.
@@ -102,11 +114,10 @@ the source of the logarithmic corrections in Theorem~\ref{thm:mr}.
 % in Theorem~\ref{thm:rhatflow} rather than their $\gamma_0 = 0$ analogues.
 
 \begin{rk}
-There is one aspect of the proof found in \cite{BBS-saw4-log}
-that must be modified when $\gamma_0 = 0$: This is the verification of the third bound
+There is one aspect of the proof of \eqref{e:chiprime-m-hat} that must be modified when
+$\gamma_0 = 0$: This is the verification of the third bound
 in the base case ($j = 0$) of the inductive hypothesis \cite[\eqref{log-e:induct1}]{BBS-saw4-log}.
-This will be done in Section~\ref{sec:Ksmooth} (see Remark~\ref{rk:DK-base-case}),
-thereby concluding the proof of \eqref{e:chiprime-m-hat}.
+This will be done in Section~\ref{sec:Ksmooth} (see Remark~\ref{rk:DK-base-case}).
 \end{rk}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -114,8 +125,8 @@ thereby concluding the proof of \eqref{e:chiprime-m-hat}.
 \subsection{Change of parameters}
 \label{sec:nuztilde}
 
-We wish to conclude the proof of Theorem~\ref{thm:mr}(ii) using \eqref{e:chi-m-hat}
-and \eqref{e:chichibar}. The latter states that
+We wish to recover the asymptotics of $\chi$ from \eqref{e:chi-m-hat} and
+\eqref{e:chiprime-m-hat}. By \eqref{e:chichibar},
 \begin{equation}
 \label{e:chichihat}
 \chi_N(\gcc, \gamma, \nu)
@@ -165,9 +176,9 @@ implicit function theorem, which we prove in Appendix~\ref{sec:IFT}.
 Let $\delta > 0$, and let $r_1, r_2$ be continuous positive-definite functions on $[0, \delta]$.
 Recalling \eqref{e:Ddef}, set
 \begin{equation}
-		D(\delta, r_1, r_2)
-		=
-		\{ (w, x, y, z) \in D(\delta, r_1) \times \R^n : |z| \leq r_2(x) \},
+D(\delta, r_1, r_2)
+	=
+\{ (w, x, y, z) \in D(\delta, r_1) \times \R^n : |z| \leq r_2(x) \},
 \end{equation}
 and let $F$ be a continuous function on $D(\delta, r_1, r_2)$ that is $C^1$ in $(x, z)$.
 Suppose that for all $(\bar w, \bar x) \in [0, \delta]^2$ there exists $\bar z$
@@ -182,7 +193,6 @@ Moreover, if $F$ is left-differentiable
 (respectively, right-differentiable) in $y$ at some point $(w, x, y, z)$,
 then $f$ is left-differentiable (respectively, right-differentiable) at $(w, x, y)$.
 \end{prop}
-
 Our first application of this result is Proposition~\ref{prop:changevariables1},
 in which the three fixed variables are $(m^2, \gcc_0, \gamma)$.
 
@@ -214,13 +224,11 @@ Then the functions defined by
 z_0^* = \hat z_0^c(m^2, \gcc_0^*, \gamma_0^*), \quad
 \nu^* = \frac{\nu_0^* + m^2}{1 + z_0^*}
 \end{align}
-are continuous, \eqref{e:gg0-re} is satisfied, and
-the remaining bounds in
-\eqref{e:gznustarbd}
-follow using \eqref{e:hat-est}.
+are continuous, satisfy \eqref{e:gg0-re}, and satisfy the remaining bounds in
+\eqref{e:gznustarbd} by \eqref{e:hat-est}.
 
-We first solve the third equation of \eqref{e:gg0-re},
-and then solve the first equation of \eqref{e:gg0-re}.
+In order to construct $(g_0^*, \gamma_0^*)$, we first solve the third equation
+of \eqref{e:gg0-re}, and then solve the first equation of \eqref{e:gg0-re}.
 To this end, we begin by defining
 \begin{equation}
 f_1(m^2, \gcc_0, \gamma, \gamma_0)
@@ -243,14 +251,12 @@ and, for any $\gamma_0 \neq 0$,
 	=
 1 - (2d)^{-1} \gamma (1 + \hat z_0^c(m^2, \gcc_0, \gamma_0)) \ddp{\hat z_0^c}{\gamma_0}.
 \end{equation}
-Since the one-sided $\gamma_0$ derivatives of $\hat z_0^c$ exist at $\gamma_0 = 0$,
-we can see
-that the $\gamma_0$ derivative of $f_1$ is well-defined
+By Theorem~\ref{thm:rhatflow}, the one-sided $\gamma_0$ derivatives of $\hat z_0^c$ exist
+at $\gamma_0 = 0$. Thus, the $\gamma_0$ derivative of $f_1$ is well-defined
 and equal to $1$ when $\gamma = 0$ for any small $\gamma_0$ (including $\gamma_0 = 0$).
-Thus, by Proposition~\ref{prop:IFT}
-(with $w = m^2$, $x = \gcc_0$, $y = \gamma$, $z = \gamma_0$
-and $r_1 = r_2 = \hat r$),
-there exists a continuous function $\gamma^{(1)}_0(m^2, \gcc_0, \gamma)$
+It follows by Proposition~\ref{prop:IFT}
+(with $w = m^2$, $x = \gcc_0$, $y = \gamma$, $z = \gamma_0$ and $r_1 = r_2 = \hat r$)
+that there exists a continuous function $\gamma^{(1)}_0(m^2, \gcc_0, \gamma)$
 on $D(\delta, r^{(1)})$ (for some continuous positive-definite function $r^{(1)}$ on $[0, \delta]$)
 such that $f_1(m^2, \gcc_0, \gamma, \gamma^{(1)}_0) = 0$.
 Moreover, $\gamma^{(1)}_0$ is $C^1$ in $(\gcc_0, \gamma)$.
