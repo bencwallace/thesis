@@ -34,7 +34,6 @@
 
 %%%% Other packages %%%%
 \usepackage{mathrsfs,mathtools,wrapfig}
-\usepackage{}
 
 %%%%%%%%%%
 % MACROS %
@@ -48,8 +47,9 @@
 	\input{macros}
 \else
 	\input{macros}						% Just use xr
-	\hypersetup{draft}					% Turns off hyperlinks
-	\renewcommand{\commentbw}[1]{}
+	% \hypersetup{draft}				% Turns off hyperlinks
+	\renewcommand{\commentbw}[1]{}		% Turn off comments
+	\renewcommand{\todo}[1]{}			% Turn off todo's
 \fi
 \input{extramacros}
 

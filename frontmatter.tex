@@ -27,6 +27,8 @@ at final submission must be identical.
 Please do not put a list of keywords with your abstract.}
 \end{abstract}
 
+\cleardoublepage
+
 \chapter{Preface}
 
 The bulk of Chapter~\ref{sec:intro} (including Sections~\ref{sec:intro}--\ref{sec:walks})
@@ -107,11 +109,22 @@ Chapter~\ref{sec:RGflow} includes part of \cite{BSW-saw-sa}.
 % also that this section ``Examples'' should not be listed in the table
 % of contents, so we have used the starred form: \verb|\section*{Example}|.
 
+\cleardoublepage
+
 \tableofcontents                %% Mandatory
+
+\cleardoublepage
 
 % \listoftables                 %% Mandatory if thesis has tables
 
-\listoffigures                  %% Mandatory if thesis has figures
+% \listoffigures                  %% Mandatory if thesis has figures
+{%
+\let\oldnumberline\numberline%
+\renewcommand{\numberline}{\figurename~\oldnumberline}%
+\listoffigures%
+}
+
+\cleardoublepage
 
 % \listof{Program}{List of Programs} %% Optional
 
