@@ -54,13 +54,15 @@
     \includegraphics*[height=\@logocopyheight]{\@logofile}
     \fi}}
 \newcommand\@logocopybare{\vbox{%
-    \@condupper{@upperinstitution}{\@institution}\par%
+    % \@condupper{@upperinstitution}{\@institution}\par 				% BW: Old this
+    \@condupper{@upperinstitution}{\@institution}\par 					% BW: New version
     (\@institutionaddress)\par%
     \@submitdate\par%
     \@copyrighttext}}
 \newcommand\@logocopy{\vbox{
     \hbox to\@logocopywidth{%
-      \hfil\@condupper{@upperinstitution}{\@institution}\hfil}
+      % \hfil\@condupper{@upperinstitution}{\@institution}\hfil}		% BW: Old version
+      \hfil\@condupper{}{\@institution}\hfil}							% BW: New version
     \vspace{1.5ex}
     \hbox to\@logocopywidth{\hfil(\@institutionaddress)\hfil}
     \vspace{1.5ex}
@@ -101,7 +103,7 @@
     \settoheight{\@logocopyheight}{\@logocopy}
     \settowidth{\@logowidth}{\@logo}
     \centerline{\hbox{%
-        \hfill\@logo\@logocopy\hspace{\@logowidth}}}
+        \hfill\@logo\@logocopy\hspace{\@logowidth}}}	% BW: This is where institution is added
     \if@empty\@copyrightnotice\else\vfil\@copyrightnotice\fi
   \end{center}
   \vfil\null
