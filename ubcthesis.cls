@@ -54,15 +54,15 @@
     \includegraphics*[height=\@logocopyheight]{\@logofile}
     \fi}}
 \newcommand\@logocopybare{\vbox{%
-    % \@condupper{@upperinstitution}{\@institution}\par 				% BW: Old this
-    \@condupper{@upperinstitution}{\@institution}\par 					% BW: New version
+    %\@condupper{@upperinstitution}{\@institution}\par 				% BW: Old this
+    \@condupper{@upperinstitution}{\@institution}\par 				% BW: New version
     (\@institutionaddress)\par%
     \@submitdate\par%
     \@copyrighttext}}
 \newcommand\@logocopy{\vbox{
     \hbox to\@logocopywidth{%
-      % \hfil\@condupper{@upperinstitution}{\@institution}\hfil}		% BW: Old version
-      \hfil\@condupper{}{\@institution}\hfil}							% BW: New version
+      %\hfil\@condupper{@upperinstitution}{\@institution}\hfil}		% BW: Old version
+      \hfil\@condupper{}{\@institution}\hfil}						% BW: New version
     \vspace{1.5ex}
     \hbox to\@logocopywidth{\hfil(\@institutionaddress)\hfil}
     \vspace{1.5ex}
@@ -90,7 +90,8 @@
     A THESIS SUBMITTED IN PARTIAL FULFILLMENT OF\par%
     THE REQUIREMENTS FOR THE DEGREE OF\par%
     \vspace{1em}
-    {\degreetitlefont\@condupper{@upperdegreetitle}{\@degreetitle}\par}%
+    %{\degreetitlefont\@condupper{@upperdegreetitle}{\@degreetitle}\par} 		% BW: Old
+    {\degreetitlefont\@condupper{}{\textbf\@degreetitle}\par}							% BW: New
     \vspace{1em}
     in \par%
     \vspace{1em}

@@ -36,7 +36,7 @@ function of these variables is shown in Section~\ref{sec:Ksmooth}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{Norms}
+\subsection{Properties of the \texorpdfstring{$T_\varphi$}{Tphi} seminorm}
 \label{sec:norms}
 
 % Since we are working with functions $F$ of a boson field $\varphi\in(\R^n)^\Lambda$, we have
@@ -48,15 +48,9 @@ function of these variables is shown in Section~\ref{sec:Ksmooth}.
 % 	=
 % \sum_{|\vec x| \le p_\Ncal} \frac{1}{|\vec x|!} F_{\vec x}(\varphi) g_{\vec x}.
 % \end{equation}
-We continue to use the norms defined in Section~\ref{sec:Ncal} and Section~\ref{sec:Rpf1}.
-We need several more properties of the $T_\varphi$ semi-norm, whose proofs can be found in
+% We continue to use the norms defined in Section~\ref{sec:Ncal} and Section~\ref{sec:Rpf1}.
+We will need several properties of the $T_\varphi$ seminorm, whose proofs can be found in
 \cite{BS-rg-norm}. We have already mentioned the product property in Proposition~\ref{prop:prod}.
-% First, there is the important \emph{product property}
-% \cite[Proposition~\ref{norm-prop:prod}]{BS-rg-norm}
-% \begin{equation}
-% \label{e:prod}
-% \|F G\|_{T_\varphi} \leq \|F\|_{T_\varphi} \|G\|_{T_\varphi}.
-% \end{equation}
 An immediate consequence is that $\|e^{-F}\|_{T_\varphi} \leq e^{\|F\|_{T_\varphi}}$.
 This is improved in \cite[Proposition~\ref{norm-prop:eK}]{BS-rg-norm},
 which states that
@@ -65,7 +59,7 @@ which states that
 \|e^{-F}\|_{T_\varphi} \leq e^{-2 F(\varphi) + \|F\|_{T_\varphi}}.
 \end{equation}
 
-We use \cite[Proposition~\ref{norm-prop:T0K}]{BS-rg-norm},
+We will also use \cite[Proposition~\ref{norm-prop:T0K}]{BS-rg-norm},
 which states that if $F \in \Ncal$ is a polynomial in $\varphi$ of
 total degree $A \leq p_\Ncal$, then
 \begin{equation}
@@ -170,7 +164,7 @@ Before proving the proposition, we write
 % \refeq{Kpm} for a singleton as
 \begin{equation}
 K^\pm_{0,x} = I^\pm_{0,x} J^\pm_x
-  \label{e:KIJ},
+  \label{e:KIJ}
 \end{equation}
 where, by the fundamental theorem of calculus,
 \begin{align}
@@ -210,9 +204,9 @@ There is a universal constant $\tilde C$ such that
 \label{e:FFnull}
 \|U^\pm_x\|_{T_\varphi(\h_0)}
   \leq
-2 U^\pm_x + \tilde C \h_0^4 (1 + \|\varphi\|^2_{\Phi_x(\h_0)}),
+2 U^\pm_x + \tilde C \h_0^4 (1 + \|\varphi\|^2_{\Phi_x(\h_0)}).
 \end{equation}
-where $U^\pm$ is the 0-degree part of $U^\pm$.
+% where $U^\pm$ is the 0-degree part of $U^\pm$.
 \end{lemma}
 
 \begin{proof}
@@ -251,7 +245,7 @@ since $M^\pm \in \Ncal(x^\Box)$.
 % \|R^\pm\|_{T_\varphi} = O(\h_0^4 (1 + \|\varphi\|_\Phi)^2).
 % \end{equation}
 
-By definition of the $T_\varphi$ semi-norm,
+By definition of the $T_\varphi$ seminorm,
 \begin{equation}
 \label{e:nabla-phi-sq-bd}
 \|\nabla^e |\varphi_x|^2\|_{T_\varphi}
@@ -312,12 +306,14 @@ An immediate consequence of Lemma~\ref{lem:FFnull-loc}, using \eqref{e:eK},
 is that for any $s \ge 0$,
 \begin{equation}
 \label{e:Itilbd}
-\|e^{-s U^\pm_x}\|_{T_\varphi(\h_0)} \leq e^{\tilde C s \h_0^4 (1 + \|\varphi\|^2_{\Phi_x(\h_0)})}.
+\|e^{-s U^\pm_x}\|_{T_\varphi(\h_0)}
+	\leq
+e^{\tilde C s \h_0^4 \big(1 + \|\varphi\|^2_{\Phi_x(\h_0)}\big)}.
 \end{equation}
 
 \begin{proof}[Proof of Proposition~\ref{prop:K0bd}]
 According to the definition of the
-regulator norms in \refeq{regdef}--\refeq{reg0},
+regulator norms in \refeq{Gnormdef1}--\refeq{Gnormdef2},
 it suffices to prove that, under the hypothesis on $\gamma_0$,
 \begin{equation}
 \label{e:K0bd}
@@ -356,7 +352,7 @@ Also, by \eqref{e:Itilbd},
 \begin{equation}
 \sup_{t\in[0,1]} \|\tilde I_{x}^\pm(t) \|_{T_\varphi(\h_0)}
   \le
-e^{\tilde C \gamma_0 \h_0^4 (1+\|\varphi\|^2_{\Phi_x(\h_0)})}.
+e^{\tilde C \gamma_0 \h_0^4 \big(1+\|\varphi\|^2_{\Phi_x(\h_0)}\big)}.
 \end{equation}
 
 Thus, for $\h_0=\ell_0$,
@@ -420,22 +416,21 @@ We begin by recalling the definition of the $\Wcal_0$ norm from \cite{BS-rg-step
 %     X^\Box =
 %     \{y \in \Lambda : \exists x \in \Lambda \; \text{such that}\; |y-x|_\infty \le 2^d\}.
 % \end{equation}
-First,
-we extend the definitions of the regulators $\Gcal_0 = G_0, \tilde G_0^{\sf t}$,
-defined in \refeq{regdef}, by setting
-\begin{equation} \label{e:Gcalprod}
-\Gcal_0(X, \varphi) = \prod_{x\in X} \Gcal_0(x, \varphi),
-\end{equation}
-and extend the definitions \refeq{reg0} to define norms, for $F \in \Ncal(X^\Box)$, by
-\begin{equation}
-\lbeq{reg0X}
-    \|F\|_{G_0} = \sup_{\varphi\in(\R^n)^\Lambda} \frac{\|F\|_{T_\varphi(\ell_0)}}{G_0(X,\varphi)}
-    , \quad
-    \|F\|_{\tilde{G}^{\sf t}_0} = \sup_{\varphi\in(\R^n)^\Lambda} \frac{\|F\|_{T_\varphi(h_0)}}{\tilde{G}^{\sf t}_0(X,\varphi)}
-    .
-\end{equation}
-It follows from the product property of the $T_\varphi$ seminorm that these norms obey
-the following version of the product property:
+% First, we extend the definitions of the regulators $\Gcal_0 = G_0, \tilde G_0^{\sf t}$,
+% defined in \refeq{regdef}, by setting
+% \begin{equation} \label{e:Gcalprod}
+% \Gcal_0(X, \varphi) = \prod_{x\in X} \Gcal_0(x, \varphi),
+% \end{equation}
+% and extend the definitions \refeq{reg0} to define norms, for $F \in \Ncal(X^\Box)$, by
+% \begin{equation}
+% \lbeq{reg0X}
+%     \|F\|_{G_0} = \sup_{\varphi\in(\R^n)^\Lambda} \frac{\|F\|_{T_\varphi(\ell_0)}}{G_0(X,\varphi)}
+%     , \quad
+%     \|F\|_{\tilde{G}^{\sf t}_0} = \sup_{\varphi\in(\R^n)^\Lambda} \frac{\|F\|_{T_\varphi(h_0)}}{\tilde{G}^{\sf t}_0(X,\varphi)}
+%     .
+% \end{equation}
+It follows from the product property of the $T_\varphi$ seminorm that the regulator norms
+obey the following version of the product property:
 \begin{equation}
 \|F_1F_2\|_{\Gcal_0} \le   \|F_1\|_{\Gcal_0} \|F_2\|_{\Gcal_0}
 	% \quad
@@ -444,8 +439,8 @@ the following version of the product property:
 F_i\in \Ncal(X_i^\Box)  \text{ with } X_1 \cap X_2=\varnothing.
 \end{equation}
 
-Given a map $K: \Pcal_0 \to \Ncal$ with the property that $K(X) \in \Ncal(X^\Box)$
-for all $X \in \Pcal_0$,
+Given a map $K \in \Kspace_0$,
+% with the property that $K(X) \in \Ncal(X^\Box)$ for all $X \in \Pcal_0$,
 we define the $\Fcal_0(\Gcal)$ norms (for $\Gcal = G, \tilde G$) by
 \begin{align}
 \|K\|_{\Fcal_0(G)}        &= \sup_{X\in\Ccal_0} \ggen_0^{-f_0(a, X)} \|K(X)\|_{G_0} \\
@@ -554,7 +549,7 @@ and the proof is complete.
 % by taking $F(X) = \prod_{Y} F(Y)$ where the product is over the connected components $Y$ of $X$.
 
 Given any map $F : D \to \Wcal_0(\ggen_0, \Zd)$ for $D \subset \R$ an open interval,
-let us write $F_X : D \to \Ncal(X^\square)$ and $F^\varphi_X : D \to (\R^n)^\Lambda$ for the maps
+let us write $F_X : D \to \Ncal(X^\square)$ and $F^\varphi_X : D \to \R$ for the maps
 defined by partial evaluation of $F$ at $X$ and at $(X, \varphi)$, respectively.
 % We say $F^\varphi_X$ is $C^k$ if all of its coefficients in the decomposition
 % \eqref{e:FinNcal} are $C^k$ as functions $D \to \R$.
@@ -563,13 +558,14 @@ defined by partial evaluation of $F$ at $X$ and at $(X, \varphi)$, respectively.
 \label{lem:smoothness}
 Let $D \subset \R$ be open and $F : D \to \Wcal_0(\ggen_0, \Zd)$ be a map.
 Suppose that $F^\varphi_X$ is $C^2$ for all $X \in \Ccal_0$
-and $\varphi \in \C^\Lambda$, and define 
+and $\varphi \in (\R^n)^\Lambda$, and define 
 $F^{(i)} : D \to \Wcal_0(\ggen_0, \Zd)$ by
 $(F^{(i)}(t))^\varphi_X = (F^\varphi_X)^{(i)}(t)$ for $i = 1, 2$,
-where the right-hand side denotes the (component-wise) $i^{\rm th}$
-derivative of $F^\varphi_X$.
+where the right-hand side denotes the
+% (component-wise)
+$i^{\rm th}$ derivative of $F^\varphi_X$.
 If $\|F^{(i)}(t)\|_{\Wcal_0} < \infty$ for $i = 1, 2$ and $t \in D$, then 
-$F^{(1)}$ is the derivative of $F$.
+$F^{(1)}$ is the (Fr\'{e}chet) derivative of $F$.
 \end{lemma}
 
 \begin{proof}
@@ -579,9 +575,9 @@ R^\varphi_X(t, s) = F^\varphi_X(t + s) - F^\varphi_X(t) - s (F^\varphi_X)'(t).
 \end{equation}
 By Taylor's theorem, for any $\varphi$ and $X$,
 \begin{equation}
-R^\varphi_X(t, s) = s^2 \int_0^1 (F^\varphi_X)''(t + u s) (1 - u) \; du,
+R^\varphi_X(t, s) = s^2 \int_0^1 (F^\varphi_X)''(t + u s) (1 - u) \; du.
 \end{equation}
-where the integral is taken component-wise.
+% where the integral is taken component-wise.
 It follows
 that
 \begin{equation}
@@ -626,19 +622,20 @@ However, we only prove the following, which is what we need later.
 \begin{prop}
 \label{prop:Ksmooth}
 Suppose that $\Vp_0^\pm \in \DV_0$, with $\ggen_0$ sufficiently small
-(depending on $L$) and $\gamma_0 \le O(\ggen_0^{1+a'})$
-for some $a' >a$.
-The map $K^+_0(g_0, \gamma_0, \nu_0, z_0)$ is jointly continuous
-in its four variables, is
-$C^1$ in $(g_0, \nu_0, z_0)$,
+(depending on $L$) and
+$\gamma_0 \le O(\ggen_0^{1+a'})$ for some $a' >a$.
+% that $\gamma_0 \le O(\ggen_0^{11/4})$.
+Then the map $K^+_0(g_0, \gamma_0, \nu_0, z_0)$ is jointly continuous
+in its four variables, is $C^1$ in $(g_0, \nu_0, z_0)$,
 and (when $\gamma_0 \ne 0$) is $C^1$ in $(g_0, \gamma_0, \nu_0, z_0)$,
 with partial derivatives with respect to $t = g_0$, $\nu_0$, and $z_0$ satisfying
 \begin{equation}
 \label{e:ddpK}
-\|\partial K^+_0 / \partial t\|_{\Wcal_0} = O(\gamma_0 \h_0^8).
+\|\partial K^+_0 / \partial t\|_{\Wcal_0} = O(\gamma_0 \ggen_0^{1/4}).
+% THERE USED TO BE A MISTAKE HERE IN SAW-SA
 \end{equation}
-Moreover, $K^+_0$
-is left- and right-differentiable in $\gamma_0$ at $\gamma_0 = 0$.
+Moreover, $K^+_0$ is % left- and
+right-differentiable in $\gamma_0$ at $\gamma_0 = 0$.
 \end{prop}
 
 \begin{proof}
@@ -679,7 +676,7 @@ and \eqref{e:Iupper} and \eqref{e:Itilbd} imply that
 \|K''_x\|_{\Gcal_0} \le O(\h_0^8).
 \end{equation}
 
-By definition, $K_X = \prod_{x \in X} K_x$, so, for derivatives with respect to any one
+By definition, $K_X = \prod_{x \in X} K_x$ so, for derivatives with respect to any one
 of the four variables (with $\gamma_0 \neq 0$ when differentiating with respect to $\gamma_0$),
 \begin{equation}
 \label{e:KXprime}
@@ -749,12 +746,12 @@ It follows that
 \lim_{\gamma_0\downarrow 0} \|F - K'(\gamma_0)\|_{\Wcal_0} = 0,
 \end{equation}
 i.e., $F$ is the right-derivative of $K$ in $\gamma_0$ at $\gamma_0 = 0$.
-Left-continuity is handled similarly.
+% Left-continuity is handled similarly.
 \end{proof}
 
 \begin{rk}
 \label{rk:DK-base-case}
-The bound \eqref{e:ddpK} verifies the condition
+With $\gamma_0 = O(\ggen_0^{11/4})$, the bound \eqref{e:ddpK} verifies the condition
 \begin{equation}
 \|\partial K^+_0/\partial\nu_0\|_{\Wcal_0} \le O(g_0^3)
 \end{equation}
