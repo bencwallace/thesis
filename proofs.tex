@@ -219,11 +219,13 @@ z_0^* = O(\gcc_0).
 Suppose we have found the desired continuous functions $(\gcc_0^*, \gamma_0^*)$
 and that $\gcc_0^*$ satisfies the first bound in \eqref{e:gznustarbd}.
 Then the functions defined by
-\begin{align}
-&\nu_0^* = \hat\nu_0^c(m^2, \gcc_0^*, \gamma_0^*), \quad
-z_0^* = \hat z_0^c(m^2, \gcc_0^*, \gamma_0^*), \quad
+\begin{equation}
+\nu_0^* = \hat\nu_0^c(m^2, \gcc_0^*, \gamma_0^*),
+	\quad
+z_0^* = \hat z_0^c(m^2, \gcc_0^*, \gamma_0^*),
+	\quad
 \nu^* = \frac{\nu_0^* + m^2}{1 + z_0^*}
-\end{align}
+\end{equation}
 are continuous, satisfy \eqref{e:gg0-re}, and satisfy the remaining bounds in
 \eqref{e:gznustarbd} by \eqref{e:hat-est}.
 
@@ -414,9 +416,12 @@ it follows that $\tilde m^2$ is right-continuous as $\varepsilon\downarrow 0$.
 It is immediate that \eqref{e:mtildebd} holds.
 Also, the functions of $(\varepsilon,\gcc,\gamma)$ defined by
 \begin{align}
-&\tilde\nu_0 = \nu_0^*(\tilde m^2, \gcc, \gamma), \quad
-\tilde z_0 = z_0^*(\tilde m^2, \gcc, \gamma), \\
-&\tilde \gcc_0 = (\gcc - \gamma) (1 + \tilde z_0)^2 ,\quad
+&\tilde\nu_0 = \nu_0^*(\tilde m^2, \gcc, \gamma),
+	\quad
+\tilde z_0 = z_0^*(\tilde m^2, \gcc, \gamma),
+	\\
+&\tilde \gcc_0 = (\gcc - \gamma) (1 + \tilde z_0)^2,
+	\quad
 \tilde\gamma_0 = \frac{1}{4d} \gamma (1 + \tilde z_0)^2
 \end{align}
 are right-continuous as $\varepsilon \downarrow 0$ and satisfy \eqref{e:gg0-re}.
@@ -588,14 +593,14 @@ and $L^{ -  (j_{x} - j_m)_+} \le O((m|x|)^{-1})$.
 All this leads to
 \begin{align}
 \sum_{j = j_{x}}^\infty |R^{q_u}_j|
-&\leq
+	&\leq
 L^{-2j_{x} - 2s (j_{x} - j_m)_+}
 \sum_{j = j_{x}}^\infty O(\gbar_{j}) 4^{-(j - j_{x})}
 %\nnb
 %&\leq
 %L^{-2j_{x} - 2s (j_{x} - j_m)_+} O(\gbar_{j_{x}})
-\nnb
-&\leq
+	\nnb
+	&\leq
 |x|^{-2} (m|x|)^{-2s} O(\gbar_{j_{x}})
 .
 \label{e:vq-sum}
@@ -656,13 +661,13 @@ We multiply \eqref{e:Gab-to-sum-Rqj} by $|x|^p$, sum over $x \in \Z^4$,
 and use \eqref{e:chistar}
 % \eqref{e:susceptibility-mass-identity},
 to obtain
-\begin{align}
+\begin{equation}
 \xi_p^p(g,\gamma,\nu)
-	&=
+	=
 \sum_{x \in \Z^4} |x|^p \frac{G_{x}(g, \gamma, \nu)}{\chi(g, \gamma, \nu)}
 	=
 \tilde m^2 \sum_{x \in \Z^4} |x|^p \Big(G_{x}(0, 0, m^2) + r_{x}(\tilde m^2) \Big),
-\end{align}
+\end{equation}
 with
 \begin{equation}
 \lbeq{rx}
@@ -671,13 +676,13 @@ with
 By
 Proposition~\ref{prop:Gab-free-moment-estimate},
 this gives (as $\tilde m^2 \downarrow 0$)
-\begin{align}
+\begin{equation}
 \lbeq{ximasy}
 \xi_p^p(g,\gamma,\nu)
-	& \sim
+	\sim
 {\sf c}_p^p \tilde m^{-p} +
 \tilde m^2 \sum_{x \in \Z^4} |x|^p r_{x}(\tilde m^2).
-\end{align}
+\end{equation}
 By \eqref{e:mass-epsilon-asympt}, it suffices to prove that
 the first term on the right-hand side of \refeq{ximasy} is dominant.
 
@@ -718,12 +723,13 @@ Note that $j_x$ is the unique scale so that
    .
 \end{equation}
 By \eqref{e:rab-bound-scales-bis} with $s>\frac 12 (p+2)$ and \refeq{Phi-def-jc},
-\begin{equation} \label{e:xpr-shells}
-\begin{aligned}
+\begin{equation}
+\label{e:xpr-shells}
 \sum_{x\in\Z^4} |x|^p |R_{x}(\tilde m^2)|
-	&= \sum_{j = 1}^\infty\sum_{x\in S_j}   |x|^p |R_{x}(\tilde m^2)| \\
-    &= \sum_{j = 1}^\infty L^{4j + pj - 2j - 2s (j - j_{\tilde m})_+} O(\gbar_{j}),
-\end{aligned}
+	=
+\sum_{j = 1}^\infty\sum_{x\in S_j}   |x|^p |R_{x}(\tilde m^2)| \\
+    =
+\sum_{j = 1}^\infty L^{4j + pj - 2j - 2s (j - j_{\tilde m})_+} O(\gbar_{j}),
 \end{equation}
 with an $L$-dependent constant.
 By Lemma~\ref{lem:mass-scale-sum} below (with $a=p+2$ and $b=1$),

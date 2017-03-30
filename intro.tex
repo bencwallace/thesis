@@ -529,11 +529,11 @@ If $m^2 > 0$, then $-\lap + m^2$ is positive-definite, hence invertible with inv
 (-\lap + m^2)^{-1} = (m^2 + D)^{-1} \sum_{n=0}^\infty Z^n P^n,
 \end{equation}
 where
-\begin{align}
+\begin{equation}
 Z = (m^2 + D)^{-1} D,
   \quad
 P = D^{-1} J.
-\end{align}
+\end{equation}
 Let $z_x$ denote the diagonal elements of $Z$. The \emph{Green function}
 of $\graph$ is the kernel of $(-\lap + m^2)^{-1}$, given by
 \begin{equation}
@@ -1530,12 +1530,12 @@ c_T(x) = E_0\left(e^{-U_{\gcc,\gamma,T}}\1_{X_T = x}\right).
 \end{equation}
 The \emph{two-point function} and \emph{susceptibility} are defined
 as the Laplace transforms of these weights:
-\begin{align}
+\begin{equation}
 \lbeq{Gsa}
 G_x(\gcc,\gamma,\nu)
-    &=
+    =
 \int_0^\infty c_T(x) e^{-\nu T} \; dT
-\end{align}
+\end{equation}
 and
 \begin{equation}
 \label{e:suscept-def}
@@ -1551,12 +1551,12 @@ The relationship between the two-point for walks and spin systems will be
 discussed in Section~\ref{sec:intrep}.
 
 We also have a version of the the \emph{correlation length of order $p$}:
-\begin{align}
+\begin{equation}
 \label{e:clp-wsawsa}
 \xi_p(\gcc, \gamma, \nu)
-	&=
+	=
 \left(\frac{\sum_{x\in\Zd} |x|^p G_x(g, \gamma, \nu)}{\chi(g, \gamma, \nu)}\right)^{1/p}.
-\end{align}
+\end{equation}
 Note that
 \begin{equation}
 \xi_p^p(\gcc,\gamma,\nu)
@@ -1699,9 +1699,9 @@ Even above the upper-critical dimension, very little is known about WSAW-SA with
 $\gamma \ne 0$. Exceptions include \cite{HH17,Uelt02}.
 
 \begin{rk}
-We define the free \emph{bubble diagram} to be the $\ell^2(\Zd)$ norm of the massive
-Green function viewed as a function of one variable ($x \mapsto C_{0x}$). Thus, by
-\eqref{e:greendef},
+Define the free \emph{bubble diagram} to be the $\ell^2(\Zd)$ norm of the massive
+Green function $x \mapsto C_{0x}$. Thus, by
+\eqref{e:greendef}, if $z = 2 d / (m^2 + 2 d)$, then
 \begin{equation}
 \label{e:bubble-def}
 B_{m^2}
@@ -1720,7 +1720,8 @@ be ``guessed'' as follows. First, we make the convenient definitions
 	\quad
 {\sf b} = \frac{n + 8}{16\pi^2}.
 \end{equation}
-Then it is an exercise in Fourier analysis to show that
+Then it is an exercise in Fourier analysis to show that in the limit $m^2\downarrow0$
+(equivalently, $z\uparrow1$)
 \begin{equation}
 \label{e:bubble-log}
 {\sf B}_{m^2}

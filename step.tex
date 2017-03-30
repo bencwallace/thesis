@@ -3,23 +3,33 @@
 
 \renewcommand{\Vpt}{\Vp_\pt}
 
-The main purpose of this chapter is to prove that Theorem~\ref{thm:step-mr-fv}
-holds with arbitrary $s$ in the definitions \eqref{e:elldef-zz} of the weights
-$\ell, \ell_\sigma$. The proof of this fact requires involves numerous changes
+In this chapter we discuss the proof of Theorem~\ref{thm:step-mr-fv}
+with $s > 1$ in the definitions \eqref{e:elldef-zz} of the weights
+$\ell, \ell_\sigma$. The proof involves numerous changes
 to results in \cite{BS-rg-loc,BS-rg-IE,BS-rg-step}.
 Consequently, the arguments presented here will not be completely self-contained;
 for instance, we will not detail the construction of the renormalisation group
 map, which makes up the bulk of \cite{BS-rg-step}.
+However, we will begin in Section~\ref{sec:rgmech} with an \emph{informal} overview
+of some of the key ideas used in these papers.
+% We will sometimes state supporting results used to prove Theorem~\ref{thm:step-mr-fv}
+% although we will not make direct use of them in this thesis.
 
-For this reason, we begin in Section~\ref{sec:rgmech} with an informal overview
-of some of the key ideas used in these papers. We will sometimes state supporting
-results used to prove Theorem~\ref{thm:step-mr-fv} although we will not make direct
-use of them in this thesis.
+The details of the proof begin in Section~\ref{sec:Rpf1}, where we define new
+norms above the mass scale and prove that they satisfy two key hypotheses required
+by results in \cite{BS-rg-IE}. The use of these new norms is essential: the old
+norms fail to work with the new weights for technical reasons discussed briefly
+in Remark~\ref{rk:newnorm}. In Section~\ref{sec:Rpf2}, we discuss the changes that
+must be made in \cite{BS-rg-loc,BS-rg-IE} with the new weights. Of particular
+importance is the adaptation of the proof of the \emph{crucial contraction} to
+these new weights, which is discussed in Section~\ref{sec:cc}.
 
-In Section~\ref{sec:Rpf1}, we define new norms above the mass scale and  prove
-that they satisfy two key hypotheses required by results in \cite{BS-rg-IE}.
-The remaining modifications needed to prove Theorem~\ref{thm:step-mr-fv} are
-given in Section~\ref{sec:Rpf2}.
+Throughout this chapter, we use the notation appropriate for the spin field
+$\varphi \in (\R^n)^\Lambda$ for $n \ge 1$; only notational modifications are
+needed for $n=0$.
+Since we are dealing with a single renormalisation group step, we will often
+drop the index $j$ of the current scale and write a subscript $+$ to indicate
+objects at the next scale $j + 1$.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -28,7 +38,7 @@ given in Section~\ref{sec:Rpf2}.
 \label{sec:rgmech}
 
 For this discussion, let us drop $\lambda, q, u$ from the notation and write
-$\Vc = \Vp$. In this setting, our goal, given $(\Vp, K)$, is to construct
+$\Vc = \Vp$. In this setting our goal, given $(\Vp, K)$, is to construct
 $(\Vp_+, K_+)$ such that, with $I = I(\Vp)$ and $I_+ = I(\Vp_+)$,
 \begin{equation}
 \label{e:IcircKsimp}
@@ -44,16 +54,17 @@ a multitude of solutions and the main difficulty is the construction of a
 solution that admits appropriate bounds.
 
 A possible definition of the map $(\Vp, K) \mapsto \Vp_+$ is suggested by perturbation
-theory, as discussed in Section~\ref{sec:pt}. For now, let us suppose this is
-the correct definition and set $\Ipt = I(\Vpt)$. Then we can define $K_+$ in terms
-of $\Ipt$ such that \eqref{e:IcircKsimp} holds as follows.
+theory, as discussed in Section~\ref{sec:pt}. For now, let us suppose that $\Vp_+ = \Vpt$
+is the correct definition and set $I_+ = \Ipt = I(\Vpt)$. Then we have the following procedure
+for the construction of $K_+$ in terms of $\Ipt$ such that \eqref{e:IcircKsimp} holds.
 
+Recall \eqref{e:block-fact}.
 For $B\in\Bcal$, let $\delta I(B) = \theta I(B) - \Ipt(B)$ and extend this to $X\in\Pcal$
 by imposing block-factorization. Then by associativity of the circle product,
 \begin{align}
 (I \circ K)(\Lambda)
-	&= \sum_{X\in\Pcal} (\Ipt + \delta I)^{\Lambda \setminus X} K(X) \\
-	&= [(\Ipt \circ \delta I) \circ K](\Lambda) \\
+	&= \sum_{X\in\Pcal} (\Ipt + \delta I)^{\Lambda \setminus X} K(X) \nonumber \\
+	&= [(\Ipt \circ \delta I) \circ K](\Lambda) \nonumber \\
 	&= [\Ipt \circ (\delta I \circ K)](\Lambda).
 \end{align}
 Note that the fluctuation fields at scale $j$ have been integrated out in the
@@ -67,18 +78,19 @@ with
 \end{equation}
 This has the form \eqref{e:IcircKsimp} but with the circle product on the right-hand
 side at the wrong scale. This is remedied by a simple resummation:
-\begin{align}
+\begin{equation}
 \Ex_+ \theta (I \circ K)(\Lambda)
-	= \sum_{Y\in\Pcal} \Ipt(\Lambda \setminus Y) \tilde K(Y)
+	= \sum_{Y\in\Pcal} \Ipt^{\Lambda \setminus Y} \tilde K(Y)
 	= \sum_{X\in\Pcal_+} \Ipt^{\Lambda \setminus X} K_+(X)
 	= (\Ipt \circ K_+)(\Lambda)
-\end{align}
+\end{equation}
 where
 \begin{equation}
 \label{e:Kplus3}
 K_+(X) = \sum_{Y \in \bar\Pcal(X)} \Ipt^{X \setminus Y} \tilde K(Y).
 \end{equation}
-Here, $\bar\Pcal(X)$ is the collection of polymers $Y\in\Pcal(X)$ such that
+Here, $\bar\Pcal(X)$ is the collection of polymers $Y\in\Pcal(X)$ whose
+\emph{polymer closure} is $X$, i.e.\ for which
 $X$ is the smallest polymer in $\Pcal_+$ containing $Y$.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -92,15 +104,19 @@ K_+(X) = \Ipt^X [h(X) + k(X) + R(X)]
 where (letting $\bar\Ccal(X) = \Ccal\cap\bar\Pcal(X)$)
 \begin{align}
 \label{e:hpt}
-h(X)	&= \sum_{Y\in\bar\Pcal(X)} \Ipt^{-Y} \Ex_+ \delta I(Y) \\
+h(X)
+	&=
+\sum_{Y\in\bar\Pcal(X)} \Ipt^{-Y} \Ex_+ \delta I(Y) \\
 \label{e:k}
-k(X)	&= \sum_{Y\in\bar\Ccal(X)} \Ipt^{-Y} \Ex_+ \theta K(Y)
+k(X)
+	&=
+\sum_{Y\in\bar\Ccal(X)} \Ipt^{-Y} \Ex_+ \theta K(Y)
 \end{align}
 and $R$ is the remainder. If $\delta I$ and $K$ are sufficiently small (in an
 appropriate sense), then it is reasonable to view the terms $h$ and $k$ as
 first-order contributions to $K_+$. Note that the sum defining $k$ is restricted
-to connected polymers as component-factorization of $K$ should imply that terms
-involving $K$ on disconnected polymers will be of higher order in this sense.
+to connected polymers; by component-factorization, terms involving the values
+of $K$ on disconnected polymers should be higher-order in this sense.
 Our main task then is to bound $h$ and $k$.
 
 \subsubsection{Perturbative contribution and covariance bound}
@@ -108,7 +124,7 @@ Our main task then is to bound $h$ and $k$.
 By the definition \eqref{e:Idef} of $I$, we expect that $\delta I = O(\delta\Vp^3)$
 where $\delta\Vp = \theta\Vp - \Vpt$. Indeed, a version of this statement is true
 by \cite[Proposition~\ref{IE-prop:ip}]{BS-rg-IE}.
-Thus, in order bound the contrinution $h$ defined in \eqref{e:h}, we must consider
+Thus, in order to bound the contribution $h$ defined in \eqref{e:h}, we must consider
 the size of $\delta\Vp$. By definition,
 \begin{equation}
 \|\delta\Vp(B)\|_{T_0(\ell)}
@@ -132,7 +148,7 @@ the precise bounds in \eqref{e:scaling-estimate}. Rather, necessary bounds on
 the covariance and its derivatives are encoded in the hypothesis
 \cite[\eqref{IE-e:CLbd}]{BS-rg-IE} on the $\Phi(\ell)$
 norm estimate of the covariance. This constraint naturally ensures that the $T_0(\ell)$
-norm estimates properly reflects the size of the expectation of a field as discussed
+seminorm estimates properly reflect the size of the expectation of a field as discussed
 in Section~\ref{sec:weights}.
 Our main bound on the covariance, which extends \cite[\eqref{IE-e:CLbd}]{BS-rg-IE},
 will be stated in Section~\ref{sec:Cbds}.
@@ -171,9 +187,9 @@ $6$ maps, called Maps 1--6. In Maps 1--2, the operator $\Loc$ is used to perform
 extraction. Map 3 then implements the expectation and change of scale in
 \eqref{e:Kplus3}.
 
-Since a sufficiently large portion of the marginal and relevant terms have been
-extracted, the expectation now successfully causes $K$ to shrink as it should
-based on the heuristics of Section~\ref{sec:dimensional}. The fact that irrelevant
+Once a sufficiently large portion of the marginal and relevant terms have been
+extracted from $K$ in Maps 1--2, we expect by the discussion in Section~\ref{sec:dimensional}
+that the expectation in Map 3 should cause $K$ to contract. The fact that irrelevant
 terms shrink under expectation and change of scale is formally captured by
 \cite[Proposition~\ref{IE-prop:cl}]{BS-rg-IE}, which we refer to as the
 \emph{crucial contraction}. In Section~\ref{sec:cc}, we prove that the
@@ -182,7 +198,7 @@ crucial contraction continues to hold when $s > 1$.
 \begin{rk}
 In order to maintain the form \eqref{e:IcircKsimp}, the extraction step in Maps 1--2
 must make a corresponding adjustment to $\Vp$. This adjustment ultimately results in a
-map $\Vp \mapsto \Vp_+$, which is a small perturbation of $\Vp$, as expressed
+map $\Vp \mapsto \Vp_+$, which is a small perturbation of $\Vpt$, as expressed
 by the first bound of \eqref{e:RKplus} (recall \eqref{e:Rplusdef}).
 \end{rk}
 
@@ -195,15 +211,10 @@ by the first bound of \eqref{e:RKplus} (recall \eqref{e:Rplusdef}).
 % The proof of Theorem~\ref{thm:step-mr-fv} is based on the observation that
 % it is possible to use the parameters \refeq{elldef-zz} in the norm used in
 % \cite{BS-rg-IE}, instead of the $s=0$ version used previously.
-In this section, we first
-state improved covariance estimates, thereby indicating why it is possible
-to improve the norm.
-This leads to a discussion of simplified norm pairs beyond the mass
-scale.  A lemma concerning the fluctuation-field regulator indicates why the
-simplification is possible.
-In the following, we use the notation appropriate for the spin field
-$\varphi \in (\R^n)^\Lambda$ for $n \ge 1$; only notational modifications are needed for
-$n=0$.
+In this section, we prove an improved covariance estimate, which indicates why
+it is possible to use the improved weights \eqref{e:elldef-zz}. This leads to a
+discussion of simplified norm pairs beyond the mass scale. A lemma concerning the
+fluctuation-field regulator indicates why the simplification is possible.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -212,37 +223,28 @@ $n=0$.
 
 % The estimate in \cite{ST-phi4} which yields the $s = 0$ case of \refeq{Rab-bound}
 % uses the norms defined in \cite{BS-rg-IE}.
-Recall from Section~\ref{sec:Ncal} that the $\Phi_j(\ell_j)$ norm defined by
-\begin{equation}
-\lbeq{phinorm}
-\|\varphi\|_{\Phi_j(\ell_j)}
-=
-\ell_j^{-1}
-\sup_{x\in \Lambda}
-\sup_{|\alpha|_1  \le p_\Phi}
-L^{j|\alpha|_1}
-|\nabla^{\alpha} \varphi_x|,
-\end{equation}
-Since we are working with functions $F$ of a boson field $\varphi\in(\R^n)^\Lambda$, we have
-$F_{\vec x, \vec y} = 0$ whenever $\vec y \ne \varnothing$. Thus, \eqref{e:pairing}
-becomes
-\begin{equation}
-\label{e:pairing-re}
-\langle F, g \rangle_\varphi
-	=
-\sum_{|\vec x| \le p_\Ncal} \frac{1}{|\vec x|!} F_{\vec x}(\varphi) g_{\vec x}.
-\end{equation}
+% Since we are working with functions $F$ of a boson field $\varphi\in(\R^n)^\Lambda$, we have
+% $F_{\vec x, \vec y} = 0$ whenever $\vec y \ne \varnothing$. Thus, \eqref{e:pairing} becomes
+% Recall from \eqref{e:pairing-boson} that
+% \begin{equation}
+% \label{e:pairing-re}
+% \langle F, g \rangle_\varphi
+% 	=
+% \sum_{|\vec x| \le p_\Ncal} \frac{1}{|\vec x|!} F_{\vec x}(\varphi) g_{\vec x}.
+% \end{equation}
 % which depends on the parameter $\ell_j$,
 % and on the maximal number of discrete derivatives $p_\Phi$
 % (fixed to be at least $4$ in \cite{BS-rg-IE}).
-As in \refeq{elldef-zz}, we now define
-\begin{align}
+Recall from \refeq{elldef-zz} that
+\begin{equation}
 \label{e:elldef}
-\ell_j &= \ell_0 L^{-j - s (j - j_m)_+}, \quad
+\ell_j
+	=
+\ell_0 L^{-j - s (j - j_m)_+}, \quad
 \ell_{\sigma,j}
-=
+	=
 \ell_{j \wedge j_{x}}^{-1} 2^{(j - j_{x})_+} \ggen_j.
-\end{align}
+\end{equation}
 The analysis of \cite{BS-rg-IE,BS-rg-step} uses the norm parameters $\ell_j$ and $\ell_{\sigma,j}$ with $s = 0$.
 To distinguish these from our
 new choice \refeq{elldef} of $\ell_j$ and $\ell_{\sigma,j}$, we write
@@ -341,17 +343,32 @@ $\ell_0^2 \ge c_0 \ellconst^{-1}$.
 
 A field $\varphi$ can be viewed as a test function supported on sequences with
 $|\vec x| = 1$ and $|\vec y| = 0$.
-In particular, $\|\varphi\|_\Phi$ is defined as the norm of a test function.
+In particular,
+% $\|\varphi\|_\Phi$ is defined as the norm of a test function.
+% Recall from Section~\ref{sec:Ncal} that the $\Phi_j(\ell_j)$ norm defined by
+\begin{equation}
+\lbeq{phinorm}
+\|\varphi\|_{\Phi_j(\ell_j)}
+	=
+\ell_j^{-1}
+\sup_{x\in \Lambda} \sup_{1\le i\le n}
+\sup_{|\alpha|_1  \le p_\Phi}
+L^{j|\alpha|_1}
+|\nabla^{\alpha} \varphi^i_x|,
+\end{equation}
 As in \cite[(\ref{IE-e:PhiXdef})]{BS-rg-IE}, we use the localised version
 of \eqref{e:phinorm}, defined for subsets $X \subset \Lambda$  by
-\begin{align}
+\begin{equation}
 \label{e:PhiXdef}
-    \|\varphi\|_{\Phi_j(X)}
-    &=
-    \inf \{ \|\varphi -f\|_{\Phi_j} :
-    \text{$f \in \C^\Lambda$ such that $f_{x} = 0$
-    $\forall x\in X$}\}.
-\end{align}
+\|\varphi\|_{\Phi_j(X)}
+	=
+\inf
+\{
+	\|\varphi -f\|_{\Phi_j} :
+	\text{$f \in \C^\Lambda$ such that $f_{x} = 0$
+	$\forall x\in X$}
+\}.
+\end{equation}
 A similar definition is given for general test functions.
 % A \emph{small set} is defined to be a connected polymer $X \in \Pcal_j$
 % consisting of at most $2^d$ blocks (the specific number $2^d$ plays no
@@ -368,28 +385,28 @@ we recall from \cite[\eqref{IE-e:GPhidef}]{BS-rg-IE}
 that the
 \emph{fluctuation-field regulator} $G_j$
 is defined by
-\begin{align}
+\begin{equation}
 \label{e:GPhidef}
-    G_j(X,\varphi)
-    =
-    \prod_{x \in X} \exp
-    \left(|B_{x}|^{-1}\|\varphi\|_{\Phi_j (B_{x}^\Box,\ell_j )}^2 \right)
-    ,
-\end{align}
+G_j(X,\varphi)
+	=
+\prod_{x \in X} \exp
+\left(|B_{x}|^{-1}\|\varphi\|_{\Phi_j (B_{x}^\Box,\ell_j )}^2 \right)
+,
+\end{equation}
 where $B_{x}\in \Bcal_j$ is the unique block that contains $x$,
 and hence $|B_x| = L^{dj}$.
 The \emph{large-field regulator} is defined in \cite[\eqref{IE-e:9Gdef}]{BS-rg-IE} by
-\begin{align}
+\begin{equation}
 \label{e:9Gdef}
-    \tilde G_j  (X,\varphi)
-    =
-    \prod_{x \in X}
-    \exp \left(
-    \frac 12 |B_{x}|^{-1}\|\varphi\|_{\tilde\Phi_j (B_{x}^\Box,\ell_j)}^2
-    \right)
-    .
-\end{align}
-The $\tilde\Phi_j$ norm appearing on the right-hand side of \refeq{9Gdef} will be defined
+\tilde G_j(X,\varphi)
+	=
+\prod_{x \in X}
+\exp \left(
+\frac 12 |B_{x}|^{-1}\|\varphi\|_{\tilde\Phi_j (B_{x}^\Box,\ell_j)}^2
+\right)
+.
+\end{equation}
+The $\tilde\Phi_j$ seminorm appearing on the right-hand side of \refeq{9Gdef} will be defined
 in Section~\ref{sec:cc}.
 % similar to the $\Phi_j$ norm, with the important difference that it is insensitive to
 % shifts by linear test functions; see \cite[\eqref{IE-e:Phitilnorm}]{BS-rg-IE} for the precise definition.
@@ -400,30 +417,30 @@ for $F \in \Ncal(X^\Box)$ by
 % in the space $\Ncal(X^\Box)$ of functionals of the field (see \cite[\eqref{norm-e:NXdef}]{BS-rg-norm}),
 \begin{align}
 \label{e:Gnormdef1}
-    \| F\|_{G_j(\ell_j)}
-    &=
-    \sup_{\varphi \in (\R^n)^\Lambda}
-    \frac{\|F\|_{T_{\varphi,j}(\ell_j)}}{G_{j}(X,\varphi)}
-    ,
-\\
+\| F\|_{G_j(\ell_j)}
+	&=
+\sup_{\varphi \in (\R^n)^\Lambda}
+\frac{\|F\|_{T_{\varphi,j}(\ell_j)}}{G_{j}(X,\varphi)}
+,
+	\\
 \label{e:Gnormdef2}
-    \|F\|_{\tilde G_j^{\Gtilp}(h_j)}
-    &=
-    \sup_{\varphi \in (\R^n)^\Lambda}
-    \frac{\|F \|_{T_{\varphi,j}(h_j)}}{\tilde{G}^{\Gtilp}_{j}(X,\varphi)}
-    .
+\|F\|_{\tilde G_j^{\Gtilp}(h_j)}
+	&=
+\sup_{\varphi \in (\R^n)^\Lambda}
+\frac{\|F \|_{T_{\varphi,j}(h_j)}}{\tilde{G}^{\Gtilp}_{j}(X,\varphi)}
+.
 \end{align}
 The parameter $\ell_j$ that appears in the regulators \refeq{GPhidef}--\refeq{9Gdef} and
 in the numerator of \refeq{Gnormdef1} was taken to be $\ell_j^\oldrm$ in \cite{BS-rg-IE},
 but now we use $\ell_j$ instead. As in \cite{BS-rg-IE},
 the parameter $h_j$ and its observable counterpart $h_{\sigma,j}$ are given by
-\begin{align}
+\begin{equation}
 \label{e:h}
-    h_{j} &= k_0 \ggen_j^{-1/4}L^{-j},
-    \quad
-    h_{\sigma,j}  = (\ell_{j \wedge j_{x}}^{\rm old})^{-1}
-    2^{(j - j_{x})_+}\ggen_j^{1/4}.
-\end{align}
+h_{j} = k_0 \ggen_j^{-1/4}L^{-j},
+	\quad
+h_{\sigma,j}  = (\ell_{j \wedge j_{x}}^{\rm old})^{-1}
+2^{(j - j_{x})_+}\ggen_j^{1/4}.
+\end{equation}
 
 In \cite{BS-rg-IE}, estimates on $\|\cdot\|_{j+1}$ are given in terms of
 $\|\cdot\|_j$, where the pair $(\|\cdot\|_j, \|\cdot\|_{j+1})$ refers to
@@ -450,7 +467,6 @@ both norm pairs in \eqref{e:np1} and \eqref{e:np2} replaced by the single new no
     \|F\|_{j+1} = \|F\|_{G_{j+1}(\ell_{j+1})},
 \end{equation}
 with the improved $\ell_j$ of \eqref{e:elldef} with $s > 1$ fixed as large as desired.
-
 
 The use of two norm pairs adds intricacy to \cite{BS-rg-IE,BS-rg-step}.
 The pair \refeq{np1} is insufficient, on its own, because the scale-$(j+1)$ norm
@@ -536,6 +552,7 @@ follows once $L$ is large enough that $q L^{2 - 2s} \leq 1$.
 \end{proof}
 
 \begin{rk}
+\label{rk:newnorm}
 The elimination of the $h$-norm after the mass scale is more than a convenience.
 It becomes a necessity when we improve the $\ell$-norm.
 Briefly, the reason is as follows. In the proof of
@@ -578,7 +595,8 @@ In the following,
 we indicate the changes in the analysis of
 \cite{BS-rg-IE,BS-rg-step} that arise due to the new choice of norm parameters \refeq{elldef}
 beyond the mass scale, and due to the reduction from two norm pairs to one.
-This requires repeated reference to previous papers.
+This requires repeated reference to previous papers. In such references, we will
+sometimes use the notation from those papers without defining it here.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -588,22 +606,20 @@ This requires repeated reference to previous papers.
 The analysis of \cite{BS-rg-IE} assumes that the norm parameters $\h_j,\h_{\sigma,j}$,
 for $\h = \ell$ or $\h = h$,
 satisfy the estimates \cite[\eqref{IE-e:h-assumptions}]{BS-rg-IE}; these assert that
-\begin{align}
+\begin{equation}
 \label{e:h-assumptions-IE}
-    \h_j \ge \ell_{j},
-    \quad\quad
-    \frac{\h_{j+1}}{\h_j}
-    &\le 2 L^{-1},
-    \quad\quad
-    \frac{\h_{\sigma,j+1}}{\h_{\sigma,j}}
-    \le
-    {\rm const}\,
-    \begin{cases}
-     L  & (j < j_{x})
-     \\
-     1 & (j \ge j_{x}).
-     \end{cases}
-\end{align}
+\h_j \ge \ell_{j},
+	\qquad
+\frac{\h_{j+1}}{\h_j} \le 2 L^{-1},
+	\qquad
+\frac{\h_{\sigma,j+1}}{\h_{\sigma,j}}
+	\le
+{\rm const}\,
+\begin{cases}
+L & (j < j_{x}) \\
+1 & (j \ge j_{x}).
+\end{cases}
+\end{equation}
 We do not change $\h_j$ or $\h_{\sigma,j}$ for $j$ below the mass scale, so there
 can be no difficulty until above the mass scale.  Above the mass scale, the parameters
 $h_j,h_{\sigma,j}$ are eliminated, and requirements involving them become vacuous.
@@ -787,17 +803,17 @@ With the new choice of $\ell$ (and $\Gcal = G$),
 Thus, by \cite[\eqref{IE-e:scale-change}]{BS-rg-IE}
 and \cite[Lemma~\ref{IE-lem:dIip}]{BS-rg-IE},
 \begin{align}
-  \label{e:integration-property-pf}
-     &\|\Ex_{j+1} \delta I^X \theta F(Y) \|_{T_{\varphi,j+1}(\ell_{j+1})}
-     \nnb
-     &\quad \leq
-     \|\Ex_{j+1} \delta I^X \theta F(Y) \|_{T_{\varphi,j}(\ell_{j})} \nnb
-     &\quad \leq
-     \Econst^{|X|_j+|Y|_j}
-     (C_{\delta V} \epdV)^{|X|_j}
-     \| F(Y) \|_{G_j(\ell_{j})}
-    G_j(X\cup Y,\varphi)^5
-    .
+\label{e:integration-property-pf}
+&\|\Ex_{j+1} \delta I^X \theta F(Y) \|_{T_{\varphi,j+1}(\ell_{j+1})}
+	\nnb
+&\quad \leq
+\|\Ex_{j+1} \delta I^X \theta F(Y) \|_{T_{\varphi,j}(\ell_{j})} \nnb
+&\quad \leq
+\Econst^{|X|_j+|Y|_j}
+(C_{\delta V} \epdV)^{|X|_j}
+\| F(Y) \|_{G_j(\ell_{j})}
+G_j(X\cup Y,\varphi)^5
+.
 \end{align}
 By Lemma~\ref{lem:mart}, $G_j(X\cup Y,\varphi)^5 \le G_{j+1}(X\cup Y,\varphi)$.
 Now we divide both sides by
@@ -819,9 +835,10 @@ as we explain in this section.
 
 \subsubsection{The operator $\Loc$}
 
-The space $\Phi$ of test functions and the space $\Ncal$ of field functionals
-are dual to one another via the pairing \eqref{e:pairing}. By exploting this,
-in \cite{BS-rg-IE}, the operator $\Loc$ is defined as a kind of adjoint to
+There is a certain kind of duality between the space $\Phi$ of test functions
+and the space $\Ncal$ of field functionals induced by the pairing \eqref{e:pairing}.
+By exploting this,
+in \cite{BS-rg-IE} the operator $\Loc$ is defined as a kind of adjoint to
 an operator $\Tay_a$, which replaces test functions by a lattice Taylor expansion
 at $a\in\Lambda$.
 Non-constant polynomials are not well-defined on the whole torus $\Lambda$, but
@@ -849,37 +866,36 @@ x_1, \ldots, x_p \in \Lambda'
 and set $p_M(\vec x) = 0$ if $|\vec x| \ne p$ or if the lattice points in $\vec x$
 do not all lie in $\Lambda'$. Following \eqref{e:mon-dim},
 we define the \emph{dimension} of such a monomial to be the dimension of $M$,
-i.e.\ $m [\varphi] + |\alpha|$.
+i.e.\ $|\alpha| + p [\varphi]$.
 We let $d_+ \ge 0$ and let $\Pi = \Pi[\Lambda']$ denote the span of the monomials
 of this form with dimension at most $d_+$. For $X \subset \Lambda'$, we can also define
-$\Pi(X) = \Pi[\Lambda'](X)$ as the subset of $\Pi$ consisting of test functions
-supported on sequences over $X$.
+$\Pi(X) = \Pi[\Lambda'](X)$ as the space of test functions that agree with an element
+of $\Pi$ on $X$. Thus, $\Pi(X) \supset \Pi$.
 
-For $a\in\Lambda'$, in \cite{BS-rg-loc} an operator $\Tay_a : \Phi \to \Pi$ is defined
-by a lattice analogue of Taylor expansion; although the monomials $p_M$ form an obvious
-basis with respect to which this expansion can be defined, a different basis is used in
+For $a\in\Lambda'$, in \cite{BS-rg-loc} the operator $\Tay_a$ is defined as a map
+$\Tay_a : \Phi \to \Pi$
+by a lattice analogue of Taylor expansion. Although the monomials $p_M$ form an obvious
+basis with respect to which this expansion can be performed, a different
+basis\footnote{The elements of this basis are similar to \emph{Newton polynomials} used
+in the calculus of finite differences.} is used in
 \cite{BS-rg-loc}. The operator $\Tay_a g$ satisfies lattice analogues of the usual properties
-of Taylor polynomials. We will not discuss this in further detail as we will only use the fact
+of Taylor polynomials. We will not discuss this further as we will only use the fact
 that $\Tay_a g \in \Pi$ here.
 
-\begin{rk}
-\label{rk:TayX}
-By expansion in a basis of $\Pi(X)$, one can also defne a lattice Taylor expansion map
-$\Phi \to \Pi(X)$. We will also denote this map by $\Tay_a$.
-\end{rk}
-
-The following, which is a restatement of \cite[Proposition~\ref{loc-prop:LTsymexists}]{BS-rg-IE},
+The following, which is a restatement of \cite[Proposition~\ref{loc-prop:LTsymexists}]{BS-rg-IE}
+specialized to small sets,
 defines $\Loc_X F$ as the unique element of $\Vcalp(X)$ that agrees with $F$ to
-order $d_+$ in an appropriate sense.
+order $d_+$ in the sense of the pairing.
 
 \begin{prop}
 \label{prop:LTsymexists}
-Let $X\subset\Lambda$ be a coordinate patch and let $F\in\Ncal(X)$.
+Let $X\in\Scal$ be a small set and let $F\in\Ncal(X)$.
 Then there is a unique polynomial $\Vp\in\Vcalp$ such that
 \begin{equation}
 \langle F, g \rangle_0 = \langle \Vp(X), g \rangle_0
 \end{equation}
-for all $g\in\Pi$. We write $\Loc_X F = \Vp(X)$.
+for all $g\in\Pi$. Moreover, $\Vp$ is independent of the
+choice of coordinate patch. We write $\Loc_X F = \Vp(X)$.
 \end{prop}
 
 Define the seminorm
@@ -894,25 +910,13 @@ We will need the following lemma, which is a restatement of
 
 \begin{lemma}
 \label{lem:testfndecomp}
-Let $X$ be a coordinate patch and let $g\in\Phi$.
+Let $X\in\Scal$ be a small set and let $g\in\Phi$.
 There exists $f\in\Pi(X)$ such that, with $h = g - f$, we have
 $\|g\|_{\tilde\Phi(X)} \le \|h\|_\Phi \le (1 + \epsilon) \|g\|_{\tilde\Phi(X)}$
 and $\|f\|_\Phi \le (2 + \epsilon) \|g\|_\Phi$.
 \end{lemma}
 
 \subsubsection{Proof of the crucial contraction}
-
-The space $\Ncal$ containing the functionals $F$ appearing above requires control on
-up to $p_\Ncal$ derivatives of $F$ with respect to the field $\varphi$,
-where $p_\Ncal$ is a parameter of the $T_\varphi$-seminorm.
-In the proof of Proposition~\ref{prop:cl}, we must choose $p_\Ncal$ to be large
-depending on $p$, in order to analyse the correlation length
-of order $p$.  The renormalisation group analysis is predicated on fixed (but arbitrary)
-$p_\Ncal$, so it can proceed with this modification.  However,
-we do not prove that constants are uniform in $p_\Ncal$,
-and in particular we do not prove that the required smallness of $g$ in
-Theorem~\ref{thm:mr}(iii) is uniform in the choice of $p_\Ncal$.
-Thus we do not have a result for \emph{all} $p>0$ for any fixed $g$.
 
 Below the mass scale, we continue to use the crucial contraction as stated in
 \cite[Proposition \ref{IE-prop:cl}]{BS-rg-IE} in terms of two norm pairs.
@@ -923,13 +927,12 @@ scale using the new norm pair \eqref{e:npmass}.
 % for consistency with our present notation.
 Throughout this section, we
 sometimes write the dimension as $d$ for emphasis, although we only consider $d=4$.
-
-\commentbw{Some missing notation.}
+The interaction $\Itilde_\pt$ below is a variant of \eqref{e:Idef} defined in \cite{BS-rg-IE}.
 
 \begin{prop}[{Improvement of \cite[Proposition \ref{IE-prop:cl}]{BS-rg-IE}}]
 \label{prop:cl} Let $j_m \leq j<N$ and $V\in \DV_j$.  Let $X \in \Scal_j$ and
-$U = \overline X$.  Let $F(X) \in \Ncal(X^\Box)$ be such that
-$\pi_\alpha F(X) =0$ when $X(\alpha)=\varnothing$, and such that
+let $U$ be the polymer closure of $X$.  Let $F(X) \in \Ncal(X^\Box)$ be such that
+$\pi_\alpha F(X) = 0$ when $\alpha\notin X$ ($\alpha = 0, x$) and such that
 $\pi_{0x}F(X)=0$ unless $j \ge j_x$.
 {There is a constant $C$ (independent of $L$) such that}
 \begin{align}
@@ -949,15 +952,13 @@ $\kappa_{\LT F} =\|\Ipttil^X \LT_X \Ipttil^{-X} F(X) \|_{{G_{j}(\ell_{j})}}$.
 
 An ingredient in the proof of Proposition~\ref{prop:cl} is
 \cite[Lemma~\ref{loc-lem:phij}]{BS-rg-loc}, which is the $s=0$ version of
-the following lemma.  For simplicity, we state only the conclusion of the lemma,
-\todo{and the notation and hypotheses are those in}
-\cite[Lemma~\ref{loc-lem:phij}]{BS-rg-loc}, except now we use the
-$s$-dependent norm parameters
-$\h_j=\ell_j$ of \refeq{elldef} ($h_j$ is not needed above the mass scale, and
-the $s=0$ case applies below the mass scale).
-
+the following lemma.
+% For simplicity, we state only the conclusion of the lemma, and the notation and
+% hypotheses are those in \cite[Lemma~\ref{loc-lem:phij}]{BS-rg-loc}, except now
+% we use the $s$-dependent norm parameters $\h_j=\ell_j$ of \refeq{elldef} ($h_j$
+% is not needed above the mass scale, and the $s=0$ case applies below the mass scale).
 The proof of Lemma~\ref{loc-lem:phij} with $s = 0$
-is based on the assumption  $\ell_{j+1}/\ell_j \leq  cL^{-1}$.
+is based on the assumption  $\ell_{j+1}/\ell_j \leq  cL^{-1}$
 (we take $[\varphi_i]=1$; the parameters $\ell_{\sigma,j}$ are not used).
 For our new values of $\ell$, the stronger assumption
 $\ell_{j+1}/\ell_j \leq L^{-1 - s \1_{j \geq j_m}}$ holds.
@@ -966,7 +967,7 @@ The unique change to the proof occurs in the transition from
 \cite[\eqref{loc-e:rhognew}]{BS-rg-loc}, where the ratio
 $\ell_{j+1}/\ell_j$ is used.
 
-In the following, we let $\Phi = \Phi_j(\h_j)$ norm and let $\Phi' = \Phi_{j+1}(\h_{j+1})$.
+In the following, we let $\Phi = \Phi_j(\h_j)$ and $\Phi' = \Phi_{j+1}(\h_{j+1})$.
 We employ similar conventions for $\Phi(X)$ and $\tilde\Phi(X)$. The constant $d_+'$
 is defined in \cite[\eqref{loc-e:dplusprimedef}]{BS-rg-loc} and in this context becomes
 $d_+' = d_+ + 1$. The enlargement $X_+$ of a polymer $X\in\Pcal_j$ is defined by replacing
@@ -989,7 +990,7 @@ L^{- (1 + s \1_{j \geq j_m}) d_+'}  \|g\|_{\tilde{\Phi}' (X_+)}.
 \begin{proof}
 Assume without loss of generality that $X$ is connected.
 Let $f\in\Pi(X)$ and $h\in\Phi$ be as in Lemma~\ref{lem:testfndecomp}.
-Thus, $g = f + h$ and so (with $\Tay_a : \Phi \to \Pi(X)$ as in Remark~\ref{rk:TayX})
+Thus, $g = f + h$ and so
 we have $g - (h - \Tay_a h) = f + \Tay_a h \in \Pi(X)$, where $a$ is the largest
 point which is lexicographically no larger than any point in $X$.
 By definition of the $\tilde\Phi(X)$ seminorm,
@@ -1022,7 +1023,6 @@ where $A^{\vec x} = A^{|\vec x|}$ and $\bf{X}_+$ is the set of sequences whose
 components lie in $X_+$. In other words, we can estimate the $\Phi(X)$
 norm of $r$ in terms of the values of $r$ and its derivatives in the enlargement
 $X_+$ of $X$.
-
 With the new ratio \eqref{e:h-assumptions},
 % \cite[\eqref{loc-e:rhognew}]{BS-rg-loc}
 we can rewrite this as
@@ -1074,8 +1074,9 @@ when $[\varphi_i] = 1$ and is bounded in the same way. Namely, it is shown in
 \cite{BS-rg-loc} that this quantity can be bounded by a constant times
 \begin{align}
     L^{-d_{+}'}
-    \|h\|_{\Phi'( X_+)}.
+    \|h\|_{\Phi'( X_+)},
 \end{align}
+which completes the proof.
 % Thus,
 % \begin{equation}
 %     \|r\|_{\Phi (X)}
@@ -1091,17 +1092,16 @@ when $[\varphi_i] = 1$ and is bounded in the same way. Namely, it is shown in
 \end{proof}
 
 Roughly speaking, the $L$-dependent factor in \eqref{e:gbd-improved} implements the dimensional gain
-for irrelevant directions in a renormalisation group step, when passing from one scale to the next.
+for irrelevant directions in a renormalisation group step when passing from one scale to the next.
 In other words, we may regard the dimension of the field as improving from $1$ below the
 mass scale to $1+s$ above the mass scale.
 The $s=0$ version of Lemma~\ref{lem:phiij-improved} is adapted to the scaling at the critical point, where $m^2=0$.
-In the noncritical case $m^2>0$, the dimensional gain improves greatly for $j>j_m$,
+In the noncritical case $m^2>0$, the dimensional gain improves greatly for $j>j_m$
 as apparent from \eqref{e:scaling-estimate}, and is
 captured more accurately by the general-$s$ version of \eqref{e:gbd-improved}.
-
 As a consequence of the former improvement we have the following two further improvements.
-From now on, we always assume $\h=\ell$ and $j>j_m$, as this is the only case relevant for
-the improvement of \cite[Proposition~\ref{IE-prop:cl}]{BS-rg-IE}.
+% From now on, we always assume $\h=\ell$ and $j>j_m$, as this is the only case relevant for
+% the improvement of \cite[Proposition~\ref{IE-prop:cl}]{BS-rg-IE}.
 
 \paragraph{\cite[Proposition~\ref{loc-prop:1-LTdefXY}]{BS-rg-loc}}
 The improvement in Lemma~\ref{lem:phiij-improved} propagates to
@@ -1183,6 +1183,17 @@ L^{1 + s \1_{j \geq j_m}} \leq L^{- 5}.
 \end{equation}
 This completes the proof of the improved version of
 \cite[Proposition~\ref{IE-prop:1-LTdefXY}]{BS-rg-IE}.
+
+% The space $\Ncal$ requires control of
+% up to $p_\Ncal$ derivatives of its elements with respect to the field $\varphi$.
+% In the proof of Proposition~\ref{prop:cl}, we must choose $p_\Ncal$ to be large
+% depending on $p$, in order to analyse the correlation length
+% of order $p$.  The renormalisation group analysis is predicated on fixed (but arbitrary)
+% $p_\Ncal$, so it can proceed with this modification.  However,
+% we do not prove that constants are uniform in $p_\Ncal$,
+% and in particular we do not prove that the required smallness of $g$ in
+% Theorem~\ref{thm:mr}(iii) is uniform in the choice of $p_\Ncal$.
+% Thus we do not have a result for \emph{all} $p>0$ for any fixed $g$.
 
 \begin{proof}[Proof of Proposition~\ref{prop:cl}]
 We complete the proof of Proposition~\ref{prop:cl} by modifying the proof of

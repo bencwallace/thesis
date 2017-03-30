@@ -65,9 +65,13 @@ The \emph{high-temperature expansion} of a spin system is based on the expansion
 Boltzmann weight $e^{\beta H}$ around $\beta = 0$.
 For the $O(n)$ spin model, an uncontrolled approximation of this expansion yields
 \begin{align}
-Z 	&= \int d\lambda(\sigma) \prod_{xy\in\edges} e^{\beta \sigma_x \cdot \sigma_y} \\
-	&\approx \int d\lambda(\sigma) \prod_{xy\in\edges} (1 + \beta \sigma_x \cdot \sigma_y) \\
-	&= \sum_{E \subset \edges} \beta^{|E|} \int d\lambda(\sigma) \prod_{xy \in E} \sigma_x \cdot \sigma_y
+Z 
+	&=
+\int d\lambda(\sigma) \prod_{xy\in\edges} e^{\beta \sigma_x \cdot \sigma_y} \nonumber \\
+	&\approx
+\int d\lambda(\sigma) \prod_{xy\in\edges} (1 + \beta \sigma_x \cdot \sigma_y) \nonumber \\
+	&=
+\sum_{E \subset \edges} \beta^{|E|} \int d\lambda(\sigma) \prod_{xy \in E} \sigma_x \cdot \sigma_y
 \end{align}
 By reflection-invariance of the sphere measure, the last integral above is non-zero
 if and only if every vertex in the product over $E$ appears an even number of times.
@@ -307,13 +311,13 @@ U_{\gcc,\gamma}(\tau)
 
 \begin{prop}
 Let $d > 0$ and $\gcc > 0$. For $\gamma < \gcc$ and $\nu \in \R$,
-\begin{align}
+\begin{equation}
 \label{e:Grep-pos-bis}
 G_{x,N}(\gcc, \gamma, \nu; 0)
-	&=
+	=
 \int e^{-V_{\gcc,\gamma,\nu,N}} \phib_0 \phi_x.
 % \int e^{-U_{\gcc,\gamma,\nu,N}} \bar\phi_a \phi_b.
-\end{align}
+\end{equation}
 \end{prop}
 
 \subsubsection{Finite-volume approximation}
