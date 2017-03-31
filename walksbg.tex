@@ -2,7 +2,9 @@
 \chapter{Finite-volume approximation}
 \label{sec:finvol}
 
-In this appendix, we prove Proposition~\ref{prop:finvol}.
+In this appendix, we prove Proposition~\ref{prop:finvol}. Since we are only
+dealing with walks, we can drop the parameter $n = 0$ from
+our notation. We will use $n$ to denote a different quantity below.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -18,14 +20,10 @@ In this appendix, we prove Proposition~\ref{prop:finvol}.
 
 \section{A monotonicity lemma}
 
-Before proving the proposition, we require some preliminaries.
-Let $P^n$ be the projection
-of $\Zd$ onto the discrete torus of side $n$,
-which we denote $\Z_n^d$.
-Then $P^n$ has a natural action
-on the path space $(\Zd)^{[0,\infty)}$. We let
-$X^n = P^n(X)$ be the projection of $X$
-and note that $X^n$ is a simple random walk on $\Z^d_n$.
+Let $P^n$ be the projection of $\Zd$ onto the discrete torus of side $n$,
+which we denote $\Z_n^d$. Then $P^n$ has a natural action
+on the path space $(\Zd)^{[0,\infty)}$. We let $X^n = P^n(X)$ be the projection
+of $X$ and note that $X^n$ is a simple random walk on $\Z^d_n$.
 
 We call $h = (h_x)_{x\in\Zd}$ a \emph{field of path functionals} if
 $h_x : (\Zd)^{[0,\infty)} \to \R$ is a function on continuous-time paths
@@ -89,7 +87,6 @@ f_{x+ny}(X^{kn}) g_{x+ny}(X^{kn})
       \left(\sum_{y \in Q_k} g_{x+ny}(X^{kn})\right) \nonumber \\
   &= \sum_{x\in\Z_n^d} f_x(X^n) g_x(X^n).
 \end{align}
-This completes the proof.
 \end{proof}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -160,8 +157,8 @@ Summation of \refeq{nabL} over unit vectors $e\in\Zd$ also gives
 %     .
 %     \label{e:chiNdef}
 % \end{align}
-Here and throughout this section we drop the parameter $n$
-from the notation since $n = 0$.
+
+The following is a re-statement of Proposition~\ref{prop:finvol}.
 
 \begin{prop}
 \label{prop:finvol-re}
