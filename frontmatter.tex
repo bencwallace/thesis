@@ -14,27 +14,33 @@
 \maketitle                      %% Mandatory
 
 \begin{abstract}                %% Mandatory
-\todo{The abstract:
-is a concise and accurate summary of the thesis
-should state the problem, the methods of investigation, and the general conclusions
-must not contain tables, graphs or illustrations
-must not exceed 350 words
-should contain keywords that will facilitate automated information retrieval
-must be the only abstract in the thesis
-350 words is the maximum allowed by online bibliographic listings; anything beyond 350
-words will be arbitrarily cut off. The abstract in your thesis and the one you enter online
-at final submission must be identical.
-Please do not put a list of keywords with your abstract.}
+The central concern of this thesis is the study of critical behaviour in models of
+statistical physics in the upper-critical dimension. We study a generalized lattice
+$|\varphi|^4$ model and a model of weakly self-avoiding walk with self-attraction.
+By utilizing a supersymmetric integral representation,
+% of the latter's two-point function,
+we are able to study the two models in a unified manner. Our main result
+involves the identification of leading-order asymptotics of the two-point function,
+susceptibility, and finite-order correlation length of these models.
+
+The proof proceeds via a renormalisation group method, and requires two extensions to this
+method. The first extension, which is required for the computation of the finite-order
+correlation length, is an improvement of the norms used to control the evolution of the
+renormalisation group. This allows us to obtain better error estimates in the massive regime
+of the renormalisation group flow.
+
+The second extension involves the identification of critical parameters for models initialized
+with a non-zero error coordinate coupled to the marginal/relevant coordinate. This allows us,
+for example, to realize the renormalisation group flow of the weakly self-avoiding walk with self-attraction as a small perturbation of the flow of the ordinary weakly self-avoiding walk.
 \end{abstract}
 
 \cleardoublepage
 
 \chapter{Preface}
 
-The bulk of Chapter~\ref{sec:intro} (including Sections~\ref{sec:intro}--\ref{sec:walks})
-is a general introduction to the
+Sections~\ref{sec:intro}--\ref{sec:walks} are a general introduction to the
 subject matter of this thesis and we do not claim any originality here. Section~\ref{sec:mr}
-states the main results of this thesis, which combine the results from the following:
+states our main results, which combine and slightly extend results from the following:
 \begin{itemize}
 \item
 the article \cite{BSTW-clp}, written jointly with
@@ -47,7 +53,8 @@ the article \cite{BSW-saw-sa}, written jointly with
 Roland Bauerschmidt and Gordon Slade and published
 in \textit{Journal of Statistical Physics}.
 \end{itemize}
-Section~\ref{sec:intrep} is part of \cite{BSW-saw-sa}.
+Section~\ref{sec:spin-walk} includes part of \cite{BSW-saw-sa}.
+
 Chapters~\ref{sec:rg}--\ref{sec:RGflow} are based on \cite{BSTW-clp,BSW-saw-sa}:
 \begin{itemize}
 \item
@@ -137,7 +144,7 @@ Chapter~\ref{sec:RGflow} includes part of \cite{BSW-saw-sa}.
 
 \chapter{Acknowledgements}      %% Optional
 To come...
-% Acknowledge: Gord, David, Roland, Alex, etc.
+% Acknowledge: Gord, David, Roland, Alex, committee, family, etc.
 
 % \chapter{Dedication} %% Optional
 % Dedication...
