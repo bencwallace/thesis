@@ -9,20 +9,22 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 Thermodynamics originated as the study of heat and its transformations into other
-forms of energy, but can more generally be described as the field of study that
-is concerned with the properties of bulk matter. That is, it seeks to
-answer questions regarding those properties of matter that are only well-defined
-in terms of large collections of particles. Two familiar examples of
+forms of energy, but can more generally be described as the study of
+% field of study that is concerned with the properties of
+bulk matter. That is, it seeks to
+answer questions regarding those properties of matter that only appear to be
+well-defined in terms of large collections of particles. Two familiar examples of
 such properties are density and temperature. Density is usually defined as the mass
-of a substance per unit volume at a certain temperature. Such a quantity is
+of a substance per unit volume (at a certain temperature). Such a quantity is
 sometimes said to be \emph{intensive}: it is a property of the substance itself,
 not the amount of substance present.
 
 There is a small caveat that should be added to this definition: the mass per unit
 volume of a sample of a substance will only become independent of the volume once
-this volume is sufficiently large. This makes density not only a property of the
-substance, but in fact a \emph{macroscopic} property (as opposed to, e.g.\ the
-atomic number of a substance). To say that thermodynamics is the study of bulk
+this volume is sufficiently large. This makes density
+% not only a property of the substance, but in fact
+a \emph{macroscopic} property (as opposed to, e.g.\ the
+atomic number). To say that thermodynamics is the study of bulk
 matter amounts to saying that it deals in macroscopic quantities.
 % Thus, it does not make sense to ask for the density of a sample of hydrogen consisting
 % of a single atom although it is sensible to speak of the density of hydrogen.
@@ -35,35 +37,33 @@ The fact that there even is such a notion as a macroscopic quantity
 % of a substance
 raises a number of simple questions. For instance, if these quantities
 are indeed properties of the substance itself, then it should be possible to 
-derive them from the microscopic properties of the substance's constituent particles;
-yet above, we have resorted to discussing ``large'' quantities of substance in order
+derive them from the microscopic properties of the constituent particles;
+yet above, we have resorted to discussing ``large'' quantities of matter in order
 to make sense of density. In fact, this leads us to another natural question: what
 constitutes a sample sufficiently large to be considered bulk matter and why should
 certain measurements of a sample stabilize when the sample is sufficiently large?
 
-A natural response to this last question is that some sort of law of large numbers
+A natural response is that some sort of law of large numbers
 is at work. Although the behaviour of a system of particles is not random, it may
-be that it is sufficiently complex that it is reasonable to view it as such.
+be sufficiently complex that it is reasonable to view it as such.
 This is the basic idea of statistical mechanics: to leverage the complexity of
 large systems of particles in order to explain the apparent simplicity of bulk
-matter as arising from a kind the kind of self-averaging that pervades probability
+matter as arising from the kind of self-averaging that pervades probability
 theory. From this point of view, macroscopic quantities are types of averages that
-arise from some probability distribution.
+arise from some probability distribution. These averages typically depend on
+temperature or other parameters, so in this sense the main objects of study in
+statistical mechanics are certain parameterized families of probability measures.
 
-A striking aspect of bulk matter is the
-% that we have not yet discussed pertains to the
-existence of different \emph{phases} of matter, which correspond to radically different
-macroscopic behaviour. For instance, steam and water have very different densities despite
-both being $\mathrm{H_2O}$. Of course, steam exists at much higher temperatures than water
-and density, as we said above, is a function of temperature. However, one would not be
-able to predict the density of steam by measuring the temperature-dependence of the
-density of water.
+It is useful to organize these measures according to their qualitative properties.
+Qualitatively similar measures correspond to a \emph{phase} of a substance.
+For instance, water at $20^\circ{\rm C}$ is not terribly different from water at
+$50^\circ{\rm C}$. On the other hand, steam and water have very different densities despite
+both being $\mathrm{H_2O}$.
 
-% and the nature of \emph{phase transitions}.
 In fact, the boiling of water is signalled by an abrupt drop in density by a factor
 of around $1/1000$ at normal atmospheric pressure. The temperature at which water
 boils varies as a function of pressure $T_c = T_c(P)$ and a \emph{phase transition}
-is said to occur when the pressure or temperature are varied in such a way as to
+is said to occur when the pressure and/or temperature are varied in such a way as to
 cross the graph of this function; see Figure~\ref{fig:liquid-vapour}.
 % Moreover, for any fixed $P$ there is a drop in density as the temperature is increased past $T_c(P)$.
 Moreover, as $P$ is increased, the density difference along this curve decreases and
@@ -91,11 +91,9 @@ predicted exactly by studying models whose only resemblance to these materials i
 in their very coarse properties.
 
 In the 1970's Ken Wilson, inspired by ideas in quantum field theory, gave an
-explanation of universality in terms of an
-abstract dynamical system on a space of models known as the \emph{renormalisation
-group}. This idea was enormously successful and led to his 1982 Nobel Prize. In fact,
-the renormalisation group has become a standard way of understanding critical phenomena
-amongst physicists.
+explanation of universality in terms of the \emph{renormalisation group}:
+an abstract dynamical system on a space of models. This idea was enormously successful
+and led to his 1982 Nobel Prize.
 
 Nevertheless, a mathematically rigorous understanding of the renormalisation group
 remains incomplete. Although there have been several rigorous implementations of
@@ -109,7 +107,7 @@ remainder of the thesis.
 
 We begin in Section~\ref{sec:asymp} with some general background on asymptotic
 notation and the method of generating functions and Laplace transforms. In
-Sectin~\ref{sec:gibbs}, we briefly introduce some of the basic ideas of equilibrium
+Section~\ref{sec:gibbs}, we briefly introduce some of the basic ideas of equilibrium
 statistical physics. The models we study are defined on graphs, which we
 discuss in Section~\ref{sec:graphs}. We define spin systems, in particular
 the $|\varphi|^4$ model, in Section~\ref{sec:spins}. Critical behaviour and
@@ -120,7 +118,7 @@ we introduce the WSAW-SA and discuss its critical behaviour. This gives us all
 the necessary definitions to state our main results in Section~\ref{sec:mr}.
 Before proceeding to the method of proof,
 we discuss the close relationship between models of walks and spin systems in
-Section~\ref{sec:spin-walk}; in particular, we state a rigorous representation
+Section~\ref{sec:spin-walk}; in particular, we recall a representation
 of the WSAW-SA in terms of a spin system related to the $|\varphi|^4$ model
 that allows us to unify our treatment of both models.
 
@@ -357,6 +355,8 @@ is the \emph{Lagrangian} of the classical system we started with.
 As such, the integral representation of $K_t$ is ill-defined;
 for instance, the measure $\Dcal x$ on paths does not exist. However, let us
 not concern ourselves with this.
+
+\commentbw{Should get reduction of one dimension. See e.g.\ Cardy's notes}
 
 Suppose that $\psi$ can be analytically continued to a region of the complex
 plane containing the positive imaginary axis. Then we might hope the function
@@ -1114,19 +1114,20 @@ where $z = 2 d / (m^2 + 2 d)$ and $P = (2 d)^{-1} J$
 is the transition matrix for the simple random walk $X$ on $\Zd$.
 Thus, for $m^2 > 0$,
 \begin{equation}
+\label{e:chi-free}
 \chi(0, 0, m^2; n)
-  % =
-% \sum_{x\in\vertices} (-\Delta + m^2)^{-1}_{0x}
-  =
+	=
 (m^2 + 2 d)^{-1} \sum_{k=0}^\infty z^k
-  =
-(m^2 + 2 d)^{-1} (1 - z)^{-1}.
+	=
+(m^2 + 2 d)^{-1} (1 - z)^{-1}
+	=
+\frac{1}{m^2}.
 \end{equation}
 It follows that $\nu_c(0, 0; n) = 0$ and $\gammabar = 1$ for this model.
 It can also be shown that $\nubar = 1/2$ and $\eta = 0$ in this case
 (e.g.\ see \cite{Lawl85} for $\eta$).
-\commentbw{This can probably also be shown using the covariance decomposition.}
-In Appendix~\ref{sec:freeclp}, we give a new
+% \commentbw{This can probably also be shown using the covariance decomposition.}
+In Appendix~\ref{app:free-moments}, we give a new
 proof that $\nubar = 1/2$ for $\xi_p(0, 0, m^2; n)$.
 % For $d > 2$, the simple random walk is transient. Thus, letting $E_x$ denote the expectation
 % of $X$ conditioned so that $X_0 = x$,
