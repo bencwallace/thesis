@@ -9,6 +9,12 @@ In this appendix we prove Proposition~\ref{prop:Gab-free-moment-estimate}.
 
 \section{Main result}
 
+The following is a re-statement of Proposition~\ref{prop:Gab-free-moment-estimate}.
+Since we are only dealing with the free Green function, we set
+\begin{equation}
+G_x(m^2) = G_x(0, 0, m^2).
+\end{equation}
+
 \begin{prop}\label{prop:Gab-free-moment-estimate-bis}
 Let ${\sf c}_p$ be the constant defined by \eqref{e:cpdef}.
 For all dimensions $d>2$ and all $p>0$,
@@ -30,7 +36,7 @@ so it suffices to prove \refeq{Gab-free-moment-estimate-bis}.
 The case $p = 2$ of \refeq{Gab-free-moment-estimate-bis}
 can be obtained easily from the identity
 \begin{equation}
-\sum_{x\in\Zd} |x|^2 G_x(0, m^2) = -\Delta_\Rd \hat{G}(0),
+\sum_{x\in\Zd} |x|^2 G_x(m^2) = -\Delta_\Rd \hat{G}(0),
 \end{equation}
 where $\hat G$ is the Fourier transform of $G$.
 Higher even moments could in principle
@@ -79,8 +85,8 @@ Thus,
 	\le
 \epsilon^d \sum_{x\in\Zd} |f(y_x) - f(\epsilon x)|.
 \end{equation}
-By the Lipschitz condition on $f$, each summand on the right-hand side is bounded
-by a $O(\epsilon)$. By the support assumption on $f$, there are at most
+By the Lipschitz condition on $f$, each summand on the right-hand side is
+$O(\epsilon)$. By the support assumption on $f$, there are at most
 $O(t^d/\epsilon)$ such summands and the result follows.
 \end{proof}
 
@@ -89,17 +95,19 @@ $O(t^d/\epsilon)$ such summands and the result follows.
 
 \section{Covariance decomposition}
 
-The finite range decomposition is
+The finite-range decomposition of the finite-volume covariance discussed in
+Section~\ref{sec:prog} is derived from a decomposition of the infinite-volume
+covariance (whose construction is the main result of \cite{Baue13a}) of the form
 \begin{equation}
-    G_x(0,m^2) = \sum_{j=1}^\infty C_{j;x}(m^2).
+    G_x(m^2) = \sum_{j=1}^\infty C_{j;x}(m^2).
 \end{equation}
-The finite range property refers to the fact that $C_{j;x}(m^2) = 0$ if
+Recall that the finite-range property refers to the fact that $C_{j;x}(m^2) = 0$ if
 $|x| \ge \frac 12 L^j$,
 where $L>1$ is fixed arbitrarily.
  We review some properties of this decomposition, from
 \cite{BBS-rg-pt,Baue13a}, before
 proving Proposition~\ref{prop:Gab-free-moment-estimate-bis}.
-The positive definiteness of the finite range
+The positive-definiteness of the finite range
 decomposition is not needed here, and $L$ need not be large.
 
 The terms $C_{j;x}(m^2)$ are defined in \cite[Section~\ref{pt-sec:Cdecomp}]{BBS-rg-pt} by
@@ -161,7 +169,7 @@ By \cite[(1.38)]{Baue13a}, there exists a function $\bar\phi$ such that
 
 We begin by writing
 \begin{align}
-\sum_{x\in\Zd} |x|^p G_x(0, m^2)
+\sum_{x\in\Zd} |x|^p G_x(m^2)
     &=
     \sum_{x\in\Zd} |x|^p
     \sum_{j=1}^\infty C_{j;x}(m^2)
