@@ -196,6 +196,8 @@ theorem providing conditions under which the converse is true is known as a
 \emph{Tauberian theorem}, and is generally harder to prove than its Abelian
 counterpart.
 
+\commentbw{See Feller Vol II, Chap XIII, Section 5}
+
 Likewise, the asymptotics of a function $f(T)$ as $T\to\infty$ can sometimes
 be recovered from the behaviour of its \emph{Laplace transform}
 \begin{equation}
@@ -309,6 +311,8 @@ the parameter $\beta = \beta(E)$ arises as a Lagrange multiplier.
 % F_\beta = E - \frac{1}{\beta} \entropy(\mu_\beta),
 % \end{equation}
 % which recovers the usual definition of Helmholtz free energy in thermodynamics.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Relation to quantum theory}
 \label{sec:quantum}
@@ -596,6 +600,8 @@ attains its minimum when $\varphi_x = \varphi_y$ and its maximum when
 $\varphi_x = -\varphi_y$. In this sense, it is energetically favourable
 for spins to \emph{align} in ferromagnetic systems.
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \subsection{Examples of spin systems}
 
 Below we discuss some common examples of spin systems.
@@ -748,6 +754,8 @@ The general $O(n)$ model was first studied in \cite{Stanley68}.
 % In 1944, Onsager \cite{Onsager44} provided an exact calculation of the free
 % energy in $d = 2$ with $h = 0$.
 \end{rk}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Phase transition in the Ising model}
 
@@ -1642,7 +1650,9 @@ depending on $\gcc$) on $\Zd$ are all expected
 to scale according to analogues of \eqref{e:Gpred}--\eqref{e:xippred}.
 Moreover, the discussion in Section~\ref{sec:asymp} suggests that
 \begin{align}
+\label{e:cT-asymp}
 c_T                       &\sim C_5 e^{-\nu_c T} T^{-\gammabar}, \\
+\label{e:XT-asymp}
 \langle |X_T|^2 \rangle   &\sim C_6 T^{-\nubar}.
 \end{align}
 The critical exponents $\gammabar, \nubar, \eta$ are expected to be universal;
@@ -1700,6 +1710,7 @@ Even above the upper-critical dimension, very little is known about WSAW-SA with
 $\gamma \ne 0$. Exceptions include \cite{HH17,Uelt02}.
 
 \begin{rk}
+\label{rk:bubble}
 Define the free \emph{bubble diagram} to be the $\ell^2(\Zd)$ norm of the massive
 Green function $x \mapsto C_{0x}$. Thus, by
 \eqref{e:greendef}, if $z = 2 d / (m^2 + 2 d)$, then
