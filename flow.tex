@@ -3,8 +3,6 @@
 
 \renewcommand{\pm}{+}
 
-\commentbw{Make sure $\gamma_0 \ge 0$ etc.}
-
 In this chapter, we prove Theorem~\ref{thm:rhatflow}.
 We begin in Section~\ref{sec:norms} by
 % introducing norms used to control the evolution of the coordinates $(I, K)$ and
@@ -779,13 +777,18 @@ In order to ensure a degree of consistency amongst the sequences $(V_j, K_j)$, w
 the volume $\Lambda_N$, a notion of consistency must be imposed upon the collection of initial
 error coordinates $K_{0,\Lambda} \in \Kcal_0(\Lambda)$ for varying $\Lambda$.
 Specifically, the family $K_{0,\Lambda}$ is required to satisfy the property $(\Zd)$ of
-\cite[Definition~\ref{step-defn:KZd}]{BS-rg-step}.
-We refer to any such family as a $\Lambda$-family.
-As discussed in \cite[Definition~\ref{step-defn:KZd}]{BS-rg-step},
-any $\Lambda$-family
-induces an infinite-volume error coordinate $K_{0,\Zd} \in \Kcal_0(\Zd)$ in a natural way.
+\cite[Definition~\ref{step-defn:KZd}]{BS-rg-step}.  We refer to any such family as a
+$\Lambda$-family. As discussed in \cite[Definition~\ref{step-defn:KZd}]{BS-rg-step},
+any $\Lambda$-family induces an infinite-volume error coordinate $K_{0,\Zd} \in \Kcal_0(\Zd)$
+in a natural way.
 
-\commentbw{Add definition of $\Lambda$-family.}
+\begin{rk}
+Roughly, the requirement that the $(K_\Lambda)$ form a $\Lambda$-family is that
+if $\Lambda \subset \Lambda'$, then $K_\Lambda$ and $K_{\Lambda'}$ agree on polymers
+$X\in\Pcal_j(\Lambda)$. However, some care must be taken with this when the polymer $X$
+``wraps around'' the torus. This issue is handled using coordinate patches, as was done
+for discussing ``torus polynomials'' in \eqref{e:lattice-mon}.
+\end{rk}
 
 \begin{theorem}
 \label{thm:flow-flow}
@@ -841,7 +844,7 @@ in more detail the modifications to the proof of
 By \cite[Theorem~\ref{flow-thm:flow}]{BBS-rg-flow} and
 \cite[Corollary~\ref{flow-cor:masscont}]{BBS-rg-flow},
 for any $(\mgen^2, \ggen_0) \in (0, \delta)^2$ and
-$\tilde K_0 \in B_{\Wcal_0(\mgen^2, \ggen_0, \Zd)}(a_* \ggen_0^3)$,
+for any $\tilde K_0 \in B_{\Wcal_0(\mgen^2, \ggen_0, \Zd)}(a_* \ggen_0^3)$,
 there is a neighbourhood
 ${\sf N}(\ggen_0, \tilde K_0)$ of $(\ggen_0, \tilde K_0)$
 such that for all
@@ -865,6 +868,7 @@ of $\xch^c_0 = (\Vch_0, K_0) = (\Vp_0, K_0)$.
 
 
 \begin{rk}
+\label{rk:ggen}
 The proof of \cite[Proposition~\ref{log-prop:flow-flow}]{BBS-saw4-log},
 hence of Theorem~\ref{thm:flow-flow},
 makes important use of the parameter $\ggen_0$ in order to prove regularity
@@ -912,15 +916,16 @@ to the system of equations
 &z_0 = z_0^c(m^2, \gcc, K^+_0(g_0, \gamma_0, \nu_0, z_0)) \label{e:z0c}
 .
 \end{align}
-Such a choice of $(\nu_0, z_0)$ will be critical for $K_0$,
-where $K_0$ is itself evaluated at this same choice of $(\nu_0, z_0)$.
+Such a choice of $(\nu_0, z_0)$ will be critical for $K^+_0$,
+where $K^+_0$ is itself evaluated at this same choice of $(\nu_0, z_0)$.
 
-When $\gamma_0 = 0$, we get $K_0 = \1_\varnothing$, so $K_0$ no longer depends on $(\nu_0, z_0)$
+When $\gamma_0 = 0$, we get $K^+_0 = \1_\varnothing$, so $K^+_0$ no longer depends on $(\nu_0, z_0)$
 and this system is solved by $(\nu_0^c(m^2, g_0, 0), z_0^c(m^2, g_0, 0))$
 for any (small) $m^2, g_0 \geq 0$.
 Local solutions for $\gamma_0 \neq 0$ can then be
 constructed using a version of the implicit function theorem from \cite{LS14}
-that allows for the continuous but non-smooth behaviour of $K_0$ in $\gamma_0$.
+that allows for the continuous but non-smooth behaviour of $K^+_0$ in $\gamma_0$
+(recall that we are setting $K^+_0 = 0$ for $\gamma_0 \le 0$).
 In order to obtain global solutions with certain desired regularity properties
 (needed in the next section), we make use of Proposition~\ref{prop:IFT},
 which is based on the implicit function theorem from \cite{LS14}.
@@ -1008,8 +1013,8 @@ O(g_0)
 \left|\ddp{\hat\nu_0^c}{\gamma_0}(m^2, g_0, t)\right|.
 \end{equation}
 The supremum above is bounded by a constant and so
-the first estimate of \eqref{e:hat-est-re} for $\gamma_0 \geq 0$
-follows from the fact that $\gamma_0 \leq \hat r(g_0)$
+the first estimate of \eqref{e:hat-est-re} % for $\gamma_0 \geq 0$
+follows from the fact that $|\gamma_0| \leq \hat r(g_0)$
 (since $\hat r(g_0)$ can be taken as small as desired).
 % The case $\gamma_0 < 0$ and the second estimate follow similarly.
 \end{proof}
@@ -1021,9 +1026,7 @@ $K_0 = K^\pm_0$ satisfies the estimate required by Theorem~\ref{thm:flow-flow}
 whenever $(m^2, g_0, \gamma_0) \in D(\delta, \hat r)$. The
 existence of the sequence \eqref{e:VjKjDj-hat} then follows from
 Theorem~\ref{thm:flow-flow} and Proposition~\ref{prop:nuzhat}.
-Although the presence of $\gamma_0$ causes a shift in initial
-conditions, the second-order evolution of $V_j$ is still given by the map
-$V_\pt$,
-% (see \eqref{e:Vflow}),
-which is independent of $\gamma_0$.
+% Although the presence of $\gamma_0$ causes a shift in initial
+% conditions, the second-order evolution of $V_j$ is still given by the map
+% $V_\pt$, which is independent of $\gamma_0$.
 \end{proof}
