@@ -1,20 +1,24 @@
 \chapter{Conclusion}
 
-Several problems immediately present themselves as possible extensions of
-our results.
+We end with a discussion of some open problems that may be accessible by
+variants of the renormalisation group method discussed in this thesis.
+Many of these require significant extensions to this method. We will try to
+point out some of the main obstacles that must be overcome.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Other models}
 
-We begin by describing a possible approach to the analysis of the $O(n)$ model
-and strictly self-avoiding walk. We then discuss long-range models to which
-renormalisation group methods have been applied with some success.
+In order to apply the renormalisation group to the models we have considered,
+we had to express them as perturbations of a Gaussian measure whose covariance
+admits an appropriate finite-range decomposition. Here we discuss other models
+that can be written in this way.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Models with hard-core constraints}
+\label{sec:hard-core}
 
 Recall that the Hamiltonian of the $O(n)$ model was defined in \eqref{e:on-model}.
 On $\Lambda$, it takes the form
@@ -23,28 +27,28 @@ H_J(\sigma)
 	=
 -\frac12 \sigma \cdot J \sigma.
 \end{equation}
-This was obtained from a suitable limiting case of the $|\varphi|^4$ model which involved
-taking $g\to\infty$. Although the restriction of our results to small $g$ is fundamental
-to the renormalisation group approach, the Kac-Siegert transformation opens up an
-alternative way to study the $O(n)$ model.
+This was derived from the $|\varphi|^4$ model by taking a suitable
+$g\to\infty$ limit. The restriction to small coupling $g$ is deeply embedded into
+the method we use, but the Kac-Siegert transformation (see \cite{Bryd09}) offers
+an alternative approach to the study of this model.
 
 Namely, let $\Omega = (S^{n-1})^\Lambda$ and let $d\sigma$ denote the product measure on $\Omega$,
-where $S^{n-1}$ is equipped with the uniform measure on the sphere. The partition function
-for the $O(n)$ model is then given by
+where $S^{n-1}$ is equipped with the uniform\footnote{In our derivation of the $O(n)$ model,
+we get an unnormalized surface measure on the sphere, but this is an unimportant difference.}
+sphere measure. The partition function of the $O(n)$ model is given by
 \begin{equation}
 Z_J = \int_\Omega e^{-H_J(\sigma)} \; d\sigma.
 \end{equation}
-When $J$ is a positive-definite symmetric
-matrix and $d\mu_J(\varphi)$ is the Gaussian measure with covariance $\varphi$, the elementary
-identity
+When $J$ is a positive-definite symmetric matrix, the Gaussian measure $d\mu_J(\varphi)$
+with covariance $J$ is well-defined and satisfies the elementary identity
 \begin{equation}
 e^{-H_J(\varphi)}
 	=
 e^{\frac12 \sigma \cdot J \sigma}
 	=
-\int_{(\R^n)^\Lambda} e^{\sigma \cdot \varphi} \; d\mu_J(\varphi)
+\int_{(\R^n)^\Lambda} e^{\sigma \cdot \varphi} \; d\mu_J(\varphi).
 \end{equation}
-holds. Interchanging the order of integration, we get
+Interchanging the order of integration, we can write
 \begin{equation}
 Z_J
 	=
@@ -63,20 +67,19 @@ L(t)
 t\in\R^n
 \end{equation}
 is the negative logarithm of the Laplace transform of the sphere. Since $L$ is
-a rotation- and reflection-invariant analytic function and $L(0) = 0$, it has
-the form
+a rotation- and reflection-invariant analytic function and $L(0) = 0$, we can
+write
 \begin{equation}
 \label{e:logLaplace}
 L(t) = \nu |t|^2 + g |t|^4 + \sum_{k=3}^\infty c_{2k} |t|^{2k}.
 \end{equation}
-Letting $J = (-\Delta + \gamma^2)^{-1}$, we get
+Letting $J = (-\Delta + \gamma^2)^{-1}$, we have
 \begin{equation}
 d\mu_J(\varphi)
 	\propto
 e^{-\frac12 (\gamma^2 |\varphi|^2 + \varphi \cdot (-\Delta \varphi))}.
 \end{equation}
-Thus, we can express the partition function as a perturbed $|\varphi|^4$ model
-and a similar expression can be obtained for the two-point function.
+Thus, we can express the partition function as a perturbed $|\varphi|^4$ model.
 
 By a procedure as in Section~\ref{sec:reformulation}, the analysis of this model
 can be reformulated in terms of the evolution of an effective interaction $Z_j$
@@ -108,79 +111,108 @@ dimensions with $\epsilon > 0$ small and $d_c = 4$ the upper-critical dimension.
 By setting $\epsilon = 1$, they obtained approximate values for critical exponents
 in $3$ dimensions. One approach to the rigorous implementation of this idea
 involves studying models in dimension $d$ (an integer) whose upper-critical
-dimension is given by $d_c + \epsilon$. This is not as problematic as considering
+dimension is $d_c + \epsilon$. This is not as problematic as considering
 models in fractional dimensions, as the upper-critical dimension $d_c$ need not
-be considered the actual of dimension of some ambient space.
+be considered the actual of dimension of an ambient space.
 
-In the context of spin systems, given a massless covariance $C'$, we think of $d_c$
-as simple a number such that some class of models undergoes Gaussian scaling with
-covariance $C'$ whenever $d > d_c$. Recalling Remark~\ref{rk:bubble}, we might
-expect that
+Given a massless covariance $C'$, the upper-critical
+dimension is simply a number $d_c$ such that some class of models undergoes Gaussian
+scaling with covariance $C'$ if and only if $d > d_c$. Recalling Remark~\ref{rk:bubble},
+we might expect that
 \begin{equation}
 d_c = \inf \{ d \in \R : B_{m^2} < \infty \},
 \end{equation}
 where $B_{m^2}$ is the bubble diagram, defined as the $\ell^2(\Zd)$ norm of the
 massive Green function $C = (C' + m^2)^{-1}_{0x}$. Thus, in order to achieve
-$d_c = d + \epsilon$, we choose $M$ to decay like $C'_{0x} \asymp |x|^{-(d-\alpha)}$
+$d_c = d + \epsilon$, we choose $C'$ to decay like
+\begin{equation}
+C'_{0x} \asymp |x|^{-(d-\alpha)}
+\end{equation}
 with $\alpha = \tfrac12 (d + \epsilon)$. Such a choice is given by
 \begin{equation}
-C' = (-\Delta)^{-\alpha/2}.
+C' = (-\Delta)^{-\alpha/2}
 \end{equation}
+for $\alpha\in(0, 2)$ (so $d \le 3$).
 
 This approach has been used to implement the renormalisation group below the
 upper-critical dimensions in \cite{BDH98,MS00,BMS03,Abde07}. Recently, Slade
 \cite{Slad17} has extended the approach discussed in this thesis to compute
-some critical exponents asymptotics for long-range versions of the weakly
-self-avoiding walk and the $|\varphi|^4$ model. In particular, he showed that,
-as $\nu\downarrow\nu_c$ for these models, the susceptibility $\chi$ satisfies
+\emph{anomalous} (non-Gaussian) critical exponents for long-range versions of
+the weakly self-avoiding walk and the $|\varphi|^4$ model. In particular, he
+showed that, as $\nu\downarrow\nu_c$ for these models, the susceptibility $\chi$
+satisfies
 \begin{equation}
+\label{e:chi-anom}
 \chi
 	\asymp
 (\nu - \nu_c)^{-\left(1 + \tfrac{n+2}{n+8} \tfrac{\epsilon}{\alpha} + O(\epsilon^2)\right)}.
 \end{equation}
-By extensions of \cite{Slad17} to use observables as in \REF, it should be
-possible to identify the scaling behaviour of the two-point function and possibly
-other correlation functions for these long-range models.
+By extensions of \cite{Slad17} to use observable fields, we think it should
+be possible to identify the scaling behaviour of the two-point function and possibly
+other correlation functions for these long-range models. In particular, this would
+make it possible to confirm (if true) the intriguing prediction of \cite{FMN72}, which
+states that
+\begin{equation}
+\eta = 2 - \alpha
+\end{equation}
+if $d = d_c - \epsilon$ for small $\epsilon$. In other words, unlike the susceptibility,
+deviations from mean-field behaviour of the two-point function cannot be detected
+to any order in $\epsilon$.
+
+\begin{rk}
+Models at and above the upper-critical dimension exhibit \emph{asymptotic freedom}.
+In our context, this means that $\|K_j\|_{\Wcal_j} \to 0$ (as in \eqref{e:WKbd}),
+$\nu_j, z_j \to 0$, and (as $m^2\downarrow0$) $g_{j_m} \to 0$. Below $d_c$, we do
+not have asymptotic freedom, as reflected by the lack of exact asymptotics in
+\eqref{e:chi-anom}. In some ways, this is advantageous (see \cite{Slad17}), but
+in others it creates additional difficulties that must be overcome.
+\end{rk}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Other observable quantities}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\subsection{Inversion of Laplace transform}
-
-One of the main motivations for studying the
-susceptibility and finite-order correlation length for walks is the possibility
-of recovering information about the growth of partition function $c_T$ and
-the mean-squared distance $\langle |X(T)|^2 \rangle$ as $T\to\infty$. In
-particular, recalling the discussion in Section~\ref{sec:asymp}, one may
-try to derive logarithmic corrections to the predicted scaling relations
-\eqref{e:cT-asymp}--\eqref{e:XT-asymp} as a consequence of Theorem~\ref{thm:mr}(ii)--(iii).
-This approach was successfully used in \REF to identify the asymptotics of the
-mean-squared displacement of a hierarchical model of weakly self-avoiding walk.
-The authors of \REF proceed by inverting the Laplace transform, which requires
-control over this quantity in a sector of the complex plane larger than what
-has been achieved here.
+There remain a number of open problems concerning the models studied in this
+thesis.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{The correlation length}
 
-Another natural problem is to study the true correlation length $\xi$, defined in
-\REF. The estimate \REF gives super-polynomial decay of the errors in the approximation
-\REF of the two-point function, but this is not sufficient for studying $\xi$, which
-would need exponentially decaying errors. The current estimates follow from the
-covariance bounds \REF. It does not seem likely that these bounds can be improved
-for the covariance decomposition of \cite{Baue13a}. It may be possible to obtain
-sufficiently good bounds for the decomposition of \cite{BGM04}, but this is not the
-only limitation: Exponentially decaying errors would require that the weights $\ell_j$
-decay exponentially above the mass scale, but this would contradict the requirement \REF.
-It is possible that this requirement reflects a limitation of the renormalisation group
-method used here. Another possibility is that the renormalisation group is not well-suited
-to the analysis of models away from the critical point, as has been suggested in \REF.
-Upon reaching the mass scale, the effective interaction $Z_j$ essentially describes
-a high-temperature model and it may be that methods more suited to such models would be
-preferable. Also, If \REF held uniformly in $g$ for all $p$, one could consider proving
-an analogue of \REF for $\xi$ as a consequence of \REF.
+Our results concerning the finite-order correlation lengths $\xi_p$ are insufficient
+for recovering the predicted behaviour of the \emph{true} correlation length $\xi$.
+The estimate \eqref{e:Rab-bound} gives super-polynomial decay of the errors in the
+approximation \eqref{e:Gab-to-sum-Rqj} of the two-point function, but this is not
+sufficient for studying $\xi$, which would need exponentially decaying errors.
+The current estimates follow from the covariance bounds \eqref{e:scaling-estimate}
+on the decomposition of \cite{Baue13a}. It may not be possible to improve the bounds
+for this particular decomposition, this should be possible for the decomposition of
+\cite{BGM04} (see \cite[p.~445]{BGM04}).
+
+However, even if this were possible, exponentially decaying errors would require exponential
+decay of the weights $\ell_j$ above the mass scale, which would contradict in a major way the
+central hypotheses \ref{e:h-assumptions-IE} on these weights. Thus, it seems new ideas would
+be needed to study the correlation length (note, however, that the correlation length for the
+$1$-component $|\varphi|^4$ model was successfully studied by a renormalisation group method
+in \cite{HT87}).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Inversion of the Laplace transform}
+
+One of the main motivations for studying the
+susceptibility and finite-order correlation length for walks is the possibility
+of recovering information about the growth of the partition function $c_T$ and
+the mean-squared distance $\langle |X(T)|^2 \rangle$ as $T\to\infty$. In
+particular, recalling the discussion in Section~\ref{sec:asymp}, one may
+try to derive logarithmic corrections to the predicted scaling relations
+\eqref{e:cT-asymp}--\eqref{e:XT-asymp} as a consequence of Theorem~\ref{thm:mr}(ii)--(iii).
+
+This approach was successfully used in \cite{BI03c}, where the mean-squared displacement
+of a hierarchical model of weakly self-avoiding walk is recovered by inversion of
+the Laplace transform. This requires control over the two-point function in a
+sector of the complex plane larger than what has been achieved on here on the
+Euclidean lattice.
+
+% Other: tricritical model, WSAW-SA phase diagram
