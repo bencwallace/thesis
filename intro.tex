@@ -1,31 +1,25 @@
-% Parts are the largest structural units, but are optional.
-%\part{Thesis}
-
-% Chapters are the next main unit.
 \chapter{Introduction}
 \label{sec:intro}
+
+\setcounter{footnote}{0}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 Thermodynamics originated as the study of heat and its transformations into other
-forms of energy, but can more generally be described as the study of
-% field of study that is concerned with the properties of
-bulk matter. That is, it seeks to
-answer questions regarding those properties of matter that only appear to be
-well-defined in terms of large collections of particles. Two familiar examples of
-such properties are density and temperature. Density is usually defined as the mass
-of a substance per unit volume (at a certain temperature). Such a quantity is
-sometimes said to be \emph{intensive}: it is a property of the substance itself,
-not the amount of substance present.
+forms of energy, but can more generally be described as the study of bulk matter.
+That is, it seeks to answer questions regarding those properties of matter that
+only appear to be well-defined in terms of large collections of particles. Two
+familiar examples of such properties are density and temperature. Density is usually
+defined as the mass of a substance per unit volume (at a certain temperature).
+Such a quantity is sometimes said to be \emph{intensive}: it is a property of
+the substance itself, not the amount of substance present.
 
 There is a small caveat that should be added to this definition: the mass per unit
 volume of a sample of a substance will only become independent of the volume once
-this volume is sufficiently large. This makes density
-% not only a property of the substance, but in fact
-a \emph{macroscopic} property (as opposed to, e.g.\ the
-atomic number). To say that thermodynamics is the study of bulk
-matter amounts to saying that it deals in macroscopic quantities.
+this volume is sufficiently large. This makes density a \emph{macroscopic} property
+(as opposed to, e.g.\ the atomic number). To say that thermodynamics is the study
+of bulk matter amounts to saying that it deals in macroscopic quantities.
 % Thus, it does not make sense to ask for the density of a sample of hydrogen consisting
 % of a single atom although it is sensible to speak of the density of hydrogen.
 % In this sense, density is not
@@ -34,7 +28,6 @@ matter amounts to saying that it deals in macroscopic quantities.
 % study of macroscopic properties.
 
 The fact that there even is such a notion as a macroscopic quantity
-% of a substance
 raises a number of simple questions. For instance, if these quantities
 are indeed properties of the substance itself, then it should be possible to 
 derive them from the microscopic properties of the constituent particles;
@@ -65,7 +58,6 @@ of around $1/1000$ at normal atmospheric pressure. The temperature at which wate
 boils varies as a function of pressure $T_c = T_c(P)$ and a \emph{phase transition}
 is said to occur when the pressure and/or temperature are varied in such a way as to
 cross the graph of this function; see Figure~\ref{fig:liquid-vapour}.
-% Moreover, for any fixed $P$ there is a drop in density as the temperature is increased past $T_c(P)$.
 Moreover, as $P$ is increased, the density difference along this curve decreases and
 there is a \emph{critical point} $(T_c(P_c), P_c)$ at which this difference vanishes.
 
@@ -165,7 +157,6 @@ different constants for the two inequalities. We will sometimes write
 $F(x) \approx G(x)$ in heuristic
 arguments where the hope is that a rigorous argument might replace $\approx$
 by $\asymp$ or $\sim$.
-% We will often use $C, C', C_1, c$, etc.\ to denote a generic constant.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -209,10 +200,6 @@ There are Abelian and Tauberian theorems for the Laplace transform analogous
 to those for generating functions. For instance,
 $f(T) \sim A T^\alpha$ implies that $G(\nu) \sim A' (\nu - \nu_0)^{-(\alpha+1)}$
 as $\nu\downarrow\nu_0$ and the converse holds when $f$ is monotone (see \cite{Widd41}).
-% When this is not the case, one can attempt to recover the asymptotics of $f$ by
-% inverting the Laplace transform.
-
-
 
 % For instance, we have the following (see \cite[Chapter V]{Widd41}).
 % 
@@ -301,16 +288,6 @@ with respect to $\lambda$, subject to the fixed average energy constraint
 \end{equation}
 This can be shown using the method of Lagrange multipliers;
 the parameter $\beta = \beta(E)$ arises as a Lagrange multiplier.
-
-% The \emph{free energy} is defined by
-% \begin{equation}
-% F_\beta = -\frac{1}{\beta} \log Z_\beta.
-% \end{equation}
-% A computation of the entropy of $\mu_\beta$ with $\beta = \beta(E)$ shows that
-% \begin{equation}
-% F_\beta = E - \frac{1}{\beta} \entropy(\mu_\beta),
-% \end{equation}
-% which recovers the usual definition of Helmholtz free energy in thermodynamics.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -404,7 +381,6 @@ Then we would expect $\tilde\psi$ to solve
 \begin{equation}
 \label{e:linear-pde}
 \dd{\tilde\psi}{t} = -\hat H \tilde\psi.
-% -\frac{1}{\hbar} \hat H \tilde\psi.
 \end{equation}
 When $U = 0$, we have $H(x, p) = |p|^2$, so $\hat H = -\tfrac12 \Delta_{\R^{3n}}$
 is the Laplacian on $\R^{3n}$ and \eqref{e:linear-pde} is the heat equation.
@@ -425,8 +401,6 @@ solutions to stochastic differential equations (this is the Feynman-Kac formula)
 
 \section{Graphs}
 \label{sec:graphs}
-
-% Graphs are a useful setting for the definition of spatially-extended systems of particles.
 
 An \emph{undirected graph} or simply a \emph{graph} is a pair $\graph = (\vertices, \edges)$,
 where $\vertices$
@@ -475,7 +449,6 @@ Throughout this chapter, we let $\jay$ be a matrix indexed by $\edges$ with nonn
 \begin{equation}
 \jay_{xy} \ge 0.
 \end{equation}
-% Thus, $\jay_{xy} \ge 0$ with equality if and only if $x\not\sim y$.
 The pair $(\graph, \jay)$ is an example of a \emph{weighted} graph.
 We will usually denote this weighted graph simply as $\graph$, with $\jay$
 implicit.
@@ -553,10 +526,7 @@ C_{xy}
 \section{Spin systems}
 \label{sec:spins}
 
-% We begin with a brief discussion of spin systems in finite volume.
-% Excellent references are \cite{Georgii11} and \cite{FV17}.
-Let us begin by discussing spin systems in \emph{finite} volume. That is, we
-let
+Let us begin by discussing spin systems in \emph{finite} volume. That is, we let
 \begin{equation}
 |\vertices| < \infty.
 \end{equation}
@@ -646,11 +616,6 @@ if $x_1, \ldots, x_{2p} \in \Lambda$, then
 \end{equation}
 where the sum is over all pairings $\pi$ of $\{1,\ldots,2p\}$ (i.e.\ partitions of
 this set into $2$-element subsets).
-% An important case is the \emph{massive Gaussian free field} on $\graph$,
-% which is the $\gcc = 0$ case of the $|\varphi|^4$ model (with $\nu$ necessarily positive).
-% Thus, the the covariance is equal to the massive Green function $C = (-\lap + \nu)^{-1}$.
-% In particular, the only non-zero contributions to the sum in \eqref{e:wick}
-% come from pairings $\pi$ consisting of edges in $X$.
 
 \subsubsection{The $|\varphi|^4$ model}
 
@@ -741,49 +706,37 @@ The Ising model on $\Zd$ (defined by a limiting procedure) was introduced
 by Willhelm Lenz \cite{Lenz20}. Lenz
 suggested it as a problem for his student Ernst Ising, who determined in 1924
 \cite{Ising25} that there is no (non-trivial) phase transition when $d = 1$.
-In \cite{Heisenberg28} Heisenberg, seeking a model that would possess a phase transition,
-proposed the quantum version of his model (see \cite{Brush67} for a discussion on this).
-Ironically, it turns out that the classical version of his model does not possess a phase
-transition in both $d = 1$ and $d = 2$; and, moreover, in 1936
-Rudolf Peierls \cite{Peierls36} put forth an argument for the existence of a phase transition
-in the Ising model if $d > 1$. Peierls' argument was made rigorous in \cite{Griffiths64},
-but even before that Onsager \cite{Onsager44} provided an exact computation of the
-free energy in $d = 2$, which incontrovertibly demonstrated the existence of a
-phase transition in two dimensions.
-The general $O(n)$ model was first studied in \cite{Stanley68}.
-% In 1944, Onsager \cite{Onsager44} provided an exact calculation of the free
-% energy in $d = 2$ with $h = 0$.
+In \cite{Heisenberg28} Heisenberg, seeking a model that would possess a phase
+transition, proposed the quantum version of his model (see \cite{Brush67} for
+a discussion on this). Ironically, it turns out that the classical version of
+his model does not possess a phase transition in both $d = 1$ and $d = 2$; and,
+moreover, in 1936 Rudolf Peierls \cite{Peierls36} put forth an argument for the
+existence of a phase transition in the Ising model if $d > 1$. Peierls' argument
+was made rigorous in \cite{Griffiths64}, but even before that Onsager \cite{Onsager44}
+provided an exact computation of the free energy in $d = 2$, which incontrovertibly
+demonstrated the existence of a phase transition in two dimensions. The general
+$O(n)$ model was first studied in \cite{Stanley68}.
 \end{rk}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Phase transition in the Ising model}
 
-In this section we discuss the phase transition for the Ising model on $\Zd$ with $d > 1$.
-A good reference is \cite{FV17}.
+In this section we discuss the phase transition for the Ising model on $\Zd$
+with $d > 1$. A good reference is \cite{FV17}.
 
-% Let $\graph = B_N = [-N, N]^d \cap \Zd$
-Let $\graph = \Lambda_N$
-% and let $\partial V = \partial B_N$ be the external vertex boundary of $B_N$.
-% For each $x\in\partial\vertices$, let $b_x \in \{-1, 0, 1\}$ be a choice of \emph{boundary condition}
-and consider the Hamiltonian for the Ising model with an external field $h\in\R$:
+Let $\graph = \Lambda_N$ and consider the Hamiltonian for the Ising model with
+an external field $h\in\R$:
 \begin{equation}
 H^{(N)}_h(\varphi)
 	=
 -\frac12 \sum_{x \sim y} \varphi_x \varphi_y
 - h \sum_{x\in\vertices} \varphi_x,
-% - \sum_{x\in\vertices} \varphi_x b_x
 	\qquad
 \varphi\in\{\pm1\}^\vertices.
 \end{equation}
-% This is a small generalization of the Hamiltonian \eqref{e:on-model}
-% for the Ising model ($n = 1$) on $\vertices$ with $\jay_{xy} = \1_{x\sim y}$.
-% 
-% For now, let us employ \emph{free} boundary conditions $b \equiv 0$ (we will discuss
-% other boundary conditions in Section~\ref{sec:dimension}).
 Let $\langle\cdot\rangle^{(N)}_{\beta,h}$ denote the expectation with respect to
 the corresponding Gibbs measure and let $Z^{(N)}_{\beta,h}$ be the partition function.
-% A fundamental quantity for the detection of a phase transition in the Ising model is the
 The \emph{free energy} is defined in finite volume by
 \begin{equation}
 F^{(N)}_{\beta,h}
@@ -868,8 +821,6 @@ of the two-point function. We will discuss this in more detail in Section~\ref{s
 
 \subsection{Spin systems in infinite volume}
 
-% The presence of a phase transition in a physical system is signalled by an
-% abrupt change in an observable quantity with respect to a parameter.
 A broad distinction can be made between \emph{first-order} phase transitions
 in which the
 free energy has discontinuous first derivative with respect to an external
@@ -878,15 +829,7 @@ transitions, in which the free energy is differentiable but non-analytic.
 As discussed above, the infinite-volume limit of the free energy must be taken
 in order for a phase transition to manifest.
 
-\commentbw{Say something or get rid of this.}
-
-% The systems we have defined above all
-% have smooth free energy since the Hamiltonians are smooth functions. The reason we cannot
-% detect a phase transition in these systems is that they have been defined on finite volumes.
-% This is also the reason that the magnetization of the Ising
-% model in a finite volume is $0$ in the absence of a magnetic field, despite the fact that
-% this is not true of a real ferromagnet. Thus, in order to study phase transitions, we are
-% forced to consider spin systems on infinite graphs.
+\commentbw{Maybe turn this section into a remark}
 
 A systematic approach to this problem was developed in the work of Dobrushin \cite{Dobrushin68}
 and Lanford and Ruelle \cite{LR69}. A comprehensive reference to this subject is \cite{Georgii11}
@@ -1006,11 +949,8 @@ We follow the convention \eqref{e:beta-one} of setting $\beta = 1$ and seek a
 phase transition for $|\varphi|^4$ model when the parameter $\nu$ is varied.
 We define the \emph{critical point} by
 \begin{equation}
-% \label{}
 \nu_c = \nu_c(\gcc, \gamma; n) = \inf \{ \nu : \chi(g, \gamma, \nu; n) < \infty \}.
 \end{equation}
-% Since the susceptibility can be written as the second derivative of the free energy
-% with respect to an external field, there is a continuous phase transition at $\nu_c$.
 By \eqref{e:susceptibility-def}, it is
 reasonable to expect rapid (i.e.\ summable) decay of $G_x(g, \gamma, \nu; n)$ in $|x|$ for
 $\nu > \nu_c$ and much slower decay at $\nu = \nu_c$.
@@ -1029,7 +969,6 @@ a ``macroscopic length scale'' of the model; it is a measure of the largest scal
 which spins are very strongly correlated. Based on the above discussion, we expect $\xi$
 to diverge as $\nu\downarrow\nu_c$. This divergence is one of the
 key features of critical behaviour
-% and is indicative of strong correlations at all scales.
 A related quantity is the \emph{correlation length of order $p$}, defined by
 \begin{equation}
 \label{e:clp-spins}
@@ -1134,7 +1073,6 @@ Thus, for $m^2 > 0$,
 It follows that $\nu_c(0, 0; n) = 0$ and $\gammabar = 1$ for this model.
 It can also be shown that $\nubar = 1/2$ and $\eta = 0$ in this case
 (e.g.\ see \cite{Lawl85} for $\eta$).
-% \commentbw{This can probably also be shown using the covariance decomposition.}
 In Appendix~\ref{app:free-moments}, we give a new
 proof that $\nubar = 1/2$ for $\xi_p(0, 0, m^2; n)$.
 % For $d > 2$, the simple random walk is transient. Thus, letting $E_x$ denote the expectation
@@ -1174,7 +1112,7 @@ not possess a first-order phase transition for $n > 2$. The case $n = 2$ is expe
 to possess a \emph{Kosterlitz-Thouless} phase transition \cite{KT73}
 (Kosterlitz and Thouless, together with Duncan Haldane, were awarded
 the 2016 Nobel Prize in Physics for this and related ideas). Rigorous results relating
-to this kind of phase transition include \cite{FS81,Falc12,Falc13}.
+to this kind of phase transition include \cite{FS81,DH00,Falc12,Falc13}.
 For $n = 1$, there is a phase transition; in fact, Onsager \cite{Onsager44} gave an
 exact formula for the free energy of the Ising model.
 
@@ -1190,37 +1128,6 @@ bounded simply connected domain with Dobrushin boundary
 conditions\footnote{Positive spins along one side of the
 boundary and negative spins on the other.} converges to $\SLE_3$ in
 an appropriate scaling limit.
-
-% The critical exponents for the $|\varphi|^4$ model (with $g > 0$ and $\gamma$ small)
-% and the $O(n)$ spin model are conjectured to take on the following values:
-% \begin{equation}
-% \eta =
-% 	\begin{cases}
-% 	\frac{5 + n}{24},		& d = 2, \, n = 1 \\
-% 	\approx 0.03,			& d = 3, \\
-% 	0,						& d \ge 4
-% 	\end{cases}
-% \qquad
-% \gamma =
-% 	\begin{cases}
-% 	\frac{43 + 13 n}{32},	& d = 2, \, n = 1 \\
-% 	\approx 1,				& d = 3 \\
-% 	1,						& d \ge 4
-% 	\end{cases}
-% \end{equation}
-% and
-% \begin{equation}
-% \nubar =
-% 	\begin{cases}
-% 	\frac{3 + n}{4},		& d = 2, \, n = 1 \\
-% 	\approx 0.6,			& d = 3 \\
-% 	\frac{1}{2},			& d \ge 4
-% 	\end{cases}
-% \end{equation}
-% with logarithmic corrections in $d = 4$.
-% Thus, it is expected that, when $d > 4$, the critical exponents cease to depend
-% on the dimension and $n$. In fact, they are expected to equal the exponents of
-% the corresponding non-interacting model, the Gaussian free field.
 
 \subsubsection{Dimension $d=3$}
 
@@ -1285,9 +1192,10 @@ model with new (``renormalized'') couplings.
 At the critical point, $\xi = \infty$ this transformation
 $T$ can be iterated indefinitely resulting in a dynamical system on a space
 of models: the one-parameter semigroup $(T^j)_{j\in\Z_+}$ is known as the
-\emph{renormalisation group}\footnote{The name
-renormalisation \emph{group} is attributed by Wilson in \cite{Wils71I}
-to the work of Gell-Mann and Low \cite{GML54}.}. This was the basis for Ken Wilson's
+\emph{renormalisation group}\footnote{The name renormalisation \emph{group}
+is attributed by Wilson in \cite{Wils71I} to the work of Gell-Mann and Low
+\cite{GML54}. The relationship between the two approaches is discussed in
+\cite{JoLa75}.}. This was the basis for Ken Wilson's
 generalizations of Kadanoff's idea in \cite{Wils71I,Wils71II}.
 
 The coarse-graining procedure of Kadanoff can be viewed as an approximate
@@ -1313,7 +1221,9 @@ In addition to these rather broad statements regarding the nature of universalit
 and scaling limits, Wilson demonstrated that critical exponents could be computed
 by a careful analysis of the asymptotics of the renormalisation group near its
 fixed points. He claimed that such an analysis could be performed by approximating
-this infinite-dimensional dynamical system by a \emph{finite-dimensional} system.
+this infinite-dimensional dynamical system by a \emph{finite-dimensional} system
+spanned by certain \emph{marginal and relevant} directions. The remaining \emph{irrelevant}
+directions would contract under the action of the renormalisation group.
 
 By analyzing this finite-dimensional approximation, Wilson determined that there
 is a unique hyperbolic fixed point in dimensions $d > 4$ corresponding to the Gaussian
@@ -1333,34 +1243,33 @@ Brydges, and Slade \cite{BS-rg-norm,BS-rg-loc,BBS-rg-pt,BS-rg-IE,BS-rg-step}, wh
 will discuss further in Section~\ref{sec:rg}.
 
 \begin{example}
-\commentbw{CLT: Koralov-Sinai, Li-Sinai. See also Jona-Lasinio I think.}
-\end{example}
+We briefly discuss how renormalisation group ideas can be used to prove a version
+of the classical central limit theorem. This idea appears in \cite{JoLa01,KS07}
+and has been extended to prove stable limit laws in \cite{LiSinai14}.
 
-% These notes discuss the renormalisation group
-% on the Euclidean lattice as well as on a \emph{hierarchical} lattice, where
-% the analysis is much simpler.
+Let $X_n$ denote a sequence of independent identically distributed continuous random
+variables with mean $0$ and variance $1$. For such $X_n$, let
+$Y_n = 2^{-n/2} (X_1 + \cdots + X_{2^n})$. Then the map $Y_n \mapsto Y_{n+1}$
+induces a renormalisation group map $R$ on density functions
+given by a convolution and rescaling of the form $(R f)(x) = \sqrt2 (f * f)(\sqrt2 x)$.
+It is easily verified that the standard Gaussian density $f_*$ is a fixed point of $R$
+(in fact, it is the unique fixed point).
+
+In this context, the central limit theorem follows if we can show that, for all $f$
+in an appropriate space of densities, $R^n f$ converges to the fixed point $f_*$.
+A local version of this statement can be proved by analyzing the linearized map
+$D R(f_*)$. A computation shows that this map has eigenfunctions given by Hermite
+polynomials with eigenvalues $\lambda_i = 2^{1-i/2}$ for integers $i \ge 0$.
+In this context, the directions corresponding to the eigenfunctions with $i \ge 3$
+are irrelevant; the relevant directions correspond to $i = 0, 1$ and $i = 2$ corresponds
+to a marginal direction.
+\end{example}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Self-interacting walks}
 \label{sec:walks}
-
-% \subsection{Discrete-time walks}
-
-% Let $[n] = \{0,\ldots,n\}$ and call a function $\omega : [n]\to\vertices$
-% a \emph{discrete-time walk of length $n$} if $\omega_i \sim \omega_{i+1}$ for all
-% $i\in[n-1]$.
-% A model of discrete-time walks can be defined by an assigning of weights
-% $w_n : \dwalks_n \to \R$ for each $n \in \Z_+$, where $\Wcal_n$ is the
-% collection of discrete-time walks $\omega$ of length $n$ with $\omega_0 = 0$.
-% When these weights are nonnegative and summable, this is equivalent to
-% equipping each $\Wcal_n$ with a probability measure; such \emph{probabilistic}
-% models of walks are often closely related to ferromagnetic spin systems,
-% as we will discuss in Section~\REF.
-
-% In this thesis, we focus on continuous-time walks, which we define in the next
-% section. Before proceeding, however, we discuss the following important example.
 
 We begin with the following example.
 
@@ -1372,9 +1281,7 @@ We say that $\omega$ is \emph{self-avoiding} if $\omega_i \ne \omega_j$
 for all $i \ne j$. Let $\Scal_n$ denote the collection of $n$-step
 self-avoiding walks with $\omega_0 = 0$. We equip $\Scal_n$ with the uniform
 measure for each $n$. This gives us a simple model of a linear polymer.
-% defined by the weights $w(\omega) = \1_{\omega\in\Scal_n}$.
 
-% Equivalently, we equip $\Scal_n$ with the uniform measure $\mu_n$ for each $n$.
 The uniform measures do not form a consistent family due to the possibility of ``traps''.
 That is, the equality
 \begin{equation}
@@ -1476,12 +1383,8 @@ $x \in \vertices$ by
 \label{e:LTx-def}
 \lt^x_T(\omega) = \int_0^T \1_{\omega(S)=x} \; dS.
 \end{equation}
-Note that $\lt^x_T$ is almost surely finite.
-% In the discrete-time case, $\lt^x_n$ is the number of times $\omega$ visits $x$
-% and is bounded by $n$.
-% In the continuous-time case, $\lt^x_T$ is almost surely
-% finite for the continuous-time simple random walk.
-We define the \emph{intersection local time}
+Note that $\lt^x_T$ is almost surely finite. We define the \emph{intersection
+local time}
 \begin{equation}
 \label{e:ITdef}
 I_T(\omega)
@@ -1500,7 +1403,6 @@ C_T(\omega)
 \sum_{x \in \vertices} \sum_{y \sim x} \lt_T^x(\omega) \lt_T^y(\omega)
 \end{equation}
 up to time $T$.
-% Recall that we have set the inverse temperature equal to $1$.
 
 Given a parameter $\gcc > 0$, and $\gamma \in \R$, let
 \begin{equation}
@@ -1626,7 +1528,6 @@ In particular,
   |\nabla \lt_T|^2
   .
 \end{equation}
-% A version of \refeq{V2} can be found in \cite{HK01a}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -1658,7 +1559,6 @@ c_T                       &\sim C_5 e^{-\nu_c T} T^{-\gammabar}, \\
 The critical exponents $\gammabar, \nubar, \eta$ are expected to be universal;
 in particular, they should only depend on $d$ in this context.
 
-% Below we discuss some of the predicted and known values of the critical exponents.
 Below, we discussion the predicted values of the exponents for $\gamma$ small before
 turning our attention to the case of large $\gamma$. A more detailed reference is
 \cite{MS93}. The values of $\nubar$ were first predicted\footnote{Flory's prediction
@@ -1705,6 +1605,7 @@ By vastly extending this method, Slade \cite{Slad88} showed that the scaling lim
 of SAW is Brownian motion and Hara and Slade \cite{HS92a,HS92b} showed that
 $\gamma = 1$, $\nubar = 1/2$ (for the mean-squared displacement, correlation length,
 and correlation length of order $2$), and $\eta = 0$.
+\commentbw{This Hara-Slade result might not be for $d \ge 5$ (see the 1991 paper)}
 
 Even above the upper-critical dimension, very little is known about WSAW-SA with
 $\gamma \ne 0$. Exceptions include \cite{HH17,Uelt02}.
