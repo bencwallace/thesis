@@ -720,7 +720,7 @@ This will be discussed in Section~\ref{sec:newnorm}.
 
 \begin{rk}
 The parameter $\ggen_j$ is used to overcome what \cite{Abde07} refers to as the
-``fibered norm problem''. Briefly, the norms used to control the renormalisation
+``fibred norm problem''. Briefly, the norms used to control the renormalisation
 group trajectory must be decoupled from the initial parameter $g_0$. Ultimately,
 we will set $\ggen_0 = g_0$ (see Remark~\ref{rk:ggen}).
 \end{rk}
@@ -734,7 +734,7 @@ obey certain symmetry conditions preserved by Gaussian expectation (and which
 are obeyed by $V^+_0$).
 
 We let any automorphism $E$ of $\Lambda$ act on $\Ncal$ by $EF(\varphi) = F(E\varphi)$.
-We say that $F\in\Ncal$ is \emph{Euclidean invariant} if $EF = F$ for all such automorphisms.
+We say that $F\in\Ncal$ is \emph{Euclidean-invariant} if $EF = F$ for all such automorphisms.
 
 If $n = 0$,
 we define the \emph{supersymmetry generator}
@@ -747,14 +747,14 @@ Q = (2\pi i)^{1/2} \sum_{x\in\Lambda}
 \right)
 \end{equation}
 A form $F \in \Ncal$ is said to be \emph{supersymmetric} if $Q F = 0$.
-Such a form is said to be \emph{gauge invariant} if it is invariant under the
+Such a form is said to be \emph{gauge-invariant} if it is invariant under the
 \emph{gauge flow} $(q, \bar q) \mapsto (e^{-2\pi it} q, 2^{2\pi it} \bar q)$
 for $q = \phi_x, \psi_x$ and all $x\in\Lambda$.
 
 If $n \ge 1$, we let
 an $n \times n$ matrix $T$ act on $\Ncal$ by $T F(\varphi) = F(T \varphi)$,
 where $(T\varphi)_x = T(\varphi_x)$.
-We say that $F\in\Ncal$ is \emph{$O(n)$ invariant} if $TF = F$ for all
+We say that $F\in\Ncal$ is \emph{$O(n)$-invariant} if $TF = F$ for all
 orthogonal matrices $T$.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -782,7 +782,7 @@ and define a subspace on which this finite-dimensional system will evolve.
 % [\varphi] = \frac{d - 2}{2}.
 % \end{equation}
 We call $M_x \in \Ncal$ a local monomial if it is a monomial in $\varphi_x$ and its
-(discrete) gradients. For intance, for a $1$-component field, such $M_x$ has the form
+(discrete) gradients. For instance, for a $1$-component field, such $M_x$ has the form
 \begin{equation}
 \label{e:field-mon}
 M_x = (\nabla^{\alpha_1} \varphi_x) \ldots (\nabla^{\alpha_p} \varphi_x).
@@ -838,12 +838,12 @@ by defining
 \end{equation}
 
 When $n = 0$, it can be shown that the only marginal and relevant local monomials
-that are Euclidean invariant and supersymmetric are constant multiples of
+that are Euclidean-invariant and supersymmetric are constant multiples of
 \begin{equation}
 1, \quad \tau_x, \quad \tau_x^2, \quad \tau_{\Delta,x}, \quad \tau_{\nabla\nabla,x}.
 \end{equation}
-When $n \ge 1$, these are the only marginal and relevant monomials that are Euclidean
-invariant and $O(n)$-invariant (see \cite{BBS-rg-pt}).
+When $n \ge 1$, these are the only marginal and relevant monomials that are
+Euclidean-invariant and $O(n)$-invariant (see \cite{BBS-rg-pt}).
 
 The marginal and relevant contributions to the evolution of the renormalisation group
 will be tracked by a \emph{local polynomial} (a sum of local monomials) of the form
@@ -1207,14 +1207,14 @@ properties:
 \item
 Field Locality: If $X \in \Ccal_j$, then $K(X) \in \Ncal(X^\square)$.
 Also: (i) $\pi_\alpha K(X) = 0$ unless $\alpha \in X$ for $\alpha = 0, x$;
-(ii) $\pi_{0x} K(X) = 0$ unless $a\in X$ and $x \in X^\square$ or vice-versa;
+(ii) $\pi_{0x} K(X) = 0$ unless $a\in X$ and $x \in X^\square$ or vice versa;
 and (iii) $\pi_{0x} K(X) = 0$ if $X \in \Scal_j$ and $j < j_x$.
 
 \item
-Symmetry: (i) $K$ is Euclidean invariant and, if $n = 0$, $K$ is gauge-invariant;
+Symmetry: (i) $K$ is Euclidean-invariant and, if $n = 0$, $K$ is gauge-invariant;
 (ii) $\pi_\varnothing K$ is supersymmetric and has no constant part if $n = 0$
-or $O(n)$ invariant if $n \ge 1$;
-and (iii) $\pi_\varnothing K$ is Euclidean covariant.
+or $O(n)$-invariant if $n \ge 1$;
+and (iii) $\pi_\varnothing K$ is Euclidean-covariant.
 \end{itemize}
 We let $\Kspace_j = \Kspace_j(\volume)$ denote the real vector space of functions
 $K \in \CKspace_j$ with the following additional property:
@@ -1296,7 +1296,7 @@ K^+_0 = 0
 % in particular, $\ggen_0(\mgen^2, \ggen_0) = \ggen_0$.
 In \cite[Section~\ref{step-sec:Knorms}]{BS-rg-step},
 a sequence of norms $\|\cdot\|_{\Wcal_j} = \|\cdot\|_{\Wcal_j(\mgen^2, \ggen_j, \Lambda)}$
-parameterised by $(\mgen^2, \ggen_j)$ is defined on $\Kcal_j$.
+parameterized by $(\mgen^2, \ggen_j)$ is defined on $\Kcal_j$.
 These are defined in terms of the $T_\phi(\h_j)$ norms with parameters $\h_j = \ell_j, h_j$.
 In order to make use of the improved norm parameters with $s > 1$,
 we must modify the definition of $\Wcal_j$ when $j$ is above the mass scale.
