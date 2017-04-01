@@ -41,6 +41,7 @@
 
 % Use same title for frontmatter and hyperref
 \newcommand{\titlename}{{Renormalisation group analysis of self-interacting walks and spin systems}}
+\newcommand{\authorname}{Benjamin Wallace}
 
 \ifdefined\draft
 	\def\macrosH{}						% Use xr-hyper
@@ -49,9 +50,15 @@
 	\input{macros}						% Just use xr
 	% \hypersetup{draft}				% Turns off hyperlinks
 	\renewcommand{\commentbw}[1]{}		% Turn off comments
-	\renewcommand{\todo}[1]{}			% Turn off todo's
 \fi
+
 \input{extramacros}
+
+\ifdefined\draft
+	\newcommand{\todo}[1]{#1}
+\else
+	\newcommand{\todo}[1]{}			% Turn off todo's
+\fi
 
 % check ubcsample.tex for other potentially useful packages to include
 
@@ -74,7 +81,7 @@
 %%%% Title and author %%%%o
 \title{\titlename}
 % \subtitle{Subtitle}
-\author{Benjamin Wallace}					% Should be the name under which you are registered at UBC
+\author{\authorname}					% Should be the name under which you are registered at UBC
 
 %%%% Copyright %%%%
 \copyrightyear{2017}
