@@ -54,7 +54,7 @@
     \includegraphics*[height=\@logocopyheight]{\@logofile}
     \fi}}
 \newcommand\@logocopybare{\vbox{%
-    %\@condupper{@upperinstitution}{\@institution}\par 				% BW: Old this
+    %\@condupper{@upperinstitution}{\@institution}\par 				% BW: Old version
     \@condupper{@upperinstitution}{\@institution}\par 				% BW: New version
     (\@institutionaddress)\par%
     \@submitdate\par%
@@ -79,8 +79,10 @@
       {\subtitlefont \@condupper{@uppersubtitle}{\@subtitle}\par}%
       \vspace{1em}%
     \fi
+    \vspace{1em}																% BW: Added
     by \par%
     \vspace{1em}%
+    \vspace{1em}																% BW: Added
     {\authorfont%
       \@condupper{@upperauthor}{\@author}\par%
     }%
@@ -91,7 +93,7 @@
     THE REQUIREMENTS FOR THE DEGREE OF\par%
     \vspace{1em}
     %{\degreetitlefont\@condupper{@upperdegreetitle}{\@degreetitle}\par} 		% BW: Old
-    {\degreetitlefont\@condupper{}{\textbf\@degreetitle}\par}							% BW: New
+    {\degreetitlefont\@condupper{}{\textbf\@degreetitle}\par}					% BW: New
     \vspace{1em}
     in \par%
     \vspace{1em}
