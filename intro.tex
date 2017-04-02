@@ -37,7 +37,7 @@ constitutes a sample sufficiently large to be considered bulk matter and why sho
 certain measurements of a sample stabilize when the sample is sufficiently large?
 
 A natural response is that some sort of law of large numbers
-is at work. Although the behaviour of a system of particles is not random, it may
+must be at work. Although the behaviour of a system of particles is not random, it may
 be sufficiently complex that it is reasonable to view it as such.
 This is the basic idea of statistical mechanics: to leverage the complexity of
 large systems of particles in order to explain the apparent simplicity of bulk
@@ -48,13 +48,13 @@ temperature or other parameters, so in this sense the main objects of study in
 statistical mechanics are certain parameterized families of probability measures.
 
 It is useful to organize these measures according to their qualitative properties.
-Qualitatively similar measures correspond to a \emph{phase} of a substance.
-For instance, water at $20^\circ{\rm C}$ is not terribly different from water at
-$50^\circ{\rm C}$. On the other hand, steam and water have very different densities despite
-both being $\mathrm{H_2O}$.
+Qualitatively similar measures correspond to a \emph{phase} of a substance. For
+instance, water at $20^\circ{\rm C}$ is not significantly different from water at
+$50^\circ{\rm C}$. On the other hand, steam and water have very different densities
+despite both being $\mathrm{H_2O}$. In fact, the boiling of water is signalled by an
+abrupt drop in density by a factor of around $1/1000$ at normal atmospheric pressure.
 
-In fact, the boiling of water is signalled by an abrupt drop in density by a factor
-of around $1/1000$ at normal atmospheric pressure. The temperature at which water
+The temperature at which water
 boils varies as a function of pressure $T_c = T_c(P)$ and a \emph{phase transition}
 is said to occur when the pressure and/or temperature are varied in such a way as to
 cross the graph of this function; see Figure~\ref{fig:liquid-vapour}.
@@ -275,7 +275,7 @@ Z = \int e^{-\beta H} \; d\lambda
 is known as the \emph{partition function}.
 
 A simple approach to the derivation of this measure was suggested by Jaynes \cite{Jaynes57}:
-amongst all probability measures $\mu$ on $\Omega$ absolutely
+under appropriate hypotheses, amongst all probability measures $\mu$ on $\Omega$ absolutely
 continuous with respect to $\lambda$, the Gibbs measure maximizes the \emph{entropy}
 \begin{equation}
 \label{e:entropy-def}
@@ -303,7 +303,7 @@ field theory).
 
 Let $H(x, p)$ be the Hamiltonian \eqref{e:total-energy} (we have written $x$
 instead of $q$). In quantum mechanics, the state space is replaced by a Hilbert
-space of functions over $\R^{6n}$, usually $L^2 = L^2(\R^{3n})$;
+space, usually $L^2 = L^2(\R^{3n})$;
 the position $x_j$ is replaced by the \emph{position operator} $\hat x_j$ given by
 multiplication by $x_j$; and the momentum $p_j$ is replaced by the \emph{momentum
 operator} $\hat p_j = -i \hbar \partial/\partial x_j$ (we ignore details regarding
@@ -316,7 +316,7 @@ the Schr\"{o}dinger equation
 whose solution with initial condition $\psi(0)$ is given by
 $\psi(t) = e^{-it\hat H/\hbar} \psi(0)$.
 
-Suppose that the solution operator is an integral operator with kernel $K_t$,
+Suppose that the solution operator is an integral operator with kernel $K_t$:
 \begin{equation}
 e^{-it\hat H/\hbar} f = \int K_t(\cdot, y) f(y) \; dy.
 \end{equation}
@@ -336,8 +336,6 @@ is the \emph{Lagrangian} of the classical system we started with.
 As such, the integral representation of $K_t$ is ill-defined;
 for instance, the measure $\Dcal x$ on paths does not exist. However, let us
 not concern ourselves with this.
-
-\commentbw{Should get reduction of one dimension. See e.g.\ Cardy's notes}
 
 Suppose that $\psi$ can be analytically continued to a region of the complex
 plane containing the positive imaginary axis. Then we might hope the function
@@ -368,8 +366,8 @@ This procedure is known as a \emph{Wick rotation}.
 The analogue of this idea in quantum field theory involves replacing integration
 over paths with integration over fields $\varphi$, which are functions on $\Rd$.
 The corresponding ``measures'' of the form $e^{-(1/\hbar)\int H} \Dcal\varphi$
-should be compared with the Gibbs measures \eqref{e:gibbs-def} with $\hbar$ playing
-the role of temperature. Although $H$
+should be compared with the Gibbs measures \eqref{e:gibbs-def} with Planck's constant
+$\hbar$ playing the role of temperature. Although $H$
 has been replaced by the \emph{integral} $\int H$, we will discuss how natural
 choices for the Hamiltonian in a Gibbs measure are given by \emph{sums} over
 spaces of fields on discrete approximations to $\Rd$ (graphs).
@@ -392,8 +390,8 @@ $\tilde\psi(t, x) = \Ex(\tilde\psi(0, B_t) \mid B_0 = x)$,
 where $B_t$ is a Brownian motion.
 
 More generally, for appropriate choices of $U \ne 0$, differential equations of
-the form \eqref{e:linear-pde} can be expressed in terms
-solutions to stochastic differential equations (this is the Feynman-Kac formula).
+the form \eqref{e:linear-pde} can be solved by averaging over solutions of
+stochastic differential equations (this is the Feynman-Kac formula).
 \end{rk}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1605,7 +1603,6 @@ By vastly extending this method, Slade \cite{Slad88} showed that the scaling lim
 of SAW is Brownian motion and Hara and Slade \cite{HS92a,HS92b} showed that
 $\gamma = 1$, $\nubar = 1/2$ (for the mean-squared displacement, correlation length,
 and correlation length of order $2$), and $\eta = 0$.
-\commentbw{This Hara-Slade result might not be for $d \ge 5$ (see the 1991 paper)}
 
 Even above the upper-critical dimension, very little is known about WSAW-SA with
 $\gamma \ne 0$. Exceptions include \cite{HH17,Uelt02}.
@@ -1673,7 +1670,7 @@ $\gamma > \beta$, the WSAW-SA is expected to undergo a collapse transition ($\nu
 This has recently been shown for a model of prudent self-avoiding walk with self-attraction
 in \cite{PT16}.
 
-\begin{figure}
+\begin{figure}[!htb]
 \centering
 \includegraphics{theta_curve}
 \caption[Phase diagram of WSAW-SA]{Phase diagram for the WSAW-SA}
