@@ -59,52 +59,114 @@ theory.
 \subsection{The \texorpdfstring{$n\to0$}{n approaches 0} limit}
 \label{sec:ntozero}
 
-\commentbw{Note that we have an unnormalized measure on the sphere}
+The heuristic relation between self-avoiding walk and spin systems is most easily
+treated on graphs $\graph$ of degree $3$ (e.g.\ the triangular or hexagonal lattice),
+so we restrict our attention to this case. In
+addition, we consider the version of the $O(n)$ model with spins normalized to
+lie on the sphere of radius $\sqrt n$, which we equip with the uniform measure.
+We denote the product measure on the resulting configuration space by
+\begin{equation}
+d\sigma = \prod_{x\in\vertices} d\sigma_x.
+\end{equation}
 
-The heuristic relation between self-avoiding and spin systems is most easily treated
-on graphs of degree $3$, so we restrict our attention to this case.
+\begin{rk}
+This normalization of the spins was in fact used when the $O(n)$ model was originally
+introduced in \cite{Stanley68}. Moreover, in \cite{KT71}, it was shown that this
+normalization is necessary for the study of the $n\to\infty$ limit.
+\end{rk}
 
 The \emph{high-temperature expansion} of a spin system is based on the expansion of the
 Boltzmann weight $e^{\beta H}$ around $\beta = 0$.
-For the $O(n)$ spin model, an uncontrolled approximation of this expansion yields
+For the $O(n)$ spin model witn interaction $J_{xy} = \1_{x\sim y}$, an uncontrolled
+approximation of this expansion yields
 \begin{align}
 Z 
 	&=
-\int d\lambda(\sigma) \prod_{xy\in\edges} e^{\beta \sigma_x \cdot \sigma_y} \nonumber \\
+\int d\sigma \prod_{xy\in\edges} e^{\beta \sigma_x \cdot \sigma_y} \nonumber \\
 	&\approx
-\int d\lambda(\sigma) \prod_{xy\in\edges} (1 + \beta \sigma_x \cdot \sigma_y) \nonumber \\
+\int d\sigma \prod_{xy\in\edges} (1 + \beta \sigma_x \cdot \sigma_y) \nonumber \\
 	&=
-\sum_{E \subset \edges} \beta^{|E|} \int d\lambda(\sigma) \prod_{xy \in E} \sigma_x \cdot \sigma_y
+\sum_{E \subset \edges} \beta^{|E|} \int d\sigma \prod_{xy \in E} \sigma_x \cdot \sigma_y
 \end{align}
-By reflection-invariance of the sphere measure, the last integral above is non-zero
+By reflection-invariance, the last integral above is non-zero
 if and only if every vertex in the product over $E$ appears an even number of times.
-On a graph of degree $3$, this is only possible if $E$ consists of mutually avoiding
-(i.e.\ disjoint) self-avoiding
-loops (i.e.\ walks from a vertex to itself that are self-avoiding everywhere except this
-vertex). Thus, the sum over subsets of $\edges$ can be replaced by a sum over collections of
-such loops.
+On a graph of degree $3$, this is only possible if $E$ is a (possibly empty) collection
+of mutually avoiding (i.e.\ disjoint) self-avoiding loops (walks from a vertex to itself
+that are self-avoiding everywhere except this vertex).
+% Thus, the sum over subsets of $\edges$ can be replaced by a sum over collections of such loops.
 
-\commentbw{Sketch...}
-
-A similar expansion can be performed for the numerator in the definition of the
-two-point function, yielding:
+Moreover, for any loop $L$, invariance under orthogonal transformations and the fact
+that spins have radius $\sqrt n$ implies that
 \begin{equation}
-\int d\lambda(\sigma) \sigma_a \cdot \sigma_b
+\int d\sigma \; \prod_{xy\in L} \sigma_x \cdot \sigma_y
+	=
+\sum_{i=1}^n \prod_{x\in\vertices(L)} \int d\sigma_x \; (\sigma^i_x)^2
+	=
+n,
+\end{equation}
+where $\vertices(L)$ is the set of vertices in $L$.
+Thus,
+\begin{equation}
+\label{e:loop-partition}
+Z
 	\approx
+1
+	+
+\sum_{N \ge 1}
+\frac{n^N}{N!}
+\sum_{L_1,\ldots,L_N}
+\beta^{|L_1|+\cdots+|L_N|},
+\end{equation}
+where the inner sum is over all collections of loops $L_1, \ldots, L_N$
+and permutations of these loops are accounted for by the $1/N!$ factor.
+Notice that the final expression on the right-hand side of \eqref{e:loop-partition}
+makes sense for any $N$ and equals $1$ when $n = 0$.
+
+The two-point function for the $O(n)$ model can be defined analogously to
+\eqref{e:two-point-function-phi4} and \eqref{e:Ising-2pt}. By a similar expansion
+as was used to study the partition function above, the numerator in the two-point
+function becomes
+\begin{equation}
+\label{e:2pt-num}
+n^{-1} \int d\sigma (\sigma_a \cdot \sigma_b) \prod_{xy\in\edges} e^{\beta\sigma_x\cdot\sigma_y}
+	\approx
+n^{-1}
 \sum_{E\subset\edges} \beta^{|E|}
-\int d\lambda(\sigma) \sigma_a \cdot \sigma_b
+\int d\sigma (\sigma_a \cdot \sigma_b)
 \prod_{xy\in E} \sigma_x \cdot \sigma_y.
 \end{equation}
-Once again, every vertex must appear twice on the right-hand side. This time,
-non-zero contributions come from subsets $E$ containing mutually avoiding self-avoiding
-loops together with a self-avoiding walk from $a$ to $b$ that is also disjoint from these
-loops. As a very simple example, if $a \sim b$, then there is a non-zero contribution from
-$E = \{ \{ a, b \} \}$.
-
-\commentbw{Non-zero contributions vanish for loops when $n = 0$. I think spins need
-to be scaled by $\sqrt n$}
-
-\commentbw{Refer to Madras-Slade \cite[Section 2.3]{MS93} for more general}
+Once again, every vertex must appear twice on the right-hand side in order to make a
+non-zero contribution to the sum. Due to the presence of the factor $\sigma_a \cdot \sigma_b$,
+this means (unless $a = b$) that the sum can be replaced by a sum over subsets $E$ containing
+a self-avoiding walk from $a$ to $b$ together with with a (possibly empty) family of mutually
+avoiding self-avoiding loops that also avoid this walk. (As a very simple example, if $a \sim b$,
+then there is a non-zero contribution from $E = \{ a, b \}$.) For any such configuration $E$
+containing $N$ loops,
+\begin{equation}
+\int d\sigma \; (\sigma_a \cdot \sigma_b) \prod_{xy\in E} \sigma_x \cdot \sigma_y
+	=
+n^{1 + N}.
+\end{equation}
+The extra factor of $n$ arises from the walk in $E$ but is
+cancelled by the normalization in \eqref{e:2pt-num}.
+Thus, after formally setting $n = 0$ (so that $Z = 1$), the two-point function
+is approximately given by
+\begin{equation}
+1 + \sum_{\omega\in\Scal_n(a, b)} \beta^{|\omega|},
+\end{equation}
+which is the two-point function (i.e.\ generating function) for self-avoiding
+walk.
+% Thus, the two-point function is approximately
+% \begin{equation}
+% \frac{1}{1 + O(n)}
+% \left(
+% 	1
+% 		+
+% 	\sum_{\omega : a \to b} \beta^{|\omega|}
+% 		+
+% 	O(n)
+% \right).
+% \end{equation}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
