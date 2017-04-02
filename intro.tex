@@ -388,10 +388,8 @@ with the well-known fact that a solution $\tilde\psi$ of the heat equation
 on a domain can (under appropriate conditions) be written as
 $\tilde\psi(t, x) = \Ex(\tilde\psi(0, B_t) \mid B_0 = x)$,
 where $B_t$ is a Brownian motion.
-
-More generally, for appropriate choices of $U \ne 0$, differential equations of
-the form \eqref{e:linear-pde} can be solved by averaging over solutions of
-stochastic differential equations (this is the Feynman-Kac formula).
+More generally, the Feynman-Kac formula expresses solutions to \eqref{e:linear-pde}
+as averages with respect to a Brownian motion.
 \end{rk}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -720,11 +718,11 @@ $O(n)$ model was first studied in \cite{Stanley68}.
 
 \subsection{Phase transition in the Ising model}
 
-In this section we discuss the phase transition for the Ising model on $\Zd$
-with $d > 1$. A good reference is \cite{FV17}.
+% In this section we discuss the phase transition for the Ising model on $\Zd$
+% with $d > 1$. A good reference is \cite{FV17}.
 
 Let $\graph = \Lambda_N$ and consider the Hamiltonian for the Ising model with
-an external field $h\in\R$:
+interaction $J_{xy} = \1_{x\sim y}$ in an external field $h\in\R$:
 \begin{equation}
 H^{(N)}_h(\varphi)
 	=
@@ -734,17 +732,17 @@ H^{(N)}_h(\varphi)
 \varphi\in\{\pm1\}^\vertices.
 \end{equation}
 Let $\langle\cdot\rangle^{(N)}_{\beta,h}$ denote the expectation with respect to
-the corresponding Gibbs measure and let $Z^{(N)}_{\beta,h}$ be the partition function.
-The \emph{free energy} is defined in finite volume by
+the corresponding Gibbs $\mu^{(N)}_{\beta,h}$ measure and let $Z^{(N)}_{\beta,h}$
+be the partition function. The \emph{free energy} is defined in finite volume by
 \begin{equation}
 F^{(N)}_{\beta,h}
 	=
 -\frac{1}{\beta |\vertices|} \log Z^{(N)}_{\beta,h}.
 \end{equation}
-Notice that with $h = 0$ a computation of the entropy $\entropy(\mu_{\beta,0})$
+Notice that with $h = 0$ a computation of the entropy $\entropy(\mu^{(N)}_{\beta,0})$
 with $\beta = \beta(E)$ (as in \eqref{e:fix-avg-energy}) shows that
 \begin{equation}
-F^{(N)}_{\beta,0} = E - \frac{1}{\beta} \entropy(\mu_{\beta,0}),
+F^{(N)}_{\beta,0} = E - \frac{1}{\beta} \entropy(\mu^{(N)}_{\beta,0}),
 \end{equation}
 which recovers the usual definition of Helmholtz free energy in thermodynamics.
 
@@ -752,9 +750,9 @@ The \emph{magnetization} is given in finite volume by
 \begin{equation}
 M^{(N)}_{\beta,h}
 	=
-\frac{1}{|\vertices|} \sum_{x\in \vertices} \langle \varphi_x \rangle^{(N)}_{\beta,h}.
+\frac{1}{|\vertices|} \sum_{x\in \vertices} \langle \varphi_x \rangle^{(N)}_{\beta,h}
 \end{equation}
-Notice that
+and can be written in terms of the free energy as
 \begin{equation}
 M^{(N)}_{\beta,h}
 	=
@@ -785,8 +783,9 @@ G^{(N)}_x(\beta, h)
 	=
 \langle \varphi_0 \varphi_x \rangle_{\beta,h}
 	-
-\langle\varphi_0\rangle_{\beta,h} \langle\varphi_x\rangle_{\beta,h}.
+\langle\varphi_0\rangle_{\beta,h} \langle\varphi_x\rangle_{\beta,h}
 \end{equation}
+is the \emph{two-point function}.
 These are all analytic functions.
 In order to detect a phase transition, we must take the infinite-volume limit $N\to\infty$.
 
@@ -797,8 +796,8 @@ Let
 \begin{equation}
 M^\pm_{\beta} = \lim_{h\to0^\pm} M_{\beta,h}.
 \end{equation}
-Then when $\beta$ is sufficiently large, there is a non-zero \emph{spontaneous magnetization},
-meaning that
+Then when $\beta$ is sufficiently large \cite{Peierls36,Griffiths64}, there is a non-zero
+\emph{spontaneous magnetization}, meaning that
 \begin{equation}
 M^-_\beta < 0 < M^+_\beta.
 \end{equation}
@@ -809,66 +808,76 @@ Ising model is the inverse temperature
 \begin{equation}
 \beta_c = \sup\{\beta > 0 : M^+_\beta = 0 \}.
 \end{equation}
-At the critical point, the magnetization is expected to be continuous but non-differentiable.
-This is equivalent to the free energy being once- but not twice-differentiable.
-It is predicted that the
-susceptibility diverges as the critical point is approached, which corresponds to slow decay
-of the two-point function. We will discuss this in more detail in Section~\ref{sec:crit}.
+At the critical point, the magnetization is continuous \cite{Yang52,AF86}, i.e.\ the free energy
+is differentiable. However, the susceptibility diverges (see \cite{ADS15}), so the free energy
+is not twice-differentiable. This divergence corresponds to slow decay
+of the two-point function, which will be discussed in more detail in Section~\ref{sec:crit}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{Spin systems in infinite volume}
+\subsection{Infinite-volume spin systems}
 
 A broad distinction can be made between \emph{first-order} phase transitions
-in which the
-free energy has discontinuous first derivative with respect to an external
-field $h$ (recall \eqref{e:gibbs-spin-ext}) and \emph{continuous} phase
-transitions, in which the free energy is differentiable but non-analytic.
-As discussed above, the infinite-volume limit of the free energy must be taken
-in order for a phase transition to manifest.
+in which the free energy has discontinuous first derivative with respect to an
+external field $h$ and \emph{continuous} phase transitions, in which the free
+energy is differentiable but non-analytic. As discussed above, the infinite-volume
+limit must be taken in order for a phase transition to manifest. For the Ising
+model, we took the infinite-volume limit of the free energy along a sequence of
+increasing tori.
 
-\commentbw{Maybe turn this section into a remark}
+It is worth mentioning that a more general and elegant approach to the study
+of infinite-volume spin systems was developed by Dobrushin \cite{Dobrushin68}
+and Lanford and Ruelle \cite{LR69}. An excellent introduction to this subject is
+given in \cite{FV17} and a comprehensive reference is \cite{Georgii11}
+(see also \cite{LP76} for spin systems with unbounded $1$-component spins).
 
-A systematic approach to this problem was developed in the work of Dobrushin \cite{Dobrushin68}
-and Lanford and Ruelle \cite{LR69}. A comprehensive reference to this subject is \cite{Georgii11}
-(see also \cite{LP76} for spin systems with unbounded one-dimensional spins).
 Loosely speaking, they take as fundamental not the Hamiltonian
-but rather a ``potential'', which is a collection of functions encoding the microscopic interactions
-from which the Hamiltonian is to be defined; for instance, for the Ising model,
-the Hamiltonian is a sum of contributions of the form $J_{xy} \sigma_x \sigma_y$ whenever
-$x \sim y$. Given such a potential, a Hamiltonian can be defined on any
-finite subgraph of $\graph$ and a probability measure on $\Omega$ is said to be a Gibbs
-measure or Gibbs state whenever its finite-volume conditional measures are of the form \eqref{e:gibbs-spin}.
+but rather a ``potential'', which is a collection of functions encoding the
+microscopic interactions from which the Hamiltonian is to be defined; for
+instance, for the Ising model, the Hamiltonian is a sum of contributions of the
+form $J_{xy} \sigma_x \sigma_y$ for $x \sim y$. Given such a potential, a
+Hamiltonian can be defined on any finite subgraph of $\graph$ and a probability
+measure on $\Omega$ is said to be a Gibbs measure or Gibbs state whenever its
+finite-volume conditional measures are of the form \eqref{e:gibbs-spin}.
+
 This is somewhat in the spirit of Kolmogorov's consistency conditions with the importance
-difference that the resulting collection $\gibbs_\beta$ of Gibbs states at inverse temperature
-$\beta$ need not consist of only a single element. This is significant due to the interpretation
-of distinct elements of $\gibbs_\beta$ as corresponding to different phases.
+difference that the resulting collection $\gibbs_\beta$ of Gibbs states at inverse
+temperature $\beta$ need not consist of only a single element. This is significant
+due to the interpretation of distinct elements of $\gibbs_\beta$ as corresponding
+to different phases.
+For many systems of interest there is a critical inverse temperature $\beta_c$
+such that $|\gibbs_\beta| > 1$ if and only if $\beta > \beta_c$. The region
+$\beta > \beta_c$ is typically associated with first-order phase transitions
+whereas continuous phase transitions usually occur at the critical point $\beta_c$.
 
-For many systems of interest there is a critical inverse temperature $\beta_c$ such that
-$|\gibbs_\beta| > 1$ if and only if $\beta > \beta_c$. The region $\beta > \beta_c$ is typically
-associated with first-order phase transitions whereas continuous phase transitions usually occur
-at the critical point $\beta_c$.
+In this thesis, we are mainly interested in the approach to the critical point from
+the single-phase region: $\beta\uparrow\beta_c$. Thus, we will avoid the issue of
+existence and uniqueness of infinite-volume Gibbs measures by defining observable
+quantities of interest in infinite volume as limits
+of their finite-volume counterparts as was done in the previous section.
+Below we give the definitions we will use throughout the rest of this thesis for
+(a generalization of) the $|\varphi|^4$ model.
 
-We will avoid the issue of existence and uniqueness of infinite-volume Gibbs
-measures
-by defining observable quantities of interest (e.g.\ the two-point function) in infinite
-volume as limits of their finite-volume counterparts. These limits can alternatively be
-described as expectations with respect to infinite-volume Gibbs measures when the latter
-exist. Moreover, our focus is on the behaviour of spin systems at or above the critical
-point. Thus, we need not concern ourselves with issues related to non-uniqueness of Gibbs
-states.
+% These limits can alternatively be described as expectations with respect to infinite-volume
+% Gibbs measures when the latter exist. Moreover, our focus is on the behaviour of spin systems
+% at or above the critical point. Thus, we need not concern ourselves with issues related
+% to non-uniqueness of Gibbs states.
 
 \subsubsection{Translation-invariant systems}
 
-Our interest will be in translation-invariant systems on $\Zd$, for which a particular
-approach to infinite volume is especially convenient. We begin by letting $\Lambda_N$
-be the discrete torus as in \eqref{e:Lambda-torus}. We view $\Lambda_N$
-as a subset of $\Zd$ approximately centred at the origin (say as
+% Our interest will be in translation-invariant systems on $\Zd$, for which a particular
+% approach to infinite volume is especially convenient. We begin by letting $\Lambda_N$
+% be the discrete torus as in \eqref{e:Lambda-torus}.
+We view $\Lambda_N$ as a subset of $\Zd$ approximately centred at the origin (say as
 $[-\frac12 L^N+1,\frac12 L^N]^d \cap \Z^d$ if $L^N$ is even
 and as $[-\frac12 (L^N-1), \frac12 (L^N-1)]^d \cap \Z^d$ if $L^N$ is odd). This allows us to preserve
 translation-invariance of the models that concern us when defining them in finite volume.
 
-In particular, we will study a generalization of the $|\varphi|^4$ model whose Hamiltonian
+We fix $J_{xy} = \1_{x\sim y}$ so that
+\begin{equation}
+-\Delta_{xy} = 2 d \1_{x = y} - \1_{x\sim y}.
+\end{equation}
+We will study a generalization of the $|\varphi|^4$ model whose Hamiltonian
 on $\Lambda_N$ is given by
 \begin{equation}
 \label{e:Vdef1}
@@ -897,7 +906,7 @@ and the discrete gradient is defined by
 \end{equation}
 The expectation with respect to the corresponding Gibbs measure will
 be denoted $\langle\cdot\rangle_{\gcc,\gamma,\nu,N}$.
-We recover \eqref{e:phi4-Ham} when $\gamma = 0$ and $\graph = \Lambda_N$.
+% We recover \eqref{e:phi4-Ham} when $\gamma = 0$ and $\graph = \Lambda_N$.
 
 Following \eqref{e:Ising-suscept} and \eqref{e:Ising-2pt}, we define the
 two-point function and susceptibility by
@@ -920,10 +929,9 @@ and
 \end{equation}
 
 \begin{rk}
-We will be interested in the approach to the critical point from high temperature,
-so we have omitted the term
+We have omitted the term
 $\langle \varphi_0 \rangle_{g,\gamma,\nu,N} \cdot \langle \varphi_x \rangle_{g,\gamma,\nu,N}$
-which vanishes in this regime.
+which vanishes in the regime of interest $\beta \le \beta_c$.
 \end{rk}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
