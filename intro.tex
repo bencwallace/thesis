@@ -9,15 +9,15 @@
 Thermodynamics originated as the study of heat and its transformations into other
 forms of energy, but can more generally be described as the study of bulk matter.
 That is, it seeks to answer questions regarding those properties of matter that
-only appear to be well-defined in terms of large collections of particles. Two
-familiar examples of such properties are density and temperature. Density is usually
-defined as the mass of a substance per unit volume (at a certain temperature).
-Such a quantity is sometimes said to be \emph{intensive}: it is a property of
-the substance itself, not the amount of substance present.
+are defined in terms of large collections of particles. Two
+familiar examples are density and temperature. The density of a substance is
+its mass per unit volume.
+Such a quantity is sometimes said to be \emph{intensive}: it depends only on
+the nature of the substance under consideration, not on the amount that is present.
 
 There is a small caveat that should be added to this definition: the mass per unit
-volume of a sample of a substance will only become independent of the volume once
-this volume is sufficiently large. This makes density a \emph{macroscopic} property
+volume of a sample of some substance will only become independent of the volume once
+this volume is sufficiently large. This makes density a \emph{macroscopic} quantity
 (as opposed to, e.g.\ the atomic number). To say that thermodynamics is the study
 of bulk matter amounts to saying that it deals in macroscopic quantities.
 % Thus, it does not make sense to ask for the density of a sample of hydrogen consisting
@@ -27,19 +27,20 @@ of bulk matter amounts to saying that it deals in macroscopic quantities.
 % (as opposed to, e.g.\ the atomic number of hydrogen) and thermodynamics is the
 % study of macroscopic properties.
 
-The fact that there even is such a notion as a macroscopic quantity
-raises a number of simple questions. For instance, if these quantities
-are indeed properties of the substance itself, then it should be possible to 
-derive them from the microscopic properties of the constituent particles;
+% The fact that there is such a distinction between microscopic and macroscopic
+% properties raises a number of simple questions.
+This raises a number of simple questions. For instance, if these quantities
+are truly intensive, then it should be possible to 
+derive them from the microscopic behaviour of the substance's constituent particles;
 yet above, we have resorted to discussing ``large'' quantities of matter in order
 to make sense of density. In fact, this leads us to another natural question: what
 constitutes a sample sufficiently large to be considered bulk matter and why should
-certain measurements of a sample stabilize when the sample is sufficiently large?
+certain measurements of a sample stabilize when the sample is large?
 
 A natural response is that some sort of law of large numbers
 must be at work. Although the behaviour of a system of particles is not random, it may
 be sufficiently complex that it is reasonable to view it as such.
-This is the basic idea of statistical mechanics: to leverage the complexity of
+This is the basic idea of equilibrium statistical mechanics: to leverage the complexity of
 large systems of particles in order to explain the apparent simplicity of bulk
 matter as arising from the kind of self-averaging that pervades probability
 theory. From this point of view, macroscopic quantities are types of averages that
@@ -50,15 +51,16 @@ statistical mechanics are certain parameterized families of probability measures
 It is useful to organize these measures according to their qualitative properties.
 Qualitatively similar measures correspond to a \emph{phase} of a substance. For
 instance, water at $20^\circ{\rm C}$ is not significantly different from water at
-$50^\circ{\rm C}$. On the other hand, steam and water have very different densities
+$50^\circ{\rm C}$. On the other hand, steam and water have very different behaviours
 despite both being $\mathrm{H_2O}$. In fact, the boiling of water is signalled by an
 abrupt drop in density by a factor of around $1/1000$ at normal atmospheric pressure.
 
-The temperature at which water
+A similar effect occurs under different atmospheric conditions as well. The temperature
+at which water
 boils varies as a function of pressure $T_c = T_c(P)$ and a \emph{phase transition}
 is said to occur when the pressure and/or temperature are varied in such a way as to
 cross the graph of this function; see Figure~\ref{fig:liquid-vapour}.
-Moreover, as $P$ is increased, the density difference along this curve decreases and
+However, as $P$ is increased, the density difference along this curve decreases and
 there is a \emph{critical point} $(T_c(P_c), P_c)$ at which this difference vanishes.
 
 \begin{figure}
@@ -77,21 +79,22 @@ usually not suitable for making quantitative predictions.
 
 A remarkable phenomenon, known as \emph{universality}, is that this is no longer
 entirely true at the critical point. At criticality, many quantities behave in a
-way that is independent of the fine details of the model under consideration. Thus,
+way that is independent of the fine details of the model being used. Thus,
 some of the \emph{quantitative} properties of real materials can in principle be
-predicted exactly by studying models whose only resemblance to these materials is
-in their very coarse properties.
+predicted exactly by studying models only roughly resembling these materials
+% is in their very coarse properties.
 
 In the 1970's Ken Wilson, inspired by ideas in quantum field theory, gave an
 explanation of universality in terms of the \emph{renormalisation group}:
-an abstract dynamical system on a space of models. This idea was enormously successful
-and led to his 1982 Nobel Prize.
+an abstract dynamical system that acts on models by averaging out their fine details.
+This idea was enormously successful and led to his 1982 Nobel Prize.
 
 Nevertheless, a mathematically rigorous understanding of the renormalisation group
 remains incomplete. Although there have been several rigorous implementations of
 Wilson's ideas, they tend to be highly technical and restricted to somewhat special
-classes of models. The main purpose of this thesis is to discuss extensions of an
-approach of Bauerschmidt, Brydges, and Slade that have been used to study the
+classes of models. The main purpose of this thesis is to discuss extensions of a
+rigorous renormalisation group method of Bauerschmidt, Brydges, and Slade that have
+been used to study the
 critical behaviour of a generalized $|\varphi|^4$ model and a model of weakly
 self-avoiding walk with contact self-attraction (WSAW-SA). We will introduce these
 models and our main results in the present chapter and discuss the proofs in the
@@ -187,7 +190,7 @@ theorem providing conditions under which the converse is true is known as a
 \emph{Tauberian theorem}, and is generally harder to prove than its Abelian
 counterpart.
 
-\commentbw{See Feller Vol II, Chap XIII, Section 5}
+% \commentbw{See Feller Vol II, Chap XIII, Section 5}
 
 Likewise, the asymptotics of a function $f(T)$ as $T\to\infty$ can sometimes
 be recovered from the behaviour of its \emph{Laplace transform}
@@ -1321,8 +1324,16 @@ Fekete's lemma for subadditive sequences implies the existence of the limit
 c(\graph) = \lim_{n\to\infty} n^{-1} \log c_n.
 \end{equation}
 We call $c(\graph)$ the \emph{connective constant} of $\graph$.
+% Let $\Scal = \bigcup_{n=0}^\infty \Scal_n$.
+By definition, $c(\graph)$ is the reciprocal of the radius of convergence of the susceptibility,
+which is defined as the generating function
+\begin{equation}
+\chi(z) = \sum_{n=0}^\infty c_n z^n
+\end{equation}
+of the sequence $c_n$. Recalling Section~\ref{sec:asymp}, it is natural to study
+the asymptotics of the susceptibility as $z \to c(\graph)^{-1}$.
 % Note that, by the trivial bounds $1 \le c_n \le d_0^n$ for $n \ge 1$, $c(\graph) \in [0, d_0]$.
-By definition, $c(\graph)$ is the exponential growth rate of $c_n$.
+% By definition, $c(\graph)$ is the exponential growth rate of $c_n$.
 % $c_n \approx c(\graph)^n$ for large $n$.
 % By definition, the susceptibility has radius of convergence $c(\graph)^{-1}$.
 \end{example}
