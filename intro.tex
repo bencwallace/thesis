@@ -123,13 +123,14 @@ that allows us to unify our treatment of both models.
 \section{Asymptotics}
 \label{sec:asymp}
 
-We briefly describe some useful background on asymptotics.
+We begin by with a short discussion of some useful notation and mathematical
+background.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Asymptotic notation}
 
-Let $F$ and $G$ be a functions on a subset of the real line or the integers.
+Let $F$ and $G$ be a functions on a subset of the real line.
 For $a\in[-\infty,\infty]$, we write
 \begin{alignat}{2}
 F(x) &\sim G(x), &&\qquad x \to a \\
@@ -253,44 +254,45 @@ Typically, the Hamiltonian has the form
 \label{e:total-energy}
 H(q, p) = \frac{1}{2m} |p|^2 + U(q).
 \end{equation}
-The first term is the usual definition of kinetic energy and the second term, which
-depends only on $q$, is a potential energy function.
+The first term is the usual definition of kinetic energy and the second term,
+which depends only on $q$, is a potential energy function.
 \end{example}
 
 In statistical mechanics, the systems of concern consist of a very large number
-of particles ($n$ large in the previous example). Typically, the state space $\Omega$ is very
-high-dimensional and studying the exact dynamics is infeasible.
+of particles ($n$ large in the previous example). Typically, the state space
+$\Omega$ is very high-dimensional and studying the exact dynamics is infeasible.
 
 A common simplifying assumption is that after a long time has passed, the system
-under consideration will settle into a state of \emph{thermal equilibrium}, meaning
-that there is no net flow of heat between the system and its surroundings. Thus,
-the temperature is constant and we denote by $\beta$ the \emph{inverse temperature}.
-The \emph{Gibbs measure} \cite{Gibbs60} for a system with Hamiltonian $H$ at inverse temperature
+will settle into a state of \emph{thermal equilibrium}, meaning that there is no
+net flow of heat between the system and its surroundings. Thus, the temperature is
+constant; we denote by $\beta$ the \emph{inverse temperature}. The \emph{Gibbs measure} %\cite{Gibbs60}
+for a system with Hamiltonian $H$ at inverse temperature
 $\beta$ is the probability measure on $\Omega$ given by
 \begin{equation}
 \label{e:gibbs-def}
-\mu_\beta(d\omega) = \frac{1}{Z} e^{-\beta H(\omega)} d\lambda(\omega).
+\mu_\beta(d\omega) = \frac{1}{Z} e^{-\beta H(\omega)} d\lambda(\omega)
 \end{equation}
+when this is well-defined.
 The normalizing constant
 \begin{equation}
 Z = \int e^{-\beta H} \; d\lambda
 \end{equation}
 is known as the \emph{partition function}.
 
-A simple approach to the derivation of this measure was suggested by Jaynes \cite{Jaynes57}:
-under appropriate hypotheses, amongst all probability measures $\mu$ on $\Omega$ absolutely
-continuous with respect to $\lambda$, the Gibbs measure maximizes the \emph{entropy}
-\begin{equation}
-\label{e:entropy-def}
-\entropy(\mu) = -\int \log \frac{d\mu}{d\lambda} \; d\mu
-\end{equation}
-with respect to $\lambda$, subject to the fixed average energy constraint
-\begin{equation}
-\label{e:fix-avg-energy}
-\int H \; d\mu = E.
-\end{equation}
-This can be shown using the method of Lagrange multipliers;
-the parameter $\beta = \beta(E)$ arises as a Lagrange multiplier.
+% A simple approach to the derivation of this measure was suggested by Jaynes \cite{Jaynes57}:
+% under appropriate hypotheses, amongst all probability measures $\mu$ on $\Omega$ absolutely
+% continuous with respect to $\lambda$, the Gibbs measure maximizes the \emph{entropy}
+% \begin{equation}
+% \label{e:entropy-def}
+% \entropy(\mu) = -\int \log \frac{d\mu}{d\lambda} \; d\mu
+% \end{equation}
+% with respect to $\lambda$, subject to the fixed average energy constraint
+% \begin{equation}
+% \label{e:fix-avg-energy}
+% \int H \; d\mu = E.
+% \end{equation}
+% This can be shown using the method of Lagrange multipliers;
+% the parameter $\beta = \beta(E)$ arises as a Lagrange multiplier.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -314,7 +316,7 @@ the domains of these operators). The resulting operator $\hat H = H(\hat x, \hat
 on $L^2$ determines the evolution of the \emph{wave function} $\psi\in L^2$ via
 the Schr\"{o}dinger equation
 \begin{equation}
-\dd{\psi}{t} = -\frac{i}{\hbar} \hat H \psi
+i\hbar \dd{\psi}{t} = \hat H \psi
 \end{equation}
 whose solution with initial condition $\psi(0)$ is given by
 $\psi(t) = e^{-it\hat H/\hbar} \psi(0)$.
@@ -323,8 +325,8 @@ Suppose that the solution operator is an integral operator with kernel $K_t$:
 \begin{equation}
 e^{-it\hat H/\hbar} f = \int K_t(\cdot, y) f(y) \; dy.
 \end{equation}
-The Feynman path integral formulation of quantum mechanics involves writing
-the kernel as
+The Feynman path integral formulation of quantum mechanics \cite{Feyn48}
+involves writing the kernel as
 \begin{equation}
 K_t(a, b)
 	=
@@ -385,14 +387,15 @@ Then we would expect $\tilde\psi$ to solve
 \end{equation}
 When $U = 0$, we have $H(x, p) = |p|^2$, so $\hat H = -\tfrac12 \Delta_{\R^{3n}}$
 is the Laplacian on $\R^{3n}$ and \eqref{e:linear-pde} is the heat equation.
-On the other hand, $\int_0^t H$ is a positive-definite quadratic form, so
-\eqref{e:heat-kernel-fake} is formally a Gaussian integral. This is consistent
+On the other hand, $\int_0^t H$ is formally a positive-definite quadratic form, so
+\eqref{e:heat-kernel-fake} is a formal Gaussian integral. This is consistent
 with the well-known fact that a solution $\tilde\psi$ of the heat equation
 on a domain can (under appropriate conditions) be written as
 $\tilde\psi(t, x) = \Ex(\tilde\psi(0, B_t) \mid B_0 = x)$,
 where $B_t$ is a Brownian motion.
-More generally, the Feynman-Kac formula expresses solutions to \eqref{e:linear-pde}
-as averages with respect to a Brownian motion.
+More generally, under appropriate hypotheses, the Feynman-Kac formula expresses
+solutions to \eqref{e:linear-pde} with $U \ne 0$ as averages with respect to a
+Brownian motion.
 \end{rk}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -443,11 +446,13 @@ component-wise:
 \subsection{The graph Laplacian}
 
 Let us say that a $\vertices\times\vertices$ matrix $M$ is \emph{indexed by} $\edges$
-if $M_{xy} = 0$ if and only if $x \not\sim y$.
-Throughout this chapter, we let $\jay$ be a matrix indexed by $\edges$ with nonnegative entries:
+if $M_{xy} \ne 0$ if and only if $x \sim y$.
+Throughout this chapter, we let $\jay$ be a matrix indexed by $\edges$ with nonnegative entries.
+Thus,
 \begin{equation}
-\jay_{xy} \ge 0.
+\jay_{xy} \ge 0
 \end{equation}
+with equality if and only if $x \not\sim y$.
 The pair $(\graph, \jay)$ is an example of a \emph{weighted} graph.
 We will usually denote this weighted graph simply as $\graph$, with $\jay$
 implicit.
@@ -457,9 +462,8 @@ Let $\diag$ be the diagonal $\vertices\times\vertices$ matrix with diagonal entr
 d_x = \diag_{xx} = \sum_{y \sim x} J_{xy},
 \end{equation}
 where the sum is over all vertices $y$ adjacent to $x$.
-We say that $\graph$ is \emph{$d_0$-regular} if $d_x = d_y$ for all $x, y$.
-
-The \emph{graph Laplacian} on $\graph$ is defined by
+% We say that $\graph$ is \emph{$d_0$-regular} if $d_x = d_y$ for all $x, y$.
+The graph \emph{Laplacian} on $\graph$ is defined by
 \begin{equation}
 -\lap = \diag - \jay.
 \end{equation}
@@ -492,8 +496,8 @@ of side $L^N$, defined by
 \end{equation}
 for integers $L > 1$ and $N \ge 0$.
 We view $\Lambda$ as a graph with $\vertices = \Lambda$ and $x \sim y$ if
-$x$ and $y$ are nearest neighbours in $\Lambda$. This graph is clearly transitive
-and $d_x = 2d$.
+$x$ and $y$ have distance $1$ on the torus. This graph is transitive
+and $d_x = 2d$ for all $x$.
 \end{example}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -525,22 +529,24 @@ C_{xy}
 \section{Spin systems}
 \label{sec:spins}
 
-Let us begin by discussing spin systems in \emph{finite} volume. That is, we let
+We begin by restricting our attention to spin systems in \emph{finite} volume:
 \begin{equation}
 |\vertices| < \infty.
 \end{equation}
 Suppose that $S \subset \R^n$ is equipped with a measure $d\lambda^0$, let
 $\Omega = S^\vertices$, and define the product measure
 \begin{equation}
-d\lambda(\varphi) = \prod_{x\in\vertices} d\lambda^0(\varphi_x)
+d\lambda(\varphi) = \prod_{x\in\vertices} d\lambda^0(\varphi_x),
+	\quad
+\varphi\in\Omega.
 \end{equation}
-on $\Omega$. We refer to the elements of $\Omega$ as \emph{fields}
+We refer to the elements of $\Omega$ as \emph{fields}
 or \emph{spin configurations} on $\vertices$ with spins in $S$.
 
 Let $H : \Omega \to \R$ be a function and suppose
 that $e^{-H}$ is integrable with respect to $d\lambda$.
-The \emph{spin system} with Hamiltonian $H : \Omega \to \R$ is given
-by the Gibbs measure
+The \emph{spin system} with Hamiltonian $H : \Omega \to \R$
+at inverse temperature $\beta$ is given by the Gibbs measure
 \begin{equation}
 \label{e:gibbs-spin}
 d\mu_\beta(\varphi)
@@ -556,7 +562,7 @@ d\mu_{\beta,h}(\varphi)
 e^{-\beta \big(H(\varphi) - h \sum_{x\in\vertices} \varphi_x\big)} \; d\lambda(\varphi).
 \end{equation}
 We will mainly be concerned with \emph{ferromagnetic} spin systems, for which the
-Hamiltonian has the form
+Hamiltonian is given by
 \begin{equation}
 H(\varphi) = -\varphi \cdot M\varphi,
 	\quad
@@ -590,7 +596,7 @@ $H$ must be bounded below for the Gibbs measure \eqref{e:gibbs-spin} to be
 well-defined. Essentially the simplest class of
 non-constant\footnote{The Gibbs measure with constant Hamiltonian is just the
 product measure.} Hamiltonians
-are positive-definite quadratic forms. These are given via a positive-definite
+are positive-definite quadratic forms. These are given by a positive-definite
 symmetric $\vertices\times\vertices$ matrix $C$, called the \emph{covariance}
 matrix, and take the form
 \begin{equation}
@@ -658,7 +664,7 @@ by the massive Green function. The corresponding spin system is the discrete mas
 \emph{Gaussian free field} or \emph{GFF}.
 
 The continuum analog of this model with mass $0$
-(which can be defined for $d > 2$) is a simple example of a
+(which can be defined on $\Rd$ with $d > 2$) is a simple example of a
 non-interacting\footnote{The corresponding classical model only involves the kinetic term
 \eqref{e:discrete-kinetic}.} quantum field theory. The $|\varphi|^4$ model was introduced
 in attempts to construct an \emph{interacting} theory.
@@ -666,8 +672,14 @@ in attempts to construct an \emph{interacting} theory.
 
 \subsubsection{The $O(n)$ spin model}
 
-Consider the $|\varphi|^4$ model when $\graph$ is $d_0$-regular. In this case,
-the Hamiltonian takes the form
+Consider the $|\varphi|^4$ model and suppose that $\sum_{y\sim x} J_{xy} = d_0$
+for all $x\in\vertices$ (e.g.\ this occurs in the setting of \eqref{e:Deltaxy} when every
+vertex in $\graph$ has $d_0$ neighbours).
+% \begin{equation}
+% d_x = \diag_{xx} = \sum_{y \sim x} J_{xy}.
+% \end{equation}
+% when $\graph$ is $d_0$-regular.
+In this case, we can write
 \begin{equation}
 \label{e:phi4-split}
 H_{\gcc,\nu}(\varphi)
@@ -688,7 +700,7 @@ We can see from \eqref{e:phi4-split} that the $|\varphi|^4$ model is ferromagnet
 When $\nu + d_0 < 0$, the potential has the shape of a double well with roots at
 $t = 0$ and on the sphere $|t| = \pm\sqrt{-2 (\nu + d_0) / \gcc}$.
 Thus, as $\gcc\to\infty$ with $\nu = -(d_0 + \gcc/2)$, the Gibbs measure for the
-$|\varphi|^4$ model converges to the Gibbs measure with Hamiltonian
+$|\varphi|^4$ model converges (weakly) to the Gibbs measure with Hamiltonian
 \begin{equation}
 \label{e:on-model}
 H_J(\varphi) = -\frac12 \varphi \cdot J \varphi,
@@ -708,8 +720,8 @@ suggested it as a problem for his student Ernst Ising, who determined in 1924
 In \cite{Heisenberg28} Heisenberg, seeking a model that would possess a phase
 transition, proposed the quantum version of his model (see \cite{Brush67} for
 a discussion on this). Ironically, it turns out that the classical version of
-his model does not possess a phase transition in both $d = 1$ and $d = 2$; and,
-moreover, in 1936 Rudolf Peierls \cite{Peierls36} put forth an argument for the
+his model does not possess a phase transition in both $d = 1$ and $d = 2$ \cite{MW66};
+and, moreover, in 1936 Rudolf Peierls \cite{Peierls36} put forth an argument for the
 existence of a phase transition in the Ising model if $d > 1$. Peierls' argument
 was made rigorous in \cite{Griffiths64}, but even before that Onsager \cite{Onsager44}
 provided an exact computation of the free energy in $d = 2$, which incontrovertibly
@@ -735,21 +747,22 @@ H^{(N)}_h(\varphi)
 \varphi\in\{\pm1\}^\vertices.
 \end{equation}
 Let $\langle\cdot\rangle^{(N)}_{\beta,h}$ denote the expectation with respect to
-the corresponding Gibbs $\mu^{(N)}_{\beta,h}$ measure and let $Z^{(N)}_{\beta,h}$
-be the partition function. The \emph{free energy} is defined in finite volume by
+the corresponding Gibbs measure $\mu^{(N)}_{\beta,h}$ and let $Z^{(N)}_{\beta,h}$
+be the partition function.
+
+The \emph{free energy} is defined (in finite volume) by
 \begin{equation}
 F^{(N)}_{\beta,h}
 	=
 -\frac{1}{\beta |\vertices|} \log Z^{(N)}_{\beta,h}.
 \end{equation}
-Notice that with $h = 0$ a computation of the entropy $\entropy(\mu^{(N)}_{\beta,0})$
-with $\beta = \beta(E)$ (as in \eqref{e:fix-avg-energy}) shows that
-\begin{equation}
-F^{(N)}_{\beta,0} = E - \frac{1}{\beta} \entropy(\mu^{(N)}_{\beta,0}),
-\end{equation}
-which recovers the usual definition of Helmholtz free energy in thermodynamics.
-
-The \emph{magnetization} is given in finite volume by
+% Notice that with $h = 0$ a computation of the entropy $\entropy(\mu^{(N)}_{\beta,0})$
+% with $\beta = \beta(E)$ (as in \eqref{e:fix-avg-energy}) shows that
+% \begin{equation}
+% F^{(N)}_{\beta,0} = E - \frac{1}{\beta} \entropy(\mu^{(N)}_{\beta,0}),
+% \end{equation}
+% which recovers the usual definition of Helmholtz free energy in thermodynamics.
+The \emph{magnetization} is given by
 \begin{equation}
 M^{(N)}_{\beta,h}
 	=
@@ -788,7 +801,7 @@ G^{(N)}_x(\beta, h)
 	-
 \langle\varphi_0\rangle_{\beta,h} \langle\varphi_x\rangle_{\beta,h}
 \end{equation}
-is the \emph{two-point function}.
+is the correlation between $\varphi_0$ and $\varphi_x$, known as the \emph{two-point function}.
 These are all analytic functions.
 In order to detect a phase transition, we must take the infinite-volume limit $N\to\infty$.
 
@@ -814,7 +827,7 @@ Ising model is the inverse temperature
 At the critical point, the magnetization is continuous \cite{Yang52,AF86}, i.e.\ the free energy
 is differentiable. However, the susceptibility diverges (see \cite{ADS15}), so the free energy
 is not twice-differentiable. This divergence corresponds to slow decay
-of the two-point function, which will be discussed in more detail in Section~\ref{sec:crit}.
+of the two-point function, which will be discussed further in Section~\ref{sec:crit}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -834,7 +847,7 @@ and Lanford and Ruelle \cite{LR69}. An excellent introduction to this subject is
 given in \cite{FV17} and a comprehensive reference is \cite{Georgii11}
 (see also \cite{LP76} for spin systems with unbounded $1$-component spins).
 
-Loosely speaking, they take as fundamental not the Hamiltonian
+Loosely speaking, this approach take as fundamental not the Hamiltonian
 but rather a ``potential'', which is a collection of functions encoding the
 microscopic interactions from which the Hamiltonian is to be defined; for
 instance, for the Ising model, the Hamiltonian is a sum of contributions of the
@@ -843,7 +856,7 @@ Hamiltonian can be defined on any finite subgraph of $\graph$ and a probability
 measure on $\Omega$ is said to be a Gibbs measure or Gibbs state whenever its
 finite-volume conditional measures are of the form \eqref{e:gibbs-spin}.
 
-This is somewhat in the spirit of Kolmogorov's consistency conditions with the importance
+This is somewhat in the spirit of Kolmogorov's consistency conditions with the important
 difference that the resulting collection $\gibbs_\beta$ of Gibbs states at inverse
 temperature $\beta$ need not consist of only a single element. This is significant
 due to the interpretation of distinct elements of $\gibbs_\beta$ as corresponding
@@ -853,8 +866,8 @@ such that $|\gibbs_\beta| > 1$ if and only if $\beta > \beta_c$. The region
 $\beta > \beta_c$ is typically associated with first-order phase transitions
 whereas continuous phase transitions usually occur at the critical point $\beta_c$.
 
-In this thesis, we are mainly interested in the approach to the critical point from
-the single-phase region: $\beta\uparrow\beta_c$. Thus, we will avoid the issue of
+In this thesis, we are mainly interested in the single-phase regime $\beta\le\beta_c$.
+Thus, we will avoid the issue of
 existence and uniqueness of infinite-volume Gibbs measures by defining observable
 quantities of interest in infinite volume as limits
 of their finite-volume counterparts as was done in the previous section.
@@ -903,7 +916,7 @@ where
 	=
 \sum_{|e|=1} (\nabla^e |\phi_x|^2)^2
 \end{equation}
-and the discrete gradient is defined by
+and the discrete gradient in the direction of a unit vector $e\in\Zd$ is defined by
 \begin{equation}
 \nabla^e f_x = f_{x+e} - f_x.
 \end{equation}
@@ -1041,7 +1054,7 @@ C_4 (\nu - \nu_c)^{-\nubar},
 	\qquad
 \nu\downarrow\nu_c
 \end{align}
-where the $C_i$ are constants that may depend on $g$ and $n$ (and $p$ when $i = 4$).
+where the $C_i$ are constants that may depend on $g$, $\gamma$, and $n$ (and $p$ when $i = 4$).
 The critical exponents, on the other hand, are expected to be \emph{universal} in the
 sense that they only depend on ``large-scale properties'' of the model such as its
 symmetries and the global geometry of the underlying graph. In particular,
@@ -1127,13 +1140,13 @@ exact formula for the free energy of the Ising model.
 
 The $1$-component planar models are expected to possess \emph{conformally invariant}
 scaling limits. As a consequence of these conformal symmetries,
-the predicted critical exponents are the rational numbers $\gammabar = 56/32$, $\nubar = 1$,
+the predicted critical exponents are rational numbers: $\gammabar = 56/32$, $\nubar = 1$,
 and $\eta = 1/4$. Recent years have shown rapid progress in this direction, stimulated
 by the identification by Schramm \cite{Schramm00} of a $1$-parameter family of
 conformally invariant random planar curves now known as the \emph{Schramm-Loewner
-evolution} with parameter $\kappa$ or $\SLE_\kappa$. It was shown in \cite{CDHKS14}
-that the interface curve (between $+ 1$ and $-1$ spins) for the Ising model on a
-bounded simply connected domain with Dobrushin boundary
+evolution} with parameter $\kappa$, or $\SLE_\kappa$. For instance, it was shown in
+\cite{CDHKS14} that the interface curve (between $+ 1$ and $-1$ spins) for the Ising model
+on a bounded simply connected domain with Dobrushin boundary
 conditions\footnote{Positive spins along one side of the
 boundary and negative spins on the other.} converges to $\SLE_3$ in
 an appropriate scaling limit.
@@ -1155,15 +1168,15 @@ This phenomenon is known as \emph{mean-field behaviour} and dimension $4$ is
 called the \emph{upper-critical dimension} for this class of models.
 For $n = 1, 2$ it is known that $\eta = 0$
 for the \emph{continuum limit} of these models \cite{Aiz82,Fro82} if it exists.
-On the lattice, Sakai proved that $\eta = 0$ for the Ising model \cite{Sakai07}
+On the lattice, it has been shown that $\eta = 0$ for the Ising model \cite{Sakai07}
 and the $1$-component $|\varphi|^4$ model \cite{Sakai15}.
 Extensions to $n = 1, 2$ are upcoming in \cite{BHH17}.
 
 \subsubsection{Dimension $d = 4$}
 
 Dimension $4$ is the case of primary interest in quantum field theory, where one
-dimension plays the role of time (this becomes a spatial dimension after a Wick
-rotation as in Section~\ref{sec:quantum}).
+dimension plays the role of time.
+% (this becomes a spatial dimension after a Wick rotation as in Section~\ref{sec:quantum}).
 It is predicted in dimension $4$ that a number of observables possess multiplicative
 logarithmic corrections to mean-field scaling. An exception is the two-point function,
 which is expected to undergo
@@ -1177,9 +1190,10 @@ have developed a renormalisation group
 method for studying the $n$-component $|\varphi|^4$ model in $4$ dimensions; this
 method works for any $n$ and, in a certain sense, extends to models of
 self-interacting walks, interpreted as $n = 0$ (more on this in
-Sections~\ref{sec:walks}--\ref{sec:spin-walk}).
-In particular, they identified logarithmic corrections to scaling of the susceptibility
-and specific heat \cite{BBS-phi4-log}. Using an extension of this method, Slade and
+Section~\ref{sec:spin-walk}). In particular, they computed logarithmic corrections
+to scaling of the susceptibility and specific heat and also identified the continuum
+massive GFF as the scaling limit in the near-critical regime \cite{BBS-phi4-log}.
+Using an extension of this method, Slade and
 Tomberg computed asymptotics for critical correlation functions in \cite{ST-phi4};
 in particular, they showed that $\eta = 0$.
 In this thesis, we discuss extensions of this method that have been used to study
@@ -1196,14 +1210,14 @@ studying the Ising model in which disjoint
 blocks in $\Zd$ of side $L \ll \xi$ are replaced by single spins. He argued
 that spins inside such blocks are so strongly correlated that the model
 obtained by making this replacement should behave approximately like an Ising
-model with new (``renormalized'') couplings.
+model with a new (``renormalized'') interaction.
 
-At the critical point, $\xi = \infty$ this transformation
+At the critical point, $\xi = \infty$ and the transformation
 $T$ can be iterated indefinitely resulting in a dynamical system on a space
 of models: the one-parameter semigroup $(T^j)_{j\in\Z_+}$ is known as the
 \emph{renormalisation group}\footnote{The name renormalisation \emph{group}
 is attributed by Wilson in \cite{Wils71I} to the work of Gell-Mann and Low
-\cite{GML54}. The relationship between the two approaches is discussed in
+\cite{GML54}. The relationship between these two approaches is discussed in
 \cite{JoLa75}.}. This was the basis for Ken Wilson's
 generalizations of Kadanoff's idea in \cite{Wils71I,Wils71II}.
 
@@ -1211,8 +1225,9 @@ The coarse-graining procedure of Kadanoff can be viewed as an approximate
 method for computing integrals with respect to a Boltzmann weight $e^{-\beta H}$
 by successively integrating out fluctuations that are ``small'' in the sense
 that they are localized in space. In Wilson's approach fluctuations are instead
-localized in Fourier space. Both approaches can be thought of
-as corresponding to different types of covariance decompositions (see \cite{BCGNOPS78}).
+localized in Fourier space.
+% Both approaches can be thought of as corresponding to different types of covariance
+% decompositions (see \cite{BCGNOPS78}).
 
 Wilson's method results in a dynamical system on a space of
 models that acts by appropriately integrating out small fluctuations, followed
@@ -1235,7 +1250,8 @@ spanned by certain \emph{marginal and relevant} directions. The remaining \emph{
 directions would contract under the action of the renormalisation group.
 
 By analyzing this finite-dimensional approximation, Wilson determined that there
-is a unique hyperbolic fixed point in dimensions $d > 4$ corresponding to the Gaussian
+is a unique hyperbolic fixed point (in the terminology of dynamical systems theory)
+in dimensions $d > 4$, corresponding to the Gaussian
 free field and mean-field behaviour. As the dimension is lowered below $4$, a
 bifurcation occurs in which the Gaussian fixed point splits into two fixed points.
 One of these corresponds to Gaussian behaviour but is unstable. The other is hyperbolic and
@@ -1247,12 +1263,12 @@ from the fact that this fixed point is not hyperbolic.
 There are many difficulties in making Wilson's ideas rigorous and many approaches
 have been tried. For instance, a rigorous implementation of Kadanoff's \emph{block-spin}
 renormalisation group was developed in \cite{GK85}. Related ideas can also be found in
-\cite{GJ87,FMRS87}. This thesis concerns the renormalisation group method Bauerschmidt,
+\cite{GJ87,FMRS87}. This thesis concerns the renormalisation group method of Bauerschmidt,
 Brydges, and Slade \cite{BS-rg-norm,BS-rg-loc,BBS-rg-pt,BS-rg-IE,BS-rg-step}, which we
-will discuss further in Section~\ref{sec:rg}.
+will discuss further in Chapter~\ref{sec:rg}.
 
 \begin{example}
-We briefly discuss how renormalisation group ideas can be used to prove a version
+Let us mention how renormalisation group ideas can be used to prove a version
 of the classical central limit theorem. This idea appears in \cite{JoLa01,KS07}
 and has been extended to prove stable limit laws in \cite{LiSinai14}.
 
@@ -1264,7 +1280,8 @@ given by a convolution and rescaling of the form $(R f)(x) = \sqrt2 (f * f)(\sqr
 It is easily verified that the standard Gaussian density $f_*$ is a fixed point of $R$
 (in fact, it is the unique fixed point).
 
-In this context, the central limit theorem follows if we can show that, for all $f$
+In this context, a subsequential version of the central limit theorem follows if
+we can show that, for all $f$
 in an appropriate space of densities, $R^n f$ converges to the fixed point $f_*$.
 A local version of this statement can be proved by analyzing the linearized map
 $D R(f_*)$. A computation shows that this map has eigenfunctions given by Hermite
@@ -1280,7 +1297,8 @@ to a marginal direction.
 \section{Self-interacting walks}
 \label{sec:walks}
 
-We begin with the following example.
+Before introducing the walks studied in this thesis, we mention the following
+important example of a self-interacting walk.
 
 \begin{example}[Self-avoiding walk]
 Let $\omega : \{0,\ldots,n\} \to \vertices$ be a \emph{discrete-time walk}
@@ -1289,7 +1307,8 @@ denote by $\dwalks_n$ the collection of such walks and set $\dwalks = \bigcup_n 
 We say that $\omega$ is \emph{self-avoiding} if $\omega_i \ne \omega_j$
 for all $i \ne j$. Let $\Scal_n$ denote the collection of $n$-step
 self-avoiding walks with $\omega_0 = 0$. We equip $\Scal_n$ with the uniform
-measure for each $n$. This gives us a simple model of a linear polymer.
+measure for each $n$. This gives us a simple model of a linear polymer in a good
+solution. The self-avoidance constraint models the excluded volume effect of matter.
 
 The uniform measures do not form a consistent family due to the possibility of ``traps''.
 That is, the equality
@@ -1316,8 +1335,8 @@ combinatorial difficulty of this model; for instance, if $c_n = |\Scal_n|$, then
 not clear how to express $c_{n+1}$ as a simple function of $c_n$.
 
 We do know, however, that the sequence $c_n$ is sub-multiplicative: $c_{m+n} \le c_m c_n$.
-This follows from the fact that a self-avoiding walk can be split into two self-avoiding
-walks at any point along it, but the concatenation of two self-avoiding walks is not
+This follows from the fact that a self-avoiding walk can be split at any point into two
+self-avoiding walks, but the concatenation of two self-avoiding walks is not
 necessarily self-avoiding. Thus, $\log c_n$ is subadditive and
 Fekete's lemma for subadditive sequences implies the existence of the limit
 \begin{equation}
@@ -1332,18 +1351,16 @@ which is defined as the generating function
 \end{equation}
 of the sequence $c_n$. Recalling Section~\ref{sec:asymp}, it is natural to study
 the asymptotics of the susceptibility as $z \to c(\graph)^{-1}$.
-% Note that, by the trivial bounds $1 \le c_n \le d_0^n$ for $n \ge 1$, $c(\graph) \in [0, d_0]$.
-% By definition, $c(\graph)$ is the exponential growth rate of $c_n$.
-% $c_n \approx c(\graph)^n$ for large $n$.
-% By definition, the susceptibility has radius of convergence $c(\graph)^{-1}$.
 \end{example}
 
-More general models of walks can be defined via measures on $\dwalks_n$. In fact,
-it is sometimes more convenient to discuss models of walks parameterized by an
-interval $[0, T]$. In both cases, we can conveniently define Gibbs measures
-directly in infinite-volume with respect to the base measure induced by simple
-random walk. Instead of discussing general models, we will proceed directly to
-the model of interest in this thesis.
+Due to some of the difficulties involved in studying the self-avoiding walk,
+alternatives to this model have been proposed. In fact, models of discrete-time
+walks can be defined in quite a bit of generality in terms of measures on $\dwalks_n$.
+It is sometimes useful to work instead with models of continuous-time walks
+parameterized by intervals $[0, T]$. In both cases, we can conveniently define
+Gibbs measures directly in infinite-volume with respect to the base measure induced
+by simple random walk. However, instead of discussing models of walks in great
+generality, we will proceed directly to the case of interest in this thesis.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -1390,34 +1407,35 @@ the model of interest in this thesis.
 
 Let $X$ denote the continuous-time simple random walk on $\graph$ conditioned
 to start at $0$. This is the $\vertices$-valued Markov process $X$ with generator
-$-\lap$. In other words,
+$\lap$. In other words,
 \begin{equation}
-\Pr(X_t = y \mid X_0 = x) = (e^{-t \lap})_{xy}.
+\Pr(X_t = y \mid X_0 = x) = (e^{t \lap})_{xy}.
 \end{equation}
-Define the \emph{local time} up to time $T$ of $\omega \in \cwalks$ at
-$x \in \vertices$ by
+Define the \emph{local time} up to time $T$
+% of $\omega \in \cwalks$
+at $x \in \vertices$ by
 \begin{equation}
 \label{e:LTx-def}
-\lt^x_T(\omega) = \int_0^T \1_{\omega(S)=x} \; dS.
+\lt^x_T = \int_0^T \1_{X(S)=x} \; dS.
 \end{equation}
 Note that $\lt^x_T$ is almost surely finite. We define the \emph{intersection
 local time}
 \begin{equation}
 \label{e:ITdef}
-I_T(\omega)
+I_T
 	=
-\int_0^T \!\! \int_0^T \1_{\omega(S_1)=\omega(S_2)} \; dS_1 dS_2
+\int_0^T \!\! \int_0^T \1_{X(S_1)=X(S_2)} \; dS_1 dS_2
 	=
 \sum_{x\in\vertices} (\lt^x_T)^2
 \end{equation}
 and the \emph{contact self-attraction}
 \begin{equation}
 \label{e:CTdef}
-C_T(\omega)
+C_T
 	=
-\int_0^T ds \int_0^T dt \; \1_{\omega_s \sim \omega_t}
+\int_0^T \!\! \int_0^T \1_{X(S_1) \sim X(S_2)} \; dS_1 dS_2
 	=
-\sum_{x \in \vertices} \sum_{y \sim x} \lt_T^x(\omega) \lt_T^y(\omega)
+\sum_{x \in \vertices} \sum_{y \sim x} \lt_T^x \lt_T^y
 \end{equation}
 up to time $T$.
 
@@ -1473,9 +1491,9 @@ and
 	=
 \sum_{x\in\Zd} G_x(\gcc,\gamma,\nu),
 \end{equation}
-Note that \eqref{e:susceptibility-def} is more-or-less consistent with \eqref{e:susceptibility-def}
+Note that \eqref{e:suscept-def} is more-or-less consistent with \eqref{e:susceptibility-def}
 We will establish an exact analogue of \eqref{e:susceptibility-def} in Proposition~\ref{prop:finvol}.
-The relationship between the two-point for walks and spin systems will be
+The relationship between the two-point function for walks and spin systems will be
 discussed in Section~\ref{sec:intrep}.
 
 We also have a version of the the \emph{correlation length of order $p$}:
@@ -1491,9 +1509,18 @@ Note that
 	=
 \frac
 {\int_0^\infty \langle |X(T)|^p \rangle c_T e^{-\nu T} \; dT}
-{\int_0^\infty c_T e^{-\nu T} \; dT}.
+{\int_0^\infty c_T e^{-\nu T} \; dT},
 \end{equation}
-On $\Zd$, a version of the correlation length can be defined exactly as in \eqref{e:cl-spins}.
+where
+\begin{equation}
+\langle F(X) \rangle
+	=
+\frac{1}{c_T} E_0 (F(X) e^{-U_{g,\gamma,T}})
+\end{equation}
+is the expectation induced by the weights \eqref{e:c}.
+Thus, $\xi_p$ is related to the Laplace transform of the mean $p$-th displacement
+$\langle |X(T)|^p \rangle$.
+On $\Zd$, a version of the correlation length can also be defined exactly as in \eqref{e:cl-spins}.
 
 \begin{rk}
 The discrete-time version of the WSAW-SA is straightforward to define in terms of
@@ -1576,7 +1603,7 @@ c_T                       &\sim C_5 e^{-\nu_c T} T^{-\gammabar}, \\
 The critical exponents $\gammabar, \nubar, \eta$ are expected to be universal;
 in particular, they should only depend on $d$ in this context.
 
-Below, we discussion the predicted values of the exponents for $\gamma$ small before
+Below, we discuss the predicted values of the exponents for $\gamma$ small before
 turning our attention to the case of large $\gamma$. A more detailed reference is
 \cite{MS93}. The values of $\nubar$ were first predicted\footnote{Flory's prediction
 for $d = 3$ is no longer generally accepted.} by the chemist Paul Flory \cite{Flor49}, who
@@ -1616,12 +1643,12 @@ exponents are the same as for models in the Ising universality class, namely
 $\gammabar=1$, $\nubar = 1/2$, $\eta = 0$. In other words, self-avoiding walk
 is expected to scale like simple random walk in dimensions above $4$.
 
-In $d > 4$, Brydges and Spencer \cite{BS85} showed that $\nubar = 1/2$ for the
-discrete-time WSAW using the lace expansion, which was introduced in the same paper.
-By vastly extending this method, Slade \cite{Slad88} showed that the scaling limit
-of SAW is Brownian motion and Hara and Slade \cite{HS92a,HS92b} showed that
-$\gamma = 1$, $\nubar = 1/2$ (for the mean-squared displacement, correlation length,
-and correlation length of order $2$), and $\eta = 0$.
+Brydges and Spencer introduced the lace expansion in \cite{BS85} and used it
+to show that $\nubar = 1/2$ if $d > 4$ for the discrete-time WSAW.
+By vastly extending this method, Hara and Slade \cite{HS92a,HS92b} showed for the
+SAW that $\gamma = 1$, $\nubar = 1/2$ (for the mean-squared displacement, correlation
+length, and correlation length of order $2$), $\eta = 0$, and the scaling limit
+is Brownian motion.
 
 Even above the upper-critical dimension, very little is known about WSAW-SA with
 $\gamma \ne 0$. Exceptions include \cite{HH17,Uelt02}.
@@ -1639,8 +1666,8 @@ B_{m^2}
 	=
 (m^2 + 2 d)^{-2} \sum_{m,n=0}^\infty z^{m+n} \Pr(X_m = Y_n),
 \end{equation}
-where $X$ and $Y$ are independent simple random walks started at $0$. Thus, $B_{m^2}$
-is proportional to the expected number of intersections between the traces of two
+where $X$ and $Y$ are independent simple random walks started at $0$. In other words,
+$B_{m^2}$ is proportional to the expected number of intersections between the traces of two
 such random walks \emph{killed} at rate $1 - z$. The upper-critical dimension can
 be ``guessed'' as follows. First, we make the convenient definitions
 \begin{equation}
@@ -1689,7 +1716,7 @@ $\gamma > \beta$, the WSAW-SA is expected to undergo a collapse transition ($\nu
 This has recently been shown for a model of prudent self-avoiding walk with self-attraction
 in \cite{PT16}.
 
-\begin{figure}[!htb]
+\begin{figure}
 \centering
 \includegraphics{theta_curve}
 \caption[Phase diagram of WSAW-SA]{Phase diagram for the WSAW-SA}

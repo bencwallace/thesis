@@ -18,7 +18,7 @@ of some of the key ideas used in these papers.
 % although we will not make direct use of them in this thesis.
 
 The details of the proof begin in Section~\ref{sec:Rpf1}, where we define new
-norms above the mass scale and prove that they satisfy two key hypotheses required
+norms above the mass scale and show that they satisfy two key hypotheses required
 by results in \cite{BS-rg-IE}. The use of these new norms is essential: the old
 norms fail to work with the new weights for technical reasons discussed briefly
 in Remark~\ref{rk:newnorm}. In Section~\ref{sec:Rpf2}, we discuss the changes that
@@ -53,7 +53,7 @@ but also so that the map
 $(\Vp, K) \mapsto (\Vp_+, K_+)$ can be iterated an arbitrary number of times as in
 Theorem~\ref{thm:rhatflow}. The algebraic problem \eqref{e:IcircKsimp} admits
 a multitude of solutions and the main difficulty is the construction of a
-solution that admits appropriate bounds.
+solution with good analytic properties.
 
 A possible definition of the map $(\Vp, K) \mapsto \Vp_+$ is suggested by perturbation
 theory, as discussed in Section~\ref{sec:pt}. For now, let us suppose that $\Vp_+ = \Vpt$
@@ -142,9 +142,9 @@ is given by
 	=
 6 C_{00} \varphi_x^2 + 3 C_{00}^2.
 \end{equation}
+
 Covariance terms such as those above occur at higher-order and can be
 estimated using Proposition~\ref{prop:Cdecomp}.
-
 The method of \cite{BS-rg-IE} is more flexible, however, and does not require
 the precise bounds in \eqref{e:scaling-estimate}. Rather, necessary bounds on
 the covariance and its derivatives are encoded in the hypothesis
@@ -162,25 +162,23 @@ norm estimate on the covariance is very useful, e.g.\ as in \cite{Slad17}.
 
 \subsubsection{Extraction and contraction}
 
-The term $k$ in \eqref{e:k} is the contribution to $K_+$ that is linear in $K$. Thus, its
-control is essential to obtaining the contractivity estimate \eqref{e:DKkappa}.
+The term $k$ in \eqref{e:k} is the contribution to $K_+$ that is linear in
+$K$. Thus, its control is essential to obtaining the contractivity estimate
+\eqref{e:DKkappa}.
 
 In the simple case that $K = 0$, we will have $K_+ = \Ipt h$, which is a Taylor
 remainder that contains terms at all orders in the fields. Thus, it includes
-relevant and marginal terms as well as non-local irrelevant terms.
-% For instance, integration of of the irrelevant term $\sum_{x\in B} \varphi_x^6$ yields
-% \begin{equation}
-% \binom{6}{2} \sum_{x\in B} \varphi_x^4 C_{00},
-% \end{equation}
-% which is marginal.
-The size and number of such terms will prevent $K$ from shrinking under the action
-of the renormalisation group unless they are somehow dealt with.
+relevant and marginal terms as well as non-local irrelevant terms. The size and
+number of such terms will prevent $K$ from shrinking under the action of the
+renormalisation group unless they are somehow dealt with. This is done by using
+the operator $\Loc$ mentioned in Section~\ref{sec:pt} to \emph{extract} a
+marginal/relevant part from $K$ prior to integration.
 
-This situation is not unlike what was discussed in Section~\ref{sec:pt}, where
-integration of $e^{-\Vp}$ yielded a non-local term that was split into a local
-part $P$ and a remainder $W$ using the operator $\Loc_x$ constructed in
-\cite{BBS-rg-pt}. This same operator is used in \cite{BS-rg-step} to \emph{extract}
-a marginal/relevant part from $K$ prior to integration.
+% This situation is not unlike what was discussed in Section~\ref{sec:pt}, where
+% integration of $e^{-\Vp}$ yielded a non-local term that was split into a local
+% part $P$ and a remainder $W$ using the operator $\Loc_x$ constructed in
+% \cite{BBS-rg-pt}. This same operator is used in \cite{BS-rg-step} to \emph{extract}
+% a marginal/relevant part from $K$ prior to integration.
 
 Thus, the true definition of the renormalisation group map constructed in
 \cite{BS-rg-step} involves several more steps than \eqref{e:Kplus3}. In fact,
@@ -847,8 +845,8 @@ Non-constant polynomials are not well-defined on the whole torus $\Lambda$, but
 such a Taylor expansion can nevertheless be defined for test functions supported
 on sequences whose components lie in a sufficiently ``small'' subset of $\Lambda$.
 These are referred to in \cite{BS-rg-IE} as \emph{coordinate patches}. By definition,
-they are nonempty and any element of the set $\Scal$ of small sets is a coordinate
-patch (in this thesis, we are ultimately only concerned with the case of small sets).
+they are nonempty and any small set is contained in a coordinate patch.
+(in this chapter, we are ultimately only concerned with the case of small sets).
 
 Suppose we fix a coordinate patch $\Lambda' \subset \Lambda$. By definition, it
 can be identified with a rectangle in $\Zd$.
@@ -897,7 +895,8 @@ Then there is a unique polynomial $\Vp\in\Vcalp$ such that
 \langle F, g \rangle_0 = \langle \Vp(X), g \rangle_0
 \end{equation}
 for all $g\in\Pi$. Moreover, $\Vp$ is independent of the
-choice of coordinate patch. We write $\Loc_X F = \Vp(X)$.
+choice of coordinate patch used to define $\Pi$. We write
+$\Loc_X F = \Vp(X)$.
 \end{prop}
 
 Define the seminorm

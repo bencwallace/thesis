@@ -24,7 +24,7 @@ M^n_{ab} = \sum_{x_1,\ldots,x_n\in\vertices} M_{ax_1} M_{x_1x_2} \ldots M_{x_nb}
 \end{equation}
 When $M$ is indexed by $\edges$, the
 sum above can be replaced by a sum over $n$-step walks from $a$ to $b$ on $\graph$.
-When the entries of $M$ are non-negative, such a sum acquires a probabilistic
+When the entries of $M$ are nonnegative, such a sum acquires a probabilistic
 interpretation as an expectation with respect to the random walk whose steps
 are weighted by the entries of $M$.
 
@@ -44,7 +44,7 @@ for $n$ a positive integer and it is not clear how to make sense of such a limit
 Parisi and Sourlas \cite{PS80} and McKane \cite{McKa80} discovered
 an alternative approach to the predictions of De Gennes. They argued that the weakly
 self-avoiding walk two-point function could be represented as the two-point function
-for a \emph{supersymmetric} version of the $|\varphi|^4$ model, involving boson and
+for a version of the $|\varphi|^4$ model, involving boson and
 fermion fields (we discuss these below). The formal appearance of $n = 0$ quantities
 was then explained as a consequence of a symmetry between the bosons and fermions known
 as \emph{supersymmetry}.
@@ -62,7 +62,7 @@ theory.
 The heuristic relation between self-avoiding walk and spin systems is most easily
 treated on graphs $\graph$ of degree $3$ (e.g.\ the triangular or hexagonal lattice),
 so we restrict our attention to this case. In
-addition, we consider the version of the $O(n)$ model with spins normalized to
+addition, we consider a version of the $O(n)$ model with spins normalized to
 lie on the sphere of radius $\sqrt n$, which we equip with the uniform measure.
 We denote the product measure on the resulting configuration space by
 \begin{equation}
@@ -77,7 +77,7 @@ normalization is necessary for the study of the $n\to\infty$ limit.
 
 The \emph{high-temperature expansion} of a spin system is based on the expansion of the
 Boltzmann weight $e^{\beta H}$ around $\beta = 0$.
-For the $O(n)$ spin model witn interaction $J_{xy} = \1_{x\sim y}$, an uncontrolled
+For the $O(n)$ spin model with interaction $J_{xy} = \1_{x\sim y}$, an uncontrolled
 approximation of this expansion yields
 \begin{align}
 Z 
@@ -174,12 +174,10 @@ walks from $a$ to $b$.
 % This section based on saw-sa
 \label{sec:intrep}
 
-In this section we describe an integral representation of the of WSAW-SA
-% which is a special case of a result of Brydges, Imbrie, and Slade \cite{BIS09}.
-% We restrict out attention to
-on the discrete torus $\Lambda$. We begin with the necessary
-background on Grassmann integration, introduced in \cite{Bere66}. However, we
-follow the treatment of \cite{BIS09}.
+In this section we describe an integral representation of the of WSAW-SA on the
+discrete torus $\Lambda$. We begin with the necessary background on Grassmann
+integration, which was introduced in \cite{Bere66}. However, we follow the
+treatment of \cite{BIS09} in terms of differential forms.
 
 \subsubsection{Boson and fermion fields}
 \label{sec:forms}
@@ -252,7 +250,7 @@ $F_\varnothing$ denotes the $0$-degree (bosonic) part of $F$.
 In order to apply the results of \cite{BBS-saw4-log,BBS-saw4,BSTW-clp}, we require
 smoothness of the coefficients $F_{\vec y}$ of $F$.  For Theorem~\ref{thm:mr}(i,ii),
 we need these coefficients to be $C^{10}$, and for Theorem~\ref{thm:mr}(iii) we require
-a $p$-dependent number of derivatives for the analysis of $\xi_p$, as discussed in \cite{BSTW-clp}.
+a $p$-dependent number of derivatives for the analysis of $\xi_p$.
 In either case, we let $p_\Ncal$ denote the desired degree of smoothness.
 We will discuss this further in Section~\ref{sec:newnorm}.
 
@@ -296,15 +294,15 @@ S_A = \sum_{x\in\Lambda} \Big(\phi_x (A\bar\phi)_x + \psi_x (A \bar\psi)_x\Big).
 % in their canonical ordering. Thus, in order to make the change of variables
 % $\psi_x \mapsto a \psi_x$ for some $x$ we must simply scale the integral by the factor
 % $a^{-1}$. This is the opposite effect of a bosonic change of variables $\phi_x \mapsto a \phi_x$
-The super-expectation possesses the remarkable property that
+The super-expectation possesses the remarkable property
 \begin{equation}
 \label{e:tau-iso}
 \int e^{-S_A} F(\tau) = F(0).
 \end{equation}
-In particular,
+In particular, the super-expectation is self-normalizing:
 \begin{equation}
 \label{e:self-normal}
-\int e^{-S_A} = 1.
+\Ex_C 1 = \int e^{-S_A} = 1.
 \end{equation}
 Moreover, if $F$ is a degree-$0$ form, then
 \begin{equation}

@@ -3,9 +3,8 @@
 \setcounter{footnote}{0}
 
 We end with a discussion of some open problems that may be accessible by
-variants of the renormalisation group method discussed in this thesis.
-Many of these require significant extensions to this method. We will try to
-point out some of the main obstacles that must be overcome.
+extensions to the renormalisation group method discussed in this thesis.
+We will try to point out some of the main obstacles that must be overcome.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -28,11 +27,11 @@ in $3$ dimensions. One approach to the rigorous implementation of this idea
 involves studying models in dimension $d$ (an integer) whose upper-critical
 dimension is $d_c + \epsilon$. This is not as problematic as considering
 models in fractional dimensions, as the upper-critical dimension $d_c$ need not
-be considered the actual of dimension of an ambient space.
+be the actual dimension of some ambient space.
 
 Given a massless covariance $C'$, the upper-critical
-dimension is simply a number $d_c$ such that some class of models undergoes Gaussian
-scaling with covariance $C'$ if and only if $d > d_c$. Recalling Remark~\ref{rk:bubble},
+dimension is simply a number $d_c$ such that some class of models scales like a
+Gaussian model with covariance $C'$ if and only if $d > d_c$. Recalling Remark~\ref{rk:bubble},
 we might expect that
 \begin{equation}
 d_c = \inf \{ d \in \R : B_{m^2} < \infty \},
@@ -76,8 +75,8 @@ to any order in $\epsilon$.
 
 \begin{rk}
 Models at and above the upper-critical dimension exhibit \emph{asymptotic freedom}.
-In our context, this means that $\|K_j\|_{\Wcal_j} \to 0$ (as in \eqref{e:WKbd}),
-$\nu_j, z_j \to 0$, and (as $m^2\downarrow0$) $g_{j_m} \to 0$. Below $d_c$, we do
+In our context, this means that $\|K_j\|_{\Wcal_j} \to 0$,
+$\nu_j, z_j \to 0$, and $g_j \to 0$ in the massless regime $m^2 = 0$. Below $d_c$, we do
 not have asymptotic freedom, as reflected by the lack of exact asymptotics in
 \eqref{e:chi-anom}. In some ways, this is advantageous (see \cite{Slad17}), but
 in others it creates additional difficulties that must be overcome.
@@ -104,7 +103,7 @@ Namely, let $\Omega = (S^{n-1})^\Lambda$ and let $d\sigma$ denote the product me
 where $S^{n-1}$ is equipped with the uniform
 % \footnote{In our derivation of the $O(n)$ model, we get an unnormalized surface measure on
 % the sphere, but this is an unimportant difference.}
-sphere measure. The partition function of the $O(n)$ model is given by
+measure. The partition function of the $O(n)$ model is given by
 \begin{equation}
 Z_J = \int_\Omega e^{-H_J(\sigma)} \; d\sigma.
 \end{equation}
@@ -136,8 +135,8 @@ L(t)
 t\in\R^n
 \end{equation}
 is the negative logarithm of the Laplace transform of the sphere. Since $L$ is
-a rotation- and reflection-invariant analytic function and $L(0) = 0$, we can
-write
+a rotation- and reflection-invariant analytic function and $L(0) = 0$, it has
+the form
 \begin{equation}
 \label{e:logLaplace}
 L(t) = \nu |t|^2 + g |t|^4 + \sum_{k=3}^\infty c_{2k} |t|^{2k}.
@@ -154,8 +153,8 @@ By a procedure as in Section~\ref{sec:reformulation}, the analysis of this model
 can be reformulated in terms of the evolution of an effective interaction $Z_j$
 with initial condition $Z_0 = (I_0 \circ K_0)(\Lambda)$. Once again, the initial
 error coordinate $K_0$ will be coupled to $I_0$, but we expect that the critical
-parameters $\nu_0^c, z_0^c$ can be identified by an implicit function argument
-as in Section~\ref{sec:nu0z0c}.
+parameters $\nu_0^c, z_0^c$ can be identified by an implicit function theorem
+argument as in Section~\ref{sec:nu0z0c}.
 
 However, estimates on $K_0$ (which are straightforward
 to obtain by a more careful computation of \eqref{e:logLaplace}) indicate that
@@ -168,7 +167,8 @@ Similarly, it is possible to re-cast the strictly self-avoiding walk as a
 perturbation of weakly self-avoiding walk using a supersymmetric integral
 representation obtained in \cite{BIS09}. The covariance of the form
 $(-\Delta + \gamma^2)^{-1}$ in this case corresponds to a model of \emph{spread-out}
-self-avoiding walk with exponentially decaying jump probabilities.
+self-avoiding walk with exponentially decaying jump probabilities. Once again,
+the initial error coordinate is not of order $O(g_0^3)$.
 \end{rk}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -176,7 +176,7 @@ self-avoiding walk with exponentially decaying jump probabilities.
 
 \section{Other observable quantities}
 
-Here we discuss a some problems concerning the models studied in this thesis.
+Here we discuss some problems concerning the models studied in this thesis.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -188,16 +188,16 @@ The estimate \eqref{e:Rab-bound} gives super-polynomial decay of the errors in t
 approximation \eqref{e:Gab-to-sum-Rqj} of the two-point function, but this is not
 sufficient for studying $\xi$, which would need exponentially decaying errors.
 The current estimates follow from the covariance bounds \eqref{e:scaling-estimate}
-on the decomposition of \cite{Baue13a}. It may not be possible to improve the bounds
-for this particular decomposition, this should be possible for the decomposition of
-\cite{BGM04} (see \cite[p.~445]{BGM04}).
+on the decomposition of \cite{Baue13a}. Although it may not be possible to improve
+the bounds for this particular decomposition, this should be possible for the
+decomposition of \cite{BGM04} (see \cite[p.~445]{BGM04}).
 
-However, even if this were possible, exponentially decaying errors would require exponential
-decay of the weights $\ell_j$ above the mass scale, which would contradict in a major way the
-central hypotheses \ref{e:h-assumptions-IE} on these weights. Thus, it seems new ideas would
-be needed to study the correlation length (note, however, that the correlation length for the
-$1$-component $|\varphi|^4$ model was successfully studied by a renormalisation group method
-in \cite{HT87}).
+However, even if this were possible, exponentially decaying errors would require
+exponential decay of the weights $\ell_j$ above the mass scale, which would contradict
+in a major way the central hypotheses \eqref{e:h-assumptions-IE} on these weights.
+Thus, it seems new ideas would be needed to study the correlation length (note,
+however, that the correlation length for the $1$-component $|\varphi|^4$ model
+was successfully studied by a block-spin renormalisation group method in \cite{HT87}).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -214,7 +214,7 @@ try to derive logarithmic corrections to the predicted scaling relations
 This approach was successfully used in \cite{BI03c}, where the mean-squared displacement
 of a hierarchical model of weakly self-avoiding walk is recovered by inversion of
 the Laplace transform. This requires control over the two-point function in a
-sector of the complex plane larger than what has been achieved on here on the
+sector of the complex plane larger than what has been achieved here on the
 Euclidean lattice.
 
 % Other: tricritical model, WSAW-SA phase diagram, magnetization, other correlation
