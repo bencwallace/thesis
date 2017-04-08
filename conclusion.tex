@@ -22,8 +22,11 @@ that can be written in this way.
 
 In \cite{WF72}, Wilson and Fisher suggested studying models in $d_c - \epsilon$
 dimensions with $\epsilon > 0$ small and $d_c = 4$ the upper-critical dimension.
-By setting $\epsilon = 1$, they obtained approximate values for critical exponents
-in $3$ dimensions. One approach to the rigorous implementation of this idea
+\new{Building on this, approximate values for $3$-dimensional critical exponents
+were computed in \cite{GZ85,GZ98}.}
+% By setting $\epsilon = 1$, they obtained approximate values for critical exponents
+% in $3$ dimensions.
+One approach to the rigorous implementation of this idea
 involves studying models in dimension $d$ (an integer) whose upper-critical
 dimension is $d_c + \epsilon$. This is not as problematic as considering
 models in fractional dimensions, as the upper-critical dimension $d_c$ need not
@@ -33,8 +36,9 @@ Given a massless covariance $C'$, the upper-critical
 dimension is simply a number $d_c$ such that some class of models scales like a
 Gaussian model with covariance $C'$ if and only if $d > d_c$. Recalling Remark~\ref{rk:bubble},
 we might expect that
+\commentbw{The following is ill-defined.}
 \begin{equation}
-d_c = \inf \{ d \in \R : B_{m^2} < \infty \},
+d_c = \inf \Big\{ d \in \R : \new{\lim_{m^2\downarrow0} B_{m^2}} < \infty \Big\},
 \end{equation}
 where $B_{m^2}$ is the bubble diagram, defined as the $\ell^2(\Zd)$ norm of the
 massive Green function $C = (C' + m^2)^{-1}_{0x}$. Thus, in order to achieve
@@ -64,7 +68,7 @@ satisfies
 By extensions of \cite{Slad17} to use observable fields, we think it should
 be possible to identify the scaling behaviour of the two-point function and possibly
 other correlation functions for these long-range models. In particular, this would
-make it possible to confirm (if true) the intriguing prediction of \cite{FMN72}, which
+make it possible to \new{confirm the} intriguing prediction of \cite{FMN72}, which
 states that
 \begin{equation}
 \eta = 2 - \alpha
@@ -92,7 +96,9 @@ On $\Lambda$, it takes the form
 \begin{equation}
 H_J(\sigma)
 	=
--\frac12 \sigma \cdot J \sigma.
+-\frac12 \sigma \cdot J \sigma,
+	\quad
+\new{\sigma\in S^{n-1}}.
 \end{equation}
 This was derived from the $|\varphi|^4$ model by taking a suitable
 $g\to\infty$ limit. The restriction to small coupling $g$ is deeply embedded into
@@ -110,7 +116,7 @@ Z_J = \int_\Omega e^{-H_J(\sigma)} \; d\sigma.
 When $J$ is a positive-definite symmetric matrix, the Gaussian measure $d\mu_J(\varphi)$
 with covariance $J$ is well-defined and satisfies the elementary identity
 \begin{equation}
-e^{-H_J(\varphi)}
+\new{e^{-H_J(\sigma)}}
 	=
 e^{\frac12 \sigma \cdot J \sigma}
 	=
@@ -176,7 +182,7 @@ the initial error coordinate is not of order $O(g_0^3)$.
 
 \section{Other observable quantities}
 
-Here we discuss some problems concerning the models studied in this thesis.
+Here we discuss some \new{open} problems concerning the models studied in this thesis.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -184,8 +190,11 @@ Here we discuss some problems concerning the models studied in this thesis.
 
 Our results concerning the finite-order correlation lengths $\xi_p$ are insufficient
 for recovering the predicted behaviour of the \emph{true} correlation length $\xi$.
-The estimate \eqref{e:Rab-bound} gives super-polynomial decay of the errors in the
-approximation \eqref{e:Gab-to-sum-Rqj} of the two-point function, but this is not
+The estimate \eqref{e:Rab-bound}
+\new{shows that the errors
+% gives super-polynomial decay of the errors
+in the approximation \eqref{e:Gab-to-sum-Rqj} of the two-point function decay at any
+desired polynomial rate}, but this is not
 sufficient for studying $\xi$, which would need exponentially decaying errors.
 The current estimates follow from the covariance bounds \eqref{e:scaling-estimate}
 on the decomposition of \cite{Baue13a}. Although it may not be possible to improve
@@ -193,8 +202,13 @@ the bounds for this particular decomposition, this should be possible for the
 decomposition of \cite{BGM04} (see \cite[p.~445]{BGM04}).
 
 However, even if this were possible, exponentially decaying errors would require
-exponential decay of the weights $\ell_j$ above the mass scale, which would contradict
-in a major way the central hypotheses \eqref{e:h-assumptions-IE} on these weights.
+% exponential decay of the weights $\ell_j$ above the mass scale.
+\new{that the weights $\ell_j$ decay like $e^{-c L^j}$ above the mass scale.
+This, in turns, would cause the weights $\ell_{\sigma,j}$ defined by
+\eqref{e:elldef-zz} to \emph{grow} so quickly that the third bound in
+\eqref{e:h-assumptions-IE} would fail in a major way.}
+% which would contradict in a major way the central hypotheses
+% \eqref{e:h-assumptions-IE} on these weights.
 Thus, it seems new ideas would be needed to study the correlation length (note,
 however, that the correlation length for the $1$-component $|\varphi|^4$ model
 was successfully studied by a block-spin renormalisation group method in \cite{HT87}).
