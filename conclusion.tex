@@ -23,7 +23,7 @@ that can be written in this way.
 In \cite{WF72}, Wilson and Fisher suggested studying models in $d_c - \epsilon$
 dimensions with $\epsilon > 0$ small and $d_c = 4$ the upper-critical dimension.
 \new{Building on this, approximate values for $3$-dimensional critical exponents
-were computed in \cite{GZ85,GZ98}.}
+were computed in \cite{GZ85,GZ98,EPPRSV14}.}
 % By setting $\epsilon = 1$, they obtained approximate values for critical exponents
 % in $3$ dimensions.
 One approach to the rigorous implementation of this idea
@@ -34,15 +34,9 @@ be the actual dimension of some ambient space.
 
 Given a massless covariance $C'$, the upper-critical
 dimension is simply a number $d_c$ such that some class of models scales like a
-Gaussian model with covariance $C'$ if and only if $d > d_c$. Recalling Remark~\ref{rk:bubble},
-we might expect that
-\commentbw{The following is ill-defined.}
-\begin{equation}
-d_c = \inf \Big\{ d \in \R : \new{\lim_{m^2\downarrow0} B_{m^2}} < \infty \Big\},
-\end{equation}
-where $B_{m^2}$ is the bubble diagram, defined as the $\ell^2(\Zd)$ norm of the
-massive Green function $C = (C' + m^2)^{-1}_{0x}$. Thus, in order to achieve
-$d_c = d + \epsilon$, we choose $C'$ to decay like
+Gaussian model with covariance $C'$ if and only if $d > d_c$.
+\new{
+For instance, suppose we choose $C'$ to decay like
 \begin{equation}
 C'_{0x} \asymp |x|^{-(d-\alpha)}
 \end{equation}
@@ -50,7 +44,31 @@ with $\alpha = \tfrac12 (d + \epsilon)$. Such a choice is given by
 \begin{equation}
 C' = (-\Delta)^{-\alpha/2}
 \end{equation}
-for $\alpha\in(0, 2)$ (so $d \le 3$).
+for $\alpha\in(0, 2)$.
+Then recalling Remark~\ref{rk:bubble}, we might expect that $d_c = 2\alpha$.
+In particular, if $\alpha = \frac12 (d + \epsilon)$ with $d \le 3$, then
+$d = d_c - \epsilon$.
+}
+
+% Recalling Remark~\ref{rk:bubble},
+% we might expect that
+% \commentbw{The following is ill-defined.}
+% \begin{equation}
+% d_c = \inf \Big\{ d \in \R : \new{\lim_{m^2\downarrow0} B_{m^2}} < \infty \Big\},
+% \end{equation}
+% where $B_{m^2}$ is the bubble diagram, defined as the $\ell^2(\Zd)$ norm of the
+% massive Green function $C = (C' + m^2)^{-1}_{0x}$.
+% Thus, in order to achieve $d_c = d + \epsilon$,
+% we choose $C'$ to decay like
+% \begin{equation}
+% C'_{0x} \asymp |x|^{-(d-\alpha)}
+% \end{equation}
+% with $\alpha = \tfrac12 (d + \epsilon)$.
+% Such a choice is given by
+% \begin{equation}
+% C' = (-\Delta)^{-\alpha/2}
+% \end{equation}
+% for $\alpha\in(0, 2)$ (so $d \le 3$).
 
 This approach has been used to implement the renormalisation group below the
 upper-critical dimensions in \cite{BDH98,MS00,BMS03,Abde07}. Recently, Slade
