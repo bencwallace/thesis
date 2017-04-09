@@ -6,9 +6,9 @@ different models. For instance, the \emph{Kac-Siegert transformation}
 can be used to write the partition function of the $O(n)$ model as a partition function
 for a perturbation of the $|\varphi|^4$ model (we will discuss this further in
 Section~\ref{sec:hard-core}). In the other direction, the
-Griffiths-Simon construction \cite{SG73} can be used to approximate the $1$-component
-$|\varphi|^4$ model by a sum of Ising models. Such theorems do not necessarily
-imply universality
+\new{Simon-Griffiths} construction \cite{SG73} can be used to approximate the $1$-component
+$|\varphi|^4$ model \new{as a suitable limit of Ising models.}
+Such theorems do not necessarily imply universality
 (in the sense that models related in this way have the same critical exponents or
 scaling limit), but tend to be suggestive of it and may in some cases
 be used as the basis for the proof of a universality-type result.
@@ -35,14 +35,14 @@ Such representations were also studied, e.g.\ in \cite{BFS82,Dynk83}. A comprehe
 reference is \cite{FFS92}.
 
 In the opposite direction, one can consider studying walks by looking for corresponding
-spin systems. In \cite{Genn72}, De Gennes argued that the self-avoiding walk
+spin systems. In \cite{Genn72}, \new{de Gennes} argued that the self-avoiding walk
 corresponds to an $n \to 0$ ``limit'' of the $O(n)$ spin model and used this
 to predict the values of its critical exponents. Since $n$ is
 the number of components of the spins, the $O(n)$ model is only well-defined
 for $n$ a positive integer and it is not clear how to make sense of such a limit.
 
 Parisi and Sourlas \cite{PS80} and McKane \cite{McKa80} discovered
-an alternative approach to the predictions of De Gennes. They argued that the weakly
+an alternative approach to the predictions of \new{de Gennes}. They argued that the weakly
 self-avoiding walk two-point function could be represented as the two-point function
 for a version of the $|\varphi|^4$ model, involving boson and
 fermion fields (we discuss these below). The formal appearance of $n = 0$ quantities
@@ -60,7 +60,8 @@ theory.
 \label{sec:ntozero}
 
 The heuristic relation between self-avoiding walk and spin systems is most easily
-treated on graphs $\graph$ of degree $3$ (e.g.\ the triangular or hexagonal lattice),
+treated on \new{finite} graphs $\graph$ of degree $3$
+% (e.g.\ the \new{hexagonal} lattice),
 so we restrict our attention to this case. In
 addition, we consider a version of the $O(n)$ model with spins normalized to
 lie on the sphere of radius $\sqrt n$, which we equip with the uniform measure.
@@ -76,9 +77,10 @@ normalization is necessary for the study of the $n\to\infty$ limit.
 \end{rk}
 
 The \emph{high-temperature expansion} of a spin system is based on the expansion of the
-Boltzmann weight $e^{\beta H}$ around $\beta = 0$.
-For the $O(n)$ spin model with interaction $J_{xy} = \1_{x\sim y}$, an uncontrolled
-approximation of this expansion yields
+Boltzmann weight \new{$e^{-\beta H}$} around $\beta = 0$.
+For the $O(n)$ spin model with interaction $J_{xy} = \1_{x\sim y}$,
+\new{neglecting higher-order terms in the high-temperature expansion yields}
+% an uncontrolled approximation of this expansion yields
 \begin{align}
 Z 
 	&=
@@ -117,7 +119,7 @@ Z
 \sum_{L_1,\ldots,L_N}
 \beta^{|L_1|+\cdots+|L_N|},
 \end{equation}
-where the inner sum is over all collections of loops $L_1, \ldots, L_N$
+where the inner sum is over all collections of \new{disjoint} loops $L_1, \ldots, L_N$
 and permutations of these loops are accounted for by the $1/N!$ factor.
 Notice that the final expression on the right-hand side of \eqref{e:loop-partition}
 makes sense for any $N$ and equals $1$ when $n = 0$.
@@ -244,7 +246,7 @@ where the sum is over finite sequences $\vec y$ over $\Lambda\sqcup\bar\Lambda$,
 and $\psi^{\vec y} = \psi_{y_1} \ldots \psi_{y_p}$
 % (in some canonical order)
 when $\vec y = (y_1, \ldots, y_p)$. Here, we take the sequences to be ordered in
-some canonical fashion. When $\vec y = \varnothing$ is the empty sequence,
+some \new{fixed but arbitrary} fashion. When $\vec y = \varnothing$ is the empty sequence,
 $F_\varnothing$ denotes the $0$-degree (bosonic) part of $F$.
 
 In order to apply the results of \cite{BBS-saw4-log,BBS-saw4,BSTW-clp}, we require
@@ -294,16 +296,12 @@ S_A = \sum_{x\in\Lambda} \Big(\phi_x (A\bar\phi)_x + \psi_x (A \bar\psi)_x\Big).
 % in their canonical ordering. Thus, in order to make the change of variables
 % $\psi_x \mapsto a \psi_x$ for some $x$ we must simply scale the integral by the factor
 % $a^{-1}$. This is the opposite effect of a bosonic change of variables $\phi_x \mapsto a \phi_x$
-The super-expectation possesses the remarkable property
-\begin{equation}
-\label{e:tau-iso}
-\int e^{-S_A} F(\tau) = F(0).
-\end{equation}
-In particular, the super-expectation is self-normalizing:
+
+\new{The super-expectation has the following self-normalizing property:
 \begin{equation}
 \label{e:self-normal}
 \Ex_C 1 = \int e^{-S_A} = 1.
-\end{equation}
+\end{equation}}
 Moreover, if $F$ is a degree-$0$ form, then
 \begin{equation}
 \Ex_C F = \int F \; d\mu_C.
@@ -313,6 +311,8 @@ There is also a version of Wick's theorem for fermions. In particular,
 \label{e:wick-fermion2}
 \int e^{-S_A} \psi_x \psib_x = C_{xx}.
 \end{equation}
+\new{Proofs of the statements \eqref{e:self-normal}--\eqref{e:wick-fermion2}
+can be found in \cite{BIS09}.}
 
 For $F = f(\phi, \bar\phi) \psi^{\vec y}$, we let
 \begin{equation}
@@ -355,6 +355,13 @@ We define the differential forms:
 	&=
 \sum_{|e|=1} (\nabla^e \tau)_x^2.
 \end{align}
+\new{The forms $\tau_x$ are special due to
+the following remarkable property
+of the super-expectation (see \cite{BIS09}):
+\begin{equation}
+\label{e:tau-iso}
+\int e^{-S_A} F(\tau) = F(0).
+\end{equation}}
 Recall \eqref{e:Udef-pos} and define
 \begin{equation}
 \label{e:Vdef2}

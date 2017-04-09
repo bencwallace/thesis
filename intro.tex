@@ -89,10 +89,12 @@ explanation of universality in terms of the \emph{renormalisation group}:
 an abstract dynamical system that acts on models by averaging out their fine details.
 This idea was enormously successful and led to his 1982 Nobel Prize.
 
-Nevertheless, a mathematically rigorous understanding of the renormalisation group
-remains incomplete. Although there have been several rigorous implementations of
-Wilson's ideas, they tend to be highly technical and restricted to somewhat special
-classes of models. The main purpose of this thesis is to discuss extensions of a
+% Nevertheless, a mathematically rigorous understanding of the renormalisation group
+% remains incomplete, although 
+\new{There have been several rigorous implementations of
+Wilson's ideas, some of which will be mentioned in Section~\ref{sec:rg-intro}.}
+% they tend to be highly technical and restricted to somewhat special classes of models.
+The main purpose of this thesis is to discuss extensions of a
 rigorous renormalisation group method of Bauerschmidt, Brydges, and Slade that have
 been used to study the
 critical behaviour of a generalized $|\varphi|^4$ model and a model of weakly
@@ -1094,7 +1096,7 @@ Thus, for $m^2 > 0$,
 \end{equation}
 It follows that $\nu_c(0, 0; n) = 0$ and $\gammabar = 1$ for this model.
 It can also be shown that $\nubar = 1/2$ and $\eta = 0$ in this case
-(e.g.\ see \cite{Lawl85} for $\eta$).
+\new{(e.g.\ see \cite{Lawl91} for $\eta$)}.
 In Appendix~\ref{app:free-moments}, we give a new
 proof that $\nubar = 1/2$ for $\xi_p(0, 0, m^2; n)$.
 % For $d > 2$, the simple random walk is transient. Thus, letting $E_x$ denote the expectation
@@ -1153,10 +1155,15 @@ an appropriate scaling limit.
 
 \subsubsection{Dimension $d=3$}
 
-Three-dimensional models are very poorly understood and only numerical approximations
-are available for their critical exponents. In fact, it was only recently proved
+\new{Very little is known rigorously about three-dimensional models.}
+% are very poorly understood and only numerical approximations
+% are available for their critical exponents.
+In fact, it was only recently proved
 that the Ising model's spontaneous magnetization vanishes continuously at
 the critical point in three dimensions \cite{ADS15}.
+\new{The critical exponents are not expected to take on rational
+values. Approximate values for the exponents have been
+computed by non-rigorous methods in \cite{GZ85,GZ98,EPPRSV14}.}
 
 \subsubsection{Dimensions $d > 4$}
 
@@ -1168,9 +1175,10 @@ This phenomenon is known as \emph{mean-field behaviour} and dimension $4$ is
 called the \emph{upper-critical dimension} for this class of models.
 For $n = 1, 2$ it is known that $\eta = 0$
 for the \emph{continuum limit} of these models \cite{Aiz82,Fro82} if it exists.
-On the lattice, it has been shown that $\eta = 0$ for the Ising model \cite{Sakai07}
-and the $1$-component $|\varphi|^4$ model \cite{Sakai15}.
-Extensions to $n = 1, 2$ are upcoming in \cite{BHH17}.
+On the lattice, it has been shown that $\eta = 0$ for \new{a spread-out version of}
+the Ising model \cite{Sakai07}
+and for the $1$-component $|\varphi|^4$ model \new{with small coupling strength}
+\cite{Sakai15}. Extensions to $n = 1, 2$ are upcoming in \cite{BHH17}.
 
 \subsubsection{Dimension $d = 4$}
 
@@ -1260,12 +1268,17 @@ corresponds to anomalous scaling behaviour; it is sometimes known as the
 one (Gaussian) fixed point and logarithmic corrections to mean-field scaling arise
 from the fact that this fixed point is not hyperbolic.
 
-There are many difficulties in making Wilson's ideas rigorous and many approaches
-have been tried. For instance, a rigorous implementation of Kadanoff's \emph{block-spin}
-renormalisation group was developed in \cite{GK85}. Related ideas can also be found in
-\cite{GJ87,FMRS87}. This thesis concerns the renormalisation group method of Bauerschmidt,
-Brydges, and Slade \cite{BS-rg-norm,BS-rg-loc,BBS-rg-pt,BS-rg-IE,BS-rg-step}, which we
-will discuss further in Chapter~\ref{sec:rg}.
+There are many difficulties in making Wilson's ideas rigorous \new{and several
+different approaches exist.} % many approaches have been tried.
+For instance, a rigorous implementation of Kadanoff's \emph{block-spin}
+renormalisation group was developed in \cite{GK85}
+\new{and used to show that $\eta = 0$ if $d = 4$ and $n = 1$.
+This was also shown independently % Related ideas can also be found
+in \cite{FMRS87}, using related ideas. By extensions to the block-spin approach,
+logarithmic corrections to scaling in this case were identified in \cite{HT87}.}
+This thesis concerns the renormalisation group method of Bauerschmidt,
+Brydges, and Slade \cite{BS-rg-norm,BS-rg-loc,BBS-rg-pt,BS-rg-IE,BS-rg-step},
+which we will discuss further in Chapter~\ref{sec:rg}.
 
 \begin{example}
 Let us mention how renormalisation group ideas can be used to prove a version
@@ -1489,7 +1502,7 @@ and
 	=
 \int_0^\infty c_T e^{-\nu T} \; dT
 	=
-\sum_{x\in\Zd} G_x(\gcc,\gamma,\nu),
+\new{\sum_{x\in\Zd} G_x(\gcc,\gamma,\nu).}
 \end{equation}
 Note that \eqref{e:suscept-def} is more-or-less consistent with \eqref{e:susceptibility-def}
 We will establish an exact analogue of \eqref{e:susceptibility-def} in Proposition~\ref{prop:finvol}.
@@ -1596,9 +1609,9 @@ to scale according to analogues of \eqref{e:Gpred}--\eqref{e:xippred}.
 Moreover, the discussion in Section~\ref{sec:asymp} suggests that
 \begin{align}
 \label{e:cT-asymp}
-c_T                       &\sim C_5 e^{-\nu_c T} T^{-\gammabar}, \\
+c_T                       &\sim C_5 e^{-\nu_c T} \new{T^{\gammabar-1}}, \\
 \label{e:XT-asymp}
-\langle |X_T|^2 \rangle   &\sim C_6 T^{-\nubar}.
+\langle |X_T|^2 \rangle   &\sim \new{C_6 T^{2\nubar}}.
 \end{align}
 The critical exponents $\gammabar, \nubar, \eta$ are expected to be universal;
 in particular, they should only depend on $d$ in this context.
@@ -1633,8 +1646,9 @@ SAW conditioned to start and end on the boundary of the domain is space-filling
 
 \subsubsection{Dimension $d = 3$}
 
-In $d = 3$, again very little is known. Only numerical approximations for
-the critical exponents are available.
+In $d = 3$, again very little is known \new{rigorously.
+Approximate values of the self-avoiding walk critical exponents (assuming their
+existence) have been obtained by running simulations, see e.g.\ \cite{Clis10,CLS07}.}
 
 \subsubsection{Dimension $d > 4$}
 
@@ -1692,12 +1706,16 @@ d = 4
 d > 4.
 \end{cases}
 \end{equation}
+\new{This suggests the value $d_c = 4$ of the upper-critical dimension.}
 \end{rk}
 
 \subsubsection{Dimension $d = 4$}
 
+\new{Weakly self-avoiding walk on a hierarchical lattice was studied by a renormalisation
+group method in \cite{BEI92,BI03c,BI03d,GI92}.}
 As discussed in Section~\ref{sec:rg-intro}, Bauerschmidt, Brydges, and Slade have
-recently made great strides in the case $d = 4$ using a renormalisation group method.
+recently made great strides in the case $d = 4$ \new{on the Euclidean lattice} using
+a \new{new} renormalisation group method.
 One of the novelties of this method, besides its applicability to multi-component
 spin systems, is that it can be used to study the WSAW via an integral representation
 we will discuss in Section~\ref{sec:intrep}. This method was first applied to walks
