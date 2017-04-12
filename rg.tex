@@ -424,36 +424,35 @@ Z_{j+1} = \Ex_{C_{j+1}} \theta Z_j, \quad j < N.
 
 \begin{rk}
 \label{rk:crit-params}
-This is truly a ($j$-dependent) map and not just a fixed sequence of field
-functionals.  Indeed, recall that the initial condition $Z_0$ is not fixed:
-it depends on the two free parameters $m^2$ and $z_0$. We think of the family
-of possible sequences $Z_j$ as a (non-autonomous) dynamical system.
-
+% This is truly a ($j$-dependent) map and not just a fixed sequence of field
+% functionals.  Indeed, recall that the initial condition $Z_0$ is not fixed:
+% it depends on the two free parameters $m^2$ and $z_0$. We think of the family
+% of possible sequences $Z_j$ as a (non-autonomous) dynamical system.
+% 
 The key to understanding
 $Z_N$ for large $N$ is the careful choice of \emph{critical} initial conditions
-$(m^2, z_0)$. In a sense, these initial conditions, which are functions of
-$(g, \gamma, \nu)$, define the stable manifold for the renormalisation group
+$(m^2, z_0)$ \new{in \eqref{e:gg0}. % In a sense, these initial conditions, which are functions of
+Viewed as functions of $(g, \gamma, \nu)$, these define a stable manifold for the
+dynamical system induced by the renormalisation group map
 and the fixed point for this stable manifold is the Gaussian measure with covariance
-$(1 + z_0) (-\Delta + m^2)^{-1}$.
-
-We have scaled out the factor $1 + z_0$
+$(1 + z_0) (-\Delta + m^2)^{-1}$. However, we have scaled out the factor $1 + z_0$}
 in the change of variables performed in the proof of Proposition~\ref{prop:intrep}.
-This factor plays a similar role to the standard deviation $\sigma$ in the central
-limit theorem: rather than a unique fixed point, there is a one-parameter family
-of fixed points.
+% This factor plays a similar role to the standard deviation $\sigma$ in the central
+% limit theorem: rather than a unique fixed point, there is a one-parameter family
+% of fixed points.
 
-The construction of the critical parameters for $\gamma_0 \ne 0$ will be carried
+The construction of the critical parameters for $\gamma \ne 0$ will be carried
 out in Section~\ref{sec:nuztilde} and is a key step in the proof of Theorem~\ref{thm:mr}.
 \end{rk}
 
-\commentbw{Rk 2.3.2: don't understand the point here.  Doesn't (2.3.7) simply define
-a map on any $F$ by Gaussian convolution (so any integrable $Z_j$ is a suitable
-input?)?  It sounds like you are saying that there is a map because
-$m^2$ and $z_0$ are free parameters, and this seems to be not at all the point.
-I find the subsequent paragraphs a bit confusing because you say that
-$z_0$ has to be carefully (uniquely) fixed but then you say it indexes a
-1-parameter family of fixed points which makes it sound like you can vary
-it if you wish.}
+% \commentbw{Rk 2.3.2: don't understand the point here.  Doesn't (2.3.7) simply define
+% a map on any $F$ by Gaussian convolution (so any integrable $Z_j$ is a suitable
+% input?)?  It sounds like you are saying that there is a map because
+% $m^2$ and $z_0$ are free parameters, and this seems to be not at all the point.
+% I find the subsequent paragraphs a bit confusing because you say that
+% $z_0$ has to be carefully (uniquely) fixed but then you say it indexes a
+% 1-parameter family of fixed points which makes it sound like you can vary
+% it if you wish.}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -478,22 +477,40 @@ Section~\ref{sec:intrep}.
 % parameter $p$ in Theorem~\ref{thm:mr}(iii).
 
 We extend $\Ncal^\varnothing$ to a space $\Ncal$
-that includes functions of the observable fields $\sigma_0$ and $\sigma_x$.
-Recalling \eqref{e:generating-fn}, this space is defined in such a way that
-functions of the observable fields are identified to second order. A precise
-definition is given in
-in \cite[Section~\ref{phi4-sec:phi4observables_representation}]{ST-phi4}.
-The upshot is that every $F \in \Ncal$ has the form
+that includes functions of the observable fields $\sigma_0$ and $\sigma_x$,
+\new{which we identify to order $1, \sigma_0, \sigma_x, \sigma_0\sigma_x$
+(this is sufficient for computing the derivative in \eqref{e:generating-fn}).
+Formally, we let $\Ncal'$ denote the extension of $\Ncal^\varnothing$
+whose elements may depend smoothly on $\sigma_0$, $\sigma_x$. In other words,
+if $n \ge 1$, then $\Ncal'$ consists of functions of $(\varphi, \sigma_0, \sigma_x$)
+that are $C^{p_\Ncal}$ in $\varphi$ and $C^\infty$ in $\sigma_0, \sigma_x$.
+Likewise, for $n = 0$, a similar statement is true of the coefficients $F_{\vec y}$
+in \eqref{e:FinNcal}. Letting $\Ical \subset \Ncal'$ be the ideal consisting
+of elements whose formal expansion to order $1, \sigma_0, \sigma_x, \sigma_0\sigma_x$
+is $0$, we define $\Ncal = \Ncal'/\Ical$. Then $\Ncal$ has the direct sum
+decomposition
+\begin{equation}
+\Ncal = \Ncal^\varnothing \oplus \Ncal^a \oplus \Ncal^b \oplus \Ncal^{ab},
+\end{equation}
+where $\Ncal^a$ consists of elements of the form $\sigma_a F$ with $F\in\Ncal^\varnothing$
+and a similar statement is true of $\Ncal^b, \Ncal^{ab}$.
+Thus,}
+% Recalling \eqref{e:generating-fn}, this space is defined in such a way that
+% functions of the observable fields are identified to second order. A precise
+% definition is given in
+% in \cite[Section~\ref{phi4-sec:phi4observables_representation}]{ST-phi4}.
+% The upshot is that
+every $F \in \Ncal$ has the form
 \begin{equation}
 \label{e:obs-decomp}
 F = \new{F_\varnothing + \sigma_0 F_0 + \sigma_x F_x + \sigma_0 \sigma_x F_{0x}},
 	\quad
 F_\alpha \in \Ncal^\varnothing.
 \end{equation}
-\commentbw{(2.4.2): I think the ``upshot'' is too brief.  It is true that every F has
-that form, but this is only after taking the quotient with an identification.
-Without this explanation, $e^{\sigma \varphi}$ is not in $\Ncal$.
-I think you need to go into some detail here.}
+% \commentbw{(2.4.2): I think the ``upshot'' is too brief.  It is true that every F has
+% that form, but this is only after taking the quotient with an identification.
+% Without this explanation, $e^{\sigma \varphi}$ is not in $\Ncal$.
+% I think you need to go into some detail here.}
 There are natural projections $\pi_\alpha : \Ncal \to \Ncal_\alpha$ with
 $\alpha = \varnothing, 0, x, 0x$ such that $\pi_\alpha F = F_\alpha$.
 For $X \subset \Lambda$, we let $\Ncal(X)$ denote the subspace of $\Ncal$ consisting
@@ -616,6 +633,7 @@ To extend the $T_\phi$ seminorm to $\Ncal$, we make use of an additional sequenc
 of parameters $\h_{\sigma,j}$. For any $F \in \Ncal$ of the form \eqref{e:obs-decomp},
 we let
 \begin{equation}
+\label{e:Tphi-obs}
 \|F\|_{T_\phi}
 	=
 \|F_\varnothing\|_{T_\phi}
@@ -645,9 +663,9 @@ and
 \end{equation}
 \end{lemma}
 
-\commentbw{(2.4.14): LHS should be $F$ not $F_\varnothing$.  (This inequality is also inconsistent
-with your version of (2.4.12) but is correct if you change (2.4.12) to the usual
-thing --- in fact is it not an equality rather than an inequality?)}
+\commentbw{Second inequality: LHS should be $F$ not $F_\varnothing$.  (This inequality is also 
+inconsistent with your version of \eqref{e:Tphi-obs} but is correct if you change \eqref{e:Tphi-obs} 
+to the usual thing --- in fact is it not an equality rather than an inequality?)}
 
 An essential property of the $T_\phi$ seminorm is the following \emph{product property},
 which is essential to fully take advantage the factorization property \eqref{e:uncorr}
@@ -758,11 +776,16 @@ It is useful to restrict our attention to field functionals $F \in \Ncal$ that
 obey certain symmetry conditions preserved by Gaussian expectation (and which
 are obeyed by $V^+_0$).
 
-We let any automorphism $E$ of $\Lambda$ act on $\Ncal$ by $EF(\varphi) = F(E\varphi)$.
+We let any automorphism $E$ of $\Lambda$ act on $\Ncal$ by $EF(\varphi) = F(E\varphi)$
+\new{with $(E\varphi)_x = \varphi_{Ex}$.}
 We say that $F\in\Ncal$ is \emph{Euclidean-invariant} if $EF = F$ for all such automorphisms.
 
-If $n = 0$,
-we define the \emph{supersymmetry generator}
+If $n = 0$, \new{we define the
+\emph{gauge flow} $(q, \bar q) \mapsto (e^{-2\pi it} q, 2^{2\pi it} \bar q)$,
+where $q = \phi_x, \psi_x, \sigma$ with $\sigma_0 = \sigma$ and $\sigma_x = \bar\sigma$
+for all $x\in\Lambda$. A form $F\in\Ncal$ is said to be \emph{gauge-invariant} if it is
+invariant under the gauge flow.
+We also} define the \emph{supersymmetry generator}
 \begin{equation}
 Q = (2\pi i)^{1/2} \sum_{x\in\Lambda}
 \left(
@@ -772,9 +795,9 @@ Q = (2\pi i)^{1/2} \sum_{x\in\Lambda}
 \right)
 \end{equation}
 A form $F \in \Ncal$ is said to be \emph{supersymmetric} if $Q F = 0$.
-Such a form is said to be \emph{gauge-invariant} if it is invariant under the
-\emph{gauge flow} $(q, \bar q) \mapsto (e^{-2\pi it} q, 2^{2\pi it} \bar q)$
-for $q = \phi_x, \psi_x$ and all $x\in\Lambda$.
+% Such a form is said to be \emph{gauge-invariant} if it is invariant under the
+% \emph{gauge flow} $(q, \bar q) \mapsto (e^{-2\pi it} q, 2^{2\pi it} \bar q)$
+% for $q = \phi_x, \psi_x$ and all $x\in\Lambda$.
 
 If $n \ge 1$, we let
 an $n \times n$ matrix $T$ act on $\Ncal$ by $T F(\varphi) = F(T \varphi)$,
@@ -782,11 +805,11 @@ where $(T\varphi)_x = T(\varphi_x)$.
 We say that $F\in\Ncal$ is \emph{$O(n)$-invariant} if $TF = F$ for all
 orthogonal matrices $T$.
 
-\commentbw{Sec 2.4.4: I think you are too fast with automorphism because you don't say
-how an automorphism of $\Lambda$ acts on a field.
-And it sounds backwards what you say about gauge invariance because supersymmetric
-forms are gauge invariant but you seem to be defining the latter only for
-supersymmetric forms?}
+% \commentbw{Sec 2.4.4: I think you are too fast with automorphism because you don't say
+% how an automorphism of $\Lambda$ acts on a field.
+% And it sounds backwards what you say about gauge invariance because supersymmetric
+% forms are gauge invariant but you seem to be defining the latter only for
+% supersymmetric forms?}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1220,6 +1243,12 @@ We let ${\rm Comp}(X)$ denote the set of maximal connected components that do no
 in $X$.
 \end{itemize}
 
+\new{We say that a map $F : \Pcal_j \to \Ncal$ is \emph{Euclidean-covariant} if
+$E(F(X)) = F(EX)$ for all $X\in\Pcal_j$ and all automorphisms $E$ of $\volume$.
+We also say that $F$ is \emph{gauge-invariant}, \emph{supersymmetric}, or
+\emph{$O(n)$-invariant} if $F(X)$ is gauge-invariant, supersymmetric, or $O(n)$-invariant,
+respectively.}
+
 \begin{defn}
 For $j \le N(\volume)$, let $\CKspace_j = \CKspace_j(\volume)$ denote the real
 vector space of maps $K : \Ccal_j(\volume) \to \Ncal(\volume)$ satisfying the following
@@ -1232,10 +1261,12 @@ Also: (i) $\pi_\alpha K(X) = 0$ unless $\alpha \in X$ for $\alpha = 0, x$;
 and (iii) $\pi_{0x} K(X) = 0$ if $X \in \Scal_j$ and $j < j_x$.
 
 \item
-Symmetry: (i) $K$ is Euclidean-invariant and, if $n = 0$, $K$ is gauge-invariant;
-(ii) $\pi_\varnothing K$ is supersymmetric and has no constant part if $n = 0$
-or $O(n)$-invariant if $n \ge 1$;
-and (iii) $\pi_\varnothing K$ is Euclidean-covariant.
+Symmetry: (i) \new{$\pi_\varnothing K$ is Euclidean-covariant;
+(ii) if $n = 0$, then $K$ is gauge-invariant and $\pi_\varnothing K$ is supersymmetric
+and has no constant part; if $n \ge 1$, then $\pi_\varnothing K$ is $O(n)$-invariant.}
+% and (iii) $\pi_\varnothing K$ is supersymmetric and has no constant part if $n = 0$
+% or $O(n)$-invariant if $n \ge 1$.
+% and (iii) $\pi_\varnothing K$ is Euclidean-covariant.
 \end{itemize}
 We let $\Kspace_j = \Kspace_j(\volume)$ denote the real vector space of functions
 $K \in \CKspace_j$ with the following additional property:
@@ -1338,8 +1369,8 @@ We let $\Wcal_j = \Wcal_j(\volume)$ denote the space of $K\in\Kcal_j(\volume)$ w
 finite $\Wcal_j$ norm and
 denote the ball of radius $r$ in the normed space $\Wcal_j$ by $B_{\Wcal_j}(r)$.
 
-\commentbw{Sec 2.7:  Are you never going to define the $\Wcal$ norm?  I think you need
-that defn in the thesis.  Same for $\vartheta_j$.  If you do define it later
+\commentbw{Sec 2.7: Are you never going to define the $\Wcal$ norm?  I think you need
+that defn in the thesis. Same for $\vartheta_j$.  If you do define it later
 you should say where here.}
 
 In \cite[\eqref{log-e:mass-scale}--\eqref{log-e:chidef}]{BBS-saw4-log},
@@ -1461,6 +1492,15 @@ that the proof holds for $s > 1$ is carried out in Chapter~\ref{sec:RGstep}.
 \section{Renormalisation group flow}
 % mainly from saw-sa
 
+\commentbw{Sec 2.8: you make reference to \cite{BSW-saw-sa} but this is for $n=0$ yet you seem to
+be claiming things here for all $n \ge 0$?
+Concerning Thm 2.8.1, it is not clear from reading Sec 2.8 if you are going
+to prove this theorem or claim that it is already proved somewhere else (where?,
+I hope you are going to discuss the proof!).
+I understand from the last sentence of Sec 2.7 that you will say why Thm 2.7.1
+is true.  According to p.34 Thms 2.7.1 and 2.8.1 are the main results of the thesis.
+I think you should be repeating this loud and clear and also saying where the proof is.}
+
 Theorem~\ref{thm:step-mr-fv} allows us to perform a single renormalisation group
 step. The estimate \eqref{e:DKkappa} expresses a contractive property of the map
 $K_+$. The fact that $K_+$ is a contraction is used, in Theorem~\ref{thm:rhatflow},
@@ -1544,15 +1584,6 @@ uniformly in $(m^2, \gamma_0)$.
 Note that in the statement of Theorem~\ref{thm:rhatflow} flow, we have evaluated
 the domains $\domRG_j$ at $(\mgen^2, \ggen_0) = (m^2, g_0)$, where $m^2$ is the
 mass in the covariance $C$ and $g_0 = g (1 + z_0^c)^2$.
-
-\commentbw{Sec 2.8: you make reference to [9] but this is for $n=0$ yet you seem to
-be claiming things here for all $n \ge 0$?
-Concerning Thm 2.8.1, it is not clear from reading Sec 2.8 if you are going
-to prove this theorem or claim that it is already proved somewhere else (where?,
-I hope you are going to discuss the proof!).
-I understand from the last sentence of Sec 2.7 that you will say why Thm 2.7.1
-is true.  According to p.34 Thms 2.7.1 and 2.8.1 are the main results of the thesis.
-I think you should be repeating this loud and clear and also saying where the proof is.}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
