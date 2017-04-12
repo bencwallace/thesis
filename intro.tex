@@ -125,7 +125,7 @@ that allows us to unify our treatment of both models.
 \section{Asymptotics}
 \label{sec:asymp}
 
-We begin by with a short discussion of some useful notation and mathematical
+We begin \new{with} a short discussion of some useful notation and mathematical
 background.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -414,7 +414,7 @@ $\{ x, y \} \in \edges$.
 For simplicity, we will assume that $\vertices$ is countable and that there are no
 \emph{self-loops} $\{ x \} \in \edges$.
 
-A graph \emph{automorphism} is a function $f : \vertices\to\vertices$ such that
+A graph \emph{automorphism} is a bijection $f : \vertices\to\vertices$ such that
 $x \sim y$ if and only if $f(x) \sim f(y)$.
 We will assume that $\graph$ is \emph{transitive} meaning that for all pairs
 of distinct
@@ -881,7 +881,7 @@ Below we give the definitions we will use throughout the rest of this thesis for
 % at or above the critical point. Thus, we need not concern ourselves with issues related
 % to non-uniqueness of Gibbs states.
 
-\subsubsection{Translation-invariant systems}
+\subsubsection{\new{Generalized $|\varphi|^4$ model}}
 
 % Our interest will be in translation-invariant systems on $\Zd$, for which a particular
 % approach to infinite volume is especially convenient. We begin by letting $\Lambda_N$
@@ -945,6 +945,8 @@ and
 	=
 \lim_{N\to\infty} \sum_{x\in\Lambda_N} G_{x,N}(\gcc, \gamma, \nu; n).
 \end{equation}
+\new{Existence of these limits (which is not known in general) will
+follow from the proof of our main result.}
 
 \begin{rk}
 We have omitted the term
@@ -992,7 +994,7 @@ Roughly speaking, the correlation length acts as
 a ``macroscopic length scale'' of the model; it is a measure of the largest scale at
 which spins are very strongly correlated. Based on the above discussion, we expect $\xi$
 to diverge as $\nu\downarrow\nu_c$. This divergence is one of the
-key features of critical behaviour
+key features of critical behaviour.
 A related quantity is the \emph{correlation length of order $p$}, defined by
 \begin{equation}
 \label{e:clp-spins}

@@ -16,6 +16,11 @@ thesis, which is based on the work in \cite{BSTW-clp,BSW-saw-sa}, is the
 improvement of the estimates in Theorem~\ref{thm:step-mr-fv} and the extension
 to $\gamma_0 \ne 0$ in Theorem~\ref{thm:rhatflow}.
 
+\commentbw{p.34 para 2:  this is not very clear since we have no hint of what
+those Thms say, and it does not sound as exciting as it is.  Can you
+maybe work on the marketing aspect a bit here?  And explain more about
+what is after all the main contribution of the thesis.}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -89,7 +94,8 @@ G_{x,N}(g, \gamma, \nu; n)
 \langle \varphi_0 \cdot \varphi_x \rangle_{g,\gamma,\nu,N}  & n \ge 1.
 \end{cases}
 \end{equation}
-By Proposition~\ref{prop:finvol}, for any integer $n \ge 0$,
+\new{By Proposition~\ref{prop:finvol} and \eqref{e:susceptibility-def}},
+for any integer $n \ge 0$,
 \begin{align}
 \label{e:chilim}
 \chi(\gcc, \gamma, \nu; n)
@@ -196,8 +202,8 @@ right-hand side of \eqref{e:exp-conv}.
 
 Recall that the Gaussian convolution operator $\Ex_C\theta$ was defined in
 Section~\ref{sec:forms}. We define a test function $\1: \Lambda_N \to \R$ by
-$\1_y=1$ for all $y$. If $F$ is a sufficiently smooth function (a $0$-degree form),
-let
+$\1_y=1$ for all $y$. If $F$ is a sufficiently smooth function \new{of the
+bosonic fields} (a $0$-degree form), let
 % and write $D^2 Z_{N,\varnothing}(0; \1, \1)$ for the directional derivative of
 % $Z_{N,\varnothing}$ evaluated with all fields equal to $0$ and
 % % at $(\phi, \bar\phi) = (0, 0)$,
@@ -212,9 +218,9 @@ F(s \1 + t\1), & n \ge 1
 \end{cases}
 \end{equation}
 where the derivative is evaluated with all fields (bulk and observable) and $s, t$ set to $0$.
-We will also denote by $D^2_{\sigma_0\sigma_x} F(0)$ the second partial derivative of $F(0)$
-(which depends only the observable fields)
-with respect to $\sigma_0$ and $\sigma_x$ evaluated at $\sigma_0 = \sigma_x = 0$.
+\new{Let $F(0)$ denote $F$ evaluated at $0$ bulk field.
+We denote by $D^2_{\sigma_0\sigma_x} F(0)$ the second partial derivative of $F(0)$
+with respect to the observable fields $\sigma_0, \sigma_x$ evaluated at $\sigma_0=\sigma_x=0$.}
 
 \begin{prop}
 \label{prop:intrep}
@@ -440,6 +446,15 @@ The construction of the critical parameters for $\gamma_0 \ne 0$ will be carried
 out in Section~\ref{sec:nuztilde} and is a key step in the proof of Theorem~\ref{thm:mr}.
 \end{rk}
 
+\commentbw{Rk 2.3.2: don't understand the point here.  Doesn't (2.3.7) simply define
+a map on any $F$ by Gaussian convolution (so any integrable $Z_j$ is a suitable
+input?)?  It sounds like you are saying that there is a map because
+$m^2$ and $z_0$ are free parameters, and this seems to be not at all the point.
+I find the subsequent paragraphs a bit confusing because you say that
+$z_0$ has to be carefully (uniquely) fixed but then you say it indexes a
+1-parameter family of fixed points which makes it sound like you can vary
+it if you wish.}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -471,10 +486,14 @@ in \cite[Section~\ref{phi4-sec:phi4observables_representation}]{ST-phi4}.
 The upshot is that every $F \in \Ncal$ has the form
 \begin{equation}
 \label{e:obs-decomp}
-F = F_\varnothing + F_0 + F_x + F_{0x},
+F = \new{F_\varnothing + \sigma_0 F_0 + \sigma_x F_x + \sigma_0 \sigma_x F_{0x}},
 	\quad
 F_\alpha \in \Ncal^\varnothing.
 \end{equation}
+\commentbw{(2.4.2): I think the ``upshot'' is too brief.  It is true that every F has
+that form, but this is only after taking the quotient with an identification.
+Without this explanation, $e^{\sigma \varphi}$ is not in $\Ncal$.
+I think you need to go into some detail here.}
 There are natural projections $\pi_\alpha : \Ncal \to \Ncal_\alpha$ with
 $\alpha = \varnothing, 0, x, 0x$ such that $\pi_\alpha F = F_\alpha$.
 For $X \subset \Lambda$, we let $\Ncal(X)$ denote the subspace of $\Ncal$ consisting
@@ -626,6 +645,10 @@ and
 \end{equation}
 \end{lemma}
 
+\commentbw{(2.4.14): LHS should be $F$ not $F_\varnothing$.  (This inequality is also inconsistent
+with your version of (2.4.12) but is correct if you change (2.4.12) to the usual
+thing --- in fact is it not an equality rather than an inequality?)}
+
 An essential property of the $T_\phi$ seminorm is the following \emph{product property},
 which is essential to fully take advantage the factorization property \eqref{e:uncorr}
 that follows from the finite-range property of the covariance decomposition.
@@ -758,6 +781,12 @@ an $n \times n$ matrix $T$ act on $\Ncal$ by $T F(\varphi) = F(T \varphi)$,
 where $(T\varphi)_x = T(\varphi_x)$.
 We say that $F\in\Ncal$ is \emph{$O(n)$-invariant} if $TF = F$ for all
 orthogonal matrices $T$.
+
+\commentbw{Sec 2.4.4: I think you are too fast with automorphism because you don't say
+how an automorphism of $\Lambda$ acts on a field.
+And it sounds backwards what you say about gauge invariance because supersymmetric
+forms are gauge invariant but you seem to be defining the latter only for
+supersymmetric forms?}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1238,6 +1267,9 @@ With these choices, $Z_0$ (recall \refeq{Z0def})
 takes the form \eqref{e:IcircKnew}, and we seek
 $(u_j, q_{0,j}, q_{x,j}, \Vp_j, K_j)$ such that this continues to hold as the scale advances.
 
+\commentbw{under (2.6.8): it seems too fast to say that (2.6.5) holds, I think it should
+be spelled out.}
+
 Equivalently, given $(\Vp_j, K_j)$, we must define
 $(\delta u_{j+1}, \delta q_{0,j+1}, \delta q_{x,j+1}, V_{j+1}, K_{j+1})$ so that
 \begin{equation} \label{e:IcircKdu}
@@ -1269,6 +1301,9 @@ K^+_0 = 0
 	\text{ if }
 \gamma_0 < 0.
 \end{equation}
+\commentbw{Rk 2.6.2: Why make definitions for $\gamma_0 < 0$ when you say we will not
+consider this case?  Better just to insist that $\gamma_0 \ge 0$ always in
+the thesis?}
 \end{rk}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1302,6 +1337,10 @@ norm dominates the $T_0(\ell_j)$ norm in the following sense:
 We let $\Wcal_j = \Wcal_j(\volume)$ denote the space of $K\in\Kcal_j(\volume)$ with
 finite $\Wcal_j$ norm and
 denote the ball of radius $r$ in the normed space $\Wcal_j$ by $B_{\Wcal_j}(r)$.
+
+\commentbw{Sec 2.7:  Are you never going to define the $\Wcal$ norm?  I think you need
+that defn in the thesis.  Same for $\vartheta_j$.  If you do define it later
+you should say where here.}
 
 In \cite[\eqref{log-e:mass-scale}--\eqref{log-e:chidef}]{BBS-saw4-log},
 a function $\chicCov_j = \chicCov_j(m^2)$ (denoted $\chi_j$ in \cite{BBS-saw4-log})
@@ -1349,6 +1388,9 @@ We let $\Igen_j(\mgen^2)$ be the neighbourhood of $\mgen^2$ defined by
 \end{equation}
 where $\Iint_j = [0, \delta]$ if $j < N$ and $\Iint_N = [\delta L^{-2 (N - 1)}, \delta]$.
 
+\commentbw{Thm 2.7.1: you need a restriction on $j$ if $\volume=\Lambda$ and should say in the
+thm that $V$ can be $\Lambda$ or $\Zd$.}
+
 \begin{theorem}
 \label{thm:step-mr-fv}
 Let $d = 4$ and let $n \ge 0$. Fix $s > 1$ (or $s = 0$). Let $C_\DV$ and $L$
@@ -1395,6 +1437,9 @@ not make direct use of these bounds.
 One of the main novelties in this thesis is the case $s > 1$,
 for which the bounds on the observables derived from \eqref{e:RKplus}
 are greatly improved beyond the mass scale.
+
+\commentbw{p.51 last para of Sec 2.7: you make the distinction $s>1$ vs $s=0$.  Do you mean
+$s>0$ vs $s=0$?  Also you say $s>1$ near bottom p.51 and maybe other places too.}
 
 Note that the maps $R_+$ and $K_+$ themselves are \emph{independent} of $s$.
 The proof of Theorem~\ref{thm:step-mr-fv} involves showing that the
@@ -1499,6 +1544,15 @@ uniformly in $(m^2, \gamma_0)$.
 Note that in the statement of Theorem~\ref{thm:rhatflow} flow, we have evaluated
 the domains $\domRG_j$ at $(\mgen^2, \ggen_0) = (m^2, g_0)$, where $m^2$ is the
 mass in the covariance $C$ and $g_0 = g (1 + z_0^c)^2$.
+
+\commentbw{Sec 2.8: you make reference to [9] but this is for $n=0$ yet you seem to
+be claiming things here for all $n \ge 0$?
+Concerning Thm 2.8.1, it is not clear from reading Sec 2.8 if you are going
+to prove this theorem or claim that it is already proved somewhere else (where?,
+I hope you are going to discuss the proof!).
+I understand from the last sentence of Sec 2.7 that you will say why Thm 2.7.1
+is true.  According to p.34 Thms 2.7.1 and 2.8.1 are the main results of the thesis.
+I think you should be repeating this loud and clear and also saying where the proof is.}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

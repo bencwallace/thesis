@@ -22,10 +22,10 @@
 	\usepackage{drafthead}
 	\usepackage[notref]{showkeys}
 	\renewcommand*\showkeyslabelformat[1]{\normalfont\tiny\ttfamily(#1)}
+	\renewcommand{\new}[1]{{\blue #1}}
 \else
 	\ifdefined\committee
 		\usepackage{drafthead}
-		\renewcommand{\new}[1]{{\blue #1}}
 	\fi
 \fi
 

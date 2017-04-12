@@ -5,6 +5,8 @@
 
 \renewcommand{\Vpt}{\Vp_\pt}
 
+\commentbw{Ch 4 line 1:  again you have $s>1$, is it $s>0$?}
+
 In this chapter we discuss the proof of Theorem~\ref{thm:step-mr-fv}
 with $s > 1$ in the definitions \eqref{e:elldef-zz} of the weights
 $\ell, \ell_\sigma$. The proof involves numerous changes
@@ -123,6 +125,8 @@ Our main task then is to bound $h$ and $k$.
 
 \subsubsection{Perturbative contribution and covariance bound}
 
+\commentbw{3 lines above (4.1.10):  $\delta I$ is like $\delta V$, not $(\delta V)^3$.}
+
 By the definition \eqref{e:Idef} of $I$, we expect that $\delta I = O(\delta\Vp^3)$
 where $\delta\Vp = \theta\Vp - \Vpt$. Indeed, a version of this statement is true
 by \cite[Proposition~\ref{IE-prop:ip}]{BS-rg-IE}.
@@ -145,6 +149,8 @@ is given by
 
 Covariance terms such as those above occur at higher-order and can be
 estimated using Proposition~\ref{prop:Cdecomp}.
+\commentbw{(4.1.11): don't understand what you mean by sentence following this eqn.
+What is the ``higher order'' referring to?}
 The method of \cite{BS-rg-IE} is more flexible, however, and does not require
 the precise bounds in \eqref{e:scaling-estimate}. Rather, necessary bounds on
 the covariance and its derivatives are encoded in the hypothesis
@@ -200,6 +206,8 @@ In order to maintain the form \eqref{e:IcircKsimp}, the extraction step in Maps 
 must make a corresponding adjustment to $\Vp$. This adjustment ultimately results in a
 map $\Vp \mapsto \Vp_+$, which is a small perturbation of $\Vpt$, as expressed
 by the first bound of \eqref{e:RKplus} (recall \eqref{e:Rplusdef}).
+\commentbw{Rk 4.1.2: if you don't want to say what $V_+$ is then I think you need to
+say where it can be found.}
 \end{rk}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -300,6 +308,10 @@ so that
 \|C_j\|_{\Phi_{j}(\ell_j)} \leq \min(\ellconst, \chicCov_j).
 \end{equation}
 \end{lemma}
+
+\commentbw{Lemma 4.2.1: I want to say recall the defn of $\vartheta$ but I think I
+already noted that you don't give that defn.  I think you need it and
+need to recall it here.}
 
 \begin{proof}[Proof of Lemma~\ref{lem:Cbd}]
 For $d=4$, insertion of \refeq{scaling-estimate} into \refeq{Phinorm} gives
@@ -508,6 +520,7 @@ For any $q >0$, if $L$ is sufficiently large depending on $q$, then for $j_m \le
     G_{j+1}(X, \varphi).
 \end{equation}
 \end{lemma}
+\commentbw{Lemma 4.2.2: OK here you do indeed want $s > 1$.}
 \begin{proof}
 By \eqref{e:GPhidef}, it suffices to show that, for any scale-$j$ block $B_j$ and any scale-$(j+1)$ block $B_{j+1}$ containing $B_j$,
 \begin{equation}
@@ -848,6 +861,8 @@ These are referred to in \cite{BS-rg-IE} as \emph{coordinate patches}. By defini
 they are nonempty and any small set is contained in a coordinate patch.
 (in this chapter, we are ultimately only concerned with the case of small sets).
 
+\commentbw{p. 73 end of 1st para on Loc:  Parenthetic sentence should start with capital letter.}
+
 Suppose we fix a coordinate patch $\Lambda' \subset \Lambda$. By definition, it
 can be identified with a rectangle in $\Zd$.
 % Via this identification,
@@ -929,6 +944,8 @@ scale using the new norm pair \eqref{e:npmass}.
 Throughout this section, we
 sometimes write the dimension as $d$ for emphasis, although we only consider $d=4$.
 The interaction $\Itilde_\pt$ below is a variant of \eqref{e:Idef} defined in \cite{BS-rg-IE}.
+
+\commentbw{Above Prop 4.3.3: you could define $\tilde{I}_{\pt}$ here, it is not complicated.}
 
 \begin{prop}[{Improvement of \cite[Proposition \ref{IE-prop:cl}]{BS-rg-IE}}]
 \label{prop:cl} Let $j_m \leq j<N$ and $V\in \DV_j$.  Let $X \in \Scal_j$ and

@@ -3,6 +3,16 @@
 
 \setcounter{footnote}{0}
 
+\commentbw{Generally I am having a hard time to learn the structure of the thesis and
+of the proof.  Somewhere as early as possible I would like to see a description
+of the structure of the thesis:
+- the main ingredients of the proof of Thm 1.7.1
+- where these ingredients are proved
+- what are you including about the proof and what results are you citing
+  from the literature.
+This relates to one of my comments about Chapter 2 concerning the roles
+of Thms 2.7.1 and 2.8.1.}
+
 In this chapter, we prove Theorem~\ref{thm:mr} using Theorem~\ref{thm:rhatflow}.
 For simplicity, we drop the parameter $n$ from the notation. In order to employ
 Theorem~\ref{thm:rhatflow}, we fix
@@ -79,6 +89,8 @@ $I_N$ and $V_N$,
 {-\nu_N |\Lambda| + D^2 W_N(0; \1, \1) + D^2 K_N(0; \1, \1)}
 {e^{u_N |\Lambda|} (1 + W_N(0) + K_N(0))}.
 \end{equation}
+\commentbw{(3.1.4):  dropped label $\varnothing$ for bulk on RHS.  Also we now know
+that $D^2 W = 0$.  There should be no $e^{u_N |\Lambda|}$ in denominator.}
 Using Lemma~\ref{lem:deriv-norm-bds} with $s = 0$ (recall \eqref{e:elldef-zz}),
 we see that the last term vanishes as $N\to\infty$ leaving
 % By \eqref{e:Wbilinbd}, \eqref{e:VKbds}, and \eqref{e:VjKjDj-hat} with $s = 0$
@@ -454,8 +466,8 @@ Similarly, from \eqref{e:chiprime-m-hat} (using \eqref{e:chi-renorm}), we get
 -\chi^2(g, \gamma, \nu)
 \frac{c_0(g, \gamma)}{(\tilde g_0 {\sf B}_{\tilde m^2})^{\frac{n+2}{n+8}}}
 \end{equation}
-with
-$c_0(g, \gamma) = \lim_{\varepsilon\downarrow0} c(\tilde g_0, \tilde\gamma_0)$.
+\commentbw{(3.1.33): LHS should be derivative}
+with $c_0(g, \gamma) = \lim_{\varepsilon\downarrow0} c(\tilde g_0, \tilde\gamma_0)$.
 % By a careful analysis of the derivatives of the renormalisation group flow with
 % respect to the initial condition $\nu_0$, it can be shown that
 % \begin{equation}
@@ -541,6 +553,7 @@ By \eqref{e:generating-fn}, \eqref{e:ZNINKN}, and \eqref{e:IcircKnew},
 	-
 \frac{\left(D_{\sigma_0}K_{N}\right) \left(D_{\sigma_x}K_{N}\right)}{(1 + K_{N})^2},
 \end{equation}
+\commentbw{(3.2.3): missing explanation of why no $W$ on RHS}
 where the quantities on the right-hand side are evaluated at
 $(\tilde m^2, \tilde g_0, \tilde\gamma_0, \tilde\nu_0, \tilde z_0)$.
 By \eqref{e:WKbd} and Lemma~\ref{lem:deriv-norm-bds}, the last two terms
