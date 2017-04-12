@@ -458,13 +458,55 @@ $\chi_N \to \chi$ uniformly on compact subsets of this domain.
 
 \section{Outline}
 
-\commentbw{General comments:
+\new{
+Chapter~\ref{sec:rg} introduces the elements and formalism of the renormalisation
+group method developed in \cite{BS-rg-norm,BS-rg-loc,BBS-rg-pt,BS-rg-IE,BS-rg-step}.
+However, we proceed differently from these papers in two regards.
 
-- the structure of the thesis and proof of main result needs
-  to be presented more clearly early on
+Firstly, in Section~\ref{sec:weights} we employ a different choice of norm weights
+from that used in \cite{BS-rg-step}, where the renormalisation group map was constructed.
+However, these new weights cannot be used with the same norms as in \cite{BS-rg-step}.
+In Chapter~\ref{sec:RGstep}, we explain how to overcome this obstacle by a new choice of norm
+and we provide a detailed verification that the estimates on the renormalisation group map
+are improved by this choice. The result is summarized as
+Theorem~\ref{thm:step-mr-fv}, which is the first main technical achievement of this
+thesis. The improved estimates that we obtain are required for the proof of
+Theorem~\ref{thm:mr}(iii) even with $\gamma = 0$. This result first appeared in \cite{BSTW-clp}.
 
-- you should give definitions more often rather than referring
-  to other papers
+Secondly, the initial coordinates for the renormalisation group that we define in
+Section~\ref{sec:initIK} involve a non-trivial error coordinate that captures
+the self-attraction term in the WSAW-SA and the $\gamma (\nabla |\phi_x|^2)^2$
+term in the generalized $|\varphi|^4$ model. This error coordinate is coupled to
+the parameters $g_0, \nu_0, z_0$ and a tailored version of the implicit function
+theorem is consequently required for the identification of critical parameters
+such that the renormalisation group is initialized on its stable manifold when
+$\gamma \ne 0$. The construction of these critical parameters is carried out in
+Chapter~\ref{sec:RGflow} and the result is summarized as Theorem~\ref{thm:rhatflow}.
+This is the second main technical achievement of this thesis and is required for the
+proof of Theorem~\ref{thm:mr} with $\gamma \ne 0$. This result first appeared in
+\cite{BSW-saw-sa} for $n = 0$; here, we have extended it to all $n \ge 0$.
+
+In Chapter~\ref{sec:chi-G-xi}, we discuss the proof of Theorem~\ref{thm:mr} assuming
+Theorem~\ref{thm:step-mr-fv} and Theorem~\ref{thm:rhatflow} hold. The proof of
+Theorem~\ref{thm:mr}(iii) is a novel contribution even when $\gamma = 0$. The case
+$\gamma = 0$ first appeared in \cite{BSTW-clp} and the extension to $\gamma \ne 0$.
+
+The proof of Theorem~\ref{thm:mr}(i)--(ii) was previously obtained for $\gamma = 0$
+by Bauerschmidt, Brydges, and Slade in \cite{BBS-saw4-log,BBS-phi4-log,BBS-saw4}
+and Slade and Tomberg in \cite{ST-phi4}. The extension to $\gamma \ne 0$ involves,
+in addition to the proof of Theorem~\ref{thm:rhatflow}, a change of variables result
+stated and proved in Section~\ref{sec:nuztilde}.
+
+We conclude in Chapter~\ref{sec:conclusion} with a discussion of some open problems.
+}
+
+% \commentbw{General comments:
+
+% - the structure of the thesis and proof of main result needs
+%   to be presented more clearly early on
+
+% - you should give definitions more often rather than referring
+%   to other papers
   
-- I will be more than happy to sign off on your revised version.
-  I won't have more time before Apr 21 to carefully read the revision.}
+% - I will be more than happy to sign off on your revised version.
+%   I won't have more time before Apr 21 to carefully read the revision.}
