@@ -205,11 +205,22 @@ crucial contraction continues to hold when $s > 1$.
 
 \begin{rk}
 In order to maintain the form \eqref{e:IcircKsimp}, the extraction step in Maps 1--2
-must make a corresponding adjustment to $\Vp$. This adjustment ultimately results in a
+must make a corresponding adjustment to $\Vp$.
+\new{This adjustment results in a map $\Vp \mapsto \Vp_+$, given by
+\begin{equation}
+V_+ = \Vpt(V - Q),
+	\quad
+Q(B) = \sum_{B \subset Y \in \Scal} \Loc_{Y,B} I^{-Y} K(Y),
+\end{equation}
+where $\Loc_{Y,B} F$ is the restriction to $B \subset Y$ of the polynomial on
+$Y$ determined by $\Loc_Y F$.
+}
+
+This adjustment ultimately results in a
 map $\Vp \mapsto \Vp_+$, which is a small perturbation of $\Vpt$, as expressed
 by the first bound of \eqref{e:RKplus} (recall \eqref{e:Rplusdef}).
-\commentbw{Rk 4.1.2: if you don't want to say what $V_+$ is then I think you need to
-say where it can be found.}
+% \commentbw{Rk 4.1.2: if you don't want to say what $V_+$ is then I think you need to
+% say where it can be found.}
 \end{rk}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -952,11 +963,11 @@ sometimes write the dimension as $d$ for emphasis, although we only consider $d=
 \begin{equation}
 \tilde I_\pt(B) = e^{-\Vpt(B)} (1 + W_{j+1}(\Vpt, B)),
 	\quad
-B\in\Bcal_{j+1}
+B\in\Bcal_j
 \end{equation}
 and extend this to $\tilde I_\pt(X) = \tilde I_\pt^X$ for $X\in\Pcal_{j+1}$ by block-factorization.}
 
-\commentbw{Above Prop 4.3.3: you could define $\tilde{I}_{\pt}$ here, it is not complicated.}
+% \commentbw{Above Prop 4.3.3: you could define $\tilde{I}_{\pt}$ here, it is not complicated.}
 
 \begin{prop}[{Improvement of \cite[Proposition \ref{IE-prop:cl}]{BS-rg-IE}}]
 \label{prop:cl} Let $j_m \leq j<N$ and $V\in \DV_j$.  Let $X \in \Scal_j$ and
