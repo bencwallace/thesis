@@ -5,7 +5,7 @@
 
 \renewcommand{\Vpt}{\Vp_\pt}
 
-\commentbw{Ch 4 line 1:  again you have $s>1$, is it $s>0$?}
+% \commentbw{Ch 4 line 1:  again you have $s>1$, is it $s>0$?}
 
 In this chapter we discuss the proof of Theorem~\ref{thm:step-mr-fv}
 with $s > 1$ in the definitions \eqref{e:elldef-zz} of the weights
@@ -148,10 +148,11 @@ is given by
 6 C_{00} \varphi_x^2 + 3 C_{00}^2.
 \end{equation}
 
-Covariance terms such as those above occur at higher-order and can be
-estimated using Proposition~\ref{prop:Cdecomp}.
-\commentbw{(4.1.11): don't understand what you mean by sentence following this eqn.
-What is the ``higher order'' referring to?}
+\new{Covariance terms such as those above
+% occur at higher-order and
+can be estimated using Proposition~\ref{prop:Cdecomp}.}
+% \commentbw{(4.1.11): don't understand what you mean by sentence following this eqn.
+% What is the ``higher order'' referring to?}
 The method of \cite{BS-rg-IE} is more flexible, however, and does not require
 the precise bounds in \eqref{e:scaling-estimate}. Rather, necessary bounds on
 the covariance and its derivatives are encoded in the hypothesis
@@ -523,7 +524,7 @@ For any $q >0$, if $L$ is sufficiently large depending on $q$, then for $j_m \le
     G_{j+1}(X, \varphi).
 \end{equation}
 \end{lemma}
-\commentbw{Lemma 4.2.2: OK here you do indeed want $s > 1$.}
+% \commentbw{Lemma 4.2.2: OK here you do indeed want $s > 1$.}
 \begin{proof}
 By \eqref{e:GPhidef}, it suffices to show that, for any scale-$j$ block $B_j$ and any scale-$(j+1)$ block $B_{j+1}$ containing $B_j$,
 \begin{equation}
@@ -946,7 +947,14 @@ scale using the new norm pair \eqref{e:npmass}.
 % for consistency with our present notation.
 Throughout this section, we
 sometimes write the dimension as $d$ for emphasis, although we only consider $d=4$.
-The interaction $\Itilde_\pt$ below is a variant of \eqref{e:Idef} defined in \cite{BS-rg-IE}.
+% The interaction $\Itilde_\pt$ below is a variant of \eqref{e:Idef} defined in \cite{BS-rg-IE}.
+\new{We define
+\begin{equation}
+\tilde I_\pt(B) = e^{-\Vpt(B)} (1 + W_{j+1}(\Vpt, B)),
+	\quad
+B\in\Bcal_{j+1}
+\end{equation}
+and extend this to $\tilde I_\pt(X) = \tilde I_\pt^X$ for $X\in\Pcal_{j+1}$ by block-factorization.}
 
 \commentbw{Above Prop 4.3.3: you could define $\tilde{I}_{\pt}$ here, it is not complicated.}
 
