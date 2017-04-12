@@ -402,7 +402,7 @@ degree $r \le p_\Ncal -4$ (so that $M_xU_x^\pm$ has degree at most $p_\Ncal$), t
 % fits into this formulation.
 
 % We restrict attention in this section to the $\Wcal_0$ norm, whose definition is recalled below.
-We begin by recalling the definition of the $\Wcal_0$ norm from \cite{BS-rg-step}.
+We begin by recalling the definition of the \new{$\Wcal_j$ norm} from \cite{BS-rg-step}.
 % This requires several preliminaries.
 % Let $\Pcal_0 = \Pcal_0(\Lambda)$ denote the collection of subsets of vertices in $\Lambda$.
 % We refer to the elements of $\Pcal_0$ as \emph{polymers}.
@@ -432,48 +432,52 @@ We begin by recalling the definition of the $\Wcal_0$ norm from \cite{BS-rg-step
 It follows from the product property of the $T_\varphi$ seminorm that the regulator norms
 obey the following version of the product property:
 \begin{equation}
-\|F_1F_2\|_{\Gcal_0} \le   \|F_1\|_{\Gcal_0} \|F_2\|_{\Gcal_0}
+\new{\|F_1F_2\|_{\Gcal_j} \le \|F_1\|_{\Gcal_j} \|F_2\|_{\Gcal_j}}
 	% \quad
 \text{ for }
 	% \quad
 F_i\in \Ncal(X_i^\Box)  \text{ with } X_1 \cap X_2=\varnothing.
 \end{equation}
 
-Given a map $K \in \Kspace_0$,
+Given a map \new{$K \in \Kspace_j$,
 % with the property that $K(X) \in \Ncal(X^\Box)$ for all $X \in \Pcal_0$,
-we define the $\Fcal_0(\Gcal)$ norms (for $\Gcal = G, \tilde G$) by
+we define the $\Fcal_j(\Gcal)$} norms (for $\Gcal = G, \tilde G$) by
+\new{
 \begin{align}
-\|K\|_{\Fcal_0(G)}        &= \sup_{X\in\Ccal_0} \ggen_0^{-f_0(a, X)} \|K(X)\|_{G_0} \\
-\|K\|_{\Fcal_0(\tilde G)} &= \sup_{X\in\Ccal_0}
-\ggen_0^{-f_0(a, X)} \|K(X)\|_{\tilde G_0^{\sf t}},
-\end{align}
+\|K\|_{\Fcal_j(G)}        &= \sup_{X\in\Ccal_j} \ggen_j^{-f_j(a, X)} \|K(X)\|_{G_j} \\
+\|K\|_{\Fcal_j(\tilde G)} &= \sup_{X\in\Ccal_j}
+\ggen_j^{-f_j(a, X)} \|K(X)\|_{\tilde G_j^{\sf t}},
+\end{align}}
 with
+\new{
 \begin{equation}
     \label{e:f0def}
-    f_0 (\amain, X)
+    f_j (\amain, X)
     =
-    \amain (|X|-2^d)_+
+    \amain (|X|_j-2^d)_+
     =
     \begin{cases}
-    a (|X| - 2^d)
-    & \text{if } |X| > 2^d   \\
+    a (|X|_j - 2^d)
+    & \text{if } |X|_j > 2^d   \\
     0
-    & \text{otherwise}.
+    & \text{otherwise}
     \end{cases}
 \end{equation}
+(recall that $|X|_j$ is the number of $j$-blocks in $X$).}
 Here $a$ is a small constant;  its value is discussed below \cite[\eqref{step-e:T0dom}]{BS-rg-step}.
-The $\Wcal_0 = \Wcal_0(\ggen_0, \volume)$ norm is then defined by
+The \new{$\Wcal_j = \Wcal_j(\ggen_j, \volume)$} norm is then defined by
+\new{
 \begin{align}
 \label{e:9Kcalnorm}
-\|K\|_{\Wcal_0}
+\|K\|_{\Wcal_j}
   &=
   \max
   \Big\{
-  \|K \|_{\Fcal_0(G)},\,
-  \ggen_0^{9/4}
-  \|K \|_{\Fcal_0(\tilde{G})}
+  \|K \|_{\Fcal_j(G)},\,
+  \ggen_j^{9/4}
+  \|K \|_{\Fcal_j(\tilde{G})}
   \Big\}.
-\end{align}
+\end{align}}
 % Since this definition depends on $\ggen_0$ and the
 % volume $\Lambda$, we sometimes write $\Wcal_0 = \Wcal_0(\ggen_0, \Lambda)$.
 % The following proposition uses Proposition~\ref{prop:K0bd} to obtain a bound on the $\Wcal_0$ norm

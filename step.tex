@@ -64,7 +64,8 @@ for the construction of $K_+$ in terms of $\Ipt$ such that \eqref{e:IcircKsimp} 
 
 Recall \eqref{e:block-fact}.
 For $B\in\Bcal$, let $\delta I(B) = \theta I(B) - \Ipt(B)$ and extend this to $X\in\Pcal$
-by imposing block-factorization. Then by associativity of the circle product,
+by imposing block-factorization.
+\new{Then by associativity of the circle product and \eqref{e:binom}},
 \begin{align}
 (I \circ K)(\Lambda)
 	&= \sum_{X\in\Pcal} (\Ipt + \delta I)^{\Lambda \setminus X} K(X) \nonumber \\
@@ -290,6 +291,7 @@ bound \cite[\eqref{IE-e:CLbd}]{BS-rg-IE}, proved there only for the $s=0$ versio
 $\ell_j^\oldrm$ of \refeq{ell-old},
 remains true with the stronger
 choice of norm parameter $\ell_j$ that permits arbitrary $s \ge 0$.
+\new{Recall that the sequence $\chicCov_j$ was defined in \eqref{e:chicCov-def}.}
 %The sequence $\chicCov_j$ in the lemma is called $\chi_j$ in \cite{BS-rg-IE}, but here we use
 %a different symbol to avoid confusion with the susceptibility.
 % In its statement, the bounded sequence $\chicCov_j$ decays exponentially after the
@@ -309,9 +311,9 @@ so that
 \end{equation}
 \end{lemma}
 
-\commentbw{Lemma 4.2.1: I want to say recall the defn of $\vartheta$ but I think I
-already noted that you don't give that defn.  I think you need it and
-need to recall it here.}
+% \commentbw{Lemma 4.2.1: I want to say recall the defn of $\vartheta$ but I think I
+% already noted that you don't give that defn.  I think you need it and
+% need to recall it here.}
 
 \begin{proof}[Proof of Lemma~\ref{lem:Cbd}]
 For $d=4$, insertion of \refeq{scaling-estimate} into \refeq{Phinorm} gives
@@ -342,8 +344,9 @@ We insert \refeq{mass-decay} and the definition $\ell_j=\ell_0 L^{-j-s(j-j_m)_+}
     \|C_j\|_{\Phi_{j}(\ell_j)} \leq c_0 \ell_0^{-2} L^{-2(j - j_m)_+}
     .
 \end{equation}
-By definition of $\chicCov_j$ (see \cite[Section~\ref{IE-sec:frp}]{BS-rg-IE}),
-$L^{-2(j - j_m)_+}$ is bounded by a multiple of $\chicCov_j$.
+\new{By definition of $\chicCov_j$,
+% (see \cite[Section~\ref{IE-sec:frp}]{BS-rg-IE}),
+$L^{-2(j - j_m)_+}$ is bounded by a multiple of $\chicCov_j$.}
 It thus suffices to choose $\ell_0$ large enough that
 $\ell_0^2 \ge c_0 \ellconst^{-1}$.
 \end{proof}
@@ -1182,7 +1185,7 @@ the $\gamma_{\alpha,\beta}$ that arise in its proof obey
 \end{equation}
 For $|\alpha\cup\beta| = 0$,
 the first term of \refeq{cgamobs-L} obeys the bound of \refeq{gamalphbet},
-since $d_\varnothing'=d+1$.
+since $d_\bulk'=d+1$.
 For the remaining cases, $d_\alpha'=2$ for $j < j_x$ and $d_\alpha'=1$ for $j \ge j_x$.
 For $|\alpha\cup\beta| = 2$, the assumption that $F_1,F_2,F_1F_2$ have no component
 in $\Ncal_{0x}$ unless $j \geq j_x$ means that we are in the case with no

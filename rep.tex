@@ -246,8 +246,11 @@ where the sum is over finite sequences $\vec y$ over $\Lambda\sqcup\bar\Lambda$,
 and $\psi^{\vec y} = \psi_{y_1} \ldots \psi_{y_p}$
 % (in some canonical order)
 when $\vec y = (y_1, \ldots, y_p)$. Here, we take the sequences to be ordered in
-some \new{fixed but arbitrary} fashion. When $\vec y = \varnothing$ is the empty sequence,
-$F_\varnothing$ denotes the $0$-degree (bosonic) part of $F$.
+some \new{fixed but arbitrary} fashion.
+\new{We let $F^\zero$ denote the $0$-degree (bosonic) part of $F$, given by the
+coefficient $F_{\vec y}$ with $\vec y = \varnothing$ the empty sequence.}
+% When $\vec y = \varnothing$ is the empty sequence,
+% $F_\varnothing$ denotes the $0$-degree (bosonic) part of $F$.
 
 In order to apply the results of \cite{BBS-saw4-log,BBS-saw4,BSTW-clp}, we require
 smoothness of the coefficients $F_{\vec y}$ of $F$.  For Theorem~\ref{thm:mr}(i,ii),
@@ -256,18 +259,18 @@ a $p$-dependent number of derivatives for the analysis of $\xi_p$.
 In either case, we let $p_\Ncal$ denote the desired degree of smoothness.
 We will discuss this further in Section~\ref{sec:newnorm}.
 
-We let $\Ncal^\varnothing$ be the algebra of even forms with sufficiently smooth coefficients
-and we let $\Ncal^\varnothing(X) \subset \Ncal^\varnothing$ be the sub-algebra of even forms only depending on fields
-in $X$. Thus, for $F \in \Ncal^\varnothing(X)$, the sum in \eqref{e:FinNcal} runs over sequences $\vec y$
-over $X \sqcup \bar X$.
+We let $\Ncal^\bulk$ be the algebra of even forms with sufficiently smooth coefficients
+and we let $\Ncal^\bulk(X) \subset \Ncal^\bulk$ be the sub-algebra of even forms only depending on fields
+in $X$. Thus, for $F \in \Ncal^\bulk(X)$, the sum in \eqref{e:FinNcal} runs over sequences
+$\vec y$ over $X \sqcup \bar X$.
 
 Now let $F = (F_j)_{j \in J}$ be a finite collection of even forms
 indexed by a set $J$
-and write $F_\varnothing = (F_{\varnothing,j})_{j \in J}$.
+and write $F^\zero = (F^\zero_j)_{j \in J}$.
 Given a $C^\infty$ function $f : \R^J \to \C$, we define
-$f(F)$ by its Taylor expansion about $F_\varnothing$:
+$f(F)$ by its Taylor expansion about $F^\zero$:
 \begin{equation}
-f(F) = \sum_\alpha \frac{1}{\alpha!} f^{(\alpha)}(F_\varnothing) (F - F_\varnothing)^\alpha.
+f(F) = \sum_\alpha \frac{1}{\alpha!} f^{(\alpha)}(F^\zero) (F - F^\zero)^\alpha.
 \end{equation}
 The summation terminates as a finite sum, since $\psi_x^2 = \bar\psi_x^2 = 0$
 by anticommutativity.
@@ -320,9 +323,9 @@ For $F = f(\phi, \bar\phi) \psi^{\vec y}$, we let
 \end{equation}
 where $\xi$ is a new boson field, $\eta = (2\pi i)^{-1/2} d\xi$ a new fermion field,
 and $\bar\xi, \bar\eta$ are the corresponding conjugate fields.
-We extend $\theta$ to all $F \in \Ncal^\varnothing$ by linearity
+We extend $\theta$ to all $F \in \Ncal^\bulk$ by linearity
 and define the convolution operator $\Ex_C\theta$ by letting
-$\Ex_C\theta F \in \Ncal^\varnothing$ denote the Gaussian expectation of $\theta F$ with respect
+$\Ex_C\theta F \in \Ncal^\bulk$ denote the Gaussian expectation of $\theta F$ with respect
 to $(\xi, \bar\xi, \eta, \bar\eta)$, with $\phi,\phib,\psi,\psib$ held fixed.
 
 \subsubsection{Integral representation of the two-point function}
