@@ -85,13 +85,22 @@ $I_N$ and $V_N$,
 \frac{1}{m^2}
 	+
 \frac{1}{m^4 |\Lambda|}
+\new{
 \frac
-{-\nu_N |\Lambda| + D^2 W_N(0; \1, \1) + D^2 K_N(0; \1, \1)}
-{e^{u_N |\Lambda|} (1 + W_N(0) + K_N(0))}.
+{-\nu_N |\Lambda| + D^2 W^0_N(0; \1, \1) + D^2 K^0_N(0; \1, \1)}
+{(1 + W^0_N(0) + K^0_N(0))}}.
 \end{equation}
-\commentbw{(3.1.4):  dropped label $\bulk$ for bulk on RHS.  Also we now know
-that $D^2 W = 0$.  There should be no $e^{u_N |\Lambda|}$ in denominator.}
-Using Lemma~\ref{lem:deriv-norm-bds} with $s = 0$ (recall \eqref{e:elldef-zz}),
+% \commentbw{(3.1.4):  dropped label $\bulk$ for bulk on RHS.  Also we now know
+% that $D^2 W = 0$.  There should be no $e^{u_N |\Lambda|}$ in denominator.}
+
+\new{
+\begin{rk}
+In fact, with a bit more work it can be shown that $D^2 W^0_N(0; \1, \1) = 0$.
+However, we will not need this here.
+\end{rk}}
+
+Using Lemma~\ref{lem:deriv-norm-bds} with $s = 0$ (recall \eqref{e:elldef-zz})
+\new{together with \eqref{e:WKbd}},
 we see that the last term vanishes as $N\to\infty$ leaving
 % By \eqref{e:Wbilinbd}, \eqref{e:VKbds}, and \eqref{e:VjKjDj-hat} with $s = 0$
 % in the choice of $\ell_j$, the second term vanishes as $N\to\infty$ leaving
@@ -541,7 +550,7 @@ with the  constant depending on $L$ and $s$.
 \begin{proof}
 % [Proof of Proposition~\ref{prop:R} (assuming Theorem~\ref{thm:step-mr-fv})]
 Let $D_{\sigma_0}$ and $D_{\sigma_x}$ denote differentiation with respect to
-$\sigma_0$ and $\sigma_x$, respectively, evaluated with fields set to $0$.
+$\sigma_0$ and $\sigma_x$, respectively, evaluated with \new{all} fields set to $0$.
 By \eqref{e:generating-fn}, \eqref{e:ZNINKN}, and \eqref{e:IcircKnew},
 \begin{equation}
 \lbeq{GK}
@@ -549,13 +558,16 @@ By \eqref{e:generating-fn}, \eqref{e:ZNINKN}, and \eqref{e:IcircKnew},
 	=
 \frac{1}{2} (q_{0,N} + q_{x,N})
 	+
-\frac{D^2_{\sigma_0\sigma_x}K_{N}}{1 + K_{N}}
+\new{
+\frac{D^2_{\sigma_0\sigma_x}K^0_{N}}{1 + K^0_{N}}
 	-
-\frac{\left(D_{\sigma_0}K_{N}\right) \left(D_{\sigma_x}K_{N}\right)}{(1 + K_{N})^2},
+\frac{\left(D_{\sigma_0}K^0_{N}\right) \left(D_{\sigma_x}K^0_{N}\right)}{(1 + K^0_{N})^2}},
 \end{equation}
-\commentbw{(3.2.3): missing explanation of why no $W$ on RHS}
+% \commentbw{(3.2.3): missing explanation of why no $W$ on RHS}
 where the quantities on the right-hand side are evaluated at
 $(\tilde m^2, \tilde g_0, \tilde\gamma_0, \tilde\nu_0, \tilde z_0)$.
+\new{No $W_N$ term appears on the right-hand side since $W_N$ is quadratic in $\Vp$
+and $\Vp$ has no constant part.}
 By \eqref{e:WKbd} and Lemma~\ref{lem:deriv-norm-bds}, the last two terms
 vanish as $N \to \infty$ leaving
 \begin{equation}
