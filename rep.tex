@@ -35,14 +35,14 @@ Such representations were also studied, e.g.\ in \cite{BFS82,Dynk83}. A comprehe
 reference is \cite{FFS92}.
 
 In the opposite direction, one can consider studying walks by looking for corresponding
-spin systems. In \cite{Genn72}, \new{de Gennes} argued that the self-avoiding walk
+spin systems. In \cite{Genn72}, de Gennes argued that the self-avoiding walk
 corresponds to an $n \to 0$ ``limit'' of the $O(n)$ spin model and used this
 to predict the values of its critical exponents. Since $n$ is
 the number of components of the spins, the $O(n)$ model is only well-defined
 for $n$ a positive integer and it is not clear how to make sense of such a limit.
 
 Parisi and Sourlas \cite{PS80} and McKane \cite{McKa80} discovered
-an alternative approach to the predictions of \new{de Gennes}. They argued that the weakly
+an alternative approach to the predictions of de Gennes. They argued that the weakly
 self-avoiding walk two-point function could be represented as the two-point function
 for a version of the $|\varphi|^4$ model, involving boson and
 fermion fields (we discuss these below). The formal appearance of $n = 0$ quantities
@@ -60,7 +60,7 @@ theory.
 \label{sec:ntozero}
 
 The heuristic relation between self-avoiding walk and spin systems is most easily
-treated on \new{finite} graphs $\graph$ of degree $3$
+treated on \new{finite graphs $\graph$} of degree $3$
 % (e.g.\ the \new{hexagonal} lattice),
 so we restrict our attention to this case. In
 addition, we consider a version of the $O(n)$ model with spins normalized to
@@ -77,7 +77,7 @@ normalization is necessary for the study of the $n\to\infty$ limit.
 \end{rk}
 
 The \emph{high-temperature expansion} of a spin system is based on the expansion of the
-Boltzmann weight \new{$e^{-\beta H}$} around $\beta = 0$.
+Boltzmann weight $e^{-\beta H}$ about $\beta = 0$.
 For the $O(n)$ spin model with interaction $J_{xy} = \1_{x\sim y}$,
 \new{neglecting higher-order terms in the high-temperature expansion yields}
 % an uncontrolled approximation of this expansion yields
@@ -119,7 +119,7 @@ Z
 \sum_{L_1,\ldots,L_N}
 \beta^{|L_1|+\cdots+|L_N|},
 \end{equation}
-where the inner sum is over all collections of \new{disjoint} loops $L_1, \ldots, L_N$
+where the inner sum is over all collections of disjoint loops $L_1, \ldots, L_N$
 and permutations of these loops are accounted for by the $1/N!$ factor.
 Notice that the final expression on the right-hand side of \eqref{e:loop-partition}
 makes sense for any $N$ and equals $1$ when $n = 0$.
@@ -358,13 +358,13 @@ We define the differential forms:
 	&=
 \sum_{|e|=1} (\nabla^e \tau)_x^2.
 \end{align}
-\new{The forms $\tau_x$ are special due to
-the following remarkable property
+\new{The forms $\tau_x$ are special due to the following remarkable property
 of the super-expectation (see \cite{BIS09}):
 \begin{equation}
 \label{e:tau-iso}
 \int e^{-S_A} F(\tau) = F(0).
-\end{equation}}
+\end{equation}
+Note that \eqref{e:self-normal} is an immediate consequence of this fact.}
 Recall \eqref{e:Udef-pos} and define
 \begin{equation}
 \label{e:Vdef2}
@@ -457,6 +457,7 @@ $\chi_N \to \chi$ uniformly on compact subsets of this domain.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Outline}
+\label{sec:outline}
 
 \new{
 Chapter~\ref{sec:rg} introduces the elements and formalism of the renormalisation
@@ -466,35 +467,39 @@ However, we proceed differently from these papers in two regards.
 Firstly, in Section~\ref{sec:weights} we employ a different choice of norm weights
 from that used in \cite{BS-rg-step}, where the renormalisation group map was constructed.
 However, these new weights cannot be used with the same norms as in \cite{BS-rg-step}.
-In Chapter~\ref{sec:RGstep}, we explain how to overcome this obstacle by a new choice of norm
-and we provide a detailed verification that the estimates on the renormalisation group map
-are improved by this choice. The result is summarized as
-Theorem~\ref{thm:step-mr-fv}, which is the first main technical achievement of this
-thesis. The improved estimates that we obtain are required for the proof of
-Theorem~\ref{thm:mr}(iii) even with $\gamma = 0$. This result first appeared in \cite{BSTW-clp}.
+In Chapter~\ref{sec:RGstep}, we explain how to overcome this obstacle by a new choice
+of norm and we provide a detailed verification that the estimates on the renormalisation
+group map are improved by this choice. The result is summarized as Theorem~\ref{thm:step-mr-fv},
+which is the first main technical achievement of this thesis. The improved estimates
+that we obtain are required for the proof of Theorem~\ref{thm:mr}(iii), even when we
+take $\gamma = 0$. This result first appeared in \cite{BSTW-clp}.
 
 Secondly, the initial coordinates for the renormalisation group that we define in
 Section~\ref{sec:initIK} involve a non-trivial error coordinate that captures
 the self-attraction term in the WSAW-SA and the $\gamma (\nabla |\phi_x|^2)^2$
 term in the generalized $|\varphi|^4$ model. This error coordinate is coupled to
-the parameters $g_0, \nu_0, z_0$ and a tailored version of the implicit function
+the parameters $g_0, \nu_0, z_0$ and a version of the implicit function
 theorem is consequently required for the identification of critical parameters
-such that the renormalisation group is initialized on its stable manifold when
+such that the renormalisation group can be initialized on its stable manifold when
 $\gamma \ne 0$. The construction of these critical parameters is carried out in
 Chapter~\ref{sec:RGflow} and the result is summarized as Theorem~\ref{thm:rhatflow}.
 This is the second main technical achievement of this thesis and is required for the
 proof of Theorem~\ref{thm:mr} with $\gamma \ne 0$. This result first appeared in
-\cite{BSW-saw-sa} for $n = 0$; here, we have extended it to all $n \ge 0$.
+\cite{BSW-saw-sa} for $n = 0$; here, we have extended it to all $n \ge 0$. However,
+we restrict our attention to the more interesting case of $\gamma_0 \ge 0$ for
+simplicity.
 
-In Chapter~\ref{sec:chi-G-xi}, we discuss the proof of Theorem~\ref{thm:mr} assuming
-Theorem~\ref{thm:step-mr-fv} and Theorem~\ref{thm:rhatflow} hold. The proof of
+Prior to proving Theorems~\ref{thm:step-mr-fv} and \ref{thm:rhatflow}, we show in
+Chapter~\ref{sec:chi-G-xi} how to obtain Theorem~\ref{thm:mr} as a consequence of
+these results. The proof of
 Theorem~\ref{thm:mr}(iii) is a novel contribution even when $\gamma = 0$. The case
-$\gamma = 0$ first appeared in \cite{BSTW-clp} and the extension to $\gamma \ne 0$.
+$\gamma = 0$ first appeared in \cite{BSTW-clp}.
 
 The proof of Theorem~\ref{thm:mr}(i)--(ii) was previously obtained for $\gamma = 0$
 by Bauerschmidt, Brydges, and Slade in \cite{BBS-saw4-log,BBS-phi4-log,BBS-saw4}
-and Slade and Tomberg in \cite{ST-phi4}. The extension to $\gamma \ne 0$ involves,
-in addition to the proof of Theorem~\ref{thm:rhatflow}, a change of variables result
+and Slade and Tomberg in \cite{ST-phi4}. The extension to $\gamma \ne 0$ is an adaptation
+of the proofs found in those papers but involves
+(in addition to the proof of Theorem~\ref{thm:rhatflow}) a change of variables result
 stated and proved in Section~\ref{sec:nuztilde}.
 
 We conclude in Chapter~\ref{sec:conclusion} with a discussion of some open problems.

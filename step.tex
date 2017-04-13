@@ -65,7 +65,7 @@ for the construction of $K_+$ in terms of $\Ipt$ such that \eqref{e:IcircKsimp} 
 Recall \eqref{e:block-fact}.
 For $B\in\Bcal$, let $\delta I(B) = \theta I(B) - \Ipt(B)$ and extend this to $X\in\Pcal$
 by imposing block-factorization.
-\new{Then by associativity of the circle product and \eqref{e:binom}},
+\new{Then by \eqref{e:binom} and associativity of the circle product},
 \begin{align}
 (I \circ K)(\Lambda)
 	&= \sum_{X\in\Pcal} (\Ipt + \delta I)^{\Lambda \setminus X} K(X) \nonumber \\
@@ -292,10 +292,10 @@ norm is
     L^{(|\alpha|_1+  |\beta|_1)j}
     |\nabla_x^{\alpha} \nabla_y^{\beta} C_{j;x,y}|.
 \end{equation}
-The purpose of the $\Phi_j(\ell_j)$ norm is to measure the size of typical
-fluctuation fields $\varphi$ with covariance $C_j$.
-The parameter $\ell_j$ is chosen so that the norm of a typical field should
-be $O(1)$, independent of $j$.
+% The purpose of the $\Phi_j(\ell_j)$ norm is to measure the size of typical
+% fluctuation fields $\varphi$ with covariance $C_j$.
+% The parameter $\ell_j$ is chosen so that the norm of a typical field should
+% be $O(1)$, independent of $j$.
 
 The following lemma justifies our choice of $\ell_j$
 in \refeq{elldef}, by showing that the
@@ -341,14 +341,14 @@ For $d=4$, insertion of \refeq{scaling-estimate} into \refeq{Phinorm} gives
 With $s=0$ in \eqref{e:elldef}, \refeq{Phinorm2} gives
 $\|C_j\|_{\Phi_{j}(\ell_j)} \le c_L \ell_0^{-2} (1+m^2L^{2(j-1)})^{-k}$
 for an $L$-dependent constant $c_L$ (whose value may now change from line to line).
-The estimate \cite[\eqref{IE-e:CLbd}]{BS-rg-IE}
-is wasteful in that it does not make any use of the factor
-$(1+m^2L^{2(j-1)})^{-k}$ in \refeq{Phinorm2} beyond extraction of the factor $\chicCov_j$.
-% To improve this, we now allow arbitrary $s$, and fix the arbitrary parameter $k$ to be $k=s+1$
-% in \refeq{Phinorm2} so that
-% \begin{equation} \label{e:mass-decay}
-% (1 + m^2 L^{2j})^{-k} \le c_L L^{-2(s+1)(j - j_m)_+}.
-% \end{equation}
+% The estimate \cite[\eqref{IE-e:CLbd}]{BS-rg-IE} is wasteful in that it does not make
+% any use of the factor $(1+m^2L^{2(j-1)})^{-k}$ in \refeq{Phinorm2} beyond extraction
+% of the factor $\chicCov_j$.
+% % To improve this, we now allow arbitrary $s$, and fix the arbitrary parameter $k$ to be $k=s+1$
+% % in \refeq{Phinorm2} so that
+% % \begin{equation} \label{e:mass-decay}
+% % (1 + m^2 L^{2j})^{-k} \le c_L L^{-2(s+1)(j - j_m)_+}.
+% % \end{equation}
 We insert \refeq{mass-decay} and the definition $\ell_j=\ell_0 L^{-j-s(j-j_m)_+}$ from
 \refeq{elldef} into
 \eqref{e:Phinorm2}, to conclude that there exists $c_0 = c_0(s, L)$ such that
