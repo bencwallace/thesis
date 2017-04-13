@@ -15,18 +15,23 @@
 \usepackage[left=1.25in,right=1in,bottom=1in,top=1in]{geometry}
 
 %%%% Drafthead %%%%
-\def\draft{}
+% \def\draft{}
 \def\committee{}
-\newcommand{\new}[1]{{#1}}
 \ifdefined\draft
 	\usepackage{drafthead}
 	\usepackage[notref]{showkeys}
 	\renewcommand*\showkeyslabelformat[1]{\normalfont\tiny\ttfamily(#1)}
-	\renewcommand{\new}[1]{{\blue #1}}
 \else
 	\ifdefined\committee
 		\usepackage{drafthead}
 	\fi
+\fi
+
+\def\newOn{}
+\ifdefined\newOn
+	\newcommand{\new}[1]{{\blue #1}}
+\else
+	\newcommand{\new}[1]{{#1}}
 \fi
 
 %%%% Line spacing %%%%

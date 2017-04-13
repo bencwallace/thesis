@@ -930,13 +930,21 @@ and this system is solved by $(\nu_0^c(m^2, g_0, 0), z_0^c(m^2, g_0, 0))$
 for any (small) $m^2, g_0 \geq 0$.
 Local solutions for $\gamma_0 \neq 0$ can then be
 constructed using a version of the implicit function theorem from \cite{LS14}
-that allows for the continuous but non-smooth behaviour of $K^+_0$ in $\gamma_0$
-(recall that we are setting $K^+_0 = 0$ for $\gamma_0 \le 0$).
+that allows for the continuous but non-smooth behaviour of $K^+_0$ in $\gamma_0$.
+% (recall that we are setting $K^+_0 = 0$ for $\gamma_0 \le 0$).
 In order to obtain global solutions with certain desired regularity properties
 (needed in the next section), we make use of Proposition~\ref{prop:IFT},
 which is based on the implicit function theorem from \cite{LS14}.
 
-Recall that $D(\delta, r)$ was defined in \eqref{e:Ddef}.
+Recall that $D(\delta, r)$ was defined in \eqref{e:Ddef}
+\new{by
+\begin{equation}
+\lbeq{Ddef-re}
+D(\delta, r)
+	=
+\{ (w, x, y) \in [0, \delta]^3 : y \leq r(x) \}.
+\end{equation}
+}
 
 \begin{prop}
 \label{prop:nuzhat}
