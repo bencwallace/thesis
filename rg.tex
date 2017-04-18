@@ -1,11 +1,11 @@
-\chapter{Renormalisation group method}
+\chapter{Renormalization group method}
 \label{sec:rg}
 
 \setcounter{footnote}{0}
 
 \renewcommand{\pm}{+}					% only consider \gamma \ge 0
 
-This chapter introduces the elements of the renormalisation group method of
+This chapter introduces the elements of the renormalization group method of
 developed in the series of papers
 \cite{BS-rg-norm,BS-rg-loc,BBS-rg-pt,BS-rg-IE,BS-rg-step} and
 applied in \cite{BBS-phi4-log,BBS-saw4-log,BBS-saw4,ST-phi4}. We will often
@@ -117,7 +117,7 @@ for any integer $n \ge 0$,
 \section{Reformulation of the problem}
 \label{sec:reformulation}
 
-In preparation for our application of the renormalisation group, we write the
+In preparation for our application of the renormalization group, we write the
 two-point function and susceptibility in terms of appropriate perturbations of
 Gaussian measures.
 
@@ -134,7 +134,7 @@ We discuss the role of $(m^2, z_0)$ some more in Remark~\ref{rk:crit-params}.
 % \begin{rk}
 % The parameters $(m^2, z_0)$ are arbitrary for now, but a careful choice of
 % parameters must be made in order to study the stable manifold of the
-% renormalisation group. We will construct such parameters for $\gamma_0 \ne 0$
+% renormalization group. We will construct such parameters for $\gamma_0 \ne 0$
 % as perturbations of their $\gamma_0 = 0$ counterparts in Section~\ref{sec:nuztilde}.
 % \end{rk}
 
@@ -416,7 +416,7 @@ It follows that
 Z_N =
 \Ex_{C_N}\theta \circ \Ex_{C_{N-1}}\theta \circ \ldots \circ \Ex_{C_1}\theta Z_0.
 \end{equation}
-We define the \emph{renormalisation group map} $Z_j \mapsto Z_{j+1}$ by
+We define the \emph{renormalization group map} $Z_j \mapsto Z_{j+1}$ by
 \begin{equation}
 \label{e:rgmapZ}
 Z_{j+1} = \Ex_{C_{j+1}} \theta Z_j, \quad j < N.
@@ -433,7 +433,7 @@ The key to understanding
 $Z_N$ for large $N$ is the careful choice of \emph{critical} initial conditions
 $(m^2, z_0)$ \new{in \eqref{e:gg0}. % In a sense, these initial conditions, which are functions of
 Viewed as functions of $(g, \gamma, \nu)$, these define a stable manifold for the
-dynamical system induced by the renormalisation group map
+dynamical system induced by the renormalization group map
 and the fixed point for this stable manifold is the Gaussian measure with covariance
 $(1 + z_0) (-\Delta + m^2)^{-1}$. However, we have scaled out the factor $1 + z_0$}
 in the change of variables performed in the proof of Proposition~\ref{prop:intrep}.
@@ -692,7 +692,7 @@ the $T_\phi$ seminorm was defined in terms of the pairing \eqref{e:pairing}.
 
 Control of the $T_\phi$ seminorm is needed for all values of
 $\phi$ in order to obtain control of the convolution \eqref{e:rgmapZ} sufficient
-for iteration of the renormalisation group map.
+for iteration of the renormalization group map.
 This will be discussed further in Section~\ref{sec:newnorm}.
 
 For now, we turn our attention to the special case of the $T_0$ seminorm. Recalling
@@ -765,7 +765,7 @@ This will be discussed in Section~\ref{sec:newnorm}.
 
 \begin{rk}
 The parameter $\ggen_j$ is used to overcome what \cite{Abde07} refers to as the
-``fibred norm problem''. Briefly, the norms used to control the renormalisation
+``fibred norm problem''. Briefly, the norms used to control the renormalization
 group trajectory must be decoupled from the initial parameter $g_0$. Ultimately,
 we will set $\ggen_0 = g_0$ (see Remark~\ref{rk:ggen}).
 \end{rk}
@@ -818,7 +818,7 @@ orthogonal matrices $T$.
 
 \section{Perturbative coordinate}
 
-As mentioned in Section~\ref{sec:rg-intro}, one of Wilson's key insights was that the renormalisation
+As mentioned in Section~\ref{sec:rg-intro}, one of Wilson's key insights was that the renormalization
 group could be well-approximated by a finite-dimensional dynamical system. In this
 section, we reformulate Wilson's insights in terms of the covariance decomposition
 and define a subspace on which this finite-dimensional system will evolve.
@@ -901,7 +901,7 @@ that are Euclidean-invariant and supersymmetric are constant multiples of
 When $n \ge 1$, these are the only marginal and relevant monomials that are
 Euclidean-invariant and $O(n)$-invariant (see \cite{BBS-rg-pt}).
 
-The marginal and relevant contributions to the evolution of the renormalisation group
+The marginal and relevant contributions to the evolution of the renormalization group
 will be tracked by a \emph{local polynomial} (a sum of local monomials) of the form
 $\sum_{y\in\Lambda} \Vc_y$, where (recall \eqref{e:obs-couple})
 \begin{align}
@@ -1194,7 +1194,7 @@ The circle product is commutative, associative, and has the identity element
 0,	& X \ne \varnothing
 \end{cases}.
 \end{equation}
-We track $Z_j$ using \emph{renormalisation group coordinates}
+We track $Z_j$ using \emph{renormalization group coordinates}
 $u_j, q_{0,j}, q_{x,j} \in \R$,
 $I_j, K_j : \Pcal_j \to \Ncal$ such that
 \begin{equation}
@@ -1364,7 +1364,7 @@ is the main accomplishment of \cite{BS-rg-step}.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Renormalisation group step}
+\section{Renormalization group step}
 % from saw-sa and clp
 \label{sec:step}
 
@@ -1420,7 +1420,7 @@ and}
 % when $j$ is sufficiently large depending on $m$. We
 write $\chicCovgen_j = \chicCov_j(\mgen^2)$.
 Given constants $\alpha > 0$ and $C_\DV > 0$, we define the (finite-volume)
-renormalisation group domains
+renormalization group domains
 \begin{align}
 \label{e:DVdef}
 \DV_j
@@ -1448,7 +1448,7 @@ is denoted by $R_+$:
     R_+(\Vp,K) = \Vc_+(\Vp,K) -\Vpt(\Vp).
 \end{equation}
 
-The renormalisation group map depends also on the mass $m^2$ through its
+The renormalization group map depends also on the mass $m^2$ through its
 dependence on the covariance $C_{j+1}$.
 We let $\Igen_j(\mgen^2)$ be the neighbourhood of $\mgen^2$ defined by
 \begin{equation}
@@ -1544,7 +1544,7 @@ that the proof holds for $s > 1$ is carried out in Chapter~\ref{sec:RGstep}.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Renormalisation group flow}
+\section{Renormalization group flow}
 % mainly from saw-sa
 
 % \commentbw{Sec 2.8: you make reference to \cite{BBS-saw4-log} but this is for
@@ -1556,16 +1556,16 @@ that the proof holds for $s > 1$ is carried out in Chapter~\ref{sec:RGstep}.
 % is true.  According to p.34 Thms 2.7.1 and 2.8.1 are the main results of the thesis.
 % I think you should be repeating this loud and clear and also saying where the proof is.}
 
-Theorem~\ref{thm:step-mr-fv} allows us to perform a single renormalisation group step.
+Theorem~\ref{thm:step-mr-fv} allows us to perform a single renormalization group step.
 % The estimate \eqref{e:DKkappa} expresses a contractive property of the map $K_+$.
 The fact that $K_+$ is a contraction, \new{as expressed by the estimate \eqref{e:DKkappa},
 was used in \cite[Proposition~\ref{log-prop:flow-flow}]{BBS-saw4-log} to construct}
 \emph{critical} initial conditions
-$\nu_0^c, z_0^c$ depending on $(m^2, g_0, n)$ such that the renormalisation
+$\nu_0^c, z_0^c$ depending on $(m^2, g_0, n)$ such that the renormalization
 group map can be iterated indefinitely \new{(this was shown for $n = 0$ in
 \cite{BBS-saw4-log} but extends without difficulty to $n \ge 1$ as discussed
 in \cite{BBS-phi4-log})}. This
-results in a sequence $(\Vc_j, K_j)$ generated by the renormalisation group map, hence
+results in a sequence $(\Vc_j, K_j)$ generated by the renormalization group map, hence
 whose elements lie in the domains $\domRG_j$. This was proved with $s = 0$,
 but the sequence itself is independent of $s$ and continues to exist in our
 setting. \new{In particular}, Theorem~\ref{thm:step-mr-fv} shows that this sequence satisfies
@@ -1599,11 +1599,11 @@ appeared in \cite{BSW-saw-sa}; the proof for $n \ge 1$ is new to this thesis.}
 
 % In \cite[Proposition~\ref{log-prop:flow-flow}]{BBS-saw4-log}, it was shown
 % that for $\gamma_0 = 0$ there exist \emph{critical} initial conditions
-% $\nu_0^c, z_0^c$ depending on $(m^2, g_0, n)$ such that the renormalisation
+% $\nu_0^c, z_0^c$ depending on $(m^2, g_0, n)$ such that the renormalization
 % group map can be iterated indefinitely \new{(this was shown for $n = 0$ in
 % \cite{BBS-saw4-log} but extends without difficulty to $n \ge 1$ as discussed
 % in \cite{BBS-phi4-log})}. This
-% results in a sequence $(\Vc_j, K_j)$ generated by the renormalisation group map, hence
+% results in a sequence $(\Vc_j, K_j)$ generated by the renormalization group map, hence
 % whose elements lie in the domains $\domRG_j$. This was proved with $s = 0$,
 % but the sequence itself is independent of $s$ and continues to exist in our
 % setting. However, Theorem~\ref{thm:step-mr-fv} shows that this sequence satisfies
@@ -1677,16 +1677,16 @@ mass in the covariance $C$ and $g_0 = g (1 + z_0^c)^2$.
 
 The notion of a polymer used in Section~\ref{sec:rgcoord} was introduced in
 \cite{GK71}. The utility of multi-scale decompositions of a singular covariance
-as a sum of regular covariances in the context of the renormalisation group was
+as a sum of regular covariances in the context of the renormalization group was
 probably first clearly articulated in \cite{BCGNOPS78}. The use of expansions of
 the form \eqref{e:circ} together with carefully weighted norms to achieve rigorous
-control of the renormalisation group map goes back to Brydges and Yau \cite{BY90}.
+control of the renormalization group map goes back to Brydges and Yau \cite{BY90}.
 This method was extended by Dimock and Hurd, see e.g.\ \cite{DH92,DH00}. Finite-range
 decompositions were first used with this method to study a continuum model in
 \cite{MS00}, following a suggestion of Brydges. \emph{Lattice} covariance
 decompositions were constructed in \cite{BGM04} and used in \cite{MS08} to study
-the renormalisation group flow for the supersymmetric field theory corresponding
+the renormalization group flow for the supersymmetric field theory corresponding
 to WSAW; however, critical exponents were not computed. Critical exponents for
 a version of weakly self-avoiding walk on a hierarchical lattice were computed
-by a renormalisation group method in \cite{BI03c,BI03d} (such hierarchical models
+by a renormalization group method in \cite{BI03c,BI03d} (such hierarchical models
 go back to \cite{Dyso69}).

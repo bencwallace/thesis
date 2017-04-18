@@ -85,17 +85,17 @@ predicted exactly by studying models only roughly resembling these materials
 % is in their very coarse properties.
 
 In the 1970's Ken Wilson, inspired by ideas in quantum field theory, gave an
-explanation of universality in terms of the \emph{renormalisation group}:
+explanation of universality in terms of the \emph{renormalization group}:
 an abstract dynamical system that acts on models by averaging out their fine details.
 This idea was enormously successful and led to his 1982 Nobel Prize.
 
-% Nevertheless, a mathematically rigorous understanding of the renormalisation group
+% Nevertheless, a mathematically rigorous understanding of the renormalization group
 % remains incomplete, although 
 \new{There have been several rigorous implementations of
 Wilson's ideas, some of which will be mentioned in Section~\ref{sec:rg-intro}.}
 % they tend to be highly technical and restricted to somewhat special classes of models.
 The main purpose of this thesis is to discuss extensions of a
-rigorous renormalisation group method of Bauerschmidt, Brydges, and Slade that have
+rigorous renormalization group method of Bauerschmidt, Brydges, and Slade that have
 been used to study the
 critical behaviour of a generalized $|\varphi|^4$ model and a model of weakly
 self-avoiding walk with contact self-attraction (WSAW-SA). We will introduce these
@@ -108,7 +108,7 @@ Section~\ref{sec:gibbs}, we briefly introduce some of the basic ideas of equilib
 statistical physics. The models we study are defined on graphs, which we
 discuss in Section~\ref{sec:graphs}. We define spin systems, in particular
 the $|\varphi|^4$ model, in Section~\ref{sec:spins}. Critical behaviour and
-the renormalisation group is probably most easily explained in the context of such
+the renormalization group is probably most easily explained in the context of such
 systems, and we give an informal description of these ideas in Section~\ref{sec:crit}.
 In Section~\ref{sec:walks},
 we introduce the WSAW-SA and discuss its critical behaviour. This gives us all
@@ -1196,7 +1196,7 @@ susceptibility and correlation length of the $1$-component model were identified
 \cite{Hara87,HT87}.
 
 Recently, Bauerschmidt, Brydges, and Slade \cite{BS-rg-norm,BS-rg-loc,BBS-rg-pt,BS-rg-IE,BS-rg-step}
-have developed a renormalisation group
+have developed a renormalization group
 method for studying the $n$-component $|\varphi|^4$ model in $4$ dimensions; this
 method works for any $n$ and, in a certain sense, extends to models of
 self-interacting walks, interpreted as $n = 0$ (more on this in
@@ -1212,7 +1212,7 @@ of walks \cite{BSW-saw-sa}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{The renormalisation group}
+\subsection{The renormalization group}
 \label{sec:rg-intro}
 
 In \cite{Kada66}, Leo Kadanoff considered a coarse-graining procedure for
@@ -1220,12 +1220,12 @@ studying the Ising model in which disjoint
 blocks in $\Zd$ of side $L \ll \xi$ are replaced by single spins. He argued
 that spins inside such blocks are so strongly correlated that the model
 obtained by making this replacement should behave approximately like an Ising
-model with a new (``renormalised'') interaction.
+model with a new (``renormalized'') interaction.
 
 At the critical point, $\xi = \infty$ and the transformation
 $T$ can be iterated indefinitely resulting in a dynamical system on a space
 of models: the one-parameter semigroup $(T^j)_{j\in\Z_+}$ is known as the
-\emph{renormalisation group}\footnote{The name renormalisation \emph{group}
+\emph{renormalization group}\footnote{The name renormalization \emph{group}
 is attributed by Wilson in \cite{Wils71I} to the work of Gell-Mann and Low
 \cite{GML54}. The relationship between these two approaches is discussed in
 \cite{JoLa75}.}. This was the basis for Ken Wilson's
@@ -1247,17 +1247,17 @@ leave the long-range behaviour of the models invariant. Consequently, critical m
 lying in the same orbit would belong to
 the same universality class. Thus, such models should possess the same critical
 exponents and scaling limit. Moreover, this scaling limit should be invariant
-under the action of the renormalisation group, i.e.\ it should arise as a fixed
+under the action of the renormalization group, i.e.\ it should arise as a fixed
 point of this dynamical system. Therefore, the set of points that flow towards it
 form its stable manifold.
 
 In addition to these rather broad statements regarding the nature of universality
 and scaling limits, Wilson demonstrated that critical exponents could be computed
-by a careful analysis of the asymptotics of the renormalisation group near its
+by a careful analysis of the asymptotics of the renormalization group near its
 fixed points. He claimed that such an analysis could be performed by approximating
 this infinite-dimensional dynamical system by a \emph{finite-dimensional} system
 spanned by certain \emph{marginal and relevant} directions. The remaining \emph{irrelevant}
-directions would contract under the action of the renormalisation group.
+directions would contract under the action of the renormalization group.
 
 By analyzing this finite-dimensional approximation, Wilson determined that there
 is a unique hyperbolic fixed point (in the terminology of dynamical systems theory)
@@ -1273,24 +1273,24 @@ from the fact that this fixed point is not hyperbolic.
 There are many difficulties in making Wilson's ideas rigorous \new{and several
 different approaches exist.} % many approaches have been tried.
 For instance, a rigorous implementation of Kadanoff's \emph{block-spin}
-renormalisation group was developed in \cite{GK85}
+renormalization group was developed in \cite{GK85}
 \new{and used to show that $\eta = 0$ if $d = 4$ and $n = 1$.
 This was also shown independently % Related ideas can also be found
 in \cite{FMRS87}, using related ideas. By extensions to the block-spin approach,
 logarithmic corrections to mean-field scaling in this case were identified in
-\cite{HT87}.} This thesis concerns the renormalisation group method of Bauerschmidt,
+\cite{HT87}.} This thesis concerns the renormalization group method of Bauerschmidt,
 Brydges, and Slade \cite{BS-rg-norm,BS-rg-loc,BBS-rg-pt,BS-rg-IE,BS-rg-step},
 which we will discuss further in Chapter~\ref{sec:rg}.
 
 \begin{example}
-Let us mention how renormalisation group ideas can be used to prove a version
+Let us mention how renormalization group ideas can be used to prove a version
 of the classical central limit theorem. This idea appears in \cite{JoLa01,KS07}
 and has been extended to prove stable limit laws in \cite{LiSinai14}.
 
 Let $X_n$ denote a sequence of independent identically distributed continuous random
 variables with mean $0$ and variance $1$. For such $X_n$, let
 $Y_n = 2^{-n/2} (X_1 + \cdots + X_{2^n})$. Then the map $Y_n \mapsto Y_{n+1}$
-induces a renormalisation group map $R$ on density functions
+induces a renormalization group map $R$ on density functions
 given by a convolution and rescaling of the form $(R f)(x) = \sqrt2 (f * f)(\sqrt2 x)$.
 It is easily verified that the standard Gaussian density $f_*$ is a fixed point of $R$
 (in fact, it is the unique fixed point).
@@ -1714,11 +1714,11 @@ d > 4,
 \vspace{1cm}
 \subsubsection{Dimension $d = 4$}
 
-\new{Weakly self-avoiding walk on a hierarchical lattice was studied by a renormalisation
+\new{Weakly self-avoiding walk on a hierarchical lattice was studied by a renormalization
 group method in \cite{BEI92,BI03c,BI03d,GI92}.}
 As discussed in Section~\ref{sec:rg-intro}, Bauerschmidt, Brydges, and Slade have
 recently made great strides in the case $d = 4$ \new{on the Euclidean lattice} using
-a \new{new} renormalisation group method.
+a \new{new} renormalization group method.
 % One of the novelties of this method, besides its applicability to multi-component
 % spin systems, is that it can be used to study the WSAW via an integral representation
 % we will discuss in Section~\ref{sec:intrep}.
