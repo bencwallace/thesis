@@ -927,8 +927,8 @@ The expectation with respect to the corresponding Gibbs measure will
 be denoted $\langle\cdot\rangle_{\gcc,\gamma,\nu,N}$.
 % We recover \eqref{e:phi4-Ham} when $\gamma = 0$ and $\graph = \Lambda_N$.
 
-\commentbw{Explain why this is an ``irrelevant perturbation'' of the usual
-model.}
+% \commentbw{Explain why this is an ``irrelevant perturbation'' of the usual
+% model.}
 
 Following \eqref{e:Ising-suscept} and \eqref{e:Ising-2pt}, we define the
 two-point function and susceptibility by
@@ -1692,7 +1692,11 @@ $\gamma \ne 0$. Exceptions include \cite{HH17,Uelt02}.
 
 \begin{rk}
 \label{rk:bubble}
-Define the free \emph{bubble diagram} to be the $\ell^2(\Zd)$ norm of the massive
+Define the free \emph{bubble diagram}\footnote{\newer{This is sometimes represented by
+a graph consisting of two edges (forming a ``bubble'') joining a vertex labeled $0$
+(denoting the origin) to an unlabeled vertex (denoting an arbitrary point $x$ that
+is summed over $\Zd$).}}
+to be the $\ell^2(\Zd)$ norm of the massive
 Green function $x \mapsto C_{0x}$. Thus, by
 \eqref{e:greendef}, if $z = 2 d / (m^2 + 2 d)$, then
 \begin{equation}
@@ -1749,19 +1753,45 @@ studied.
 
 \subsubsection{Phase diagram}
 
-Let $d \ge 2$. The predicted behaviour of self-avoiding walk with attraction is discussed
-in \cite{Vand98} \newer{and a discussion of some rigorous results can be found in \cite{Holl09}.}
-When $\gamma$ reaches the $\theta$-curve in Figure~\ref{fig:theta-curve}, it is predicted
-that the value of $\nubar$ changes discontinuously to $\nubar_\theta = 4/7$ if $d = 2$
-and $\nubar_\theta = 1/2$ if $d \ge 3$. The predicted values for $\nubar$
-in the other regions of the phase diagram are shown in the figure.
-In particular, for $\gamma > g$, the WSAW-SA is expected to undergo a collapse transition ($\nubar = 0$).
-This has recently been shown for a model of prudent self-avoiding walk with self-attraction
-in \cite{PT16}.
+Let $d \ge 2$.
+\newer{The predicted behaviour of self-avoiding walk with attraction is discussed in
+\cite{Vand98,Holl09}. The predicted phase diagram and critical exponents
+are shown in
+Figure~\ref{fig:theta-curve}. Generally speaking, one might expect the self-attraction
+to dominate when $\gamma > g$ (so that the walk typically remains in a bounded region,
+i.e.\ $\nubar = 0$)
+and the self-avoidance to dominate when $\gamma < g$ (so that the walk behaves like
+the WSAW). A proof of the former statement appears in \cite{HK01a} for a related model in
+$d = 1$. The authors of \cite{HK01a} also conjecture that $\nubar = 1/(d+1)$ for
+$g = \gamma$ and this is established for $d = 1$ in \cite{HKK02}.}
 
-\commentbw{$\gamma > \beta$ compare to pure self-attraction (Brydges-Slade, Bolthausen-Schmock, Ooono). $\gamma=\beta$ conjecture by van der Hofstad-Klenke.
-$\gamma < \beta$ walk in ball. Theta-curve/two transitions due to tricritical
-behaviour.}
+\newer{However, a \emph{collapse transition} is believed to occur as $\gamma$ crosses the
+$\theta$-curve $g \mapsto \gamma_\theta(g)$.
+% For $\gamma$ above the $\theta$-curve but below the line $\gamma = g$,  $\nubar = 1/d$, which reflects the fact that a typical walk of length $T$ curls into a
+% ball of volume approximately $T$.
+The value of the critical exponent $\nubar$ for $\gamma = \gamma_\theta$ is predicted to
+be given by $\nubar_\theta = 4/7$ if $d = 2$ and $\nubar_\theta = 1/2$ if
+$d \ge 3$ (with a logarithmic correction in $d = 3$). However, very little is known
+rigorously about the $\theta$-curve. Only recently has a collapse transition been shown
+to exist for a model of \emph{prudent} self-avoiding walk with self-attraction \cite{PT16}.
+
+% The predicted values for $\nubar$
+% in the other regions of the phase diagram are shown in the figure.
+% In particular, for $\gamma > g$, the WSAW-SA is expected to undergo a collapse transition
+% ($\nubar = 0$).
+
+\begin{rk}
+De Gennes \cite{Genn75} related the behaviour of polymers in poor solvents to the
+tricritical behaviour of certain spin systems. Such systems typically possess two
+phase transitions: one corresponding to each critical point on a line of critical
+points and one corresponding to a \emph{tricritical} point given by an endpoint of
+this line. Moreover, the upper-critical dimension for such a system is $d = 3$.
+For the WSAW-SA, the tricritical point should be given by $(g, \gamma_\theta, \nu_c)$
+\end{rk}}
+
+% \commentbw{$\gamma > g$ compare to pure self-attraction (Brydges-Slade, Bolthausen-Schmock, Ooono). $\gamma=g$ conjecture by van der Hofstad-Klenke.
+% $\gamma < g$ walk in ball. Theta-curve/two transitions due to tricritical
+% behaviour.}
 
 \begin{figure}
 \centering

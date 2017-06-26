@@ -438,6 +438,8 @@ dynamical system induced by the renormalization group map
 and the fixed point for this stable manifold is the Gaussian measure with covariance
 $(1 + z_0) (-\Delta + m^2)^{-1}$. However, we have scaled out the factor $1 + z_0$}
 in the change of variables performed in the proof of Proposition~\ref{prop:intrep}.
+\newer{Indeed, for $n \ge 1$ the exponent in \eqref{e:Grep-pos} contains the term
+$-\frac12 (1 + z_0) \sum_{x\in\Lambda} \varphi_x \cdot [(-\Delta + m^2) \varphi]_x$.}
 % This factor plays a similar role to the standard deviation $\sigma$ in the central
 % limit theorem: rather than a unique fixed point, there is a one-parameter family
 % of fixed points.
@@ -446,18 +448,9 @@ The construction of the critical parameters for $\gamma \ne 0$ will be carried
 out in Section~\ref{sec:nuztilde} and is a key step in the proof of Theorem~\ref{thm:mr}.
 \end{rk}
 
-\commentbw{Giuliani: p. 40, remark 2.3.2: at first reading, I found the scaling
-slightly confusing. Can the author recall here what is the dressed propagator at
-dominant order in the \emph{original}, un-rescaled, variables?}
-
-% \commentbw{Rk 2.3.2: don't understand the point here.  Doesn't (2.3.7) simply define
-% a map on any $F$ by Gaussian convolution (so any integrable $Z_j$ is a suitable
-% input?)?  It sounds like you are saying that there is a map because
-% $m^2$ and $z_0$ are free parameters, and this seems to be not at all the point.
-% I find the subsequent paragraphs a bit confusing because you say that
-% $z_0$ has to be carefully (uniquely) fixed but then you say it indexes a
-% 1-parameter family of fixed points which makes it sound like you can vary
-% it if you wish.}
+% \commentbw{Giuliani: p. 40, remark 2.3.2: at first reading, I found the scaling
+% slightly confusing. Can the author recall here what is the dressed propagator at
+% dominant order in the \emph{original}, un-rescaled, variables?}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1031,27 +1024,37 @@ $z \tau_\Delta + y \tau_{\nabla\nabla}$ by $(z + y) \tau_\Delta$.}
 $\Vpt : \Vcalp\to\Vcalc$ of the form
 \begin{equation}
 \label{e:Vpt-def}
-\Vpt(\Vp) = \Ex_C\theta\Vp - P(\Vp)
+\Vpt(\Vp) = \Ex_C\theta\Vp - P
 \end{equation}
-is defined so as to maintain the approximation
+\newer{with $P$ a local polynomial quadratic in $\Vp$ chosen so that the approximation
 \begin{equation}
 \label{e:Zapprox}
-Z_j \approx e^{-\Vc_j(\Lambda)} (1 + W_j),
+Z_j \approx e^{-\Vc_j(\Lambda)} (1 + W_j)
 \end{equation}
-where $P(\Vp)$ is a local polynomial and $W_j = W_j(\Vp)$ is non-local.
-Both are explicitly defined and second-order in $V_j$;
-in fact, by \cite[\eqref{IE-e:W-logwish}]{BS-rg-IE},
+can be maintained with $W_j = W_j(\Vp)$ a non-local remainder. Precisely,
+\begin{equation}
+P_x = \Loc_x \Ex_C\theta W_j(\Vp, x) +
+	\frac12 \Loc_x [\Ex_C\theta (V_x V(\Lambda))
+		- (\Ex_C\theta V_x)(\Ex_C\theta V(\Lambda))]
+\end{equation}
+and
+\begin{equation}
+W_j(\Vp, x) = \frac12 (1 - \Loc_x)
+	[\Ex_{w_j}\theta (V_x V(\Lambda))
+		- (\Ex_{w_j}\theta V_x) (\Ex_{w_j}\theta V(\Lambda))].
+\end{equation}
+By \cite[\eqref{IE-e:W-logwish}]{BS-rg-IE},
 \begin{equation}
 \label{e:Wbilinbd}
 \|W_j\|_{T_0(\ell_j)}
 	\le
 O(\chicCov_j) \|V\|_\Vcal^2,
-\end{equation}
+\end{equation}}
 where $\chicCov_j$ is a parameter that decays exponentially above the mass scale
 and will be discussed in Section~\ref{sec:step}. We will elaborate on the  meaning
 of \eqref{e:Zapprox} in Section~\ref{sec:rgcoord}.
 
-\commentbw{Define $P$ and $W$}
+% \commentbw{Define $P$ and $W$}
 
 The map $\Vpt$ depends on the covariance $C$ and
 in practice we set $C = C_{j+1}$ and obtain a sequence $\Vpt = \Vc_{\mathrm{pt},j+1}$.
@@ -1362,11 +1365,11 @@ K_{j+1} =  K_+(\Vp_j, K_j)
 \end{equation}
 is the main accomplishment of \cite{BS-rg-step}.
 
-\commentbw{Comment on the fact that $V$ contains marginal/relevant terms
-while $K$ contains the irrelevant perturbation. However, irrelevance is
-an asymptotic notion; a ``large'' irrelevant term could still have a
-significant effect on the flow of coupling constants in the first few
-steps. This is why we take $\gamma$ small.}
+% \commentbw{Comment on the fact that $V$ contains marginal/relevant terms
+% while $K$ contains the irrelevant perturbation. However, irrelevance is
+% an asymptotic notion; a ``large'' irrelevant term could still have a
+% significant effect on the flow of coupling constants in the first few
+% steps. This is why we take $\gamma$ small.}
 
 % \begin{rk}
 % We will sometimes view $K^+_0$ as a function of parameters $(g_0, \gamma_0, \nu_0, z_0)$.
@@ -1695,8 +1698,8 @@ Note that in the statement of Theorem~\ref{thm:rhatflow} flow, we have evaluated
 the domains $\domRG_j$ at $(\mgen^2, \ggen_0) = (m^2, g_0)$, where $m^2$ is the
 mass in the covariance $C$ and $g_0 = g (1 + z_0^c)^2$.
 
-\commentbw{Giuliani: p. 53, Theorem 2.8.1: what is an explicit bound on the radius
-of convergence for the variable $\gamma$?}
+% \commentbw{Giuliani: p. 53, Theorem 2.8.1: what is an explicit bound on the radius
+% of convergence for the variable $\gamma$?}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
