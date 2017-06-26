@@ -259,7 +259,8 @@ a $p$-dependent number of derivatives for the analysis of $\xi_p$.
 In either case, we let $p_\Ncal$ denote the desired degree of smoothness.
 We will discuss this further in Section~\ref{sec:newnorm}.
 
-We let $\Ncal^\bulk$ be the algebra of even forms with sufficiently smooth coefficients
+We let $\Ncal^\bulk$ be the algebra of even forms \newer{(i.e.\ differential forms of
+even degree)} with sufficiently smooth coefficients
 and we let $\Ncal^\bulk(X) \subset \Ncal^\bulk$ be the sub-algebra of even forms only depending on fields
 in $X$. Thus, for $F \in \Ncal^\bulk(X)$, the sum in \eqref{e:FinNcal} runs over sequences
 $\vec y$ over $X \sqcup \bar X$.
@@ -312,7 +313,7 @@ Moreover, if $F$ is a degree-$0$ form, then
 There is also a version of Wick's theorem for fermions. In particular,
 \begin{equation}
 \label{e:wick-fermion2}
-\int e^{-S_A} \psi_x \psib_x = C_{xx}.
+\int e^{-S_A} \newer{\psib_x \psi_x} = C_{xx}.
 \end{equation}
 \new{Proofs of the statements \eqref{e:self-normal}--\eqref{e:wick-fermion2}
 can be found in \cite{BIS09}.}
@@ -459,7 +460,6 @@ $\chi_N \to \chi$ uniformly on compact subsets of this domain.
 \section{Outline}
 \label{sec:outline}
 
-\new{
 Chapter~\ref{sec:rg} introduces the elements and formalism of the renormalization
 group method developed in \cite{BS-rg-norm,BS-rg-loc,BBS-rg-pt,BS-rg-IE,BS-rg-step}.
 However, we proceed differently from these papers in two regards.
@@ -478,7 +478,9 @@ Secondly, the initial coordinates for the renormalization group that we define i
 Section~\ref{sec:initIK} involve a non-trivial error coordinate that captures
 the self-attraction term in the WSAW-SA and the $\gamma (\nabla |\phi_x|^2)^2$
 term in the generalized $|\varphi|^4$ model. This error coordinate is coupled to
-the parameters $g_0, \nu_0, z_0$ and a version of the implicit function
+% the parameters $g_0, \nu_0, z_0$
+\newer{a coordinate capturing the relevant and marginal directions}
+and a version of the implicit function
 theorem is consequently required for the identification of critical parameters
 such that the renormalization group can be initialized on its stable manifold when
 $\gamma \ne 0$. The construction of these critical parameters is carried out in
@@ -503,7 +505,6 @@ of the proofs found in those papers but involves
 stated and proved in Section~\ref{sec:nuztilde}.
 
 We conclude in Chapter~\ref{sec:conclusion} with a discussion of some open problems.
-}
 
 % \commentbw{General comments:
 

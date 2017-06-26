@@ -184,8 +184,18 @@ argument as in Section~\ref{sec:nu0z0c}.
 However, estimates on $K_0$ (which are straightforward
 to obtain by a more careful computation of \eqref{e:logLaplace}) indicate that
 $K_0$ is not of order $g_0^3$, which is required to invoke Theorem~\ref{thm:flow-flow}.
-Thus, an extension of the ideas in \cite{BBS-rg-flow} would be needed to study this
-case.
+\newer{In fact, $K_0 = O(g_0^{3/2})$.
+
+One approach to overcoming this issue is the
+following: First, note that the irrelevant error coordinate should shrink by a factor
+of $O(L^{-1})$ after each renormalisation group step. Thus, after the first
+$j_g = \lfloor \log_L g^{-3/2} \rfloor$ steps, we should be left with an error
+coordinate $K_j$ of size $O(g^3)$. A careful analysis of the renormalization group
+flow is required during these first $j_g$ steps. However, the flow of coupling
+constants in this regime need only be computed to first order; indeed, any second-order
+terms would in any case be of higher order than the error term, which is of order $g^{3/2}$.}
+% Thus, an extension of the ideas in \cite{BBS-rg-flow} would be needed to study this
+% case.
 
 \begin{rk}
 Similarly, it is possible to re-cast the strictly self-avoiding walk as a
@@ -249,6 +259,33 @@ of a hierarchical model of weakly self-avoiding walk is recovered by inversion o
 the Laplace transform. This requires control over the two-point function in a
 sector of the complex plane larger than what has been achieved here on the
 Euclidean lattice.
+
+\newer{
+\subsection{The broken symmetry phase}
+
+The authors of \cite{GI95} studied weakly self-avoiding walk on a four-dimensional
+hierarchical lattice in the phase $\nu < \nu_c$. They employed a renormalisation
+group method similar to the one used here in order to show that the walks exhibit
+a broken supersymmetry in this phase. In particular, they showed that the asymptotic
+density
+\begin{equation}
+\rho(g, \nu)
+	=
+\lim_{x\to\infty} \lim_{N\to\infty}
+\frac{1}{G_{0,N}(g, 0, \nu)}
+\int_0^\infty c_{N,T}(0) \lt^x_T \; dT
+\end{equation}
+of such a walk is non-zero for $\nu = \nu_c - \varepsilon$ with $\varepsilon > 0$ small.
+More precisely, they obtained logarithmic corrections to mean-field behaviour given
+by
+\begin{equation}
+\rho(g, \nu_c - \varepsilon)
+	\sim
+C \varepsilon (\log \varepsilon^{-1})^{1/2}.
+\end{equation}
+It would be of great interest to see whether an analogue of this fact could be proved
+on the Euclidean lattice by an extension of the method described in this thesis.
+}
 
 % Other: tricritical model, WSAW-SA phase diagram, magnetization, other correlation
 % functions, scaling limits

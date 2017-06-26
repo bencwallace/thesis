@@ -65,9 +65,9 @@ there is a \emph{critical point} $(T_c(P_c), P_c)$ at which this difference vani
 
 \begin{figure}
 \centering
-\label{fig:liquid-vapour}
 \includegraphics{liquid_vapour}
 \caption[Phase diagram of $\rm H_2 O$]{The phase diagram of $\rm H_2 O$}
+\label{fig:liquid-vapour}
 \end{figure}
 
 Since statistical mechanics deals with extremely large, complicated systems of
@@ -834,6 +834,7 @@ of the two-point function, which will be discussed further in Section~\ref{sec:c
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Infinite-volume spin systems}
+\label{sec:inf-vol}
 
 A broad distinction can be made between \emph{first-order} phase transitions
 in which the free energy has discontinuous first derivative with respect to an
@@ -926,6 +927,9 @@ The expectation with respect to the corresponding Gibbs measure will
 be denoted $\langle\cdot\rangle_{\gcc,\gamma,\nu,N}$.
 % We recover \eqref{e:phi4-Ham} when $\gamma = 0$ and $\graph = \Lambda_N$.
 
+\commentbw{Explain why this is an ``irrelevant perturbation'' of the usual
+model.}
+
 Following \eqref{e:Ising-suscept} and \eqref{e:Ising-2pt}, we define the
 two-point function and susceptibility by
 \begin{equation}
@@ -995,13 +999,21 @@ a ``macroscopic length scale'' of the model; it is a measure of the largest scal
 which spins are very strongly correlated. Based on the above discussion, we expect $\xi$
 to diverge as $\nu\downarrow\nu_c$. This divergence is one of the
 key features of critical behaviour.
+
 A related quantity is the \emph{correlation length of order $p$}, defined by
 \begin{equation}
 \label{e:clp-spins}
 \xi_p(g, \gamma, \nu; n)
 	=
-\left(\frac{\sum_{x\in\Zd} |x|^p G_x(g, \gamma, \nu; n)}{\chi(g, \gamma, \nu; n)}\right)^{1/p}.
+\left(\frac{\sum_{x\in\Zd}
+|x|^p G_x(g, \gamma, \nu; n)}{\chi(g, \gamma, \nu; n)}\right)^{1/p}.
 \end{equation}
+\newer{An analysis of $\xi_p$ requires less control over the behaviour of the
+two-point function than would be needed to study the correlation length $\xi$.
+Our main result includes a statement regarding the critical behaviour of
+$\xi_p$ in $d = 4$.}
+% \commentbw{Explain why we introduce $\xi_p$: easier to control/interpretation
+% for walks.}
 
 \begin{rk}
 There is a simple heuristic relationship between $\xi$ and $\xi_p$. Suppose that
@@ -1019,7 +1031,7 @@ $G_x(g, \gamma, \nu; n) \approx C |x|^{-\alpha}$ and so
 	\approx
 C \sum_{|x| \le \xi} |x|^{-(\alpha-p)}
 	\approx
-C \xi(g, \gamma, \nu; n)^{-(\alpha-p)}.
+\newer{C \xi(g, \gamma, \nu; n)^{d-\alpha+p}.}
 \end{equation}
 It follows then from the definition that
 \begin{equation}
@@ -1299,11 +1311,14 @@ In this context, a subsequential version of the central limit theorem follows if
 we can show that, for all $f$
 in an appropriate space of densities, $R^n f$ converges to the fixed point $f_*$.
 A local version of this statement can be proved by analyzing the linearized map
-$D R(f_*)$. A computation shows that this map has eigenfunctions given by Hermite
-polynomials with eigenvalues $\lambda_i = 2^{1-i/2}$ for integers $i \ge 0$.
-In this context, the directions corresponding to the eigenfunctions with $i \ge 3$
-are irrelevant; the relevant directions correspond to $i = 0, 1$ and $i = 2$ corresponds
-to a marginal direction.
+$D R(f_*)$. A computation shows that this map has \newer{eigenfunctions $H_i$} given by Hermite polynomials with eigenvalues $\lambda_i = 2^{1-i/2}$ for integers $i \ge 0$.
+\newer{The relevant directions (in the sense of Wilson's renormalization group) are those
+in which the linearized map is expanding; thus, the relevant subspace is spanned in
+this case by $H_0$ and $H_1$. Similarly, the irrelevant directions are spanned by $H_i$
+with $i > 2$ while $H_2$ spans the marginal subspace.}
+% In this context, the directions corresponding to the eigenfunctions with $i \ge 3$
+% are irrelevant; the relevant directions correspond to $i = 0, 1$ and $i = 2$ corresponds
+% to a marginal direction.
 \end{example}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1322,7 +1337,7 @@ denote by $\dwalks_n$ the collection of such walks and set $\dwalks = \bigcup_n 
 We say that $\omega$ is \emph{self-avoiding} if $\omega_i \ne \omega_j$
 for all $i \ne j$. Let $\Scal_n$ denote the collection of $n$-step
 self-avoiding walks with $\omega_0 = 0$. We equip $\Scal_n$ with the uniform
-measure for each $n$. This gives us a simple model of a linear polymer in a good
+\newer{measure $\mu_n$} for each $n$. This gives us a simple model of a linear polymer in a good
 solution. The self-avoidance constraint models the excluded volume effect of matter.
 
 The uniform measures do not form a consistent family due to the possibility of ``traps''.
@@ -1338,10 +1353,10 @@ since there are no self-avoiding walks extending $\omega$, the sum on the
 right-hand side of \eqref{e:consistent-fam} is $0$.
 
 \begin{figure}[!htb]
-\label{fig:trap}
 \centering
 \includegraphics{trapped_compact}
 \caption[Trapped SAW]{A trapped self-avoiding walk}
+\label{fig:trap}
 \end{figure}
 
 As a result, there is no straightforward way to apply the usual methods of stochastic processes
@@ -1433,8 +1448,8 @@ at $x \in \vertices$ by
 \label{e:LTx-def}
 \lt^x_T = \int_0^T \1_{X(S)=x} \; dS.
 \end{equation}
-Note that $\lt^x_T$ is almost surely finite. We define the \emph{intersection
-local time}
+% Note that $\lt^x_T$ is almost surely finite.
+We define the \emph{intersection local time}
 \begin{equation}
 \label{e:ITdef}
 I_T
@@ -1477,9 +1492,9 @@ We will refer to the case $\gamma = 0$ as the \emph{weakly self-avoiding walk} (
 
 \begin{figure}[!htb]
 \centering
-\label{fig:domb-joyce}
 \includegraphics{domb-joyce-black-small.png}
 \caption[Discrete WSAW]{Monte Carlo simulation of discrete-time WSAW with 100 steps}
+\label{fig:domb-joyce}
 \end{figure}
 
 We let
@@ -1598,7 +1613,13 @@ ensemble}). When $\nu$ reaches the critical point
 \begin{equation}
 \nu_c = \nu_c(\gcc, \gamma) = \inf\{ \nu : \chi(\gcc,\gamma,\nu) < \infty \},
 \end{equation}
-we expect the susceptibility to diverge, which is indicative of a phase transition.
+we expect the susceptibility to diverge. \newer{The susceptibility is a partition
+function for walks with $\nu$ playing the role of an external field, so this
+divergence would be indicative of a phase transition as discussed in
+Section~\ref{sec:inf-vol}. In a certain sense \cite{DKY14,GI95}, paths in the
+$\nu > \nu_c$ phase
+should scale as geodesics while paths for $\nu < \nu_c$ should be space-filling.}
+
 In fact, it is not clear how to show that $\chi(\gcc,\gamma,\nu_c) = \infty$ in
 general, although this can be established for $\gamma = 0$
 (see \cite[Lemma~\ref{log-lem:csub}]{BBS-saw4-log}). For $\gamma$
@@ -1641,7 +1662,7 @@ the predicted exponents given above.
 
 It is not immediately clear how to make sense of the supercritical regime
 ($\nu < \nu_c$ for WSAW-SA).
-However, the authors of \cite{LSW04} considered SAW on a discretized bounded
+However, the authors of \cite{DKY14} considered SAW on a discretized bounded
 planar domain. They showed that the scaling limit of supercritical
 SAW conditioned to start and end on the boundary of the domain is space-filling
 (their results extend to all dimensions $d \ge 2$).
@@ -1715,7 +1736,7 @@ d > 4,
 \subsubsection{Dimension $d = 4$}
 
 \new{Weakly self-avoiding walk on a hierarchical lattice was studied by a renormalization
-group method in \cite{BEI92,BI03c,BI03d,GI92}.}
+group method in \cite{BEI92,BI03c,BI03d,GI95}.}
 As discussed in Section~\ref{sec:rg-intro}, Bauerschmidt, Brydges, and Slade have
 recently made great strides in the case $d = 4$ \new{on the Euclidean lattice} using
 a \new{new} renormalization group method.
@@ -1729,14 +1750,18 @@ studied.
 \subsubsection{Phase diagram}
 
 Let $d \ge 2$. The predicted behaviour of self-avoiding walk with attraction is discussed
-in \cite{Vand98}.
+in \cite{Vand98} \newer{and a discussion of some rigorous results can be found in \cite{Holl09}.}
 When $\gamma$ reaches the $\theta$-curve in Figure~\ref{fig:theta-curve}, it is predicted
 that the value of $\nubar$ changes discontinuously to $\nubar_\theta = 4/7$ if $d = 2$
 and $\nubar_\theta = 1/2$ if $d \ge 3$. The predicted values for $\nubar$
-in the other regions of the phase diagram are shown in the figure. In particular, for
-$\gamma > \beta$, the WSAW-SA is expected to undergo a collapse transition ($\nubar = 0$).
+in the other regions of the phase diagram are shown in the figure.
+In particular, for $\gamma > g$, the WSAW-SA is expected to undergo a collapse transition ($\nubar = 0$).
 This has recently been shown for a model of prudent self-avoiding walk with self-attraction
 in \cite{PT16}.
+
+\commentbw{$\gamma > \beta$ compare to pure self-attraction (Brydges-Slade, Bolthausen-Schmock, Ooono). $\gamma=\beta$ conjecture by van der Hofstad-Klenke.
+$\gamma < \beta$ walk in ball. Theta-curve/two transitions due to tricritical
+behaviour.}
 
 \begin{figure}
 \centering

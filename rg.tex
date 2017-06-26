@@ -5,7 +5,7 @@
 
 \renewcommand{\pm}{+}					% only consider \gamma \ge 0
 
-This chapter introduces the elements of the renormalization group method of
+This chapter introduces the elements of the renormalization group method
 developed in the series of papers
 \cite{BS-rg-norm,BS-rg-loc,BBS-rg-pt,BS-rg-IE,BS-rg-step} and
 applied in \cite{BBS-phi4-log,BBS-saw4-log,BBS-saw4,ST-phi4}. We will often
@@ -154,7 +154,7 @@ For any $y\in\Lambda$, we define the polynomials
 \Vp^+_{0,y}
 	=
 g_0\tau_y^2 + \nu_0 \tau_y + z_0 \tau_{\Delta,y}
-- f_0 \sigma_0 \1_{y=x}
+- f_0 \sigma_0 \newer{\1_{y=0}}
 - f_x \sigma_x \1_{y=x},
 	\quad
 U^+_y
@@ -203,7 +203,8 @@ right-hand side of \eqref{e:exp-conv}.
 Recall that the Gaussian convolution operator $\Ex_C\theta$ was defined in
 Section~\ref{sec:forms}. We define a test function $\1: \Lambda_N \to \R$ by
 $\1_y=1$ for all $y$. If $F$ is a sufficiently smooth function \new{of the
-bosonic fields} (a $0$-degree form), let
+bosonic fields} \newer{(i.e.\ $F = F(\phi, \phib)$ if $n = 0$ and $F = F(\varphi)$
+if $n \ge 1$)}, let
 % and write $D^2 Z_N^\zero(0; \1, \1)$ for the directional derivative of
 % $Z_N^\zero$ evaluated with all fields equal to $0$ and
 % % at $(\phi, \bar\phi) = (0, 0)$,
@@ -444,6 +445,10 @@ in the change of variables performed in the proof of Proposition~\ref{prop:intre
 The construction of the critical parameters for $\gamma \ne 0$ will be carried
 out in Section~\ref{sec:nuztilde} and is a key step in the proof of Theorem~\ref{thm:mr}.
 \end{rk}
+
+\commentbw{Giuliani: p. 40, remark 2.3.2: at first reading, I found the scaling
+slightly confusing. Can the author recall here what is the dressed propagator at
+dominant order in the \emph{original}, un-rescaled, variables?}
 
 % \commentbw{Rk 2.3.2: don't understand the point here.  Doesn't (2.3.7) simply define
 % a map on any $F$ by Gaussian convolution (so any integrable $Z_j$ is a suitable
@@ -870,6 +875,17 @@ This leads us to compare the dimension of a monomial with the dimension $d$ of t
 lattice. We say that $M_x$ is \emph{relevant} if $[M_x] < d$, \emph{marginal} if
 $[M_x] = d$, and \emph{irrelevant} if $[M_x] > d$.
 
+\newer{\begin{rk}
+Note that the self-attraction term $|\nabla \tau_x|^2$ is irrelevant in the above
+sense. However, this does not mean that the inclusion of this term should not have
+an effect on the critical behaviour of the model under consideration (indeed, this
+term is responsible for the phase diagram Figure~\ref{fig:theta-curve}). Rather,
+the notion of irrelevance is an asymptotic one: irrelevant terms are only ``unimportant''
+at very large scales $j$. At scale $j = 0$ there is little difference
+between a relevant and an irrelevant term, which is why we must choose the coefficient
+$\gamma$ of $|\nabla\tau_x|^2$ to be small in Theorem~\ref{thm:mr}.
+\end{rk}}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Local field polynomials}
@@ -1034,6 +1050,8 @@ O(\chicCov_j) \|V\|_\Vcal^2,
 where $\chicCov_j$ is a parameter that decays exponentially above the mass scale
 and will be discussed in Section~\ref{sec:step}. We will elaborate on the  meaning
 of \eqref{e:Zapprox} in Section~\ref{sec:rgcoord}.
+
+\commentbw{Define $P$ and $W$}
 
 The map $\Vpt$ depends on the covariance $C$ and
 in practice we set $C = C_{j+1}$ and obtain a sequence $\Vpt = \Vc_{\mathrm{pt},j+1}$.
@@ -1344,6 +1362,12 @@ K_{j+1} =  K_+(\Vp_j, K_j)
 \end{equation}
 is the main accomplishment of \cite{BS-rg-step}.
 
+\commentbw{Comment on the fact that $V$ contains marginal/relevant terms
+while $K$ contains the irrelevant perturbation. However, irrelevance is
+an asymptotic notion; a ``large'' irrelevant term could still have a
+significant effect on the flow of coupling constants in the first few
+steps. This is why we take $\gamma$ small.}
+
 % \begin{rk}
 % We will sometimes view $K^+_0$ as a function of parameters $(g_0, \gamma_0, \nu_0, z_0)$.
 % In \cite{BSW-saw-sa} we use a \emph{different} choice of $K^+_0$ to handle the
@@ -1488,11 +1512,11 @@ and satisfy the estimates
 \label{e:RKplus}
 \|R_+\|_{\Ucal}
 	\le
-M\chigen_+\ggen_+^{3},
+M\newer{\chicCovgen_+} \ggen_+^{3},
 	\qquad
 \|K_+\|_{\Wcal_+}
 	\le
-M\chigen_+ \ggen_+^{3}
+M\newer{\chicCovgen_+}  \ggen_+^{3}
 \end{equation}
 and
 \begin{equation}
@@ -1670,6 +1694,9 @@ uniformly in $(m^2, \gamma_0)$.
 Note that in the statement of Theorem~\ref{thm:rhatflow} flow, we have evaluated
 the domains $\domRG_j$ at $(\mgen^2, \ggen_0) = (m^2, g_0)$, where $m^2$ is the
 mass in the covariance $C$ and $g_0 = g (1 + z_0^c)^2$.
+
+\commentbw{Giuliani: p. 53, Theorem 2.8.1: what is an explicit bound on the radius
+of convergence for the variable $\gamma$?}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
