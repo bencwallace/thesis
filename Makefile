@@ -2,8 +2,7 @@ build:
 	$(MAKE) -C src build
 
 clean:
-	rm src/thesis.pdf
+	rm -f src/*.pdf
 	git clean -fX
-
 
 .PHONY: clean

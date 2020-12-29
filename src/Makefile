@@ -3,7 +3,18 @@ latex_cmd=pdflatex
 
 build: thesis.pdf
 
-thesis.pdf:
+liquid_vapour.pdf:
+	iperender -pdf liquid_vapour.ipe liquid_vapour.pdf
+
+theta_curve.pdf:
+	iperender -pdf theta_curve.ipe theta_curve.pdf
+
+trapped_compact.pdf:
+	iperender -pdf trapped_compact.ipe trapped_compact.pdf
+
+pdfs: liquid_vapour.pdf theta_curve.pdf trapped_compact.pdf
+
+thesis.pdf: pdfs 
 	echo "Step 1: Running pdflatex (first pass)"
 	${latex_cmd} thesis > /dev/null
 	echo "Step 2: Running bibtex"
