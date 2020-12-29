@@ -4,5 +4,5 @@
 *.lof
 *.log
 *.out
-*.pdf
 *.toc
+src/thesis.pdf
