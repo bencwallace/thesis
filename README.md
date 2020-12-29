@@ -13,4 +13,4 @@ Source code for my PhD thesis, **Renormalization group analysis of self-interact
 
 ## Build
 
-Just run `make` from the repository root directory.
+Just run `make` from the repository root directory. The built thesis will be found in `src/thesis.pdf`.
