@@ -1,0 +1,9 @@
+services:
+  build-thesis:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    working_dir: /thesis
+    volumes:
+      - .:/thesis
+    command: make
